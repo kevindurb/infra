@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  pre_tasks:
+    - name: Update apt cache once before installing all the packages
+      apt:
+        update_cache: yes
+  roles:
+    - geerlingguy.github-users
+    - geerlingguy.ntp
+    - geerlingguy.security
+    - geerlingguy.docker

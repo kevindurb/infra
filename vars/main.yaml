@@ -1,0 +1,16 @@
+---
+ntp_timezone: America/Denver
+
+github_users:
+  - name: kevindurb
+
+security_sudoers_passwordless:
+  - kevindurb
+
+pip_install_packages:
+  - name: docker
+
+ansible_install_method: pip
+
+docker_users:
+  - kevindurb
