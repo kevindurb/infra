@@ -1,0 +1,10 @@
+; vim: set ft=dosini:
+
+[all:vars]
+env=vagrant
+
+[vm_01]
+127.0.0.1
+
+[vm_01:vars]
+ansible_port=2201

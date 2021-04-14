@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.define "vm_01" do |vm_01|
     vm_01.vm.box = "geerlingguy/ubuntu2004"
+    vm_01.ssh.port = 2201
+    vm_01.vm.network :forwarded_port, guest: 22, host: 2201, id: 'ssh'
   end
 
   # Disable automatic box update checking. If you disable this, then
@@ -52,6 +54,6 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "./provision_node.yaml"
+    ansible.playbook = "./playbooks/provision_node.yaml"
   end
 end
