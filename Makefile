@@ -1,6 +1,11 @@
 FLAGS=-i ./inventory/vagrant
 
-all: up
+all: install_roles up
+
+install: install_roles
+
+install_roles:
+	ansible-galaxy install -r ./roles/requirements.yaml
 
 up:
 	vagrant up
