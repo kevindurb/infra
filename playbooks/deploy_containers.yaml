@@ -3,4 +3,12 @@
 - hosts: all
   remote_user: kevindurb
   tasks:
-    - ping:
+    - copy:
+        src: "../files/docker-compose.vm_01.yaml"
+        dest: "~/docker-compose.yaml"
+
+    - docker_compose:
+        project_src: "~"
+
+    - uri:
+        url: http://127.0.0.1:3000
