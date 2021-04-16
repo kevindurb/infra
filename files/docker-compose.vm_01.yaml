@@ -4,3 +4,7 @@ services:
     image: adongy/hostname-docker
     ports:
       - "3000:3000"
+  homeassistant:
+    image: homeassistant/home-assistant
+    ports:
+      - 8123:8123
