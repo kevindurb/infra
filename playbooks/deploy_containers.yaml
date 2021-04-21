@@ -9,6 +9,3 @@
 
     - docker_compose:
         project_src: "~"
-
-    - uri:
-        url: http://127.0.0.1:3000
