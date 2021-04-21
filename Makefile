@@ -17,4 +17,4 @@ deploy_containers:
 	ansible-playbook $(FLAGS) ./playbooks/deploy_containers.yaml
 
 clean:
-	vagrant destroy
+	vagrant destroy -f

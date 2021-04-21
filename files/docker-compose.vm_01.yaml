@@ -1,7 +1,8 @@
 version: "3.9"
 services:
+# TODO: add https://github.com/nginx-proxy/acme-companion for ssl
   proxy:
-    image: jwilder/nginx-proxy
+    image: nginx-proxy/nginx-proxy
     ports:
       - "80:80"
     volumes:
