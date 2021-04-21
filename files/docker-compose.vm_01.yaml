@@ -9,9 +9,9 @@ services:
   whoami:
     image: jwilder/whoami
     environment:
-      - VIRTUAL_HOST=whoami.durbin.casa
+      - VIRTUAL_HOST=whoami.*
   homeassistant:
     image: homeassistant/home-assistant
     environment:
-      - VIRTUAL_HOST=hass.durbin.casa
+      - VIRTUAL_HOST=hass.*
       - VIRTUAL_PORT=8123
