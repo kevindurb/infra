@@ -1,0 +1,5 @@
+---
+- name: make sure nginx conf dir exists
+- name: template nginx.conf into conf dir
+- name: template sites_available into conf dir
+- name: symlink sites_enabled into conf dir

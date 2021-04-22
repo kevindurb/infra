@@ -1,12 +1,12 @@
 version: "3.9"
 services:
-# TODO: add https://github.com/nginx-proxy/acme-companion for ssl
-  proxy:
-    image: nginx-proxy/nginx-proxy
-    ports:
-      - "80:80"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+  # This is cool and all but docker sock access...
+  # proxy:
+  #   image: nginx-proxy/nginx-proxy
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
   whoami:
     image: jwilder/whoami
     environment:
@@ -16,3 +16,8 @@ services:
     environment:
       - VIRTUAL_HOST=hass.*
       - VIRTUAL_PORT=8123
+  grafana:
+    image: grafana/grafana
+    environment:
+      - VIRTUAL_HOST=grafana.*
+      - VIRTUAL_PORT=3000

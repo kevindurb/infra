@@ -1,0 +1,55 @@
+# ssl site
+server {
+    listen                  443 ssl http2;
+    listen                  [::]:443 ssl http2;
+    server_name             hass.durbin.casa;
+
+    # SSL
+    ssl_certificate         /etc/letsencrypt/live/hass.durbin.casa/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/hass.durbin.casa/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/hass.durbin.casa/chain.pem;
+
+    # security
+    include                 extra/security.conf;
+
+    # reverse proxy
+    location / {
+        proxy_pass http://homeassistant:8123;
+        include    extra/proxy.conf;
+    }
+
+    # additional config
+    include extra/general.conf;
+}
+
+# HTTP redirect
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name hass.durbin.casa;
+    include     extra/letsencrypt.conf;
+
+    location / {
+        return 301 https://hass.durbin.casa$request_uri;
+    }
+}
+
+
+# non ssl site
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name whoami.durbin.casa;
+
+    # security
+    include     nginxconfig.io/security.conf;
+
+    # reverse proxy
+    location / {
+        proxy_pass http://whoami:3000;
+        include    nginxconfig.io/proxy.conf;
+    }
+
+    # additional config
+    include nginxconfig.io/general.conf;
+}
