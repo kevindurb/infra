@@ -3,10 +3,12 @@ nginx_proxy_nginx_conf_dir: /etc/nginx
 
 # nginx_proxy_sites_available:
 #   - host: example.com
+#     name: example
 #     https: true
-#     https_redirect: true
+#     force_https: true
+#     proxy_pass: otherthing.com
 nginx_proxy_sites_available: []
 
 # nginx_proxy_sites_enabled:
-#   - example.com
+#   - example
 nginx_proxy_sites_enabled: []

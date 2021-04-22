@@ -2,10 +2,22 @@
 ---
 - hosts: all
   remote_user: kevindurb
+  vars:
+    nginx_proxy_nginx_conf_dir: ~/nginx
+    nginx_proxy_sites_available:
+      - name: homeassistant
+        host: hass.durbin.casa
+        https: true
+        force_https: true
+        proxy_pass: http://hass:8123
+    nginx_proxy_sites_enabled:
+      - homeassistant
+  roles:
+    - ../roles/nginx-proxy
   tasks:
-    - copy:
-        src: "../files/docker-compose.vm_01.yaml"
-        dest: "~/docker-compose.yaml"
+    # - copy:
+    #     src: "../files/docker-compose.vm_01.yaml"
+    #     dest: "~/docker-compose.yaml"
 
-    - docker_compose:
-        project_src: "~"
+    # - docker_compose:
+    #     project_src: "~"
