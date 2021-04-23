@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
     vm_01.ssh.port = 2201
     vm_01.vm.network :forwarded_port, guest: 22, host: 2201, id: 'ssh'
     vm_01.vm.network :forwarded_port, guest: 80, host: 8080, id: 'web'
+    vm_01.vm.network :forwarded_port, guest: 80, host: 4443, id: 'websecure'
   end
 
   # Disable automatic box update checking. If you disable this, then

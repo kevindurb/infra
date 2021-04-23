@@ -4,3 +4,4 @@
 - src: geerlingguy.ansible
 - src: geerlingguy.pip
 - src: geerlingguy.docker
+- src: kevindurb.nginx_proxy

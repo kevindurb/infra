@@ -1,23 +1,18 @@
 version: "3.9"
 services:
-  # This is cool and all but docker sock access...
-  # proxy:
-  #   image: nginx-proxy/nginx-proxy
-  #   ports:
-  #     - "80:80"
-  #   volumes:
-  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "~/nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "~/nginx/sites-available:/etc/nginx/sites-available"
+      - "~/nginx/sites-enabled:/etc/nginx/sites-enabled"
+      - "~/nginx/includes:/etc/nginx/includes"
   whoami:
     image: jwilder/whoami
-    environment:
-      - VIRTUAL_HOST=whoami.*
   homeassistant:
     image: homeassistant/home-assistant
-    environment:
-      - VIRTUAL_HOST=hass.*
-      - VIRTUAL_PORT=8123
   grafana:
     image: grafana/grafana
-    environment:
-      - VIRTUAL_HOST=grafana.*
-      - VIRTUAL_PORT=3000
