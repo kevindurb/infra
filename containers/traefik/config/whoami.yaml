@@ -1,0 +1,13 @@
+---
+http:
+  routers:
+    whoami:
+      entryPoints:
+        - web
+      rule: "HostRegexp(`whoami.{domain}`) || HostRegexp(`whoami.{domain}.{tld}`)"
+      service: whoami
+  services:
+    whoami:
+      loadBalancer:
+        servers:
+          - url: 'http://whoami:8000'

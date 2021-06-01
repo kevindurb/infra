@@ -1,0 +1,12 @@
+---
+
+entryPoints:
+  web:
+    address: ":80"
+
+providers:
+  file:
+    directory: /etc/traefik/config
+
+log:
+  level: DEBUG
