@@ -15,6 +15,7 @@ provision:
 
 build_containers:
 	docker build -t kevindurb/infra_traefik ./containers/traefik
+	docker build -t kevindurb/infra_nodered ./containers/nodered
 
 deploy_containers:
 	ansible-playbook $(FLAGS) ./playbooks/deploy_containers.yaml
