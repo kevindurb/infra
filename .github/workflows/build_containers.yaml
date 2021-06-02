@@ -33,7 +33,7 @@ jobs:
           context: ./containers/traefik
           push: true
           tags: |
-            ghcr.io/kevindurb/infra_traefik:${{ github.ref }}
+            ghcr.io/kevindurb/infra_traefik:${{ GITHUB_REF }}
             ghcr.io/kevindurb/infra_traefik:latest
 
       - name: Image digest
