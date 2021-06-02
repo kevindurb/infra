@@ -17,8 +17,8 @@ build_containers:
 	docker build -t kevindurb/infra_traefik ./containers/traefik
 	docker build -t kevindurb/infra_nodered ./containers/nodered
 
-deploy_containers:
-	ansible-playbook $(FLAGS) ./playbooks/deploy_containers.yaml
+deploy_stack:
+	ansible-playbook $(FLAGS) ./playbooks/deploy_stack.yaml
 
 setup_swarm:
 	ansible-playbook $(FLAGS) ./playbooks/setup_swarm.yaml

@@ -1,0 +1,16 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: managers
+  remote_user: kevindurb
+  tasks:
+    - copy:
+        src: "../docker-compose.yaml"
+        dest: "~/docker-compose.yaml"
+
+    - docker_stack:
+        state: present
+        with_registry_auth: yes
+        prune: yes
+        name: infra
+        compose:
+          - ~/docker-compose.yaml

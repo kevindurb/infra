@@ -10,6 +10,7 @@ security_sudoers_passwordless:
 pip_install_packages:
   - name: docker
   - name: docker-compose
+  - name: jsondiff
 
 ansible_install_method: pip
 
