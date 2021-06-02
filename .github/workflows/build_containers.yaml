@@ -32,9 +32,9 @@ jobs:
         with:
           context: ./containers/traefik
           push: true
-          tags:
-            - ghcr.io/kevindurb/infra_traefik:${{ github.ref }}
-            - ghcr.io/kevindurb/infra_traefik:latest
+          tags: |
+            ghcr.io/kevindurb/infra_traefik:${{ github.ref }}
+            ghcr.io/kevindurb/infra_traefik:latest
 
       - name: Image digest
         run: echo ${{ steps.infra_traefik.outputs.digest }}
