@@ -3,8 +3,9 @@
 [all:vars]
 env=vagrant
 
-[vm_01]
-127.0.0.1
+[managers]
+manager ansible_host=127.0.0.1 ansible_port=2200
 
-[vm_01:vars]
-ansible_port=2201
+[nodes]
+node01 ansible_host=127.0.0.1 ansible_port=2201
+node02 ansible_host=127.0.0.1 ansible_port=2202

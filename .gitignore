@@ -1,2 +1,4 @@
 .vagrant
 *.log
+worker_join_token
+manager_join_token

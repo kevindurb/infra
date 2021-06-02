@@ -20,6 +20,9 @@ build_containers:
 deploy_containers:
 	ansible-playbook $(FLAGS) ./playbooks/deploy_containers.yaml
 
+setup_swarm:
+	ansible-playbook $(FLAGS) ./playbooks/setup_swarm.yaml
+
 docker_compose_dev:
 	docker-compose --file ./docker-compose.yaml --file ./docker-compose.dev.yaml up --build
 

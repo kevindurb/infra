@@ -1,0 +1,32 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: managers
+  remote_user: kevindurb
+  tasks:
+
+    - name: Init swarm on manager
+      docker_swarm:
+        state: present
+        advertise_addr: 172.28.128.6
+      register: init_swarm
+
+    - name: Swarm worker join token
+      debug:
+        msg: "{{ init_swarm.swarm_facts.JoinTokens.Worker }}"
+
+    - name: Write worker join token to file
+      local_action:
+        module: copy
+        content: "{{ init_swarm.swarm_facts.JoinTokens.Worker }}"
+        dest: ./worker_join_token
+
+- hosts: nodes
+  remote_user: kevindurb
+  tasks:
+
+    - name: Join swarm on node
+      docker_swarm:
+        state: join
+        join_token: "{{ lookup('file', './worker_join_token') }}"
+        remote_addrs: 172.28.128.6
+        advertise_addr: enp0s8
