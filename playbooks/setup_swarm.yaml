@@ -7,7 +7,7 @@
     - name: Init swarm on manager
       docker_swarm:
         state: present
-        advertise_addr: 172.28.128.6
+        advertise_addr: "{{ advertise_addr }}"
       register: init_swarm
 
     - name: Swarm worker join token
@@ -28,5 +28,5 @@
       docker_swarm:
         state: join
         join_token: "{{ lookup('file', './worker_join_token') }}"
-        remote_addrs: 172.28.128.6
-        advertise_addr: enp0s8
+        remote_addrs: "{{ manager_ip }}"
+        advertise_addr: "{{ advertise_addr }}"
