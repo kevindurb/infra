@@ -2,8 +2,6 @@
 # vi: set ft=ruby :
 #
 Vagrant.configure("2") do |config|
-  # config.vm.network "private_network", type: "dhcp"
-
   config.vm.define "manager" do |manager|
     manager.vm.box = "ubuntu/focal64"
     manager.vm.network "private_network", ip: "172.28.128.20"
