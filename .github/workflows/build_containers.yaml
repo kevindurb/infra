@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build-containers:
+  traefik:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,13 +27,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
-        id: infra_traefik
+        id: build_image
         uses: docker/build-push-action@v2
         with:
           context: ./containers/traefik
           push: true
-          tags: |
-            ghcr.io/kevindurb/infra_traefik:latest
+          tags: ghcr.io/kevindurb/infra_traefik:latest
 
       - name: Image digest
-        run: echo ${{ steps.infra_traefik.outputs.digest }}
+        run: echo ${{ steps.build_image.outputs.digest }}
