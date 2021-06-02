@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  traefik:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
