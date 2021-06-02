@@ -2,33 +2,9 @@
 ---
 - hosts: all
   remote_user: kevindurb
-  vars:
-    nginx_proxy_nginx_conf_dir: ~/nginx
-    nginx_proxy_sites_available:
-      - name: homeassistant
-        host: hass.*
-        https: false
-        force_https: false
-        proxy_pass: http://homeassistant:8123
-      - name: whoami
-        host: whoami.*
-        https: false
-        force_https: false
-        proxy_pass: http://whoami:8000
-      - name: grafana
-        host: grafana.*
-        https: false
-        force_https: false
-        proxy_pass: http://grafana:3000
-    nginx_proxy_sites_enabled:
-      - homeassistant
-      - whoami
-      - grafana
-  roles:
-    - kevindurb.nginx_proxy
   tasks:
     - copy:
-        src: "../files/docker-compose.vm_01.yaml"
+        src: "./docker-compose.yaml"
         dest: "~/docker-compose.yaml"
 
     - docker_compose:
