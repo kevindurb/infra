@@ -12,3 +12,5 @@ services:
     image: homeassistant/home-assistant
   grafana:
     image: grafana/grafana
+  nodered:
+    image: ghcr.io/kevindurb/infra_nodered

@@ -20,5 +20,9 @@ build_containers:
 deploy_containers:
 	ansible-playbook $(FLAGS) ./playbooks/deploy_containers.yaml
 
+docker_compose_dev:
+	docker-compose --file ./docker-compose.yaml --file ./docker-compose.dev.yaml up --build
+
 clean:
 	vagrant destroy -f
+	docker-compose rm -f

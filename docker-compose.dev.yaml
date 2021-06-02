@@ -9,3 +9,5 @@ services:
     image: homeassistant/home-assistant
   grafana:
     image: grafana/grafana
+  nodered:
+    build: ./containers/nodered
