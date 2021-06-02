@@ -1,0 +1,11 @@
+---
+version: "3.9"
+services:
+  traefik:
+    build: ./containers/traefik
+  whoami:
+    image: jwilder/whoami
+  homeassistant:
+    image: homeassistant/home-assistant
+  grafana:
+    image: grafana/grafana

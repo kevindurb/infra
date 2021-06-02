@@ -1,0 +1,14 @@
+---
+version: "3.9"
+services:
+  traefik:
+    image: ghcr.io/kevindurb/infra_traefik
+    ports:
+      - "80:80"
+      - "443:443"
+  whoami:
+    image: jwilder/whoami
+  homeassistant:
+    image: homeassistant/home-assistant
+  grafana:
+    image: grafana/grafana

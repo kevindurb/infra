@@ -13,6 +13,9 @@ up:
 provision:
 	vagrant provision
 
+build_containers:
+	docker build -t kevindurb/infra_traefik ./containers/traefik
+
 deploy_containers:
 	ansible-playbook $(FLAGS) ./playbooks/deploy_containers.yaml
 
