@@ -1,17 +1,10 @@
 FLAGS=-i ./inventory/vagrant
 
-all: install_roles up
-
-install: install_roles
-
-install_roles:
+install_deps:
 	ansible-galaxy install -r ./roles/requirements.yaml
 
-up:
+vagrant_up:
 	vagrant up
-
-provision:
-	vagrant provision
 
 build_containers:
 	docker build -t kevindurb/infra_traefik ./containers/traefik
@@ -29,3 +22,5 @@ docker_compose_dev:
 clean:
 	vagrant destroy -f
 	docker-compose rm -f
+
+.PHONY: install_deps vagrant_up build_containers deploy_stack setup_swarm docker_compose_dev
