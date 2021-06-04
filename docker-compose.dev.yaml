@@ -2,7 +2,12 @@
 version: "3.9"
 services:
   traefik:
-    build: ./containers/traefik
+    build:
+      context: ./containers/traefik
+      target: development
+    volumes:
+      - "./containers/traefik/traefik.yaml:/etc/traefik/traefik.yaml"
+      - "./containers/traefik/config:/etc/traefik/config"
   whoami:
     image: jwilder/whoami
   homeassistant:
@@ -10,4 +15,8 @@ services:
   grafana:
     image: grafana/grafana
   nodered:
-    build: ./containers/nodered
+    build:
+      context: ./containers/nodered
+      target: development
+    volumes:
+      - "./containers/nodered/settings.js:/data/settings.js"

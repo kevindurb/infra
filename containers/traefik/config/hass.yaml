@@ -1,0 +1,11 @@
+---
+http:
+  routers:
+    hass:
+      rule: "HostRegexp(`hass.{domain}`) || HostRegexp(`hass.{domain}.{tld}`)"
+      service: hass
+  services:
+    hass:
+      loadBalancer:
+        servers:
+          - url: 'http://homeassistant:8123'
