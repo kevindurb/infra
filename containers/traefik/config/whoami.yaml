@@ -4,6 +4,7 @@ http:
     whoami:
       rule: "HostRegexp(`whoami.{domain}`) || HostRegexp(`whoami.{domain}.{tld}`)"
       service: whoami
+      tls: {}
   services:
     whoami:
       loadBalancer:

@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     manager.ssh.port = 2200
     manager.vm.network :forwarded_port, guest: 22, host: 2200, id: 'ssh'
     manager.vm.network :forwarded_port, guest: 80, host: 8080, id: 'web'
-    manager.vm.network :forwarded_port, guest: 80, host: 4443, id: 'websecure'
+    manager.vm.network :forwarded_port, guest: 443, host: 4443, id: 'websecure'
   end
 
   config.vm.define "node01" do |node01|

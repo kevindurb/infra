@@ -4,6 +4,7 @@ http:
     hass:
       rule: "HostRegexp(`hass.{domain}`) || HostRegexp(`hass.{domain}.{tld}`)"
       service: hass
+      tls: {}
   services:
     hass:
       loadBalancer:

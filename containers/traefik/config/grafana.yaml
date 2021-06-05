@@ -4,6 +4,7 @@ http:
     grafana:
       rule: "HostRegexp(`grafana.{domain}`) || HostRegexp(`grafana.{domain}.{tld}`)"
       service: grafana
+      tls: {}
   services:
     grafana:
       loadBalancer:

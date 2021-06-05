@@ -4,7 +4,6 @@ services:
   traefik:
     image: ghcr.io/kevindurb/infra_traefik
     ports:
-      - "80:80"
       - "443:443"
   whoami:
     image: jwilder/whoami
