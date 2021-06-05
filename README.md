@@ -5,14 +5,12 @@
 - VirtualBox
 - Ansible
 - make
+- docker
 
 ## Usage
 ```
-# install roles, build and provision vms
+# install deps
 make
-
-# reprovision vms
-make provision
 
 # deploy containers
 make deploy_containers
