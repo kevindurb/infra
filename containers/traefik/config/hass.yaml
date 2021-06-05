@@ -5,6 +5,8 @@ http:
       rule: "HostRegexp(`hass.{domain}`) || HostRegexp(`hass.{domain}.{tld}`)"
       service: hass
       tls: {}
+      middlewares:
+        - basic-auth
   services:
     hass:
       loadBalancer:

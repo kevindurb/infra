@@ -4,6 +4,8 @@ http:
     grafana:
       rule: "HostRegexp(`grafana.{domain}`) || HostRegexp(`grafana.{domain}.{tld}`)"
       service: grafana
+      middlewares:
+        - basic-auth
       tls: {}
   services:
     grafana:

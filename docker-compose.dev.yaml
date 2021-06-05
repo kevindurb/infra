@@ -7,6 +7,7 @@ services:
       target: development
     volumes:
       - "./containers/traefik/traefik.yaml:/etc/traefik/traefik.yaml"
+      - "./containers/traefik/.htpasswd:/etc/traefik/.htpasswd"
       - "./containers/traefik/config:/etc/traefik/config"
   whoami:
     image: jwilder/whoami

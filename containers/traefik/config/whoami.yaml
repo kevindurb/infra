@@ -5,6 +5,8 @@ http:
       rule: "HostRegexp(`whoami.{domain}`) || HostRegexp(`whoami.{domain}.{tld}`)"
       service: whoami
       tls: {}
+      middlewares:
+        - basic-auth
   services:
     whoami:
       loadBalancer:
