@@ -4,6 +4,7 @@
 Vagrant.configure("2") do |config|
   config.vm.define "manager" do |manager|
     manager.vm.box = "ubuntu/focal64"
+    manager.vm.hostname = "manager"
     manager.vm.network "private_network", ip: "172.28.128.20"
     manager.ssh.port = 2200
     manager.vm.network :forwarded_port, guest: 22, host: 2200, id: 'ssh'
@@ -13,6 +14,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "node01" do |node01|
     node01.vm.box = "ubuntu/focal64"
+    node01.vm.hostname = "node01"
     node01.vm.network "private_network", ip: "172.28.128.21"
     node01.ssh.port = 2201
     node01.vm.network :forwarded_port, guest: 22, host: 2201, id: 'ssh'
@@ -20,6 +22,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "node02" do |node02|
     node02.vm.box = "ubuntu/focal64"
+    node02.vm.hostname = "node02"
     node02.vm.network "private_network", ip: "172.28.128.22"
     node02.ssh.port = 2202
     node02.vm.network :forwarded_port, guest: 22, host: 2202, id: 'ssh'
