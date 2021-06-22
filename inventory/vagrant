@@ -3,12 +3,5 @@
 [all:vars]
 env=vagrant
 
-[managers]
-manager ansible_host=127.0.0.1 ansible_port=2200 advertise_addr=172.28.128.20
-
-[nodes]
-node01 ansible_host=127.0.0.1 ansible_port=2201 advertise_addr=172.28.128.21
-node02 ansible_host=127.0.0.1 ansible_port=2202 advertise_addr=172.28.128.22
-
-[nodes:vars]
-manager_ip=172.28.128.20
+[all]
+homelab ansible_host=127.0.0.1 ansible_port=2200
