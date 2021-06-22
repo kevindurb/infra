@@ -7,9 +7,13 @@ services:
       - "443:443"
   whoami:
     image: jwilder/whoami
-  homeassistant:
-    image: homeassistant/home-assistant
   grafana:
     image: grafana/grafana
   nodered:
     image: ghcr.io/kevindurb/infra_nodered
+  freshrss:
+    image: ghrc.io/kevindurb/infra_freshrss
+    volumes:
+      - freshrss_config:/config
+volumes:
+  freshrss_config:

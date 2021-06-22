@@ -11,8 +11,6 @@ services:
       - "./containers/traefik/config:/etc/traefik/config"
   whoami:
     image: jwilder/whoami
-  homeassistant:
-    image: homeassistant/home-assistant
   grafana:
     image: grafana/grafana
   nodered:
@@ -21,3 +19,6 @@ services:
       target: development
     volumes:
       - "./containers/nodered/settings.js:/data/settings.js"
+  freshrss:
+    build:
+      context: ./containers/freshrss
