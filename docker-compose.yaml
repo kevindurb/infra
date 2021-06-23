@@ -3,6 +3,8 @@ version: "3.9"
 services:
   traefik:
     image: ghcr.io/kevindurb/infra_traefik
+    volumes:
+      - traefik:/etc/traefik
     ports:
       - "443:443"
   whoami:
@@ -11,9 +13,13 @@ services:
     image: grafana/grafana
   nodered:
     image: ghcr.io/kevindurb/infra_nodered
+    volumes:
+      - nodered:/data
   freshrss:
     image: ghrc.io/kevindurb/infra_freshrss
     volumes:
-      - freshrss_config:/config
+      - freshrss:/config
 volumes:
-  freshrss_config:
+  freshrss:
+  traefik:
+  nodered:

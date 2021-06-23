@@ -1,0 +1,14 @@
+---
+http:
+  routers:
+    nodered:
+      rule: "HostRegexp(`nodered.{domain}`) || HostRegexp(`nodered.{domain}.{tld}`)"
+      service: nodered
+      middlewares:
+        - basic-auth
+      tls: {}
+  services:
+    nodered:
+      loadBalancer:
+        servers:
+          - url: 'http://nodered:1880'
