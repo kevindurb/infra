@@ -17,6 +17,15 @@ docker_compose_dev:
 containers/traefik/.htpasswd:
 	htpasswd -c ./containers/traefik/.htpasswd kevindurb
 
+containers/traefik/cert.crt:
+	openssl req -newkey rsa:4096 \
+		-x509 \
+		-sha256 \
+		-days 3650 \
+		-nodes \
+		-out containers/traefik/cert.crt \
+		-keyout containers/traefik/cert.key
+
 clean:
 	vagrant destroy -f
 	docker-compose rm -f
