@@ -7,11 +7,12 @@ vagrant_up:
 	vagrant up
 
 build_containers:
-	docker build -t kevindurb/infra_traefik ./containers/traefik
-	docker build -t kevindurb/infra_nodered ./containers/nodered
 	docker build -t kevindurb/infra_freshrss ./containers/freshrss
-	docker build -t kevindurb/infra_prometheus ./containers/prometheus
+	docker build -t kevindurb/infra_grafana ./containers/grafana
+	docker build -t kevindurb/infra_nodered ./containers/nodered
 	docker build -t kevindurb/infra_ping_exporter ./containers/ping_exporter
+	docker build -t kevindurb/infra_prometheus ./containers/prometheus
+	docker build -t kevindurb/infra_traefik ./containers/traefik
 
 docker_compose_dev:
 	docker-compose --file ./docker-compose.yaml --file ./docker-compose.dev.yaml up --build

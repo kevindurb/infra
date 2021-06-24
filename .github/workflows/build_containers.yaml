@@ -12,11 +12,12 @@ jobs:
     strategy:
       matrix:
         container:
-          - traefik
-          - nodered
           - freshrss
-          - prometheus
+          - grafana
+          - nodered
           - ping_exporter
+          - prometheus
+          - traefik
     steps:
       - name: Checkout
         uses: actions/checkout@v2
