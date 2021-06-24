@@ -12,7 +12,11 @@ services:
     image: jwilder/whoami
 
   grafana:
-    image: grafana/grafana
+    image: ghcr.io/kevindurb/infra_grafana
+    environment:
+      GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
+    volumes:
+      - grafana:/var/lib/grafana
 
   nodered:
     image: ghcr.io/kevindurb/infra_nodered
@@ -35,6 +39,15 @@ services:
   speedtest_exporter:
     image: miguelndecarvalho/speedtest-exporter
 
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    volumes:
+      - '/:/host:ro,rslave'
+
   jellyfin:
     image: jellyfin/jellyfin
     network_mode: host
@@ -49,3 +62,4 @@ volumes:
   jellyfin_cache:
   jellyfin_config:
   prometheus:
+  grafana:

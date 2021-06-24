@@ -17,7 +17,7 @@ scrape_configs:
 
   - job_name: 'speedtest'
     metrics_path: /metrics
-    scrape_interval: 30m
+    scrape_interval: 2h
     scrape_timeout: 60s # running speedtest needs time to complete
     static_configs:
       - targets: ['speedtest_exporter:9798']
@@ -30,33 +30,30 @@ scrape_configs:
     file_sd_configs:
       - files:
           - pinghosts.yaml
+
+    # Add labels based on pinghosts.yaml file for easy searching
     relabel_configs:
       - source_labels: [__address__]
         # first is the url, thus unique for instance
-        regex: '(.*);(.*);(.*);(.*)'
+        regex: '(.*);(.*);(.*)'
         target_label: instance
         replacement: $1
       - source_labels: [__address__]
         # second is humanname to use in charts
-        regex: '(.*);(.*);(.*);(.*)'
+        regex: '(.*);(.*);(.*)'
         target_label: humanname
         replacement: $2
       - source_labels: [__address__]
         # third state whether this is testing external or internal network
-        regex: '(.*);(.*);(.*);(.*)'
+        regex: '(.*);(.*);(.*)'
         target_label: routing
         replacement: $3
-      - source_labels: [__address__]
-        # fourth is which switch/router the device is connected to.
-        regex: '(.*);(.*);(.*);(.*)'
-        target_label: switching
-        replacement: $4
       - source_labels: [instance]
         target_label: __param_target
       - target_label: __address__
         # The blackbox exporter's real hostname:port.
         replacement: ping_exporter:9115
 
-  - job_name: 'nodeexp'
+  - job_name: 'node_exporter'
     static_configs:
-      - targets: ['nodeexp:9100']
+      - targets: ['node_exporter:9100']

@@ -6,24 +6,29 @@ services:
       context: ./containers/traefik
       target: development
     volumes:
-      - "./containers/traefik/traefik.yaml:/etc/traefik/traefik.yaml"
-      - "./containers/traefik/cert.crt:/etc/traefik/cert.crt"
-      - "./containers/traefik/cert.key:/etc/traefik/cert.key"
-      - "./containers/traefik/.htpasswd:/etc/traefik/.htpasswd"
-      - "./containers/traefik/config:/etc/traefik/config"
+      - ./containers/traefik/traefik.yaml:/etc/traefik/traefik.yaml
+      - ./containers/traefik/cert.crt:/etc/traefik/cert.crt
+      - ./containers/traefik/cert.key:/etc/traefik/cert.key
+      - ./containers/traefik/.htpasswd:/etc/traefik/.htpasswd
+      - ./containers/traefik/config:/etc/traefik/config
 
   whoami:
     image: jwilder/whoami
 
   grafana:
-    image: grafana/grafana
+    build:
+      context: ./containers/grafana
+      target: development
+    volumes:
+      - ./containers/grafana/provisioning/:/etc/grafana/provisioning/
+      - ./containers/grafana/grafana.ini:/etc/grafana/grafana.ini
 
   nodered:
     build:
       context: ./containers/nodered
       target: development
     volumes:
-      - "./containers/nodered/settings.js:/data/settings.js"
+      - ./containers/nodered/settings.js:/data/settings.js
 
   freshrss:
     build:
