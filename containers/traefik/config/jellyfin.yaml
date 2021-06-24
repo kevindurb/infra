@@ -1,0 +1,14 @@
+---
+http:
+  routers:
+    jellyfin:
+      rule: "HostRegexp(`jellyfin.{domain}`) || HostRegexp(`jellyfin.{domain}.{tld}`)"
+      service: jellyfin
+      middlewares:
+        - basic-auth
+      tls: {}
+  services:
+    jellyfin:
+      loadBalancer:
+        servers:
+          - url: 'http://jellyfin:8096'

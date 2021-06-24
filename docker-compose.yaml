@@ -7,19 +7,45 @@ services:
       - traefik:/etc/traefik
     ports:
       - "443:443"
+
   whoami:
     image: jwilder/whoami
+
   grafana:
     image: grafana/grafana
+
   nodered:
     image: ghcr.io/kevindurb/infra_nodered
     volumes:
       - nodered:/data
+
   freshrss:
     image: ghrc.io/kevindurb/infra_freshrss
     volumes:
       - freshrss:/config
+
+  prometheus:
+    image: ghrc.io/kevindurb/infra_prometheus
+    volumes:
+      - prometheus:/prometheus
+
+  ping_exporter:
+    image: ghrc.io/kevindurb/infra_ping_exporter
+
+  speedtest_exporter:
+    image: miguelndecarvalho/speedtest-exporter
+
+  jellyfin:
+    image: jellyfin/jellyfin
+    network_mode: host
+    volumes:
+      - jellyfin_config:/config
+      - jellyfin_cache:/cache
+
 volumes:
   freshrss:
   traefik:
   nodered:
+  jellyfin_cache:
+  jellyfin_config:
+  prometheus:

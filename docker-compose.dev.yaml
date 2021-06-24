@@ -11,16 +11,34 @@ services:
       - "./containers/traefik/cert.key:/etc/traefik/cert.key"
       - "./containers/traefik/.htpasswd:/etc/traefik/.htpasswd"
       - "./containers/traefik/config:/etc/traefik/config"
+
   whoami:
     image: jwilder/whoami
+
   grafana:
     image: grafana/grafana
+
   nodered:
     build:
       context: ./containers/nodered
       target: development
     volumes:
       - "./containers/nodered/settings.js:/data/settings.js"
+
   freshrss:
     build:
       context: ./containers/freshrss
+
+  prometheus:
+    build:
+      context: ./containers/prometheus
+      target: development
+    volumes:
+      - ./containers/prometheus/config:/etc/prometheus
+
+  ping_exporter:
+    build:
+      context: ./containers/ping_exporter
+      target: development
+    volumes:
+      - ./containers/ping_exporter/config:/config

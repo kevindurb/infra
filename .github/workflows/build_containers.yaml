@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        container: [traefik, nodered, freshrss]
+        container:
+          - traefik
+          - nodered
+          - freshrss
+          - prometheus
+          - ping_exporter
     steps:
       - name: Checkout
         uses: actions/checkout@v2
