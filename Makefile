@@ -6,6 +6,9 @@ install_deps:
 vagrant_up:
 	vagrant up
 
+vagrant_deploy:
+	ansible-playbook $(FLAGS) ./playbooks/deploy.yaml
+
 build_containers:
 	docker build -t kevindurb/infra_freshrss ./containers/freshrss
 	docker build -t kevindurb/infra_grafana ./containers/grafana

@@ -24,17 +24,17 @@ services:
       - nodered:/data
 
   freshrss:
-    image: ghrc.io/kevindurb/infra_freshrss
+    image: ghcr.io/kevindurb/infra_freshrss
     volumes:
       - freshrss:/config
 
   prometheus:
-    image: ghrc.io/kevindurb/infra_prometheus
+    image: ghcr.io/kevindurb/infra_prometheus
     volumes:
       - prometheus:/prometheus
 
   ping_exporter:
-    image: ghrc.io/kevindurb/infra_ping_exporter
+    image: ghcr.io/kevindurb/infra_ping_exporter
 
   speedtest_exporter:
     image: miguelndecarvalho/speedtest-exporter
