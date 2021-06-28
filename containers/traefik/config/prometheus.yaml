@@ -4,8 +4,8 @@ http:
     prometheus:
       rule: "HostRegexp(`prometheus.{domain}`) || HostRegexp(`prometheus.{domain}.{tld}`)"
       service: prometheus
-      middlewares:
-        - basic-auth
+      # middlewares:
+      #   - basic-auth
       tls: {}
   services:
     prometheus:

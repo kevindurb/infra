@@ -4,8 +4,8 @@ http:
     nodered:
       rule: "HostRegexp(`nodered.{domain}`) || HostRegexp(`nodered.{domain}.{tld}`)"
       service: nodered
-      middlewares:
-        - basic-auth
+      # middlewares:
+      #   - basic-auth
       tls: {}
   services:
     nodered:

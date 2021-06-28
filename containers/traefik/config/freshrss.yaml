@@ -4,8 +4,8 @@ http:
     freshrss:
       rule: "HostRegexp(`freshrss.{domain}`) || HostRegexp(`freshrss.{domain}.{tld}`)"
       service: freshrss
-      middlewares:
-        - basic-auth
+      # middlewares:
+      #   - basic-auth
       tls: {}
   services:
     freshrss:

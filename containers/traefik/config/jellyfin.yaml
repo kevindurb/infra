@@ -4,8 +4,8 @@ http:
     jellyfin:
       rule: "HostRegexp(`jellyfin.{domain}`) || HostRegexp(`jellyfin.{domain}.{tld}`)"
       service: jellyfin
-      middlewares:
-        - basic-auth
+      # middlewares:
+      #   - basic-auth
       tls: {}
   services:
     jellyfin:
