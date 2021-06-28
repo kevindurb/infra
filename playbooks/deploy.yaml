@@ -12,9 +12,10 @@
 
     - name: pull compose stack
       docker_compose:
-        pull: yes
+        pull: true
         project_src: ~/infra
 
     - name: start compose stack
       docker_compose:
+        restarted: true
         project_src: ~/infra
