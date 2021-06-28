@@ -1,0 +1,20 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: all
+  remote_user: kevindurb
+  vars_files:
+    - ../vars/main.yaml
+  tasks:
+    - name: checkout latest infra repo
+      git:
+        repo: 'https://github.com/kevindurb/infra.git'
+        dest: ~/infra
+
+    - name: pull compose stack
+      docker_compose:
+        pull: yes
+        project_src: ~/infra
+
+    - name: start compose stack
+      docker_compose:
+        project_src: ~/infra
