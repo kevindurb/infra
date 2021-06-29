@@ -14,8 +14,10 @@
       docker_compose:
         pull: true
         project_src: ~/infra
+      register: docker_pull
 
     - name: start compose stack
       docker_compose:
+        recreate: "{{ 'always' if docker_pull.changed else 'smart' }}"
         restarted: true
         project_src: ~/infra
