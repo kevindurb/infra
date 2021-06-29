@@ -18,6 +18,6 @@
 
     - name: start compose stack
       docker_compose:
-        recreate: "{{ 'always' if docker_pull.changed else 'smart' }}"
+        recreate: always
         restarted: true
         project_src: ~/infra
