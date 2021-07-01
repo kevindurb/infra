@@ -1,5 +1,3 @@
-FLAGS=-i ./inventory/vagrant
-
 install_deps:
 	ansible-galaxy install -r ./roles/requirements.yaml
 
@@ -7,7 +5,10 @@ vagrant_up:
 	vagrant up
 
 vagrant_deploy:
-	ansible-playbook $(FLAGS) ./playbooks/deploy.yaml
+	ansible-playbook -i ./inventory/vagrant ./playbooks/deploy.yaml
+
+production_deploy:
+	ansible-playbook -i ./inventory/production ./playbooks/deploy.yaml
 
 build_containers:
 	docker build -t kevindurb/infra_freshrss ./containers/freshrss
