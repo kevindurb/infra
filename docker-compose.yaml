@@ -52,6 +52,7 @@ services:
     volumes:
       - jellyfin_config:/config
       - jellyfin_cache:/cache
+      - /tank/media:/media
 
 volumes:
   freshrss:
