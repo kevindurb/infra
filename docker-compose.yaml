@@ -46,18 +46,8 @@ services:
     volumes:
       - '/:/host:ro,rslave'
 
-  # jellyfin:
-  #   image: jellyfin/jellyfin
-  #   network_mode: host
-  #   volumes:
-  #     - jellyfin_config:/config
-  #     - jellyfin_cache:/cache
-  #     - /tank/media:/media
-
 volumes:
   freshrss:
   nodered:
-  jellyfin_cache:
-  jellyfin_config:
   prometheus:
   grafana:
