@@ -7,7 +7,7 @@ services:
       - CF_API_EMAIL
       - CF_ZONE_API_TOKEN
     volumes:
-      - traefik_acme:/etc/traefik/acme.json
+      - traefik_acme:/etc/traefik/acme
     ports:
       - "443:443"
 

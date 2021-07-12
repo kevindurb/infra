@@ -17,6 +17,6 @@ api:
 certificatesResolvers:
   default:
     acme:
-      storage: /etc/traefik/acme.json
+      storage: /etc/traefik/acme/acme.json
       dnsChallenge:
         provider: cloudflare
