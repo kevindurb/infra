@@ -5,12 +5,12 @@ services:
     build:
       context: ./containers/traefik
       target: development
+    ports:
+      - "80:80"
     volumes:
-      - ./containers/traefik/traefik.yaml:/etc/traefik/traefik.yaml
-      - ./containers/traefik/cert.crt:/etc/traefik/cert.crt
-      - ./containers/traefik/cert.key:/etc/traefik/cert.key
-      - ./containers/traefik/.htpasswd:/etc/traefik/.htpasswd
-      - ./containers/traefik/config:/etc/traefik/config
+      - ./containers/traefik/traefik.dev.yaml:/etc/traefik/traefik.yaml
+      - ./containers/traefik/services.dev.yaml:/etc/traefik/config/services.yaml
+      - ./containers/traefik/routers.dev.yaml:/etc/traefik/config/routers.yaml
 
   whoami:
     image: jwilder/whoami

@@ -1,0 +1,34 @@
+---
+
+http:
+  services:
+
+    freshrss:
+      loadBalancer:
+        servers:
+          - url: 'http://freshrss'
+
+    grafana:
+      loadBalancer:
+        servers:
+          - url: 'http://grafana:3000'
+
+    jellyfin:
+      loadBalancer:
+        servers:
+          - url: 'http://durbin.casa:8096'
+
+    nodered:
+      loadBalancer:
+        servers:
+          - url: 'http://nodered:1880'
+
+    prometheus:
+      loadBalancer:
+        servers:
+          - url: 'http://prometheus:9090'
+
+    whoami:
+      loadBalancer:
+        servers:
+          - url: 'http://whoami:8000'

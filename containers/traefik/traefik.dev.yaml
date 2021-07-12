@@ -1,0 +1,15 @@
+---
+
+entryPoints:
+  default:
+    address: ":80"
+
+providers:
+  file:
+    directory: /etc/traefik/config
+
+log:
+  level: DEBUG
+
+api:
+  dashboard: true

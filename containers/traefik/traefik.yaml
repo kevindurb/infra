@@ -1,7 +1,7 @@
 ---
 
 entryPoints:
-  websecure:
+  default:
     address: ":443"
 
 providers:
@@ -13,3 +13,10 @@ log:
 
 api:
   dashboard: true
+
+certificatesResolvers:
+  default:
+    acme:
+      storage: /etc/traefik/acme.json
+      dnsChallenge:
+        provider: cloudflare

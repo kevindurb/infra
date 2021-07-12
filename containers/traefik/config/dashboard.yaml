@@ -1,9 +1,0 @@
----
-http:
-  routers:
-    traefik:
-      rule: "HostRegexp(`traefik.{domain}`) || HostRegexp(`traefik.{domain}.{tld}`)"
-      service: api@internal
-      # middlewares:
-      #   - basic-auth
-      tls: {}

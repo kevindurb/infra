@@ -3,6 +3,11 @@ version: "3.8"
 services:
   traefik:
     image: ghcr.io/kevindurb/infra_traefik
+    environment:
+      - CF_API_EMAIL
+      - CF_ZONE_API_TOKEN
+    volumes:
+      - traefik_acme:/etc/traefik/acme.json
     ports:
       - "443:443"
 
@@ -51,3 +56,4 @@ volumes:
   nodered:
   prometheus:
   grafana:
+  traefik_acme:
