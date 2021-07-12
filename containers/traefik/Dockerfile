@@ -11,3 +11,6 @@ FROM base as production
 COPY ./traefik.yaml /etc/traefik/traefik.yaml
 COPY ./services.yaml /etc/traefik/config/services.yaml
 COPY ./routers.yaml /etc/traefik/config/routers.yaml
+
+RUN touch /etc/traefik/acme.json
+RUN chmod 600 /etc/traefik/acme.json

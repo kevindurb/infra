@@ -5,3 +5,4 @@ manager_join_token
 .htpasswd
 cert.crt
 cert.key
+.env
