@@ -20,32 +20,23 @@
         state: started
         enabled: yes
 
-    - name: setup repo directory
-      become: yes
-      file:
-        group: www-data
-        owner: www-data
-        path: /var/www/html/ubuntu
-        state: directory
-
     - name: setup repo var directory
       become: yes
       file:
         group: www-data
         owner: www-data
-        path: /var/www/html/ubuntu/var
+        path: /tank/ubuntu/var
         state: directory
 
-    - name: point apt at www directory
+    - name: add mirror.list
       become: yes
-      lineinfile:
-        path: /etc/apt/mirror.list
-        regexp: '^# set base_path'
-        line: 'set base_path  /var/www/html/ubuntu'
+      copy:
+        src: ../files/mirror.list.j2
+        dest: /etc/apt/mirror.list
 
     - name: setup post script
       become: yes
       copy:
         remote_src: yes
         src: /var/spool/apt-mirror/var/postmirror.sh
-        dest: /var/www/html/ubuntu/var/postmirror.sh
+        dest: /tank/ubuntu/var/postmirror.sh
