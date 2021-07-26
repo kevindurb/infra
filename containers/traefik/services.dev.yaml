@@ -33,3 +33,8 @@ http:
       loadBalancer:
         servers:
           - url: 'http://whoami:8000'
+
+    syncthing:
+      loadBalancer:
+        servers:
+          - url: 'http://syncthing:8384'

@@ -43,3 +43,9 @@ http:
       service: whoami
       tls:
         certresolver: cloudflare
+
+    syncthing:
+      rule: "Host(`syncthing.durbin.casa`)"
+      service: syncthing
+      tls:
+        certresolver: cloudflare

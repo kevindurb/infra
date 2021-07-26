@@ -47,3 +47,10 @@ services:
       target: development
     volumes:
       - ./containers/ping_exporter/config:/config
+
+  syncthing:
+    image: ghcr.io/linuxserver/syncthing
+    ports:
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp

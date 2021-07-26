@@ -29,3 +29,7 @@ http:
     whoami:
       rule: "Host(`whoami.localhost`)"
       service: whoami
+
+    syncthing:
+      rule: "Host(`syncthing.localhost`)"
+      service: syncthing
