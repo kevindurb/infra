@@ -43,7 +43,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/kevindurb/infra_${{ matrix.container }}:latest
-            ghcr.io/kevindurb/infra_${{ matrix.container }}:${{ GITHUB_SHA }}
+            ghcr.io/kevindurb/infra_${{ matrix.container }}:${{ env.GITHUB_SHA }}
 
       - name: Image digest
         run: echo ${{ steps.build_image.outputs.digest }}
