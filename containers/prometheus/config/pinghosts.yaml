@@ -1,3 +1,4 @@
 - targets:  # url;humanname;routing;switch
-    - http://www.google.com/;google.com;external
+    - https://www.google.com/;google.com;external
     - https://github.com/;github.com;external
+    - https://freshrss.durbin.casa/;freshrss.durbin.casa;internal
