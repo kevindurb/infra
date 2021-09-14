@@ -6,3 +6,7 @@ manager_join_token
 cert.crt
 cert.key
 .env
+.terraform
+*.tfvars
+*.tfstate
+*.tfstate.backup
