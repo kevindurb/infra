@@ -56,7 +56,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 6,
         "x": 0,
         "y": 0
@@ -129,7 +129,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 6,
         "x": 6,
         "y": 0
@@ -203,8 +203,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 6,
+        "w": 6,
         "x": 12,
         "y": 0
       },
@@ -238,6 +238,74 @@
         }
       ],
       "title": "Speedtest Ping",
+      "type": "gauge"
+    },
+    {
+      "datasource": "prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1024000000000,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 18,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(increase(node_network_receive_bytes_total[$__range]))",
+          "interval": "",
+          "legendFormat": "",
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Download Usage",
       "type": "gauge"
     },
     {
@@ -298,7 +366,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 6
       },
       "id": 6,
       "links": [],
@@ -374,7 +442,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 6
       },
       "highlightCards": true,
       "id": 14,
@@ -437,7 +505,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 15
       },
       "hiddenSeries": false,
       "id": 4,
@@ -577,7 +645,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 24
       },
       "id": 16,
       "options": {
@@ -654,5 +722,5 @@
   "timezone": "browser",
   "title": "Internet connection",
   "uid": "o9mIe_Aik",
-  "version": 1
+  "version": 2
 }
