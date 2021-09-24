@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: grafana
-          image: ghcr.io/kevindurb/infra_grafana
+          image: ghcr.io/kevindurb/infra_grafana:kubernetes
           env:
             - name: GF_INSTALL_PLUGINS
               value: flant-statusmap-panel,ae3e-plotly-panel
