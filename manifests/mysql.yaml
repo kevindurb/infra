@@ -18,14 +18,7 @@ spec:
         - image: ghcr.io/kevindurb/infra_mysql
           name: mysql
           env:
-            - name: MYSQL_RANDOM_ROOT_PASSWORD
-              value: "1"
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: username
-            - name: MYSQL_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
@@ -67,7 +60,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/mysqldata"
+    path: '/mnt/mysqldata'
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

@@ -21,12 +21,7 @@ spec:
           env:
             - name: GF_INSTALL_PLUGINS
               value: flant-statusmap-panel,ae3e-plotly-panel
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: username
-            - name: MYSQL_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
@@ -53,11 +48,11 @@ metadata:
   name: grafana-ingress
 spec:
   rules:
-    - host: "grafana.localhost"
+    - host: 'grafana.localhost'
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: '/'
             backend:
               service:
                 name: grafana-service
