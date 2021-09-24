@@ -21,6 +21,16 @@ spec:
           env:
             - name: GF_INSTALL_PLUGINS
               value: flant-statusmap-panel,ae3e-plotly-panel
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
           ports:
             - name: web
               containerPort: 3000

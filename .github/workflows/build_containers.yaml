@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - kubernetes
 
 jobs:
   build:
@@ -43,7 +44,7 @@ jobs:
           context: ./containers/${{ matrix.container }}
           push: true
           tags: |
-            ghcr.io/kevindurb/infra_${{ matrix.container }}:latest
+            ghcr.io/kevindurb/infra_${{ matrix.container }}:kubernetes
             ghcr.io/kevindurb/infra_${{ matrix.container }}:${{ github.sha }}
 
       - name: Image digest
