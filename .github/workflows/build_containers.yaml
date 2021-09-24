@@ -18,6 +18,7 @@ jobs:
           - ping_exporter
           - prometheus
           - traefik
+          - mysql
     steps:
       - name: Checkout
         uses: actions/checkout@v2
