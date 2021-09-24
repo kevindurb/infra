@@ -22,7 +22,8 @@ spec:
             - name: GF_INSTALL_PLUGINS
               value: flant-statusmap-panel,ae3e-plotly-panel
           ports:
-            - containerPort: 3000
+            - name: web
+              containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
@@ -32,9 +33,9 @@ spec:
   selector:
     app: grafana
   ports:
-    - protocol: TCP
+    - name: web
       port: 80
-      targetPort: 3000
+      targetPort: web
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -51,4 +52,4 @@ spec:
               service:
                 name: grafana-service
                 port:
-                  number: 80
+                  name: web
