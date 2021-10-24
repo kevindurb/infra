@@ -26,7 +26,7 @@ scrape_configs:
     metrics_path: /probe
     scrape_interval: 5s
     params:
-      module: [http_2xx]  # Look for a HTTP 200 response.
+      module: [http_2xx] # Look for a HTTP 200 response.
     file_sd_configs:
       - files:
           - pinghosts.yaml
@@ -56,4 +56,4 @@ scrape_configs:
 
   - job_name: 'node_exporter'
     static_configs:
-      - targets: ['node_exporter:9100', '192.168.0.1:9100']
+      - targets: ['node_exporter:9100', '192.168.1.1:9100']
