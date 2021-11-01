@@ -1,56 +1,7 @@
 ---
-version: "3.8"
+version: '3.8'
+
 services:
   traefik:
-    build:
-      context: ./containers/traefik
-      target: development
-    ports:
-      - "80:80"
     volumes:
       - ./containers/traefik/traefik.dev.yaml:/etc/traefik/traefik.yaml
-      - ./containers/traefik/services.dev.yaml:/etc/traefik/config/services.yaml
-      - ./containers/traefik/routers.dev.yaml:/etc/traefik/config/routers.yaml
-
-  whoami:
-    image: jwilder/whoami
-
-  grafana:
-    build:
-      context: ./containers/grafana
-      target: development
-    volumes:
-      - ./containers/grafana/provisioning/:/etc/grafana/provisioning/
-      - ./containers/grafana/grafana.ini:/etc/grafana/grafana.ini
-
-  nodered:
-    build:
-      context: ./containers/nodered
-      target: development
-    volumes:
-      - ./containers/nodered/settings.js:/data/settings.js
-
-  freshrss:
-    build:
-      context: ./containers/freshrss
-
-  prometheus:
-    build:
-      context: ./containers/prometheus
-      target: development
-    volumes:
-      - ./containers/prometheus/config:/etc/prometheus
-
-  ping_exporter:
-    build:
-      context: ./containers/ping_exporter
-      target: development
-    volumes:
-      - ./containers/ping_exporter/config:/config
-
-  syncthing:
-    image: ghcr.io/linuxserver/syncthing
-    ports:
-      - 22000:22000/tcp
-      - 22000:22000/udp
-      - 21027:21027/udp

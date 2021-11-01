@@ -1,0 +1,50 @@
+---
+http:
+  routers:
+    traefik:
+      rule: 'Host(`traefik.durbin.casa`)'
+      service: api@internal
+      tls:
+        certresolver: default
+
+    freshrss:
+      rule: 'Host(`freshrss.durbin.casa`)'
+      service: freshrss
+      tls:
+        certresolver: default
+
+    grafana:
+      rule: 'Host(`grafana.durbin.casa`)'
+      service: grafana
+      tls:
+        certresolver: default
+
+    jellyfin:
+      rule: 'Host(`jellyfin.durbin.casa`)'
+      service: jellyfin
+      tls:
+        certresolver: default
+
+    nodered:
+      rule: 'Host(`nodered.durbin.casa`)'
+      service: nodered
+      tls:
+        certresolver: default
+
+    prometheus:
+      rule: 'Host(`prometheus.durbin.casa`)'
+      service: prometheus
+      tls:
+        certresolver: default
+
+    whoami:
+      rule: 'Host(`whoami.durbin.casa`)'
+      service: whoami
+      tls:
+        certresolver: default
+
+    syncthing:
+      rule: 'Host(`syncthing.durbin.casa`)'
+      service: syncthing
+      tls:
+        certresolver: default

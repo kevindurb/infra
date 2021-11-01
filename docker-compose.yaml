@@ -1,26 +1,36 @@
 ---
-version: "3.8"
+version: '3.8'
+
+volumes:
+  traefik_acme:
+  grafana:
+  nodered:
+  freshrss:
+  prometheus:
+
 services:
   traefik:
-    image: ghcr.io/kevindurb/infra_traefik
+    image: traefik:2.4
+    restart: unless-stopped
     environment:
       - CF_API_EMAIL
       - CF_DNS_API_TOKEN
+    ports:
+      - '443:443'
     volumes:
       - traefik_acme:/etc/traefik/acme
-    ports:
-      - "443:443"
-    restart: unless-stopped
+      - ./containers/traefik:/etc/traefik
 
   whoami:
     image: jwilder/whoami
     restart: unless-stopped
 
   grafana:
-    image: ghcr.io/kevindurb/infra_grafana
+    image: grafana/grafana:8.0.3
     environment:
       GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
     volumes:
+      - ./containers/grafana:/etc/grafana
       - grafana:/var/lib/grafana
     restart: unless-stopped
 
@@ -28,31 +38,27 @@ services:
     image: ghcr.io/kevindurb/infra_nodered
     volumes:
       - nodered:/data
+      - ./containers/nodered/settings.js:/data/settings.js
     restart: unless-stopped
 
   freshrss:
-    image: ghcr.io/kevindurb/infra_freshrss
+    image: ghcr.io/linuxserver/freshrss:latest
     volumes:
       - freshrss:/config
     restart: unless-stopped
 
   prometheus:
-    image: ghcr.io/kevindurb/infra_prometheus
+    image: prom/prometheus:latest
     volumes:
       - prometheus:/prometheus
+      - ./containers/prometheus:/etc/prometheus
     restart: unless-stopped
-
-  ping_exporter:
-    image: ghcr.io/kevindurb/infra_ping_exporter
-    restart: unless-stopped
-
-  speedtest_exporter:
-    image: miguelndecarvalho/speedtest-exporter
-    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+      - '--storage.tsdb.path=/prometheus'
 
   node_exporter:
     image: quay.io/prometheus/node-exporter:latest
-    container_name: node_exporter
     command:
       - '--path.rootfs=/host'
     pid: host
@@ -60,16 +66,14 @@ services:
       - '/:/host:ro,rslave'
     restart: unless-stopped
 
-  syncthing:
-    image: ghcr.io/linuxserver/syncthing
-    ports:
-      - 22000:22000/tcp
-      - 22000:22000/udp
-      - 21027:21027/udp
+  ping_exporter:
+    image: prom/blackbox-exporter:latest
+    command:
+      - '--config.file=/config/ping.yaml'
+    volumes:
+      - ./containers/ping_exporter:/config
+    restart: unless-stopped
 
-volumes:
-  freshrss:
-  nodered:
-  prometheus:
-  grafana:
-  traefik_acme:
+  speedtest_exporter:
+    image: miguelndecarvalho/speedtest-exporter:latest
+    restart: unless-stopped
