@@ -13,8 +13,12 @@ production_deploy:
 docker_compose_dev:
 	docker-compose --file ./docker-compose.yaml --file ./docker-compose.dev.yaml up
 
+dev_add_hosts:
+	ansible-playbook -K ./playbooks/dev_add_hosts.yaml
+
+dev_remove_hosts:
+	ansible-playbook -K ./playbooks/dev_remove_hosts.yaml
+
 clean:
 	vagrant destroy -f
 	docker-compose rm -f
-
-.PHONY: install_deps vagrant_up build_containers deploy_stack setup_swarm docker_compose_dev

@@ -16,3 +16,12 @@ ansible_install_method: pip
 
 docker_users:
   - kevindurb
+
+subdomains:
+  - traefik
+  - freshrss
+  - grafana
+  - jellyfin
+  - nodered
+  - prometheus
+  - whoami

@@ -1,0 +1,14 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: localhost
+  vars_files:
+    - ../vars/main.yaml
+  tasks:
+    - name: add hosts to /etc/hosts
+      become: yes
+      with_items: '{{ subdomains }}'
+      lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.0\.1 {{ item }}.durbin.casa'
+        line: '127.0.0.1 {{ item }}.durbin.casa'
+        state: absent

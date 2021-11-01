@@ -2,6 +2,8 @@
 version: '3.8'
 
 services:
+  # use a different traefik base config to disable cloudflare
+  # lets encrypt dns resolve
   traefik:
     volumes:
       - ./containers/traefik/traefik.dev.yaml:/etc/traefik/traefik.yaml
