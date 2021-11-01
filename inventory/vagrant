@@ -1,7 +1,0 @@
-; vim: set ft=dosini:
-
-[all:vars]
-env=vagrant
-
-[all]
-homelab ansible_host=127.0.0.1 ansible_port=2200

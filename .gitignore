@@ -10,3 +10,4 @@ cert.key
 *.tfvars
 *.tfstate
 *.tfstate.backup
+./containers/traefik/acme
