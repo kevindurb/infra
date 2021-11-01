@@ -10,7 +10,7 @@ volumes:
 
 services:
   traefik:
-    image: traefik:2.4
+    image: docker.io/traefik:2.4
     restart: unless-stopped
     environment:
       - CF_API_EMAIL
@@ -22,11 +22,11 @@ services:
       - ./containers/traefik:/etc/traefik
 
   whoami:
-    image: jwilder/whoami
+    image: docker.io/jwilder/whoami:latest
     restart: unless-stopped
 
   grafana:
-    image: grafana/grafana:8.0.3
+    image: docker.io/grafana/grafana:8.0.3
     environment:
       GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
     volumes:
@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
 
   nodered:
-    image: ghcr.io/kevindurb/infra_nodered
+    image: docker.io/nodered/node-red:2.1.3
     volumes:
       - nodered:/data
       - ./containers/nodered/settings.js:/data/settings.js
@@ -48,7 +48,7 @@ services:
     restart: unless-stopped
 
   prometheus:
-    image: prom/prometheus:latest
+    image: docker.io/prom/prometheus:latest
     volumes:
       - prometheus:/prometheus
       - ./containers/prometheus:/etc/prometheus
@@ -67,7 +67,7 @@ services:
     restart: unless-stopped
 
   ping_exporter:
-    image: prom/blackbox-exporter:latest
+    image: docker.io/prom/blackbox-exporter:latest
     command:
       - '--config.file=/config/ping.yaml'
     volumes:
@@ -75,5 +75,5 @@ services:
     restart: unless-stopped
 
   speedtest_exporter:
-    image: miguelndecarvalho/speedtest-exporter:latest
+    image: docker.io/miguelndecarvalho/speedtest-exporter:latest
     restart: unless-stopped
