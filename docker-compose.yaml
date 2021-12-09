@@ -9,17 +9,16 @@ volumes:
   prometheus:
 
 services:
-  traefik:
-    image: docker.io/traefik:2.4
+  caddy:
+    image: docker.io/caddy
     restart: unless-stopped
     environment:
-      - CF_API_EMAIL
-      - CF_DNS_API_TOKEN
-    ports:
-      - '443:443'
+      DOMAIN: localhost
     volumes:
-      - traefik_acme:/etc/traefik/acme
-      - ./containers/traefik:/etc/traefik
+      - ./containers/caddy/Caddyfile:/etc/caddy/Caddyfile
+    ports:
+      - 80:80
+      - 443:443
 
   whoami:
     image: docker.io/jwilder/whoami:latest
