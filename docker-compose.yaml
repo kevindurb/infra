@@ -2,35 +2,37 @@
 version: '3.8'
 
 volumes:
-  traefik_acme:
-  grafana:
   nodered:
   freshrss:
-  prometheus:
 
 services:
   caddy:
     image: docker.io/caddy
     restart: unless-stopped
     environment:
-      DOMAIN: localhost
+      - DOMAIN
     volumes:
       - ./containers/caddy/Caddyfile:/etc/caddy/Caddyfile
     ports:
       - 80:80
       - 443:443
 
+  postgres:
+    image: docker.io/postgres:13
+    restart: unless-stopped
+    volumes:
+      - ./containers/postgres:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD
+
+  adminer:
+    image: docker.io/adminer
+    restart: unless-stopped
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+
   whoami:
     image: docker.io/jwilder/whoami:latest
-    restart: unless-stopped
-
-  grafana:
-    image: docker.io/grafana/grafana:8.0.3
-    environment:
-      GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
-    volumes:
-      - ./containers/grafana:/etc/grafana
-      - grafana:/var/lib/grafana
     restart: unless-stopped
 
   nodered:
@@ -46,33 +48,16 @@ services:
       - freshrss:/config
     restart: unless-stopped
 
-  prometheus:
-    image: docker.io/prom/prometheus:latest
-    volumes:
-      - prometheus:/prometheus
-      - ./containers/prometheus:/etc/prometheus
-    restart: unless-stopped
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yaml'
-      - '--storage.tsdb.path=/prometheus'
-
-  node_exporter:
-    image: quay.io/prometheus/node-exporter:latest
-    command:
-      - '--path.rootfs=/host'
-    pid: host
-    volumes:
-      - '/:/host:ro,rslave'
+  guacd:
+    image: docker.io/guacamole/guacd
     restart: unless-stopped
 
-  ping_exporter:
-    image: docker.io/prom/blackbox-exporter:latest
-    command:
-      - '--config.file=/config/ping.yaml'
-    volumes:
-      - ./containers/ping_exporter:/config
+  guacamole:
+    image: docker.io/guacamole/guacamole
     restart: unless-stopped
-
-  speedtest_exporter:
-    image: docker.io/miguelndecarvalho/speedtest-exporter:latest
-    restart: unless-stopped
+    environment:
+      GUACD_HOSTNAME: guacd
+      POSTGRES_USER: postgres
+      POSTGRES_DATABASE: guacamole
+      POSTGRES_HOSTNAME: postgres
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD

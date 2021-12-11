@@ -25,3 +25,4 @@ subdomains:
   - nodered
   - prometheus
   - whoami
+  - adminer

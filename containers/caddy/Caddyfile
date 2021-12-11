@@ -1,7 +1,35 @@
-hello.{$DOMAIN:localhost} {
+ping.{$DOMAIN:localhost} {
+  respond "pong"
+}
+
+whoami.{$DOMAIN:localhost} {
   reverse_proxy whoami:8000
 }
 
-world.{$DOMAIN:localhost} {
-  respond "world"
+grafana.{$DOMAIN:localhost} {
+  reverse_proxy grafana:3000
+}
+
+jellyfin.{$DOMAIN:localhost} {
+  reverse_proxy jellyfin:8096
+}
+
+nodered.{$DOMAIN:localhost} {
+  reverse_proxy nodered:1880
+}
+
+prometheus.{$DOMAIN:localhost} {
+  reverse_proxy prometheus:9090
+}
+
+freshrss.{$DOMAIN:localhost} {
+  reverse_proxy prometheus:9090
+}
+
+adminer.{$DOMAIN:localhost} {
+  reverse_proxy adminer:8080
+}
+
+guacamole.{$DOMAIN:localhost} {
+  reverse_proxy guacamole:8080
 }

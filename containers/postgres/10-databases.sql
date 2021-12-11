@@ -1,0 +1,3 @@
+CREATE DATABASE grafana;
+CREATE DATABASE freshrss;
+CREATE DATABASE guacamole;

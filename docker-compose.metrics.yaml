@@ -1,0 +1,48 @@
+---
+version: '3.8'
+
+volumes:
+  grafana:
+  prometheus:
+
+services:
+  grafana:
+    image: docker.io/grafana/grafana:8.0.3
+    environment:
+      GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
+      GF_DATABASE_URL: $GF_DATABASE_URL
+    volumes:
+      - ./containers/grafana:/etc/grafana
+      - grafana:/var/lib/grafana
+    restart: unless-stopped
+
+  prometheus:
+    image: docker.io/prom/prometheus:latest
+    volumes:
+      - prometheus:/prometheus
+      - ./containers/prometheus:/etc/prometheus
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+      - '--storage.tsdb.path=/prometheus'
+
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    volumes:
+      - '/:/host:ro,rslave'
+    restart: unless-stopped
+
+  ping_exporter:
+    image: docker.io/prom/blackbox-exporter:latest
+    command:
+      - '--config.file=/config/ping.yaml'
+    volumes:
+      - ./containers/ping_exporter:/config
+    restart: unless-stopped
+
+  speedtest_exporter:
+    image: docker.io/miguelndecarvalho/speedtest-exporter:latest
+    restart: unless-stopped
