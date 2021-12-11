@@ -11,6 +11,8 @@ services:
     environment:
       GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
       GF_DATABASE_URL: $GF_DATABASE_URL
+    depends_on:
+      - caddy
     volumes:
       - ./containers/grafana:/etc/grafana
       - grafana:/var/lib/grafana

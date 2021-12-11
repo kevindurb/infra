@@ -27,3 +27,4 @@ subdomains:
   - whoami
   - adminer
   - firefly
+  - homeassistant
