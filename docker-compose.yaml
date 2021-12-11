@@ -4,6 +4,7 @@ version: '3.8'
 volumes:
   nodered:
   freshrss:
+  firefly_iii_upload:
 
 services:
   caddy:
@@ -20,6 +21,8 @@ services:
   postgres:
     image: docker.io/postgres:13
     restart: unless-stopped
+    ports:
+      - 5432:5432
     volumes:
       - ./containers/postgres:/docker-entrypoint-initdb.d
     environment:
@@ -61,3 +64,18 @@ services:
       POSTGRES_DATABASE: guacamole
       POSTGRES_HOSTNAME: postgres
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+
+  firefly:
+    image: fireflyiii/core
+    volumes:
+      - firefly_iii_upload:/var/www/html/storage/upload
+    environment:
+      APP_URL: $FIREFLY_APP_URL
+      TRUSTED_PROXIES: '**'
+      APP_KEY: $FIREFLY_APP_KEY
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_CONNECTION: pgsql
+      DB_DATABASE: firefly
+      DB_USERNAME: postgres
+      DB_PASSWORD: $POSTGRES_PASSWORD

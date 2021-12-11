@@ -1,3 +1,4 @@
 CREATE DATABASE grafana;
 CREATE DATABASE freshrss;
 CREATE DATABASE guacamole;
+CREATE DATABASE firefly;

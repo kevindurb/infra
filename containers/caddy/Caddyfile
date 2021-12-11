@@ -33,3 +33,7 @@ adminer.{$DOMAIN:localhost} {
 guacamole.{$DOMAIN:localhost} {
   reverse_proxy guacamole:8080
 }
+
+firefly.{$DOMAIN:localhost} {
+  reverse_proxy firefly:8080
+}
