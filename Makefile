@@ -12,6 +12,9 @@ dev_add_hosts:
 dev_remove_hosts:
 	ansible-playbook -K ./playbooks/dev_remove_hosts.yaml
 
+nextcloud_cron:
+	docker exec -u www-data infra_nextcloud_1 php -f cron.php
+
 clean:
 	docker-compose $(COMPOSE_ARGS) stop
 	docker-compose $(COMPOSE_ARGS) rm -f

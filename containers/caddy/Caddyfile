@@ -41,3 +41,7 @@ firefly.{$DOMAIN} {
 homeassistant.{$DOMAIN} {
   reverse_proxy homeassistant:8123
 }
+
+nextcloud.{$DOMAIN} {
+  reverse_proxy nextcloud:80
+}

@@ -5,6 +5,7 @@ volumes:
   nodered:
   freshrss:
   firefly_iii_upload:
+  nextcloud:
 
 x-service-defaults:
   &service-defaults
@@ -33,6 +34,11 @@ services:
       - ./containers/postgres:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD
+
+  redis:
+    << : *service-defaults
+    image: docker.io/redis:6.2-alpine
+    command: redis-server --requirepass $REDIS_PASSWORD
 
   adminer:
     << : *service-defaults
@@ -108,3 +114,21 @@ services:
       - caddy
     volumes:
       - ./containers/homeassistant/configuration.yaml:/config/configuration.yaml
+
+  nextcloud:
+    << : *service-defaults
+    image: docker.io/nextcloud:21-apache
+    environment:
+      NEXTCLOUD_TRUSTED_DOMAINS: nextcloud.$DOMAIN
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: nextcloud
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      REDIS_HOST: redis
+      REDIS_HOST_PASSWORD: $REDIS_PASSWORD
+    volumes:
+      nextcloud:/var/www/html
+    depends_on:
+      - caddy
+      - redis
+      - postgres

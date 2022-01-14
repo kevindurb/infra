@@ -28,3 +28,4 @@ subdomains:
   - adminer
   - firefly
   - homeassistant
+  - nextcloud
