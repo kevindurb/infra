@@ -6,6 +6,7 @@ volumes:
   freshrss:
   firefly_iii_upload:
   nextcloud:
+  jellyfin:
 
 x-service-defaults:
   &service-defaults
@@ -134,3 +135,16 @@ services:
       - caddy
       - redis
       - postgres
+
+  jellyfin:
+    << : *service-defaults
+    image: lscr.io/linuxserver/jellyfin
+    environment:
+      JELLYFIN_PublishedServerUrl: https://jellyfin.$DOMAIN
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - jellyfin:/config
+      # TODO: add media volume
+    depends_on:
+      - caddy
