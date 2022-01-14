@@ -17,4 +17,5 @@ nextcloud_cron:
 
 clean:
 	docker-compose $(COMPOSE_ARGS) stop
-	docker-compose $(COMPOSE_ARGS) rm -f
+	docker-compose $(COMPOSE_ARGS) down -v --remove-orphans
+	docker-compose $(COMPOSE_ARGS) rm -fv
