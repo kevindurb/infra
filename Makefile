@@ -16,6 +16,4 @@ nextcloud_cron:
 	docker exec -u www-data infra_nextcloud_1 php -f cron.php
 
 clean:
-	docker-compose $(COMPOSE_ARGS) stop
 	docker-compose $(COMPOSE_ARGS) down -v --remove-orphans
-	docker-compose $(COMPOSE_ARGS) rm -fv
