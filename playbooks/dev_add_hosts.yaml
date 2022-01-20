@@ -9,6 +9,6 @@
       with_items: '{{ subdomains }}'
       lineinfile:
         path: /etc/hosts
-        regexp: '^127\.0\.0\.1 {{ item }}.durbin.casa'
-        line: '127.0.0.1 {{ item }}.durbin.casa'
+        regexp: '^127\.0\.0\.1 {{ item }}.durbn.xyz'
+        line: '127.0.0.1 {{ item }}.durbn.xyz'
         state: present

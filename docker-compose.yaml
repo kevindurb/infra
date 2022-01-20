@@ -12,6 +12,7 @@ volumes:
   jellyfin:
   grafana:
   prometheus:
+  caddy:
 # }}}
 
 # {{{ Defaults
@@ -27,11 +28,15 @@ services:
 # {{{ Base
   caddy:
     << : *service-defaults
-    image: docker.io/caddy
+    build: ./containers/caddy
     environment:
-      - DOMAIN
+      DOMAIN: $DOMAIN
+      CLOUDFLARE_EMAIL: $CLOUDFLARE_EMAIL
+      CLOUDFLARE_API_TOKEN: $CLOUDFLARE_API_TOKEN
+      ACME_AGREE: 'true'
     volumes:
       - ./containers/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy:/data
     ports:
       - 80:80
       - 443:443
