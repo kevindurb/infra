@@ -1,4 +1,4 @@
-COMPOSE_ARGS = -f ./docker-compose.yaml -f ./docker-compose.metrics.yaml
+COMPOSE_ARGS = -f ./docker-compose.yaml
 
 install_deps:
 	ansible-galaxy install -r ./roles/requirements.yaml
