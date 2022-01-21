@@ -1,8 +1,6 @@
 # Infra
 
 ## Dependencies
-- Vagrant
-- VirtualBox
 - Ansible
 - make
 - docker
@@ -13,9 +11,9 @@
 make
 
 # deploy containers
-make deploy_containers
+make deploy
 
-# destroy vms
+# destroy local containers
 make clean
 ```
 

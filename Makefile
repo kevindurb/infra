@@ -1,10 +1,10 @@
 COMPOSE_ARGS = -f ./docker-compose.yaml
 
-pull_secrets:
-	./scripts/pull_secrets
-
 install_deps:
 	ansible-galaxy install -r ./roles/requirements.yaml
+
+pull_secrets:
+	./scripts/pull_secrets
 
 deploy:
 	ansible-playbook -i ./inventory/production ./playbooks/deploy.yaml
