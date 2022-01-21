@@ -11,3 +11,4 @@ cert.key
 *.tfstate
 *.tfstate.backup
 ./containers/traefik/acme
+secrets.yaml

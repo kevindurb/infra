@@ -31,7 +31,7 @@ services:
     build: ./containers/caddy
     environment:
       DOMAIN: $DOMAIN
-      CLOUDFLARE_EMAIL: $CLOUDFLARE_EMAIL
+      CLOUDFLARE_EMAIL: $EMAIL
       CLOUDFLARE_API_TOKEN: $CLOUDFLARE_API_TOKEN
       ACME_AGREE: 'true'
     volumes:
@@ -175,7 +175,7 @@ services:
       - caddy
       - postgres
     environment:
-      APP_URL: $FIREFLY_APP_URL
+      APP_URL: https://firefly.$DOMAIN
       TRUSTED_PROXIES: '**'
       APP_KEY: $FIREFLY_APP_KEY
       DB_HOST: postgres
@@ -190,8 +190,6 @@ services:
     << : *service-defaults
     image: docker.io/nextcloud:23-apache
     environment:
-      NEXTCLOUD_ADMIN_USER: $NEXTCLOUD_ADMIN_USER
-      NEXTCLOUD_ADMIN_PASSWORD: $NEXTCLOUD_ADMIN_PASSWORD
       NEXTCLOUD_TRUSTED_DOMAINS: nextcloud.$DOMAIN
       POSTGRES_HOST: postgres
       POSTGRES_DB: nextcloud

@@ -1,0 +1,25 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: localhost
+  vars_files:
+    - ../vars/main.yaml
+    - ../secrets.yaml
+  tasks:
+
+    - name: add records for prod
+      with_items: '{{ subdomains }}'
+      community.general.cloudflare_dns:
+        zone: durbin.casa
+        record: '{{ item }}'
+        type: A
+        value: 100.86.149.128
+        api_token: "{{ cloudflare_api_token }}"
+
+    - name: add records for testing
+      with_items: '{{ subdomains }}'
+      community.general.cloudflare_dns:
+        zone: durbn.xyz
+        record: '{{ item }}'
+        type: A
+        value: 127.0.0.1
+        api_token: "{{ cloudflare_api_token }}"

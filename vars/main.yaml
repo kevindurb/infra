@@ -18,14 +18,15 @@ docker_users:
   - kevindurb
 
 subdomains:
-  - traefik
-  - freshrss
+  - ping
+  - whoami
   - grafana
   - jellyfin
   - nodered
   - prometheus
-  - whoami
+  - freshrss
   - adminer
+  - guacamole
   - firefly
   - homeassistant
   - nextcloud
