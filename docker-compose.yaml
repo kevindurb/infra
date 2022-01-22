@@ -213,6 +213,7 @@ services:
       PGID: 1000
     volumes:
       - jellyfin:/config
+      - $JELLYFIN_DATA:/data
       # TODO: add media volume
     depends_on:
       - caddy
