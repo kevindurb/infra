@@ -36,7 +36,7 @@ prometheus.{$DOMAIN} {
 }
 
 freshrss.{$DOMAIN} {
-  reverse_proxy prometheus:9090
+  reverse_proxy freshrss:80
   import tls
 }
 
