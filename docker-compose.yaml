@@ -197,6 +197,8 @@ services:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       REDIS_HOST: redis
       REDIS_HOST_PASSWORD: $REDIS_PASSWORD
+      APACHE_DISABLE_REWRITE_IP: 1
+      TRUSTED_PROXIES: 0.0.0.0/0
     volumes:
       - $NEXTCLOUD_DATA:/var/www/html
     depends_on:
