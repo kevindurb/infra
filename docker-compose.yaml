@@ -198,7 +198,7 @@ services:
       REDIS_HOST: redis
       REDIS_HOST_PASSWORD: $REDIS_PASSWORD
     volumes:
-      - nextcloud:/var/www/html
+      - $NEXTCLOUD_DATA:/var/www/html
     depends_on:
       - caddy
       - redis
