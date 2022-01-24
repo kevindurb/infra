@@ -13,6 +13,7 @@ volumes:
   grafana:
   prometheus:
   caddy:
+  homeassistant:
 # }}}
 
 # {{{ Defaults
@@ -69,10 +70,10 @@ services:
   homeassistant:
     << : *service-defaults
     image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      homeassistant:/config
     depends_on:
       - caddy
-    volumes:
-      - ./containers/homeassistant/configuration.yaml:/config/configuration.yaml
 
   nodered:
     << : *service-defaults
