@@ -186,6 +186,7 @@ services:
       DB_DATABASE: firefly
       DB_USERNAME: postgres
       DB_PASSWORD: $POSTGRES_PASSWORD
+      DISABLE_FRAME_HEADER: false
 
 
   nextcloud:
