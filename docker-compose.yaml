@@ -71,7 +71,7 @@ services:
     << : *service-defaults
     image: ghcr.io/home-assistant/home-assistant:stable
     volumes:
-      homeassistant:/config
+      - homeassistant:/config
     depends_on:
       - caddy
 
