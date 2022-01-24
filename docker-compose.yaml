@@ -72,6 +72,7 @@ services:
     image: ghcr.io/home-assistant/home-assistant:stable
     volumes:
       - homeassistant:/config
+      - ./containers/homeassistant/configuration.yaml:/config/configuration.yaml
     depends_on:
       - caddy
 
