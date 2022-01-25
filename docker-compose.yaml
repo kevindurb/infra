@@ -121,6 +121,8 @@ services:
       GF_DATABASE_URL: $GF_DATABASE_URL
     depends_on:
       - caddy
+      - postgres
+      - redis
     volumes:
       - ./containers/grafana:/etc/grafana
       - grafana:/var/lib/grafana
