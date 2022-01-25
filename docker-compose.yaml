@@ -58,7 +58,7 @@ services:
     volumes:
       - ./containers/postgres:/docker-entrypoint-initdb.d
     environment:
-      - POSTGRES_PASSWORD
+      - PG_PASSWORD
 
   redis:
     << : *service-defaults
@@ -109,7 +109,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DATABASE: guacamole
       POSTGRES_HOSTNAME: postgres
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_PASSWORD: $PG_PASSWORD
 # }}}
 
 # {{{ Metrics
@@ -185,7 +185,7 @@ services:
       DB_CONNECTION: pgsql
       DB_DATABASE: firefly
       DB_USERNAME: postgres
-      DB_PASSWORD: $POSTGRES_PASSWORD
+      DB_PASSWORD: $PG_PASSWORD
       DISABLE_FRAME_HEADER: 'false'
 
 
@@ -197,7 +197,7 @@ services:
       POSTGRES_HOST: postgres
       POSTGRES_DB: nextcloud
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_PASSWORD: $PG_PASSWORD
       REDIS_HOST: redis
       REDIS_HOST_PASSWORD: $REDIS_PASSWORD
       APACHE_DISABLE_REWRITE_IP: 1

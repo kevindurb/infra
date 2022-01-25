@@ -1,0 +1,3 @@
+#! /bin/bash
+
+docker-compose exec -e PG_PASSWORD -u postgres postgres pg_dumpall -h 127.0.0.1
