@@ -160,37 +160,6 @@ services:
 # }}}
 
 # {{{ Applications
-  freshrss:
-    << : *service-defaults
-    image: ghcr.io/linuxserver/freshrss:latest
-    volumes:
-      - freshrss:/config
-    depends_on:
-      - caddy
-      - postgres
-
-
-  firefly:
-    << : *service-defaults
-    image: fireflyiii/core
-    volumes:
-      - firefly_iii_upload:/var/www/html/storage/upload
-    depends_on:
-      - caddy
-      - postgres
-    environment:
-      APP_URL: https://firefly.$DOMAIN
-      TRUSTED_PROXIES: '**'
-      APP_KEY: $FIREFLY_APP_KEY
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_CONNECTION: pgsql
-      DB_DATABASE: firefly
-      DB_USERNAME: postgres
-      DB_PASSWORD: $PG_PASSWORD
-      DISABLE_FRAME_HEADER: 'false'
-
-
   nextcloud:
     << : *service-defaults
     image: docker.io/nextcloud:23-apache
@@ -224,4 +193,35 @@ services:
       # TODO: add media volume
     depends_on:
       - caddy
+# }}}
+
+# {{{ Firefly
+  firefly:
+    << : *service-defaults
+    image: fireflyiii/core
+    volumes:
+      - firefly_iii_upload:/var/www/html/storage/upload
+    depends_on:
+      - caddy
+      - postgres
+    environment:
+      APP_URL: https://firefly.$DOMAIN
+      TRUSTED_PROXIES: '**'
+      APP_KEY: $FIREFLY_APP_KEY
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_CONNECTION: pgsql
+      DB_DATABASE: firefly
+      DB_USERNAME: postgres
+      DB_PASSWORD: $PG_PASSWORD
+      DISABLE_FRAME_HEADER: 'false'
+
+  fidi:
+    << : *service-defaults
+    image: fireflyiii/data-importer
+    depends_on:
+      - firefly
+    environment:
+      FIREFLY_III_ACCESS_TOKEN: $FIREFLY_III_ACCESS_TOKEN
+      FIREFLY_III_URL: http://firefly:8080
 # }}}

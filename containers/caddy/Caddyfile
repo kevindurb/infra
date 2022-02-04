@@ -57,6 +57,11 @@ firefly.{$DOMAIN} {
   import tls
 }
 
+fidi.{$DOMAIN} {
+  reverse_proxy fidi:8080
+  import tls
+}
+
 homeassistant.{$DOMAIN} {
   reverse_proxy homeassistant:8123
   import tls
