@@ -21,7 +21,7 @@ subdomains:
   - ping
   - whoami
   - grafana
-  - jellyfin
+  # - jellyfin
   - nodered
   - prometheus
   - freshrss
