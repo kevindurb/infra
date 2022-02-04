@@ -58,9 +58,7 @@ firefly.{$DOMAIN} {
 }
 
 fidi.{$DOMAIN} {
-  reverse_proxy fidi:8080 {
-    header_up X-Forwarded-Proto https
-  }
+  reverse_proxy fidi:8080
   import tls
 }
 

@@ -224,4 +224,5 @@ services:
     environment:
       FIREFLY_III_ACCESS_TOKEN: $FIREFLY_III_ACCESS_TOKEN
       FIREFLY_III_URL: http://firefly:8080
+      TRUSTED_PROXIES: '**'
 # }}}
