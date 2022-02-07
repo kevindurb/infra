@@ -1,6 +1,7 @@
 ---
+default_config:
+
 http:
-  # base_url: https://example.com
   use_x_forwarded_for: true
   trusted_proxies:
     - 0.0.0.0/0
