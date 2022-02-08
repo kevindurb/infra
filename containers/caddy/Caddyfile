@@ -67,7 +67,6 @@ homeassistant.{$DOMAIN} {
   import tls
 }
 
-nextcloud.{$DOMAIN} {
+http://nextcloud.{$DOMAIN} {
   reverse_proxy nextcloud:80
-  import tls
 }
