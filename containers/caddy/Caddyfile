@@ -22,8 +22,8 @@ grafana.{$DOMAIN} {
   import tls
 }
 
-jellyfin.{$DOMAIN} {
-  reverse_proxy jellyfin:8096
+plex.{$DOMAIN} {
+  reverse_proxy plex:32400
   import tls
 }
 

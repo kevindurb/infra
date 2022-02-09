@@ -21,7 +21,7 @@ subdomains:
   - ping
   - whoami
   - grafana
-  # - jellyfin
+  - plex
   - nodered
   - prometheus
   - freshrss
@@ -29,5 +29,4 @@ subdomains:
   - guacamole
   - firefly
   - homeassistant
-  - nextcloud
   - fidi

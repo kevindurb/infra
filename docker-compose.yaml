@@ -9,7 +9,7 @@ volumes:
   freshrss:
   firefly_iii_upload:
   nextcloud:
-  jellyfin:
+  plex:
   grafana:
   prometheus:
   caddy:
@@ -159,7 +159,7 @@ services:
     image: docker.io/miguelndecarvalho/speedtest-exporter:latest
 # }}}
 
-# {{{ Applications
+# {{{ Nextcloud
   nextcloud:
     << : *service-defaults
     image: docker.io/nextcloud:23-apache
@@ -179,18 +179,18 @@ services:
       - caddy
       - redis
       - postgres
+# }}}
 
-  jellyfin:
+# {{{ Media
+  plex:
     << : *service-defaults
-    image: lscr.io/linuxserver/jellyfin
+    image: lscr.io/linuxserver/plex
     environment:
-      JELLYFIN_PublishedServerUrl: https://jellyfin.$DOMAIN
       PUID: 1000
       PGID: 1000
     volumes:
-      - jellyfin:/config
-      - $JELLYFIN_DATA:/data
-      # TODO: add media volume
+      - plex:/config
+      - $MEDIA_LOCATION:/media
     depends_on:
       - caddy
 # }}}
