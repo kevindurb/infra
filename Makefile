@@ -1,19 +1,15 @@
 COMPOSE_ARGS = -f ./docker-compose.yaml
 
-install_deps:
+dependencies:
 	ansible-galaxy install -r ./roles/requirements.yaml
+	pip install -r ./requirements.txt
+	pre-commit install
 
 pull_secrets:
 	./scripts/pull_secrets
 
 deploy:
 	ansible-playbook -i ./inventory/production ./playbooks/deploy.yaml
-
-dev_add_hosts:
-	ansible-playbook -K ./playbooks/dev_add_hosts.yaml
-
-dev_remove_hosts:
-	ansible-playbook -K ./playbooks/dev_remove_hosts.yaml
 
 setup_cloudflare_dns:
 	ansible-playbook ./playbooks/setup_cloudflare_dns.yaml

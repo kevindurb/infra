@@ -28,7 +28,7 @@ services:
 
 # {{{ Base
   caddy:
-    << : *service-defaults
+    <<: *service-defaults
     build: ./containers/caddy
     environment:
       DOMAIN: $DOMAIN
@@ -43,7 +43,7 @@ services:
       - 443:443
 
   whoami:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/jwilder/whoami:latest
     depends_on:
       - caddy
@@ -51,7 +51,7 @@ services:
 
 # {{{ Databases
   postgres:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/postgres:13
     ports:
       - 5432:5432
@@ -68,7 +68,7 @@ services:
 
 # {{{ Home Automation
   homeassistant:
-    << : *service-defaults
+    <<: *service-defaults
     image: ghcr.io/home-assistant/home-assistant:stable
     volumes:
       - homeassistant:/config
@@ -77,7 +77,7 @@ services:
       - caddy
 
   nodered:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/nodered/node-red:2.1.3
     volumes:
       - nodered:/data
@@ -88,17 +88,17 @@ services:
 
 # {{{ Admin
   adminer:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/adminer
     environment:
       ADMINER_DEFAULT_SERVER: postgres
 
   guacd:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/guacamole/guacd
 
   guacamole:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/guacamole/guacamole
     depends_on:
       - caddy
@@ -114,7 +114,7 @@ services:
 
 # {{{ Metrics
   grafana:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/grafana/grafana:8.0.3
     environment:
       GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
@@ -128,7 +128,7 @@ services:
       - grafana:/var/lib/grafana
 
   prometheus:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/prom/prometheus:latest
     volumes:
       - prometheus:/prometheus
@@ -138,7 +138,7 @@ services:
       - '--storage.tsdb.path=/prometheus'
 
   node_exporter:
-    << : *service-defaults
+    <<: *service-defaults
     image: quay.io/prometheus/node-exporter:latest
     command:
       - '--path.rootfs=/host'
@@ -147,7 +147,7 @@ services:
       - '/:/host:ro,rslave'
 
   ping_exporter:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/prom/blackbox-exporter:latest
     command:
       - '--config.file=/config/ping.yaml'
@@ -155,13 +155,13 @@ services:
       - ./containers/ping_exporter:/config
 
   speedtest_exporter:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/miguelndecarvalho/speedtest-exporter:latest
 # }}}
 
 # {{{ Nextcloud
   nextcloud:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/nextcloud:23-apache
     environment:
       NEXTCLOUD_TRUSTED_DOMAINS: nextcloud.$DOMAIN
@@ -183,7 +183,7 @@ services:
 
 # {{{ Media
   plex:
-    << : *service-defaults
+    <<: *service-defaults
     image: lscr.io/linuxserver/plex
     environment:
       PUID: 1000
@@ -199,7 +199,7 @@ services:
 
 # {{{ Firefly
   firefly:
-    << : *service-defaults
+    <<: *service-defaults
     image: fireflyiii/core
     volumes:
       - firefly_iii_upload:/var/www/html/storage/upload
@@ -219,7 +219,7 @@ services:
       DISABLE_FRAME_HEADER: 'false'
 
   fidi:
-    << : *service-defaults
+    <<: *service-defaults
     image: fireflyiii/data-importer
     depends_on:
       - firefly
