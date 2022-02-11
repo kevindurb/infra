@@ -4,12 +4,11 @@
     - https://ping.durbin.casa/;ping.durbin.casa;internal
     - https://whoami.durbin.casa/;whoami.durbin.casa;internal
     - https://grafana.durbin.casa/;grafana.durbin.casa;internal
-    - https://plex.durbin.casa/;plex.durbin.casa;internal
+    - https://plex.durbin.casa/web/index.html;plex.durbin.casa;internal
     - https://nodered.durbin.casa/;nodered.durbin.casa;internal
     - https://prometheus.durbin.casa/;prometheus.durbin.casa;internal
-    - https://freshrss.durbin.casa/;freshrss.durbin.casa;internal
     - https://adminer.durbin.casa/;adminer.durbin.casa;internal
-    - https://guacamole.durbin.casa/;guacamole.durbin.casa;internal
+    - https://guacamole.durbin.casa/guacamole;guacamole.durbin.casa;internal
     - https://firefly.durbin.casa/;firefly.durbin.casa;internal
     - https://homeassistant.durbin.casa/;homeassistant.durbin.casa;internal
     - https://fidi.durbin.casa/;fidi.durbin.casa;internal
