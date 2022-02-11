@@ -9,6 +9,7 @@
       git:
         repo: 'https://github.com/kevindurb/infra.git'
         dest: ~/infra
+        version: HEAD
 
     - name: pull compose stack
       docker_compose:

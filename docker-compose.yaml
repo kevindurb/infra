@@ -61,7 +61,7 @@ services:
       - PG_PASSWORD
 
   redis:
-    << : *service-defaults
+    <<: *service-defaults
     image: docker.io/redis:6.2-alpine
     command: redis-server --requirepass $REDIS_PASSWORD
 # }}}
