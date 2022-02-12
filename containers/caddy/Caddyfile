@@ -23,7 +23,7 @@ grafana.{$DOMAIN} {
 }
 
 plex.{$DOMAIN} {
-  reverse_proxy plex:32400
+  reverse_proxy 100.86.149.128:32400
   import tls
 }
 
