@@ -117,16 +117,22 @@ services:
     <<: *service-defaults
     image: docker.io/grafana/grafana:8.0.3
     environment:
-      GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel,grafana-image-renderer
+      GF_INSTALL_PLUGINS: flant-statusmap-panel,ae3e-plotly-panel
       GF_DATABASE_URL: $GF_DATABASE_URL
       GF_SERVER_ROOT_URL: https://grafana.durbin.casa
+      GF_RENDERING_SERVER_URL: http://grafana_renderer:8081/render
+      GF_RENDERING_CALLBACK_URL: http://grafana:3000/
     depends_on:
       - caddy
       - postgres
       - redis
+      - grafana_renderer
     volumes:
       - ./containers/grafana:/etc/grafana
       - grafana:/var/lib/grafana
+
+  grafana_renderer:
+    image: grafana/grafana-image-renderer:latest
 
   prometheus:
     <<: *service-defaults
