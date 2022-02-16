@@ -4,9 +4,9 @@
 version: '3.8'
 
 volumes:
-  - omada-data
-  - omada-work
-  - omada-logs
+  omada-data:
+  omada-work:
+  omada-logs:
 
 services:
   omada:
