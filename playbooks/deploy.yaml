@@ -1,6 +1,6 @@
 # vim: set ft=yaml.ansible:
 ---
-- hosts: all
+- hosts: homelab
   remote_user: kevindurb
   vars_files:
     - ../vars/main.yaml
