@@ -63,7 +63,7 @@ fidi.{$DOMAIN} {
 }
 
 homeassistant.{$DOMAIN} {
-  reverse_proxy homeassistant:8123
+  reverse_proxy 100.86.149.128:8123
   import tls
 }
 
