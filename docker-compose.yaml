@@ -132,6 +132,12 @@ services:
       - ./containers/grafana:/etc/grafana
       - grafana:/var/lib/grafana
 
+  loki:
+    <<: *service-defaults
+    image: grafana/loki
+    ports:
+      - "3100:3100"
+
   grafana_renderer:
     image: grafana/grafana-image-renderer:latest
 
