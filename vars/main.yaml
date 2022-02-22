@@ -30,3 +30,4 @@ subdomains:
   - firefly
   - homeassistant
   - fidi
+  - influxdb

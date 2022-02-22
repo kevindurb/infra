@@ -70,3 +70,8 @@ homeassistant.{$DOMAIN} {
 http://nextcloud.{$DOMAIN} {
   reverse_proxy nextcloud:80
 }
+
+influxdb.{$DOMAIN} {
+  reverse_proxy influxdb:8086
+  import tls
+}
