@@ -1,9 +1,6 @@
-# vim: fdm=marker
-
 ---
 version: '3.8'
 
-# {{{ Volumes
 volumes:
   nodered:
   freshrss:
@@ -15,28 +12,21 @@ volumes:
   caddy:
   homeassistant:
   influxdb:
-# }}}
 
-# {{{ Defaults
-x-service-defaults:
-  &service-defaults
+x-service-defaults: &service-defaults
   restart: unless-stopped
   volumes:
     - /etc/localtime:/etc/localtime:ro
 
-x-logging-defaults:
-  &logging-defaults
+x-logging-defaults: &logging-defaults
   depends_on:
     - loki
   logging:
     driver: loki
     options:
       loki-url: http://localhost:3100/loki/api/v1/push
-# }}}
 
 services:
-
-# {{{ Base
   caddy:
     <<: [*service-defaults, *logging-defaults]
     build: ./containers/caddy
@@ -57,9 +47,7 @@ services:
     image: docker.io/jwilder/whoami:latest
     depends_on:
       - caddy
-# }}}
 
-# {{{ Databases
   postgres:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/postgres:13
@@ -68,7 +56,7 @@ services:
     volumes:
       - ./containers/postgres:/docker-entrypoint-initdb.d
     environment:
-      - PG_PASSWORD
+      POSTGRES_PASSWORD: $PG_PASSWORD
 
   redis:
     <<: [*service-defaults, *logging-defaults]
@@ -80,17 +68,19 @@ services:
     image: docker.io/influxdb:2.1-alpine
     volumes:
       - influxdb:/var/lib/influxdb
-# }}}
 
-# {{{ Home Automation
   homeassistant:
     <<: [*service-defaults, *logging-defaults]
     image: ghcr.io/home-assistant/home-assistant:stable
     network_mode: host
+    environment:
+      - HA_DATABASE_URL
     volumes:
       - homeassistant:/config
       - ./containers/homeassistant/configuration.yaml:/config/configuration.yaml
     depends_on:
+      - influxdb
+      - postgres
       - caddy
 
   nodered:
@@ -101,9 +91,7 @@ services:
       - ./containers/nodered/settings.js:/data/settings.js
     depends_on:
       - caddy
-# }}}
 
-# {{{ Admin
   adminer:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/adminer
@@ -127,9 +115,7 @@ services:
       POSTGRES_DATABASE: guacamole
       POSTGRES_HOSTNAME: postgres
       POSTGRES_PASSWORD: $PG_PASSWORD
-# }}}
 
-# {{{ Metrics
   grafana:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/grafana/grafana:8.0.3
@@ -152,7 +138,7 @@ services:
     <<: [*service-defaults]
     image: grafana/loki
     ports:
-      - "3100:3100"
+      - '3100:3100'
 
   grafana_renderer:
     image: grafana/grafana-image-renderer:latest
@@ -188,9 +174,7 @@ services:
   speedtest_exporter:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/miguelndecarvalho/speedtest-exporter:latest
-# }}}
 
-# {{{ Nextcloud
   nextcloud:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/nextcloud:23-apache
@@ -210,9 +194,7 @@ services:
       - caddy
       - redis
       - postgres
-# }}}
 
-# {{{ Media
   plex:
     <<: [*service-defaults, *logging-defaults]
     image: lscr.io/linuxserver/plex
@@ -227,9 +209,7 @@ services:
       - $MEDIA_LOCATION:/media
     depends_on:
       - caddy
-# }}}
 
-# {{{ Firefly
   firefly:
     <<: [*service-defaults, *logging-defaults]
     image: fireflyiii/core
@@ -259,4 +239,3 @@ services:
       FIREFLY_III_ACCESS_TOKEN: $FIREFLY_III_ACCESS_TOKEN
       FIREFLY_III_URL: http://firefly:8080
       TRUSTED_PROXIES: '**'
-# }}}
