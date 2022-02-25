@@ -75,3 +75,13 @@ influxdb.{$DOMAIN} {
   reverse_proxy influxdb:8086
   import tls
 }
+
+mopidy.{$DOMAIN} {
+  reverse_proxy mopidy:6680
+  import tls
+}
+
+snapcast.{$DOMAIN} {
+  reverse_proxy snapserver:1780
+  import tls
+}

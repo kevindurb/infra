@@ -1,0 +1,11 @@
+---
+version: '3.8'
+
+services:
+  # docker run --rm --device /dev/snd -e HOST=127.0.0.1 ivdata/snapclient
+  snapclient:
+    image: ivdata/snapclient
+    devices:
+      - /dev/snd
+    environment:
+      HOST: $SNAPCAST_HOST

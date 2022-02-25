@@ -12,6 +12,8 @@ volumes:
   caddy:
   homeassistant:
   influxdb:
+  snapcast:
+  mopidy:
 
 x-service-defaults: &service-defaults
   restart: unless-stopped
@@ -239,3 +241,25 @@ services:
       FIREFLY_III_ACCESS_TOKEN: $FIREFLY_III_ACCESS_TOKEN
       FIREFLY_III_URL: http://firefly:8080
       TRUSTED_PROXIES: '**'
+
+  mopidy:
+    <<: [*service-defaults, *logging-defaults]
+    image: wernight/mopidy
+    volumes:
+      # - mopidy:/home/mopidy/.config/mopidy
+      - ./containers/mopidy/mopidy.conf:/config/mopidy.conf
+      - snapcast:/tmp/snapcast/
+    depends_on:
+      - snapserver
+      - caddy
+
+  snapserver:
+    <<: [*service-defaults, *logging-defaults]
+    image: ivdata/snapserver
+    volumes:
+      - snapcast:/tmp/snapcast/
+      - ./containers/snapserver/snapserver.conf:/etc/snapserver.conf
+    ports:
+      - 1704:1704
+      - 1705:1705
+      - 1780:1780

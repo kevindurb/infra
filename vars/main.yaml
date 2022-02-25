@@ -31,3 +31,5 @@ subdomains:
   - homeassistant
   - fidi
   - influxdb
+  - mopidy
+  - snapcast
