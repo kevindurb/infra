@@ -19,3 +19,6 @@ nextcloud_cron:
 
 clean:
 	docker-compose $(COMPOSE_ARGS) down -v --remove-orphans
+
+check_homeassistant_config:
+	docker-compose run --rm --no-deps homeassistant hass -c /config --script check_config
