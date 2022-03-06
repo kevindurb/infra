@@ -3,9 +3,7 @@ version: '3.8'
 
 volumes:
   nodered:
-  freshrss:
   firefly_iii_upload:
-  nextcloud:
   plex:
   grafana:
   prometheus:
