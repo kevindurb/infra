@@ -176,6 +176,12 @@ services:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/miguelndecarvalho/speedtest-exporter:latest
 
+  weather-exporter:
+    image: docker.io/kevindurb/weather-exporter
+    environment:
+      - LATITUDE
+      - LONGITUDE
+
   nextcloud:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/nextcloud:23-apache

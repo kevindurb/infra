@@ -15,6 +15,11 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
+  - job_name: 'weather'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['weather-exporter:8080']
+
   - job_name: 'speedtest'
     metrics_path: /metrics
     scrape_interval: 6h
