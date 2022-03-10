@@ -69,3 +69,5 @@ scrape_configs:
         regex: '(.*);(.*)'
         target_label: humanname
         replacement: $2
+      - source_labels: [instance]
+        target_label: __address__
