@@ -160,6 +160,7 @@ services:
     command:
       - '--path.rootfs=/host'
     pid: host
+    network_mode: host
     volumes:
       - '/:/host:ro,rslave'
 

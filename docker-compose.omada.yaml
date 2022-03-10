@@ -1,5 +1,4 @@
 # vim: fdm=marker
-
 ---
 version: '3.8'
 
@@ -28,3 +27,13 @@ services:
       - omada-data:/opt/tplink/EAPController/data
       - omada-work:/opt/tplink/EAPController/work
       - omada-logs:/opt/tplink/EAPController/logs
+
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    restart: unless-stopped
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    network_mode: host
+    volumes:
+      - '/:/host:ro,rslave'
