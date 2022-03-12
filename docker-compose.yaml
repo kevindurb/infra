@@ -274,7 +274,6 @@ services:
   roundcubemail:
     <<: [*service-defaults, *logging-defaults]
     image: roundcube/roundcubemail:latest
-    container_name: roundcubemail
     depends_on:
       - postgres
       - caddy
