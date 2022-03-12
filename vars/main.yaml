@@ -33,3 +33,4 @@ subdomains:
   - influxdb
   - mopidy
   - snapcast
+  - roundcube

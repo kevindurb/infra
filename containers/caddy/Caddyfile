@@ -90,6 +90,6 @@ snapcast.{$DOMAIN} {
 }
 
 roundcube.{$DOMAIN} {
-  reverse_proxy roundcube:80
+  reverse_proxy roundcubemail:80
   import tls
 }
