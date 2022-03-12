@@ -12,6 +12,7 @@ volumes:
   influxdb:
   snapcast:
   mopidy:
+  roundcube:
 
 x-service-defaults: &service-defaults
   restart: unless-stopped
@@ -177,6 +178,7 @@ services:
     image: docker.io/miguelndecarvalho/speedtest-exporter:latest
 
   weather-exporter:
+    <<: [*service-defaults, *logging-defaults]
     image: docker.io/kevindurb/weather-exporter
     environment:
       - LATITUDE
@@ -268,3 +270,22 @@ services:
       - 1704:1704
       - 1705:1705
       - 1780:1780
+
+  roundcubemail:
+    <<: [*service-defaults, *logging-defaults]
+    image: roundcube/roundcubemail:latest
+    container_name: roundcubemail
+    depends_on:
+      - postgres
+      - caddy
+    volumes:
+      - roundcube:/var/www/html
+    environment:
+      - ROUNDCUBEMAIL_DB_TYPE=pgsql
+      - ROUNDCUBEMAIL_DB_HOST=postgres
+      - ROUNDCUBEMAIL_DB_NAME=roundcube
+      - ROUNDCUBEMAIL_DB_USER=postgres
+      - ROUNDCUBEMAIL_DB_PASSWORD=$PG_PASSWORD
+      - ROUNDCUBEMAIL_SKIN=elastic
+      - ROUNDCUBEMAIL_DEFAULT_HOST=ssl://imap.gmail.com
+      - ROUNDCUBEMAIL_SMTP_SERVER=ssl://smtp.gmail.com

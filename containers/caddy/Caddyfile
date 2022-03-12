@@ -88,3 +88,8 @@ snapcast.{$DOMAIN} {
   reverse_proxy snapserver:1780
   import tls
 }
+
+roundcube.{$DOMAIN} {
+  reverse_proxy roundcube:80
+  import tls
+}
