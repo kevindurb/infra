@@ -34,3 +34,4 @@ subdomains:
   - mopidy
   - snapcast
   - roundcube
+  - omada
