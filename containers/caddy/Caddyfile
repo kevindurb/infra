@@ -95,6 +95,10 @@ roundcube.{$DOMAIN} {
 }
 
 omada.{$DOMAIN} {
-  reverse_proxy omada:8043
+  reverse_proxy omada:8043 {
+    transport http {
+      tls_insecure_skip_verify
+    }
+  }
   import tls
 }
