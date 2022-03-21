@@ -99,6 +99,9 @@ omada.{$DOMAIN} {
     transport http {
       tls_insecure_skip_verify
     }
+
+    header_up Host {host}:8043
+    header_down Location :8043 :443
   }
   import tls
 }
