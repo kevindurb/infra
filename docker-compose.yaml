@@ -295,6 +295,7 @@ services:
   omada:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/mbentley/omada-controller:5.0
+    network_mode: host
     depends_on:
       - caddy
     environment:
