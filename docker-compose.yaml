@@ -295,14 +295,13 @@ services:
   omada:
     <<: [*service-defaults, *logging-defaults]
     image: docker.io/mbentley/omada-controller:5.0
-    network_mode: host
     depends_on:
       - caddy
     environment:
-      MANAGE_HTTP_PORT: 8088
-      MANAGE_HTTPS_PORT: 8043
-      PORTAL_HTTP_PORT: 8088
-      PORTAL_HTTPS_PORT: 8843
+      MANAGE_HTTP_PORT: 80
+      MANAGE_HTTPS_PORT: 443
+      PORTAL_HTTP_PORT: 80
+      PORTAL_HTTPS_PORT: 443
       SHOW_SERVER_LOGS: 'true'
       SHOW_MONGODB_LOGS: 'false'
       SSL_CERT_NAME: 'tls.crt'

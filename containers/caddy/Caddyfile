@@ -95,6 +95,6 @@ roundcube.{$DOMAIN} {
 }
 
 omada.{$DOMAIN} {
-  reverse_proxy 100.86.149.128:8088
+  reverse_proxy omada:8043
   import tls
 }
