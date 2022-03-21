@@ -293,9 +293,11 @@ services:
       - ROUNDCUBEMAIL_SMTP_SERVER=ssl://smtp.gmail.com
 
   omada:
+    <<: [*service-defaults, *logging-defaults]
     image: docker.io/mbentley/omada-controller:5.0
     network_mode: host
-    restart: unless-stopped
+    depends_on:
+      - caddy
     environment:
       MANAGE_HTTP_PORT: 8088
       MANAGE_HTTPS_PORT: 8043
