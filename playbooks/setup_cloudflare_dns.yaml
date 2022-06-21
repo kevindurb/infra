@@ -3,7 +3,6 @@
 - hosts: localhost
   vars_files:
     - ../vars/main.yaml
-    - ../secrets.yaml
   tasks:
 
     - name: add records for prod
