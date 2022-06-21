@@ -35,3 +35,4 @@ subdomains:
   - snapcast
   - roundcube
   - omada
+  - semaphore
