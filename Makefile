@@ -1,7 +1,7 @@
 COMPOSE_ARGS = -f ./docker-compose.yaml
 
 dependencies:
-	ansible-galaxy install -r ./roles/requirements.yaml
+	ansible-galaxy install -r ./roles/requirements.yml
 	pip install -r ./requirements.txt
 	pre-commit install
 
