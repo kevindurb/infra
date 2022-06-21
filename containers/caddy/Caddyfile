@@ -105,3 +105,8 @@ omada.{$DOMAIN} {
   }
   import tls
 }
+
+semaphore.{$DOMAIN} {
+  reverse_proxy semaphore:3000
+  import tls
+}

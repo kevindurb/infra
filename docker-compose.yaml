@@ -313,3 +313,19 @@ services:
       - omada-data:/opt/tplink/EAPController/data
       - omada-work:/opt/tplink/EAPController/work
       - omada-logs:/opt/tplink/EAPController/logs
+
+  semaphore:
+    <<: [*service-defaults, *logging-defaults]
+    image: ansiblesemaphore/semaphore:latest
+    environment:
+      SEMAPHORE_DB_USER: postgres
+      SEMAPHORE_DB_PASS: $PG_PASSWORD
+      SEMAPHORE_DB_HOST: postgres
+      SEMAPHORE_DB_PORT: 5432
+      SEMAPHORE_DB_DIALECT: postgres
+      SEMAPHORE_DB: semaphore
+      SEMAPHORE_ADMIN_PASSWORD: $SEMAPHORE_ADMIN_PASSWORD
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION: $SEMAPHORE_ACCESS_KEY_ENCRYPTION
+    depends_on:
+      - postgres
+      - caddy

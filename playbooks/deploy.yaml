@@ -1,4 +1,5 @@
 # vim: set ft=yaml.ansible:
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible.json#/$defs/playbook
 ---
 - hosts: homelab
   remote_user: kevindurb
