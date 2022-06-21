@@ -5,3 +5,4 @@
 - src: geerlingguy.pip
 - src: geerlingguy.docker
 - src: oefenweb.hostname
+- src: community.docker
