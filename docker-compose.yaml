@@ -144,48 +144,48 @@ services:
     ports:
       - '3100:3100'
 
-  grafana_renderer:
-    image: grafana/grafana-image-renderer:latest
+  # grafana_renderer:
+  #   image: grafana/grafana-image-renderer:latest
 
-  prometheus:
-    <<: [*service-defaults, *logging-defaults]
-    image: docker.io/prom/prometheus:latest
-    volumes:
-      - prometheus:/prometheus
-      - ./containers/prometheus:/etc/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yaml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention.time=1y'
+  # prometheus:
+  #   <<: [*service-defaults, *logging-defaults]
+  #   image: docker.io/prom/prometheus:latest
+  #   volumes:
+  #     - prometheus:/prometheus
+  #     - ./containers/prometheus:/etc/prometheus
+  #   command:
+  #     - '--config.file=/etc/prometheus/prometheus.yaml'
+  #     - '--storage.tsdb.path=/prometheus'
+  #     - '--storage.tsdb.retention.time=1y'
 
-  node_exporter:
-    <<: [*service-defaults, *logging-defaults]
-    image: quay.io/prometheus/node-exporter:latest
-    command:
-      - '--path.rootfs=/host'
-    pid: host
-    network_mode: host
-    volumes:
-      - '/:/host:ro,rslave'
+  # node_exporter:
+  #   <<: [*service-defaults, *logging-defaults]
+  #   image: quay.io/prometheus/node-exporter:latest
+  #   command:
+  #     - '--path.rootfs=/host'
+  #   pid: host
+  #   network_mode: host
+  #   volumes:
+  #     - '/:/host:ro,rslave'
 
-  ping_exporter:
-    <<: [*service-defaults, *logging-defaults]
-    image: docker.io/prom/blackbox-exporter:latest
-    command:
-      - '--config.file=/config/ping.yaml'
-    volumes:
-      - ./containers/ping_exporter:/config
+  # ping_exporter:
+  #   <<: [*service-defaults, *logging-defaults]
+  #   image: docker.io/prom/blackbox-exporter:latest
+  #   command:
+  #     - '--config.file=/config/ping.yaml'
+  #   volumes:
+  #     - ./containers/ping_exporter:/config
 
-  speedtest_exporter:
-    <<: [*service-defaults, *logging-defaults]
-    image: docker.io/miguelndecarvalho/speedtest-exporter:latest
+  # speedtest_exporter:
+  #   <<: [*service-defaults, *logging-defaults]
+  #   image: docker.io/miguelndecarvalho/speedtest-exporter:latest
 
-  weather-exporter:
-    <<: [*service-defaults, *logging-defaults]
-    image: docker.io/kevindurb/weather-exporter
-    environment:
-      - LATITUDE
-      - LONGITUDE
+  # weather-exporter:
+  #   <<: [*service-defaults, *logging-defaults]
+  #   image: docker.io/kevindurb/weather-exporter
+  #   environment:
+  #     - LATITUDE
+  #     - LONGITUDE
 
   nextcloud:
     <<: [*service-defaults, *logging-defaults]
