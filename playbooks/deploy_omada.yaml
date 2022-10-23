@@ -22,7 +22,7 @@
     - name: start compose stack
       docker_compose:
         files:
-          - docker-compose.omada.yaml
+          - docker-compose.omada.yml
         recreate: always
         restarted: true
         project_src: ~/infra
