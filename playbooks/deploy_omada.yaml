@@ -14,7 +14,7 @@
     - name: pull compose stack
       docker_compose:
         files:
-          - docker-compose.omada.yaml
+          - docker-compose.omada.yml
         pull: true
         project_src: ~/infra
       register: docker_pull
