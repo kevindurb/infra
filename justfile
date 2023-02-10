@@ -1,7 +1,5 @@
-export KIND_EXPERIMENTAL_PROVIDER := "podman"
-
 create-cluster:
-  kind create cluster --config ./manifests/kind.yml --name infra
+  minikube start --subnet 10.10.10.0/24
 
 delete-cluster:
-  kind delete cluster --name infra
+  minikube delete
