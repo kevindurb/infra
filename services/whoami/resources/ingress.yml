@@ -5,7 +5,7 @@ metadata:
   name: ingress
 spec:
   rules:
-    - host: "whoami.localhost"
+    - host: "whoami"
       http:
         paths:
           - pathType: Prefix
