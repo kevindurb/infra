@@ -1,5 +1,5 @@
-tunnel: ""
-credentials-file: ""
+tunnel: ''
+credentials-file: ''
 
 ingress:
   - hostname: nextcloud.durbin.casa

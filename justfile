@@ -6,3 +6,7 @@ delete-cluster:
 
 apply:
   kubectl apply -k .
+
+lint:
+  yamllint .
+  npx prettier -w .

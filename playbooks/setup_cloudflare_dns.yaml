@@ -4,7 +4,6 @@
   vars_files:
     - ../vars/main.yaml
   tasks:
-
     - name: add records for prod
       with_items: '{{ subdomains }}'
       community.general.cloudflare_dns:
@@ -12,7 +11,7 @@
         record: '{{ item }}'
         type: A
         value: 100.86.149.128
-        api_token: "{{ cloudflare_api_token }}"
+        api_token: '{{ cloudflare_api_token }}'
 
     - name: add records for testing
       with_items: '{{ subdomains }}'
@@ -21,4 +20,4 @@
         record: '{{ item }}'
         type: A
         value: 127.0.0.1
-        api_token: "{{ cloudflare_api_token }}"
+        api_token: '{{ cloudflare_api_token }}'

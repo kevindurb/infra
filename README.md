@@ -1,11 +1,13 @@
 # Infra
 
 ## Dependencies
+
 - Ansible
 - make
 - docker
 
 ## Containers
+
 - caddy
 - whoami
 - postgres

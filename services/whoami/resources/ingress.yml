@@ -5,14 +5,13 @@ metadata:
   name: ingress
 spec:
   rules:
-    - host: "whoami"
+    - host: 'whoami'
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: '/'
             backend:
               service:
                 name: service
                 port:
                   name: web
-

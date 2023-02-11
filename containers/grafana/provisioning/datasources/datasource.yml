@@ -20,14 +20,14 @@ datasources:
     # <string> url
     url: http://prometheus:9090
     jsonData:
-      graphiteVersion: "1.1"
+      graphiteVersion: '1.1'
       tlsAuth: false
       tlsAuthWithCACert: false
     # <string> json object of data that will be encrypted.
     secureJsonData:
-      tlsCACert: "..."
-      tlsClientCert: "..."
-      tlsClientKey: "..."
+      tlsCACert: '...'
+      tlsClientCert: '...'
+      tlsClientKey: '...'
     version: 1
     # <bool> allow users to edit datasources from the UI.
     editable: true

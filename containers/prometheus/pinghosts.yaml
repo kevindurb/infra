@@ -1,4 +1,4 @@
-- targets:  # url;humanname;routing;switch
+- targets: # url;humanname;routing;switch
     - https://www.google.com/;google.com;external
     - https://github.com/;github.com;external
     - https://ping.durbin.casa/;ping.durbin.casa;internal
