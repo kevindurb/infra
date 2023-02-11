@@ -3,3 +3,6 @@ create-cluster:
 
 delete-cluster:
   minikube delete
+
+apply:
+  kubectl apply -k .
