@@ -13,3 +13,6 @@ apply:
 
 lint:
   npx prettier -w .
+
+admin-token:
+  kubectl -n kubernetes-dashboard create token admin-user
