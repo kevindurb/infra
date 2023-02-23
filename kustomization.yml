@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - ./services/whoami
   - ./services/dashboard
+  - ./ingress.dev.yml

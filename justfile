@@ -1,15 +1,20 @@
+export KIND_EXPERIMENTAL_PROVIDER := "podman"
+
 install:
 	ansible-galaxy install -r ./roles/requirements.yml
 	pip install -r ./requirements.txt
 
 create-cluster:
-  minikube start --subnet 10.10.10.0/24
+  kind create cluster --config ./cluster.yml
 
 delete-cluster:
-  minikube delete
+  kind delete cluster --name infra
 
 apply:
   kubectl apply -k .
+
+check:
+  kubectl --dry-run=server apply -k .
 
 lint:
   npx prettier -w .
