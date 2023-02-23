@@ -5,4 +5,5 @@ kind: Kustomization
 resources:
   - ./services/whoami
   - ./services/dashboard
+  - ./services/jellyfin
   - https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
