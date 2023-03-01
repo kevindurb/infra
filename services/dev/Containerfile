@@ -1,0 +1,9 @@
+FROM ghcr.io/kevindurb/dev
+
+RUN dnf install -y \
+  openssh-server
+
+RUN useradd -m kevindurb
+RUN usermod -a -G wheel kevindurb
+
+ENTRYPOINT ["/usr/sbin/sshd"]
