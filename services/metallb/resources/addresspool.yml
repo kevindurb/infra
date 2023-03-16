@@ -5,5 +5,15 @@ metadata:
   name: main-pool
   namespace: metallb-system
 spec:
+  avoidBuggyIPs: true
   addresses:
-    - 192.168.50.1-192.168.50.254
+    - 192.168.50.0/24
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: main-pool-l2
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+    - main-pool
