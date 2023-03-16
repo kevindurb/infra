@@ -2,7 +2,13 @@
 
 [all:vars]
 
-[all]
-homelab
-omada
-backuppi
+[k3snodes]
+kube01
+kube02
+kube03
+
+[storage]
+truenas
+
+[pve]
+pve01

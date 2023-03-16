@@ -4,14 +4,14 @@
   become: true
   vars_files:
     - ../vars/main.yaml
-  pre_tasks:
-    - name: Update apt cache once before installing all the packages
-      apt:
-        update_cache: true
+
   roles:
+    - geerlingguy.repo-epel
     - geerlingguy.github-users
     - geerlingguy.ntp
     - geerlingguy.security
-    - geerlingguy.pip
-    - geerlingguy.docker
-    - oefenweb.hostname
+
+  tasks:
+    - name: Set hostname
+      hostname:
+        name: '{{ inventory_hostname }}'
