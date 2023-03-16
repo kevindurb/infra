@@ -5,9 +5,7 @@ kind: Kustomization
 namePrefix: whoami-
 
 resources:
-  - ./resources/deployment.yml
-  - ./resources/service.yml
-  - ./resources/ingress.yml
+  - ./resources/whoami.yml
 
 labels:
   - pairs:

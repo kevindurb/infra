@@ -6,5 +6,4 @@ resources:
   - ./services/whoami
   - ./services/dashboard
   - ./services/jellyfin
-  - ./services/dev
-  - https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+  - ./services/metallb
