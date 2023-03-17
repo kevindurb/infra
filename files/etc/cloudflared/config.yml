@@ -1,8 +1,0 @@
-tunnel: ''
-credentials-file: ''
-
-ingress:
-  - hostname: nextcloud.durbin.casa
-    service: http://localhost
-
-  - service: http_status:404

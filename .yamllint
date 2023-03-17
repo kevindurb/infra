@@ -1,6 +1,0 @@
-# vim: set ft=yaml:
-# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
----
-rules:
-  comments: disable
-  line-length: disable

@@ -1,0 +1,11 @@
+---
+all:
+  children:
+    k3snodes:
+      kube01:
+      kube02:
+      kube03:
+    storage:
+      truenas:
+    vmhosts:
+      pve01:

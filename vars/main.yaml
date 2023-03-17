@@ -16,23 +16,3 @@ ansible_install_method: pip
 
 docker_users:
   - kevindurb
-
-subdomains:
-  - ping
-  - whoami
-  - grafana
-  - plex
-  - nodered
-  - prometheus
-  - freshrss
-  - adminer
-  - guacamole
-  - firefly
-  - homeassistant
-  - fidi
-  - influxdb
-  - mopidy
-  - snapcast
-  - roundcube
-  - omada
-  - semaphore

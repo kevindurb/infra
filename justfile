@@ -1,8 +1,8 @@
 export KIND_EXPERIMENTAL_PROVIDER := "podman"
 
 install:
-	ansible-galaxy install -r ./roles/requirements.yml
-	pip install -r ./requirements.txt
+  ansible-galaxy install -r ./roles/requirements.yml
+  npm install
 
 create-cluster:
   kind create cluster --config ./cluster.yml

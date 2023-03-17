@@ -1,3 +1,2 @@
-pre-commit
 yamllint
 ansible-lint
