@@ -13,3 +13,4 @@ cert.key
 ./containers/traefik/acme
 secrets.yaml
 containers/nextcloud
+*.secret
