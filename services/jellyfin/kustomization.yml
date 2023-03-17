@@ -5,9 +5,7 @@ kind: Kustomization
 namePrefix: jellyfin-
 
 resources:
-  - ./resources/deployment.yml
-  - ./resources/service.yml
-  - ./resources/ingress.yml
+  - ./resources/jellyfin.yml
 
 labels:
   - pairs:
