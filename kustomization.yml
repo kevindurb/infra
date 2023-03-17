@@ -8,3 +8,4 @@ resources:
   - ./services/jellyfin
   - ./services/metallb
   - ./services/tailscale
+  - ./services/golink
