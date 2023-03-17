@@ -7,10 +7,24 @@ spec:
   replicas: 1
   template:
     spec:
+      volumes:
+        - name: link-snapshot
+          configMap:
+            name: snapshot
       containers:
         - name: golink
           imagePullPolicy: Always
           image: ghcr.io/tailscale/golink:main
+          args:
+            - '--sqlitedb'
+            - '/home/nonroot/golink.db'
+            - '--verbose'
+            - '--snapshot'
+            - '/links.json'
+          volumeMounts:
+            - name: link-snapshot
+              mountPath: '/links.json'
+              subPath: 'links.json'
           env:
             - name: TS_AUTHKEY
               valueFrom:
