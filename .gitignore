@@ -10,7 +10,5 @@ cert.key
 *.tfvars
 *.tfstate
 *.tfstate.backup
-./containers/traefik/acme
 secrets.yaml
-containers/nextcloud
 *.secret
