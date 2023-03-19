@@ -1,25 +1,22 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: deployment
+  name: pod
 spec:
-  replicas: 1
-  template:
-    spec:
-      volumes:
+  volumes:
+    - name: config-volume
+      persistentVolumeClaim:
+        claimName: config-volume
+  containers:
+    - name: jellyfin
+      image: docker.io/jellyfin/jellyfin
+      volumeMounts:
         - name: config-volume
-          persistentVolumeClaim:
-            claimName: config-volume
-      containers:
-        - name: jellyfin
-          image: docker.io/jellyfin/jellyfin
-          volumeMounts:
-            - name: config-volume
-              mountPath: /config
-          ports:
-            - name: web
-              containerPort: 8096
+          mountPath: /config
+      ports:
+        - name: web
+          containerPort: 8096
 
 ---
 apiVersion: v1
