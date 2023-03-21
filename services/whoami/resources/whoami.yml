@@ -30,9 +30,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: whoami.durbin.casa
 spec:
   rules:
-    - host: 'whoami'
+    - host: 'whoami.durbin.casa'
       http:
         paths:
           - pathType: Prefix
