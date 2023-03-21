@@ -67,7 +67,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn
+  storageClassName: longhorn-xfs
   resources:
     requests:
       storage: 2Gi
