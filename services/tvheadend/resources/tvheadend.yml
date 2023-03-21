@@ -1,25 +1,28 @@
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: pod
+  name: deployment
 spec:
-  volumes:
-    - name: config-volume
-      persistentVolumeClaim:
-        claimName: config-volume
-  hostNetwork: true
-  containers:
-    - name: tvheadend
-      image: lscr.io/linuxserver/tvheadend
-      volumeMounts:
+  replicas: 1
+  template:
+    spec:
+      volumes:
         - name: config-volume
-          mountPath: /config
-      ports:
-        - name: web
-          containerPort: 9981
-        - name: htsp
-          containerPort: 9982
+          persistentVolumeClaim:
+            claimName: config-volume
+      hostNetwork: true
+      containers:
+        - name: tvheadend
+          image: lscr.io/linuxserver/tvheadend
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+          ports:
+            - name: web
+              containerPort: 9981
+            - name: htsp
+              containerPort: 9982
 
 ---
 apiVersion: v1
