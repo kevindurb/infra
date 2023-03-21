@@ -25,9 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: htsp-service
+  name: internal-service
 spec:
   ports:
+    - name: web
+      port: 9981
+      targetPort: web
     - name: htsp
       port: 9982
       targetPort: htsp
@@ -36,7 +39,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-service
+  name: external-service
 spec:
   type: LoadBalancer
   ports:
