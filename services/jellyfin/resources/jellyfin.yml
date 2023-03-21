@@ -45,24 +45,6 @@ spec:
       targetPort: web
 
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress
-spec:
-  rules:
-    - host: 'jellyfin.localhost'
-      http:
-        paths:
-          - pathType: Prefix
-            path: '/'
-            backend:
-              service:
-                name: service
-                port:
-                  name: web
-
----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -74,3 +56,28 @@ spec:
   resources:
     requests:
       storage: 2Gi
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: jellyfin.durbin.casa
+    cert-manager.io/issuer: cloudflare-issuer
+spec:
+  rules:
+    - host: 'jellyfin.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - jellyfin.durbin.casa
+      secretName: jellyfin-ingress-cert

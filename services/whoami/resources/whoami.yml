@@ -32,6 +32,7 @@ metadata:
   name: ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: whoami.durbin.casa
+    cert-manager.io/issuer: cloudflare-issuer
 spec:
   rules:
     - host: 'whoami.durbin.casa'
@@ -44,3 +45,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - hosts:
+        - whoami.durbin.casa
+      secretName: whoami-ingress-cert
