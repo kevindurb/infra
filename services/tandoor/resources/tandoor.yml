@@ -1,0 +1,73 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: tandoor
+          image: docker.io/vabene1111/recipes
+          env:
+            - name: DB_ENGINE
+              value: django.db.backends.postgresql
+            - name: POSTGRES_HOST
+              value: tandoor-postgres-service
+            - name: POSTGRES_PORT
+              value: '5432'
+            - name: POSTGRES_USER
+              value: tandoor
+            - name: POSTGRES_DB
+              value: tandoor
+
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-secret
+                  key: SECRET_KEY
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-postgres-secret
+                  key: POSTGRES_PASSWORD
+          ports:
+            - name: web
+              containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: tandoor.durbin.casa
+    cert-manager.io/issuer: cloudflare-issuer
+spec:
+  rules:
+    - host: 'tandoor.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - tandoor.durbin.casa
+      secretName: tandoor-ingress-cert

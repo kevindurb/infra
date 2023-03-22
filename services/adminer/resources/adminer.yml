@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: adminer
+          image: docker.io/library/adminer
+          ports:
+            - name: web
+              containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: adminer.durbin.casa
+    cert-manager.io/issuer: cloudflare-issuer
+spec:
+  rules:
+    - host: 'adminer.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - adminer.durbin.casa
+      secretName: adminer-ingress-cert

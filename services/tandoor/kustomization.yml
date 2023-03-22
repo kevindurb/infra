@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: tandoor-
+
+resources:
+  - ./resources/tandoor.yml
+  - ./resources/postgres.yml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: tandoor
+    includeSelectors: true
+    includeTemplates: true

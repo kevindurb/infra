@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - name: postgres
+          image: docker.io/library/postgres:13
+          env:
+            - name: POSTGRES_USER
+              value: tandoor
+            - name: POSTGRES_DB
+              value: tandoor
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tandoor-postgres-secret
+                  key: POSTGRES_PASSWORD
+          ports:
+            - name: db
+              containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: postgres-data-volume
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  ports:
+    - name: db
+      port: 5432
+      targetPort: db
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-data-volume
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
