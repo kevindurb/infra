@@ -34,6 +34,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: whoami.durbin.casa
     cert-manager.io/issuer: cloudflare-issuer
 spec:
+  ingressClassName: traefik
   rules:
     - host: 'whoami.durbin.casa'
       http:

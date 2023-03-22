@@ -43,6 +43,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: grocy.durbin.casa
     cert-manager.io/issuer: cloudflare-issuer
 spec:
+  ingressClassName: traefik
   rules:
     - host: 'grocy.durbin.casa'
       http:
