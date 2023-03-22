@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - ./services/adminer
   - ./services/cert-manager
+  - ./services/cloudflared
   - ./services/dashboard
   - ./services/external-dns
   - ./services/golink
