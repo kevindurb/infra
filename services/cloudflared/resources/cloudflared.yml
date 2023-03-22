@@ -53,4 +53,6 @@ data:
     ingress:
     - hostname: whoami.durbin.casa
       service: http://whoami-service
+    - hostname: grocy.durbin.casa
+      service: http://grocy-service
     - service: http_status:404
