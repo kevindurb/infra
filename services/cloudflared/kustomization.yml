@@ -7,6 +7,11 @@ namePrefix: cloudflared-
 resources:
   - ./resources/cloudflared.yml
 
+configMapGenerator:
+  - name: config
+    files:
+      - ./resources/config.yml
+
 labels:
   - pairs:
       app.kubernetes.io/name: cloudflared

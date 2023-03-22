@@ -13,7 +13,7 @@ spec:
           args:
             - tunnel
             - --config
-            - /etc/cloudflared/config/config.yaml
+            - /etc/cloudflared/config/config.yml
             - run
           livenessProbe:
             httpGet:
@@ -37,22 +37,5 @@ spec:
           configMap:
             name: config
             items:
-              - key: config.yaml
-                path: config.yaml
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: config
-data:
-  config.yaml: |
-    tunnel: kube
-    credentials-file: /etc/cloudflared/creds/credentials.json
-    metrics: 0.0.0.0:2000
-    no-autoupdate: true
-    ingress:
-    - hostname: whoami.durbin.casa
-      service: http://whoami-service
-    - hostname: grocy.durbin.casa
-      service: http://grocy-service
-    - service: http_status:404
+              - key: config.yml
+                path: config.yml
