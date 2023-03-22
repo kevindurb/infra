@@ -8,10 +8,10 @@ resources:
   - ./services/dashboard
   - ./services/external-dns
   - ./services/golink
+  - ./services/grocy
   - ./services/jellyfin
   - ./services/longhorn
   - ./services/metallb
   - ./services/tailscale
-  - ./services/tandoor
   - ./services/tvheadend
   - ./services/whoami
