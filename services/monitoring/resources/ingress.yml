@@ -6,7 +6,7 @@ metadata:
   name: prometheus-ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: prometheus.durbin.casa
-    cert-manager.io/issuer: cloudflare-issuer
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: traefik
   rules:
@@ -33,7 +33,7 @@ metadata:
   name: grafana-ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: grafana.durbin.casa
-    cert-manager.io/issuer: cloudflare-issuer
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: traefik
   rules:
