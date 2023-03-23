@@ -13,6 +13,7 @@ resources:
   - ./services/jellyfin
   - ./services/longhorn
   - ./services/metallb
+  - ./services/monitoring
   - ./services/tailscale
   - ./services/tvheadend
   - ./services/whoami
