@@ -15,5 +15,6 @@ resources:
   - ./services/metallb
   - ./services/monitoring
   - ./services/tailscale
+  - ./services/tekton
   - ./services/tvheadend
   - ./services/whoami
