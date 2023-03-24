@@ -64,3 +64,29 @@ spec:
   resources:
     requests:
       storage: 2Gi
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: tvheadend.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: 'tvheadend.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: internal-service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - tvheadend.durbin.casa
+      secretName: tvheadend-ingress-cert
