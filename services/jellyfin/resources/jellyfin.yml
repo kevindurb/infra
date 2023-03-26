@@ -10,6 +10,10 @@ spec:
   template:
     spec:
       volumes:
+        - name: media
+          nfs:
+            server: truenas.beaver-cloud.ts.net
+            path: /mnt/tank/media
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
@@ -19,6 +23,8 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /config
+            - name: media
+              mountPath: /media
           ports:
             - name: web
               containerPort: 8096
