@@ -1,0 +1,61 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  template:
+    spec:
+      containers:
+        - image: itzg/minecraft-server
+          name: minecraft
+          env:
+            - name: EULA
+              value: 'true'
+          ports:
+            - name: minecraft
+              containerPort: 25565
+          readinessProbe:
+            exec:
+              command:
+                ['/usr/local/bin/mc-monitor', 'status', '--host', 'localhost']
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            failureThreshold: 20
+          livenessProbe:
+            exec:
+              command:
+                ['/usr/local/bin/mc-monitor', 'status', '--host', 'localhost']
+            initialDelaySeconds: 120
+            periodSeconds: 60
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data-volume
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: minecraft
+      port: 25565
+      targetPort: minecraft
