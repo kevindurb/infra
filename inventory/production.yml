@@ -1,14 +1,18 @@
 ---
 all:
   hosts:
-    jellyfin:
-      ansible_host: 192.168.1.186
   children:
     k3snodes:
-      kube01:
-      kube02:
-      kube03:
+      hosts:
+        kube01:
+        kube02:
+        kube03:
+        kube04:
+        kube05:
+        kube06:
     storage:
-      truenas:
+      hosts:
+        truenas:
     vmhosts:
-      pve01:
+      hosts:
+        pve01:

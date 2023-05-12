@@ -1,0 +1,21 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: k3snodes
+  become: true
+  vars_files:
+    - ../vars/main.yaml
+
+  roles:
+    - geerlingguy.repo-epel
+    - geerlingguy.github-users
+    - geerlingguy.ntp
+    - geerlingguy.security
+
+  tasks:
+    - name: Set hostname
+      hostname:
+        name: '{{ inventory_hostname }}'
+
+    - name: disable SELinux
+      ansible.posix.selinux:
+        state: disabled
