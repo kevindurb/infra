@@ -19,3 +19,12 @@
     - name: disable SELinux
       ansible.posix.selinux:
         state: disabled
+
+    - name: Stop and disable firewalld.
+      service:
+        name: firewalld
+        state: stopped
+        enabled: False
+
+    - name: Reboot
+      ansible.builtin.reboot:
