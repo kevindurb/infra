@@ -39,6 +39,7 @@ metadata:
     app.kubernetes.io/version: v1.4.2
 data:
   default-setting.yaml: |-
+    replica-auto-balance: best-effort
 ---
 # Source: longhorn/templates/storageclass.yaml
 apiVersion: v1
@@ -63,7 +64,7 @@ data:
     reclaimPolicy: "Delete"
     volumeBindingMode: Immediate
     parameters:
-      numberOfReplicas: "6"
+      numberOfReplicas: "3"
       staleReplicaTimeout: "30"
       fromBackup: ""
       fsType: "ext4"
