@@ -17,6 +17,8 @@ spec:
             - name: web
               containerPort: 5800
           volumeMounts:
+            - name: ripping-storage
+              mountPath: /output
             - name: sg0
               mountPath: /dev/sg0
             - name: sg1
@@ -24,6 +26,9 @@ spec:
             - name: sr0
               mountPath: /dev/sr0
       volumes:
+        - name: ripping-storage
+          persistentVolumeClaim:
+            claimName: ripping-storage
         - name: sg0
           hostPath:
             path: /dev/sg0
@@ -45,3 +50,33 @@ spec:
     - name: web
       port: 80
       targetPort: web
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ripping-storage
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: truenas.beaver-cloud.ts.net
+    path: /mnt/tank/ripping-storage
+  mountOptions:
+    - nolock
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ripping-storage
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ''
+  volumeName: ripping-storage
