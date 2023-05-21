@@ -1,0 +1,123 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  template:
+    spec:
+      containers:
+        - image: filebrowser/filebrowser
+          name: filebrowser
+          ports:
+            - name: web
+              containerPort: 80
+          volumeMounts:
+            - name: ripping-storage
+              mountPath: /srv/ripping-storage
+            - name: media
+              mountPath: /srv/media
+      volumes:
+        - name: ripping-storage
+          persistentVolumeClaim:
+            claimName: ripping-storage
+        - name: media
+          persistentVolumeClaim:
+            claimName: media
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ripping-storage
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: truenas.beaver-cloud.ts.net
+    path: /mnt/tank/ripping-storage
+  mountOptions:
+    - nolock
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ripping-storage
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ''
+  volumeName: ripping-storage
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: truenas.beaver-cloud.ts.net
+    path: /mnt/tank/media
+  mountOptions:
+    - nolock
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ''
+  volumeName: media
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: filebrowser.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: 'filebrowser.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - filebrowser.durbin.casa
+      secretName: filebrowser-ingress-cert
