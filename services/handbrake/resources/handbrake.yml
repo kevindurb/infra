@@ -6,38 +6,19 @@ metadata:
 spec:
   template:
     spec:
-      nodeSelector:
-        hardware: drives
       containers:
-        - image: jlesage/makemkv
-          name: makemkv
-          securityContext:
-            privileged: true
+        - image: jlesage/handbrake
+          name: handbrake
           ports:
             - name: web
               containerPort: 5800
           volumeMounts:
             - name: ripping-storage
               mountPath: /output
-            - name: sg0
-              mountPath: /dev/sg0
-            - name: sg1
-              mountPath: /dev/sg1
-            - name: sr0
-              mountPath: /dev/sr0
       volumes:
         - name: ripping-storage
           persistentVolumeClaim:
             claimName: ripping-storage
-        - name: sg0
-          hostPath:
-            path: /dev/sg0
-        - name: sg1
-          hostPath:
-            path: /dev/sg1
-        - name: sr0
-          hostPath:
-            path: /dev/sr0
 
 ---
 apiVersion: v1
@@ -45,6 +26,7 @@ kind: Service
 metadata:
   name: service
 spec:
+  type: LoadBalancer
   ports:
     - name: web
       port: 80
@@ -86,12 +68,12 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: makemkv.durbin.casa
+    external-dns.alpha.kubernetes.io/hostname: handbrake.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: traefik
   rules:
-    - host: 'makemkv.durbin.casa'
+    - host: 'handbrake.durbin.casa'
       http:
         paths:
           - pathType: Prefix
@@ -103,5 +85,5 @@ spec:
                   name: web
   tls:
     - hosts:
-        - makemkv.durbin.casa
-      secretName: makemkv-ingress-cert
+        - handbrake.durbin.casa
+      secretName: handbrake-ingress-cert
