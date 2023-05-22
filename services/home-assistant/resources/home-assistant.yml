@@ -31,7 +31,6 @@ spec:
       port: 80
       targetPort: web
 
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
