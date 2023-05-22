@@ -9,10 +9,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.yml": "prettier -w",
-    "*.yaml": "prettier -w",
-    "*.json": "prettier -w",
-    "*.md": "prettier -w",
+    "*.{yml,yaml,json,md}": "prettier -w",
     "justfile": [
       "bash -c \"just --unstable --fmt\""
     ]
