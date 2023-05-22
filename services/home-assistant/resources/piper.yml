@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: piper-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - image: rhasspy/wyoming-piper
+          name: piper
+          args:
+            - --voice
+            - en-us-ryan-high
+          ports:
+            - name: piper
+              containerPort: 10200
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: piper-service
+spec:
+  ports:
+    - name: piper
+      port: 10200
+      targetPort: piper

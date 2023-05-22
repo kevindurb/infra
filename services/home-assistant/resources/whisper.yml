@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whisper-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - image: rhasspy/wyoming-whisper
+          name: whisper
+          args:
+            - --model
+            - tiny-int8
+            - --language
+            - en
+          ports:
+            - name: whisper
+              containerPort: 10300
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whisper-service
+spec:
+  ports:
+    - name: whisper
+      port: 10300
+      targetPort: whisper
