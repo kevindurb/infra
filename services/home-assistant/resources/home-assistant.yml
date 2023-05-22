@@ -15,10 +15,17 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /config
+            - name: config-map
+              mountPath: /config/configuration.yaml
+              subPath: configuration.yaml
+              readOnly: true
       volumes:
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
+        - name: config-map
+          configMap:
+            name: config
 
 ---
 apiVersion: v1

@@ -7,6 +7,11 @@ namePrefix: home-assistant-
 resources:
   - ./resources/home-assistant.yml
 
+configMapGenerator:
+  - name: config
+    files:
+      - ./resources/configuration.yaml
+
 labels:
   - pairs:
       app.kubernetes.io/name: home-assistant
