@@ -5,7 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.yml": "prettier -w",
+    "*.yaml": "prettier -w",
+    "*.json": "prettier -w",
+    "*.md": "prettier -w"
   },
   "repository": {
     "type": "git",
@@ -20,6 +27,7 @@
   "homepage": "https://github.com/kevindurb/infra#readme",
   "devDependencies": {
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.4"
   }
 }
