@@ -13,12 +13,12 @@ spec:
             - name: web
               containerPort: 8123
           volumeMounts:
-            - name: config-volumn
+            - name: config-volume
               mountPath: /config
       volumes:
-        - name: config-volumn
+        - name: config-volume
           persistentVolumeClaim:
-            claimName: config-volumn
+            claimName: config-volume
 
 ---
 apiVersion: v1
