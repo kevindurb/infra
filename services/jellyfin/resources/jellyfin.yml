@@ -106,6 +106,16 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
+    - host: 'jellyfin.internal.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
     - host: 'jellyfin.durbin.casa'
       http:
         paths:
@@ -119,4 +129,5 @@ spec:
   tls:
     - hosts:
         - jellyfin.durbin.casa
+        - jellyfin.internal.durbin.casa
       secretName: jellyfin-ingress-cert

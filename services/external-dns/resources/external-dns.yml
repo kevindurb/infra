@@ -47,10 +47,11 @@ spec:
       serviceAccountName: account
       containers:
         - name: external-dns
-          image: registry.k8s.io/external-dns/external-dns:v0.13.2
+          image: registry.k8s.io/external-dns/external-dns:v0.13.4
           args:
+            - --registry=txt
+            - --txt-owner-id=kevindurb
             - --source=ingress
-            - --domain-filter=durbin.casa
             - --provider=cloudflare
             - --publish-internal-services
           env:
