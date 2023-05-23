@@ -70,7 +70,7 @@ metadata:
   name: ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: smokeping.durbin.casa
-    external-dns.alpha.kubernetes.io/internal-hostname: smokeping.durbn.xyz
+    external-dns.alpha.kubernetes.io/internal-hostname: smokeping.internal.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: traefik

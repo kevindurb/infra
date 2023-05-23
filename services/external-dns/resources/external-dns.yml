@@ -52,6 +52,7 @@ spec:
             - --source=ingress
             - --domain-filter=durbin.casa
             - --provider=cloudflare
+            - --publish-internal-services
           env:
             - name: CF_API_TOKEN
               valueFrom:
