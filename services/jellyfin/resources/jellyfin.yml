@@ -101,6 +101,7 @@ metadata:
   name: ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: jellyfin.durbin.casa
+    external-dns.alpha.kubernetes.io/internal-hostname: jellyfin.durbn.xyz
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: traefik

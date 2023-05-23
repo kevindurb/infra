@@ -32,6 +32,7 @@ metadata:
   name: ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: adminer.durbin.casa
+    external-dns.alpha.kubernetes.io/internal-hostname: adminer.durbn.xyz
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: traefik
