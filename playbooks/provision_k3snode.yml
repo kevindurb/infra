@@ -6,7 +6,6 @@
     - ../vars/main.yaml
 
   roles:
-    - geerlingguy.repo-epel
     - geerlingguy.github-users
     - geerlingguy.ntp
     - geerlingguy.security
@@ -15,16 +14,3 @@
     - name: Set hostname
       hostname:
         name: '{{ inventory_hostname }}'
-
-    - name: disable SELinux
-      ansible.posix.selinux:
-        state: disabled
-
-    - name: Stop and disable firewalld.
-      service:
-        name: firewalld
-        state: stopped
-        enabled: False
-
-    - name: Reboot
-      ansible.builtin.reboot:
