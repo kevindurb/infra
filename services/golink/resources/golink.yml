@@ -52,7 +52,7 @@ kind: Ingress
 metadata:
   name: ingress
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
     - host: 'go'
       http:

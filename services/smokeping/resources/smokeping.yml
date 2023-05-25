@@ -73,7 +73,7 @@ metadata:
     external-dns.alpha.kubernetes.io/internal-hostname: smokeping.internal.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
     - host: 'smokeping.durbin.casa'
       http:

@@ -90,7 +90,7 @@ metadata:
     external-dns.alpha.kubernetes.io/internal-hostname: makemkv.durbn.xyz
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
     - host: 'makemkv.durbin.casa'
       http:

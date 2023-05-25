@@ -61,7 +61,7 @@ metadata:
     external-dns.alpha.kubernetes.io/internal-hostname: home-assistant.durbn.xyz
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
     - host: 'home-assistant.durbin.casa'
       http:
