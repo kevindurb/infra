@@ -29,3 +29,4 @@ add-secret file:
 get-secrets:
     bw get attachment tailscale.env --itemid {{ bitwarden_item_id }} --output ./services/tailscale/tailscale.env
     bw get attachment cert-manager.env --itemid {{ bitwarden_item_id }} --output ./services/cert-manager/cert-manager.env
+    bw get attachment external-dns.env --itemid {{ bitwarden_item_id }} --output ./services/external-dns/external-dns.env

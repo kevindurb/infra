@@ -7,6 +7,11 @@ namePrefix: external-dns-
 resources:
   - ./resources/external-dns.yml
 
+secretGenerator:
+  - name: cloudflare
+    envs:
+      - external-dns.env
+
 labels:
   - pairs:
       app.kubernetes.io/name: external-dns
