@@ -11,12 +11,6 @@ provision-k3snode node_name:
       -l {{ node_name }} \
       ./playbooks/provision_k3snode.yml
 
-create-cluster:
-    kind create cluster --config ./cluster.yml
-
-delete-cluster:
-    kind delete cluster --name infra
-
 apply:
     kubectl apply -k .
 
@@ -28,6 +22,9 @@ lint:
 
 admin-token:
     kubectl -n kubernetes-dashboard create token admin-user
+
+add-secret file:
+    bw create attachment --itemid {{ bitwarden_item_id }} --file {{ file }}
 
 get-secrets:
     bw get attachment tailscale.env --itemid {{ bitwarden_item_id }} --output ./services/tailscale/tailscale.env
