@@ -5,6 +5,11 @@ kind: Kustomization
 resources:
   - ./resources/tailscale.yml
 
+secretGenerator:
+  - name: tailscale
+    envs:
+      - tailscale.env
+
 labels:
   - pairs:
       app.kubernetes.io/name: tailscale

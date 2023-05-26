@@ -12,3 +12,4 @@ cert.key
 *.tfstate.backup
 secrets.yaml
 *.secret
+*.env

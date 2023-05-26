@@ -13,6 +13,11 @@ spec:
           imagePullPolicy: Always
           image: ghcr.io/tailscale/tailscale:latest
           env:
+            - name: TS_AUTHKEY
+              valueFrom:
+                secretKeyRef:
+                  name: tailscale
+                  key: TS_AUTHKEY
             - name: TS_USERSPACE
               value: 'true'
             - name: TS_ROUTES

@@ -1,4 +1,5 @@
 export KIND_EXPERIMENTAL_PROVIDER := "podman"
+bitwarden_item_id := 'f426c6bc-8030-4a36-9393-b00e0135beca'
 
 install:
     ansible-galaxy install -r ./roles/requirements.yml
@@ -27,3 +28,6 @@ lint:
 
 admin-token:
     kubectl -n kubernetes-dashboard create token admin-user
+
+get-secrets:
+    bw get attachment tailscale.env --itemid {{ bitwarden_item_id }} --output ./services/tailscale/tailscale.env
