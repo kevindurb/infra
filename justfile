@@ -5,6 +5,11 @@ install:
     ansible-galaxy install -r ./roles/requirements.yml
     npm install
 
+update-nodes:
+    ansible-playbook \
+      -i ./inventory/production.yml \
+      ./playbooks/provision_k3snode.yml
+
 provision-k3snode node_name:
     ansible-playbook \
       -i ./inventory/production.yml \
