@@ -33,23 +33,27 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn
+  storageClassName: ''
+  volumeName: data-volume
   resources:
     requests:
       storage: 10Gi
 
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: config-volume
+  name: data-volume
 spec:
+  capacity:
+    storage: 10Gi
   accessModes:
-    - ReadWriteOnce
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: 1Gi
+    - ReadWriteMany
+  nfs:
+    server: truenas.beaver-cloud.ts.net
+    path: /mnt/tank/data/smokeping
+  mountOptions:
+    - nolock
 
 ---
 apiVersion: v1
