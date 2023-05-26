@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ripping-storage
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: truenas.beaver-cloud.ts.net
+    path: /mnt/tank/ripping-storage
+  mountOptions:
+    - nolock
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ripping-storage
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ''
+  volumeName: ripping-storage

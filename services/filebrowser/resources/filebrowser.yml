@@ -17,6 +17,8 @@ spec:
               mountPath: /srv/ripping-storage
             - name: media
               mountPath: /srv/media
+            - name: data
+              mountPath: /srv/data
       volumes:
         - name: ripping-storage
           persistentVolumeClaim:
@@ -24,6 +26,9 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: media
+        - name: data
+          persistentVolumeClaim:
+            claimName: data
 
 ---
 apiVersion: v1
@@ -35,66 +40,6 @@ spec:
     - name: web
       port: 80
       targetPort: web
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ripping-storage
-spec:
-  capacity:
-    storage: 2Ti
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: truenas.beaver-cloud.ts.net
-    path: /mnt/tank/ripping-storage
-  mountOptions:
-    - nolock
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ripping-storage
-spec:
-  resources:
-    requests:
-      storage: 2Ti
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ''
-  volumeName: ripping-storage
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: media
-spec:
-  capacity:
-    storage: 2Ti
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: truenas.beaver-cloud.ts.net
-    path: /mnt/tank/media
-  mountOptions:
-    - nolock
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: media
-spec:
-  resources:
-    requests:
-      storage: 2Ti
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ''
-  volumeName: media
 
 ---
 apiVersion: networking.k8s.io/v1

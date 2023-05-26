@@ -13,14 +13,9 @@ spec:
             - name: web
               containerPort: 80
           volumeMounts:
-            - name: config
-              mountPath: /config
             - name: data
               mountPath: /data
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: config-volume
         - name: data
           persistentVolumeClaim:
             claimName: data-volume
@@ -32,7 +27,7 @@ metadata:
   name: data-volume
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: ''
   volumeName: data-volume
   resources:

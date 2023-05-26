@@ -6,6 +6,9 @@ namePrefix: filebrowser-
 
 resources:
   - ./resources/filebrowser.yml
+  - ./resources/media-volume.yml
+  - ./resources/ripping-storage-volume.yml
+  - ./resources/data-volume.yml
 
 labels:
   - pairs:
