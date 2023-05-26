@@ -58,11 +58,12 @@ metadata:
   name: config-volume
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: longhorn
+    - ReadWriteMany
+  storageClassName: ''
   resources:
     requests:
       storage: 2Gi
+  volumeName: config-volume
 
 ---
 apiVersion: v1
@@ -70,13 +71,29 @@ kind: PersistentVolumeClaim
 metadata:
   name: media
 spec:
-  resources:
-    requests:
-      storage: 2Ti
   accessModes:
     - ReadWriteMany
   storageClassName: ''
+  resources:
+    requests:
+      storage: 2Ti
   volumeName: media
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: config-volume
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: truenas.beaver-cloud.ts.net
+    path: /mnt/tank/media/config
+  mountOptions:
+    - nolock
 
 ---
 apiVersion: v1
