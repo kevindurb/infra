@@ -1,0 +1,110 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  template:
+    spec:
+      containers:
+        - image: pihole/pihole
+          name: pihole
+          env:
+            - name: VIRTUAL_HOST
+              value: pihole.durbin.casa
+            - name: WEBPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pihole-env
+                  key: WEBPASSWORD
+          ports:
+            - name: web
+              containerPort: 80
+            - name: dns-tcp
+              containerPort: 53
+            - name: dns-udp
+              containerPort: 53
+              protocol: UDP
+          volumeMounts:
+            - name: pihole
+              mountPath: /etc/pihole
+            - name: dnsmasq
+              mountPath: /etc/dnsmasq.d
+      volumes:
+        - name: pihole
+          persistentVolumeClaim:
+            claimName: pihole-volume
+        - name: dnsmasq
+          persistentVolumeClaim:
+            claimName: dnsmasq-volume
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pihole-volume
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-csi
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dnsmasq-volume
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-csi
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+    - name: dns-tcp
+      port: 53
+      targetPort: dns-tcp
+    - name: dns-udp
+      port: 53
+      protocol: UDP
+      targetPort: dns-udp
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: pihole.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: 'pihole.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - pihole.durbin.casa
+      secretName: pihole-ingress-cert
