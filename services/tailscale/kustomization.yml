@@ -6,7 +6,7 @@ resources:
   - ./resources/tailscale.yml
 
 secretGenerator:
-  - name: tailscale
+  - name: tailscale-env
     envs:
       - tailscale.env
 
