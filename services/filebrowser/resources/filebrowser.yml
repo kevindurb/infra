@@ -48,7 +48,6 @@ metadata:
   name: ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: filebrowser.durbin.casa
-    external-dns.alpha.kubernetes.io/internal-hostname: filebrowser.durbn.xyz
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx

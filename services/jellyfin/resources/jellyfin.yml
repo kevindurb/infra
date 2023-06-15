@@ -118,7 +118,6 @@ metadata:
   name: ingress
   annotations:
     external-dns.alpha.kubernetes.io/hostname: jellyfin.durbin.casa
-    external-dns.alpha.kubernetes.io/internal-hostname: jellyfin.internal.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
