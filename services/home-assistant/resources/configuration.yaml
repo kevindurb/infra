@@ -5,3 +5,13 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 0.0.0.0/0
+
+conversation:
+  intents:
+    forcast:
+      - 'Whats the forcast?'
+
+intent_script:
+  forcast:
+    speech:
+      text: 'It is currently {{ states("weather.forecast_home") }}'
