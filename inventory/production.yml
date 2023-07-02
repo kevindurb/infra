@@ -1,6 +1,7 @@
 ---
 all:
   hosts:
+    zigbee2mqtt:
   children:
     k3snodes:
       hosts:

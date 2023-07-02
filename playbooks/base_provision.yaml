@@ -1,16 +1,13 @@
-# vim: set ft=yaml.ansible:
 ---
+# vim: set ft=yaml.ansible:
 - hosts: all
   become: true
   vars_files:
     - ../vars/main.yaml
-
   roles:
-    - geerlingguy.repo-epel
     - geerlingguy.github-users
     - geerlingguy.ntp
     - geerlingguy.security
-
   tasks:
     - name: Set hostname
       hostname:

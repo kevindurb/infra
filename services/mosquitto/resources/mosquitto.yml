@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  template:
+    spec:
+      containers:
+        - image: docker.io/library/eclipse-mosquitto
+          name: mosquitto
+          ports:
+            - name: mosquitto
+              containerPort: 1883
+          volumeMounts:
+            - name: conf-map
+              mountPath: /mosquitto/config/mosquitto.conf
+              subPath: mosquitto.conf
+              readOnly: true
+      volumes:
+        - name: conf-map
+          configMap:
+            name: conf-file
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: mosquitto
+      port: 1883
+      targetPort: mosquitto

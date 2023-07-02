@@ -15,3 +15,5 @@ intent_script:
   forcast:
     speech:
       text: 'It is currently {{ states("weather.forecast_home") }}'
+
+automation: !include automations.yaml
