@@ -8,11 +8,11 @@ http:
 
 conversation:
   intents:
-    forcast:
-      - 'Whats the forcast?'
+    forecast:
+      - 'Whats the forecast?'
 
 intent_script:
-  forcast:
+  forecast:
     speech:
       text: 'It is currently {{ states("weather.forecast_home") }}'
 
