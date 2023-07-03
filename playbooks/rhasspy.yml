@@ -1,0 +1,32 @@
+---
+# vim: set ft=yaml.ansible:
+- name: Setup rhasspy
+  hosts: rhasspy
+  become: true
+  vars_files:
+    - ../vars/main.yaml
+  tasks:
+    - name: Install packages
+      ansible.builtin.package:
+        name:
+          - sudo
+          - curl
+          - docker.io
+          - python3-pip
+          - python3-docker
+
+    - name: Run rhasspy docker container
+      community.docker.docker_container:
+        name: rhasspy
+        image: rhasspy/rhasspy
+        command: --user-profiles /profiles --profile en
+        restart_policy: unless-stopped
+        devices:
+          - '/dev/snd:/dev/snd'
+        ports:
+          - '12101:12101'
+        volumes:
+          - '/home/kevindurb/rhasspy/profiles:/profiles'
+          - '/etc/localtime:/etc/localtime:ro'
+        env:
+          TZ: America/Denver

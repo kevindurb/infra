@@ -3,6 +3,9 @@ all:
   hosts:
     zigbee2mqtt:
   children:
+    rhasspy:
+      hosts:
+        rhasspy01:
     k3snodes:
       hosts:
         kube01:
