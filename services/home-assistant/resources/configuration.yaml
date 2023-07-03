@@ -6,14 +6,15 @@ http:
   trusted_proxies:
     - 0.0.0.0/0
 
-conversation:
-  intents:
-    forecast:
-      - 'Whats the forecast?'
-
 intent_script:
-  forecast:
+  GetWeather:
     speech:
-      text: 'It is currently {{ states("weather.forecast_home") }}'
+      text: "It is currently {{ states('weather.forecast_home') }} and {{ state_attr('weather.forecast_home', 'temperature') }} degrees"
+  GetTime:
+    speech:
+      text: "It is currently {{ as_timestamp(now()) | timestamp_custom('%X', True) }}"
+  GetDate:
+    speech:
+      text: "Today is {{ as_timestamp(now()) | timestamp_custom('%x', True) }}"
 
 automation: !include automations.yaml
