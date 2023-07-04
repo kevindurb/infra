@@ -16,5 +16,15 @@ intent_script:
   GetDate:
     speech:
       text: "Today is {{ as_timestamp(now()) | timestamp_custom('%x', True) }}"
+  ResumeMediaPlayer:
+    action:
+      service: media_player.media_play
+      data:
+        entity_id: '{{ media_player }}'
+  PauseMediaPlayer:
+    action:
+      service: media_player.media_pause
+      data:
+        entity_id: '{{ media_player }}'
 
 automation: !include automations.yaml
