@@ -6,6 +6,9 @@ metadata:
 spec:
   replicas: 1
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: app
     spec:
       containers:
         - name: firefly
@@ -19,7 +22,7 @@ spec:
             - name: APP_URL
               value: https://firefly.durbin.casa
             - name: TRUSTED_PROXIES
-              value: '*'
+              value: '**'
             - name: DB_CONNECTION
               value: pgsql
             - name: DB_PORT
@@ -68,6 +71,8 @@ kind: Service
 metadata:
   name: service
 spec:
+  selector:
+    app.kubernetes.io/component: app
   ports:
     - name: web
       port: 80
