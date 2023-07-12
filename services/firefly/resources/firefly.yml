@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: deployment
 spec:
-  replicas: 3
+  replicas: 1
   template:
     spec:
       containers:
@@ -12,7 +12,14 @@ spec:
           image: fireflyiii/core:latest
           env:
             - name: APP_KEY
-              value: CHANGEME_32_CHARS
+              valueFrom:
+                secretKeyRef:
+                  name: firefly-env
+                  key: APP_KEY
+            - name: APP_URL
+              value: https://firefly.durbin.casa
+            - name: TRUSTED_PROXIES
+              value: '*'
             - name: DB_CONNECTION
               value: pgsql
             - name: DB_PORT

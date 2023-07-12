@@ -36,6 +36,7 @@ get-secrets:
     bw get attachment cert-manager.env --itemid {{ bitwarden_item_id }} --output ./services/cert-manager/cert-manager.env
     bw get attachment external-dns.env --itemid {{ bitwarden_item_id }} --output ./services/external-dns/external-dns.env
     bw get attachment pihole.env --itemid {{ bitwarden_item_id }} --output ./services/pihole/pihole.env
+    bw get attachment firefly.env --itemid {{ bitwarden_item_id }} --output ./services/firefly/firefly.env
 
 apply-service service:
     kubectl apply -k ./services/{{ service }}

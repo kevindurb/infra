@@ -6,6 +6,12 @@ namePrefix: firefly-
 
 resources:
   - ./resources/firefly.yml
+  - ./resources/cron.yml
+
+secretGenerator:
+  - name: firefly-env
+    envs:
+      - firefly.env
 
 labels:
   - pairs:
