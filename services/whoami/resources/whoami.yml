@@ -31,12 +31,12 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: whoami.lan.durbin.casa
+    external-dns.alpha.kubernetes.io/hostname: whoami.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: 'whoami.lan.durbin.casa'
+    - host: 'whoami.durbin.casa'
       http:
         paths:
           - pathType: Prefix
@@ -48,5 +48,5 @@ spec:
                   name: web
   tls:
     - hosts:
-        - whoami.lan.durbin.casa
+        - whoami.durbin.casa
       secretName: durbin-casa-wildcard-cert
