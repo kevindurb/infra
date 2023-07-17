@@ -15,7 +15,7 @@ spec:
           image: fireflyiii/data-importer:latest
           env:
             - name: FIREFLY_III_URL
-              value: http://firefly-service
+              value: https://firefly.durbin.casa
             - name: FIREFLY_III_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -49,8 +49,9 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: firefly-importer.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
-    nginx.org/client-max-body-size: '0'
-    nginx.org/proxy-buffer-size: '8k'
+    nginx.org/proxy-buffer-size: '128k'
+    nginx.org/proxy-buffers: '4 256k'
+    nginx.org/proxy-busy-buffers-size: '256k'
 spec:
   ingressClassName: nginx
   rules:
