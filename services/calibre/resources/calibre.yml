@@ -1,0 +1,92 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media
+      containers:
+        - name: calibre
+          image: linuxserver/calibre-web:latest
+          env:
+            - name: DOCKER_MODS
+              value: ghcr.io/linuxserver/mods:universal-calibre
+          volumeMounts:
+            - name: media
+              mountPath: /media
+          ports:
+            - name: web
+              containerPort: 8083
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: truenas.beaver-cloud.ts.net
+    path: /mnt/tank/media
+  mountOptions:
+    - nolock
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ''
+  resources:
+    requests:
+      storage: 2Ti
+  volumeName: media
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: calibre.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: 'calibre.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - calibre.durbin.casa
+      secretName: durbin-casa-wildcard-cert
