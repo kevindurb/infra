@@ -6,5 +6,7 @@ no-autoupdate: true
 ingress:
   - hostname: whoami.durbin.casa
     service: http://whoami-service
+  - hostname: snapdrop.durbin.casa
+    service: http://snapdrop-service
 
   - service: http_status:404

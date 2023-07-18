@@ -30,6 +30,7 @@ spec:
               mountPath: /etc/cloudflared/creds
               readOnly: true
       volumes:
+        # https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel
         - name: creds
           secret:
             secretName: tunnel-credentials
