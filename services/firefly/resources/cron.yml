@@ -14,12 +14,12 @@ spec:
             - name: cron
               image: alpine
               env:
-                - name: APP_KEY
+                - name: STATIC_CRON_TOKEN
                   valueFrom:
                     secretKeyRef:
                       name: firefly-env
-                      key: APP_KEY
+                      key: STATIC_CRON_TOKEN
               command:
                 - wget
-                - -vO-
-                - 'http://firefly-service/api/v1/cron/$APP_KEY'
+                - -qO-
+                - 'http://firefly-service/api/v1/cron/$(STATIC_CRON_TOKEN)'
