@@ -37,6 +37,7 @@ get-secrets:
     bw get attachment external-dns.env --itemid {{ bitwarden_item_id }} --output ./services/external-dns/external-dns.env
     bw get attachment pihole.env --itemid {{ bitwarden_item_id }} --output ./services/pihole/pihole.env
     bw get attachment firefly.env --itemid {{ bitwarden_item_id }} --output ./services/firefly/firefly.env
+    bw get attachment tandoor.env --itemid {{ bitwarden_item_id }} --output ./services/tandoor/tandoor.env
 
 apply-service service:
     kubectl apply -k ./services/{{ service }}
