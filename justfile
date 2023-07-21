@@ -16,11 +16,14 @@ provision-k3snode node_name:
       -l {{ node_name }} \
       ./playbooks/provision_k3snode.yml
 
-apply:
-    kubectl apply -k .
+mk service image="<<image>>":
+    ./scripts/mk_service.sh -i {{ image }} {{ service }}
 
-check:
-    kubectl --dry-run=server apply -k .
+apply service:
+    kubectl apply -k ./services/{{ service }}
+
+check service:
+    kubectl --dry-run=server apply -k ./services/{{ service }}
 
 lint:
     npx prettier -w .
@@ -38,6 +41,3 @@ get-secrets:
     bw get attachment pihole.env --itemid {{ bitwarden_item_id }} --output ./services/pihole/pihole.env
     bw get attachment firefly.env --itemid {{ bitwarden_item_id }} --output ./services/firefly/firefly.env
     bw get attachment tandoor.env --itemid {{ bitwarden_item_id }} --output ./services/tandoor/tandoor.env
-
-apply-service service:
-    kubectl apply -k ./services/{{ service }}

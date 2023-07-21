@@ -106,7 +106,13 @@ if $DRY_RUN; then
   echo "# $RESOURCE_PATH/$SERVICE_NAME.yml"
   echo "$RESOURCE_YML"
 else
+  echo ""
+  echo "mkdir -p $RESOURCE_PATH"
   mkdir -p "$RESOURCE_PATH"
+  echo ""
+  echo "# $SERVICE_PATH/kustomization.yml"
   echo "$KUSTOMIZATION_YML" > "$SERVICE_PATH/kustomization.yml"
+  echo ""
+  echo "# $RESOURCE_PATH/$SERVICE_NAME.yml"
   echo "$RESOURCE_YML" > "$RESOURCE_PATH/$SERVICE_NAME.yml"
 fi
