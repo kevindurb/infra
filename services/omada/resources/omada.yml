@@ -7,12 +7,16 @@ spec:
   replicas: 1
   template:
     spec:
+      hostNetwork: true
       containers:
         - name: omada
           image: mbentley/omada-controller:5.9
+          envFrom:
+            - configMapRef:
+                name: env
           ports:
             - name: web
-              containerPort: 80
+              containerPort: 8043
 
 ---
 apiVersion: v1
@@ -31,8 +35,12 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'
     external-dns.alpha.kubernetes.io/hostname: omada.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/location-snippet: |
+      proxy_set_header Host $http_host:8043;
+      proxy_redirect https://$http_host:8043/login https://$http_host/login;
 spec:
   ingressClassName: nginx
   rules:
