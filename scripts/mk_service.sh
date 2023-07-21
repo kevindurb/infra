@@ -4,10 +4,10 @@ help() {
   cat << EOF
 usage: $0 <service_name>
 EOF
-  exit 1;
+  exit 1
 }
 
-if [ -z ${1+x} ]; then help; fi;
+if [ -z ${1+x} ]; then help; fi
 
 IMAGE='<<image>>'
 DRY_RUN=false
@@ -18,7 +18,7 @@ while getopts 'i:d' flag; do
     *) error "Unexpected option ${flag}" ;;
   esac
 done
-shift $((OPTIND-1))
+shift $((OPTIND - 1))
 
 SERVICE_NAME=$1
 SERVICE_PATH="./services/$SERVICE_NAME"
