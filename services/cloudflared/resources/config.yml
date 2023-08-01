@@ -8,5 +8,7 @@ ingress:
     service: http://whoami-service
   - hostname: snapdrop.durbin.casa
     service: http://snapdrop-service
+  - hostname: freshrss.durbin.casa
+    service: http://freshrss-service
 
   - service: http_status:404
