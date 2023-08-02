@@ -10,5 +10,7 @@ ingress:
     service: http://snapdrop-service
   - hostname: freshrss.durbin.casa
     service: http://freshrss-service
+  - hostname: wallabag.durbin.casa
+    service: http://wallabag-service
 
   - service: http_status:404
