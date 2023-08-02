@@ -11,20 +11,20 @@ spec:
         - name: wallabag
           image: wallabag/wallabag
           env:
-            - name: SYMFONY__DATABASE_DRIVER
+            - name: SYMFONY__ENV__DATABASE_DRIVER
               value: pdo_pgsql
-            - name: SYMFONY__DATABASE_HOST
+            - name: SYMFONY__ENV__DATABASE_HOST
               value: wallabag-postgres
-            - name: SYMFONY__DATABASE_NAME
+            - name: SYMFONY__ENV__DATABASE_NAME
               value: wallabag
-            - name: SYMFONY__DOMAIN_NAME
+            - name: SYMFONY__ENV__DOMAIN_NAME
               value: https://wallabag.durbin.casa
-            - name: SYMFONY__DATABASE_USER
+            - name: SYMFONY__ENV__DATABASE_USER
               valueFrom:
                 secretKeyRef:
                   name: wallabag.wallabag-postgres.credentials.postgresql.acid.zalan.do
                   key: username
-            - name: SYMFONY__DATABASE_PASSWORD
+            - name: SYMFONY__ENV__DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: wallabag.wallabag-postgres.credentials.postgresql.acid.zalan.do
