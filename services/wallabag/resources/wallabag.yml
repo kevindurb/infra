@@ -15,10 +15,22 @@ spec:
               value: pdo_pgsql
             - name: SYMFONY__ENV__DATABASE_HOST
               value: wallabag-postgres
+            - name: SYMFONY__ENV__DATABASE_PORT
+              value: '5432'
             - name: SYMFONY__ENV__DATABASE_NAME
               value: wallabag
             - name: SYMFONY__ENV__DOMAIN_NAME
               value: https://wallabag.durbin.casa
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: wallabag.wallabag-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wallabag.wallabag-postgres.credentials.postgresql.acid.zalan.do
+                  key: password
             - name: SYMFONY__ENV__DATABASE_USER
               valueFrom:
                 secretKeyRef:
@@ -44,12 +56,12 @@ spec:
     size: 2Gi
     storageClass: nfs-csi
   numberOfInstances: 2
+  databases:
+    wallabag: wallabag
   users:
     wallabag:
       - superuser
       - createdb
-  databases:
-    wallabag: wallabag
   postgresql:
     version: '15'
 
