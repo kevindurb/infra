@@ -56,8 +56,6 @@ spec:
     size: 2Gi
     storageClass: nfs-csi
   numberOfInstances: 2
-  databases:
-    wallabag: wallabag
   users:
     wallabag:
       - superuser

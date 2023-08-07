@@ -5,8 +5,7 @@ kind: Kustomization
 namePrefix: dev-
 
 resources:
-  - ./resources/deployment.yml
-  # - ./resources/service.yml
+  - ./resources/dev.yml
 
 labels:
   - pairs:
