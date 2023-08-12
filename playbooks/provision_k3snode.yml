@@ -5,6 +5,14 @@
   vars_files:
     - ../vars/main.yaml
 
+  pre_tasks:
+    - name: Install Deps
+      package:
+        name:
+          - sudo
+          - curl
+          - binutils
+
   roles:
     - geerlingguy.github-users
     - geerlingguy.ntp
