@@ -13,6 +13,10 @@ all:
         kube03:
         kube04:
         kube05:
+        kube06:
+        kube07:
+        kube08:
+        kube09:
     storage:
       hosts:
         truenas:
