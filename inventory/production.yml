@@ -17,6 +17,9 @@ all:
         kube07:
         kube08:
         kube09:
+    k3sloadbalancers:
+      hosts:
+        kube-lb01:
     storage:
       hosts:
         truenas:
