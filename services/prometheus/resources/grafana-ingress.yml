@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: grafana.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: 'grafana.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: grafana
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - grafana.durbin.casa
+      secretName: durbin-casa-wildcard-cert

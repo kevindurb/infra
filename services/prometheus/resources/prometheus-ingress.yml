@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: prometheus.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: 'prometheus.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: prometheus-k8s
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - prometheus.durbin.casa
+      secretName: durbin-casa-wildcard-cert
