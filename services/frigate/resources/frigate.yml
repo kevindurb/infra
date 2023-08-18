@@ -1,0 +1,67 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: frigate
+          image: ghcr.io/blakeblackshear/frigate:stable
+          ports:
+            - name: web
+              containerPort: 5000
+          volumeMounts:
+            - name: config-map
+              mountPath: /config/config.yml
+              subPath: config.yml
+              readOnly: true
+            - mountPath: /dev/shm
+              name: shm
+      volumes:
+        - name: config-map
+          configMap:
+            name: config
+        - name: shm
+          emptyDir:
+            sizeLimit: 0.5Gi
+            medium: Memory
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: frigate.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: 'frigate.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - frigate.durbin.casa
+      secretName: durbin-casa-wildcard-cert
