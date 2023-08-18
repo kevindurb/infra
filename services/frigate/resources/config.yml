@@ -1,15 +1,25 @@
+# yaml-language-server: $schema=https://frigate.durbin.casa/api/config/schema.json
 ---
 mqtt:
+  host: mosquitto
+
+record:
+  enabled: true
+
+snapshots:
+  enabled: true
+
+detect:
   enabled: false
+
+go2rtc:
+  streams:
+    back:
+      - rtsp://cam01.lan:8554/video3_unicast
 
 cameras:
   cam01:
     ffmpeg:
       inputs:
         - path: rtsp://cam01.lan:8554/video3_unicast
-          roles:
-            - detect
-    detect:
-      enabled: false
-      width: 1920
-      height: 1080
+          roles: []

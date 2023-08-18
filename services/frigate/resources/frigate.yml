@@ -13,6 +13,13 @@ spec:
           ports:
             - name: web
               containerPort: 5000
+            - name: rtsp
+              containerPort: 8554
+            - name: webrtc
+              containerPort: 8555
+            - name: webrtc-udp
+              containerPort: 8555
+              protocol: UDP
           volumeMounts:
             - name: config-map
               mountPath: /config/config.yml
