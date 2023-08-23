@@ -40,6 +40,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: rtsp-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: rtsp
+      port: 8554
+      targetPort: rtsp
+
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: service
 spec:
   ports:
