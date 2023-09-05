@@ -1,0 +1,91 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: huginn
+          image: docker.io/huginn/huginn
+          env:
+            - name: DO_NOT_CREATE_DATABASE
+              value: '1'
+            - name: DATABASE_ADAPTER
+              value: postgresql
+            - name: DATABASE_HOST
+              value: huginn-postgres
+            - name: DATABASE_PORT
+              value: '5432'
+            - name: DATABASE_NAME
+              value: huginn
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: huginn.huginn-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: huginn.huginn-postgres.credentials.postgresql.acid.zalan.do
+                  key: password
+          ports:
+            - name: web
+              containerPort: 3000
+
+---
+apiVersion: 'acid.zalan.do/v1'
+kind: postgresql
+metadata:
+  name: postgres
+spec:
+  teamId: huginn
+  volume:
+    size: 2Gi
+    storageClass: nfs-csi
+  numberOfInstances: 2
+  users:
+    huginn:
+      - superuser
+      - createdb
+  postgresql:
+    version: '15'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: huginn.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: 'huginn.durbin.casa'
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - huginn.durbin.casa
+      secretName: durbin-casa-wildcard-cert
