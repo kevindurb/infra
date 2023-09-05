@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
         - name: huginn
-          image: docker.io/huginn/huginn
+          image: ghcr.io/huginn/huginn
           env:
             - name: DO_NOT_CREATE_DATABASE
               value: '1'
@@ -46,6 +46,8 @@ spec:
     size: 2Gi
     storageClass: nfs-csi
   numberOfInstances: 2
+  databases:
+    huginn: huginn
   users:
     huginn:
       - superuser
