@@ -17,6 +17,9 @@ spec:
       containers:
         - name: calibre
           image: linuxserver/calibre:latest
+          env:
+            - name: TZ
+              value: America/Denver
           volumeMounts:
             - name: media
               mountPath: /books
@@ -86,12 +89,12 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: calibredesktop.durbin.casa
+    external-dns.alpha.kubernetes.io/hostname: calibre-desktop.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: 'calibredesktop.durbin.casa'
+    - host: 'calibre-desktop.durbin.casa'
       http:
         paths:
           - pathType: Prefix
@@ -103,5 +106,5 @@ spec:
                   name: web
   tls:
     - hosts:
-        - calibredesktop.durbin.casa
+        - calibre-desktop.durbin.casa
       secretName: durbin-casa-wildcard-cert
