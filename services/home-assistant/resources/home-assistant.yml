@@ -4,8 +4,9 @@ kind: Deployment
 metadata:
   name: deployment
   annotations:
-    keel.sh/policy: minor
+    keel.sh/policy: all
     keel.sh/trigger: poll
+    keel.sh/approvals: '1'
 spec:
   template:
     spec:

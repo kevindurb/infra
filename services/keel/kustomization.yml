@@ -7,6 +7,11 @@ namespace: keel
 resources:
   - ./resources/keel.yml
 
+secretGenerator:
+  - name: keel-env
+    envs:
+      - keel.env
+
 labels:
   - pairs:
       app.kubernetes.io/name: keel

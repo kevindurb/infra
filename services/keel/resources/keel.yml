@@ -118,6 +118,16 @@ spec:
           imagePullPolicy: Always
           command: ['/bin/keel']
           env:
+            - name: SLACK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: keel-env
+                  key: SLACK_TOKEN
+            - name: SLACK_CHANNELS
+              valueFrom:
+                secretKeyRef:
+                  name: keel-env
+                  key: SLACK_CHANNELS
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
