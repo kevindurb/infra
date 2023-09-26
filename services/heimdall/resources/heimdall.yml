@@ -3,11 +3,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
 spec:
   template:
     spec:
       containers:
-        - image: lscr.io/linuxserver/heimdall:latest
+        - image: lscr.io/linuxserver/heimdall:2.5.6
           name: heimdall
           ports:
             - name: web

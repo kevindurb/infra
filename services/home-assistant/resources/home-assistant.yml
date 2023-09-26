@@ -3,12 +3,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
 spec:
   template:
     spec:
       hostNetwork: true
       containers:
-        - image: ghcr.io/home-assistant/home-assistant:stable
+        - image: ghcr.io/home-assistant/home-assistant:2023.9.3
           name: home-assistant
           ports:
             - name: web

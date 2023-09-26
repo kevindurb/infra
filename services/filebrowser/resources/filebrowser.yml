@@ -3,11 +3,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
 spec:
   template:
     spec:
       containers:
-        - image: filebrowser/filebrowser
+        - image: filebrowser/filebrowser:v2.25.0
           name: filebrowser
           ports:
             - name: web

@@ -3,13 +3,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
 spec:
   replicas: 1
   template:
     spec:
       containers:
         - name: frigate
-          image: ghcr.io/blakeblackshear/frigate:stable
+          image: ghcr.io/blakeblackshear/frigate:0.12.1
           ports:
             - name: web
               containerPort: 5000
