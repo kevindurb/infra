@@ -3,6 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
 spec:
   replicas: 1
   template:
@@ -16,7 +19,7 @@ spec:
             claimName: config-volume
       containers:
         - name: calibre
-          image: linuxserver/calibre-web:latest
+          image: linuxserver/calibre-web:0.6.20
           env:
             - name: DOCKER_MODS
               value: ghcr.io/linuxserver/mods:universal-calibre
