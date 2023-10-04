@@ -1,5 +1,0 @@
-{
-  "kubernetes": {
-    "fileMatch": ["services/.+\\.y(a)?ml$"]
-  }
-}
