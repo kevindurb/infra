@@ -1,0 +1,7 @@
+---
+session_name: infra
+start_directory: ./
+windows:
+  - window_name: infra
+    panes:
+      - blank
