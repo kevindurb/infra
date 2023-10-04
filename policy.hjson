@@ -1,0 +1,37 @@
+// This tailnet's ACLs are maintained in https://github.com/kevindurb/infra
+{
+	"groups": {},
+	"hosts": {},
+	"tagOwners": {
+		"tag:pve":          ["kevindurb@github"],
+		"tag:infra":        ["kevindurb@github"],
+		"tag:work":         ["kevindurb@github"],
+		"tag:personal":     ["kevindurb@github"],
+		"tag:k8s-operator": [],
+		"tag:k8s":          ["tag:k8s-operator", "kevindurb@github"],
+	},
+	"acls": [
+		// Match absolutely everything. Comment out this section if you want
+		// to define specific ACL restrictions.
+		{"action": "accept", "users": ["*"], "ports": ["*:*"]},
+	],
+	"nodeAttrs": [
+		{
+			// Funnel policy, which lets tailnet members control Funnel
+			// for their own devices.
+			// Learn more at https://tailscale.com/kb/1223/tailscale-funnel/
+			"target": ["kevindurb@github"],
+			"attr":   ["funnel"],
+		},
+	],
+	"ssh": [
+		// The default SSH policy, which lets users SSH into devices they own.
+		// Learn more at https://tailscale.com/kb/1193/tailscale-ssh/
+		{
+			"action": "accept",
+			"src":    ["autogroup:member"],
+			"dst":    ["autogroup:self", "autogroup:tagged"],
+			"users":  ["root", "autogroup:nonroot"],
+		},
+	],
+}
