@@ -15,6 +15,7 @@
 		// Match absolutely everything. Comment out this section if you want
 		// to define specific ACL restrictions.
 		{"action": "accept", "users": ["*"], "ports": ["*:*"]},
+		{"action": "accept", "src": ["tag:ci"], "dst": ["whoami:*"]},
 	],
 	"nodeAttrs": [
 		{
