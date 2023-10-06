@@ -22,3 +22,4 @@ resources:
   - ./services/mosquitto
   - ./services/omada
   - ./services/prometheus
+  - ./services/smokeping
