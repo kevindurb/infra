@@ -19,11 +19,11 @@ provision-k3snode node_name:
 mk service image="<<image>>":
     ./scripts/mk_service.sh -i {{ image }} {{ service }}
 
-apply service:
-    kubectl apply -k ./services/{{ service }}
+apply:
+    kubectl apply -k ./
 
-check service:
-    kubectl --dry-run=server apply -k ./services/{{ service }}
+check:
+    kubectl --dry-run=server apply -k ./
 
 lint:
     npx prettier -w .

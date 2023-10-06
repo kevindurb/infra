@@ -10,9 +10,8 @@
   },
   "lint-staged": {
     "*.{yml,yaml,json,md,sh}": "prettier -w",
-    "justfile": [
-      "bash -c \"just --unstable --fmt\""
-    ]
+    "justfile": "bash -c \"just --unstable --fmt\"",
+    "./services/**/*.{yml,yaml}": "bash -c \"just check\""
   },
   "repository": {
     "type": "git",
