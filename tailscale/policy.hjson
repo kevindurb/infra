@@ -4,6 +4,7 @@
 	"hosts": {},
 	"tagOwners": {
 		"tag:pve":          ["kevindurb@github"],
+		"tag:ci":           ["kevindurb@github"],
 		"tag:infra":        ["kevindurb@github"],
 		"tag:work":         ["kevindurb@github"],
 		"tag:personal":     ["kevindurb@github"],
