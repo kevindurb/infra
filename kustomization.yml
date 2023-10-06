@@ -11,3 +11,4 @@ resources:
   - ./services/external-dns
   - ./services/filebrowser
   - ./services/frigate
+  - ./services/handbrake
