@@ -13,6 +13,6 @@ secretGenerator:
       - cert-manager.env
 
 resources:
-  - https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+  - ./resources/cert-manager.yaml
   - ./resources/issuer.yml
   - ./resources/durbin-casa-certificate.yml

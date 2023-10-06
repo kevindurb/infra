@@ -4,3 +4,5 @@ kind: Kustomization
 
 resources:
   - ./services/adminer
+  - ./services/calibre
+  - ./services/cert-manager
