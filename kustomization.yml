@@ -10,3 +10,4 @@ resources:
   - ./services/dashboard
   - ./services/external-dns
   - ./services/filebrowser
+  - ./services/frigate
