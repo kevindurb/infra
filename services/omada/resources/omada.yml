@@ -3,6 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
 spec:
   replicas: 1
   template:
@@ -10,7 +13,7 @@ spec:
       hostNetwork: true
       containers:
         - name: omada
-          image: mbentley/omada-controller:5.9
+          image: mbentley/omada-controller:5.12
           envFrom:
             - configMapRef:
                 name: env

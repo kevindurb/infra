@@ -20,3 +20,4 @@ resources:
   - ./services/metallb
   - ./services/minecraft
   - ./services/mosquitto
+  - ./services/omada
