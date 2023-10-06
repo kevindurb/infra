@@ -8,3 +8,4 @@ resources:
   - ./services/cert-manager
   - ./services/cloudflared
   - ./services/dashboard
+  - ./services/external-dns
