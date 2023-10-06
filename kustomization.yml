@@ -12,3 +12,4 @@ resources:
   - ./services/filebrowser
   - ./services/frigate
   - ./services/handbrake
+  - ./services/heimdall
