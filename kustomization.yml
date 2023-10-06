@@ -9,3 +9,4 @@ resources:
   - ./services/cloudflared
   - ./services/dashboard
   - ./services/external-dns
+  - ./services/filebrowser
