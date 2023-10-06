@@ -18,3 +18,4 @@ resources:
   - ./services/keel
   - ./services/kube-vip
   - ./services/metallb
+  - ./services/minecraft

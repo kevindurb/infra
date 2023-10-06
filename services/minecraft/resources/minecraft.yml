@@ -56,6 +56,7 @@ metadata:
   name: service
 spec:
   type: LoadBalancer
+  loadBalancerClass: tailscale
   ports:
     - name: minecraft
       port: 25565
