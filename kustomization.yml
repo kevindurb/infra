@@ -17,3 +17,4 @@ resources:
   - ./services/jellyfin
   - ./services/keel
   - ./services/kube-vip
+  - ./services/metallb
