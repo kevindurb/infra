@@ -19,4 +19,4 @@ jobs:
           tags: tag:ci
 
       - name: Check whoami
-        run: curl https://whoami
+        run: curl https://whoami.beaver-cloud.ts.net
