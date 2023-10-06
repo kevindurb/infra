@@ -20,3 +20,12 @@ jobs:
 
       - name: Check whoami
         run: curl https://whoami.beaver-cloud.ts.net
+
+      - name: Send failure to slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: '#kevin-infra-repo'
+          slack-message: ':no_entry::fire: Health check failure!'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
