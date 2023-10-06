@@ -15,3 +15,5 @@ resources:
   - ./services/heimdall
   - ./services/home-assistant
   - ./services/jellyfin
+  - ./services/keel
+  - ./services/kube-vip
