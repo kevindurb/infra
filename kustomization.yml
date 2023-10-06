@@ -21,3 +21,4 @@ resources:
   - ./services/minecraft
   - ./services/mosquitto
   - ./services/omada
+  - ./services/prometheus
