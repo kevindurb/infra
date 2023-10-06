@@ -3,6 +3,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
+  annotations:
+    keel.sh/policy: all
+    keel.sh/trigger: poll
+    keel.sh/approvals: '1'
 spec:
   template:
     spec:
@@ -85,23 +89,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: makemkv.durbin.casa
-    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
-  ingressClassName: nginx
-  rules:
-    - host: 'makemkv.durbin.casa'
-      http:
-        paths:
-          - pathType: Prefix
-            path: '/'
-            backend:
-              service:
-                name: service
-                port:
-                  name: web
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: web
   tls:
     - hosts:
-        - makemkv.durbin.casa
-      secretName: makemkv-ingress-cert
+        - makemkv

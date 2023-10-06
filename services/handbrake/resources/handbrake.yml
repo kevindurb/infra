@@ -6,6 +6,7 @@ metadata:
   annotations:
     keel.sh/policy: all
     keel.sh/trigger: poll
+    keel.sh/approvals: '1'
 spec:
   template:
     spec:
