@@ -23,3 +23,7 @@ resources:
   - ./services/omada
   - ./services/prometheus
   - ./services/smokeping
+  - ./services/snapdrop
+  - ./services/system-upgrade
+  - ./services/tailscale-operator
+  - ./services/whoami
