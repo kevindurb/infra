@@ -13,3 +13,17 @@ spec:
     path: /mnt/tank/media
   mountOptions:
     - nolock
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: truenas-media
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ''
+  volumeName: truenas-media

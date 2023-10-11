@@ -25,13 +25,13 @@ spec:
       volumes:
         - name: ripping-storage
           persistentVolumeClaim:
-            claimName: ripping-storage
+            claimName: truenas-ripping-storage
         - name: media
           persistentVolumeClaim:
-            claimName: media
+            claimName: truenas-media
         - name: data
           persistentVolumeClaim:
-            claimName: data
+            claimName: truenas-data
 
 ---
 apiVersion: v1

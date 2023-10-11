@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: ripping-storage
+  name: truenas-data
 spec:
   capacity:
     storage: 2Ti
@@ -10,7 +10,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: truenas.beaver-cloud.ts.net
-    path: /mnt/tank/ripping-storage
+    path: /mnt/tank/data
   mountOptions:
     - nolock
 
@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ripping-storage
+  name: truenas-data
 spec:
   resources:
     requests:
@@ -26,4 +26,4 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: ''
-  volumeName: ripping-storage
+  volumeName: truenas-data
