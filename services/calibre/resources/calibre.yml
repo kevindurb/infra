@@ -13,7 +13,7 @@ spec:
       volumes:
         - name: media
           persistentVolumeClaim:
-            claimName: media
+            claimName: truenas-media
         - name: config
           persistentVolumeClaim:
             claimName: config-volume
@@ -25,6 +25,7 @@ spec:
               value: ghcr.io/linuxserver/mods:universal-calibre
           volumeMounts:
             - name: media
+              subPath: eBooks
               mountPath: /books
             - name: config
               mountPath: /config
@@ -55,36 +56,6 @@ spec:
     - name: web
       port: 80
       targetPort: web
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: media
-spec:
-  capacity:
-    storage: 2Ti
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: truenas.beaver-cloud.ts.net
-    path: /mnt/tank/media/eBooks
-  mountOptions:
-    - nolock
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: media
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ''
-  resources:
-    requests:
-      storage: 2Ti
-  volumeName: media
 
 ---
 apiVersion: networking.k8s.io/v1
