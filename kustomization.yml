@@ -17,6 +17,7 @@ resources:
   - ./services/jellyfin
   - ./services/keel
   - ./services/kube-vip
+  - ./services/longhorn
   - ./services/metallb
   - ./services/minecraft
   - ./services/mosquitto
