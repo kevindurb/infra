@@ -43,8 +43,8 @@ metadata:
   name: data-volume
 spec:
   accessModes:
-    - ReadWriteMany
-  storageClassName: nfs-csi
+    - ReadWriteOnce
+  storageClassName: longhorn
   resources:
     requests:
       storage: 10Gi
