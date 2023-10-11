@@ -13,19 +13,17 @@ spec:
   template:
     spec:
       volumes:
-        - name: media
+        - name: truenas-media
           persistentVolumeClaim:
-            claimName: media
-        - name: config-volume
-          persistentVolumeClaim:
-            claimName: config-volume
+            claimName: truenas-media
       containers:
         - name: jellyfin
           image: docker.io/jellyfin/jellyfin
           volumeMounts:
-            - name: config-volume
+            - name: truenas-media
+              subPath: config
               mountPath: /config
-            - name: media
+            - name: truenas-media
               mountPath: /media
           ports:
             - name: web
@@ -44,35 +42,9 @@ spec:
 
 ---
 apiVersion: v1
-kind: Service
-metadata:
-  name: load-balancer
-spec:
-  type: LoadBalancer
-  ports:
-    - name: web
-      port: 80
-      targetPort: web
-
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-volume
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ''
-  resources:
-    requests:
-      storage: 2Gi
-  volumeName: config-volume
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: media
+  name: truenas-media
 spec:
   accessModes:
     - ReadWriteMany
@@ -80,39 +52,7 @@ spec:
   resources:
     requests:
       storage: 2Ti
-  volumeName: media
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: config-volume
-spec:
-  capacity:
-    storage: 2Gi
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: truenas.beaver-cloud.ts.net
-    path: /mnt/tank/media/config
-  mountOptions:
-    - nolock
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: media
-spec:
-  capacity:
-    storage: 2Ti
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: truenas.beaver-cloud.ts.net
-    path: /mnt/tank/media
-  mountOptions:
-    - nolock
+  volumeName: truenas-media
 
 ---
 apiVersion: networking.k8s.io/v1

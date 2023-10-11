@@ -9,6 +9,7 @@ resources:
   - ./services/cloudflared
   - ./services/dashboard
   - ./services/external-dns
+  - ./services/external-volumes
   - ./services/filebrowser
   - ./services/frigate
   - ./services/handbrake
