@@ -1,0 +1,15 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard-tailscale-ingress
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: kubernetes-dashboard
+      port:
+        number: 443
+  tls:
+    - hosts:
+        - kubernetes

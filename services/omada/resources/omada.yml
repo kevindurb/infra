@@ -20,6 +20,30 @@ spec:
           ports:
             - name: web
               containerPort: 8043
+          volumeMounts:
+            - name: volume
+              subPath: data
+              mountPath: /opt/tplink/EAPController/data
+            - name: volume
+              subPath: logs
+              mountPath: /opt/tplink/EAPController/logs
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 5Gi
 
 ---
 apiVersion: v1
