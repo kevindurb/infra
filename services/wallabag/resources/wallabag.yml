@@ -21,16 +21,6 @@ spec:
               value: wallabag
             - name: SYMFONY__ENV__DOMAIN_NAME
               value: https://wallabag.beaver-cloud.ts.net
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: wallabag-postgres-superuser
-                  key: username
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: wallabag-postgres-superuser
-                  key: password
             - name: SYMFONY__ENV__DATABASE_USER
               valueFrom:
                 secretKeyRef:
@@ -54,7 +44,9 @@ metadata:
 spec:
   instances: 3
   primaryUpdateStrategy: unsupervised
-  enableSuperuserAccess: true
+  bootstrap:
+    initdb:
+      database: wallabag
   storage:
     storageClass: longhorn
     size: 1Gi
