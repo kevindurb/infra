@@ -17,13 +17,10 @@
 		{"action": "accept", "src": ["*"], "dst": ["*:*"]},
 	],
 	"nodeAttrs": [
-		{
-			// Funnel policy, which lets tailnet members control Funnel
-			// for their own devices.
-			// Learn more at https://tailscale.com/kb/1223/tailscale-funnel/
-			"target": ["kevindurb@github"],
-			"attr":   ["funnel"],
-		},
+    {
+      "target": ["autogroup:member", "tag:k8s"],
+      "attr":   ["funnel"],
+    },
 	],
 	"ssh": [
 		// The default SSH policy, which lets users SSH into devices they own.

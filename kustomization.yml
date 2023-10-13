@@ -28,4 +28,5 @@ resources:
   - ./services/snapdrop
   - ./services/system-upgrade
   - ./services/tailscale-operator
+  - ./services/wallabag
   - ./services/whoami
