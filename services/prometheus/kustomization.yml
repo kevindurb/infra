@@ -7,6 +7,8 @@ namespace: monitoring
 resources:
   - ./resources/prometheus-ingress.yml
   - ./resources/grafana-ingress.yml
+  - ./resources/alertmanager-config.yml
+  - ./resources/alertmanager-alertmanager.yml
 
 labels:
   - pairs:
