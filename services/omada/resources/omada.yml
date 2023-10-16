@@ -8,6 +8,8 @@ metadata:
     keel.sh/trigger: poll
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   template:
     spec:
       hostNetwork: true
