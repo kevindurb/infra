@@ -26,6 +26,7 @@ resources:
   - ./services/prometheus
   - ./services/smokeping
   - ./services/snapdrop
+  - ./services/syncthing
   - ./services/system-upgrade
   - ./services/tailscale-operator
   - ./services/wallabag

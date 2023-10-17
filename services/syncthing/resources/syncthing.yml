@@ -1,0 +1,90 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  annotations:
+    keel.sh/policy: minor
+    keel.sh/trigger: poll
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - image: lscr.io/linuxserver/syncthing:1.25.0
+          name: syncthing
+          env:
+            - name: TZ
+              value: America/Denver
+          ports:
+            - name: web
+              containerPort: 8384
+            - name: listen-tcp
+              containerPort: 22000
+            - name: listen-udp
+              containerPort: 22000
+              protocol: UDP
+            - name: discovery
+              containerPort: 22027
+              protocol: UDP
+          volumeMounts:
+            - name: config
+              mountPath: /config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: config-volume
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: web
+      port: 8384
+      targetPort: web
+    - name: listen-tcp
+      port: 22000
+      targetPort: listen-tcp
+    - name: listen-udp
+      port: 22000
+      protocol: UDP
+      targetPort: listen-udp
+    - name: discovery
+      port: 22027
+      protocol: UDP
+      targetPort: discovery
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: web
+  tls:
+    - hosts:
+        - syncthing
