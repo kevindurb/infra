@@ -3,5 +3,6 @@ session_name: infra
 start_directory: ./
 windows:
   - window_name: infra
+    layout: main-vertical
     panes:
       - blank
