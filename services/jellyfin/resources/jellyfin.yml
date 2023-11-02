@@ -12,6 +12,7 @@ spec:
     type: Recreate
   template:
     spec:
+      hostname: jellyfin
       volumes:
         - name: truenas-media
           persistentVolumeClaim:

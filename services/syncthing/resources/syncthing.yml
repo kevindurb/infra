@@ -12,6 +12,7 @@ spec:
     type: Recreate
   template:
     spec:
+      hostname: syncthing
       containers:
         - image: lscr.io/linuxserver/syncthing:1.25.0
           name: syncthing
