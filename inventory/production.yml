@@ -8,7 +8,15 @@ all:
         rhasspy01:
     k3snodes:
       hosts:
+        kube01:
+          static_ip: 192.168.100.101
+          static_iface: ens18
+        kube02:
+          static_ip: 192.168.100.102
+          static_iface: ens18
         kube03:
+          static_ip: 192.168.100.103
+          static_iface: ens18
         kube04:
           static_ip: 192.168.100.104
           static_iface: eth0
