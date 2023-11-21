@@ -19,13 +19,13 @@ all:
           static_iface: ens18
         kube04:
           static_ip: 192.168.100.104
-          static_iface: eth0
+          static_iface: ens18
         kube05:
           static_ip: 192.168.100.105
-          static_iface: eth0
+          static_iface: ens18
         kube06:
           static_ip: 192.168.100.106
-          static_iface: eth0
+          static_iface: ens18
         kube07:
           static_ip: 192.168.100.107
           static_iface: enp1s0f0
