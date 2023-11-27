@@ -28,13 +28,13 @@ all:
           static_iface: eth0
         kube07:
           static_ip: 192.168.100.107
-          static_iface: enp1s0f0
+          static_iface: ens18
         kube08:
           static_ip: 192.168.100.108
-          static_iface: enp1s0f0
+          static_iface: ens18
         kube09:
           static_ip: 192.168.100.109
-          static_iface: enp1s0f0
+          static_iface: ens18
     k3sloadbalancers:
       hosts:
         kube-lb01:
