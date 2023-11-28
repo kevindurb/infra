@@ -21,9 +21,40 @@ spec:
           env:
             - name: GUACD_HOSTNAME
               value: guacamole-guacd-service
+            - name: POSTGRESQL_HOSTNAME
+              value: guacamole-postgres-rw
+            - name: POSTGRESQL_PORT
+              value: '5432'
+            - name: POSTGRESQL_DATABASE
+              value: guacamole
+            - name: POSTGRESQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: guacamole-postgres-app
+                  key: username
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: guacamole-postgres-app
+                  key: password
           ports:
             - name: http
               containerPort: 8080
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+  bootstrap:
+    initdb:
+      database: guacamole
+  storage:
+    storageClass: longhorn
+    size: 1Gi
 
 ---
 apiVersion: v1
@@ -47,7 +78,7 @@ spec:
   ingressClassName: tailscale
   defaultBackend:
     service:
-      name: service
+      name: web-service
       port:
         name: http
   tls:
