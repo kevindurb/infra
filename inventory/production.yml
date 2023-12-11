@@ -3,6 +3,9 @@ all:
   hosts:
     zigbee2mqtt:
   children:
+    databases:
+      hosts:
+        db01:
     rhasspy:
       hosts:
         rhasspy01:
@@ -35,9 +38,6 @@ all:
         kube09:
           static_ip: 192.168.100.109
           static_iface: ens18
-    k3sloadbalancers:
-      hosts:
-        kube-lb01:
     storage:
       hosts:
         truenas:
