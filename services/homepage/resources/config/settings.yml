@@ -1,2 +1,10 @@
 ---
 title: Homepage
+headerStyle: clean
+layout:
+  Applications:
+    style: row
+    columns: 4
+  Admin:
+    style: row
+    columns: 4

@@ -1,5 +1,64 @@
 ---
-- Home Automation:
+- Applications:
     - Home Assistant:
-        icon: si-homeassistant
+        icon: home-assistant
         href: https://home-assistant.beaver-cloud.ts.net
+    - Gitea:
+        icon: gitea
+        href: https://gitea.beaver-cloud.ts.net
+    - Jellyfin:
+        icon: jellyfin
+        href: https://jellyfin.beaver-cloud.ts.net
+    - Frigate:
+        icon: frigate
+        href: https://frigate.beaver-cloud.ts.net
+    - Syncthing:
+        icon: syncthing
+        href: https://syncthing.beaver-cloud.ts.net
+    - Wallabag:
+        icon: wallabag
+        href: https://wallabag.beaver-cloud.ts.net
+    - Golink:
+        icon: mdi-link
+        href: https://go.beaver-cloud.ts.net/
+    - Nextcloud:
+        icon: nextcloud
+        href: https://nextcloud.beaver-cloud.ts.net
+
+- Admin:
+    - Kubernetes:
+        icon: kubernetes
+        href: https://kubernetes.beaver-cloud.ts.net
+    - TVHeadend:
+        icon: tvheadend
+        href: https://tvheadend.beaver-cloud.ts.net
+    - Adminer:
+        icon: si-adminer
+        href: https://adminer.beaver-cloud.ts.net
+    - FileBrowser:
+        icon: filebrowser
+        href: https://filebrowser.beaver-cloud.ts.net
+    - Longhorn:
+        icon: longhorn
+        href: https://longhorn.beaver-cloud.ts.net/
+    - Omada:
+        icon: omada
+        href: https://omada.beaver-cloud.ts.net
+    - Prometheus:
+        icon: prometheus
+        href: https://prometheus.beaver-cloud.ts.net
+    - Proxmox:
+        icon: proxmox
+        href: https://pve01.beaver-cloud.ts.net:8006
+    - Grafana:
+        icon: grafana
+        href: https://grafana.beaver-cloud.ts.net
+    - iDRAC:
+        icon: idrac
+        href: https://192.168.0.181
+    - OpenWrt:
+        icon: openwrt
+        href: https://openwrt.beaver-cloud.ts.net
+    - Guacamole:
+        icon: guacamole
+        href: https://guacamole.beaver-cloud.ts.net/guacamole
