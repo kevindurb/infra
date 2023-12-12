@@ -70,10 +70,9 @@
         icon: grafana
         href: https://grafana.beaver-cloud.ts.net
         siteMonitor: https://grafana.beaver-cloud.ts.net
-    - iDRAC:
+    - PVE01 iDRAC:
         icon: idrac
         href: https://192.168.0.181
-        siteMonitor: https://192.168.0.181
     - OpenWrt:
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
