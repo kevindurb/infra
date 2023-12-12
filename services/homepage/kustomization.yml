@@ -10,9 +10,9 @@ resources:
 configMapGenerator:
   - name: config
     files:
-      - ./resources/settings.yml
-      - ./resources/services.yml
-      - ./resources/bookmarks.yml
+      - ./resources/config/settings.yml
+      - ./resources/config/services.yml
+      - ./resources/config/bookmarks.yml
 
 labels:
   - pairs:
