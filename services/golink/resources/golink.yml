@@ -7,6 +7,10 @@ spec:
   replicas: 1
   template:
     spec:
+      volumes:
+        - name: links
+          configMap:
+            name: links
       containers:
         - name: golink
           image: ghcr.io/tailscale/golink:main
@@ -15,6 +19,12 @@ spec:
             - ':80'
             - '-hostname'
             - 'go.beaver-cloud.ts.net'
+            - '-snapshot'
+            - '/links.jsonl'
+          volumeMounts:
+            - name: links
+              mountPath: /links.jsonl
+              subPath: links.jsonl
           ports:
             - name: http
               containerPort: 80

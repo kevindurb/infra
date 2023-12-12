@@ -4,6 +4,11 @@ kind: Kustomization
 
 namePrefix: golink-
 
+configMapGenerator:
+  - name: links
+    files:
+      - links.jsonl
+
 resources:
   - ./resources/golink.yml
 
