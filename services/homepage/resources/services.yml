@@ -1,0 +1,5 @@
+---
+- Home Automation:
+    - Home Assistant:
+        icon: si-homeassistant
+        href: https://home-assistant.beaver-cloud.ts.net
