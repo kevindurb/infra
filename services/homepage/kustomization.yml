@@ -13,6 +13,7 @@ configMapGenerator:
       - ./resources/config/settings.yml
       - ./resources/config/services.yml
       - ./resources/config/bookmarks.yml
+      - ./resources/config/widgets.yml
 
 labels:
   - pairs:

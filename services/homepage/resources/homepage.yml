@@ -24,6 +24,9 @@ spec:
             - name: config
               mountPath: /app/config/bookmarks.yaml
               subPath: bookmarks.yml
+            - name: config
+              mountPath: /app/config/widgets.yaml
+              subPath: widgets.yml
           ports:
             - name: http
               containerPort: 3000
