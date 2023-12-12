@@ -7,6 +7,10 @@ spec:
   replicas: 1
   template:
     spec:
+      serviceAccountName: service-account
+      automountServiceAccountToken: true
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
       volumes:
         - name: config
           configMap:
@@ -27,6 +31,9 @@ spec:
             - name: config
               mountPath: /app/config/widgets.yaml
               subPath: widgets.yml
+            - name: config
+              mountPath: /app/config/kubernetes.yaml
+              subPath: kubernetes.yml
           ports:
             - name: http
               containerPort: 3000
