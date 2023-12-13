@@ -1,11 +1,5 @@
 ---
 - Applications:
-    - Home Assistant:
-        icon: home-assistant
-        href: https://home-assistant.beaver-cloud.ts.net
-        siteMonitor: https://home-assistant.beaver-cloud.ts.net
-        namespace: default
-        app: home-assistant
     - Gitea:
         icon: gitea
         href: https://gitea.beaver-cloud.ts.net
