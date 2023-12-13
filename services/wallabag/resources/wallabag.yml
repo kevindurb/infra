@@ -74,6 +74,12 @@ metadata:
   name: ingress
   annotations:
     tailscale.com/funnel: 'true'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Applications
+    gethomepage.dev/icon: wallabag
+    gethomepage.dev/app: wallabag
+    gethomepage.dev/name: Wallabag
+    gethomepage.dev/href: https://wallabag.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:
