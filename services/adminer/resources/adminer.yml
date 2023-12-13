@@ -33,6 +33,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: si-adminer
+    gethomepage.dev/app: adminer
+    gethomepage.dev/name: Adminer
+    gethomepage.dev/href: https://adminer.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:
