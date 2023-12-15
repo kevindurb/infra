@@ -74,6 +74,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: web-ingress
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: guacamole
+    gethomepage.dev/app: guacamole
+    gethomepage.dev/name: Guacamole
+    gethomepage.dev/href: https://guacamole.beaver-cloud.ts.net/guacamole
 spec:
   ingressClassName: tailscale
   defaultBackend:

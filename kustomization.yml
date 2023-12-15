@@ -12,7 +12,6 @@ resources:
   - ./services/external-volumes
   - ./services/filebrowser
   - ./services/frigate
-  - ./services/heimdall
   - ./services/home-assistant
   - ./services/jellyfin
   - ./services/kube-vip
@@ -21,7 +20,6 @@ resources:
   - ./services/minecraft
   - ./services/mosquitto
   - ./services/omada
-  - ./services/prometheus
   - ./services/smokeping
   - ./services/snapdrop
   - ./services/syncthing

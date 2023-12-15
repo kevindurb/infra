@@ -63,6 +63,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: tailscale-ingress
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: omada
+    gethomepage.dev/app: omada
+    gethomepage.dev/name: Omada
+    gethomepage.dev/href: https://omada.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:

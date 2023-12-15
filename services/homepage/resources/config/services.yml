@@ -1,45 +1,13 @@
 ---
 - Admin:
-    - Longhorn:
-        icon: longhorn
-        href: https://longhorn.beaver-cloud.ts.net
-        siteMonitor: https://longhorn.beaver-cloud.ts.net
-        namespace: longhorn-system
-        app: longhorn
-        pod-selector: ''
-    - Omada:
-        icon: omada
-        href: https://omada.beaver-cloud.ts.net
-        siteMonitor: https://omada.beaver-cloud.ts.net/login
-        namespace: default
-        app: omada
-    - Prometheus:
-        icon: prometheus
-        href: https://prometheus.beaver-cloud.ts.net
-        siteMonitor: https://prometheus.beaver-cloud.ts.net
-        namespace: monitoring
-        app: prometheus
     - Proxmox:
         icon: proxmox
         href: https://pve01.beaver-cloud.ts.net:8006
         siteMonitor: https://pve01.beaver-cloud.ts.net:8006
-    - Grafana:
-        icon: grafana
-        href: https://grafana.beaver-cloud.ts.net
-        siteMonitor: https://grafana.beaver-cloud.ts.net
-        namespace: monitoring
-        app: grafana
     - PVE01 iDRAC:
         icon: idrac
         href: https://192.168.0.181
-        siteMonitor: https://192.168.0.181/login.html
     - OpenWrt:
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
         siteMonitor: https://openwrt.beaver-cloud.ts.net
-    - Guacamole:
-        icon: guacamole
-        href: https://guacamole.beaver-cloud.ts.net/guacamole
-        siteMonitor: https://guacamole.beaver-cloud.ts.net/guacamole
-        namespace: default
-        app: guacamole
