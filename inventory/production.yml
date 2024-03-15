@@ -27,6 +27,26 @@ all:
         kube09:
           static_ip: 192.168.100.109
           static_iface: enp1s0f0
+
+    pikubenodes:
+      hosts:
+        pikube01:
+          static_ip: 192.168.110.101
+          static_iface: eth0
+          network_system: dhcpcd
+        pikube11:
+          static_ip: 192.168.110.111
+          static_iface: eth0
+          network_system: nmcli
+        pikube12:
+          static_ip: 192.168.110.112
+          static_iface: eth0
+          network_system: nmcli
+        pikube13:
+          static_ip: 192.168.110.113
+          static_iface: eth0
+          network_system: nmcli
+
     k3sloadbalancers:
       hosts:
         kube-lb01:
