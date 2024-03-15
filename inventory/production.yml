@@ -8,25 +8,33 @@ all:
         rhasspy01:
     k3snodes:
       hosts:
+        kube01:
+          static_ip: 192.168.100.101
+          static_iface: ens18
+        kube02:
+          static_ip: 192.168.100.102
+          static_iface: ens18
         kube03:
+          static_ip: 192.168.100.103
+          static_iface: ens18
         kube04:
           static_ip: 192.168.100.104
-          static_iface: eth0
+          static_iface: ens18
         kube05:
           static_ip: 192.168.100.105
-          static_iface: eth0
+          static_iface: ens18
         kube06:
           static_ip: 192.168.100.106
-          static_iface: eth0
+          static_iface: ens18
         kube07:
           static_ip: 192.168.100.107
-          static_iface: enp1s0f0
+          static_iface: ens18
         kube08:
           static_ip: 192.168.100.108
-          static_iface: enp1s0f0
+          static_iface: ens18
         kube09:
           static_ip: 192.168.100.109
-          static_iface: enp1s0f0
+          static_iface: ens18
 
     pikubenodes:
       hosts:

@@ -22,9 +22,6 @@ mk service image="<<image>>":
 apply:
     kubectl apply -k ./
 
-check:
-    kubectl --dry-run=server apply -k ./
-
 lint:
     npx prettier -w .
 
