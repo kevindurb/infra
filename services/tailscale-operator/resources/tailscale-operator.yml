@@ -15,6 +15,12 @@ spec:
       labels:
         app: operator
     spec:
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: 'true'
+      tolerations:
+        - key: 'node-role.kubernetes.io/control-plane'
+          operator: 'Exists'
+          effect: 'NoSchedule'
       serviceAccountName: operator
       volumes:
         - name: oauth
@@ -30,7 +36,7 @@ spec:
               memory: 100Mi
           env:
             - name: OPERATOR_HOSTNAME
-              value: tailscale-operator
+              value: tailscale-pi
             - name: OPERATOR_SECRET
               value: operator
             - name: OPERATOR_LOGGING
