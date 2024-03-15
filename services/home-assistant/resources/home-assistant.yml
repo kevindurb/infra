@@ -3,10 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
-  annotations:
-    keel.sh/policy: all
-    keel.sh/trigger: poll
-    keel.sh/approvals: '1'
 spec:
   template:
     spec:
@@ -51,7 +47,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: nfs-csi
+  storageClassName: longhorn
   resources:
     requests:
       storage: 2Gi
@@ -61,13 +57,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  annotations:
-    gethomepage.dev/enabled: 'true'
-    gethomepage.dev/group: Applications
-    gethomepage.dev/icon: home-assistant
-    gethomepage.dev/app: home-assistant
-    gethomepage.dev/name: Home Assistant
-    gethomepage.dev/href: https://home-assistant.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:
