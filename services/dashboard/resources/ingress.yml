@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kubernetes-dashboard-tailscale-ingress
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: kubernetes
+    gethomepage.dev/name: Kubernetes
+    gethomepage.dev/href: https://kubernetes.beaver-cloud.ts.net
+    gethomepage.dev/pod-selector: ''
 spec:
   ingressClassName: tailscale
   defaultBackend:

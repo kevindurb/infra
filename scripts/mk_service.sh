@@ -55,7 +55,7 @@ spec:
         - name: $SERVICE_NAME
           image: $IMAGE
           ports:
-            - name: web
+            - name: http
               containerPort: 80
 
 ---
@@ -65,35 +65,25 @@ metadata:
   name: service
 spec:
   ports:
-    - name: web
+    - name: http
       port: 80
-      targetPort: web
+      targetPort: http
 
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: $SERVICE_NAME.durbin.casa
-    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
-  ingressClassName: nginx
-  rules:
-    - host: '$SERVICE_NAME.durbin.casa'
-      http:
-        paths:
-          - pathType: Prefix
-            path: '/'
-            backend:
-              service:
-                name: service
-                port:
-                  name: web
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: http
   tls:
     - hosts:
-        - $SERVICE_NAME.durbin.casa
-      secretName: durbin-casa-wildcard-cert
+        - $SERVICE_NAME
 EOF
 
 if $DRY_RUN; then

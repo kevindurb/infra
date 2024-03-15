@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      serviceAccountName: service-account
+      automountServiceAccountToken: true
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      volumes:
+        - name: config
+          configMap:
+            name: config
+      containers:
+        - name: homepage
+          image: ghcr.io/gethomepage/homepage:latest
+          volumeMounts:
+            - name: config
+              mountPath: /app/config/settings.yaml
+              subPath: settings.yml
+            - name: config
+              mountPath: /app/config/services.yaml
+              subPath: services.yml
+            - name: config
+              mountPath: /app/config/bookmarks.yaml
+              subPath: bookmarks.yml
+            - name: config
+              mountPath: /app/config/widgets.yaml
+              subPath: widgets.yml
+            - name: config
+              mountPath: /app/config/kubernetes.yaml
+              subPath: kubernetes.yml
+          ports:
+            - name: http
+              containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: http
+  tls:
+    - hosts:
+        - homepage

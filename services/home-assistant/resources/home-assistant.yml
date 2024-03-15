@@ -61,6 +61,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Applications
+    gethomepage.dev/icon: home-assistant
+    gethomepage.dev/app: home-assistant
+    gethomepage.dev/name: Home Assistant
+    gethomepage.dev/href: https://home-assistant.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:

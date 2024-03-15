@@ -3,6 +3,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: longhorn-ingress
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: longhorn
+    gethomepage.dev/app: longhorn
+    gethomepage.dev/pod-selector: ''
+    gethomepage.dev/name: Longhorn
+    gethomepage.dev/href: https://longhorn.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:

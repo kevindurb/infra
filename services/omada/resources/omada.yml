@@ -20,7 +20,7 @@ spec:
             - configMapRef:
                 name: env
           ports:
-            - name: web
+            - name: https
               containerPort: 8043
           volumeMounts:
             - name: volume
@@ -54,9 +54,32 @@ metadata:
   name: service
 spec:
   ports:
-    - name: web
-      port: 80
-      targetPort: web
+    - name: https
+      port: 443
+      targetPort: https
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tailscale-ingress
+  annotations:
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: omada
+    gethomepage.dev/app: omada
+    gethomepage.dev/name: Omada
+    gethomepage.dev/href: https://omada.beaver-cloud.ts.net
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: https
+  tls:
+    - hosts:
+        - omada
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -82,7 +105,7 @@ spec:
               service:
                 name: service
                 port:
-                  name: web
+                  name: https
   tls:
     - hosts:
         - omada.durbin.casa

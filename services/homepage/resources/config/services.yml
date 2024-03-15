@@ -1,0 +1,13 @@
+---
+- Admin:
+    - Proxmox:
+        icon: proxmox
+        href: https://pve01.beaver-cloud.ts.net:8006
+        siteMonitor: https://pve01.beaver-cloud.ts.net:8006
+    - PVE01 iDRAC:
+        icon: idrac
+        href: https://192.168.0.181
+    - OpenWrt:
+        icon: openwrt
+        href: https://openwrt.beaver-cloud.ts.net
+        siteMonitor: https://openwrt.beaver-cloud.ts.net

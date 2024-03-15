@@ -3,6 +3,9 @@ all:
   hosts:
     zigbee2mqtt:
   children:
+    databases:
+      hosts:
+        db01:
     rhasspy:
       hosts:
         rhasspy01:

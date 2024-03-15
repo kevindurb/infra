@@ -1,0 +1,14 @@
+---
+title: Homepage
+headerStyle: clean
+theme: dark
+color: zinc
+hideVersion: true
+statusStyle: dot
+layout:
+  Applications:
+    style: row
+    columns: 4
+  Admin:
+    style: row
+    columns: 4
