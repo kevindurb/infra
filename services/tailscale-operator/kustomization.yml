@@ -5,5 +5,4 @@ kind: Kustomization
 namespace: tailscale
 
 resources:
-  - ./resources/rbac.yml
   - ./resources/tailscale-operator.yml
