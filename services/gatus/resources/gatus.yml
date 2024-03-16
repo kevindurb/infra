@@ -22,6 +22,17 @@ spec:
               mountPath: /config/config.yaml
               subPath: config.yaml
               readOnly: true
+          env:
+            - name: PUSHOVER_USER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gatus
+                  key: PUSHOVER_USER_KEY
+            - name: PUSHOVER_APPLICATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: gatus
+                  key: PUSHOVER_APPLICATION_TOKEN
       volumes:
         - name: data-volume
           persistentVolumeClaim:
@@ -69,3 +80,21 @@ spec:
   tls:
     - hosts:
         - gatus
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: status-ingress
+  annotations:
+    tailscale.com/funnel: 'true'
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: web
+  tls:
+    - hosts:
+        - status

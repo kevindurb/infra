@@ -12,6 +12,11 @@ configMapGenerator:
     files:
       - ./resources/config.yaml
 
+secretGenerator:
+  - name: gatus
+    envs:
+      - gatus.env
+
 labels:
   - pairs:
       app.kubernetes.io/name: gatus

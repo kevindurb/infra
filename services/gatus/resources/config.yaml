@@ -1,34 +1,46 @@
 ---
+default-endpoint: &defaults
+  alerts:
+    - type: pushover
+  interval: 5m
+  client:
+    insecure: true
+  conditions:
+    - '[STATUS] == 200'
+
+alerting:
+  pushover:
+    application-token: ${PUSHOVER_APPLICATION_TOKEN}
+    user-key: ${PUSHOVER_USER_KEY}
+    priority: 2
+    default-alert:
+      send-on-resolved: true
+
 storage:
   type: sqlite
   path: /data/data.db
+
 endpoints:
   - name: Jellyfin
     url: http://jellyfin-service/health
-    interval: 5m
-    conditions:
-      - '[STATUS] == 200'
+    <<: *defaults
+
   - name: Home Assistant
     url: http://home-assistant-service/manifest.json
-    interval: 5m
-    conditions:
-      - '[STATUS] == 200'
+    <<: *defaults
+
+  - name: Frigate
+    url: http://frigate-service/api/version
+    <<: *defaults
+
   - name: Google
     url: https://google.com
-    interval: 5m
-    conditions:
-      - '[STATUS] == 200'
+    <<: *defaults
+
   - name: OpenWRT
-    client:
-      insecure: true
     url: https://192.168.1.1
-    interval: 5m
-    conditions:
-      - '[STATUS] == 200'
+    <<: *defaults
+
   - name: TrueNAS
-    client:
-      insecure: true
     url: https://192.168.100.201/api/docs/
-    interval: 5m
-    conditions:
-      - '[STATUS] == 200'
+    <<: *defaults
