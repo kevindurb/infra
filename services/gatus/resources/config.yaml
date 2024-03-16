@@ -1,0 +1,34 @@
+---
+storage:
+  type: sqlite
+  path: /data/data.db
+endpoints:
+  - name: Jellyfin
+    url: http://jellyfin-service/health
+    interval: 5m
+    conditions:
+      - '[STATUS] == 200'
+  - name: Home Assistant
+    url: http://home-assistant-service/manifest.json
+    interval: 5m
+    conditions:
+      - '[STATUS] == 200'
+  - name: Google
+    url: https://google.com
+    interval: 5m
+    conditions:
+      - '[STATUS] == 200'
+  - name: OpenWRT
+    client:
+      insecure: true
+    url: https://192.168.1.1
+    interval: 5m
+    conditions:
+      - '[STATUS] == 200'
+  - name: TrueNAS
+    client:
+      insecure: true
+    url: https://192.168.100.201/api/docs/
+    interval: 5m
+    conditions:
+      - '[STATUS] == 200'
