@@ -1,7 +1,7 @@
-# yaml-language-server: $schema=https://frigate.durbin.casa/api/config/schema.json
+# yaml-language-server: $schema=https://frigate.beaver-cloud.ts.net/api/config/schema.json
 ---
 mqtt:
-  host: mosquitto
+  host: mosquitto-service
 
 record:
   enabled: true

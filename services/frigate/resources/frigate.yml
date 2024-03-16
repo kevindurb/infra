@@ -3,16 +3,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
-  annotations:
-    keel.sh/policy: minor
-    keel.sh/trigger: poll
 spec:
   replicas: 1
   template:
     spec:
       containers:
         - name: frigate
-          image: ghcr.io/blakeblackshear/frigate:0.12.1
+          image: ghcr.io/blakeblackshear/frigate:0.13.2
           ports:
             - name: web
               containerPort: 5000
@@ -67,13 +64,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  annotations:
-    gethomepage.dev/enabled: 'true'
-    gethomepage.dev/group: Applications
-    gethomepage.dev/icon: frigate
-    gethomepage.dev/app: frigate
-    gethomepage.dev/name: Friagate
-    gethomepage.dev/href: https://frigate.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:
