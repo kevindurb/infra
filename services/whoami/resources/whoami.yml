@@ -9,10 +9,10 @@ spec:
     spec:
       containers:
         - name: whoami
-          image: docker.io/jwilder/whoami
+          image: docker.io/traefik/whoami
           ports:
             - name: web
-              containerPort: 8000
+              containerPort: 80
 
 ---
 apiVersion: v1
