@@ -15,11 +15,11 @@ detect:
 go2rtc:
   streams:
     cam01:
-      - rtsp://cam01.lan:8554/video3_unicast
+      - rtsp://192.168.0.40:8554/video3_unicast
 
 cameras:
   cam01:
     ffmpeg:
       inputs:
-        - path: rtsp://cam01.lan:8554/video3_unicast
+        - path: rtsp://192.168.0.40:8554/video3_unicast
           roles: []
