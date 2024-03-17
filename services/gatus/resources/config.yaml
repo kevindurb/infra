@@ -48,3 +48,7 @@ endpoints:
   - name: Radarr
     url: http://radarr-service/ping
     <<: *defaults
+
+  - name: Sonarr
+    url: http://sonarr-service/ping
+    <<: *defaults
