@@ -1,13 +1,39 @@
 ---
+- Applications:
+    - Jellyfin:
+        icon: jellyfin
+        href: https://jellyfin.beaver-cloud.ts.net
+    - Frigate:
+        icon: frigate
+        href: https://frigate.beaver-cloud.ts.net
+    - Home Assistant:
+        icon: home-assistant
+        href: https://home-assistant.beaver-cloud.ts.net
+    - Sonarr:
+        icon: sonarr
+        href: https://sonarr.beaver-cloud.ts.net
+    - Radarr:
+        icon: radarr
+        href: https://radarr.beaver-cloud.ts.net
+    - Mealie:
+        icon: mealie
+        href: https://mealie.beaver-cloud.ts.net
 - Admin:
-    - Proxmox:
-        icon: proxmox
-        href: https://pve01.beaver-cloud.ts.net:8006
-        siteMonitor: https://pve01.beaver-cloud.ts.net:8006
     - PVE01 iDRAC:
         icon: idrac
-        href: https://192.168.0.181
+        href: https://192.168.100.200
     - OpenWrt:
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
-        siteMonitor: https://openwrt.beaver-cloud.ts.net
+    - TrueNAS:
+        icon: truenas
+        href: https://192.168.100.201
+    - Kubernetes:
+        icon: kubernetes
+        href: https://kubernetes.beaver-cloud.ts.net
+    - Gatus:
+        icon: gatus
+        href: https://gatus.beaver-cloud.ts.net
+    - Longhorn:
+        icon: longhorn
+        href: https://longhorn.beaver-cloud.ts.net

@@ -6,7 +6,6 @@ namePrefix: homepage-
 
 resources:
   - ./resources/homepage.yml
-  - ./resources/rbac.yml
 
 configMapGenerator:
   - name: config
@@ -15,7 +14,6 @@ configMapGenerator:
       - ./resources/config/services.yml
       - ./resources/config/bookmarks.yml
       - ./resources/config/widgets.yml
-      - ./resources/config/kubernetes.yml
 
 labels:
   - pairs:
