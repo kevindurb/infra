@@ -52,3 +52,7 @@ endpoints:
   - name: Sonarr
     url: http://sonarr-service/ping
     <<: *defaults
+
+  - name: Mealie
+    url: http://mealie-service/api/app/about
+    <<: *defaults
