@@ -22,37 +22,56 @@ storage:
 
 endpoints:
   - name: Jellyfin
+    group: Applications
     url: http://jellyfin-service/health
     <<: *defaults
 
   - name: Home Assistant
+    group: Applications
     url: http://home-assistant-service/manifest.json
     <<: *defaults
 
   - name: Frigate
+    group: Applications
     url: http://frigate-service/api/version
     <<: *defaults
 
   - name: Google
+    group: Admin
     url: https://google.com
     <<: *defaults
 
   - name: OpenWRT
+    group: Admin
     url: https://192.168.1.1
     <<: *defaults
 
   - name: TrueNAS
+    group: Admin
     url: https://192.168.100.201/api/docs/
     <<: *defaults
 
   - name: Radarr
+    group: Applications
     url: http://radarr-service/ping
     <<: *defaults
 
   - name: Sonarr
+    group: Applications
     url: http://sonarr-service/ping
     <<: *defaults
 
   - name: Mealie
+    group: Applications
     url: http://mealie-service/api/app/about
+    <<: *defaults
+
+  - name: Prometheus
+    group: Admin
+    url: http://prometheus-service.monitoring/-/healthy
+    <<: *defaults
+
+  - name: Homepage
+    group: Applications
+    url: http://homepage-service/api/healthcheck
     <<: *defaults

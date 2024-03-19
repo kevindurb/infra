@@ -37,3 +37,6 @@
     - Longhorn:
         icon: longhorn
         href: https://longhorn.beaver-cloud.ts.net
+    - Prometheus:
+        icon: prometheus
+        href: https://prometheus.beaver-cloud.ts.net
