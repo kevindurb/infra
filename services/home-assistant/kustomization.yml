@@ -6,8 +6,6 @@ namePrefix: home-assistant-
 
 resources:
   - ./resources/home-assistant.yml
-  - ./resources/piper.yml
-  - ./resources/whisper.yml
 
 configMapGenerator:
   - name: config
