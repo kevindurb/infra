@@ -16,6 +16,9 @@ spec:
       containers:
         - name: mealie
           image: ghcr.io/mealie-recipes/mealie:v1.3.2
+          resources:
+            limits:
+              memory: 400M
           env:
             - name: PUID
               value: '1000'
