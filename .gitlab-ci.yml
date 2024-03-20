@@ -1,0 +1,8 @@
+---
+include:
+  - project: 'renovate-bot/renovate-runner'
+    file: '/templates/renovate.gitlab-ci.yml'
+
+variables:
+  DOCKER_TLS_CERTDIR: '/certs'
+  RENOVATE_EXTRA_FLAGS: kevindurb/infra

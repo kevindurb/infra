@@ -3,27 +3,20 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ./services/adminer
-  - ./services/calibre
-  - ./services/cert-manager
-  - ./services/cloudflared
   - ./services/dashboard
-  - ./services/external-dns
   - ./services/external-volumes
-  - ./services/filebrowser
   - ./services/frigate
+  - ./services/gatus
   - ./services/home-assistant
+  - ./services/homepage
   - ./services/jellyfin
-  - ./services/kube-vip
   - ./services/longhorn
+  - ./services/mealie
   - ./services/metallb
-  - ./services/minecraft
   - ./services/mosquitto
-  - ./services/omada
+  - ./services/prometheus
+  - ./services/radarr
   - ./services/smokeping
-  - ./services/snapdrop
-  - ./services/syncthing
-  - ./services/system-upgrade
+  - ./services/sonarr
   - ./services/tailscale-operator
-  - ./services/wallabag
   - ./services/whoami
