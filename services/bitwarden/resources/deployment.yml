@@ -73,15 +73,3 @@ spec:
     - name: http
       port: 8087
       targetPort: http
-
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: external-secrets-network-policy
-spec:
-  ingress:
-    - from:
-        - podSelector:
-            matchLabels:
-              app.kubernetes.io/name: external-secrets

@@ -1,0 +1,16 @@
+# This is separated out so kustomize doesnt try to overwrite labels
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: external-secrets-network-policy
+  namespace: bitwarden
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: bitwarden
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: external-secrets

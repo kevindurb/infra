@@ -6,16 +6,12 @@ namePrefix: gatus-
 
 resources:
   - ./resources/gatus.yml
+  - ./resources/secret.yml
 
 configMapGenerator:
   - name: config
     files:
       - ./resources/config.yaml
-
-secretGenerator:
-  - name: gatus
-    envs:
-      - gatus.env
 
 labels:
   - pairs:
