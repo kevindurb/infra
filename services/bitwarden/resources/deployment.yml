@@ -1,0 +1,87 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      hostname: bitwarden
+      containers:
+        - name: bitwarden
+          image: registry.gitlab.com/kevindurb/bitwarden-cli
+          ports:
+            - name: http
+              containerPort: 8087
+          env:
+            - name: BW_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: BW_HOST
+            - name: BW_CLIENTID
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: BW_CLIENTID
+            - name: BW_CLIENTSECRET
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: BW_CLIENTSECRET
+            - name: BW_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: BW_PASSWORD
+          livenessProbe:
+            exec:
+              command:
+                - wget
+                - -q
+                - http://127.0.0.1:8087/sync?force=true
+                - --post-data=''
+            initialDelaySeconds: 60
+            failureThreshold: 3
+            timeoutSeconds: 10
+            periodSeconds: 120
+          readinessProbe:
+            tcpSocket:
+              port: 8087
+            initialDelaySeconds: 60
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+          startupProbe:
+            tcpSocket:
+              port: 8087
+            initialDelaySeconds: 60
+            failureThreshold: 30
+            timeoutSeconds: 1
+            periodSeconds: 5
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: http
+      port: 8087
+      targetPort: http
+
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: external-secrets-network-policy
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: external-secrets

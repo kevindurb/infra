@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: bitwarden
+namePrefix: bitwarden-
+
+resources:
+  - ./resources/deployment.yml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: bitwarden
+    includeSelectors: true
+    includeTemplates: true
