@@ -12,5 +12,5 @@ receivers:
   - name: 'null'
   - name: pushover
     pushover_configs:
-      - user_key_file: /run/secrets/pushover_user_key.secret
-        token_file: /run/secrets/pushover_application_key.secret
+      - user_key_file: /run/secrets/pushover/user_key
+        token_file: /run/secrets/pushover/application_key

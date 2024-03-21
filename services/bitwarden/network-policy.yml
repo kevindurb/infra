@@ -11,6 +11,9 @@ spec:
       app.kubernetes.io/name: bitwarden
   ingress:
     - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: external-secrets
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: external-secrets
