@@ -6,6 +6,9 @@ metadata:
 spec:
   template:
     spec:
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
       containers:
         - name: node-exporter
           image: prom/node-exporter
