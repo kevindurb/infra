@@ -7,3 +7,4 @@ namespace: tailscale
 resources:
   - ./resources/tailscale-operator.yml
   - ./resources/secret.yml
+  - ./resources/lan-connector.yml
