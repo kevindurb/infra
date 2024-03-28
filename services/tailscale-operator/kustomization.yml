@@ -6,3 +6,4 @@ namespace: tailscale
 
 resources:
   - ./resources/tailscale-operator.yml
+  - ./resources/secret.yml
