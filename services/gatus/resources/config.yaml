@@ -71,6 +71,11 @@ endpoints:
     url: http://prometheus-service.monitoring/-/healthy
     <<: *defaults
 
+  - name: Alertmanager
+    group: Admin
+    url: http://alertmanager-service.monitoring/-/healthy
+    <<: *defaults
+
   - name: Homepage
     group: Applications
     url: http://homepage-service/api/healthcheck
