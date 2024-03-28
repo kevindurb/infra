@@ -27,8 +27,9 @@ spec:
         - name: alertmanager
           image: docker.io/prom/alertmanager
           args:
-            - '--config.file=/etc/alertmanager/alertmanager.yml'
-            - '--storage.path=/alertmanager'
+            - --config.file=/etc/alertmanager/alertmanager.yml
+            - --storage.path=/alertmanager
+            - --web.external-url=https://alertmanager.beaver-cloud.ts.net
           volumeMounts:
             - name: config-volume
               mountPath: /etc/alertmanager
@@ -37,7 +38,7 @@ spec:
             - name: pushover-secret
               mountPath: /run/secrets/pushover
           ports:
-            - name: alertmanager
+            - name: web
               containerPort: 9093
 
 ---
@@ -60,6 +61,22 @@ metadata:
   name: service
 spec:
   ports:
-    - name: alertmanager
-      port: 9093
-      targetPort: alertmanager
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tailscale-ingress
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: web
+  tls:
+    - hosts:
+        - alertmanager
