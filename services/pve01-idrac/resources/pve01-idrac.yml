@@ -1,13 +1,24 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: service
+subsets:
+  - addresses:
+      - ip: 192.168.100.200
+    ports:
+      - name: https
+        port: 443
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: service
-  annotations:
-    tailscale.com/tailnet-ip: 192.168.0.181
 spec:
-  type: ExternalName
-  externalName: pve01-idrac.lan
+  ports:
+    - name: https
+      port: 443
+      targetPort: https
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -20,7 +31,7 @@ spec:
     service:
       name: service
       port:
-        number: 443
+        name: https
   tls:
     - hosts:
         - pve01-idrac
