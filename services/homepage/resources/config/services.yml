@@ -33,10 +33,13 @@
         href: https://kubernetes.beaver-cloud.ts.net
     - Gatus:
         icon: gatus
-        href: https://gatus.beaver-cloud.ts.net
+        href: https://status.beaver-cloud.ts.net
     - Longhorn:
         icon: longhorn
         href: https://longhorn.beaver-cloud.ts.net
     - Prometheus:
         icon: prometheus
         href: https://prometheus.beaver-cloud.ts.net
+    - Alertmanager:
+        icon: alertmanager
+        href: https://alertmanager.beaver-cloud.ts.net
