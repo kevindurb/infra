@@ -9,6 +9,7 @@ spec:
     type: Recreate
   template:
     spec:
+      serviceAccount: prometheus-service-account
       securityContext:
         runAsUser: 1000
         fsGroup: 2000
