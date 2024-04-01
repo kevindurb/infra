@@ -18,6 +18,9 @@
     - Mealie:
         icon: mealie
         href: https://mealie.beaver-cloud.ts.net
+    - Nextcloud:
+        icon: nextcloud
+        href: https://nextcloud.beaver-cloud.ts.net
 - Admin:
     - PVE01 iDRAC:
         icon: idrac
