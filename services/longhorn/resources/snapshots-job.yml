@@ -6,7 +6,7 @@ metadata:
   namespace: longhorn-system
 spec:
   cron: '0 3 * * *'
-  task: 'snapshot'
+  task: backup
   groups:
     - default
   retain: 2

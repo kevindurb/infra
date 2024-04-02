@@ -7,3 +7,4 @@ namespace: longhorn-system
 resources:
   - ./resources/ingress.yml
   - ./resources/snapshots-job.yml
+  - ./resources/default-setting-config.yml

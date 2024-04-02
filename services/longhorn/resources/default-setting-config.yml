@@ -6,7 +6,7 @@ metadata:
   namespace: longhorn-system
 data:
   default-setting.yaml: |-
-    #backup-target: s3://backupbucket@us-east-1/backupstore
+    backup-target: nfs://192.168.100.201:/mnt/tank/backups/longhorn
     #backup-target-credential-secret: minio-secret
     #allow-recurring-job-while-volume-detached:
     #create-default-disk-labeled-nodes:
@@ -16,7 +16,7 @@ data:
     #storage-over-provisioning-percentage:
     #storage-minimal-available-percentage:
     #upgrade-checker:
-    #default-replica-count:
+    default-replica-count: 3
     #default-data-locality:
     #default-longhorn-static-storage-class:
     #backupstore-poll-interval:
