@@ -5,14 +5,73 @@ metadata:
   name: deployment
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   template:
     spec:
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: data-volume
       containers:
         - name: nextcloud
-          image: lscr.io/linuxserver/nextcloud:28.0.0
+          image: docker.io/library/nextcloud:28
+          env:
+            - name: TRUSTED_PROXIES
+              value: 0.0.0.0/0
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-postgres-app
+                  key: dbname
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-postgres-app
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-postgres-app
+                  key: password
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-postgres-app
+                  key: host
+          resources:
+            limits:
+              memory: 4G
+          volumeMounts:
+            - name: data-volume
+              mountPath: /var/www/html
           ports:
-            - name: https
-              containerPort: 443
+            - name: http
+              containerPort: 80
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  instances: 3
+  storage:
+    storageClass: longhorn
+    size: 1Gi
 
 ---
 apiVersion: v1
@@ -21,9 +80,9 @@ metadata:
   name: service
 spec:
   ports:
-    - name: https
-      port: 443
-      targetPort: https
+    - name: http
+      port: 80
+      targetPort: http
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -36,7 +95,7 @@ spec:
     service:
       name: service
       port:
-        name: https
+        name: http
   tls:
     - hosts:
         - nextcloud

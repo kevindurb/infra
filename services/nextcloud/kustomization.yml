@@ -6,6 +6,7 @@ namePrefix: nextcloud-
 
 resources:
   - ./resources/nextcloud.yml
+  - ./resources/cron.yml
 
 labels:
   - pairs:
