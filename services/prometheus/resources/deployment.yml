@@ -33,7 +33,7 @@ spec:
             - --web.external-url=https://prometheus.beaver-cloud.ts.net
           resources:
             limits:
-              memory: 512Mi
+              memory: 4G
           volumeMounts:
             - name: config-volume
               mountPath: /etc/prometheus
