@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
+      containers:
+        - name: kavita
+          image: docker.io/jvmilazz0/kavita:latest
+          env:
+          volumeMounts:
+            - name: truenas-media
+              mountPath: /media
+            - name: config-volume
+              mountPath: /kavita/config
+          ports:
+            - name: web
+              containerPort: 5000
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: web
+  tls:
+    - hosts:
+        - kavita
