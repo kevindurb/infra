@@ -3,6 +3,12 @@
     - Jellyfin:
         icon: jellyfin
         href: https://jellyfin.beaver-cloud.ts.net
+        widget:
+          type: jellyfin
+          url: http://jellyfin-service
+          enableBlocks: true
+          enableNowPlaying: true
+          key: '{{HOMEPAGE_VAR_JELLYFIN_KEY}}'
     - Frigate:
         icon: frigate
         href: https://frigate.beaver-cloud.ts.net

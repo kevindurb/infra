@@ -1,0 +1,17 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: jellyfin-key
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: gitlab-secret-store
+  target:
+    name: homepage-jellyfin-key
+    creationPolicy: Owner
+  data:
+    - secretKey: HOMEPAGE_JELLYFIN_KEY
+      remoteRef:
+        key: HOMEPAGE_JELLYFIN_KEY

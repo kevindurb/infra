@@ -6,6 +6,7 @@ namePrefix: homepage-
 
 resources:
   - ./resources/homepage.yml
+  - ./resources/jellyfin-key.yml
 
 configMapGenerator:
   - name: config

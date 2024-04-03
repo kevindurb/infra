@@ -27,6 +27,12 @@ spec:
             - name: config
               mountPath: /app/config/widgets.yaml
               subPath: widgets.yml
+          env:
+            - name: HOMEPAGE_VAR_JELLYFIN_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: homepage-jellyfin-key
+                  key: HOMEPAGE_JELLYFIN_KEY
           ports:
             - name: http
               containerPort: 3000
