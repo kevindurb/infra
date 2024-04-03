@@ -80,3 +80,13 @@ endpoints:
     group: Applications
     url: http://homepage-service/api/healthcheck
     <<: *defaults
+
+  - name: Nextcloud
+    group: Applications
+    url: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
+    <<: *defaults
+
+  - name: Kavita
+    group: Applications
+    url: http://kavita-service/api/health
+    <<: *defaults

@@ -3,6 +3,7 @@
     - Jellyfin:
         icon: jellyfin
         href: https://jellyfin.beaver-cloud.ts.net
+        siteMonitor: http://jellyfin-service/health
         widget:
           type: jellyfin
           url: http://jellyfin-service
@@ -12,46 +13,60 @@
     - Frigate:
         icon: frigate
         href: https://frigate.beaver-cloud.ts.net
+        siteMonitor: http://frigate-service/api/version
     - Home Assistant:
         icon: home-assistant
         href: https://home-assistant.beaver-cloud.ts.net
+        siteMonitor: http://home-assistant-service/manifest.json
     - Sonarr:
         icon: sonarr
         href: https://sonarr.beaver-cloud.ts.net
+        siteMonitor: http://sonarr-service/ping
     - Radarr:
         icon: radarr
         href: https://radarr.beaver-cloud.ts.net
+        siteMonitor: http://radarr-service/ping
     - Mealie:
         icon: mealie
         href: https://mealie.beaver-cloud.ts.net
+        siteMonitor: http://mealie-service/api/app/about
     - Nextcloud:
         icon: nextcloud
         href: https://nextcloud.beaver-cloud.ts.net
+        siteMonitor: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
     - Kavita:
         icon: kavita
         href: https://kavita.beaver-cloud.ts.net
+        siteMonitor: http://kavita-service/api/health
 - Admin:
     - PVE01 iDRAC:
         icon: idrac
         href: https://192.168.100.200
+        siteMonitor: https://192.168.100.200
     - OpenWrt:
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
+        siteMonitor: https://192.168.1.1
     - TrueNAS:
         icon: truenas
         href: https://192.168.100.201
+        siteMonitor: https://192.168.100.201/api/docs/
     - Kubernetes:
         icon: kubernetes
         href: https://kubernetes.beaver-cloud.ts.net
     - Gatus:
         icon: gatus
         href: https://status.beaver-cloud.ts.net
+        siteMonitor: http://gatus-service/health
     - Longhorn:
         icon: longhorn
         href: https://longhorn.beaver-cloud.ts.net
+        siteMonitor: http://gatus-service/health
     - Prometheus:
         icon: prometheus
         href: https://prometheus.beaver-cloud.ts.net
+        siteMonitor: http://prometheus-service.monitoring/-/healthy
     - Alertmanager:
         icon: alertmanager
         href: https://alertmanager.beaver-cloud.ts.net
+        siteMonitor: http://alertmanager-service.monitoring/-/healthy
