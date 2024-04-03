@@ -21,6 +21,9 @@
     - Nextcloud:
         icon: nextcloud
         href: https://nextcloud.beaver-cloud.ts.net
+    - Kavita:
+        icon: kavita
+        href: https://kavita.beaver-cloud.ts.net
 - Admin:
     - PVE01 iDRAC:
         icon: idrac

@@ -20,6 +20,8 @@ spec:
         - name: kavita
           image: docker.io/jvmilazz0/kavita:latest
           env:
+            - name: TZ
+              value: America/Denver
           volumeMounts:
             - name: truenas-media
               mountPath: /media
