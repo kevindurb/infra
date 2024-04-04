@@ -1,4 +1,6 @@
 ---
+metrics: true
+
 default-endpoint: &defaults
   alerts:
     - type: pushover
@@ -84,6 +86,8 @@ endpoints:
   - name: Nextcloud
     group: Applications
     url: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
+    conditions:
+      - '[STATUS] < 500'
     <<: *defaults
 
   - name: Kavita
