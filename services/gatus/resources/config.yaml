@@ -53,6 +53,13 @@ endpoints:
     url: https://192.168.100.201/api/docs/
     <<: *defaults
 
+  - name: iDRAC
+    group: Admin
+    url: https://192.168.100.200/login.html
+    headers:
+      'Accept-Encoding': 'deflate, gzip, br, zstd'
+    <<: *defaults
+
   - name: Radarr
     group: Applications
     url: http://radarr-service/ping
