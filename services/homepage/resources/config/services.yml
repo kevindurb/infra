@@ -38,6 +38,14 @@
         icon: kavita
         href: https://kavita.beaver-cloud.ts.net
         siteMonitor: http://kavita-service/api/health
+    - Pi-hole:
+        icon: pi-hole
+        href: https://pihole.beaver-cloud.ts.net/admin
+        siteMonitor: http://pihole-service/admin
+        widget:
+          type: pihole
+          url: http://pihole-service
+          key: '{{HOMEPAGE_VAR_PIHOLE_PASSWORD}}'
 - Admin:
     - PVE01 iDRAC:
         icon: idrac

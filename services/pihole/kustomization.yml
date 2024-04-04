@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: pihole-
+
+resources:
+  - ./resources/deployment.yml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: pihole
+    includeSelectors: true
+    includeTemplates: true
