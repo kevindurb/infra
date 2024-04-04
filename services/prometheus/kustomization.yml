@@ -15,6 +15,7 @@ configMapGenerator:
       - ./resources/prometheus.yml
       - ./resources/rules.yml
       - ./resources/node-exporter.rules.yml
+      - ./resources/longhorn.rules.yml
 
 labels:
   - pairs:

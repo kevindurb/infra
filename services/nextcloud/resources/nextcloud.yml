@@ -70,7 +70,7 @@ metadata:
 spec:
   instances: 3
   storage:
-    storageClass: longhorn
+    storageClass: single-replica-longhorn
     size: 1Gi
 
 ---

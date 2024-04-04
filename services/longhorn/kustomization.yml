@@ -8,3 +8,4 @@ resources:
   - ./resources/ingress.yml
   - ./resources/snapshots-job.yml
   - ./resources/default-setting-config.yml
+  - ./resources/single-replica-longhorn.yml
