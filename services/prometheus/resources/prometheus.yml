@@ -7,6 +7,7 @@ rule_files:
   - ./rules.yml
   - ./node-exporter.rules.yml
   - ./smartctl-exporter.rules.yml
+  - ./prometheus.rules.yml
   - ./longhorn.rules.yml
 
 alerting:
@@ -21,8 +22,12 @@ scrape_configs:
       - targets:
           - localhost:9090
 
+  - job_name: alertmanager
+    static_configs:
+      - targets:
+          - alertmanager-service
+
   - job_name: gatus
-    metrics_path: /metrics
     static_configs:
       - targets:
           - gatus-service.default
