@@ -3,9 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
-  annotations:
-    keel.sh/policy: minor
-    keel.sh/trigger: poll
 spec:
   replicas: 1
   strategy:
@@ -15,7 +12,7 @@ spec:
       hostNetwork: true
       containers:
         - name: omada
-          image: mbentley/omada-controller:5.12
+          image: mbentley/omada-controller:5.13
           envFrom:
             - configMapRef:
                 name: env
@@ -62,14 +59,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tailscale-ingress
-  annotations:
-    gethomepage.dev/enabled: 'true'
-    gethomepage.dev/group: Admin
-    gethomepage.dev/icon: omada
-    gethomepage.dev/app: omada
-    gethomepage.dev/name: Omada
-    gethomepage.dev/href: https://omada.beaver-cloud.ts.net
+  name: ingress
 spec:
   ingressClassName: tailscale
   defaultBackend:
@@ -80,33 +70,3 @@ spec:
   tls:
     - hosts:
         - omada
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'
-    external-dns.alpha.kubernetes.io/hostname: omada.durbin.casa
-    cert-manager.io/cluster-issuer: cloudflare-issuer
-    nginx.ingress.kubernetes.io/location-snippet: |
-      proxy_set_header Host $http_host:8043;
-      proxy_redirect https://$http_host:8043/login https://$http_host/login;
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: 'omada.durbin.casa'
-      http:
-        paths:
-          - pathType: Prefix
-            path: '/'
-            backend:
-              service:
-                name: service
-                port:
-                  name: https
-  tls:
-    - hosts:
-        - omada.durbin.casa
-      secretName: durbin-casa-wildcard-cert
