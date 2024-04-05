@@ -18,26 +18,54 @@
         icon: home-assistant
         href: https://home-assistant.beaver-cloud.ts.net
         siteMonitor: http://home-assistant-service/manifest.json
+        widget:
+          type: homeassistant
+          url: http://home-assistant-service
+          key: '{{HOMEPAGE_VAR_HOME_ASSISTANT_TOKEN}}'
     - Sonarr:
         icon: sonarr
         href: https://sonarr.beaver-cloud.ts.net
         siteMonitor: http://sonarr-service/ping
+        widget:
+          type: sonarr
+          url: http://sonarr-service
+          key: '{{HOMEPAGE_VAR_SONARR_KEY}}'
+          enableQueue: true
     - Radarr:
         icon: radarr
         href: https://radarr.beaver-cloud.ts.net
         siteMonitor: http://radarr-service/ping
+        widget:
+          type: radarr
+          url: http://radarr-service
+          key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
+          enableQueue: true
     - Mealie:
         icon: mealie
         href: https://mealie.beaver-cloud.ts.net
         siteMonitor: http://mealie-service/api/app/about
+        widget:
+          type: mealie
+          url: http://mealie-service
+          key: '{{HOMEPAGE_VAR_MEALIE_TOKEN}}'
     - Nextcloud:
         icon: nextcloud
         href: https://nextcloud.beaver-cloud.ts.net
         siteMonitor: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
+        widget:
+          type: nextcloud
+          url: http://nextcloud-service
+          username: kevindurb
+          password: '{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}'
     - Kavita:
         icon: kavita
         href: https://kavita.beaver-cloud.ts.net
         siteMonitor: http://kavita-service/api/health
+        widget:
+          type: kavita
+          url: http://kavita-service
+          username: kevindurb
+          password: '{{HOMEPAGE_VAR_KAVITA_PASSWORD}}'
     - Pi-hole:
         icon: pi-hole
         href: https://pihole.beaver-cloud.ts.net/admin
@@ -46,6 +74,14 @@
           type: pihole
           url: http://pihole-service
           key: '{{HOMEPAGE_VAR_PIHOLE_PASSWORD}}'
+    - OctoPi:
+        icon: octoprint
+        href: https://octopi.beaver-cloud.ts.net
+        siteMonitor: https://octopi.beaver-cloud.ts.net
+        widget:
+          type: octoprint
+          url: https://octopi.beaver-cloud.ts.net
+          key: '{{HOMEPAGE_VAR_OCTOPI_KEY}}'
 - Admin:
     - PVE01 iDRAC:
         icon: idrac
@@ -59,6 +95,11 @@
         icon: truenas
         href: https://192.168.100.201
         siteMonitor: https://192.168.100.201/api/docs/
+        widget:
+          type: truenas
+          url: https://192.168.100.201
+          key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
+          enablePools: true
     - Kubernetes:
         icon: kubernetes
         href: https://kubernetes.beaver-cloud.ts.net
@@ -66,14 +107,20 @@
         icon: gatus
         href: https://status.beaver-cloud.ts.net
         siteMonitor: http://gatus-service/health
+        widget:
+          type: gatus
+          url: http://gatus-service
     - Longhorn:
         icon: longhorn
         href: https://longhorn.beaver-cloud.ts.net
-        siteMonitor: http://gatus-service/health
+        siteMonitor: http://longhorn-frontend.longhorn-system/v1
     - Prometheus:
         icon: prometheus
         href: https://prometheus.beaver-cloud.ts.net
         siteMonitor: http://prometheus-service.monitoring/-/healthy
+        widget:
+          type: prometheus
+          url: http://prometheus-service.monitoring
     - Alertmanager:
         icon: alertmanager
         href: https://alertmanager.beaver-cloud.ts.net
