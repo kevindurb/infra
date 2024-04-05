@@ -102,7 +102,7 @@
         widget:
           type: pihole
           url: http://pihole-service
-          key: '{{HOMEPAGE_VAR_PIHOLE_PASSWORD}}'
+          key: '{{HOMEPAGE_VAR_PIHOLE_TOKEN}}'
     - TrueNAS:
         icon: truenas
         href: https://192.168.100.201
