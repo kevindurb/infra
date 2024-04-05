@@ -6,6 +6,7 @@ color: zinc
 hideVersion: true
 statusStyle: dot
 useEqualHeights: true
+iconStyle: theme
 layout:
   Home:
     icon: mdi-home-lightbulb
