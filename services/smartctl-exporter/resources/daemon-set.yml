@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemon-set
+spec:
+  template:
+    spec:
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+      containers:
+        - name: smartctl-exporter
+          image: prometheuscommunity/smartctl-exporter
+          securityContext:
+            privileged: true
+            runAsUser: 0
+            runAsGroup: 0
+          ports:
+            - containerPort: 9633
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 250m
+              memory: 180Mi
+          volumeMounts:
+            - mountPath: /hostdev
+              name: hostdev
+      volumes:
+        - hostPath:
+            path: /dev
+          name: hostdev
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: service
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: '9100'
+spec:
+  ports:
+    - name: smartctl-exporter
+      protocol: TCP
+      port: 9100
+      targetPort: 9633
