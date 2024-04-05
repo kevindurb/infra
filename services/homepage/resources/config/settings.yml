@@ -5,10 +5,21 @@ theme: dark
 color: zinc
 hideVersion: true
 statusStyle: dot
+useEqualHeights: true
 layout:
-  Applications:
+  Home:
+    icon: mdi-home-lightbulb
     style: row
-    columns: 4
-  Admin:
+    columns: 3
+  Media:
+    icon: mdi-filmstrip
     style: row
-    columns: 4
+    columns: 3
+  Monitoring:
+    icon: mdi-alert
+    style: row
+    columns: 3
+  Infra:
+    icon: mdi-server
+    style: row
+    columns: 3

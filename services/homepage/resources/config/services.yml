@@ -1,19 +1,5 @@
 ---
-- Applications:
-    - Jellyfin:
-        icon: jellyfin
-        href: https://jellyfin.beaver-cloud.ts.net
-        siteMonitor: http://jellyfin-service/health
-        widget:
-          type: jellyfin
-          url: http://jellyfin-service
-          enableBlocks: true
-          enableNowPlaying: true
-          key: '{{HOMEPAGE_VAR_JELLYFIN_KEY}}'
-    - Frigate:
-        icon: frigate
-        href: https://frigate.beaver-cloud.ts.net
-        siteMonitor: http://frigate-service/api/version
+- Home:
     - Home Assistant:
         icon: home-assistant
         href: https://home-assistant.beaver-cloud.ts.net
@@ -22,24 +8,6 @@
           type: homeassistant
           url: http://home-assistant-service
           key: '{{HOMEPAGE_VAR_HOME_ASSISTANT_TOKEN}}'
-    - Sonarr:
-        icon: sonarr
-        href: https://sonarr.beaver-cloud.ts.net
-        siteMonitor: http://sonarr-service/ping
-        widget:
-          type: sonarr
-          url: http://sonarr-service
-          key: '{{HOMEPAGE_VAR_SONARR_KEY}}'
-          enableQueue: true
-    - Radarr:
-        icon: radarr
-        href: https://radarr.beaver-cloud.ts.net
-        siteMonitor: http://radarr-service/ping
-        widget:
-          type: radarr
-          url: http://radarr-service
-          key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
-          enableQueue: true
     - Mealie:
         icon: mealie
         href: https://mealie.beaver-cloud.ts.net
@@ -66,14 +34,6 @@
           url: http://kavita-service
           username: kevindurb
           password: '{{HOMEPAGE_VAR_KAVITA_PASSWORD}}'
-    - Pi-hole:
-        icon: pi-hole
-        href: https://pihole.beaver-cloud.ts.net/admin
-        siteMonitor: http://pihole-service/admin
-        widget:
-          type: pihole
-          url: http://pihole-service
-          key: '{{HOMEPAGE_VAR_PIHOLE_PASSWORD}}'
     - OctoPi:
         icon: octoprint
         href: https://octopi.beaver-cloud.ts.net
@@ -82,27 +42,40 @@
           type: octoprint
           url: https://octopi.beaver-cloud.ts.net
           key: '{{HOMEPAGE_VAR_OCTOPI_KEY}}'
-- Admin:
-    - PVE01 iDRAC:
-        icon: idrac
-        href: https://192.168.100.200
-        siteMonitor: https://192.168.100.200
-    - OpenWrt:
-        icon: openwrt
-        href: https://openwrt.beaver-cloud.ts.net
-        siteMonitor: https://192.168.1.1
-    - TrueNAS:
-        icon: truenas
-        href: https://192.168.100.201
-        siteMonitor: https://192.168.100.201/api/docs/
+    - Frigate:
+        icon: frigate
+        href: https://frigate.beaver-cloud.ts.net
+        siteMonitor: http://frigate-service/api/version
+- Media:
+    - Jellyfin:
+        icon: jellyfin
+        href: https://jellyfin.beaver-cloud.ts.net
+        siteMonitor: http://jellyfin-service/health
         widget:
-          type: truenas
-          url: https://192.168.100.201
-          key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
-          enablePools: true
-    - Kubernetes:
-        icon: kubernetes
-        href: https://kubernetes.beaver-cloud.ts.net
+          type: jellyfin
+          url: http://jellyfin-service
+          enableNowPlaying: true
+          enableBlocks: true
+          key: '{{HOMEPAGE_VAR_JELLYFIN_KEY}}'
+    - Sonarr:
+        icon: sonarr
+        href: https://sonarr.beaver-cloud.ts.net
+        siteMonitor: http://sonarr-service/ping
+        widget:
+          type: sonarr
+          url: http://sonarr-service
+          key: '{{HOMEPAGE_VAR_SONARR_KEY}}'
+          enableQueue: true
+    - Radarr:
+        icon: radarr
+        href: https://radarr.beaver-cloud.ts.net
+        siteMonitor: http://radarr-service/ping
+        widget:
+          type: radarr
+          url: http://radarr-service
+          key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
+          enableQueue: true
+- Monitoring:
     - Gatus:
         icon: gatus
         href: https://status.beaver-cloud.ts.net
@@ -110,10 +83,6 @@
         widget:
           type: gatus
           url: http://gatus-service
-    - Longhorn:
-        icon: longhorn
-        href: https://longhorn.beaver-cloud.ts.net
-        siteMonitor: http://longhorn-frontend.longhorn-system/v1
     - Prometheus:
         icon: prometheus
         href: https://prometheus.beaver-cloud.ts.net
@@ -125,3 +94,46 @@
         icon: alertmanager
         href: https://alertmanager.beaver-cloud.ts.net
         siteMonitor: http://alertmanager-service.monitoring/-/healthy
+- Infra:
+    - Pi-hole:
+        icon: pi-hole
+        href: https://pihole.beaver-cloud.ts.net/admin
+        siteMonitor: http://pihole-service/admin
+        widget:
+          type: pihole
+          url: http://pihole-service
+          key: '{{HOMEPAGE_VAR_PIHOLE_PASSWORD}}'
+    - TrueNAS:
+        icon: truenas
+        href: https://192.168.100.201
+        siteMonitor: https://192.168.100.201/api/docs/
+        widget:
+          type: truenas
+          url: https://192.168.100.201
+          key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
+          enablePools: true
+    - Omada:
+        icon: omada
+        href: https://omada.beaver-cloud.ts.net
+        siteMonitor: https://omada-service/login
+        widget:
+          type: omada
+          url: https://omada-service
+          username: kevindurb
+          password: '{{HOMEPAGE_VAR_OMADA_PASSWORD}}'
+          site: Southern Hospitality
+    - Kubernetes:
+        icon: kubernetes
+        href: https://kubernetes.beaver-cloud.ts.net
+    - Longhorn:
+        icon: longhorn
+        href: https://longhorn.beaver-cloud.ts.net
+        siteMonitor: http://longhorn-frontend.longhorn-system/v1
+    - PVE01 iDRAC:
+        icon: idrac
+        href: https://192.168.100.200
+        siteMonitor: https://192.168.100.200
+    - OpenWrt:
+        icon: openwrt
+        href: https://openwrt.beaver-cloud.ts.net
+        siteMonitor: https://192.168.1.1
