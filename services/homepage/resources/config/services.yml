@@ -137,3 +137,8 @@
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
         siteMonitor: https://192.168.1.1
+        widget:
+          type: openwrt
+          url: https://192.168.1.1
+          username: root
+          password: '{{HOMEPAGE_VAR_OPENWRT_PASSWORD}}'
