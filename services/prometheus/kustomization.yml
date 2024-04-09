@@ -18,6 +18,7 @@ configMapGenerator:
       - ./resources/smartctl-exporter.rules.yml
       - ./resources/prometheus.rules.yml
       - ./resources/longhorn.rules.yml
+      - ./resources/kubernetes.rules.yml
 
 labels:
   - pairs:

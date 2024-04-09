@@ -1,12 +1,2 @@
 ---
-groups:
-  - name: Kubernetes
-    rules:
-      - alert: KubernetesNodeMemoryPressure
-        expr: kube_node_status_condition{condition="MemoryPressure",status="true"} == 1
-        for: 2m
-        labels:
-          severity: critical
-        annotations:
-          summary: Kubernetes Node memory pressure (instance {{ $labels.instance }})
-          description: "Node {{ $labels.node }} has MemoryPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+groups: []

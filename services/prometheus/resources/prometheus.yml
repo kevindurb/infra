@@ -9,6 +9,7 @@ rule_files:
   - ./smartctl-exporter.rules.yml
   - ./prometheus.rules.yml
   - ./longhorn.rules.yml
+  - ./kubernetes.rules.yml
 
 alerting:
   alertmanagers:
