@@ -5,6 +5,7 @@ kind: Kustomization
 namePrefix: authentik-
 
 resources:
+  - ./resources/cache.yml
   - ./resources/postgres.yml
   - ./resources/secret-key.yml
   - ./server
