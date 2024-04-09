@@ -101,3 +101,8 @@ endpoints:
     group: Applications
     url: http://kavita-service/api/health
     <<: *defaults
+
+  - name: Vikunja
+    group: Applications
+    url: http://vikunja-service/v1/api/info
+    <<: *defaults

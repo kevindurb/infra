@@ -46,6 +46,10 @@
         icon: frigate
         href: https://frigate.beaver-cloud.ts.net
         siteMonitor: http://frigate-service/api/version
+    - Vikunja:
+        icon: vikunja
+        href: https://vikunja.beaver-cloud.ts.net
+        siteMonitor: http://vikunja-service/v1/api/info
 - Media:
     - Jellyfin:
         icon: jellyfin
