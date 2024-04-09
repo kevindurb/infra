@@ -106,3 +106,8 @@ endpoints:
     group: Applications
     url: http://vikunja-service/v1/api/info
     <<: *defaults
+
+  - name: Authentik
+    group: Admin
+    url: http://authentik-server-service/-/health/live
+    <<: *defaults

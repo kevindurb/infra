@@ -129,6 +129,10 @@
     - Kubernetes:
         icon: kubernetes
         href: https://kubernetes.beaver-cloud.ts.net
+    - Authentik:
+        icon: authentik
+        href: https://authentik.beaver-cloud.ts.net
+        siteMonitor: http://authentik-server-service/-/health/live
     - Longhorn:
         icon: longhorn
         href: https://longhorn.beaver-cloud.ts.net
