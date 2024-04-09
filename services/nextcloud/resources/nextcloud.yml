@@ -71,7 +71,7 @@ spec:
   instances: 3
   storage:
     storageClass: single-replica-longhorn
-    size: 1Gi
+    size: 5Gi
 
 ---
 apiVersion: v1
