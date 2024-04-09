@@ -17,34 +17,21 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
-        - name: device-vchiq
+        - name: dev-dri
           hostPath:
-            path: /dev/vchiq
-        - name: device-video10
-          hostPath:
-            path: /dev/video10
-        - name: device-video11
-          hostPath:
-            path: /dev/video11
-        - name: device-video12
-          hostPath:
-            path: /dev/video12
+            path: /dev/dri
       containers:
         - name: jellyfin
           image: docker.io/jellyfin/jellyfin
+          securityContext:
+            privileged: true
           volumeMounts:
             - name: config-volume
               mountPath: /config
             - name: truenas-media
               mountPath: /media
-            - mountPath: /dev/vchiq
-              name: device-vchiq
-            - mountPath: /dev/video10
-              name: device-video10
-            - mountPath: /dev/video11
-              name: device-video11
-            - mountPath: /dev/video12
-              name: device-video12
+            - mountPath: /dev/dri
+              name: dev-dri
           ports:
             - name: web
               containerPort: 8096
