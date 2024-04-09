@@ -1,0 +1,43 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron
+spec:
+  schedule: '0 * * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: cron
+              image: curlimages/curl:8.7.1
+              env:
+                - name: HEALTHCHECKS_SLUG
+                  valueFrom:
+                    secretKeyRef:
+                      name: healthchecks-secret
+                      key: HEALTHCHECKS_CLUSTER_UPTIME_SLUG
+              command:
+                - /bin/sh
+                - -c
+                - curl https://hc-ping.com/$(HEALTHCHECKS_SLUG)
+
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: secret
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: gitlab-secret-store
+  target:
+    name: healthchecks-secret
+    creationPolicy: Owner
+  data:
+    - secretKey: HEALTHCHECKS_CLUSTER_UPTIME_SLUG
+      remoteRef:
+        key: HEALTHCHECKS_CLUSTER_UPTIME_SLUG
