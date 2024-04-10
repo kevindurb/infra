@@ -1,0 +1,89 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config
+      containers:
+        - name: authelia
+          image: ghcr.io/authelia/authelia
+          command: [authelia]
+          args:
+            - --config=/config/configuration.yml
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+          env:
+            - name: AUTHELIA_STORAGE_POSTGRES_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: dbname
+            - name: AUTHELIA_STORAGE_POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: user
+            - name: AUTHELIA_STORAGE_POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: password
+            - name: AUTHELIA_STORAGE_POSTGRES_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: host
+          resources:
+            limits:
+              memory: 1G
+          ports:
+            - name: http
+              containerPort: 9091
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  instances: 3
+  storage:
+    storageClass: single-replica-longhorn
+    size: 5Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: http
+  tls:
+    - hosts:
+        - authelia
