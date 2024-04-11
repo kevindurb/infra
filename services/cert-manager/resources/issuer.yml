@@ -1,0 +1,37 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: cloudflare-issuer
+  namespace: cert-manager
+spec:
+  acme:
+    email: kevindurb@fastmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: acme-private-key-secret
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: cert-manager-cloudflare-secret
+              key: CF_API_TOKEN
+
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: cloudflare-secret
+  namespace: cert-manager
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: gitlab-secret-store
+  target:
+    name: cert-manager-cloudflare-secret
+    creationPolicy: Owner
+  data:
+    - secretKey: CF_API_TOKEN
+      remoteRef:
+        key: CF_API_TOKEN
