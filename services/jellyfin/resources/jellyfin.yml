@@ -64,32 +64,6 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: jellyfin.durbin.casa
-    cert-manager.io/cluster-issuer: cloudflare-issuer
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: 'jellyfin.durbin.casa'
-      http:
-        paths:
-          - pathType: Prefix
-            path: '/'
-            backend:
-              service:
-                name: service
-                port:
-                  name: web
-  tls:
-    - hosts:
-        - jellyfin.durbin.casa
-      secretName: jellyfin-ingress-cert
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: tailscale-ingress
 spec:
   ingressClassName: tailscale
