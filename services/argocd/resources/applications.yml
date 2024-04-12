@@ -566,6 +566,7 @@ spec:
   project: default
   source:
     repoURL: https://backube.github.io/helm-charts/
+    targetRevision: stable
     chart: volsync
   destination:
     server: https://kubernetes.default.svc
