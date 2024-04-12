@@ -33,6 +33,11 @@ scrape_configs:
       - targets:
           - gatus-service.default
 
+  - job_name: argocd
+    static_configs:
+      - targets:
+          - argocd-metrics.argocd:8082
+
   - job_name: kubelet
     kubernetes_sd_configs:
       - role: node
