@@ -17,6 +17,7 @@ spec:
       prune: true
       selfHeal: true
       allowEmpty: false
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -36,6 +37,7 @@ spec:
       prune: true
       selfHeal: true
       allowEmpty: false
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -47,6 +49,26 @@ spec:
     repoURL: https://gitlab.com/kevindurb/infra.git
     targetRevision: HEAD
     path: services/alertmanager
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+spec:
+  project: default
+  source:
+    repoURL: https://gitlab.com/kevindurb/infra.git
+    targetRevision: HEAD
+    path: services/cert-manager
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
