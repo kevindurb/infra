@@ -59,3 +59,7 @@
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
         siteMonitor: https://192.168.1.1
+    - ArgoCD:
+        icon: argocd
+        href: https://argocd.beaver-cloud.ts.net
+        siteMonitor: https://argocd-server.argocd
