@@ -11,3 +11,4 @@ resources:
 
 patches:
   - path: ./resources/operator.patch.yml
+  - path: ./resources/secret.patch.yml
