@@ -7,8 +7,5 @@ namePrefix: minecraft-
 resources:
   - ./resources/minecraft.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: minecraft
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: minecraft
