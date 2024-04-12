@@ -3,9 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
-  annotations:
-    keel.sh/policy: minor
-    keel.sh/trigger: poll
 spec:
   template:
     spec:
@@ -16,22 +13,12 @@ spec:
             - name: web
               containerPort: 80
           volumeMounts:
-            - name: ripping-storage
-              mountPath: /srv/ripping-storage
             - name: media
               mountPath: /srv/media
-            - name: data
-              mountPath: /srv/data
       volumes:
-        - name: ripping-storage
-          persistentVolumeClaim:
-            claimName: truenas-ripping-storage
         - name: media
           persistentVolumeClaim:
             claimName: truenas-media
-        - name: data
-          persistentVolumeClaim:
-            claimName: truenas-data
 
 ---
 apiVersion: v1
@@ -49,13 +36,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  annotations:
-    gethomepage.dev/enabled: 'true'
-    gethomepage.dev/group: Admin
-    gethomepage.dev/icon: filebrowser
-    gethomepage.dev/app: filebrowser
-    gethomepage.dev/name: File Browser
-    gethomepage.dev/href: https://filebrowser.beaver-cloud.ts.net
 spec:
   ingressClassName: tailscale
   defaultBackend:
