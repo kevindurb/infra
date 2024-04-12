@@ -96,3 +96,23 @@ spec:
     - secretKey: AWS_SECRET_ACCESS_KEY
       remoteRef:
         key: R2_SECRET_ACCESS_KEY
+
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: mydata-backup
+spec:
+  sourcePVC: smokeping-data-volume
+  trigger:
+    schedule: '0 * * * *'
+  restic:
+    pruneIntervalDays: 14
+    repository: smokeping-restic-config
+    retain:
+      hourly: 6
+      daily: 5
+      weekly: 4
+      monthly: 2
+      yearly: 1
+    copyMethod: Direct
