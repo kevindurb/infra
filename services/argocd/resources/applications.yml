@@ -36,3 +36,22 @@ spec:
       prune: true
       selfHeal: true
       allowEmpty: false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alertmanager
+spec:
+  project: default
+  source:
+    repoURL: https://gitlab.com/kevindurb/infra.git
+    targetRevision: HEAD
+    path: services/alertmanager
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
