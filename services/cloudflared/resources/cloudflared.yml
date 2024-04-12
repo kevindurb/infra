@@ -3,10 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
-  annotations:
-    keel.sh/policy: all
-    keel.sh/trigger: poll
-    keel.sh/approvals: '1'
 spec:
   replicas: 2
   template:
