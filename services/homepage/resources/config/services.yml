@@ -4,35 +4,18 @@
         icon: home-assistant
         href: https://home-assistant.beaver-cloud.ts.net
         siteMonitor: http://home-assistant-service/manifest.json
-        widget:
-          type: homeassistant
-          url: http://home-assistant-service
-          key: '{{HOMEPAGE_VAR_HOME_ASSISTANT_TOKEN}}'
     - Mealie:
         icon: mealie
         href: https://mealie.beaver-cloud.ts.net
         siteMonitor: http://mealie-service/api/app/about
-        widget:
-          type: mealie
-          url: http://mealie-service
-          key: '{{HOMEPAGE_VAR_MEALIE_TOKEN}}'
     - Kavita:
         icon: kavita
         href: https://kavita.beaver-cloud.ts.net
         siteMonitor: http://kavita-service/api/health
-        widget:
-          type: kavita
-          url: http://kavita-service
-          username: kevindurb
-          password: '{{HOMEPAGE_VAR_KAVITA_PASSWORD}}'
     - OctoPi:
         icon: octoprint
         href: https://octopi.beaver-cloud.ts.net
         siteMonitor: https://octopi.beaver-cloud.ts.net
-        widget:
-          type: octoprint
-          url: https://octopi.beaver-cloud.ts.net
-          key: '{{HOMEPAGE_VAR_OCTOPI_KEY}}'
     - Frigate:
         icon: frigate
         href: https://frigate.beaver-cloud.ts.net
@@ -46,27 +29,15 @@
         icon: jellyfin
         href: https://jellyfin.beaver-cloud.ts.net
         siteMonitor: http://jellyfin-service/health
-        widget:
-          type: jellyfin
-          url: http://jellyfin-service
-          enableNowPlaying: true
-          enableBlocks: true
-          key: '{{HOMEPAGE_VAR_JELLYFIN_KEY}}'
 - Monitoring:
     - Gatus:
         icon: gatus
         href: https://status.beaver-cloud.ts.net
         siteMonitor: http://gatus-service/health
-        widget:
-          type: gatus
-          url: http://gatus-service
     - Prometheus:
         icon: prometheus
         href: https://prometheus.beaver-cloud.ts.net
         siteMonitor: http://prometheus-service.monitoring/-/healthy
-        widget:
-          type: prometheus
-          url: http://prometheus-service.monitoring
     - Alertmanager:
         icon: alertmanager
         href: https://alertmanager.beaver-cloud.ts.net
@@ -76,21 +47,10 @@
         icon: truenas
         href: https://192.168.100.201
         siteMonitor: https://192.168.100.201/api/docs/
-        widget:
-          type: truenas
-          url: https://192.168.100.201
-          key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
-          enablePools: true
     - Omada:
         icon: omada
         href: https://omada.beaver-cloud.ts.net
         siteMonitor: https://omada-service/login
-        widget:
-          type: omada
-          url: https://omada-service
-          username: kevindurb
-          password: '{{HOMEPAGE_VAR_OMADA_PASSWORD}}'
-          site: Southern Hospitality
     - PVE01 iDRAC:
         icon: idrac
         href: https://192.168.100.200
@@ -99,8 +59,3 @@
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
         siteMonitor: https://192.168.1.1
-        widget:
-          type: openwrt
-          url: https://192.168.1.1
-          username: root
-          password: '{{HOMEPAGE_VAR_OPENWRT_PASSWORD}}'
