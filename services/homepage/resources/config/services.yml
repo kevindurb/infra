@@ -32,7 +32,7 @@
 - Monitoring:
     - Gatus:
         icon: gatus
-        href: https://status.beaver-cloud.ts.net
+        href: https://status.durbin.casa
         siteMonitor: http://gatus-service/health
     - Prometheus:
         icon: prometheus
@@ -61,5 +61,5 @@
         siteMonitor: https://192.168.1.1
     - ArgoCD:
         icon: argocd
-        href: https://argocd.beaver-cloud.ts.net
+        href: https://argo.beaver-cloud.ts.net
         siteMonitor: https://argocd-server.argocd

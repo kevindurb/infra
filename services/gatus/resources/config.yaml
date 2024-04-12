@@ -90,3 +90,8 @@ endpoints:
     group: Applications
     url: http://vikunja-service/v1/api/info
     <<: *defaults
+
+  - name: ArgoCD
+    group: Admin
+    url: https://argocd-server.argocd
+    <<: *defaults
