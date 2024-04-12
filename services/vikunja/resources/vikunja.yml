@@ -59,7 +59,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn
+  storageClassName: local-path
   resources:
     requests:
       storage: 10Gi
@@ -72,7 +72,7 @@ metadata:
 spec:
   instances: 3
   storage:
-    storageClass: single-replica-longhorn
+    storageClass: local-path
     size: 5Gi
 
 ---

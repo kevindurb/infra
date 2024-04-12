@@ -16,15 +16,6 @@
           type: mealie
           url: http://mealie-service
           key: '{{HOMEPAGE_VAR_MEALIE_TOKEN}}'
-    - Nextcloud:
-        icon: nextcloud
-        href: https://nextcloud.beaver-cloud.ts.net
-        siteMonitor: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
-        widget:
-          type: nextcloud
-          url: http://nextcloud-service
-          username: kevindurb
-          password: '{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}'
     - Kavita:
         icon: kavita
         href: https://kavita.beaver-cloud.ts.net
@@ -61,24 +52,6 @@
           enableNowPlaying: true
           enableBlocks: true
           key: '{{HOMEPAGE_VAR_JELLYFIN_KEY}}'
-    - Sonarr:
-        icon: sonarr
-        href: https://sonarr.beaver-cloud.ts.net
-        siteMonitor: http://sonarr-service/ping
-        widget:
-          type: sonarr
-          url: http://sonarr-service
-          key: '{{HOMEPAGE_VAR_SONARR_KEY}}'
-          enableQueue: true
-    - Radarr:
-        icon: radarr
-        href: https://radarr.beaver-cloud.ts.net
-        siteMonitor: http://radarr-service/ping
-        widget:
-          type: radarr
-          url: http://radarr-service
-          key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
-          enableQueue: true
 - Monitoring:
     - Gatus:
         icon: gatus
@@ -99,14 +72,6 @@
         href: https://alertmanager.beaver-cloud.ts.net
         siteMonitor: http://alertmanager-service.monitoring/-/healthy
 - Infra:
-    - Pi-hole:
-        icon: pi-hole
-        href: https://pihole.beaver-cloud.ts.net/admin
-        siteMonitor: http://pihole-service/admin
-        widget:
-          type: pihole
-          url: http://pihole-service
-          key: '{{HOMEPAGE_VAR_PIHOLE_TOKEN}}'
     - TrueNAS:
         icon: truenas
         href: https://192.168.100.201
@@ -126,17 +91,6 @@
           username: kevindurb
           password: '{{HOMEPAGE_VAR_OMADA_PASSWORD}}'
           site: Southern Hospitality
-    - Kubernetes:
-        icon: kubernetes
-        href: https://kubernetes.beaver-cloud.ts.net
-    - Authentik:
-        icon: authentik
-        href: https://authentik.beaver-cloud.ts.net
-        siteMonitor: http://authentik-server-service/-/health/live
-    - Longhorn:
-        icon: longhorn
-        href: https://longhorn.beaver-cloud.ts.net
-        siteMonitor: http://longhorn-frontend.longhorn-system/v1
     - PVE01 iDRAC:
         icon: idrac
         href: https://192.168.100.200

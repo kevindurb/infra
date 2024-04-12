@@ -9,7 +9,6 @@ rule_files:
   - ./node-exporter.rules.yml
   - ./smartctl-exporter.rules.yml
   - ./prometheus.rules.yml
-  - ./longhorn.rules.yml
   - ./kubernetes.rules.yml
 
 alerting:
@@ -84,21 +83,6 @@ scrape_configs:
     relabel_configs:
       - source_labels: [__meta_kubernetes_endpoints_name]
         regex: smartctl-exporter-service
-        action: keep
-
-      - action: replace
-        source_labels: [__meta_kubernetes_pod_node_name]
-        target_label: instance
-
-  - job_name: longhorn
-    kubernetes_sd_configs:
-      - role: endpoints
-    relabel_configs:
-      - source_labels:
-          - __meta_kubernetes_namespace
-          - __meta_kubernetes_service_name
-          - __meta_kubernetes_endpoint_port_name
-        regex: longhorn-system;longhorn-backend;manager
         action: keep
 
       - action: replace

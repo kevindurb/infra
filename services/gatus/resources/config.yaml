@@ -8,7 +8,8 @@ default-endpoint: &defaults
   client:
     insecure: true
   conditions:
-    - '[STATUS] == 200'
+    - '[STATUS] >= 200'
+    - '[STATUS] < 300'
 
 alerting:
   pushover:
@@ -60,16 +61,6 @@ endpoints:
       'Accept-Encoding': 'deflate, gzip, br, zstd'
     <<: *defaults
 
-  - name: Radarr
-    group: Applications
-    url: http://radarr-service/ping
-    <<: *defaults
-
-  - name: Sonarr
-    group: Applications
-    url: http://sonarr-service/ping
-    <<: *defaults
-
   - name: Mealie
     group: Applications
     url: http://mealie-service/api/app/about
@@ -90,13 +81,6 @@ endpoints:
     url: http://homepage-service/api/healthcheck
     <<: *defaults
 
-  - name: Nextcloud
-    group: Applications
-    url: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
-    conditions:
-      - '[STATUS] < 500'
-    <<: *defaults
-
   - name: Kavita
     group: Applications
     url: http://kavita-service/api/health
@@ -105,9 +89,4 @@ endpoints:
   - name: Vikunja
     group: Applications
     url: http://vikunja-service/v1/api/info
-    <<: *defaults
-
-  - name: Authentik
-    group: Admin
-    url: http://authentik-server-service/-/health/live
     <<: *defaults
