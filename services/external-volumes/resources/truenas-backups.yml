@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: truenas-backups
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.100.201
+    path: /mnt/tank/backups
+  mountOptions:
+    - nolock
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: truenas-backups
+spec:
+  resources:
+    requests:
+      storage: 2Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ''
+  volumeName: truenas-backups

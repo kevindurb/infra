@@ -4,5 +4,6 @@ kind: Kustomization
 
 resources:
   - ./resources/truenas-media.yml
+  - ./resources/truenas-backups.yml
   # - ./resources/truenas-data.yml
   # - ./resources/truenas-ripping-storage.yml
