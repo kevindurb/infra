@@ -20,12 +20,16 @@ spec:
           args:
             - server
             - /data
+            - --console-address
+            - :9001
           volumeMounts:
             - name: truenas-minio
               mountPath: /data
           ports:
-            - name: web
+            - name: api
               containerPort: 9000
+            - name: console
+              containerPort: 9001
           readinessProbe:
             httpGet:
               path: /minio/health/ready
@@ -43,12 +47,23 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: service
+  name: api-service
 spec:
   ports:
     - name: web
       port: 80
-      targetPort: web
+      targetPort: api
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: console-service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: console
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -59,7 +74,7 @@ spec:
   ingressClassName: tailscale
   defaultBackend:
     service:
-      name: service
+      name: console-service
       port:
         name: web
   tls:
