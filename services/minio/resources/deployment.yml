@@ -1,0 +1,67 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      hostname: minio
+      volumes:
+        - name: truenas-minio
+          persistentVolumeClaim:
+            claimName: truenas-minio
+      containers:
+        - name: minio
+          image: quay.io/minio/minio
+          args:
+            - server
+            - /data
+          volumeMounts:
+            - name: truenas-minio
+              mountPath: /data
+          ports:
+            - name: web
+              containerPort: 9000
+          readinessProbe:
+            httpGet:
+              path: /minio/health/ready
+              port: 9000
+            initialDelaySeconds: 120
+            periodSeconds: 20
+          livenessProbe:
+            httpGet:
+              path: /minio/health/live
+              port: 9000
+            initialDelaySeconds: 120
+            periodSeconds: 20
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tailscale-ingress
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: service
+      port:
+        name: web
+  tls:
+    - hosts:
+        - minio
