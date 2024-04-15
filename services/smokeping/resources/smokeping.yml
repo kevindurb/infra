@@ -103,7 +103,7 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: mydata-backup
+  name: data-backup
 spec:
   sourcePVC: smokeping-data-volume
   trigger:
