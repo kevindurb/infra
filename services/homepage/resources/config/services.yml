@@ -18,7 +18,7 @@
         siteMonitor: https://octopi.beaver-cloud.ts.net
     - Frigate:
         icon: frigate
-        href: https://frigate.beaver-cloud.ts.net
+        href: https://frigate.durbin.casa
         siteMonitor: http://frigate-service/api/version
     - Vikunja:
         icon: vikunja

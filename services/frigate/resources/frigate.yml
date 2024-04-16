@@ -65,13 +65,22 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: frigate.durbin.casa
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: service
-      port:
-        name: web
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - frigate
+    - hosts: ['*.durbin.casa']
+      secretName: durbin-casa-wildcard-cert
+  rules:
+    - host: frigate.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
