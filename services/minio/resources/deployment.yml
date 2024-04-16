@@ -25,6 +25,20 @@ spec:
           volumeMounts:
             - name: truenas-minio
               mountPath: /data
+          env:
+            - name: MINIO_DATA_DIR
+              value: /data
+            - name: MINIO_API_PORT_NUMBER
+              value: '9000'
+            - name: MINIO_CONSOLE_PORT_NUMBER
+              value: '9001'
+            - name: MINIO_ROOT_USER
+              value: admin
+            - name: MINIO_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: minio-root-credentials
+                  key: MINIO_ROOT_PASSWORD
           ports:
             - name: api
               containerPort: 9000
@@ -42,6 +56,24 @@ spec:
               port: 9000
             initialDelaySeconds: 120
             periodSeconds: 20
+
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: root-credentials
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: gitlab-secret-store
+  target:
+    name: minio-root-credentials
+    creationPolicy: Owner
+  data:
+    - secretKey: MINIO_ROOT_PASSWORD
+      remoteRef:
+        key: MINIO_ROOT_PASSWORD
 
 ---
 apiVersion: v1
