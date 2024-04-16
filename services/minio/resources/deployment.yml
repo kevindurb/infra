@@ -17,13 +17,11 @@ spec:
       containers:
         - name: minio
           image: quay.io/minio/minio
-          args: [server]
+          args: [server, /data]
           volumeMounts:
             - name: truenas-minio
               mountPath: /data
           env:
-            - name: MINIO_DATA_DIR
-              value: /data
             - name: MINIO_API_PORT_NUMBER
               value: '9000'
             - name: MINIO_CONSOLE_PORT_NUMBER
