@@ -6,6 +6,7 @@ namePrefix: vikunja-
 
 resources:
   - ./resources/vikunja.yml
+  - ./resources/backup.yml
 
 commonLabels:
   app.kubernetes.io/name: vikunja
