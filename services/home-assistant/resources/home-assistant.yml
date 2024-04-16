@@ -82,7 +82,7 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-    - hosts: ['*.durbin.casa']
+    - hosts: [home-assistant.durbin.casa]
       secretName: durbin-casa-wildcard-cert
   rules:
     - host: home-assistant.durbin.casa
