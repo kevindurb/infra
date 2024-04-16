@@ -6,6 +6,7 @@ namePrefix: jellyfin-
 
 resources:
   - ./resources/jellyfin.yml
+  - ./resources/backup.yml
 
 commonLabels:
   app.kubernetes.io/name: jellyfin
