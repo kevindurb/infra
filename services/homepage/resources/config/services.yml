@@ -49,7 +49,7 @@
         siteMonitor: https://192.168.100.201/api/docs/
     - Omada:
         icon: omada
-        href: https://omada.beaver-cloud.ts.net
+        href: https://omada.durbin.casa
         siteMonitor: https://omada-service/login
     - PVE01 iDRAC:
         icon: idrac
