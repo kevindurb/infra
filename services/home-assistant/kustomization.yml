@@ -6,6 +6,7 @@ namePrefix: home-assistant-
 
 resources:
   - ./resources/home-assistant.yml
+  - ./resources/backup.yml
 
 configMapGenerator:
   - name: config
