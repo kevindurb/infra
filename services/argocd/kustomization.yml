@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-  - ./resources/default-namespace.yml
   - ./resources/namespace.yml
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   - ./resources/ingress.yml
