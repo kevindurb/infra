@@ -10,7 +10,7 @@
         siteMonitor: http://mealie-service/api/app/about
     - Kavita:
         icon: kavita
-        href: https://kavita.beaver-cloud.ts.net
+        href: https://kavita.durbin.casa
         siteMonitor: http://kavita-service/api/health
     - OctoPi:
         icon: octoprint
