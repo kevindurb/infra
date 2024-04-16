@@ -6,6 +6,7 @@ namePrefix: smokeping-
 
 resources:
   - ./resources/smokeping.yml
+  - ./resources/backup.yml
 
 labels:
   - pairs:
