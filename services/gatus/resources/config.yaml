@@ -95,3 +95,8 @@ endpoints:
     group: Admin
     url: https://argocd-server.argocd
     <<: *defaults
+
+  - name: Minio
+    group: Admin
+    url: https://minio-api-server/minio/health/ready
+    <<: *defaults
