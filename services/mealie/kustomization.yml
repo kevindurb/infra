@@ -6,6 +6,7 @@ namePrefix: mealie-
 
 resources:
   - ./resources/mealie.yml
+  - ./resources/backup.yml
 
 commonLabels:
   app.kubernetes.io/name: mealie
