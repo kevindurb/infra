@@ -27,7 +27,7 @@
 - Media:
     - Jellyfin:
         icon: jellyfin
-        href: https://jellyfin.beaver-cloud.ts.net
+        href: https://jellyfin.durbin.casa
         siteMonitor: http://jellyfin-service/health
 - Monitoring:
     - Gatus:
