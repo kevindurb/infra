@@ -12,8 +12,5 @@ configMapGenerator:
     files:
       - ./resources/omada-env.properties
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: omada
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: omada

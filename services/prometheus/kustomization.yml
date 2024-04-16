@@ -19,8 +19,5 @@ configMapGenerator:
       - ./resources/prometheus.rules.yml
       - ./resources/kubernetes.rules.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: prometheus
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: prometheus

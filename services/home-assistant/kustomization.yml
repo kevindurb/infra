@@ -12,8 +12,5 @@ configMapGenerator:
     files:
       - ./resources/configuration.yaml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: home-assistant
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: home-assistant

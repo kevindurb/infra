@@ -7,8 +7,5 @@ namePrefix: jellyfin-
 resources:
   - ./resources/jellyfin.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: jellyfin
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: jellyfin

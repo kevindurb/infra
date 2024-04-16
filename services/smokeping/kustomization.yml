@@ -8,8 +8,5 @@ resources:
   - ./resources/smokeping.yml
   - ./resources/backup.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: smokeping
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: smokeping

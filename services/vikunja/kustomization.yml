@@ -7,8 +7,5 @@ namePrefix: vikunja-
 resources:
   - ./resources/vikunja.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: vikunja
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: vikunja

@@ -7,8 +7,5 @@ namePrefix: whoami-
 resources:
   - ./resources/whoami.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: whoami
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: whoami

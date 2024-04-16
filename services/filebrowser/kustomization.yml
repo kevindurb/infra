@@ -7,8 +7,5 @@ namePrefix: filebrowser-
 resources:
   - ./resources/filebrowser.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: filebrowser
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: filebrowser

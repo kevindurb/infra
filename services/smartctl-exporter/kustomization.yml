@@ -8,8 +8,5 @@ namespace: monitoring
 resources:
   - ./resources/daemon-set.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: smartctl-exporter
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: smartctl-exporter

@@ -7,8 +7,5 @@ namePrefix: pihole-
 resources:
   - ./resources/deployment.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: pihole
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: pihole

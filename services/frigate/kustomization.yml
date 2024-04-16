@@ -12,8 +12,5 @@ configMapGenerator:
     files:
       - ./resources/config.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: frigate
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: frigate

@@ -7,8 +7,5 @@ namePrefix: mealie-
 resources:
   - ./resources/mealie.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: mealie
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: mealie

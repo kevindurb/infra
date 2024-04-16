@@ -7,8 +7,5 @@ namePrefix: adminer-
 resources:
   - ./resources/adminer.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: adminer
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: adminer

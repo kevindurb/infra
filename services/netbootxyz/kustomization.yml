@@ -7,8 +7,5 @@ namePrefix: netbootxyz-
 resources:
   - ./resources/netbootxyz.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: netbootxyz
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: netbootxyz

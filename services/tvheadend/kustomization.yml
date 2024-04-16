@@ -7,8 +7,5 @@ namePrefix: tvheadend-
 resources:
   - ./resources/tvheadend.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: tvheadend
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: tvheadend

@@ -7,8 +7,5 @@ namePrefix: sonarr-
 resources:
   - ./resources/sonarr.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: sonarr
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: sonarr

@@ -16,8 +16,5 @@ configMapGenerator:
       - ./resources/config/bookmarks.yml
       - ./resources/config/widgets.yml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: homepage
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: homepage

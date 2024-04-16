@@ -13,8 +13,5 @@ configMapGenerator:
     files:
       - ./resources/config.yaml
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: gatus
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: gatus

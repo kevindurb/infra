@@ -12,8 +12,5 @@ configMapGenerator:
     files:
       - ./resources/mosquitto.conf
 
-labels:
-  - pairs:
-      app.kubernetes.io/name: mosquitto
-    includeSelectors: true
-    includeTemplates: true
+commonLabels:
+  app.kubernetes.io/name: mosquitto
