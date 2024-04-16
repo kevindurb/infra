@@ -69,4 +69,4 @@
     - Minio:
         icon: minio
         href: https://minio.beaver-cloud.ts.net
-        siteMonitor: https://minio-api-server/minio/health/ready
+        siteMonitor: http://minio-api-service/minio/health/ready

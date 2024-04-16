@@ -98,5 +98,5 @@ endpoints:
 
   - name: Minio
     group: Admin
-    url: https://minio-api-server/minio/health/ready
+    url: http://minio-api-service/minio/health/ready
     <<: *defaults
