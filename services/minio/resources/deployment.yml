@@ -17,11 +17,7 @@ spec:
       containers:
         - name: minio
           image: quay.io/minio/minio
-          args:
-            - server
-            - /data
-            - --console-address
-            - :9001
+          args: [server]
           volumeMounts:
             - name: truenas-minio
               mountPath: /data
