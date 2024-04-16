@@ -2,7 +2,7 @@
 - Home:
     - Home Assistant:
         icon: home-assistant
-        href: https://home-assistant.beaver-cloud.ts.net
+        href: https://home-assistant.durbin.casa
         siteMonitor: http://home-assistant-service/manifest.json
     - Mealie:
         icon: mealie
