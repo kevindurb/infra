@@ -6,7 +6,7 @@
         siteMonitor: http://home-assistant-service/manifest.json
     - Mealie:
         icon: mealie
-        href: https://mealie.beaver-cloud.ts.net
+        href: https://mealie.durbin.casa
         siteMonitor: http://mealie-service/api/app/about
     - Kavita:
         icon: kavita
@@ -22,7 +22,7 @@
         siteMonitor: http://frigate-service/api/version
     - Vikunja:
         icon: vikunja
-        href: https://vikunja.beaver-cloud.ts.net
+        href: https://vikunja.durbin.casa
         siteMonitor: http://vikunja-service/v1/api/info
 - Media:
     - Jellyfin:
