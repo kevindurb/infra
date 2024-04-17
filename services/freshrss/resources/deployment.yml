@@ -35,6 +35,17 @@ spec:
                 secretKeyRef:
                   name: freshrss-postgres-app
                   key: host
+            - name: FRESHRSS_INSTALL
+              value: |-
+                --api-enabled
+                --base-url $(BASE_URL)
+                --db-base $(DB_BASE)
+                --db-host $(DB_HOST)
+                --db-password $(DB_PASSWORD)
+                --db-type pgsql
+                --db-user $(DB_USER)
+                --default_user kevindurb
+                --language en
           resources:
             limits:
               memory: 1G
