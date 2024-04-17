@@ -12,5 +12,7 @@ ingress:
     service: http://vikunja-service
   - hostname: status.durbin.casa
     service: http://gatus-service
+  - hostname: home.durbin.casa
+    service: http://homepage-service
 
   - service: http_status:404
