@@ -37,7 +37,6 @@ spec:
                   key: host
             - name: FRESHRSS_INSTALL
               value: >-
-                --api-enabled
                 --db-base $(DB_BASE)
                 --db-host $(DB_HOST)
                 --db-password $(DB_PASSWORD)
