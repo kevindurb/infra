@@ -14,5 +14,7 @@ ingress:
     service: http://gatus-service
   - hostname: home.durbin.casa
     service: http://homepage-service
+  - hostname: freshrss.durbin.casa
+    service: http://homepage-service
 
   - service: http_status:404
