@@ -36,7 +36,7 @@ spec:
                   name: freshrss-postgres-app
                   key: host
             - name: FRESHRSS_INSTALL
-              value: |-
+              value: >-
                 --api-enabled
                 --db-base $(DB_BASE)
                 --db-host $(DB_HOST)
