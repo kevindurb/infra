@@ -44,6 +44,11 @@ spec:
                 --db-user $(DB_USER)
                 --default_user kevindurb
                 --language en
+            - name: FRESHRSS_USER
+              value: >-
+                --language en
+                --password password
+                --user kevindurb
           resources:
             limits:
               memory: 1G
