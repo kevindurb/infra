@@ -39,6 +39,9 @@ scrape_configs:
           - argocd-metrics.argocd:8082
 
   - job_name: volsync
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     static_configs:
       - targets:
           - volsync-metrics.volsync-system:8443
