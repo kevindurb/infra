@@ -1,0 +1,65 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: freshrss
+          image: docker.io/freshrss/freshrss
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: DB_TYPE
+              value: pgsql
+            - name: DB_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: freshrss-postgres-app
+                  key: dbname
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: freshrss-postgres-app
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: freshrss-postgres-app
+                  key: password
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: freshrss-postgres-app
+                  key: host
+          resources:
+            limits:
+              memory: 1G
+          ports:
+            - name: http
+              containerPort: 80
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  instances: 3
+  storage:
+    storageClass: local-storage
+    size: 5Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
