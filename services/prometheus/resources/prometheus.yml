@@ -38,6 +38,11 @@ scrape_configs:
       - targets:
           - argocd-metrics.argocd:8082
 
+  - job_name: volsync
+    static_configs:
+      - targets:
+          - volsync-metrics.volsync-system:8443
+
   - job_name: kubelet
     kubernetes_sd_configs:
       - role: node
