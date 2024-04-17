@@ -18,6 +18,8 @@ configMapGenerator:
       - ./resources/smartctl-exporter.rules.yml
       - ./resources/prometheus.rules.yml
       - ./resources/kubernetes.rules.yml
+      - ./resources/volsync.rules.yml
+      - ./resources/argocd.rules.yml
 
 commonLabels:
   app.kubernetes.io/name: prometheus

@@ -10,6 +10,8 @@ rule_files:
   - ./smartctl-exporter.rules.yml
   - ./prometheus.rules.yml
   - ./kubernetes.rules.yml
+  - ./volsync.rules.yml
+  - ./argocd.rules.yml
 
 alerting:
   alertmanagers:
