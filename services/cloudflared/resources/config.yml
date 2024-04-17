@@ -15,6 +15,6 @@ ingress:
   - hostname: home.durbin.casa
     service: http://homepage-service
   - hostname: freshrss.durbin.casa
-    service: http://homepage-service
+    service: http://freshrss-service
 
   - service: http_status:404
