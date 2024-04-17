@@ -38,7 +38,6 @@ spec:
             - name: FRESHRSS_INSTALL
               value: |-
                 --api-enabled
-                --base-url $(BASE_URL)
                 --db-base $(DB_BASE)
                 --db-host $(DB_HOST)
                 --db-password $(DB_PASSWORD)
