@@ -66,6 +66,7 @@
     - Kubernetes:
         icon: kubernetes
         href: https://kubernetes.beaver-cloud.ts.net
+        siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - Minio:
         icon: minio
         href: https://minio.beaver-cloud.ts.net
