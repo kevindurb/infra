@@ -42,6 +42,8 @@ scrape_configs:
     scheme: https
     tls_config:
       insecure_skip_verify: true
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
     static_configs:
       - targets:
           - volsync-metrics.volsync-system:8443
