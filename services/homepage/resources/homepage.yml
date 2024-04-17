@@ -13,7 +13,7 @@ spec:
             name: config
       containers:
         - name: homepage
-          image: ghcr.io/gethomepage/homepage:latest
+          image: ghcr.io/gethomepage/homepage:v0.8.12
           volumeMounts:
             - name: config
               mountPath: /app/config/settings.yaml
@@ -34,7 +34,7 @@ spec:
             - name: LOG_LEVEL
               value: debug
           ports:
-            - name: http
+            - name: web
               containerPort: 3000
 
 ---
@@ -44,9 +44,9 @@ metadata:
   name: service
 spec:
   ports:
-    - name: http
+    - name: web
       port: 80
-      targetPort: http
+      targetPort: web
 
 ---
 apiVersion: networking.k8s.io/v1
@@ -59,7 +59,7 @@ spec:
     service:
       name: service
       port:
-        name: http
+        name: web
   tls:
     - hosts:
         - homepage
