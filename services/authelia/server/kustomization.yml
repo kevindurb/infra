@@ -14,3 +14,4 @@ configMapGenerator:
 
 resources:
   - ./resources/deployment.yml
+  - ./resources/users-secret.yml
