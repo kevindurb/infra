@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  setup:
+    cmds:
+      - ansible-galaxy install -r ./roles/requirements.yml
+      - npm install
+
+  provision-nodes: >-
+    ansible-playbook
+    -i ./inventory/production.yml
+    ./playbooks/base_provision.yml
+
+  lint: npx prettier -w .
+
+  refresh-argo: hurl ./hurl/argo-webhook.hurl
