@@ -7,10 +7,6 @@ namePrefix: authelia-
 commonLabels:
   app.kubernetes.io/name: authelia
 
-configMapGenerator:
-  - name: config
-    files:
-      - ./resources/configuration.yml
-
 resources:
-  - ./resources/authelia.yml
+  - ./session
+  - ./server
