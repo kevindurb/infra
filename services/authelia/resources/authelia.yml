@@ -15,7 +15,7 @@ spec:
             name: config
       containers:
         - name: authelia
-          image: ghcr.io/authelia/authelia
+          image: ghcr.io/authelia/authelia:4.38
           command: [authelia]
           args:
             - --config=/config/configuration.yml

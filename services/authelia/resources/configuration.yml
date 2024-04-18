@@ -1,1 +1,19 @@
+# yaml-language-server: $schema=https://www.authelia.com/schemas/v4.38/json-schema/configuration.json
+# yamllint disable rule:comments-indentation
 ---
+theme: 'auto'
+default_2fa_method: 'totp'
+
+log:
+  level: 'debug'
+
+telemetry:
+  metrics:
+    enabled: false
+
+totp:
+  disable: false
+  issuer: 'authelia.com'
+
+webauthn:
+  disable: true
