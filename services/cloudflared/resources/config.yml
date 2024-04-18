@@ -16,5 +16,7 @@ ingress:
     service: http://homepage-service
   - hostname: freshrss.durbin.casa
     service: http://freshrss-service
+  - hostname: auth.durbin.casa
+    service: http://authelia-service
 
   - service: http_status:404
