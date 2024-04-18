@@ -16,3 +16,10 @@ tasks:
   lint: npx prettier -w .
 
   refresh-argo: hurl ./hurl/argo-webhook.hurl
+
+  check-authelia-config: >-
+    docker run
+    -v ./services/authelia/resources/configuration.yml:/config/configuration.yml
+    authelia/authelia:latest
+    authelia config validate
+    --config /config/configuration.yml
