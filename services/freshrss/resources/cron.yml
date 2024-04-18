@@ -1,0 +1,62 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron
+spec:
+  schedule: '0,15,30,45 * * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          volumes:
+            - name: data-volume
+              persistentVolumeClaim:
+                claimName: data-volume
+          restartPolicy: OnFailure
+          containers:
+            - name: cron
+              image: docker.io/freshrss/freshrss
+              env:
+                - name: TZ
+                  value: America/Denver
+                - name: DB_TYPE
+                  value: pgsql
+                - name: DB_BASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: freshrss-postgres-app
+                      key: dbname
+                - name: DB_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: freshrss-postgres-app
+                      key: user
+                - name: DB_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: freshrss-postgres-app
+                      key: password
+                - name: DB_HOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: freshrss-postgres-app
+                      key: host
+                - name: FRESHRSS_INSTALL
+                  value: >-
+                    --db-base $(DB_BASE)
+                    --db-host $(DB_HOST)
+                    --db-password $(DB_PASSWORD)
+                    --db-type pgsql
+                    --db-user $(DB_USER)
+                    --default_user kevindurb
+                    --language en
+                - name: FRESHRSS_USER
+                  value: >-
+                    --language en
+                    --password password
+                    --user kevindurb
+              volumeMounts:
+                - name: data-volume
+                  mountPath: /var/www/FreshRSS/data
+              args: [cron]
