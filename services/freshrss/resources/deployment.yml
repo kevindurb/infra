@@ -19,6 +19,8 @@ spec:
               value: America/Denver
             - name: DB_TYPE
               value: pgsql
+            - name: CRON_MIN
+              value: 0,15,30,45
             - name: DB_BASE
               valueFrom:
                 secretKeyRef:
