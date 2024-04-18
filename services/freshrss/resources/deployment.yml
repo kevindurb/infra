@@ -14,7 +14,7 @@ spec:
       containers:
         - name: freshrss
           image: docker.io/freshrss/freshrss
-          env:
+          env: &env
             - name: TZ
               value: America/Denver
             - name: DB_TYPE
@@ -53,7 +53,9 @@ spec:
                 --language en
                 --password password
                 --user kevindurb
-          volumeMounts:
+            - name: CRON_MIN
+              value: 0,15,30,45
+          volumeMounts: &volumeMounts
             - name: data-volume
               mountPath: /var/www/FreshRSS/data
           resources:
@@ -62,6 +64,11 @@ spec:
           ports:
             - name: http
               containerPort: 80
+        - name: freshrss-cron
+          image: docker.io/freshrss/freshrss
+          env: *env
+          volumeMounts: *volumeMounts
+          args: [cron, -f]
 
 ---
 apiVersion: v1
