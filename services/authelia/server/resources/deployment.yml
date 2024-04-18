@@ -24,7 +24,8 @@ spec:
             - --config=/config/configuration.yml
           volumeMounts:
             - name: config-volume
-              mountPath: /config
+              mountPath: /config/configuration.yml
+              subPath: configuration.yml
               readOnly: true
             - name: users-config
               mountPath: /config/users.yml
