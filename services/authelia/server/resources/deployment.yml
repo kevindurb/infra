@@ -9,6 +9,7 @@ spec:
     type: Recreate
   template:
     spec:
+      enableServiceLinks: false
       volumes:
         - name: config-volume
           configMap:
@@ -35,6 +36,8 @@ spec:
             - secretRef:
                 name: authelia-env-secret
           env:
+            - name: TZ
+              value: America/Denver
             - name: AUTHELIA_STORAGE_POSTGRES_DATABASE
               valueFrom:
                 secretKeyRef:
