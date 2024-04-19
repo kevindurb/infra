@@ -2,14 +2,6 @@
 # yamllint disable rule:comments-indentation
 ---
 theme: auto
-default_2fa_method: totp
-
-log:
-  level: debug
-
-telemetry:
-  metrics:
-    enabled: false
 
 totp:
   disable: false
@@ -28,7 +20,7 @@ authentication_backend:
     path: /config/users.yml
 
 access_control:
-  default_policy: 'two_factor'
+  default_policy: two_factor
 
 session:
   secret: super_insecure # TODO: inject with secret
