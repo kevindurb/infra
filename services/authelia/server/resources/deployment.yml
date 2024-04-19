@@ -74,6 +74,13 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 5
+          startupProbe:
+            httpGet: *probeHttp
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
           resources:
             limits:
               memory: 1G
