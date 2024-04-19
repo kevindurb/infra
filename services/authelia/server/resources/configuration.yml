@@ -13,6 +13,7 @@ telemetry:
 
 totp:
   disable: false
+  issuer: authelia.com
 
 webauthn:
   disable: true
