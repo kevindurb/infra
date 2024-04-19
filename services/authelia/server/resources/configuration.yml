@@ -23,7 +23,6 @@ access_control:
   default_policy: two_factor
 
 session:
-  secret: super_insecure # TODO: inject with secret
   redis:
     host: authelia-session-service
 
@@ -32,13 +31,11 @@ session:
       authelia_url: https://auth.durbin.casa
 
 storage:
-  encryption_key: super_insecure_super_insecure # TODO: inject with secret
   postgres: {}
 
 notifier:
   disable_startup_check: true
   smtp:
-    address: smtp://127.0.0.1:25 # TODO: inject with secret
-    username: username # TODO: inject with secret
-    password: password # TODO: inject with secret
-    sender: test@example.com # TODO: inject with secret
+    address: smtp://smtp.fastmail.com:465
+    username: kevindurb
+    sender: beavercloud@fastmail.com

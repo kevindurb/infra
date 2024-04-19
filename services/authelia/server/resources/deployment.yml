@@ -31,6 +31,9 @@ spec:
               mountPath: /config/users.yml
               subPath: users.yml
               readOnly: true
+          envFrom:
+            - secretRef:
+                name: authelia-env-secret
           env:
             - name: AUTHELIA_STORAGE_POSTGRES_DATABASE
               valueFrom:
