@@ -14,7 +14,7 @@ spec:
           persistentVolumeClaim:
             claimName: volume
       containers:
-        - name: vikunja
+        - name: ollama
           image: docker.io/ollama/ollama
           volumeMounts:
             - name: volume
