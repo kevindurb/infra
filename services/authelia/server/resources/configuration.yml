@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://www.authelia.com/schemas/v4.38/json-schema/configuration.json
-# yamllint disable rule:comments-indentation
 ---
 theme: auto
+
+log:
+  level: debug
 
 totp:
   disable: false
