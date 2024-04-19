@@ -38,5 +38,3 @@ notifier:
   smtp:
     host: smtp.fastmail.com
     port: 465
-    username: kevindurb@fastmail.com
-    sender: beavercloud@fastmail.com
