@@ -24,6 +24,10 @@
         icon: vikunja
         href: https://vikunja.durbin.casa
         siteMonitor: http://vikunja-service/v1/api/info
+    - Authelia:
+        icon: authelia
+        href: https://auth.durbin.casa
+        siteMonitor: http://authelia-server-service/api/health
 - Media:
     - Jellyfin:
         icon: jellyfin

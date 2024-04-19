@@ -58,6 +58,22 @@ spec:
                 secretKeyRef:
                   name: authelia-server-postgres-app
                   key: host
+          livenessProbe:
+            httpGet: &probeHttp
+              path: /api/health
+              port: 9091
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
+          readinessProbe:
+            httpGet: *probeHttp
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
           resources:
             limits:
               memory: 1G
