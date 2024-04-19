@@ -36,6 +36,7 @@ metadata:
   name: backup
 spec:
   sourcePVC: omada-volume
+  storageClassName: local-storage
   trigger:
     schedule: '*/15 * * * *'
   restic:

@@ -36,6 +36,7 @@ metadata:
   name: config-backup
 spec:
   sourcePVC: jellyfin-config-volume
+  storageClassName: local-storage
   trigger:
     schedule: '*/15 * * * *'
   restic:

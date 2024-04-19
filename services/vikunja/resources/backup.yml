@@ -36,6 +36,7 @@ metadata:
   name: data-backup
 spec:
   sourcePVC: vikunja-files-volume
+  storageClassName: local-storage
   trigger:
     schedule: '*/15 * * * *'
   restic:
