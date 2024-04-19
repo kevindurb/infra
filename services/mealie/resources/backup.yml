@@ -36,7 +36,6 @@ metadata:
   name: data-backup
 spec:
   sourcePVC: mealie-data-volume
-  storageClassName: local-storage
   trigger:
     schedule: '*/15 * * * *'
   restic:
