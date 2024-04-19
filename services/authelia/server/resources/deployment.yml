@@ -35,8 +35,6 @@ spec:
             - secretRef:
                 name: authelia-env-secret
           env:
-            - name: X_AUTHELIA_CONFIG_FILTERS
-              value: expand-env
             - name: AUTHELIA_STORAGE_POSTGRES_DATABASE
               valueFrom:
                 secretKeyRef:
