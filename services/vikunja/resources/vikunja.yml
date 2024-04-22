@@ -74,6 +74,18 @@ spec:
   storage:
     storageClass: local-path
     size: 5Gi
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      destinationPath: s3://postgres-wal-backups
+      endpointURL: http://minio-api-service
+      s3Credentials:
+        accessKeyId:
+          name: vikunja-restic-config
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: vikunja-restic-config
+          key: AWS_SECRET_ACCESS_KEY
 
 ---
 apiVersion: v1
