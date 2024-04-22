@@ -48,3 +48,16 @@ spec:
       monthly: 2
       yearly: 1
     copyMethod: Direct
+
+---
+# apiVersion: volsync.backube/v1alpha1
+# kind: ReplicationDestination
+# metadata:
+#   name: restore
+# spec:
+#   trigger:
+#     manual: manual-once
+#   restic:
+#     repository: omada-restic-config
+#     destinationPVC: omada-volume
+#     copyMethod: Direct
