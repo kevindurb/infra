@@ -93,6 +93,17 @@ spec:
   storage:
     storageClass: local-storage
     size: 5Gi
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      destinationPath: s3:http://minio-api-service/volume-backups/freshrss-postgres
+      s3Credentials:
+        accessKeyId:
+          name: freshrss-restic-config
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: freshrss-restic-config
+          key: AWS_SECRET_ACCESS_KEY
 
 ---
 apiVersion: v1
