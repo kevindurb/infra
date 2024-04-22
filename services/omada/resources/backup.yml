@@ -37,7 +37,7 @@ metadata:
 spec:
   sourcePVC: omada-volume
   trigger:
-    schedule: '*/15 * * * *'
+    schedule: '0 * * * *'
   restic:
     pruneIntervalDays: 14
     repository: omada-restic-config

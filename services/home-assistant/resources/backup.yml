@@ -37,7 +37,7 @@ metadata:
 spec:
   sourcePVC: home-assistant-config-volume
   trigger:
-    schedule: '*/15 * * * *'
+    schedule: '0 * * * *'
   restic:
     pruneIntervalDays: 14
     repository: home-assistant-restic-config
