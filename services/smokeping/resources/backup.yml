@@ -49,16 +49,15 @@ spec:
       yearly: 1
     copyMethod: Direct
     unlock: 2024-04-22
-
----
-apiVersion: volsync.backube/v1alpha1
-kind: ReplicationDestination
-metadata:
-  name: data-restore
-spec:
-  trigger:
-    manual:
-  restic:
-    repository: smokeping-restic-config
-    destinationPVC: smokeping-data-volume
-    copyMethod: Direct
+# ---
+# apiVersion: volsync.backube/v1alpha1
+# kind: ReplicationDestination
+# metadata:
+#   name: data-restore
+# spec:
+#   trigger:
+#     manual: manual-once
+#   restic:
+#     repository: smokeping-restic-config
+#     destinationPVC: smokeping-data-volume
+#     copyMethod: Direct
