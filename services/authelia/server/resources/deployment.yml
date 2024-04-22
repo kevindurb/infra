@@ -98,6 +98,44 @@ spec:
   storage:
     storageClass: local-storage
     size: 5Gi
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      destinationPath: s3://postgres-wal-backups
+      endpointURL: http://minio-api-service
+      s3Credentials:
+        accessKeyId:
+          name: authelia-backup-secret
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: authelia-backup-secret
+          key: AWS_SECRET_ACCESS_KEY
+
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: backup-secret
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: gitlab-secret-store
+  target:
+    name: authelia-backup-secret
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      data:
+        AWS_ACCESS_KEY_ID: '{{.AWS_ACCESS_KEY_ID}}'
+        AWS_SECRET_ACCESS_KEY: '{{.AWS_SECRET_ACCESS_KEY}}'
+  data:
+    - secretKey: AWS_ACCESS_KEY_ID
+      remoteRef:
+        key: MINIO_ACCESS_KEY
+    - secretKey: AWS_SECRET_ACCESS_KEY
+      remoteRef:
+        key: MINIO_SECRET_KEY
 
 ---
 apiVersion: v1
