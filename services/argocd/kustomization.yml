@@ -13,3 +13,4 @@ resources:
 
 patches:
   - path: ./resources/config.patch.yml
+  - path: ./resources/rbac.patch.yml
