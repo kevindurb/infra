@@ -40,25 +40,23 @@ notifier:
   smtp:
     host: smtp.fastmail.com
     port: 465
-
-identity_providers:
-  oidc:
-    cors:
-      endpoints:
-        - authorization
-        - token
-        - revocation
-        - introspection
-        - userinfo
-      allowed_origins_from_client_redirect_uris: true
-    clients:
-      []
-      # - client_name: Example
-      #   client_id: example
-      #   client_secret: super_secret_super_secret
-      #   public: false
-      #   authorization_policy: two_factor
-      #   pre_configured_consent_duration: 1y
-      #   scopes: ["openid", "profile", "groups", "email"]
-      #   redirect_uris: ["https://example.com"]
-      #   userinfo_signed_response_alg: none
+# identity_providers:
+#   oidc:
+#     cors:
+#       endpoints:
+#         - authorization
+#         - token
+#         - revocation
+#         - introspection
+#         - userinfo
+#       allowed_origins_from_client_redirect_uris: true
+#     clients:
+#       - client_name: Example
+#         client_id: example
+#         client_secret: super_secret_super_secret
+#         public: false
+#         authorization_policy: two_factor
+#         pre_configured_consent_duration: 1y
+#         scopes: ["openid", "profile", "groups", "email"]
+#         redirect_uris: ["https://example.com"]
+#         userinfo_signed_response_alg: none
