@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  url: https://argo.beaver-cloud.ts.net
+  oidc.config: |
+    name: Authelia
+    issuer: https://auth.durbin.casa
+    clientID: argocd
+    clientSecret: $oidc.authelia.clientSecret
+    requestedScopes: [openid, profile, email, groups]
