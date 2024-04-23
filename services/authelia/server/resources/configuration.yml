@@ -1,6 +1,7 @@
-# yaml-language-server: $schema=https://www.authelia.com/schemas/v4.38/json-schema/configuration.json
+# prettier-ignore
 # !yamlfmt!:ignore
 ---
+# yaml-language-server: $schema=https://www.authelia.com/schemas/v4.38/json-schema/configuration.json
 theme: auto
 
 log:
