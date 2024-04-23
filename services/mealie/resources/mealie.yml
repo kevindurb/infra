@@ -31,7 +31,13 @@ spec:
             - name: WEB_CONCURRENCY
               value: '1'
             - name: BASE_URL
-              value: https://mealie.beaver-cloud.ts.net
+              value: https://mealie.durbin.casa
+            - name: OIDC_AUTH_ENABLED
+              value: 'true'
+            - name: OIDC_SIGNUP_ENABLED
+              value: 'true'
+            - name: OIDC_CLIENT_ID
+              value: 'mealie'
           volumeMounts:
             - name: data-volume
               mountPath: /app/data
