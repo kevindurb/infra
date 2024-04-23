@@ -44,7 +44,7 @@ identity_providers:
   oidc:
     # prettier-ignore
     jwks:
-      - key: { { env "OIDC_JWKS_KEY" | mindent 10 "|" | msquote } }
+      - key: {{ env "OIDC_JWKS_KEY" | mindent 10 "|" | msquote }}
     cors:
       endpoints:
         - authorization
