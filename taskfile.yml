@@ -23,3 +23,12 @@ tasks:
     authelia/authelia:latest
     authelia config validate
     --config /config/configuration.yml
+
+  generate-client-secret: >-
+    docker run
+    authelia/authelia:latest
+    authelia crypto hash generate pbkdf2
+    --variant sha512
+    --random
+    --random.length 72
+    --random.charset rfc3986
