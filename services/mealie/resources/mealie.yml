@@ -37,7 +37,9 @@ spec:
             - name: OIDC_SIGNUP_ENABLED
               value: 'true'
             - name: OIDC_CLIENT_ID
-              value: 'mealie'
+              value: mealie
+            - name: OIDC_CONFIGURATION_URL
+              value: https://auth.durbin.casa/.well-known/openid-configuration
           volumeMounts:
             - name: data-volume
               mountPath: /app/data
