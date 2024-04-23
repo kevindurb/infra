@@ -41,6 +41,8 @@ notifier:
     address: smtp.fastmail.com:465
 identity_providers:
   oidc:
+    jwks:
+      - key: { { env "OIDC_JWKS_KEY" | mindent 10 "|" | msquote } }
     cors:
       endpoints:
         - authorization
@@ -52,7 +54,7 @@ identity_providers:
     clients:
       - client_name: Example
         client_id: example
-        client_secret: '{{ env "EXAMPLE_CLIENT_SECRET_HASH" }}'
+        client_secret: { { env "EXAMPLE_CLIENT_SECRET_HASH" | msquote } }
         public: false
         authorization_policy: two_factor
         pre_configured_consent_duration: 1y
