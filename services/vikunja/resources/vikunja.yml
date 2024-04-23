@@ -41,7 +41,7 @@ spec:
                   name: vikunja-postgres-app
                   key: host
             - name: VIKUNJA_SERVICE_PUBLICURL
-              value: https://vikunja.beaver-cloud.ts.net
+              value: https://vikunja.durbin.casa
             - name: VIKUNJA_DATABASE_TYPE
               value: postgres
           resources:
