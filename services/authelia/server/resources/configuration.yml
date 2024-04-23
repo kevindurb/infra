@@ -52,18 +52,8 @@ identity_providers:
         - revocation
         - introspection
         - userinfo
-      allowed_origins_from_client_redirect_uris: true
+        - pushed-authorization-request
     clients:
-      - client_name: Example
-        client_id: example
-        # prettier-ignore
-        client_secret: {{ env "EXAMPLE_CLIENT_SECRET_HASH" | msquote }}
-        public: false
-        authorization_policy: two_factor
-        pre_configured_consent_duration: 1y
-        scopes: ['openid', 'profile', 'groups', 'email']
-        redirect_uris: ['https://example.com']
-        userinfo_signed_response_alg: none
       - client_name: Mealie
         client_id: mealie
         public: true
