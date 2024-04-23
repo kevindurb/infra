@@ -124,11 +124,6 @@ spec:
   target:
     name: authelia-backup-secret
     creationPolicy: Owner
-    template:
-      engineVersion: v2
-      data:
-        AWS_ACCESS_KEY_ID: '{{.AWS_ACCESS_KEY_ID}}'
-        AWS_SECRET_ACCESS_KEY: '{{.AWS_SECRET_ACCESS_KEY}}'
   data:
     - secretKey: AWS_ACCESS_KEY_ID
       remoteRef:
