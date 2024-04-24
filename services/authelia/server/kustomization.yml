@@ -16,3 +16,4 @@ resources:
   - ./resources/deployment.yml
   - ./resources/users-secret.yml
   - ./resources/env-secret.yml
+  - ./resources/client-secrets/linkwarden-secret.yml
