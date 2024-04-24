@@ -70,12 +70,12 @@ spec:
             - name: ARGOCD_CLIENT_SECRET_HASH
               valueFrom:
                 secretKeyRef:
-                  name: argocd-linkwarden-secret
+                  name: authelia-argocd-secret
                   key: CLIENT_SECRET_HASH
             - name: VIKUNJA_CLIENT_SECRET_HASH
               valueFrom:
                 secretKeyRef:
-                  name: vikunja-linkwarden-secret
+                  name: authelia-vikunja-secret
                   key: CLIENT_SECRET_HASH
           livenessProbe:
             httpGet: &probeHttp
