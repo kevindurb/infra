@@ -28,11 +28,21 @@
         icon: authelia
         href: https://auth.durbin.casa
         siteMonitor: http://authelia-server-service/api/health
+    - FreshRSS:
+        icon: freshrss
+        href: https://freshrss.durbin.casa
+        siteMonitor: http://freshrss-service/
+    - Linkwarden:
+        icon: linkwarden
+        href: https://linkwarden.durbin.casa
+        siteMonitor: http://linkwarden-service/
+
 - Media:
     - Jellyfin:
         icon: jellyfin
         href: https://jellyfin.durbin.casa
         siteMonitor: http://jellyfin-service/health
+
 - Monitoring:
     - Gatus:
         icon: gatus
@@ -46,6 +56,7 @@
         icon: alertmanager
         href: https://alertmanager.beaver-cloud.ts.net
         siteMonitor: http://alertmanager-service.monitoring/-/healthy
+
 - Infra:
     - TrueNAS:
         icon: truenas

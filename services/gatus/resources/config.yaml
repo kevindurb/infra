@@ -105,3 +105,13 @@ endpoints:
     group: Admin
     url: http://authelia-server-service/api/health
     <<: *defaults
+
+  - name: FreshRSS
+    group: Applications
+    url: http://freshrss-service/
+    <<: *defaults
+
+  - name: Linkwarden
+    group: Applications
+    url: http://linkwarden-service/
+    <<: *defaults
