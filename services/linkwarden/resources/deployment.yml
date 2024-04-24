@@ -12,9 +12,6 @@ spec:
       containers:
         - name: linkwarden
           image: ghcr.io/linkwarden/linkwarden
-          envFrom:
-            - secretRef:
-                name: linkwarden-secret
           env:
             - name: NEXTAUTH_SECRET
               valueFrom:
