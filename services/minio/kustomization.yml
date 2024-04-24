@@ -6,6 +6,7 @@ namePrefix: minio-
 
 resources:
   - ./resources/deployment.yml
+  - ./resources/secret.yml
 
 commonLabels:
   app.kubernetes.io/name: minio

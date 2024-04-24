@@ -16,6 +16,16 @@ spec:
             - secretRef:
                 name: linkwarden-secret
           env:
+            - name: NEXTAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: linkwarden-nextauth-secret
+                  key: password
+            - name: KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-linkwarden-secret
+                  key: LINKWARDEN_CLIENT_SECRET
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
@@ -61,11 +71,11 @@ spec:
       endpointURL: http://minio-api-service
       s3Credentials:
         accessKeyId:
-          name: linkwarden-secret
-          key: AWS_ACCESS_KEY_ID
+          name: minio-secret
+          key: MINIO_ACCESS_KEY
         secretAccessKey:
-          name: linkwarden-secret
-          key: AWS_SECRET_ACCESS_KEY
+          name: minio-secret
+          key: MINIO_SECRET_KEY
 
 ---
 apiVersion: v1
