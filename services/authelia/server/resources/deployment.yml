@@ -62,6 +62,21 @@ spec:
                 secretKeyRef:
                   name: authelia-server-postgres-app
                   key: host
+            - name: LINKWARDEN_CLIENT_SECRET_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-linkwarden-secret
+                  key: CLIENT_SECRET_HASH
+            - name: ARGOCD_CLIENT_SECRET_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: argocd-linkwarden-secret
+                  key: CLIENT_SECRET_HASH
+            - name: VIKUNJA_CLIENT_SECRET_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: vikunja-linkwarden-secret
+                  key: CLIENT_SECRET_HASH
           livenessProbe:
             httpGet: &probeHttp
               path: /api/health

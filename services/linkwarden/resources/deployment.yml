@@ -22,7 +22,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: authelia-linkwarden-secret
-                  key: LINKWARDEN_CLIENT_SECRET
+                  key: CLIENT_SECRET
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
