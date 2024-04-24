@@ -32,3 +32,11 @@ tasks:
     --random
     --random.length 72
     --random.charset rfc3986
+
+  generate-random-token: openssl rand -hex 64
+
+  add-cloudflare-route:
+    cmds:
+      - cloudflared tunnel route dns kube "{{.host}}"
+    requires:
+      vars: [host]

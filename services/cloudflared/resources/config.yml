@@ -18,5 +18,7 @@ ingress:
     service: http://freshrss-service
   - hostname: auth.durbin.casa
     service: http://authelia-server-service
+  - hostname: linkwarden.durbin.casa
+    service: http://linkwarden-service
 
   - service: http_status:404

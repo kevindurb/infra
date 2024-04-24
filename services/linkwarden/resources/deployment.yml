@@ -1,0 +1,79 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - name: linkwarden
+          image: ghcr.io/linkwarden/linkwarden
+          envFrom:
+            - secretRef:
+                name: linkwarden-secret
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: linkwarden-postgres-app
+                  key: uri
+            - name: NEXT_PUBLIC_DISABLE_REGISTRATION
+              value: 'true'
+            - name: NEXT_PUBLIC_CREDENTIALS_ENABLED
+              value: 'false'
+            - name: DISABLE_NEW_SSO_USERS
+              value: 'false'
+            - name: NEXT_PUBLIC_KEYCLOAK_ENABLED
+              value: 'true'
+            - name: KEYCLOAK_CLIENT_ID
+              value: linkwarden
+            - name: KEYCLOAK_ISSUER
+              value: https://auth.durbin.casa/
+            - name: KEYCLOAK_CUSTOM_NAME
+              value: Authelia
+            - name: NEXTAUTH_URL
+              value: https://linkwarden.durbin.casa/api/vi/auth
+          resources:
+            limits:
+              memory: 1G
+          ports:
+            - name: http
+              containerPort: 3000
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  instances: 3
+  storage:
+    storageClass: local-path
+    size: 5Gi
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      destinationPath: s3://postgres-wal-backups
+      endpointURL: http://minio-api-service
+      s3Credentials:
+        accessKeyId:
+          name: linkwarden-secret
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: linkwarden-secret
+          key: AWS_SECRET_ACCESS_KEY
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
