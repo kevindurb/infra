@@ -14,7 +14,7 @@ spec:
       containers:
         - name: immich
           image: ghcr.io/immich-app/immich-server:v1.102.3
-          command: [start.sh]
+          command: [/usr/src/app/start.sh]
           args: [microservices]
           env:
             - name: TZ
