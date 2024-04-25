@@ -39,7 +39,7 @@
     - Immich:
         icon: immich
         href: https://immich.durbin.casa
-        siteMonitor: http://immich-service/
+        siteMonitor: http://immich-server-service/
 
 - Media:
     - Jellyfin:

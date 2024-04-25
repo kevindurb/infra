@@ -118,5 +118,5 @@ endpoints:
 
   - name: Immich
     group: Applications
-    url: http://immich-service/
+    url: http://immich-server-service/
     <<: *defaults
