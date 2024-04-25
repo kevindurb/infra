@@ -47,3 +47,6 @@ spec:
           volumeMounts:
             - name: truenas-media
               mountPath: /media
+            - name: truenas-media
+              subPath: Uploads
+              mountPath: /user/src/app/upload
