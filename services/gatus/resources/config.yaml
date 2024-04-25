@@ -115,3 +115,8 @@ endpoints:
     group: Applications
     url: http://linkwarden-service/
     <<: *defaults
+
+  - name: Immich
+    group: Applications
+    url: http://immich-service/
+    <<: *defaults

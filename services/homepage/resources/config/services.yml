@@ -36,6 +36,10 @@
         icon: linkwarden
         href: https://linkwarden.durbin.casa
         siteMonitor: http://linkwarden-service/
+    - Immich:
+        icon: immich
+        href: https://immich.durbin.casa
+        siteMonitor: http://immich-service/
 
 - Media:
     - Jellyfin:
