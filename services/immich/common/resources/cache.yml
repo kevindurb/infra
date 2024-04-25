@@ -19,13 +19,13 @@ spec:
     spec:
       containers:
         - name: session
-          image: docker.io/apache/kvrocks
+          image: docker.io/library/redis:7
           resources:
             limits:
               memory: 1G
           ports:
             - name: session
-              containerPort: 6666
+              containerPort: 6379
 
 ---
 apiVersion: v1
