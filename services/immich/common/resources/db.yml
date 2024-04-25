@@ -7,7 +7,7 @@ spec:
   instances: 3
   imageCatalogRef:
     apiGroup: postgresql.cnpg.io
-    kind: ImageCatalog
+    kind: ClusterImageCatalog
     name: pgvectors
     major: 14
   storage:
