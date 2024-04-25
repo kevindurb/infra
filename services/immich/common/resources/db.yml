@@ -5,6 +5,7 @@ metadata:
   name: postgres
 spec:
   instances: 3
+  imageName: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0
   storage:
     storageClass: local-storage
     size: 5Gi
