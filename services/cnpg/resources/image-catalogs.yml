@@ -1,0 +1,9 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ClusterImageCatalog
+metadata:
+  name: pgvectors
+spec:
+  images:
+    - major: 14
+      image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0
