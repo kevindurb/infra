@@ -8,16 +8,8 @@ statusStyle: dot
 useEqualHeights: true
 iconStyle: theme
 layout:
-  Home:
-    icon: mdi-home-lightbulb
-    style: row
-    columns: 3
-  Media:
-    icon: mdi-filmstrip
-    style: row
-    columns: 3
-  Monitoring:
-    icon: mdi-alert
+  Apps:
+    icon: mdi-square-rounded-badge-outline
     style: row
     columns: 3
   Infra:

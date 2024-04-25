@@ -1,5 +1,5 @@
 ---
-- Home:
+- Apps:
     - Home Assistant:
         icon: home-assistant
         href: https://home-assistant.durbin.casa
@@ -40,14 +40,12 @@
         icon: immich
         href: https://immich.durbin.casa
         siteMonitor: http://immich-server-service/
-
-- Media:
     - Jellyfin:
         icon: jellyfin
         href: https://jellyfin.durbin.casa
         siteMonitor: http://jellyfin-service/health
 
-- Monitoring:
+- Infra:
     - Gatus:
         icon: gatus
         href: https://status.durbin.casa
@@ -60,8 +58,6 @@
         icon: alertmanager
         href: https://alertmanager.beaver-cloud.ts.net
         siteMonitor: http://alertmanager-service.monitoring/-/healthy
-
-- Infra:
     - TrueNAS:
         icon: truenas
         href: https://192.168.100.201
