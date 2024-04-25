@@ -49,4 +49,4 @@ spec:
               mountPath: /media
             - name: truenas-media
               subPath: Uploads
-              mountPath: /user/src/app/upload
+              mountPath: /usr/src/app/upload
