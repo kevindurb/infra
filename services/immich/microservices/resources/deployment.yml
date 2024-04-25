@@ -22,7 +22,7 @@ spec:
             - name: DB_URL
               valueFrom:
                 secretKeyRef:
-                  name: immich-common-postgres-app
+                  name: immich-common-postgres-superuser
                   key: uri
             - name: REDIS_HOSTNAME
               value: immich-common-cache-service
