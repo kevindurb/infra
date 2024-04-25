@@ -10,11 +10,7 @@ spec:
     kind: ClusterImageCatalog
     name: pgvectors
     major: 14
-  bootstrap:
-    initdb:
-      postInitSQL:
-        - ALTER SYSTEM SET search_path TO "$user", public, vectors;
-        - CREATE EXTENSION IF NOT EXISTS "vectors";
+  enableSuperuserAccess: true
   postgresql:
     shared_preload_libraries:
       - 'vectors.so'
