@@ -20,5 +20,7 @@ ingress:
     service: http://authelia-server-service
   - hostname: linkwarden.durbin.casa
     service: http://linkwarden-service
+  - hostname: immich.durbin.casa
+    service: http://immich-server-service
 
   - service: http_status:404

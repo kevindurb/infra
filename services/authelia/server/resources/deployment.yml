@@ -77,6 +77,11 @@ spec:
                 secretKeyRef:
                   name: authelia-vikunja-secret
                   key: CLIENT_SECRET_HASH
+            - name: IMMICH_CLIENT_SECRET_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-immich-secret
+                  key: CLIENT_SECRET_HASH
           livenessProbe:
             httpGet: &probeHttp
               path: /api/health
@@ -124,32 +129,11 @@ spec:
       endpointURL: http://minio-api-service
       s3Credentials:
         accessKeyId:
-          name: authelia-backup-secret
-          key: AWS_ACCESS_KEY_ID
+          name: minio-secret
+          key: MINIO_ACCESS_KEY
         secretAccessKey:
-          name: authelia-backup-secret
-          key: AWS_SECRET_ACCESS_KEY
-
----
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
-metadata:
-  name: backup-secret
-spec:
-  refreshInterval: 1h
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: gitlab-secret-store
-  target:
-    name: authelia-backup-secret
-    creationPolicy: Owner
-  data:
-    - secretKey: AWS_ACCESS_KEY_ID
-      remoteRef:
-        key: MINIO_ACCESS_KEY
-    - secretKey: AWS_SECRET_ACCESS_KEY
-      remoteRef:
-        key: MINIO_SECRET_KEY
+          name: minio-secret
+          key: MINIO_SECRET_KEY
 
 ---
 apiVersion: v1

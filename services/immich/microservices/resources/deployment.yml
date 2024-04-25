@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      volumes:
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
+      containers:
+        - name: immich
+          image: ghcr.io/immich-app/immich-server:v1.102.3
+          command: [start.sh]
+          args: [microservices]
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: immich-common-postgres-app
+                  key: url
+            - name: REDIS_HOSTNAME
+              value: immich-common-cache-service
+          resources:
+            limits:
+              memory: 1G
+          volumeMounts:
+            - name: truenas-media
+              mountPath: /media
