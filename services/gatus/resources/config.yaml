@@ -132,6 +132,6 @@ endpoints:
     <<: *defaults
 
   - name: Zigbee2MQTT
-    group: Applications
+    group: Admin
     url: http://zigbee2mqtt-service/
     <<: *defaults

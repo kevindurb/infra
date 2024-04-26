@@ -48,10 +48,6 @@
         icon: handbrake
         href: https://handbrake.beaver-cloud.ts.net
         siteMonitor: http://handbrake-service
-    - Zigbee2MQTT:
-        icon: zigbee2mqtt
-        href: https://zigbee2mqtt.beaver-cloud.ts.net
-        siteMonitor: http://zigbee2mqtt-service
 
 - Infra:
     - Gatus:
@@ -97,3 +93,7 @@
         icon: authelia
         href: https://auth.durbin.casa
         siteMonitor: http://authelia-server-service/api/health
+    - Zigbee2MQTT:
+        icon: zigbee2mqtt
+        href: https://zigbee2mqtt.beaver-cloud.ts.net
+        siteMonitor: http://zigbee2mqtt-service
