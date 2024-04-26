@@ -11,6 +11,9 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: dev-dri
+          hostPath:
+            path: /dev/dri
       containers:
         - name: immich
           image: ghcr.io/immich-app/immich-server:v1.102.3
@@ -50,3 +53,5 @@ spec:
             - name: truenas-media
               subPath: Uploads
               mountPath: /usr/src/app/upload
+            - mountPath: /dev/dri
+              name: dev-dri
