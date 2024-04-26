@@ -44,6 +44,10 @@
         icon: kasm
         href: https://orca.beaver-cloud.ts.net
         siteMonitor: http://orcaslicer-service
+    - Handbrake:
+        icon: handbrake
+        href: https://handbrake.beaver-cloud.ts.net
+        siteMonitor: http://handbrake-service
 
 - Infra:
     - Gatus:

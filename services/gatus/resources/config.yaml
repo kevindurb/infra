@@ -120,3 +120,13 @@ endpoints:
     group: Applications
     url: http://immich-server-service/
     <<: *defaults
+
+  - name: Orcaslicer
+    group: Applications
+    url: http://orcaslicer-service/
+    <<: *defaults
+
+  - name: Handbrake
+    group: Applications
+    url: http://handbrake-service/
+    <<: *defaults
