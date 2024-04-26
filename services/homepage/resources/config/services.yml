@@ -24,10 +24,6 @@
         icon: vikunja
         href: https://vikunja.durbin.casa
         siteMonitor: http://vikunja-service/v1/api/info
-    - Authelia:
-        icon: authelia
-        href: https://auth.durbin.casa
-        siteMonitor: http://authelia-server-service/api/health
     - FreshRSS:
         icon: freshrss
         href: https://freshrss.durbin.casa
@@ -44,6 +40,10 @@
         icon: jellyfin
         href: https://jellyfin.durbin.casa
         siteMonitor: http://jellyfin-service/health
+    - Orca Slicer:
+        icon: kasm
+        href: https://orca.beaver-cloud.ts.net
+        siteMonitor: http://orcaslicer-service
 
 - Infra:
     - Gatus:
@@ -85,3 +85,7 @@
         icon: minio
         href: https://minio.beaver-cloud.ts.net
         siteMonitor: http://minio-api-service/minio/health/ready
+    - Authelia:
+        icon: authelia
+        href: https://auth.durbin.casa
+        siteMonitor: http://authelia-server-service/api/health
