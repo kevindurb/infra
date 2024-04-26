@@ -19,6 +19,8 @@ spec:
           image: ghcr.io/immich-app/immich-server:v1.102.3
           command: [/usr/src/app/start.sh]
           args: [microservices]
+          securityContext:
+            privileged: true
           env:
             - name: TZ
               value: America/Denver
