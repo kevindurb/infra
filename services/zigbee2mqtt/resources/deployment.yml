@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      nodeSelector:
+        feature.node.kubernetes.io/usb-ff_10c4_ea60.present: 'true'
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: data-volume
+        - name: dongle
+          hostPath:
+            path: /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_dadea32ebf12ec11b8b720c7bd930c07-if00-port0
+      containers:
+        - name: zigbee2mqtt
+          image: koenkk/zigbee2mqtt
+          env:
+            - name: TZ
+              value: America/Denver
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: data-volume
+              mountPath: /app/data
+            - name: dongle
+              mountPath: /dev/ttyACM0
+          ports:
+            - name: web
+              containerPort: 8080
