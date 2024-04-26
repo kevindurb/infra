@@ -3,7 +3,7 @@
 version: '3'
 
 includes:
-  templates: .taskfiles/kubernetes
+  templates: .taskfiles/templates
   authelia: .taskfiles/authelia
   ansible: .taskfiles/ansible
   argo: .taskfiles/argo

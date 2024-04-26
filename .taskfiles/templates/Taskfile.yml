@@ -1,0 +1,213 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  mk:
+    requires:
+      vars: [name]
+    cmds:
+      - mkdir -p ./services/{{ .name }}/resources
+  pvc:
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - |
+        cat << EOF > pvc.yml
+        ---
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+          name: {{ or .name "volume" }}
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          storageClassName: local-storage
+          resources:
+            requests:
+              storage: {{ or .size "1G" }}
+        EOF
+  ks:
+    dir: '{{.USER_WORKING_DIR}}'
+    requires:
+      vars: [name]
+    cmds:
+      - |
+        cat << EOF > kustomization.yml
+        ---
+        apiVersion: kustomize.config.k8s.io/v1beta1
+        kind: Kustomization
+
+        namePrefix: {{ .name }}-
+
+        resources: []
+
+        commonLabels:
+          app.kubernetes.io/name: {{ .name }}
+        EOF
+  deploy:
+    dir: '{{.USER_WORKING_DIR}}'
+    requires:
+      vars: [name, image]
+    cmds:
+      - |
+        cat << EOF > deployment.yml
+        ---
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: deployment
+        spec:
+          replicas: 1
+          strategy:
+            type: Recreate
+          template:
+            spec:
+              containers:
+                - name: {{ .name }}
+                  image: {{ .image }}
+                  ports:
+                    - name: web
+                      containerPort: 8080
+        EOF
+  svc:
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - |
+        cat << EOF > service.yml
+        ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: service
+        spec:
+          ports:
+            - name: web
+              port: 80
+              targetPort: web
+        EOF
+  lan-ing:
+    dir: '{{.USER_WORKING_DIR}}'
+    requires:
+      vars: [subdomain]
+    cmds:
+      - |
+        cat << EOF > ingress.yml
+        ---
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: lan-ingress
+          annotations:
+            external-dns.alpha.kubernetes.io/hostname: {{ .subdomain }}.durbin.casa
+            cert-manager.io/cluster-issuer: cloudflare-issuer
+        spec:
+          ingressClassName: nginx
+          tls:
+            - hosts: [{{ .subdomain }}.durbin.casa]
+              secretName: durbin-casa-wildcard-cert
+          rules:
+            - host: {{ .subdomain }}.durbin.casa
+              http:
+                paths:
+                  - pathType: Prefix
+                    path: '/'
+                    backend:
+                      service:
+                        name: service
+                        port:
+                          name: web
+        EOF
+  ts-ing:
+    dir: '{{.USER_WORKING_DIR}}'
+    requires:
+      vars: [subdomain]
+    cmds:
+      - |
+        cat << EOF > ingress.yml
+        ---
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: tailscale-ingress
+        spec:
+          ingressClassName: tailscale
+          defaultBackend:
+            service:
+              name: service
+              port:
+                name: web
+          tls:
+            - hosts:
+                - {{ .subdomain }}
+        EOF
+  backup:
+    dir: '{{.USER_WORKING_DIR}}'
+    requires:
+      vars: [volume]
+    cmds:
+      - |
+        cat << EOF > ingress.yml
+        ---
+        apiVersion: external-secrets.io/v1beta1
+        kind: ExternalSecret
+        metadata:
+          name: {{ .volume }}-repository
+        spec:
+          refreshInterval: 1h
+          secretStoreRef:
+            kind: ClusterSecretStore
+            name: gitlab-secret-store
+          target:
+            name: {{ .volume }}-repository
+            creationPolicy: Owner
+            template:
+              engineVersion: v2
+              data:
+                RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/{{ .volume }}
+                RESTIC_PASSWORD: '{{ `{{ .RESTIC_PASSWORD }}` }}'
+                AWS_ACCESS_KEY_ID: '{{ `{{ .AWS_ACCESS_KEY_ID }}` }}'
+                AWS_SECRET_ACCESS_KEY: '{{ `{{ .AWS_SECRET_ACCESS_KEY }}` }}'
+          data:
+            - secretKey: RESTIC_PASSWORD
+              remoteRef:
+                key: RESTIC_PASSWORD
+            - secretKey: AWS_ACCESS_KEY_ID
+              remoteRef:
+                key: MINIO_ACCESS_KEY
+            - secretKey: AWS_SECRET_ACCESS_KEY
+              remoteRef:
+                key: MINIO_SECRET_KEY
+
+        ---
+        apiVersion: volsync.backube/v1alpha1
+        kind: ReplicationSource
+        metadata:
+          name: {{ .volume }}-backup
+        spec:
+          sourcePVC: {{ .volume }}
+          trigger:
+            schedule: '0 * * * *'
+          restic:
+            pruneIntervalDays: 14
+            repository: {{ .volume }}-repository
+            retain:
+              hourly: 6
+              daily: 5
+              weekly: 4
+              monthly: 2
+              yearly: 1
+            copyMethod: Direct
+
+        ---
+        # apiVersion: volsync.backube/v1alpha1
+        # kind: ReplicationDestination
+        # metadata:
+        #   name: {{ .volume }}-restore
+        # spec:
+        #   trigger:
+        #     manual: manual-once
+        #   restic:
+        #     repository: {{ .volume }}-repository
+        #     destinationPVC: {{ .volume }}
+        #     copyMethod: Direct
+        EOF
