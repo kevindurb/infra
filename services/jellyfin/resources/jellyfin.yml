@@ -44,7 +44,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: local-path
+  storageClassName: local-path # @deprecated
   resources:
     requests:
       storage: 2Gi
