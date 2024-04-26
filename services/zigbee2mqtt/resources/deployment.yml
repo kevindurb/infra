@@ -39,7 +39,7 @@ spec:
               mountPath: /run/udev
               readOnly: true
             - name: dongle
-              mountPath: /dev/ttyUSB0
+              mountPath: /dev/ttyACM0
             - name: configuration
               mountPath: /app/data/configuration.yml
               subPath: configuration.yml
