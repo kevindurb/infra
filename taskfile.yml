@@ -2,6 +2,9 @@
 ---
 version: '3'
 
+includes:
+  templates: ./template-tasks.yml
+
 tasks:
   setup:
     cmds:

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  pvc:
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - |
+        cat << EOF > pvc.yml
+        ---
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+          name: {{ or .name "volume" }}
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          storageClassName: local-storage
+          resources:
+            requests:
+              storage: {{ or .size "1G" }}
+        EOF
