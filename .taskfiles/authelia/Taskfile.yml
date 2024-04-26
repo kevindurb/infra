@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  check-config: >-
+    docker run
+    -v ./services/authelia/resources/configuration.yml:/config/configuration.yml
+    authelia/authelia:latest
+    authelia config validate
+    --config /config/configuration.yml
+
+  gen-secret: >-
+    docker run
+    authelia/authelia:latest
+    authelia crypto hash generate pbkdf2
+    --variant sha512
+    --random
+    --random.length 72
+    --random.charset rfc3986
+
+  gen-token: openssl rand -hex 64

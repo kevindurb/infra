@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  setup: ansible-galaxy install -r ./roles/requirements.yml
+
+  base-provision: >-
+    ansible-playbook
+    -i ./inventory/production.yml
+    ./playbooks/base_provision.yml
