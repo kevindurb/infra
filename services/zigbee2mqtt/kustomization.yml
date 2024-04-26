@@ -4,11 +4,6 @@ kind: Kustomization
 
 namePrefix: zigbee2mqtt-
 
-configMapGenerator:
-  - name: configuration
-    files:
-      - ./resources/configuration.yml
-
 resources:
   - ./resources/deployment.yml
   - ./resources/service.yml
