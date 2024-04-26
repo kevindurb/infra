@@ -18,9 +18,15 @@ spec:
         - name: dongle
           hostPath:
             path: /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_dadea32ebf12ec11b8b720c7bd930c07-if00-port0
+        - name: udev
+          hostPath:
+            path: /run/udev
+        - name: configuration
+          configMap:
+            name: configuration
       containers:
         - name: zigbee2mqtt
-          image: koenkk/zigbee2mqtt
+          image: ghcr.io/koenkk/zigbee2mqtt:1.36.1
           env:
             - name: TZ
               value: America/Denver
@@ -29,8 +35,15 @@ spec:
           volumeMounts:
             - name: data-volume
               mountPath: /app/data
+            - name: udev
+              mountPath: /run/udev
+              readOnly: true
             - name: dongle
-              mountPath: /dev/ttyACM0
+              mountPath: /dev/ttyUSB0
+            - name: configuration
+              mountPath: /app/data/configuration.yml
+              subPath: configuration.yml
+              readOnly: true
           ports:
             - name: web
               containerPort: 8080
