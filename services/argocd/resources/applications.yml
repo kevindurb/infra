@@ -622,26 +622,6 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ollama
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/ollama
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
   name: omada
 spec:
   project: default
@@ -649,26 +629,6 @@ spec:
     repoURL: https://gitlab.com/kevindurb/infra.git
     targetRevision: HEAD
     path: services/omada
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: open-webui
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/open-webui
   destination:
     server: https://kubernetes.default.svc
     namespace: default
