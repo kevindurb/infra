@@ -146,7 +146,7 @@ tasks:
       vars: [volume]
     cmds:
       - |
-        cat << EOF > ingress.yml
+        cat << EOF > backup.yml
         ---
         apiVersion: external-secrets.io/v1beta1
         kind: ExternalSecret

@@ -9,9 +9,21 @@ spec:
     type: Recreate
   template:
     spec:
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
+        - name: dev-dri
+          hostPath:
+            path: /dev/dri
       containers:
         - name: orcaslicer
           image: lscr.io/linuxserver/orcaslicer:2.0.0
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+            - mountPath: /dev/dri
+              name: dev-dri
           ports:
             - name: web
               containerPort: 3000
