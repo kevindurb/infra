@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - image: filebrowser/filebrowser:v2.25.0
+        - image: filebrowser/filebrowser:v2.28.0
           name: filebrowser
           ports:
             - name: web
