@@ -14,4 +14,4 @@ spec:
           image: docker.io/grafana/grafana-oss
           ports:
             - name: web
-              containerPort: 8080
+              containerPort: 3000
