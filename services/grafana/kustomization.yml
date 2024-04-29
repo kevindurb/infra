@@ -16,6 +16,10 @@ configMapGenerator:
   - name: provisioning-datasources
     files:
       - ./resources/provisioning/datasources/prometheus.yml
+  - name: provisioning-dashboards
+    files:
+      - ./resources/provisioning/dashboards/default.yml
+      - ./resources/provisioning/dashboards/node-overview.json
 
 commonLabels:
   app.kubernetes.io/name: grafana
