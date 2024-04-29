@@ -10,6 +10,9 @@ spec:
   template:
     spec:
       volumes:
+        - name: themes
+          configMap:
+            name: themes
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
@@ -27,6 +30,9 @@ spec:
               mountPath: /media
             - name: config-volume
               mountPath: /kavita/config
+            - name: themes
+              mountPath: /kavita/config/themes
+              readOnly: true
           ports:
             - name: web
               containerPort: 5000

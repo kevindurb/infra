@@ -4,6 +4,11 @@ kind: Kustomization
 
 namePrefix: kavita-
 
+configMapGenerator:
+  - name: themes
+    files:
+      - ./resources/themes/nord.css
+
 resources:
   - ./resources/deployment.yml
 
