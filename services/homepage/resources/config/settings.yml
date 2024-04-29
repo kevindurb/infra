@@ -2,7 +2,7 @@
 title: Homepage
 headerStyle: clean
 theme: dark
-# color: zinc
+color: gray
 hideVersion: true
 statusStyle: dot
 useEqualHeights: true
