@@ -135,3 +135,8 @@ endpoints:
     group: Admin
     url: http://zigbee2mqtt-service/
     <<: *defaults
+
+  - name: Grafana
+    group: Admin
+    url: http://grafana-service/api/health
+    <<: *defaults

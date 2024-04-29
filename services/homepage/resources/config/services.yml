@@ -97,3 +97,7 @@
         icon: zigbee2mqtt
         href: https://zigbee2mqtt.beaver-cloud.ts.net
         siteMonitor: http://zigbee2mqtt-service
+    - Grafana:
+        icon: grafana
+        href: https://grafana.beaver-cloud.ts.net
+        siteMonitor: http://grafana-service/api/health
