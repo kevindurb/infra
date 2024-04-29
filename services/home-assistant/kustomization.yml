@@ -12,6 +12,9 @@ configMapGenerator:
   - name: config
     files:
       - ./resources/configuration.yaml
+  - name: themes
+    files:
+      - ./resources/themes/nord.yml
 
 commonLabels:
   app.kubernetes.io/name: home-assistant
