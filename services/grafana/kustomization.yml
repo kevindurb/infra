@@ -13,6 +13,9 @@ configMapGenerator:
   - name: config
     files:
       - ./resources/grafana.ini
+  - name: provisioning-datasources
+    files:
+      - ./resources/provisioning/datasources/prometheus.yml
 
 commonLabels:
   app.kubernetes.io/name: grafana
