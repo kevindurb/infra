@@ -20,6 +20,7 @@ configMapGenerator:
     files:
       - ./resources/provisioning/dashboards/default.yml
       - ./resources/provisioning/dashboards/node-overview.json
+      - ./resources/provisioning/dashboards/container-overview.json
 
 commonLabels:
   app.kubernetes.io/name: grafana
