@@ -9,9 +9,24 @@ spec:
     type: Recreate
   template:
     spec:
+      volumes:
+        - name: config-map
+          configMap:
+            name: config
       containers:
         - name: grafana
           image: docker.io/grafana/grafana-oss
+          env:
+            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-grafana-secret
+                  key: CLIENT_SECRET
+          volumeMounts:
+            - name: config-map
+              mountPath: /etc/grafana/grafana.ini
+              subPath: grafana.ini
+              readOnly: true
           ports:
             - name: web
               containerPort: 3000

@@ -9,5 +9,10 @@ resources:
   - ./resources/service.yml
   - ./resources/ingress.yml
 
+configMapGenerator:
+  - name: config
+    files:
+      - ./resources/grafana.ini
+
 commonLabels:
   app.kubernetes.io/name: grafana
