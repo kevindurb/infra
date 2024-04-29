@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "panels": [
     {
@@ -177,7 +176,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -277,7 +277,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -336,6 +337,6 @@
   "timezone": "browser",
   "title": "Node Overview",
   "uid": "adk7isi53c934b",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
