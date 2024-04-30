@@ -16,7 +16,7 @@ spec:
             path: /dev/dri
       containers:
         - name: immich
-          image: ghcr.io/immich-app/immich-server:v1.102.3
+          image: ghcr.io/immich-app/immich-server:v1.103.1
           command: [/usr/src/app/start.sh]
           args: [microservices]
           securityContext:
