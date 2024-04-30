@@ -10,7 +10,7 @@ spec:
   template:
     spec:
       containers:
-        - image: ghcr.io/twin/gatus:v5.7.0
+        - image: ghcr.io/twin/gatus:v5.10.0
           name: gatus
           ports:
             - name: web
