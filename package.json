@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/kevindurb/infra#readme",
   "devDependencies": {
-    "@commitlint/cli": "^17.6.7",
+    "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^17.6.7",
     "@commitlint/types": "^17.4.4",
     "husky": "^8.0.3",
