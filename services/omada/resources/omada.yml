@@ -63,6 +63,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: omada.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: https
 spec:
   ingressClassName: nginx
   tls:
