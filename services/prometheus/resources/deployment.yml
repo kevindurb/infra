@@ -23,7 +23,7 @@ spec:
             name: config
       containers:
         - name: prometheus
-          image: docker.io/prom/prometheus
+          image: docker.io/prom/prometheus:v2.51.2
           args:
             - --storage.tsdb.retention.size=18GB
             - --config.file=/etc/prometheus/prometheus.yml
