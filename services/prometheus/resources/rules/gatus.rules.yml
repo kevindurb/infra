@@ -3,8 +3,8 @@ groups:
   - name: Gatus
     rules:
       - alert: GatusTargetUnsuccessful
-        expr: 'gatus_results_total{success="false"}'
-        for: 15m
+        expr: 'increase(gatus_results_total{success="false"}[15m]) > 2'
+        for: 0m
         labels:
           severity: critical
         annotations:
