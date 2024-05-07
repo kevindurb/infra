@@ -125,3 +125,8 @@ endpoints:
     group: Admin
     url: http://grafana-service/api/health
     <<: *defaults
+
+  - name: Omada
+    group: Admin
+    url: https://omada-service/login
+    <<: *defaults
