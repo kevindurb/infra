@@ -11,7 +11,7 @@ spec:
           operator: Exists
       containers:
         - name: smartctl-exporter
-          image: prometheuscommunity/smartctl-exporter
+          image: quay.io/prometheuscommunity/smartctl-exporter:v0.12.0
           securityContext:
             privileged: true
             runAsUser: 0
