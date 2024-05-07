@@ -18,7 +18,7 @@ spec:
             secretName: vikunja-config-secret
       containers:
         - name: vikunja
-          image: docker.io/vikunja/vikunja
+          image: docker.io/vikunja/vikunja:0.23.0
           env:
             - name: VIKUNJA_DATABASE_DATABASE
               valueFrom:
