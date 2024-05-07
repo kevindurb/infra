@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
         - name: netbootxyz
-          image: lscr.io/linuxserver/netbootxyz
+          image: lscr.io/linuxserver/netbootxyz:0.7.1
           ports:
             - name: admin
               containerPort: 3000
