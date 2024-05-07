@@ -22,17 +22,6 @@ spec:
               mountPath: /config/config.yaml
               subPath: config.yaml
               readOnly: true
-          env:
-            - name: PUSHOVER_USER_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: gatus-pushover-credentials
-                  key: PUSHOVER_USER_KEY
-            - name: PUSHOVER_APPLICATION_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: gatus-pushover-credentials
-                  key: PUSHOVER_APPLICATION_TOKEN
       volumes:
         - name: data-volume
           persistentVolumeClaim:
