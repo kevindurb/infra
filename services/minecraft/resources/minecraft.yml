@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       containers:
-        - image: itzg/minecraft-server
+        - image: itzg/minecraft-server:2024.5.0-java21
           name: minecraft
           env:
             - name: EULA
