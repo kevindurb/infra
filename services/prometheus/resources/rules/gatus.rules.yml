@@ -1,0 +1,12 @@
+---
+groups:
+  - name: Gatus
+    rules:
+      - alert: GatusTargetUnsuccessful
+        expr: 'gatus_results_total{success="false"}'
+        for: 15m
+        labels:
+          severity: critical
+        annotations:
+          summary: Gatus target unsuccessful (name {{ $labels.name }})
+          description: "A gatus target is unsuccessful for at least 15m. A service may have crashed.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"

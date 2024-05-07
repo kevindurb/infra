@@ -13,13 +13,14 @@ configMapGenerator:
   - name: config
     files:
       - ./resources/prometheus.yml
-      - ./resources/rules.yml
-      - ./resources/node-exporter.rules.yml
-      - ./resources/smartctl-exporter.rules.yml
-      - ./resources/prometheus.rules.yml
-      - ./resources/kubernetes.rules.yml
-      - ./resources/volsync.rules.yml
-      - ./resources/argocd.rules.yml
+      - ./resources/rules/rules.yml
+      - ./resources/rules/node-exporter.rules.yml
+      - ./resources/rules/gatus.rules.yml
+      - ./resources/rules/smartctl-exporter.rules.yml
+      - ./resources/rules/prometheus.rules.yml
+      - ./resources/rules/kubernetes.rules.yml
+      - ./resources/rules/volsync.rules.yml
+      - ./resources/rules/argocd.rules.yml
 
 commonLabels:
   app.kubernetes.io/name: prometheus
