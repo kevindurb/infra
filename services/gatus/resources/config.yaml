@@ -130,3 +130,8 @@ endpoints:
     group: Admin
     url: https://omada-service/login
     <<: *defaults
+
+  - name: Actual Budget
+    group: Applications
+    url: http://actual-budget-service
+    <<: *defaults

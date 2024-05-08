@@ -48,6 +48,10 @@
         icon: handbrake
         href: https://handbrake.beaver-cloud.ts.net
         siteMonitor: http://handbrake-service
+    - Actual Budget:
+        icon: actual
+        href: https://actual-budget.durbin.casa
+        siteMonitor: http://actual-budget-service
 
 - Infra:
     - Gatus:
