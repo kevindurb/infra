@@ -9,6 +9,7 @@ resources:
   - ./resources/service.yml
   - ./resources/ingress.yml
   - ./resources/pvc.yml
+  - ./resources/backup.yml
 
 commonLabels:
   app.kubernetes.io/name: actual-budget
