@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: data-volume
+      containers:
+        - name: actual-budget
+          image: ghcr.io/actualbudget/actual-server:24.5.0
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+          ports:
+            - name: web
+              containerPort: 5006

@@ -98,15 +98,15 @@ tasks:
         metadata:
           name: lan-ingress
           annotations:
-            external-dns.alpha.kubernetes.io/hostname: {{ .subdomain }}.durbin.casa
+            external-dns.alpha.kubernetes.io/hostname: &host {{ .subdomain }}.durbin.casa
             cert-manager.io/cluster-issuer: cloudflare-issuer
         spec:
           ingressClassName: nginx
           tls:
-            - hosts: [{{ .subdomain }}.durbin.casa]
+            - hosts: [*host]
               secretName: durbin-casa-wildcard-cert
           rules:
-            - host: {{ .subdomain }}.durbin.casa
+            - host: *host
               http:
                 paths:
                   - pathType: Prefix
