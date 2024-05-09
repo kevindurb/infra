@@ -17,6 +17,9 @@ spec:
   storage:
     storageClass: local-storage
     size: 5Gi
+  resources:
+    limits:
+      memory: 1G
   backup:
     retentionPolicy: 30d
     barmanObjectStore:
