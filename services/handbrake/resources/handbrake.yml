@@ -15,10 +15,15 @@ spec:
           volumeMounts:
             - name: ripping-storage
               mountPath: /output
+            - name: config-volume
+              mountPath: /config
       volumes:
         - name: ripping-storage
           persistentVolumeClaim:
             claimName: truenas-ripping-storage
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
 
 ---
 apiVersion: v1
