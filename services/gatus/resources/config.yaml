@@ -138,5 +138,8 @@ endpoints:
 
   - name: Nextcloud
     group: Applications
-    url: http://nextcloud-service/login
+    url: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
     <<: *defaults
+    conditions:
+      - '[STATUS] >= 200'
+      - '[STATUS] < 500'
