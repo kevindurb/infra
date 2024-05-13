@@ -87,6 +87,11 @@ spec:
                 secretKeyRef:
                   name: authelia-grafana-secret
                   key: CLIENT_SECRET_HASH
+            - name: NEXTCLOUD_CLIENT_SECRET_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-nextcloud-secret
+                  key: CLIENT_SECRET_HASH
           livenessProbe:
             httpGet: &probeHttp
               path: /api/health
