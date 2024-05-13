@@ -142,6 +142,9 @@ endpoints:
     <<: *defaults
     client:
       ignore-redirect: true
+    conditions:
+      - '[STATUS] >= 200'
+      - '[STATUS] < 500'
 
   - name: Nextcloud
     group: Applications
