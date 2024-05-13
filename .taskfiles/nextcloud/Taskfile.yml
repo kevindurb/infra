@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  db-add-missing-indices:
+    cmd: 'kubectl exec -it deploy/nextcloud-deployment -- su -s /bin/bash www-data -c "php occ db:add-missing-indices"'
+  user-info:
+    cmd: 'kubectl exec -it deploy/nextcloud-deployment -- su -s /bin/bash www-data -c "php occ user:info {{ .user }}"'
+    requires:
+      vars: [user]

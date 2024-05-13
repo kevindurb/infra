@@ -15,6 +15,9 @@ includes:
     taskfile: .taskfiles/argo
   cloudflare:
     taskfile: .taskfiles/cloudflare
+  nextcloud:
+    taskfile: .taskfiles/nextcloud
+    aliases: [occ]
   kubernetes:
     taskfile: .taskfiles/kubernetes
     aliases: [k]
