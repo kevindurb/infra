@@ -140,6 +140,8 @@ endpoints:
     group: Applications
     url: http://nextpvr-service
     <<: *defaults
+    client:
+      ignore-redirect: true
 
   - name: Nextcloud
     group: Applications
