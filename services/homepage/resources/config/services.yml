@@ -52,6 +52,10 @@
         icon: actual
         href: https://actual-budget.durbin.casa
         siteMonitor: http://actual-budget-service
+    - Nextcloud:
+        icon: nextcloud
+        href: https://nextcloud.durbin.casa
+        siteMonitor: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
 
 - Infra:
     - Gatus:
