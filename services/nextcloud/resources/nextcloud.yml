@@ -20,8 +20,8 @@ spec:
         - name: nextcloud
           image: docker.io/library/nextcloud:28
           env:
-            - name: OVERWRITEPROTOCOL
-              value: https
+            - name: APACHE_DISABLE_REWRITE_IP
+              value: '1'
             - name: TRUSTED_PROXIES
               value: 0.0.0.0/0
             - name: POSTGRES_DB
