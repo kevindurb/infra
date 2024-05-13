@@ -17,7 +17,7 @@ includes:
     taskfile: .taskfiles/cloudflare
   nextcloud:
     taskfile: .taskfiles/nextcloud
-    aliases: [occ]
+    aliases: [nc]
   kubernetes:
     taskfile: .taskfiles/kubernetes
     aliases: [k]

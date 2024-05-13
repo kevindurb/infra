@@ -3,9 +3,26 @@
 version: '3'
 
 tasks:
+  exec:
+    cmd: 'kubectl exec -it deploy/nextcloud-deployment -- {{ .cmd }}'
+    requires:
+      vars: [cmd]
+  occ:
+    cmd:
+      task: exec
+      vars:
+        cmd: 'su -s /bin/bash www-data -c "php occ {{ .args }}"'
+    requires:
+      vars: [args]
   db-add-missing-indices:
-    cmd: 'kubectl exec -it deploy/nextcloud-deployment -- su -s /bin/bash www-data -c "php occ db:add-missing-indices"'
+    cmd:
+      task: occ
+      vars:
+        args: 'db:add-missing-indices'
   user-info:
-    cmd: 'kubectl exec -it deploy/nextcloud-deployment -- su -s /bin/bash www-data -c "php occ user:info {{ .user }}"'
     requires:
       vars: [user]
+    cmd:
+      task: occ
+      vars:
+        args: 'user:info {{ .user }}'
