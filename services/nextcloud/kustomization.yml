@@ -8,6 +8,7 @@ resources:
   - ./resources/nextcloud.yml
   - ./resources/cron.yml
   - ./resources/backup.yml
+  - ./resources/oidc-config.yml
 
 labels:
   - pairs:

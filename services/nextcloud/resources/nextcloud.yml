@@ -13,6 +13,9 @@ spec:
         - name: data-volume
           persistentVolumeClaim:
             claimName: data-volume
+        - name: oidc-config
+          secret:
+            secretName: nextcloud-oidc-config-secret
       containers:
         - name: nextcloud
           image: docker.io/library/nextcloud:28
@@ -45,6 +48,10 @@ spec:
           volumeMounts:
             - name: data-volume
               mountPath: /var/www/html
+            - name: oidc-config
+              subPath: oidc.config.php
+              mountPath: /var/www/html/config/oidc.config.php
+              readOnly: true
           ports:
             - name: http
               containerPort: 80
