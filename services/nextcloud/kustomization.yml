@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: nextcloud-
+
+resources:
+  - ./resources/nextcloud.yml
+  - ./resources/cron.yml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: nextcloud
+    includeSelectors: true
+    includeTemplates: true
