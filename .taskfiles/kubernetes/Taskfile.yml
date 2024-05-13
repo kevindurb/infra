@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  force-update-external-secret:
+    cmd: 'kubectl annotate externalsecret {{ .name }} force-sync=$(date +%s) --overwrite'
+    requires:
+      vars: [name]

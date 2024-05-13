@@ -3,11 +3,21 @@
 version: '3'
 
 includes:
-  templates: .taskfiles/templates
-  authelia: .taskfiles/authelia
-  ansible: .taskfiles/ansible
-  argo: .taskfiles/argo
-  cloudflare: .taskfiles/cloudflare
+  templates:
+    taskfile: .taskfiles/templates
+    aliases: [t, tmp, gen]
+  authelia:
+    taskfile: .taskfiles/authelia
+    aliases: [a, auth]
+  ansible:
+    taskfile: .taskfiles/ansible
+  argo:
+    taskfile: .taskfiles/argo
+  cloudflare:
+    taskfile: .taskfiles/cloudflare
+  kubernetes:
+    taskfile: .taskfiles/kubernetes
+    aliases: [k]
 
 tasks:
   setup:
