@@ -55,7 +55,7 @@
     - Nextcloud:
         icon: nextcloud
         href: https://nextcloud.durbin.casa
-        siteMonitor: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
+        siteMonitor: http://nextcloud-service/login
 
 - Infra:
     - Gatus:
