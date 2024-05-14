@@ -56,10 +56,6 @@
         icon: nextcloud
         href: https://nextcloud.durbin.casa
         siteMonitor: http://nextcloud-service/login
-    - NextPVR:
-        icon: nextpvr
-        href: https://nextpvr.durbin.casa
-        siteMonitor: http://nextpvr-service
 
 - Infra:
     - Gatus:
