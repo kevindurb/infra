@@ -1,0 +1,97 @@
+import "@k8s/K8sResource.pkl"
+import "@k8s/api/apps/v1/Deployment.pkl"
+import "@k8s/api/core/v1/Service.pkl"
+import "@k8s/api/networking/v1/Ingress.pkl"
+
+appLabels: Mapping<String, String> = new {
+  ["app.kubernetes.io/name"] = "whoami"
+  ["app.kubernetes.io/component"] = "web"
+}
+
+webDeployment: Deployment = new {
+  metadata {
+    name = "whoami-deployment"
+    labels = appLabels
+  }
+  spec {
+    replicas = 3
+    selector {
+      matchLabels = appLabels
+    }
+    template {
+      metadata {
+        labels = appLabels
+      }
+      spec {
+        containers {
+          new {
+            name = "whoami"
+            image = "docker.io/traefik/whoami:v1.10.2"
+            ports {
+              new {
+                name = "web"
+                containerPort = 80
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+webService: Service = new {
+  metadata {
+    name = "whoami-service"
+    labels = appLabels
+  }
+  spec {
+    selector = appLabels
+    ports {
+      new {
+        name = "web"
+        port = 80
+        targetPort = "web"
+      }
+    }
+  }
+}
+
+webIngress: Ingress = new {
+  metadata {
+    name = "whoami-ingress"
+    labels = appLabels
+  }
+  spec {
+    ingressClassName = "tailscale"
+    defaultBackend {
+      service {
+        name = webService.metadata.name
+        port {
+          name = "web"
+        }
+      }
+    }
+    tls {
+      new {
+        hosts {
+          "whoami"
+        }
+      }
+    }
+  }
+}
+
+resources: Listing<K8sResource> = new {
+  webDeployment
+  webService
+  webIngress
+}
+
+
+output {
+  value = resources
+  renderer = (K8sResource.output.renderer as YamlRenderer) {
+    isStream = true
+  }
+}
