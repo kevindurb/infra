@@ -18,13 +18,13 @@ spec:
             - name: web
               containerPort: 80
           name: whoami
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/name: whoami
       app.kubernetes.io/component: web
   strategy:
-    type: Recreate
+    type: RollingUpdate
 ---
 apiVersion: v1
 kind: Service

@@ -4,3 +4,7 @@ name = "whoami"
 image = "docker.io/traefik/whoami:v1.10.2"
 port = 80
 ingressType = "lan"
+replicas = 3
+deploymentStrategy = new {
+  type = "RollingUpdate"
+}

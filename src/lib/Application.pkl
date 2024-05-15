@@ -10,6 +10,10 @@ name: String
 image: String
 port: Int
 subdomain: String = module.name
+replicas: Int = 1
+deploymentStrategy: Deployment.DeploymentStrategy = new {
+  type = "Recreate"
+}
 ingressType: "tailscale" | "lan" = "tailscale"
 includeDeployment: Boolean = true
 includeService: Boolean = true
@@ -39,10 +43,8 @@ primaryDeployment: Deployment = new {
     labels = module.labels
   }
   spec {
-    replicas = 1
-    strategy {
-      type = "Recreate"
-    }
+    replicas = module.replicas
+    strategy = module.deploymentStrategy
     selector {
       matchLabels = module.labels
     }
