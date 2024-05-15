@@ -870,7 +870,7 @@ spec:
   source:
     repoURL: https://gitlab.com/kevindurb/infra.git
     targetRevision: HEAD
-    path: manifests/whoami
+    path: generated-manifests/whoami
   destination:
     server: https://kubernetes.default.svc
     namespace: default

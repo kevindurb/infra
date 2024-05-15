@@ -3,7 +3,7 @@
 version: '3'
 
 vars:
-  buildOutputDir: ./manifests
+  buildOutputDir: ./generated-manifests
   applications: >
     whoami
 
