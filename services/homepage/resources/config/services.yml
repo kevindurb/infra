@@ -109,3 +109,6 @@
         icon: grafana
         href: https://grafana.beaver-cloud.ts.net
         siteMonitor: http://grafana-service/api/health
+    - Pushover:
+        icon: pushover
+        href: https://client.pushover.net/
