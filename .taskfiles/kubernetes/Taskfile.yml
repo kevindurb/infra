@@ -2,8 +2,20 @@
 ---
 version: '3'
 
+vars:
+  buildOutputDir: ./manifests
+  applications: >
+    whoami
+
 tasks:
   force-update-external-secret:
     cmd: 'kubectl annotate externalsecret {{ .name }} force-sync=$(date +%s) --overwrite'
     requires:
       vars: [name]
+
+  build:
+    cmds:
+      - rm -rf {{ .buildOutputDir }}
+      - mkdir {{ .buildOutputDir }}
+      - for: { var: applications }
+        cmd: pkl eval ./src/applications/{{ .ITEM }}.pkl -o {{ joinPath .buildOutputDir .ITEM "resources" }}.yml

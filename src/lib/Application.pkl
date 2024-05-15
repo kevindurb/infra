@@ -143,8 +143,15 @@ else
     }
   }
 
-function getResources(): List<K8sResource> = new Listing {
+resources: List<K8sResource> = new Listing {
   if (includeDeployment) primaryDeployment else null
   if (includeService) primaryService else null
   if (includeIngress) primaryIngress else null
 }.toList().filterNonNull()
+
+output {
+  value = module.resources
+  renderer = (K8sResource.output.renderer as YamlRenderer) {
+    isStream = true
+  }
+}
