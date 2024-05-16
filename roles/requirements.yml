@@ -1,6 +1,5 @@
 ---
 roles:
-  - src: geerlingguy.repo-epel
   - src: geerlingguy.github-users
   - src: geerlingguy.ntp
   - src: geerlingguy.security
