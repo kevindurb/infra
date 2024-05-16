@@ -13,7 +13,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: immich
-          image: ghcr.io/immich-app/immich-server:v1.103.1
+          image: ghcr.io/immich-app/immich-server:v1.105.1
           command: [/usr/src/app/start.sh]
           args: [immich]
           env:
