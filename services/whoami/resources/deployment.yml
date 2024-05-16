@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      containers:
+        - name: whoami
+          image: docker.io/traefik/whoami:v1.10.2
+          ports:
+            - name: web
+              containerPort: 80
