@@ -5,7 +5,10 @@ kind: Kustomization
 namePrefix: jellyfin-
 
 resources:
-  - ./resources/jellyfin.yml
+  - ./resources/deployment.yml
+  - ./resources/service.yml
+  - ./resources/ingress.yml
+  - ./resources/config-volume.yml
   - ./resources/backup.yml
 
 commonLabels:

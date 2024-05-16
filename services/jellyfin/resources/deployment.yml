@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      hostname: jellyfin
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
+        - name: dev-dri
+          hostPath:
+            path: /dev/dri
+      containers:
+        - name: jellyfin
+          image: docker.io/jellyfin/jellyfin
+          securityContext:
+            privileged: true
+          resources:
+            limits:
+              memory: 1G
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+            - name: truenas-media
+              mountPath: /media
+            - mountPath: /dev/dri
+              name: dev-dri
+          ports:
+            - name: web
+              containerPort: 8096
