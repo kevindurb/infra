@@ -28,7 +28,7 @@ spec:
             path: /dev/dri
       containers:
         - name: jellyfin
-          image: docker.io/jellyfin/jellyfin
+          image: ghcr.io/jellyfin/jellyfin:10.9.1
           securityContext:
             privileged: true
           resources:
