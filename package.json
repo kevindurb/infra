@@ -9,7 +9,8 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{yml,yaml,json,md,sh}": "prettier -w"
+    "*.{yml,yaml,json,md,sh}": "prettier -w",
+    "./services/**/*.{yml,yaml}": "task k:validate"
   },
   "repository": {
     "type": "git",
