@@ -3,9 +3,8 @@
 version: '3'
 
 vars:
-  buildOutputDir: ./generated-manifests
-  applications: >
-    whoami
+  services:
+    sh: ls ./services
 
 tasks:
   force-update-external-secret:
@@ -13,9 +12,19 @@ tasks:
     requires:
       vars: [name]
 
-  build:
+  build-all:
     cmds:
-      - rm -rf {{ .buildOutputDir }}
-      - mkdir {{ .buildOutputDir }}
-      - for: { var: applications }
-        cmd: pkl eval ./src/applications/{{ .ITEM }}.pkl -o {{ joinPath .buildOutputDir .ITEM "resources" }}.yml
+      - rm -rf ./dist
+      - mkdir ./dist
+      - for:
+          var: services
+        cmd: kustomize build {{ joinPath "./services" .ITEM }} > ./dist/{{ .ITEM }}.yml
+    sources:
+      - services/**/*.yml
+    generates:
+      - dist/*.yml
+
+  validate:
+    cmds:
+      - task: build-all
+      - kubeconform -schema-location default -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' ./dist

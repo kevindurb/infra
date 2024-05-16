@@ -13,3 +13,5 @@ cert.key
 secrets.yaml
 *.secret
 *.env
+dist
+.task
