@@ -1,5 +1,0 @@
-extends "@k8s/api/networking/v1/Ingress.pkl"
-
-spec {
-  ingressClassName = "tailscale"
-}
