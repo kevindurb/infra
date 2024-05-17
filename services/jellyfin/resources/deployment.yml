@@ -15,6 +15,9 @@ spec:
     metadata:
       labels: *labels
     spec:
+      nodeSelector:
+        nvidia.com/gpu.present: 'true'
+      runtimeClassName: nvidia
       hostname: jellyfin
       volumes:
         - name: config-volume
@@ -23,14 +26,9 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
-        - name: dev-dri
-          hostPath:
-            path: /dev/dri
       containers:
         - name: jellyfin
           image: ghcr.io/jellyfin/jellyfin:10.9.1
-          securityContext:
-            privileged: true
           resources:
             limits:
               memory: 1G
@@ -39,8 +37,6 @@ spec:
               mountPath: /config
             - name: truenas-media
               mountPath: /media
-            - mountPath: /dev/dri
-              name: dev-dri
           ports:
             - name: web
               containerPort: 8096

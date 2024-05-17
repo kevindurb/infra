@@ -50,14 +50,14 @@ spec:
     copyMethod: Direct
 
 ---
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: config-restore
-# spec:
-#   trigger:
-#     manual: manual-once
-#   restic:
-#     repository: jellyfin-restic-config
-#     destinationPVC: jellyfin-config-volume
-#     copyMethod: Direct
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: config-restore
+spec:
+  trigger:
+    manual: manual-once
+  restic:
+    repository: jellyfin-restic-config
+    destinationPVC: jellyfin-config-volume
+    copyMethod: Direct

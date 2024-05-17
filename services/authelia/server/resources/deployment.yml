@@ -136,31 +136,23 @@ spec:
     recovery:
       source: &source authelia-server-postgres
 
-  # backup:
-  #   retentionPolicy: 30d
-  #   barmanObjectStore: &objectStore
-  #     destinationPath: s3://postgres-wal-backups
-  #     endpointURL: http://minio-api-service
-  #     s3Credentials:
-  #       accessKeyId:
-  #         name: minio-secret
-  #         key: MINIO_ACCESS_KEY
-  #       secretAccessKey:
-  #         name: minio-secret
-  #         key: MINIO_SECRET_KEY
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore: &object-store
+      destinationPath: s3://postgres-wal-backups
+      endpointURL: http://minio-api-service
+      s3Credentials:
+        accessKeyId:
+          name: minio-secret
+          key: MINIO_ACCESS_KEY
+        secretAccessKey:
+          name: minio-secret
+          key: MINIO_SECRET_KEY
 
   externalClusters:
     - name: *source
       barmanObjectStore:
-        destinationPath: s3://postgres-wal-backups
-        endpointURL: http://minio-api-service
-        s3Credentials:
-          accessKeyId:
-            name: minio-secret
-            key: MINIO_ACCESS_KEY
-          secretAccessKey:
-            name: minio-secret
-            key: MINIO_SECRET_KEY
+        <<: *object-store
         wal:
           maxParallel: 8
 
