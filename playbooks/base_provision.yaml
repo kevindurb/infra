@@ -3,16 +3,18 @@
 - name: Base Provision
   hosts: all
   become: true
-  vars:
-    ntp_timezone: America/Denver
-    github_users:
-      - name: kevindurb
-    security_sudoers_passwordless:
-      - kevindurb
   roles:
-    - geerlingguy.github-users
-    - geerlingguy.ntp
-    - geerlingguy.security
+    - role: geerlingguy.github-users
+      github_users:
+        - name: kevindurb
+
+    - role: geerlingguy.ntp
+      ntp_timezone: America/Denver
+
+    - role: geerlingguy.security
+      security_sudoers_passwordless:
+        - kevindurb
+
     - role: MichaelRigart.interfaces
       interfaces_ether_interfaces:
         - device: '{{ static_iface }}'
@@ -21,6 +23,7 @@
           netmask: 255.255.0.0
           gateway: 192.168.1.1
           dnsnameservers: 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4
+
   tasks:
     - name: Add non-free and non-free-firmware
       ansible.builtin.apt_repository:
