@@ -2,15 +2,19 @@
 ---
 version: '3'
 
+vars:
+  k3supArgs: >-
+    --user kevindurb
+    --ssh-key ~/.ssh/id_ed25519
+
 tasks:
   install:
     requires:
       vars: [ip]
     cmd: >
       k3sup install
+      {{ .k3supArgs }}
       --ip {{ .ip }}
-      --user kevindurb
-      --ssh-key ~/.ssh/id_ed25519
       --no-extras
       --context stack
       --local-path $HOME/.kube/config
@@ -21,7 +25,6 @@ tasks:
       vars: [server, ip]
     cmd: >
       k3sup join
+      {{ .k3supArgs }}
       --ip {{ .ip }}
       --server-ip {{ .server }}
-      --user kevindurb
-      --ssh-key ~/.ssh/id_ed25519
