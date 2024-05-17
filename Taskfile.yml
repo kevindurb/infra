@@ -23,7 +23,7 @@ includes:
     aliases: [k]
 
 tasks:
-  setup:
+  default:
     cmds:
       - task: ansible:setup
       - npm install

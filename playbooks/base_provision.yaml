@@ -3,17 +3,46 @@
 - name: Base Provision
   hosts: all
   become: true
-  vars_files:
-    - ../vars/main.yaml
+  vars:
+    ntp_timezone: America/Denver
+    github_users:
+      - name: kevindurb
+    security_sudoers_passwordless:
+      - kevindurb
   roles:
     - geerlingguy.github-users
     - geerlingguy.ntp
     - geerlingguy.security
+    - role: MichaelRigart.interfaces
+      interfaces_ether_interfaces:
+        - device: '{{ static_iface }}'
+          bootproto: static
+          address: '{{ static_ip }}'
+          netmask: 255.255.0.0
+          gateway: 192.168.1.1
+          dnsnameservers: 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4
   tasks:
     - name: Add non-free and non-free-firmware
       ansible.builtin.apt_repository:
         repo: deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
         state: present
+
+    - name: Add nvidia apt key
+      ansible.builtin.apt_key:
+        url: https://nvidia.github.io/libnvidia-container/gpgkey
+        state: present
+
+    - name: Download nvidia apt source
+      ansible.builtin.get_url:
+        url: https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list
+        dest: /etc/apt/sources.list.d/nvidia-container-toolkit.list
+        mode: '0644'
+
+    - name: Add signing key to nvidia apt source
+      ansible.builtin.replace:
+        path: /etc/apt/sources.list.d/nvidia-container-toolkit.list
+        regexp: 'deb https://(.+)$'
+        replace: 'deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://\1'
 
     - name: Update repositories cache
       ansible.builtin.apt:
@@ -29,7 +58,6 @@
           - nfs-common
           - nvidia-driver
           - firmware-misc-nonfree
-
-    - name: Set hostname
-      ansible.builtin.hostname:
-        name: '{{ inventory_hostname }}'
+          - nvidia-driver
+          - nvidia-smi
+          - nvidia-container-runtime

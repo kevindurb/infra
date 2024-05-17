@@ -6,6 +6,7 @@ roles:
   - src: geerlingguy.ansible
   - src: geerlingguy.pip
   - src: geerlingguy.docker
+  - src: MichaelRigart.interfaces
 
 collections:
   - community.docker
