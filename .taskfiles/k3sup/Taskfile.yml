@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  install:
+    requires:
+      vars: [ip]
+    cmd: >
+      k3sup install
+      --ip {{ .ip }}
+      --user kevindurb
+      --ssh-key ~/.ssh/id_ed25519
+      --no-extras
+
+  join:
+    requires:
+      vars: [server, ip]
+    cmd: >
+      k3sup join
+      --ip {{ .ip }}
+      --server-ip {{ .server }}
+      --user kevindurb
+      --ssh-key ~/.ssh/id_ed25519

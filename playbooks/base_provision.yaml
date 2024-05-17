@@ -3,6 +3,17 @@
 - name: Base Provision
   hosts: all
   become: true
+  pre_tasks:
+    - name: Remove cdrom source
+      ansible.builtin.lineinfile:
+        path: /etc/apt/sources.list
+        regexp: '^deb cdrom'
+        state: absent
+
+    # - name: Update repositories cache
+    #   ansible.builtin.apt:
+    #     update_cache: true
+
   roles:
     - role: geerlingguy.github-users
       github_users:
@@ -25,6 +36,11 @@
           dnsnameservers: 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4
 
   tasks:
+    - name: Install gpg so we can add the nvidia apt key
+      ansible.builtin.package:
+        name:
+          - gpg
+
     - name: Add non-free and non-free-firmware
       ansible.builtin.apt_repository:
         repo: deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
@@ -41,12 +57,6 @@
         dest: /etc/apt/sources.list.d/nvidia-container-toolkit.list
         mode: '0644'
 
-    - name: Add signing key to nvidia apt source
-      ansible.builtin.replace:
-        path: /etc/apt/sources.list.d/nvidia-container-toolkit.list
-        regexp: 'deb https://(.+)$'
-        replace: 'deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://\1'
-
     - name: Update repositories cache
       ansible.builtin.apt:
         update_cache: true
@@ -54,7 +64,6 @@
     - name: Install Deps
       ansible.builtin.package:
         name:
-          - gpg
           - sudo
           - curl
           - binutils

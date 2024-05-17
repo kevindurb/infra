@@ -21,6 +21,8 @@ includes:
   kubernetes:
     taskfile: .taskfiles/kubernetes
     aliases: [k]
+  k3sup:
+    taskfile: .taskfiles/k3sup
 
 tasks:
   default:

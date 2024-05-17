@@ -8,6 +8,18 @@ all:
           ansible_host: 192.168.200.101
           static_ip: 192.168.200.101
           static_iface: enp0s25
+        stack-agent-01:
+          ansible_host: 192.168.200.111
+          static_ip: 192.168.200.111
+          static_iface: enp0s25
+        stack-agent-02:
+          ansible_host: 192.168.200.112
+          static_ip: 192.168.200.112
+          static_iface: enp0s25
+        stack-agent-03:
+          ansible_host: 192.168.200.113
+          static_ip: 192.168.200.113
+          static_iface: enp0s25
     k3snodes:
       hosts:
         kube-master-01:
