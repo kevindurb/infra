@@ -10,9 +10,9 @@
         regexp: '^deb cdrom'
         state: absent
 
-    # - name: Update repositories cache
-    #   ansible.builtin.apt:
-    #     update_cache: true
+    - name: Update repositories cache
+      ansible.builtin.apt:
+        update_cache: true
 
   roles:
     - role: geerlingguy.github-users
