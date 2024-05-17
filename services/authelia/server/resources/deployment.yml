@@ -132,9 +132,9 @@ spec:
   storage:
     storageClass: local-storage
     size: 5Gi
-  bootstrap:
-    recovery:
-      source: &source authelia-server-postgres
+  # bootstrap:
+  #   recovery:
+  #     source: authelia-server-postgres
 
   backup:
     retentionPolicy: 30d
@@ -150,7 +150,7 @@ spec:
           key: MINIO_SECRET_KEY
 
   externalClusters:
-    - name: *source
+    - name: authelia-server-postgres
       barmanObjectStore:
         <<: *object-store
         wal:
