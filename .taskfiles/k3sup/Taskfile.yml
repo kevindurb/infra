@@ -12,6 +12,9 @@ tasks:
       --user kevindurb
       --ssh-key ~/.ssh/id_ed25519
       --no-extras
+      --context stack
+      --local-path $HOME/.kube/config
+      --merge
 
   join:
     requires:
