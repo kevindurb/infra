@@ -73,3 +73,9 @@
           - nvidia-driver
           - nvidia-smi
           - nvidia-container-runtime
+
+    - name: Create symlink for nvidia container runtime
+      ansible.builtin.file:
+        src: /sbin/ldconfig
+        dest: /sbin/ldconfig.real
+        state: link
