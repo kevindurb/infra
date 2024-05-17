@@ -59,7 +59,7 @@ metadata:
 spec:
   instances: 3
   storage:
-    storageClass: local-path # @deprecated
+    storageClass: local-storage
     size: 5Gi
   backup:
     retentionPolicy: 30d
