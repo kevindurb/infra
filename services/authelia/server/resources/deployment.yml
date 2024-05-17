@@ -132,9 +132,13 @@ spec:
   storage:
     storageClass: local-storage
     size: 5Gi
+  bootstrap:
+    recovery:
+      source: &source authelia-postgres
+
   backup:
     retentionPolicy: 30d
-    barmanObjectStore:
+    barmanObjectStore: &objectStore
       destinationPath: s3://postgres-wal-backups
       endpointURL: http://minio-api-service
       s3Credentials:
@@ -144,6 +148,13 @@ spec:
         secretAccessKey:
           name: minio-secret
           key: MINIO_SECRET_KEY
+
+  externalClusters:
+    - name: *source
+      barmanObjectStore:
+        <<: *objectStore
+        wal:
+          maxParallel: 8
 
 ---
 apiVersion: v1
