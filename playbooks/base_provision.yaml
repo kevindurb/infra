@@ -1,6 +1,7 @@
 ---
 # vim: set ft=yaml.ansible:
-- hosts: all
+- name: Base Provision
+  hosts: all
   become: true
   vars_files:
     - ../vars/main.yaml
@@ -9,6 +10,26 @@
     - geerlingguy.ntp
     - geerlingguy.security
   tasks:
+    - name: Add non-free and non-free-firmware
+      ansible.builtin.apt_repository:
+        repo: deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+        state: present
+
+    - name: Update repositories cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install Deps
+      ansible.builtin.package:
+        name:
+          - gpg
+          - sudo
+          - curl
+          - binutils
+          - nfs-common
+          - nvidia-driver
+          - firmware-misc-nonfree
+
     - name: Set hostname
-      hostname:
+      ansible.builtin.hostname:
         name: '{{ inventory_hostname }}'

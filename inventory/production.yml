@@ -5,6 +5,7 @@ all:
     stack-nodes:
       hosts:
         stack-api-01:
+          ansible_host: 192.168.200.101
           static_ip: 192.168.200.101
           static_iface: enp0s25
     k3snodes:
