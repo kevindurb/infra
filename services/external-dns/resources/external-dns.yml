@@ -53,7 +53,7 @@ spec:
       serviceAccountName: account
       containers:
         - name: external-dns
-          image: registry.k8s.io/external-dns/external-dns:v0.14.1
+          image: registry.k8s.io/external-dns/external-dns:v0.14.2
           args:
             - --registry=txt
             - --txt-owner-id=kevindurb
