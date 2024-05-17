@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.50.50
 spec:
   ports:
     - name: prometheus
