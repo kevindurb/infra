@@ -1,901 +1,901 @@
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/argocd
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: actual-budget
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/actual-budget
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: alertmanager
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/alertmanager
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: authelia
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/authelia
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: cert-manager
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/cert-manager
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: cloudflared
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/cloudflared
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: cnpg
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/cnpg
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: common
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/common
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: dashboard
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/dashboard
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: external-dns
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/external-dns
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: external-secrets
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/external-secrets
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: external-snapshotter
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/external-snapshotter
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: external-volumes
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/external-volumes
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: filebrowser
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/filebrowser
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: freshrss
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/freshrss
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: frigate
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/frigate
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: gatus
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/gatus
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: grafana
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/grafana
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: handbrake
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/handbrake
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: healthchecks
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/healthchecks
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: home-assistant
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/home-assistant
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: homepage
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/homepage
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: immich
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/immich
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: ingress-nginx
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/ingress-nginx
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: jellyfin
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/jellyfin
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: kavita
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/kavita
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: linkwarden
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/linkwarden
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: local-path-provisioner
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/local-path-provisioner
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: mealie
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/mealie
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: metallb
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/metallb
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: minecraft
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/minecraft
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: minio
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/minio
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: mosquitto
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/mosquitto
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: nextcloud
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/nextcloud
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: node-exporter
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/node-exporter
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: omada
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/omada
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: orcaslicer
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/orcaslicer
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: prometheus
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/prometheus
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: smartctl-exporter
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/smartctl-exporter
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: smokeping
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/smokeping
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: tailscale-operator
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/tailscale-operator
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: vikunja
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/vikunja
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: volsync
-spec:
-  project: default
-  source:
-    repoURL: https://backube.github.io/helm-charts/
-    targetRevision: v0.9.1
-    chart: volsync
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: volsync-system
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-    syncOptions:
-      - CreateNamespace=true
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: whoami
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/whoami
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: zigbee2mqtt
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/zigbee2mqtt
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: argocd
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/argocd
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: argocd
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: actual-budget
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/actual-budget
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: alertmanager
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/alertmanager
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: authelia
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/authelia
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cert-manager
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/cert-manager
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cloudflared
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/cloudflared
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cnpg
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/cnpg
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: common
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/common
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: dashboard
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/dashboard
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: external-dns
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/external-dns
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: external-secrets
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/external-secrets
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: external-snapshotter
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/external-snapshotter
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: external-volumes
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/external-volumes
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: filebrowser
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/filebrowser
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: freshrss
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/freshrss
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: frigate
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/frigate
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: gatus
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/gatus
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: grafana
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/grafana
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: handbrake
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/handbrake
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: healthchecks
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/healthchecks
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: home-assistant
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/home-assistant
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: homepage
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/homepage
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: immich
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/immich
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: ingress-nginx
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/ingress-nginx
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: jellyfin
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/jellyfin
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: kavita
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/kavita
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: linkwarden
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/linkwarden
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: local-path-provisioner
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/local-path-provisioner
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: mealie
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/mealie
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: metallb
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/metallb
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: minecraft
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/minecraft
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: minio
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/minio
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: mosquitto
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/mosquitto
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: nextcloud
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/nextcloud
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: node-exporter
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/node-exporter
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: omada
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/omada
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: orcaslicer
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/orcaslicer
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: prometheus
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/prometheus
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: smartctl-exporter
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/smartctl-exporter
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: smokeping
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/smokeping
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: tailscale-operator
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/tailscale-operator
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: vikunja
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/vikunja
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: volsync
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://backube.github.io/helm-charts/
+#     targetRevision: v0.9.1
+#     chart: volsync
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: volsync-system
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#     syncOptions:
+#       - CreateNamespace=true
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: whoami
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/whoami
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
+#
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: zigbee2mqtt
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://gitlab.com/kevindurb/infra.git
+#     targetRevision: HEAD
+#     path: services/zigbee2mqtt
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#       allowEmpty: false
