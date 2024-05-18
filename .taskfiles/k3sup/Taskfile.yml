@@ -14,7 +14,7 @@ tasks:
     cmd: >
       k3sup install
       {{ .k3supArgs }}
-      --ip {{ .ip }}
+      --ip "{{ .ip }}"
       --no-extras
       --context stack
       --local-path $HOME/.kube/config
@@ -26,5 +26,5 @@ tasks:
     cmd: >
       k3sup join
       {{ .k3supArgs }}
-      --ip {{ .ip }}
-      --server-ip {{ .server }}
+      --ip "{{ .ip }}"
+      --server-ip "{{ .server }}"

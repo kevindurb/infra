@@ -29,36 +29,36 @@ spec:
       remoteRef:
         key: MINIO_SECRET_KEY
 
----
-apiVersion: volsync.backube/v1alpha1
-kind: ReplicationSource
-metadata:
-  name: data-backup
-spec:
-  sourcePVC: freshrss-data-volume
-  trigger:
-    schedule: '0 * * * *'
-  restic:
-    pruneIntervalDays: 14
-    repository: freshrss-restic-config
-    retain:
-      hourly: 6
-      daily: 5
-      weekly: 4
-      monthly: 2
-      yearly: 1
-    copyMethod: Direct
-    unlock: 2024-04-22
+# ---
+# apiVersion: volsync.backube/v1alpha1
+# kind: ReplicationSource
+# metadata:
+#   name: data-backup
+# spec:
+#   sourcePVC: freshrss-data-volume
+#   trigger:
+#     schedule: '0 * * * *'
+#   restic:
+#     pruneIntervalDays: 14
+#     repository: freshrss-restic-config
+#     retain:
+#       hourly: 6
+#       daily: 5
+#       weekly: 4
+#       monthly: 2
+#       yearly: 1
+#     copyMethod: Direct
+#     unlock: 2024-04-22
 
 ---
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: data-restore
-# spec:
-#   trigger:
-#     manual: manual-once
-#   restic:
-#     repository: freshrss-restic-config
-#     destinationPVC: freshrss-data-volume
-#     copyMethod: Direct
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: data-restore
+spec:
+  trigger:
+    manual: manual-once
+  restic:
+    repository: freshrss-restic-config
+    destinationPVC: freshrss-data-volume
+    copyMethod: Direct

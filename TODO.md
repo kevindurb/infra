@@ -1,55 +1,49 @@
-- ~common~
-- ~metallb~
-- ~local-path-provisioner~
-- ~ingress-nginx~
-- ~external-volumes~
-- ~external-snapshotter~
-- ~external-secrets~
-- ~minio~
-- ~cnpg~
-- ~external-dns~
-- ~cert-manager~
-- ~cloudflared~
-- ~tailscale-operator~
-- ~volsync~
-
-- ~whoami~
-- authelia
-- ~dashboard~
-- ~prometheus~
-- ~alertmanager~
-- grafana
-- ~node-exporter~
-- ~smartctl-exporter~
-
-- ~homepage~
-- ~gatus~
-- ~healthchecks~
-
-- R actual-budget
-
-- ~filebrowser~
-- R freshrss
-- ~frigate~
-- ~handbrake~
-- ~home-assistant~
-- R immich
-- ~jellyfin~
-- R kavita
-- R linkwarden
-- makemkv
-- R mealie
-- ~minecraft~
-- R nextcloud
-- R omada
-- ~orcaslicer~
-- ~radarr~
-- ~smokeping~
-- ~sonarr~
-- R vikunja
-
-- argocd
-- system-upgrade
-- R zigbee2mqtt
-
-- ~mosquitto~
+- [x] common
+- [x] metallb
+- [x] local-path-provisioner
+- [x] ingress-nginx
+- [x] external-volumes
+- [x] external-snapshotter
+- [x] external-secrets
+- [x] minio
+- [x] cnpg
+- [x] external-dns
+- [x] cert-manager
+- [x] cloudflared
+- [x] tailscale-operator
+- [x] volsync
+- [x] whoami
+- [x] dashboard
+- [x] prometheus
+- [x] alertmanager
+- [x] node-exporter
+- [x] smartctl-exporter
+- [x] homepage
+- [x] gatus
+- [x] healthchecks
+- [x] filebrowser
+- [x] frigate
+- [x] handbrake
+- [x] home-assistant
+- [x] jellyfin
+- [x] minecraft
+- [x] orcaslicer
+- [x] radarr
+- [x] smokeping
+- [x] sonarr
+- [x] mosquitto
+- [x] authelia
+- [x] grafana
+- [ ] actual-budget
+- [ ] freshrss #restore
+- [ ] immich #restore
+- [ ] kavita #restore
+- [ ] linkwarden #restore
+- [ ] makemkv
+- [ ] mealie #restore
+- [ ] nextcloud #restore
+- [ ] omada #restore
+- [ ] vikunja #restore
+- [ ] argocd
+- [ ] system-upgrade
+- [ ] zigbee2mqtt #restore

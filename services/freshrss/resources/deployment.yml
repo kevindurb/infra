@@ -93,9 +93,12 @@ spec:
   storage:
     storageClass: local-storage
     size: 5Gi
+  # bootstrap:
+  #   recovery:
+  #     source: freshrss-postgres
   backup:
     retentionPolicy: 30d
-    barmanObjectStore:
+    barmanObjectStore: &object-store
       destinationPath: s3://postgres-wal-backups
       endpointURL: http://minio-api-service
       s3Credentials:
@@ -105,6 +108,13 @@ spec:
         secretAccessKey:
           name: freshrss-restic-config
           key: AWS_SECRET_ACCESS_KEY
+  externalClusters:
+    - name: freshrss-postgres
+      barmanObjectStore:
+        <<: *object-store
+        serverName: freshrss-postgres
+        wal:
+          maxParallel: 8
 
 ---
 apiVersion: v1
