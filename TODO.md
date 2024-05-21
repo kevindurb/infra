@@ -39,7 +39,7 @@
 - [x] mealie #restore
 - [x] kavita #restore
 - [x] omada #restore
-- [ ] zigbee2mqtt #restore
+- [x] zigbee2mqtt #restore
 - [ ] freshrss #restore #postgres
 - [ ] immich #restore #postgres
 - [ ] linkwarden #restore #postgres
