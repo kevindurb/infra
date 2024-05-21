@@ -20,13 +20,13 @@ cameras:
   #     inputs:
   #       - path: rtsp://192.168.0.40:8554/video3_unicast
   #         roles: []
-  eufy0:
-    ffmpeg:
-      inputs:
-        - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live0
-          roles: []
-  eufy1:
-    ffmpeg:
-      inputs:
-        - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live1
-          roles: []
+  # eufy0:
+  #   ffmpeg:
+  #     inputs:
+  #       - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live0
+  #         roles: []
+  # eufy1:
+  #   ffmpeg:
+  #     inputs:
+  #       - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live1
+  #         roles: []
