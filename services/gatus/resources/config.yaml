@@ -143,3 +143,8 @@ endpoints:
     conditions:
       - '[STATUS] >= 200'
       - '[STATUS] < 500'
+
+  - name: Open WebUI
+    group: Applications
+    url: http://open-webui-service
+    <<: *defaults
