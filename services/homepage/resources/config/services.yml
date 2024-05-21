@@ -56,6 +56,10 @@
         icon: nextcloud
         href: https://nextcloud.durbin.casa
         siteMonitor: http://nextcloud-service/login
+    - Open WebUI:
+        icon: open-webui
+        href: https://chat.beaver-cloud.ts.net
+        siteMonitor: http://open-webui-service
 
 - Infra:
     - Gatus:
