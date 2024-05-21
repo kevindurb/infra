@@ -34,16 +34,16 @@
 - [x] mosquitto
 - [x] authelia
 - [x] grafana
-- [ ] actual-budget
-- [ ] freshrss #restore
-- [ ] immich #restore
-- [ ] kavita #restore
-- [ ] linkwarden #restore
-- [ ] makemkv
-- [ ] mealie #restore
-- [ ] nextcloud #restore
-- [ ] omada #restore
-- [ ] vikunja #restore
+- [x] actual-budget
+- [x] makemkv
+- [x] mealie #restore
+- [x] kavita #restore
+- [x] omada #restore
+- [ ] zigbee2mqtt #restore
+- [ ] freshrss #restore #postgres
+- [ ] immich #restore #postgres
+- [ ] linkwarden #restore #postgres
+- [ ] nextcloud #restore #postgres
+- [ ] vikunja #restore #postgres
 - [ ] argocd
 - [ ] system-upgrade
-- [ ] zigbee2mqtt #restore
