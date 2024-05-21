@@ -157,7 +157,6 @@
         "y": 0
       },
       "id": 1,
-      "interval": "5m",
       "options": {
         "legend": {
           "calcs": [],
@@ -259,7 +258,6 @@
         "y": 8
       },
       "id": 2,
-      "interval": "5m",
       "options": {
         "legend": {
           "calcs": [],
@@ -361,7 +359,6 @@
         "y": 8
       },
       "id": 3,
-      "interval": "5m",
       "options": {
         "legend": {
           "calcs": [],
@@ -463,7 +460,6 @@
         "y": 16
       },
       "id": 5,
-      "interval": "5m",
       "options": {
         "legend": {
           "calcs": [],
@@ -618,7 +614,7 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-1h",
     "to": "now"
   },
   "timeRangeUpdatedDuringEditOrView": false,
