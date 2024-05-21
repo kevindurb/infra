@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://frigate.beaver-cloud.ts.net/api/config/schema.json
+# yaml-language-server: $schema=https://frigate.durbin.casa/api/config/schema.json
 ---
 mqtt:
   host: mosquitto-service
@@ -9,17 +9,24 @@ record:
 snapshots:
   enabled: true
 
-detect:
-  enabled: false
-
-go2rtc:
-  streams:
-    cam01:
-      - rtsp://192.168.0.40:8554/video3_unicast
+detectors:
+  tensorrt:
+    type: tensorrt
+    device: 0
 
 cameras:
-  cam01:
+  # cam01:
+  #   ffmpeg:
+  #     inputs:
+  #       - path: rtsp://192.168.0.40:8554/video3_unicast
+  #         roles: []
+  eufy0:
     ffmpeg:
       inputs:
-        - path: rtsp://192.168.0.40:8554/video3_unicast
+        - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live0
+          roles: []
+  eufy1:
+    ffmpeg:
+      inputs:
+        - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live1
           roles: []

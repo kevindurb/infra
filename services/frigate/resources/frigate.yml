@@ -7,12 +7,18 @@ spec:
   replicas: 1
   template:
     spec:
+      nodeSelector:
+        nvidia.com/gpu.present: 'true'
+      runtimeClassName: nvidia
       containers:
         - name: frigate
-          image: ghcr.io/blakeblackshear/frigate:0.13.2
+          image: ghcr.io/blakeblackshear/frigate:0.13.2-tensorrt
+          envFrom:
+            - secretRef:
+                name: eufy-rtsp-credentials
           resources:
             limits:
-              memory: 400M
+              memory: 4G
           ports:
             - name: web
               containerPort: 5000
@@ -24,6 +30,8 @@ spec:
               containerPort: 8555
               protocol: UDP
           volumeMounts:
+            - name: config-volume
+              mountPath: /config
             - name: config-map
               mountPath: /config/config.yml
               subPath: config.yml
@@ -34,6 +42,9 @@ spec:
         - name: config-map
           configMap:
             name: config
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
         - name: shm
           emptyDir:
             sizeLimit: 0.5Gi

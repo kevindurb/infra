@@ -6,6 +6,8 @@ namePrefix: frigate-
 
 resources:
   - ./resources/frigate.yml
+  - ./resources/pvc.yml
+  - ./resources/eufy-rtsp-credentials.yml
 
 configMapGenerator:
   - name: config
