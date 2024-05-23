@@ -7,7 +7,7 @@ namePrefix: immich-
 resources:
   - ./common
   - ./server
-  - ./microservices
+  # - ./microservices
 
 commonLabels:
   app.kubernetes.io/name: immich

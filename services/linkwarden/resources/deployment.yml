@@ -61,6 +61,9 @@ spec:
   storage:
     storageClass: local-storage
     size: 5Gi
+  # bootstrap:
+  #   recovery:
+  #     source: linkwarden-postgres
   backup:
     retentionPolicy: 30d
     barmanObjectStore:
@@ -73,6 +76,33 @@ spec:
         secretAccessKey:
           name: minio-secret
           key: MINIO_SECRET_KEY
+  #
+  # externalClusters:
+  #   - name: linkwarden-postgres
+  #     barmanObjectStore:
+  #       destinationPath: s3://postgres-wal-backups
+  #       endpointURL: http://minio-api-service
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: minio-secret
+  #           key: MINIO_ACCESS_KEY
+  #         secretAccessKey:
+  #           name: minio-secret
+  #           key: MINIO_SECRET_KEY
+  #       serverName: linkwarden-postgres
+  #       wal:
+  #         maxParallel: 8
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: backup
+spec:
+  schedule: '0 0 0 * * *'
+  backupOwnerReference: self
+  cluster:
+    name: linkwarden-postgres
 
 ---
 apiVersion: v1
