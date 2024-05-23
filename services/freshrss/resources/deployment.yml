@@ -17,42 +17,6 @@ spec:
           env: &env
             - name: TZ
               value: America/Denver
-            - name: DB_TYPE
-              value: pgsql
-            - name: DB_BASE
-              valueFrom:
-                secretKeyRef:
-                  name: freshrss-postgres-app
-                  key: dbname
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: freshrss-postgres-app
-                  key: user
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: freshrss-postgres-app
-                  key: password
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: freshrss-postgres-app
-                  key: host
-            - name: FRESHRSS_INSTALL
-              value: >-
-                --db-base $(DB_BASE)
-                --db-host $(DB_HOST)
-                --db-password $(DB_PASSWORD)
-                --db-type pgsql
-                --db-user $(DB_USER)
-                --default_user kevindurb
-                --language en
-            - name: FRESHRSS_USER
-              value: >-
-                --language en
-                --password password
-                --user kevindurb
             - name: CRON_MIN
               value: 0,15,30,45
           volumeMounts: &volumeMounts
@@ -82,39 +46,6 @@ spec:
   resources:
     requests:
       storage: 10Gi
-
----
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
-metadata:
-  name: postgres
-spec:
-  instances: 3
-  storage:
-    storageClass: local-storage
-    size: 5Gi
-  # bootstrap:
-  #   recovery:
-  #     source: freshrss-postgres
-  backup:
-    retentionPolicy: 30d
-    barmanObjectStore: &object-store
-      destinationPath: s3://postgres-wal-backups
-      endpointURL: http://minio-api-service
-      s3Credentials:
-        accessKeyId:
-          name: freshrss-restic-config
-          key: AWS_ACCESS_KEY_ID
-        secretAccessKey:
-          name: freshrss-restic-config
-          key: AWS_SECRET_ACCESS_KEY
-  externalClusters:
-    - name: freshrss-postgres
-      barmanObjectStore:
-        <<: *object-store
-        serverName: freshrss-postgres
-        wal:
-          maxParallel: 8
 
 ---
 apiVersion: v1
