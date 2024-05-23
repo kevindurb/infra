@@ -40,10 +40,10 @@
 - [x] kavita #restore
 - [x] omada #restore
 - [x] zigbee2mqtt #restore
-- [ ] freshrss #restore #postgres
-- [ ] immich #restore #postgres
+- [x] freshrss #restore #postgres
+- [ ] immich #restore #postgres #difficult
 - [x] linkwarden #restore #postgres
-- [ ] nextcloud #restore #postgres
+- [x] nextcloud #restore #postgres
 - [ ] vikunja #restore #postgres
 - [ ] argocd
 - [ ] system-upgrade
