@@ -46,6 +46,10 @@
         icon: handbrake
         href: https://handbrake.beaver-cloud.ts.net
         siteMonitor: http://handbrake-service
+    - MakeMKV:
+        icon: makemkv
+        href: https://makemkv.beaver-cloud.ts.net
+        siteMonitor: http://makemkv-service
     - Actual Budget:
         icon: actual
         href: https://actual-budget.durbin.casa
