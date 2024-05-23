@@ -29,35 +29,35 @@ spec:
       remoteRef:
         key: MINIO_SECRET_KEY
 
----
-apiVersion: volsync.backube/v1alpha1
-kind: ReplicationSource
-metadata:
-  name: data-backup
-spec:
-  sourcePVC: vikunja-files-volume
-  trigger:
-    schedule: '0 * * * *'
-  restic:
-    pruneIntervalDays: 14
-    repository: vikunja-restic-config
-    retain:
-      hourly: 6
-      daily: 5
-      weekly: 4
-      monthly: 2
-      yearly: 1
-    copyMethod: Direct
+# ---
+# apiVersion: volsync.backube/v1alpha1
+# kind: ReplicationSource
+# metadata:
+#   name: data-backup
+# spec:
+#   sourcePVC: vikunja-files-volume
+#   trigger:
+#     schedule: '0 * * * *'
+#   restic:
+#     pruneIntervalDays: 14
+#     repository: vikunja-restic-config
+#     retain:
+#       hourly: 6
+#       daily: 5
+#       weekly: 4
+#       monthly: 2
+#       yearly: 1
+#     copyMethod: Direct
 
 ---
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: data-restore
-# spec:
-#   trigger:
-#     manual: manual-once
-#   restic:
-#     repository: vikunja-restic-config
-#     destinationPVC: vikunja-files-volume
-#     copyMethod: Direct
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: data-restore
+spec:
+  trigger:
+    manual: manual-once
+  restic:
+    repository: vikunja-restic-config
+    destinationPVC: vikunja-files-volume
+    copyMethod: Direct

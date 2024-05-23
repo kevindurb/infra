@@ -93,6 +93,24 @@ spec:
         secretAccessKey:
           name: vikunja-restic-config
           key: AWS_SECRET_ACCESS_KEY
+  # bootstrap:
+  #   recovery:
+  #     source: vikunja-postgres
+  # externalClusters:
+  #   - name: vikunja-postgres
+  #     barmanObjectStore:
+  #       serverName: vikunja-postgres
+  #       destinationPath: s3://postgres-wal-backups
+  #       endpointURL: http://minio-api-service
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: minio-secret
+  #           key: MINIO_ACCESS_KEY
+  #         secretAccessKey:
+  #           name: minio-secret
+  #           key: MINIO_SECRET_KEY
+  #       wal:
+  #         maxParallel: 8
 
 ---
 apiVersion: v1
