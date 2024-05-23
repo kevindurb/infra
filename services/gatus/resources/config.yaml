@@ -148,3 +148,8 @@ endpoints:
     group: Applications
     url: http://open-webui-service
     <<: *defaults
+
+  - name: MakeMKV
+    group: Applications
+    url: http://makemkv-service
+    <<: *defaults
