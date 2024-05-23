@@ -41,7 +41,7 @@
 - [x] omada #restore
 - [x] zigbee2mqtt #restore
 - [x] freshrss #restore #postgres
-- [ ] immich #restore #postgres #difficult
+- [x] immich #restore #postgres #difficult
 - [x] linkwarden #restore #postgres
 - [x] nextcloud #restore #postgres
 - [ ] vikunja #restore #postgres
