@@ -15,10 +15,15 @@ spec:
           volumeMounts:
             - name: media
               mountPath: /srv/media
+            - name: ripping-storage
+              mountPath: /srv/ripping-storage
       volumes:
         - name: media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: ripping-storage
+          persistentVolumeClaim:
+            claimName: truenas-ripping-storage
 
 ---
 apiVersion: v1

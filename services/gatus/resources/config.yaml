@@ -153,3 +153,8 @@ endpoints:
     group: Applications
     url: http://makemkv-service
     <<: *defaults
+
+  - name: File Browser
+    group: Applications
+    url: http://filebrowser-service
+    <<: *defaults

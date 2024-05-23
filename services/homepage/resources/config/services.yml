@@ -62,6 +62,10 @@
         icon: open-webui
         href: https://chat.beaver-cloud.ts.net
         siteMonitor: http://open-webui-service
+    - File Browser:
+        icon: filebrowser
+        href: https://filebrowser.beaver-cloud.ts.net
+        siteMonitor: http://filebrowser-service
 
 - Infra:
     - Gatus:
