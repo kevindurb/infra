@@ -15,11 +15,9 @@
     - OctoPi:
         icon: octoprint
         href: https://octopi.beaver-cloud.ts.net
-        siteMonitor: https://octopi.beaver-cloud.ts.net
     - Frigate:
         icon: frigate
         href: https://frigate.durbin.casa
-        siteMonitor: http://frigate-service/api/version
     - Vikunja:
         icon: vikunja
         href: https://vikunja.durbin.casa

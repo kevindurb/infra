@@ -23,11 +23,11 @@ endpoints:
     group: Applications
     url: http://home-assistant-service/manifest.json
     <<: *defaults
-
-  - name: Frigate
-    group: Applications
-    url: http://frigate-service/api/version
-    <<: *defaults
+  #
+  # - name: Frigate
+  #   group: Applications
+  #   url: http://frigate-service/api/version
+  #   <<: *defaults
 
   - name: Google
     group: Admin
