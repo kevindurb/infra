@@ -54,10 +54,6 @@
         icon: actual
         href: https://actual-budget.durbin.casa
         siteMonitor: http://actual-budget-service
-    - Nextcloud:
-        icon: nextcloud
-        href: https://nextcloud.durbin.casa
-        siteMonitor: http://nextcloud-service/login
     - Open WebUI:
         icon: open-webui
         href: https://chat.beaver-cloud.ts.net
