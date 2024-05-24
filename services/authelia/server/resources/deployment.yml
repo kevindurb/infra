@@ -35,8 +35,6 @@ spec:
           envFrom:
             - secretRef:
                 name: authelia-env-secret
-            - secretRef:
-                name: authelia-linkwarden-secret
           env:
             - name: X_AUTHELIA_CONFIG_FILTERS
               value: template
