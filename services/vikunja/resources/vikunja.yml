@@ -50,10 +50,6 @@ spec:
           volumeMounts:
             - name: files-volume
               mountPath: /app/vikunja/files
-            - name: config
-              mountPath: /app/vikunja/config.yml
-              subPath: config.yml
-              readOnly: true
           ports:
             - name: http
               containerPort: 3456
