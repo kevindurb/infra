@@ -10,6 +10,7 @@ resources:
   - ./resources/ingress.yml
   - ./resources/config-volume.yml
   - ./resources/backup.yml
+  - ./resources/env-secret.yml
 
 commonLabels:
   app.kubernetes.io/name: jellyfin

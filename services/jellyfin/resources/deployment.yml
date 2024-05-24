@@ -40,3 +40,11 @@ spec:
           ports:
             - name: web
               containerPort: 8096
+        - name: zap2xml
+          image: shuaiscott/zap2xml:latest
+          envFrom:
+            - secretRef:
+                name: jellyfin-env-secret
+          env:
+            - name: XMLTV_FILENAME
+              value: /xmltv.xml
