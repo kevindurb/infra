@@ -15,6 +15,7 @@ spec:
     metadata:
       labels: *labels
     spec:
+      hostNetwork: true
       nodeSelector:
         nvidia.com/gpu.present: 'true'
       runtimeClassName: nvidia
@@ -40,3 +41,14 @@ spec:
           ports:
             - name: web
               containerPort: 8096
+        - name: zap2xml
+          image: shuaiscott/zap2xml:latest
+          volumeMounts:
+            - name: config-volume
+              mountPath: /data
+          envFrom:
+            - secretRef:
+                name: jellyfin-env-secret
+          env:
+            - name: XMLTV_FILENAME
+              value: xmltv.xml
