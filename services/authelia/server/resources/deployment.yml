@@ -60,11 +60,6 @@ spec:
                 secretKeyRef:
                   name: authelia-server-postgres-app
                   key: host
-            - name: IMMICH_CLIENT_SECRET_HASH
-              valueFrom:
-                secretKeyRef:
-                  name: authelia-immich-secret
-                  key: CLIENT_SECRET_HASH
             - name: GRAFANA_CLIENT_SECRET_HASH
               valueFrom:
                 secretKeyRef:
