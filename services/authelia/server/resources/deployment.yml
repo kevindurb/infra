@@ -62,21 +62,6 @@ spec:
                 secretKeyRef:
                   name: authelia-server-postgres-app
                   key: host
-            - name: LINKWARDEN_CLIENT_SECRET_HASH
-              valueFrom:
-                secretKeyRef:
-                  name: authelia-linkwarden-secret
-                  key: CLIENT_SECRET_HASH
-            - name: ARGOCD_CLIENT_SECRET_HASH
-              valueFrom:
-                secretKeyRef:
-                  name: authelia-argocd-secret
-                  key: CLIENT_SECRET_HASH
-            - name: VIKUNJA_CLIENT_SECRET_HASH
-              valueFrom:
-                secretKeyRef:
-                  name: authelia-vikunja-secret
-                  key: CLIENT_SECRET_HASH
             - name: IMMICH_CLIENT_SECRET_HASH
               valueFrom:
                 secretKeyRef:
@@ -86,11 +71,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: authelia-grafana-secret
-                  key: CLIENT_SECRET_HASH
-            - name: NEXTCLOUD_CLIENT_SECRET_HASH
-              valueFrom:
-                secretKeyRef:
-                  name: authelia-nextcloud-secret
                   key: CLIENT_SECRET_HASH
           livenessProbe:
             httpGet: &probeHttp
