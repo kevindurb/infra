@@ -15,6 +15,7 @@ spec:
     metadata:
       labels: *labels
     spec:
+      hostNetwork: true
       nodeSelector:
         nvidia.com/gpu.present: 'true'
       runtimeClassName: nvidia
@@ -28,7 +29,6 @@ spec:
             claimName: truenas-media
       containers:
         - name: jellyfin
-          hostNetwork: true
           image: ghcr.io/jellyfin/jellyfin:10.9.1
           resources:
             limits:
