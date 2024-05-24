@@ -8,10 +8,3 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   url: https://argo.beaver-cloud.ts.net
-  admin.enabled: 'false'
-  oidc.config: |
-    name: Authelia
-    issuer: https://auth.durbin.casa
-    clientID: argocd
-    clientSecret: $oidc.authelia.clientSecret
-    requestedScopes: [openid, profile, email, groups]
