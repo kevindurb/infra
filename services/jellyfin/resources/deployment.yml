@@ -28,6 +28,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: jellyfin
+          hostNetwork: true
           image: ghcr.io/jellyfin/jellyfin:10.9.1
           resources:
             limits:
