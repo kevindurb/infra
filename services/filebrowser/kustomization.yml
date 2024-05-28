@@ -9,5 +9,10 @@ resources:
   - ./resources/pvc.yml
   - ./resources/backup.yml
 
+configMapGenerator:
+  - name: config
+    files:
+      - ./resources/config.json
+
 commonLabels:
   app.kubernetes.io/name: filebrowser
