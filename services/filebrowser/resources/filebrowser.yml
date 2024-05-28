@@ -17,6 +17,9 @@ spec:
               mountPath: /srv/media
             - name: ripping-storage
               mountPath: /srv/ripping-storage
+            - name: config-volume
+              mountPath: /database.db
+              subPath: database.db
       volumes:
         - name: media
           persistentVolumeClaim:
@@ -24,6 +27,9 @@ spec:
         - name: ripping-storage
           persistentVolumeClaim:
             claimName: truenas-ripping-storage
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
 
 ---
 apiVersion: v1

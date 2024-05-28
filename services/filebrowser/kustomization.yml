@@ -6,6 +6,8 @@ namePrefix: filebrowser-
 
 resources:
   - ./resources/filebrowser.yml
+  - ./resources/pvc.yml
+  - ./resources/backup.yml
 
 commonLabels:
   app.kubernetes.io/name: filebrowser
