@@ -35,7 +35,7 @@ spec:
                   mountPath: /music
                   subPath: Music
                 - name: config-map
-                  mountPath: /defaults/subscriptions.yaml
+                  mountPath: /config/subscriptions.yaml
                   subPath: subscriptions.yml
           volumes:
             - name: media
