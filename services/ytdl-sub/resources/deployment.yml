@@ -19,11 +19,11 @@ spec:
         - name: ytdl-sub
           image: ghcr.io/jmbannon/ytdl-sub:2024.05.11
           env:
-            - key: PUID
+            - name: PUID
               value: '1000'
-            - key: PGID
+            - name: PGID
               value: '1000'
-            - key: TZ
+            - name: TZ
               value: America/Denver
           volumeMounts:
             - name: media
