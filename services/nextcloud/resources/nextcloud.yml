@@ -18,7 +18,7 @@ spec:
             secretName: nextcloud-oidc-config-secret
       containers:
         - name: nextcloud
-          image: docker.io/library/nextcloud:28
+          image: docker.io/library/nextcloud:29
           env:
             - name: APACHE_DISABLE_REWRITE_IP
               value: '1'
