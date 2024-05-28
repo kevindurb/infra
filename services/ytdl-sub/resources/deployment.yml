@@ -1,47 +1,51 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: CronJob
 metadata:
-  name: deployment
+  name: cron
 spec:
-  replicas: 1
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app.kubernetes.io/component: web
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/component: web
+  schedule: '0 * * * *'
+  jobTemplate:
     spec:
-      containers:
-        - name: ytdl-sub
-          image: ghcr.io/jmbannon/ytdl-sub:2024.05.11
-          env:
-            - name: PUID
-              value: '1000'
-            - name: PGID
-              value: '1000'
-            - name: TZ
-              value: America/Denver
-          volumeMounts:
+      selector:
+        matchLabels:
+          app.kubernetes.io/component: web
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/component: web
+        spec:
+          containers:
+            - name: ytdl-sub
+              image: ghcr.io/jmbannon/ytdl-sub:2024.05.11
+              workingDir: /config
+              command:
+                - ytdl-sub
+                - sub
+              env:
+                - name: PUID
+                  value: '1000'
+                - name: PGID
+                  value: '1000'
+                - name: TZ
+                  value: America/Denver
+              volumeMounts:
+                - name: media
+                  mountPath: /movies
+                  subPath: Movies
+                - name: media
+                  mountPath: /tv_shows
+                  subPath: TV Shows
+                - name: media
+                  mountPath: /music
+                  subPath: Music
+                - name: config-map
+                  mountPath: /defaults/subscriptions.yaml
+                  subPath: subscriptions.yml
+          volumes:
             - name: media
-              mountPath: /movies
-              subPath: Movies
-            - name: media
-              mountPath: /tv_shows
-              subPath: TV Shows
-            - name: media
-              mountPath: /music
-              subPath: Music
+              persistentVolumeClaim:
+                claimName: truenas-media
             - name: config-map
-              mountPath: /defaults/subscriptions.yaml
-              subPath: subscriptions.yml
-      volumes:
-        - name: media
-          persistentVolumeClaim:
-            claimName: truenas-media
-        - name: config-map
-          configMap:
-            name: config
+              configMap:
+                name: config
