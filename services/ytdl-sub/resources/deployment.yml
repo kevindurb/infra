@@ -15,8 +15,6 @@ spec:
       labels:
         app.kubernetes.io/component: web
     spec:
-      securityContext:
-        fsGroup: 911
       containers:
         - name: ytdl-sub
           image: ghcr.io/jmbannon/ytdl-sub:2024.05.11
@@ -31,7 +29,7 @@ spec:
               mountPath: /music
               subPath: Music
             - name: config-map
-              mountPath: /config/subscriptions.yaml
+              mountPath: /defaults/subscriptions.yaml
               subPath: subscriptions.yml
       volumes:
         - name: media
