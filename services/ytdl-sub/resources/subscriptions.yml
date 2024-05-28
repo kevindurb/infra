@@ -1,1 +1,10 @@
 ---
+__preset__:
+  overrides:
+    tv_show_directory: /tv_shows
+    only_recent_date_range: 1day
+    only_recent_max_files: 30
+
+Jellyfin TV Show by Date:
+  = News | Only Recent:
+    BBC News: https://www.youtube.com/@BBCNews
