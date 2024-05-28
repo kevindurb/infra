@@ -16,8 +16,8 @@ spec:
         app.kubernetes.io/component: web
     spec:
       securityContext:
-        runAsUser: 1000
-        fsGroup: 1000
+        runAsUser: 911
+        fsGroup: 911
       containers:
         - name: ytdl-sub
           image: ghcr.io/jmbannon/ytdl-sub:2024.05.11
