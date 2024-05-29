@@ -151,7 +151,7 @@ endpoints:
     url: http://filebrowser-service
     <<: *defaults
 
-  - name: HD Homerun
+  - name: HDHomeRun
     group: Admin
     url: http://192.168.0.166
     <<: *defaults

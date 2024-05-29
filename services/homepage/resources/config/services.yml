@@ -122,7 +122,7 @@
         icon: smokeping
         href: https://smokeping.beaver-cloud.ts.net
         siteMonitor: http://smokeping-service
-    - HD Homerun:
+    - HDHomeRun:
         icon: hdhomerun
         href: http://192.168.0.166
         siteMonitor: http://192.168.0.166
