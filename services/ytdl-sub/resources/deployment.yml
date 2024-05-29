@@ -30,7 +30,7 @@ spec:
                   subPath: Movies
                 - name: media
                   mountPath: /tv_shows
-                  subPath: TV Shows
+                  subPath: YouTube
                 - name: media
                   mountPath: /music
                   subPath: Music
