@@ -23,9 +23,6 @@ spec:
               mountPath: /config/configuration.yaml
               subPath: configuration.yaml
               readOnly: true
-            - name: themes
-              mountPath: /config/themes
-              readOnly: true
       volumes:
         - name: config-volume
           persistentVolumeClaim:
@@ -33,9 +30,6 @@ spec:
         - name: config-map
           configMap:
             name: config
-        - name: themes
-          configMap:
-            name: themes
 
 ---
 apiVersion: v1
