@@ -13,7 +13,7 @@ spec:
             claimName: data-volume
       containers:
         - name: freshrss
-          image: docker.io/freshrss/freshrss:1.24.0
+          image: docker.io/freshrss/freshrss:1.24.1
           env: &env
             - name: TZ
               value: America/Denver
