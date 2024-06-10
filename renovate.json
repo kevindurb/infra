@@ -1,5 +1,11 @@
 {
   "kubernetes": {
     "fileMatch": ["services/.+\\.yaml$", "services/.+\\.yml$"]
-  }
+  },
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["ghcr.io/gethomepage/homepage"],
+      "automerge": true
+    }
+  ]
 }
