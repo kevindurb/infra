@@ -12,9 +12,9 @@
         icon: kavita
         href: https://kavita.durbin.casa
         siteMonitor: http://kavita-service/api/health
-    - OctoPi:
-        icon: octoprint
-        href: https://octopi.beaver-cloud.ts.net
+    - Mainsail:
+        icon: mainsail
+        href: http://mainsailos.beaver-cloud.ts.net/
     - Frigate:
         icon: frigate
         href: https://frigate.durbin.casa
