@@ -54,6 +54,10 @@
         icon: filebrowser
         href: https://filebrowser.beaver-cloud.ts.net
         siteMonitor: http://filebrowser-service
+    - Memos:
+        icon: memos
+        href: https://memos.durbin.casa
+        siteMonitor: http://memos-service
 
 - Infra:
     - Gatus:

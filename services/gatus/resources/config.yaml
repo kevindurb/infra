@@ -140,3 +140,8 @@ endpoints:
     group: Admin
     url: http://192.168.0.166
     <<: *defaults
+
+  - name: Memos
+    group: Applications
+    url: http://memos-service
+    <<: *defaults
