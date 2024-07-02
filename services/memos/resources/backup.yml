@@ -2,19 +2,19 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: usememos-volume-repository
+  name: memos-volume-repository
 spec:
   refreshInterval: 1h
   secretStoreRef:
     kind: ClusterSecretStore
     name: gitlab-secret-store
   target:
-    name: usememos-volume-repository
+    name: memos-volume-repository
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/usememos-volume
+        RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/memos-volume
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
         AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
@@ -33,14 +33,14 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: usememos-volume-backup
+  name: memos-volume-backup
 spec:
-  sourcePVC: usememos-volume
+  sourcePVC: memos-volume
   trigger:
     schedule: '0 * * * *'
   restic:
     pruneIntervalDays: 14
-    repository: usememos-volume-repository
+    repository: memos-volume-repository
     retain:
       hourly: 6
       daily: 5
@@ -53,11 +53,11 @@ spec:
 # apiVersion: volsync.backube/v1alpha1
 # kind: ReplicationDestination
 # metadata:
-#   name: usememos-volume-restore
+#   name: memos-volume-restore
 # spec:
 #   trigger:
 #     manual: manual-once
 #   restic:
-#     repository: usememos-volume-repository
-#     destinationPVC: usememos-volume
+#     repository: memos-volume-repository
+#     destinationPVC: memos-volume
 #     copyMethod: Direct

@@ -846,13 +846,13 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: usememos
+  name: memos
 spec:
   project: default
   source:
     repoURL: https://gitlab.com/kevindurb/infra.git
     targetRevision: HEAD
-    path: services/usememos
+    path: services/memos
   destination:
     server: https://kubernetes.default.svc
     namespace: default

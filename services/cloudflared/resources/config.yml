@@ -16,5 +16,7 @@ ingress:
     service: http://freshrss-service
   - hostname: immich.durbin.casa
     service: http://immich-server-service
+  - hostname: memos.durbin.casa
+    service: http://memos-service
 
   - service: http_status:404

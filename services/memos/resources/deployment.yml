@@ -20,7 +20,7 @@ spec:
           persistentVolumeClaim:
             claimName: volume
       containers:
-        - name: usememos
+        - name: memos
           image: ghcr.io/usememos/memos:stable
           volumeMounts:
             - name: volume
