@@ -82,6 +82,28 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: bitwarden
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitwarden.com/
+    targetRevision: 0.1.0-Beta
+    chart: sm-operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sm-operator-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: cert-manager
 spec:
   project: default
