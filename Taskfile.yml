@@ -6,9 +6,6 @@ includes:
   templates:
     taskfile: .taskfiles/templates
     aliases: [t, tmp, gen]
-  authelia:
-    taskfile: .taskfiles/authelia
-    aliases: [a, auth]
   ansible:
     taskfile: .taskfiles/ansible
   argo:

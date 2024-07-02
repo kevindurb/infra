@@ -504,26 +504,6 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: linkwarden
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/linkwarden
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
   name: local-path-provisioner
 spec:
   project: default
@@ -831,26 +811,6 @@ spec:
     repoURL: https://gitlab.com/kevindurb/infra.git
     targetRevision: HEAD
     path: services/tailscale-operator
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: vikunja
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/kevindurb/infra.git
-    targetRevision: HEAD
-    path: services/vikunja
   destination:
     server: https://kubernetes.default.svc
     namespace: default

@@ -9,20 +9,12 @@ ingress:
   - hostname: mealie.durbin.casa
     service: http://mealie-service
   - hostname: vikunja.durbin.casa
-    service: http://vikunja-service
-  - hostname: status.durbin.casa
     service: http://gatus-service
   - hostname: home.durbin.casa
     service: http://homepage-service
   - hostname: freshrss.durbin.casa
     service: http://freshrss-service
-  - hostname: auth.durbin.casa
-    service: http://authelia-server-service
-  - hostname: linkwarden.durbin.casa
-    service: http://linkwarden-service
   - hostname: immich.durbin.casa
     service: http://immich-server-service
-  - hostname: nextcloud.durbin.casa
-    service: http://nextcloud-service
 
   - service: http_status:404

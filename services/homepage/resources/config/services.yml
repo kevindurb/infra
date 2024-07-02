@@ -18,18 +18,10 @@
     - Frigate:
         icon: frigate
         href: https://frigate.durbin.casa
-    - Vikunja:
-        icon: vikunja
-        href: https://vikunja.durbin.casa
-        siteMonitor: http://vikunja-service/v1/api/info
     - FreshRSS:
         icon: freshrss
         href: https://freshrss.durbin.casa
         siteMonitor: http://freshrss-service/
-    - Linkwarden:
-        icon: linkwarden
-        href: https://linkwarden.durbin.casa
-        siteMonitor: http://linkwarden-service/
     - Immich:
         icon: immich
         href: https://immich.durbin.casa
@@ -103,10 +95,6 @@
         icon: minio
         href: https://minio.beaver-cloud.ts.net
         siteMonitor: http://minio-api-service/minio/health/ready
-    - Authelia:
-        icon: authelia
-        href: https://auth.durbin.casa
-        siteMonitor: http://authelia-server-service/api/health
     - Zigbee2MQTT:
         icon: zigbee2mqtt
         href: https://zigbee2mqtt.beaver-cloud.ts.net

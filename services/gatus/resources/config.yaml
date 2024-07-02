@@ -91,11 +91,6 @@ endpoints:
     url: http://minio-api-service/minio/health/ready
     <<: *defaults
 
-  - name: Authelia
-    group: Admin
-    url: http://authelia-server-service/api/health
-    <<: *defaults
-
   - name: FreshRSS
     group: Applications
     url: http://freshrss-service/
