@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: web
+    spec:
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+      containers:
+        - name: usememos
+          image: ghcr.io/usememos/memos:stable
+          volumeMounts:
+            - name: volume
+              mountPath: /var/opt/memos
+          ports:
+            - name: web
+              containerPort: 5230
