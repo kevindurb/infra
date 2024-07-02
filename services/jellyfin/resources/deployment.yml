@@ -16,9 +16,9 @@ spec:
       labels: *labels
     spec:
       hostNetwork: true
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-      runtimeClassName: nvidia
+      # nodeSelector:
+      #   nvidia.com/gpu.present: 'true'
+      # runtimeClassName: nvidia
       hostname: jellyfin
       volumes:
         - name: config-volume
@@ -27,13 +27,20 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: quicksync
+          hostPath:
+            path: /dev/dri
       containers:
         - name: jellyfin
           image: ghcr.io/jellyfin/jellyfin:10.9.7
           resources:
             limits:
               memory: 1G
+          securityContext:
+            privileged: true
           volumeMounts:
+            - name: quicksync
+              mountPath: /dev/dri
             - name: config-volume
               mountPath: /config
             - name: truenas-media
