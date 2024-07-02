@@ -15,7 +15,7 @@ spec:
             claimName: data-volume
       containers:
         - name: open-webui
-          image: ghcr.io/open-webui/open-webui:v0.1.125
+          image: ghcr.io/open-webui/open-webui:0.3.7
           volumeMounts:
             - name: data-volume
               mountPath: /app/backend/data
