@@ -7,7 +7,7 @@ namespace: tailscale
 resources:
   - https://raw.githubusercontent.com/tailscale/tailscale/main/cmd/k8s-operator/deploy/manifests/operator.yaml
   - ./resources/secret.yml
-  - ./resources/lan-connector.yml
+  # - ./resources/lan-connector.yml
 
 patches:
   - path: ./resources/operator.patch.yml
