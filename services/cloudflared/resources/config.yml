@@ -8,7 +8,7 @@ ingress:
     service: http://whoami-service
   - hostname: mealie.durbin.casa
     service: http://mealie-service
-  - hostname: vikunja.durbin.casa
+  - hostname: status.durbin.casa
     service: http://gatus-service
   - hostname: home.durbin.casa
     service: http://homepage-service
