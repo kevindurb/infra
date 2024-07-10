@@ -11,11 +11,12 @@ quicklaunch:
   provider: duckduckgo
 layout:
   Apps:
+    tab: Apps
     icon: mdi-square-rounded-badge-outline
     style: row
     columns: 3
   Infra:
+    tab: Infra
     icon: mdi-server
     style: row
     columns: 3
-    initiallyCollapsed: true
