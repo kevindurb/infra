@@ -1,1 +1,37 @@
 ---
+- Developer:
+  - Github:
+    - icon: github
+      href: https://github.com/
+
+- Entertainment:
+  - YouTube:
+    - icon: youtube
+      href: https://youtube.com/
+  - F1 TV:
+    - abbr: F1
+      href: https://f1tv.formula1.com/
+
+- Social:
+  - Discord:
+    - icon: discord
+      href: https://discord.com/app
+  - Fastmail:
+    - icon: fastmail
+      href: https://app.fastmail.com/
+
+- Monitoring:
+  - Pushover:
+    - icon: pushover
+      href: https://client.pushover.net/
+
+- Shopping:
+  - Garage Grown Gear:
+    - abbr: GGG
+      href: https://garagegrowngear.com/
+  - REI:
+    - abbr: REI
+      href: https://rei.com/
+  - Target:
+    - icon: T
+      href: https://target.com/
