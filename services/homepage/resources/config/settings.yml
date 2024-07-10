@@ -7,6 +7,8 @@ hideVersion: true
 statusStyle: dot
 useEqualHeights: true
 iconStyle: theme
+quicklaunch:
+  provider: duckduckgo
 layout:
   Apps:
     icon: mdi-square-rounded-badge-outline
@@ -16,3 +18,4 @@ layout:
     icon: mdi-server
     style: row
     columns: 3
+    initiallyCollapsed: true

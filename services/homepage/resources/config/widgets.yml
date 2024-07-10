@@ -1,7 +1,12 @@
 ---
-- greeting:
-    text_size: 4xl
-    text: Welcome!
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
+
+- search:
+    provider: duckduckgo
+
 - openmeteo:
     label: Colorado Springs
     latitude: 38.859055
