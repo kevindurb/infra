@@ -145,3 +145,8 @@ endpoints:
     group: Applications
     url: http://memos-service
     <<: *defaults
+
+  - name: Calibre
+    group: Applications
+    url: http://calibre-service
+    <<: *defaults
