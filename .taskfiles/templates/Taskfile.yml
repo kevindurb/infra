@@ -8,24 +8,6 @@ tasks:
       vars: [name]
     cmds:
       - mkdir -p ./services/{{ .name }}/resources
-  pvc:
-    dir: '{{.USER_WORKING_DIR}}'
-    cmds:
-      - |
-        cat << EOF > pvc.yml
-        ---
-        apiVersion: v1
-        kind: PersistentVolumeClaim
-        metadata:
-          name: {{ or .name "volume" }}
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          storageClassName: local-storage
-          resources:
-            requests:
-              storage: {{ or .size "1G" }}
-        EOF
   ks:
     dir: '{{.USER_WORKING_DIR}}'
     requires:
@@ -148,30 +130,43 @@ tasks:
             - hosts:
                 - {{ .subdomain }}
         EOF
-  backup:
+
+  pvc:
     dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [volume]
+      vars: [name]
     cmds:
       - |
-        cat << EOF > backup.yml
+        cat << EOF > pvc.yml
+        ---
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+          name: volume
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          storageClassName: local-storage
+          resources:
+            requests:
+              storage: {{ or .size "1G" }}
         ---
         apiVersion: external-secrets.io/v1beta1
         kind: ExternalSecret
         metadata:
-          name: {{ .volume }}-repository
+          name: volume-repository
         spec:
           refreshInterval: 1h
           secretStoreRef:
             kind: ClusterSecretStore
             name: gitlab-secret-store
           target:
-            name: {{ .volume }}-repository
+            name: volume-repository
             creationPolicy: Owner
             template:
               engineVersion: v2
               data:
-                RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/{{ .volume }}
+                RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/{{ .name }}-volume
                 RESTIC_PASSWORD: '{{ `{{ .RESTIC_PASSWORD }}` }}'
                 AWS_ACCESS_KEY_ID: '{{ `{{ .AWS_ACCESS_KEY_ID }}` }}'
                 AWS_SECRET_ACCESS_KEY: '{{ `{{ .AWS_SECRET_ACCESS_KEY }}` }}'
@@ -190,14 +185,14 @@ tasks:
         apiVersion: volsync.backube/v1alpha1
         kind: ReplicationSource
         metadata:
-          name: {{ .volume }}-backup
+          name: volume-backup
         spec:
-          sourcePVC: {{ .volume }}
+          sourcePVC: {{ .name }}-volume
           trigger:
             schedule: '0 * * * *'
           restic:
             pruneIntervalDays: 14
-            repository: {{ .volume }}-repository
+            repository: volume-repository
             retain:
               hourly: 6
               daily: 5
@@ -210,12 +205,12 @@ tasks:
         # apiVersion: volsync.backube/v1alpha1
         # kind: ReplicationDestination
         # metadata:
-        #   name: {{ .volume }}-restore
+        #   name: volume-restore
         # spec:
         #   trigger:
         #     manual: manual-once
         #   restic:
-        #     repository: {{ .volume }}-repository
-        #     destinationPVC: {{ .volume }}
+        #     repository: volume-repository
+        #     destinationPVC: {{ .name }}-volume
         #     copyMethod: Direct
         EOF
