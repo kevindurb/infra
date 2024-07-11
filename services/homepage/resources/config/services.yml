@@ -58,6 +58,10 @@
         icon: memos
         href: https://memos.durbin.casa
         siteMonitor: http://memos-service
+    - Calibre:
+        icon: calibre
+        href: https://calibre.beaver-cloud.ts.net
+        siteMonitor: http://calibre-service
 
 - Infra:
     - Gatus:
