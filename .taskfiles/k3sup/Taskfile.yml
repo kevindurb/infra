@@ -28,3 +28,13 @@ tasks:
       {{ .k3supArgs }}
       --ip "{{ .ip }}"
       --server-ip "{{ .server }}"
+
+  kubeconfig:
+    requires:
+      vars: [ip]
+    cmd: >
+      k3sup install
+      {{ .k3supArgs }}
+      --skip-install
+      --ip "{{ .ip }}"
+      --local-path $HOME/.kube/config
