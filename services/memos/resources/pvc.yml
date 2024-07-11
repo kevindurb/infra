@@ -62,7 +62,7 @@ spec:
       weekly: 4
       monthly: 2
       yearly: 1
-    copyMethod: Snapshot
+    copyMethod: Direct
 
 ---
 apiVersion: volsync.backube/v1alpha1
@@ -73,8 +73,6 @@ spec:
   trigger:
     manual: manual-once
   restic:
+    destinationPVC: memos-volume
     repository: memos-volume-repository
-    copyMethod: Snapshot
-    accessModes: [ReadWriteOnce]
-    capacity: 1G
-    storageClassName: local-storage
+    copyMethod: Direct
