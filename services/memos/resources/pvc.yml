@@ -76,3 +76,5 @@ spec:
     repository: memos-volume-repository
     copyMethod: Direct
     accessModes: [ReadWriteOnce]
+    capacity: 1G
+    storageClassName: local-storage
