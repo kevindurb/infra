@@ -4,8 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: volume
 spec:
-  accessModes:
-    - ReadWriteOnce
+  accessModes: [ReadWriteOnce]
   storageClassName: local-storage
   dataSourceRef:
     kind: ReplicationDestination
@@ -76,3 +75,4 @@ spec:
   restic:
     repository: memos-volume-repository
     copyMethod: Direct
+    accessModes: [ReadWriteOnce]
