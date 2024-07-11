@@ -1,37 +1,45 @@
 ---
 - Developer:
-  - Github:
-    - icon: github
-      href: https://github.com/
+    - Github:
+        - icon: github
+          href: https://github.com/
 
 - Entertainment:
-  - YouTube:
-    - icon: youtube
-      href: https://youtube.com/
-  - F1 TV:
-    - abbr: F1
-      href: https://f1tv.formula1.com/
+    - YouTube:
+        - icon: youtube
+          href: https://youtube.com/
+    - F1 TV:
+        - abbr: F1
+          href: https://f1tv.formula1.com/
 
 - Social:
-  - Discord:
-    - icon: discord
-      href: https://discord.com/app
-  - Fastmail:
-    - icon: fastmail
-      href: https://app.fastmail.com/
+    - Discord:
+        - icon: discord
+          href: https://discord.com/app
+    - Fastmail:
+        - icon: fastmail
+          href: https://app.fastmail.com/
+    - Telegram:
+        - icon: telegram
+          href: https://web.telegram.org
 
 - Monitoring:
-  - Pushover:
-    - icon: pushover
-      href: https://client.pushover.net/
+    - Pushover:
+        - icon: pushover
+          href: https://client.pushover.net/
 
 - Shopping:
-  - Garage Grown Gear:
-    - abbr: GGG
-      href: https://garagegrowngear.com/
-  - REI:
-    - abbr: REI
-      href: https://rei.com/
-  - Target:
-    - abbr: T
-      href: https://target.com/
+    - Garage Grown Gear:
+        - abbr: GGG
+          href: https://garagegrowngear.com/
+    - REI:
+        - abbr: REI
+          href: https://rei.com/
+    - Target:
+        - abbr: T
+          href: https://target.com/
+
+- Productivity:
+    - Todoist:
+        - icon: todoist
+          href: https://app.todoist.com
