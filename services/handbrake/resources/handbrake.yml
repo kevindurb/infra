@@ -7,10 +7,19 @@ spec:
   template:
     spec:
       # securityContext:
+      #   runAsUser: 1000
+      #   runAsGroup: 1000
       #   fsGroup: 1000
       containers:
         - image: jlesage/handbrake:v24.03.1
           name: handbrake
+          # env:
+          #   - key: USER_ID
+          #     value: 1000
+          #   - key: GROUP_ID
+          #     value: 1000
+          #   - key: TZ
+          #     value: America/Denver
           ports:
             - name: web
               containerPort: 5800
