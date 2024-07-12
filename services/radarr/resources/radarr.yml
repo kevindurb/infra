@@ -7,7 +7,13 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: web
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: web
     spec:
       volumes:
         - name: config-volume
@@ -56,7 +62,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: tailscale-ingress
 spec:
   ingressClassName: tailscale
   defaultBackend:
