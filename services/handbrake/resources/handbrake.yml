@@ -6,10 +6,6 @@ metadata:
 spec:
   template:
     spec:
-      # securityContext:
-      #   runAsUser: 1000
-      #   runAsGroup: 1000
-      #   fsGroup: 1000
       containers:
         - image: jlesage/handbrake:v24.03.1
           name: handbrake
