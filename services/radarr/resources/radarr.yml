@@ -34,9 +34,9 @@ spec:
           image: lscr.io/linuxserver/radarr:5.6.0
           env:
             - key: PUID
-              value: 1000
+              value: '1000'
             - key: PGID
-              value: 1000
+              value: '1000'
             - key: TZ
               value: America/Denver
           volumeMounts:
