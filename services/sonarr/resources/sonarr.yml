@@ -7,7 +7,13 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: web
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: web
     spec:
       volumes:
         - name: config-volume
@@ -16,6 +22,9 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: ripping-storage
+          persistentVolumeClaim:
+            claimName: truenas-ripping-storage
       containers:
         - name: sonarr
           image: lscr.io/linuxserver/sonarr:4.0.6
@@ -24,6 +33,8 @@ spec:
               mountPath: /config
             - name: truenas-media
               mountPath: /media
+            - name: ripping-storage
+              mountPath: /output
           ports:
             - name: web
               containerPort: 8989
@@ -56,7 +67,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: tailscale-ingress
 spec:
   ingressClassName: tailscale
   defaultBackend:

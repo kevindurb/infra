@@ -52,6 +52,10 @@
         icon: radarr
         href: https://radarr.beaver-cloud.ts.net
         siteMonitor: http://radarr-service
+    - Sonarr:
+        icon: sonarr
+        href: https://sonarr.beaver-cloud.ts.net
+        siteMonitor: http://sonarr-service
     - Calibre:
         icon: calibre
         href: https://calibre.beaver-cloud.ts.net

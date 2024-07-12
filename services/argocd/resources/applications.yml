@@ -844,6 +844,26 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: sonarr
+spec:
+  project: default
+  source:
+    repoURL: https://gitlab.com/kevindurb/infra.git
+    targetRevision: HEAD
+    path: services/sonarr
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: tailscale-operator
 spec:
   project: default

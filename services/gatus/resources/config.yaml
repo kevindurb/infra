@@ -155,3 +155,8 @@ endpoints:
     group: Applications
     url: http://radarr-service
     <<: *defaults
+
+  - name: Sonarr
+    group: Applications
+    url: http://sonarr-service
+    <<: *defaults
