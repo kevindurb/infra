@@ -6,6 +6,10 @@ metadata:
 spec:
   template:
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - image: filebrowser/filebrowser:v2.30.0
           name: filebrowser
