@@ -17,9 +17,9 @@ spec:
           name: makemkv
           env:
             - key: USER_ID
-              value: 1000
+              value: '1000'
             - key: GROUP_ID
-              value: 1000
+              value: '1000'
             - key: TZ
               value: America/Denver
           securityContext:
