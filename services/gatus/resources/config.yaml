@@ -150,3 +150,8 @@ endpoints:
     group: Applications
     url: http://calibre-service
     <<: *defaults
+
+  - name: Radarr
+    group: Applications
+    url: http://radarr-service
+    <<: *defaults

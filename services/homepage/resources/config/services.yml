@@ -34,14 +34,6 @@
         icon: kasm
         href: https://orca.beaver-cloud.ts.net
         siteMonitor: http://orcaslicer-service
-    - Handbrake:
-        icon: handbrake
-        href: https://handbrake.beaver-cloud.ts.net
-        siteMonitor: http://handbrake-service
-    - MakeMKV:
-        icon: makemkv
-        href: https://makemkv.beaver-cloud.ts.net
-        siteMonitor: http://makemkv-service
     - Actual Budget:
         icon: actual
         href: https://actual-budget.durbin.casa
@@ -50,18 +42,40 @@
         icon: open-webui
         href: https://chat.beaver-cloud.ts.net
         siteMonitor: http://open-webui-service
-    - File Browser:
-        icon: filebrowser
-        href: https://filebrowser.beaver-cloud.ts.net
-        siteMonitor: http://filebrowser-service
     - Memos:
         icon: memos
         href: https://memos.durbin.casa
         siteMonitor: http://memos-service
+
+- Admin:
+    - Radarr:
+        icon: radarr
+        href: https://radarr.beaver-cloud.ts.net
+        siteMonitor: http://radarr-service
     - Calibre:
         icon: calibre
         href: https://calibre.beaver-cloud.ts.net
         siteMonitor: http://calibre-service
+    - File Browser:
+        icon: filebrowser
+        href: https://filebrowser.beaver-cloud.ts.net
+        siteMonitor: http://filebrowser-service
+    - Handbrake:
+        icon: handbrake
+        href: https://handbrake.beaver-cloud.ts.net
+        siteMonitor: http://handbrake-service
+    - MakeMKV:
+        icon: makemkv
+        href: https://makemkv.beaver-cloud.ts.net
+        siteMonitor: http://makemkv-service
+    - Zigbee2MQTT:
+        icon: zigbee2mqtt
+        href: https://zigbee2mqtt.beaver-cloud.ts.net
+        siteMonitor: http://zigbee2mqtt-service
+    - HDHomeRun:
+        icon: hdhomerun
+        href: http://192.168.0.166
+        siteMonitor: http://192.168.0.166
 
 - Infra:
     - Gatus:
@@ -103,10 +117,6 @@
         icon: minio
         href: https://minio.beaver-cloud.ts.net
         siteMonitor: http://minio-api-service/minio/health/ready
-    - Zigbee2MQTT:
-        icon: zigbee2mqtt
-        href: https://zigbee2mqtt.beaver-cloud.ts.net
-        siteMonitor: http://zigbee2mqtt-service
     - Grafana:
         icon: grafana
         href: https://grafana.beaver-cloud.ts.net
@@ -115,7 +125,3 @@
         icon: smokeping
         href: https://smokeping.beaver-cloud.ts.net
         siteMonitor: http://smokeping-service
-    - HDHomeRun:
-        icon: hdhomerun
-        href: http://192.168.0.166
-        siteMonitor: http://192.168.0.166
