@@ -19,7 +19,7 @@ layout:
     columns: 3
   Admin:
     tab: Admin
-    icon: mdi-admin-panel-settings
+    icon: mdi-security
     style: row
     columns: 3
   Infra:
