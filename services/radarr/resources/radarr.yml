@@ -22,10 +22,15 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: ripping-storage
+          persistentVolumeClaim:
+            claimName: truenas-ripping-storage
       containers:
         - name: radarr
           image: lscr.io/linuxserver/radarr:5.6.0
           volumeMounts:
+            - name: ripping-storage
+              mountPath: /output
             - name: config-volume
               mountPath: /config
             - name: truenas-media
