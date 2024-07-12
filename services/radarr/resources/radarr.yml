@@ -33,11 +33,11 @@ spec:
         - name: radarr
           image: lscr.io/linuxserver/radarr:5.6.0
           env:
-            - key: PUID
+            - name: PUID
               value: '1000'
-            - key: PGID
+            - name: PGID
               value: '1000'
-            - key: TZ
+            - name: TZ
               value: America/Denver
           volumeMounts:
             - name: ripping-storage
