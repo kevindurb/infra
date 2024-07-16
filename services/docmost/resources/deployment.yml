@@ -36,10 +36,7 @@ spec:
             - name: REDIS_URL
               value: redis://docmost-valkey-service:6379
             - name: MAIL_FROM_ADDRESS
-              valueFrom:
-                secretKeyRef:
-                  name: docmost-secret
-                  key: MAIL_FROM_ADDRESS
+              value: beavercloud@fastmail.com
             - name: MAIL_DRIVER
               value: smtp
             - name: SMTP_PORT
