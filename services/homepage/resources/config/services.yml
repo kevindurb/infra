@@ -48,7 +48,7 @@
         siteMonitor: http://memos-service
     - Docmost:
         icon: docmost
-        href: https://docmost.beaver-cloud.ts.net
+        href: https://docmost.durbin.casa
         siteMonitor: http://docmost-service
 
 - Admin:
