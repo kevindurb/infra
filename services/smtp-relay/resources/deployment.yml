@@ -29,7 +29,7 @@ spec:
               readOnly: true
           envFrom:
             - secretRef:
-                name: secret
+                name: smtp-relay-secret
           env:
             - name: SMTP_RELAY_SMTP_PORT
               value: '25'
