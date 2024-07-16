@@ -23,6 +23,8 @@ spec:
         - name: docmost
           image: docker.io/docmost/docmost:0.2.5
           env:
+            - name: APP_URL
+              value: https://docmost.durbin.casa
             - name: APP_SECRET
               valueFrom:
                 secretKeyRef:
