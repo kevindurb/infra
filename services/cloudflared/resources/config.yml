@@ -18,5 +18,7 @@ ingress:
     service: http://immich-server-service
   - hostname: memos.durbin.casa
     service: http://memos-service
+  - hostname: docmost.durbin.casa
+    service: http://docmost-service
 
   - service: http_status:404
