@@ -14,10 +14,19 @@ spec:
   template:
     metadata:
       labels: *labels
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
     spec:
       containers:
         - name: smtp-relay
           image: ghcr.io/foxcpp/maddy:0.7.1
+          volumeMounts:
+            - name: config-map
+              mountPath: /data/maddy.conf
+              subPath: maddy.conf
+              readOnly: true
           envFrom:
             - secretRef:
                 name: secret
@@ -26,8 +35,6 @@ spec:
               value: &port 25
             - name: SMTP_RELAY_METRICS_PORT
               value: 8080
-            - name: SMTP_RELAY_SERVER_PORT
-              value: 465
           ports:
             - name: smtp
               containerPort: *port

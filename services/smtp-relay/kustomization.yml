@@ -5,6 +5,14 @@ kind: Kustomization
 namePrefix: smtp-relay-
 
 resources:
+  - ./resources/deployment.yml
+  - ./resources/secret.yml
+  - ./resources/service.yml
+
+configMapGenerator:
+  - name: config
+    files:
+      - ./maddy.conf
 
 commonLabels:
   app.kubernetes.io/name: smtp-relay

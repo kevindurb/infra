@@ -17,7 +17,7 @@ tasks:
   ks:
     requires:
       vars: [appname]
-    sources: ['./services/{{ .appname }}/resources/*.yml']
+    sources: ['resources/*']
     dir: ./services/{{ .appname }}
     cmds:
       - |
