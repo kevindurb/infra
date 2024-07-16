@@ -23,10 +23,16 @@
         - icon: telegram
           href: https://web.telegram.org
 
-- Monitoring:
+- Utility:
     - Pushover:
         - icon: pushover
           href: https://client.pushover.net/
+    - Bitwarden Password Manager:
+        - icon: bitwarden
+          href: https://vault.bitwarden.com/#/vault
+    - Bitwarden Secrets Manager:
+        - icon: bitwarden
+          href: https://vault.bitwarden.com/#/sm
 
 - Shopping:
     - Garage Grown Gear:
