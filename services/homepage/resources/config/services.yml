@@ -46,6 +46,10 @@
         icon: memos
         href: https://memos.durbin.casa
         siteMonitor: http://memos-service
+    - Docmost:
+        icon: docmost
+        href: https://docmost.beaver-cloud.ts.net
+        siteMonitor: http://docmost-service
 
 - Admin:
     - Radarr:

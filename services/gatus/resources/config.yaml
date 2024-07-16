@@ -160,3 +160,8 @@ endpoints:
     group: Applications
     url: http://sonarr-service
     <<: *defaults
+
+  - name: Docmost
+    group: Applications
+    url: http://docmost-service
+    <<: *defaults

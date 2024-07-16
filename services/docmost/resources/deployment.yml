@@ -35,4 +35,4 @@ spec:
               value: redis://docmost-valkey-service:6379
           ports:
             - name: web
-              containerPort: 8080
+              containerPort: 3000
