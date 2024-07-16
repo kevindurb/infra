@@ -14,10 +14,10 @@ spec:
   template:
     metadata:
       labels: *labels
-      volumes:
-        - name: config-map
-          configMap:
-            name: config
+    volumes:
+      - name: config-map
+        configMap:
+          name: config
     spec:
       containers:
         - name: smtp-relay
