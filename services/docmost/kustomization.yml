@@ -11,6 +11,7 @@ resources:
   - ./resources/service.yml
   - ./resources/valkey.yml
   - ./resources/secret.yml
+  - ./resources/pvc.yml
 
 commonLabels:
   app.kubernetes.io/name: docmost
