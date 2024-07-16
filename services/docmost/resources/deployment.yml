@@ -35,6 +35,17 @@ spec:
                   key: uri
             - name: REDIS_URL
               value: redis://docmost-valkey-service:6379
+            - name: MAIL_FROM_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: MAIL_FROM_ADDRESS
+            - name: MAIL_DRIVER
+              value: smtp
+            - name: SMTP_PORT
+              value: '25'
+            - name: SMTP_HOST
+              value: smtp-relay-service
           volumeMounts:
             - name: volume
               mountPath: /app/data/storage
