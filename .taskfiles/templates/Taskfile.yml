@@ -5,26 +5,19 @@ version: '3'
 tasks:
   mk:
     requires:
-      vars: [name, image]
+      vars: [appname, image]
     cmds:
-      - mkdir -p ./services/{{ .name }}/resources
-      - cd ./services/{{ .name }}
       - task: ks
-        vars: { name: { ref: .name } }
-      - cd ./resources
       - task: deploy
-        vars:
-          name: { ref: .name }
-          image: { ref: .image }
       - task: svc
+      - task: ts-ing
         vars:
-          name: { ref: .name }
-          image: { ref: .image }
+          subdomain: '{{ or .subdomain .appname }}'
 
   ks:
-    dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [name]
+      vars: [appname]
+    dir: ./services/{{ .appname }}
     cmds:
       - |
         cat << EOF > kustomization.yml
@@ -32,18 +25,18 @@ tasks:
         apiVersion: kustomize.config.k8s.io/v1beta1
         kind: Kustomization
 
-        namePrefix: {{ .name }}-
+        namePrefix: {{ .appname }}-
 
         resources: []
 
         commonLabels:
-          app.kubernetes.io/name: {{ .name }}
+          app.kubernetes.io/name: {{ .appname }}
         EOF
 
   deploy:
-    dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [name, image]
+      vars: [appname, image]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > deployment.yml
@@ -65,15 +58,17 @@ tasks:
               labels: *labels
             spec:
               containers:
-                - name: {{ .name }}
+                - name: {{ or .name .appname }}
                   image: {{ .image }}
                   ports:
-                    - name: web
-                      containerPort: 8080
+                    - name: {{ or .portname "web" }}
+                      containerPort: {{ or .port 8080 }}
         EOF
 
   svc:
-    dir: '{{.USER_WORKING_DIR}}'
+    requires:
+      vars: [appname]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > service.yml
@@ -86,15 +81,15 @@ tasks:
           selector:
             app.kubernetes.io/component: {{ or .component "web" }}
           ports:
-            - name: web
+            - name: {{ or .portname "web" }}
               port: 80
-              targetPort: web
+              targetPort: {{ or .portname "web" }}
         EOF
 
   lan-ing:
-    dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [subdomain]
+      vars: [appname, subdomain]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > ingress.yml
@@ -121,13 +116,13 @@ tasks:
                       service:
                         name: service
                         port:
-                          name: web
+                          name: {{ or .portname "web" }}
         EOF
 
   ts-ing:
-    dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [subdomain]
+      vars: [appname, subdomain]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > ingress.yml
@@ -142,16 +137,16 @@ tasks:
             service:
               name: service
               port:
-                name: web
+                name: {{ or .portname "web" }}
           tls:
             - hosts:
                 - {{ .subdomain }}
         EOF
 
   pvc:
-    dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [name]
+      vars: [appname]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > pvc.yml
@@ -183,7 +178,7 @@ tasks:
             template:
               engineVersion: v2
               data:
-                RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/{{ .name }}-volume
+                RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/{{ .appname }}-volume
                 RESTIC_PASSWORD: '{{ `{{ .RESTIC_PASSWORD }}` }}'
                 AWS_ACCESS_KEY_ID: '{{ `{{ .AWS_ACCESS_KEY_ID }}` }}'
                 AWS_SECRET_ACCESS_KEY: '{{ `{{ .AWS_SECRET_ACCESS_KEY }}` }}'
@@ -204,7 +199,7 @@ tasks:
         metadata:
           name: volume-backup
         spec:
-          sourcePVC: {{ .name }}-volume
+          sourcePVC: {{ .appname }}-volume
           trigger:
             schedule: '0 * * * *'
           restic:
@@ -228,14 +223,14 @@ tasks:
         #     manual: manual-once
         #   restic:
         #     repository: volume-repository
-        #     destinationPVC: {{ .name }}-volume
+        #     destinationPVC: {{ .appname }}-volume
         #     copyMethod: Direct
         EOF
 
   pg:
-    dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [name]
+      vars: [appname]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > pg.yml
@@ -263,11 +258,11 @@ tasks:
                   key: MINIO_SECRET_KEY
           # bootstrap:
           #   recovery:
-          #     source: {{ .name }}-postgres
+          #     source: {{ .appname }}-postgres
           # externalClusters:
-          #   - name: {{ .name }}-postgres
+          #   - name: {{ .appname }}-postgres
           #     barmanObjectStore:
-          #       serverName: {{ .name }}-postgres
+          #       serverName: {{ .appname }}-postgres
           #       destinationPath: s3://postgres-wal-backups
           #       endpointURL: http://minio-api-service
           #       s3Credentials:
@@ -289,13 +284,13 @@ tasks:
           schedule: '0 0 0 * * *'
           backupOwnerReference: self
           cluster:
-            name: {{ .name }}-postgres
+            name: {{ .appname }}-postgres
         EOF
 
   valkey:
-    dir: '{{.USER_WORKING_DIR}}'
     requires:
-      vars: [name]
+      vars: [appname]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > valkey.yml
@@ -341,7 +336,9 @@ tasks:
         EOF
 
   secret:
-    dir: '{{.USER_WORKING_DIR}}'
+    requires:
+      vars: [appname]
+    dir: ./services/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > secret.yml
