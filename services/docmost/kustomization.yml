@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: docmost-
+
+resources:
+  - ./resources/deployment.yml
+  - ./resources/ingress.yml
+  - ./resources/pg.yml
+  - ./resources/service.yml
+  - ./resources/valkey.yml
+  - ./resources/secret.yml
+
+commonLabels:
+  app.kubernetes.io/name: docmost
