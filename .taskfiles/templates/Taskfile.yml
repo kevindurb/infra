@@ -5,9 +5,21 @@ version: '3'
 tasks:
   mk:
     requires:
-      vars: [name]
+      vars: [name, image]
     cmds:
       - mkdir -p ./services/{{ .name }}/resources
+      - cd ./services/{{ .name }}
+      - task: ks
+        vars: { name: { ref: .name } }
+      - cd ./resources
+      - task: deploy
+        vars:
+          name: { ref: .name }
+          image: { ref: .image }
+      - task: svc
+        vars:
+          name: { ref: .name }
+          image: { ref: .image }
 
   ks:
     dir: '{{.USER_WORKING_DIR}}'
