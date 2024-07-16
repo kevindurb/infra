@@ -26,7 +26,7 @@ spec:
             - name: APP_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: secret
+                  name: docmost-secret
                   key: APP_SECRET
             - name: DATABASE_URL
               valueFrom:
@@ -38,7 +38,7 @@ spec:
             - name: MAIL_FROM_ADDRESS
               valueFrom:
                 secretKeyRef:
-                  name: secret
+                  name: docmost-secret
                   key: MAIL_FROM_ADDRESS
             - name: MAIL_DRIVER
               value: smtp
