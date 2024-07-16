@@ -17,6 +17,7 @@ tasks:
   ks:
     requires:
       vars: [appname]
+    sources: ['./services/{{ .appname }}/resources/*.yml']
     dir: ./services/{{ .appname }}
     cmds:
       - |
@@ -27,7 +28,10 @@ tasks:
 
         namePrefix: {{ .appname }}-
 
-        resources: []
+        resources:
+        {{ range $item := .sources }}
+          - ./resources/$item
+        {{ end }}
 
         commonLabels:
           app.kubernetes.io/name: {{ .appname }}

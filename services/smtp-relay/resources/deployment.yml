@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: smtp
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      containers:
+        - name: smtp-relay
+          image: ghcr.io/foxcpp/maddy:0.7.1
+          envFrom:
+            - secretRef:
+                name: secret
+          env:
+            - name: SMTP_RELAY_SMTP_PORT
+              value: &port 25
+            - name: SMTP_RELAY_METRICS_PORT
+              value: 8080
+            - name: SMTP_RELAY_SERVER_PORT
+              value: 465
+          ports:
+            - name: smtp
+              containerPort: *port
