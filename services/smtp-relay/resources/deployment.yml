@@ -32,9 +32,9 @@ spec:
                 name: secret
           env:
             - name: SMTP_RELAY_SMTP_PORT
-              value: &port 25
+              value: '25'
             - name: SMTP_RELAY_METRICS_PORT
-              value: 8080
+              value: '8080'
           ports:
             - name: smtp
-              containerPort: *port
+              containerPort: 25
