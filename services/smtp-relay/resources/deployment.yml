@@ -15,9 +15,9 @@ spec:
     metadata:
       labels: *labels
       volumes:
-        - name: config-volume
-          persistentVolumeClaim:
-            claimName: config-volume
+        - name: config-map
+          configMap:
+            name: config
     spec:
       containers:
         - name: smtp-relay
