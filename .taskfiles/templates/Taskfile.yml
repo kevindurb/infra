@@ -61,9 +61,16 @@ tasks:
             metadata:
               labels: *labels
             spec:
+              # volumes:
+              #   - name: volume
+              #     persistentVolumeClaim:
+              #       claimName: volume
               containers:
                 - name: {{ or .name .appname }}
                   image: {{ .image }}
+                  # volumeMounts:
+                  #   - name: volume
+                  #     mountPath: /var/www/app/data
                   ports:
                     - name: {{ or .portname "web" }}
                       containerPort: {{ or .port 8080 }}

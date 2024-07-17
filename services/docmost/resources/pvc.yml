@@ -21,7 +21,7 @@ spec:
     kind: ClusterSecretStore
     name: gitlab-secret-store
   target:
-    name: volume-repository
+    name: docmost-volume-repository
     creationPolicy: Owner
     template:
       engineVersion: v2
@@ -52,7 +52,7 @@ spec:
     schedule: '0 * * * *'
   restic:
     pruneIntervalDays: 14
-    repository: volume-repository
+    repository: docmost-volume-repository
     retain:
       hourly: 6
       daily: 5
@@ -70,6 +70,6 @@ spec:
 #   trigger:
 #     manual: manual-once
 #   restic:
-#     repository: volume-repository
+#     repository: docmost-volume-repository
 #     destinationPVC: docmost-volume
 #     copyMethod: Direct
