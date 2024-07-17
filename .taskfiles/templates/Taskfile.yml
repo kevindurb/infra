@@ -177,7 +177,7 @@ tasks:
             kind: ClusterSecretStore
             name: gitlab-secret-store
           target:
-            name: volume-repository
+            name: {{ .appname }}-volume-repository
             creationPolicy: Owner
             template:
               engineVersion: v2
