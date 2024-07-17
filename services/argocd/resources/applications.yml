@@ -5,34 +5,33 @@ metadata:
   name: applications
 spec:
   goTemplate: true
-  # goTemplateOptions: ['missingkey=error']
   generators:
     - list:
         elements:
-          # - name: argo
-          #   namespace: argocd
+          - name: argo
+            namespace: argocd
           - name: actual-budget
-          # - name: alertmanager
-          # - name: calibre
-          # - name: cert-manager
-          # - name: cloudflared
-          # - name: cnpg
-          # - name: common
-          # - name: dashboard
-          # - name: docmost
-          # - name: external-dns
-          # - name: external-secrets
-          # - name: external-snapshotter
-          # - name: external-volumes
-          # - name: filebrowser
-          # - name: freshrss
-          # - name: gatus
-          # - name: grafana
-          # - name: handbrake
-          # - name: healthchecks
-          # - name: home-assistant
-          # - name: homepage
-          # - name: immich
+          - name: alertmanager
+          - name: calibre
+          - name: cert-manager
+          - name: cloudflared
+          - name: cnpg
+          - name: common
+          - name: dashboard
+          - name: docmost
+          - name: external-dns
+          - name: external-secrets
+          - name: external-snapshotter
+          - name: external-volumes
+          - name: filebrowser
+          - name: freshrss
+          - name: gatus
+          - name: grafana
+          - name: handbrake
+          - name: healthchecks
+          - name: home-assistant
+          - name: homepage
+          - name: immich
   template:
     metadata:
       name: '{{ .name }}'
