@@ -32,6 +32,33 @@ spec:
           - name: home-assistant
           - name: homepage
           - name: immich
+          - name: ingress-nginx
+          - name: jellyfin
+          - name: kanboard
+          - name: kavita
+          - name: local-path-provisioner
+          - name: makemkv
+          - name: mealie
+          - name: metallb
+          - name: minecraft
+          - name: minio
+          - name: mosquitto
+          - name: node-exporter
+          - name: ollama
+          - name: omada
+          - name: open-webui
+          - name: orcaslicer
+          - name: prometheus
+          - name: radarr
+          - name: smartctl-exporter
+          - name: smokeping
+          - name: smtp-relay
+          - name: sonarr
+          - name: tailscale-operator
+          - name: memos
+          # - name: webtop
+          - name: whoami
+          - name: zigbee2mqtt
   template:
     metadata:
       name: '{{ .name }}'
