@@ -5,7 +5,7 @@ metadata:
   name: applications
 spec:
   goTemplate: true
-  goTemplateOptions: ['missingkey=error']
+  # goTemplateOptions: ['missingkey=error']
   generators:
     - list:
         elements:
