@@ -50,6 +50,10 @@
         icon: docmost
         href: https://docmost.durbin.casa
         siteMonitor: http://docmost-service
+    - Kanboard:
+        icon: kanboard
+        href: https://kanboard.durbin.casa
+        siteMonitor: http://kanboard-service
 
 - Admin:
     - Radarr:
