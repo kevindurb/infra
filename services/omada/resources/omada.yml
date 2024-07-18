@@ -61,14 +61,9 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: omada.durbin.casa
-    cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/backend-protocol: https
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts: ['*.durbin.casa']
-      secretName: durbin-casa-wildcard-cert
   rules:
     - host: omada.durbin.casa
       http:
