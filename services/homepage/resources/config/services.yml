@@ -32,7 +32,7 @@
         siteMonitor: http://jellyfin-service/health
     - Orca Slicer:
         icon: kasm
-        href: https://orca.beaver-cloud.ts.net
+        href: https://orca.durbin.casa
         siteMonitor: http://orcaslicer-service
     - Actual Budget:
         icon: actual
