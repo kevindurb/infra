@@ -45,19 +45,3 @@ spec:
     - name: assets
       port: 80
       targetPort: assets
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress
-spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: service
-      port:
-        name: admin
-  tls:
-    - hosts:
-        - netbootxyz

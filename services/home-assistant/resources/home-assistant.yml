@@ -61,29 +61,7 @@ kind: Ingress
 metadata:
   name: ingress
 spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: service
-      port:
-        name: web
-  tls:
-    - hosts:
-        - home-assistant
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nginx-ingress
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: home-assistant.durbin.casa
-    cert-manager.io/cluster-issuer: cloudflare-issuer
-spec:
   ingressClassName: nginx
-  tls:
-    - hosts: [home-assistant.durbin.casa]
-      secretName: durbin-casa-wildcard-cert
   rules:
     - host: home-assistant.durbin.casa
       http:

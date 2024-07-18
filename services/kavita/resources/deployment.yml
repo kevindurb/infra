@@ -67,29 +67,7 @@ kind: Ingress
 metadata:
   name: ingress
 spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: service
-      port:
-        name: web
-  tls:
-    - hosts:
-        - kavita
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nginx-ingress
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: kavita.durbin.casa
-    cert-manager.io/cluster-issuer: cloudflare-issuer
-spec:
   ingressClassName: nginx
-  tls:
-    - hosts: ['*.durbin.casa']
-      secretName: durbin-casa-wildcard-cert
   rules:
     - host: kavita.durbin.casa
       http:

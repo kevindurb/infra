@@ -90,19 +90,3 @@ spec:
       port: 53
       protocol: UDP
       targetPort: dns-udp
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress
-spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: service
-      port:
-        name: web
-  tls:
-    - hosts:
-        - pihole
