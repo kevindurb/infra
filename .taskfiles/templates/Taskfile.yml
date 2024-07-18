@@ -10,7 +10,7 @@ tasks:
       - task: ks
       - task: deploy
       - task: svc
-      - task: ts-ing
+      - task: ing
         vars:
           subdomain: '{{ or .subdomain .appname }}'
 
@@ -97,7 +97,7 @@ tasks:
               targetPort: {{ or .portname "web" }}
         EOF
 
-  lan-ing:
+  ing:
     requires:
       vars: [appname, subdomain]
     dir: ./services/{{ .appname }}/resources
@@ -108,17 +108,11 @@ tasks:
         apiVersion: networking.k8s.io/v1
         kind: Ingress
         metadata:
-          name: lan-ingress
-          annotations:
-            external-dns.alpha.kubernetes.io/hostname: &host {{ .subdomain }}.durbin.casa
-            cert-manager.io/cluster-issuer: cloudflare-issuer
+          name: ingress
         spec:
           ingressClassName: nginx
-          tls:
-            - hosts: [*host]
-              secretName: durbin-casa-wildcard-cert
           rules:
-            - host: *host
+            - host: {{ .subdomain }}.durbin.casa
               http:
                 paths:
                   - pathType: Prefix
@@ -128,30 +122,6 @@ tasks:
                         name: service
                         port:
                           name: {{ or .portname "web" }}
-        EOF
-
-  ts-ing:
-    requires:
-      vars: [appname, subdomain]
-    dir: ./services/{{ .appname }}/resources
-    cmds:
-      - |
-        cat << EOF > ingress.yml
-        ---
-        apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          name: tailscale-ingress
-        spec:
-          ingressClassName: tailscale
-          defaultBackend:
-            service:
-              name: service
-              port:
-                name: {{ or .portname "web" }}
-          tls:
-            - hosts:
-                - {{ .subdomain }}
         EOF
 
   pvc:

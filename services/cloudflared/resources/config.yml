@@ -21,4 +21,4 @@ ingress:
   - hostname: docmost.durbin.casa
     service: http://docmost-service
 
-  - service: http_status:404
+  - service: http://ingress-nginx-controller.ingress-nginx
