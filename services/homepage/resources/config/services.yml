@@ -40,7 +40,7 @@
         siteMonitor: http://actual-budget-service
     - Open WebUI:
         icon: open-webui
-        href: https://chat.beaver-cloud.ts.net
+        href: https://chat.durbin.casa
         siteMonitor: http://open-webui-service
     - Memos:
         icon: memos

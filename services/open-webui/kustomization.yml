@@ -8,6 +8,7 @@ resources:
   - ./resources/deployment.yml
   - ./resources/backup.yml
   - ./resources/pvc.yml
+  - ./resources/ingress.yml
 
 commonLabels:
   app.kubernetes.io/name: open-webui
