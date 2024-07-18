@@ -7,6 +7,7 @@ namePrefix: freshrss-
 resources:
   - ./resources/deployment.yml
   - ./resources/backup.yml
+  - ./resources/ingress.yml
 
 commonLabels:
   app.kubernetes.io/name: freshrss

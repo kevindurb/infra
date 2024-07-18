@@ -4,19 +4,4 @@ credentials-file: /etc/cloudflared/creds/credentials.json
 metrics: 0.0.0.0:2000
 no-autoupdate: true
 ingress:
-  - hostname: mealie.durbin.casa
-    service: http://mealie-service
-  - hostname: status.durbin.casa
-    service: http://gatus-service
-  - hostname: home.durbin.casa
-    service: http://homepage-service
-  - hostname: freshrss.durbin.casa
-    service: http://freshrss-service
-  - hostname: immich.durbin.casa
-    service: http://immich-server-service
-  - hostname: memos.durbin.casa
-    service: http://memos-service
-  - hostname: docmost.durbin.casa
-    service: http://docmost-service
-
   - service: http://ingress-nginx-controller.ingress-nginx

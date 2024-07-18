@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: docmost.durbin.casa
+    - host: freshrss.durbin.casa
       http:
         paths:
           - pathType: Prefix

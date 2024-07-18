@@ -7,6 +7,7 @@ namePrefix: homepage-
 resources:
   - ./resources/homepage.yml
   - ./resources/secrets.yml
+  - ./resources/ingress.yml
 
 configMapGenerator:
   - name: config
