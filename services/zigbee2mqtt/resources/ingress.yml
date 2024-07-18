@@ -2,14 +2,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tailscale-ingress
+  name: ingress
 spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: service
-      port:
-        name: web
-  tls:
-    - hosts:
-        - zigbee2mqtt
+  ingressClassName: nginx
+  rules:
+    - host: zigbee2mqtt.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web

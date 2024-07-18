@@ -54,31 +54,31 @@
 - Admin:
     - Radarr:
         icon: radarr
-        href: https://radarr.beaver-cloud.ts.net
+        href: https://radarr.durbin.casa
         siteMonitor: http://radarr-service
     - Sonarr:
         icon: sonarr
-        href: https://sonarr.beaver-cloud.ts.net
+        href: https://sonarr.durbin.casa
         siteMonitor: http://sonarr-service
     - Calibre:
         icon: calibre
-        href: https://calibre.beaver-cloud.ts.net
+        href: https://calibre.durbin.casa
         siteMonitor: http://calibre-service
     - File Browser:
         icon: filebrowser
-        href: https://filebrowser.beaver-cloud.ts.net
+        href: https://filebrowser.durbin.casa
         siteMonitor: http://filebrowser-service
     - Handbrake:
         icon: handbrake
-        href: https://handbrake.beaver-cloud.ts.net
+        href: https://handbrake.durbin.casa
         siteMonitor: http://handbrake-service
     - MakeMKV:
         icon: makemkv
-        href: https://makemkv.beaver-cloud.ts.net
+        href: https://makemkv.durbin.casa
         siteMonitor: http://makemkv-service
     - Zigbee2MQTT:
         icon: zigbee2mqtt
-        href: https://zigbee2mqtt.beaver-cloud.ts.net
+        href: https://zigbee2mqtt.durbin.casa
         siteMonitor: http://zigbee2mqtt-service
     - HDHomeRun:
         icon: hdhomerun

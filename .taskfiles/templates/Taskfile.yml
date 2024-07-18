@@ -11,8 +11,6 @@ tasks:
       - task: deploy
       - task: svc
       - task: ing
-        vars:
-          subdomain: '{{ or .subdomain .appname }}'
 
   ks:
     requires:
@@ -99,7 +97,7 @@ tasks:
 
   ing:
     requires:
-      vars: [appname, subdomain]
+      vars: [appname]
     dir: ./services/{{ .appname }}/resources
     cmds:
       - |
@@ -112,7 +110,7 @@ tasks:
         spec:
           ingressClassName: nginx
           rules:
-            - host: {{ .subdomain }}.durbin.casa
+            - host: {{ or .subdomain .appname }}.durbin.casa
               http:
                 paths:
                   - pathType: Prefix

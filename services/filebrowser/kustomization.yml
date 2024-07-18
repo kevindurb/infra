@@ -8,6 +8,7 @@ resources:
   - ./resources/filebrowser.yml
   - ./resources/pvc.yml
   - ./resources/backup.yml
+  - ./resources/ingress.yml
 
 configMapGenerator:
   - name: config
