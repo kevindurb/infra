@@ -119,7 +119,7 @@
         siteMonitor: https://argocd-server.argocd
     - Kubernetes:
         icon: kubernetes
-        href: https://kubernetes.beaver-cloud.ts.net
+        href: https://kubernetes.durbin.casa
         siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - Minio:
         icon: minio
