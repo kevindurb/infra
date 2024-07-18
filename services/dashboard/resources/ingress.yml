@@ -2,14 +2,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kubernetes-dashboard-tailscale-ingress
+  name: ingress
 spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: kubernetes-dashboard
-      port:
-        number: 443
-  tls:
-    - hosts:
-        - kubernetes
+  ingressClassName: nginx
+  rules:
+    - host: kubernetes.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
