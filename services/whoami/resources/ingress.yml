@@ -4,12 +4,15 @@ kind: Ingress
 metadata:
   name: ingress
 spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: service
-      port:
-        name: web
-  tls:
-    - hosts:
-        - whoami
+  ingressClassName: nginx
+  rules:
+    - host: whoami.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web

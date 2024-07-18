@@ -4,8 +4,6 @@ credentials-file: /etc/cloudflared/creds/credentials.json
 metrics: 0.0.0.0:2000
 no-autoupdate: true
 ingress:
-  - hostname: whoami.durbin.casa
-    service: http://whoami-service
   - hostname: mealie.durbin.casa
     service: http://mealie-service
   - hostname: status.durbin.casa
