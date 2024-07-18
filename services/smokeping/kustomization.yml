@@ -7,6 +7,7 @@ namePrefix: smokeping-
 resources:
   - ./resources/smokeping.yml
   - ./resources/backup.yml
+  - ./resources/ingress.yml
 
 commonLabels:
   app.kubernetes.io/name: smokeping

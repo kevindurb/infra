@@ -8,6 +8,7 @@ namePrefix: prometheus-
 resources:
   - ./resources/deployment.yml
   - ./resources/rbac.yml
+  - ./resources/ingress.yml
 
 configMapGenerator:
   - name: config

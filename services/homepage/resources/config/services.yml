@@ -96,11 +96,11 @@
         siteMonitor: http://gatus-service/health
     - Prometheus:
         icon: prometheus
-        href: https://prometheus.beaver-cloud.ts.net
+        href: https://prometheus.durbin.casa
         siteMonitor: http://prometheus-service.monitoring/-/healthy
     - Alertmanager:
         icon: alertmanager
-        href: https://alertmanager.beaver-cloud.ts.net
+        href: https://alertmanager.durbin.casa
         siteMonitor: http://alertmanager-service.monitoring/-/healthy
     - TrueNAS:
         icon: truenas
@@ -119,7 +119,7 @@
         siteMonitor: https://192.168.1.1
     - ArgoCD:
         icon: argocd
-        href: https://argo.beaver-cloud.ts.net
+        href: https://argo.durbin.casa
         siteMonitor: https://argocd-server.argocd
     - Kubernetes:
         icon: kubernetes
@@ -127,13 +127,13 @@
         siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - Minio:
         icon: minio
-        href: https://minio.beaver-cloud.ts.net
+        href: https://minio.durbin.casa
         siteMonitor: http://minio-api-service/minio/health/ready
     - Grafana:
         icon: grafana
-        href: https://grafana.beaver-cloud.ts.net
+        href: https://grafana.durbin.casa
         siteMonitor: http://grafana-service/api/health
     - Smokeping:
         icon: smokeping
-        href: https://smokeping.beaver-cloud.ts.net
+        href: https://smokeping.durbin.casa
         siteMonitor: http://smokeping-service

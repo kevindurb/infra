@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: grafana.durbin.casa
+    - host: prometheus.durbin.casa
       http:
         paths:
           - pathType: Prefix
