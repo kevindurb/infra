@@ -7,7 +7,6 @@ hideVersion: true
 statusStyle: dot
 useEqualHeights: true
 iconStyle: theme
-target: _self
 quicklaunch:
   provider: duckduckgo
   showSearchSuggestions: true
