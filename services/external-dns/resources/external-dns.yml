@@ -55,32 +55,31 @@ spec:
         - name: external-dns
           image: registry.k8s.io/external-dns/external-dns:v0.14.2
           args:
-            - --registry=txt
-            - --txt-owner-id=kevindurb
+            - --source=service
             - --source=ingress
-            - --provider=cloudflare
-            - --publish-internal-services
+            - --registry=noop
+            - --policy=upsert-only
+            - --provider=pihole
+            - --pihole-server=http://pihole-service.default.svc.cluster.local
           env:
-            - name: CF_API_TOKEN
+            - name: EXTERNAL_DNS_PIHOLE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: external-dns-cloudflare-secret
-                  key: CF_API_TOKEN
+                  name: external-dns-pihole-secret
+                  key: PIHOLE_WEBPASSWORD
 
 ---
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
+apiVersion: k8s.bitwarden.com/v1
+kind: BitwardenSecret
 metadata:
-  name: cloudflare-secret
+  name: pihole-secret
 spec:
-  refreshInterval: 1h
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: gitlab-secret-store
-  target:
-    name: external-dns-cloudflare-secret
-    creationPolicy: Owner
-  data:
-    - secretKey: CF_API_TOKEN
-      remoteRef:
-        key: CF_API_TOKEN
+  organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
+  secretName: external-dns-pihole-secret
+  map:
+    - secretKeyName: PIHOLE_WEBPASSWORD
+      bwSecretId: fa140788-63dd-4ad3-83c5-b1b10159514b
+  authToken:
+    secretName: bw-auth-token
+    secretKey: token
+
