@@ -4,12 +4,12 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: &host jellyfin.durbin.casa
     cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
   tls:
-    - hosts: [*host]
+    - hosts: [&host jellyfin.durbin.casa]
       secretName: durbin-casa-wildcard-cert
   rules:
     - host: *host
