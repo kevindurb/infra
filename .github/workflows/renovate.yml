@@ -1,7 +1,8 @@
 ---
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 9 * * *"
+    - cron: '0 9 * * *'
 
 jobs:
   renovate:
@@ -11,4 +12,3 @@ jobs:
     steps:
       - name: Renovate Bot GitHub Action
         uses: renovatebot/github-action@v40.2.2
-            
