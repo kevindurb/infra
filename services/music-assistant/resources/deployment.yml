@@ -16,14 +16,14 @@ spec:
       labels: *labels
     spec:
       hostNetwork: true
-      securityContext:
-        privileged: true
       volumes:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
       containers:
         - name: music-assistant
+          securityContext:
+            privileged: true
           image: ghcr.io/music-assistant/server:2.0.7
           volumeMounts:
             - name: volume
