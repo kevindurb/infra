@@ -23,6 +23,8 @@ spec:
       containers:
         - name: music-assistant
           image: ghcr.io/music-assistant/server:2.0.7
+          securityContext:
+            privileged: true
           volumeMounts:
             - name: volume
               mountPath: /data
