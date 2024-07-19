@@ -43,6 +43,7 @@ spec:
           - name: minecraft
           - name: minio
           - name: mosquitto
+          - name: music-assistant
           - name: node-exporter
           - name: ollama
           - name: omada
