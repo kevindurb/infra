@@ -54,6 +54,10 @@
         icon: kanboard
         href: https://kanboard.durbin.casa
         siteMonitor: http://kanboard-service
+    - Music Assistant:
+        icon: music-assistant
+        href: https://music-assistant.durbin.casa
+        siteMonitor: http://music-assistant-service
 
 - Admin:
     - Radarr:
