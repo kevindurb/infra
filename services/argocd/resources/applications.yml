@@ -48,6 +48,7 @@ spec:
           - name: omada
           - name: open-webui
           - name: orcaslicer
+          - name: pihole
           - name: prometheus
           - name: radarr
           - name: smartctl-exporter
