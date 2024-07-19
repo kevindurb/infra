@@ -22,6 +22,11 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: WEBPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pihole-secret
+                  key: PIHOLE_WEB_PASSWORD
           volumeMounts:
             - name: config-volume
               mountPath: /etc/pihole
