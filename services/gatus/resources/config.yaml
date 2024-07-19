@@ -165,3 +165,8 @@ endpoints:
     group: Applications
     url: http://docmost-service
     <<: *defaults
+
+  - name: Pi-Hole
+    group: Admin
+    url: http://pihole-service/admin
+    <<: *defaults

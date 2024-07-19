@@ -137,3 +137,7 @@
         icon: smokeping
         href: https://smokeping.durbin.casa
         siteMonitor: http://smokeping-service
+    - Pi-Hole:
+        icon: pi-hole
+        href: https://pihole.durbin.casa
+        siteMonitor: http://pihole-service/admin
