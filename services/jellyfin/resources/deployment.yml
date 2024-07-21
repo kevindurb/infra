@@ -20,6 +20,8 @@ spec:
         nvidia.com/gpu.present: 'true'
       runtimeClassName: nvidia
       hostname: jellyfin
+      securityContext:
+        fsGroup: 1000
       initContainers:
         - name: fix-permissions
           image: busybox
@@ -40,7 +42,6 @@ spec:
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
-            fsGroup: 1000
           resources:
             limits:
               memory: 1G
