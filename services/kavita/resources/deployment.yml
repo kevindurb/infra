@@ -21,7 +21,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: kavita
-          image: docker.io/jvmilazz0/kavita:0.8.1
+          image: docker.io/jvmilazz0/kavita:0.8.2
           env:
             - name: TZ
               value: America/Denver
