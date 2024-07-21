@@ -24,7 +24,7 @@ spec:
             claimName: plugins-volume
       containers:
         - name: kanboard
-          image: docker.io/kanboard/kanboard:v1.2.37
+          image: docker.io/kanboard/kanboard:v1.2.38
           volumeMounts:
             - name: volume
               mountPath: /var/www/app/data
