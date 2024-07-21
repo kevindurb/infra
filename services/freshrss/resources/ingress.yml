@@ -15,4 +15,4 @@ spec:
               service:
                 name: service
                 port:
-                  name: web
+                  name: http
