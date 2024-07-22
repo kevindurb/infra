@@ -9,6 +9,17 @@ metadata:
     gethomepage.dev/group: Infra
     gethomepage.dev/icon: argocd
     gethomepage.dev/name: ArgoCD
+    gethomepage.dev/pod-selector: >-
+      app.kubernetes.io/name in (
+        argocd-image-updater,
+        argocd-notifications-controller,
+        argocd-server,
+        argocd-application-controller,
+        argocd-applicationset-controller,
+        argocd-dex-server,
+        argocd-redis,
+        argocd-repo-server
+      )
     nginx.ingress.kubernetes.io/backend-protocol: https
 spec:
   ingressClassName: nginx
