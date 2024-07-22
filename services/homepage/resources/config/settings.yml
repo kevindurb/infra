@@ -12,17 +12,14 @@ quicklaunch:
   showSearchSuggestions: true
 layout:
   Apps:
-    tab: Apps
     icon: mdi-square-rounded-badge-outline
     style: row
     columns: 3
   Admin:
-    tab: Admin
     icon: mdi-security
     style: row
     columns: 3
   Infra:
-    tab: Admin
     icon: mdi-server
     style: row
     columns: 3
