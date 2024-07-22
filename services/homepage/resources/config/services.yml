@@ -60,10 +60,6 @@
         siteMonitor: http://music-assistant-service
 
 - Admin:
-    - Kubernetes:
-        icon: kubernetes
-        href: https://kubernetes.durbin.casa
-        siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - Radarr:
         icon: radarr
         href: https://radarr.durbin.casa
@@ -98,6 +94,10 @@
         siteMonitor: http://192.168.0.166
 
 - Infra:
+    - Kubernetes:
+        icon: kubernetes
+        href: https://kubernetes.durbin.casa
+        siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - TrueNAS:
         icon: truenas
         href: https://192.168.100.201
