@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://status.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: gatus
+    gethomepage.dev/group: Monitoring
+    gethomepage.dev/icon: gatus
+    gethomepage.dev/name: Gatus
 spec:
   ingressClassName: nginx
   rules:

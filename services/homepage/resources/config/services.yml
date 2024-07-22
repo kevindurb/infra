@@ -11,18 +11,10 @@
         siteMonitor: http://192.168.0.166
 
 - Infra:
-    - Kubernetes:
-        icon: kubernetes
-        href: https://kubernetes.durbin.casa
-        siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - TrueNAS:
         icon: truenas
         href: https://192.168.100.201
         siteMonitor: https://192.168.100.201/api/docs/
-    - Omada:
-        icon: omada
-        href: https://omada.durbin.casa
-        siteMonitor: https://omada-service/login
     - PVE01 iDRAC:
         icon: idrac
         href: https://192.168.100.200
@@ -30,37 +22,5 @@
         icon: openwrt
         href: https://openwrt.beaver-cloud.ts.net
         siteMonitor: https://192.168.1.1
-    - ArgoCD:
-        icon: argocd
-        href: https://argo.durbin.casa
-        siteMonitor: https://argocd-server.argocd
-    - Minio:
-        icon: minio
-        href: https://minio.durbin.casa
-        siteMonitor: http://minio-api-service/minio/health/ready
-    - Pi-Hole:
-        icon: pi-hole
-        href: https://pihole.durbin.casa/admin
-        siteMonitor: http://pihole-service/admin
 
-- Monitoring:
-    - Gatus:
-        icon: gatus
-        href: https://status.durbin.casa
-        siteMonitor: http://gatus-service/health
-    - Alertmanager:
-        icon: alertmanager
-        href: https://alertmanager.durbin.casa
-        siteMonitor: http://alertmanager-service.monitoring/-/healthy
-    - Prometheus:
-        icon: prometheus
-        href: https://prometheus.durbin.casa
-        siteMonitor: http://prometheus-service.monitoring/-/healthy
-    - Grafana:
-        icon: grafana
-        href: https://grafana.durbin.casa
-        siteMonitor: http://grafana-service/api/health
-    - Smokeping:
-        icon: smokeping
-        href: https://smokeping.durbin.casa
-        siteMonitor: http://smokeping-service
+- Monitoring: []
