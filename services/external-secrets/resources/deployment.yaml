@@ -42,7 +42,7 @@ spec:
             runAsUser: 1000
             seccompProfile:
               type: RuntimeDefault
-          image: ghcr.io/external-secrets/external-secrets:v0.9.19
+          image: ghcr.io/external-secrets/external-secrets:v0.9.20
           imagePullPolicy: IfNotPresent
           args:
             - --concurrent=1
