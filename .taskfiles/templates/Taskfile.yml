@@ -107,6 +107,13 @@ tasks:
         kind: Ingress
         metadata:
           name: ingress
+          annotations:
+            gethomepage.dev/href: 'https://{{ or .subdomain .appname }}.durbin.casa'
+            gethomepage.dev/enabled: 'true'
+            gethomepage.dev/app: {{ .appname }}
+            gethomepage.dev/group: Apps
+            gethomepage.dev/icon: {{ .appname }}
+            gethomepage.dev/name: {{ title .appname }}
         spec:
           ingressClassName: nginx
           rules:
