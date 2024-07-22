@@ -4,10 +4,6 @@
         icon: home-assistant
         href: https://home-assistant.durbin.casa
         siteMonitor: http://home-assistant-service/manifest.json
-    - Mealie:
-        icon: mealie
-        href: https://mealie.durbin.casa
-        siteMonitor: http://mealie-service/api/app/about
     - Kavita:
         icon: kavita
         href: https://kavita.durbin.casa
