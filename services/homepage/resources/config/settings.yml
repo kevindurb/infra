@@ -14,6 +14,7 @@ layout:
   Apps:
     icon: mdi-square-rounded-badge-outline
     style: row
+    columns: 4
   Admin:
     icon: mdi-security
     style: column
