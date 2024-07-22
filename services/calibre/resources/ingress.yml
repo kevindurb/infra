@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://calibre.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: calibre
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: calibre
+    gethomepage.dev/name: Calibre
 spec:
   ingressClassName: nginx
   rules:

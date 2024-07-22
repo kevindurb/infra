@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://sonarr.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: sonarr
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: sonarr
+    gethomepage.dev/name: Sonarr
 spec:
   ingressClassName: nginx
   rules:

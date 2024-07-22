@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://handbrake.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: handbrake
+    gethomepage.dev/group: Admin
+    gethomepage.dev/icon: handbrake
+    gethomepage.dev/name: Handbrake
 spec:
   ingressClassName: nginx
   rules:

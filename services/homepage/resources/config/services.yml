@@ -5,34 +5,6 @@
         href: http://mainsailos.beaver-cloud.ts.net/
 
 - Admin:
-    - Radarr:
-        icon: radarr
-        href: https://radarr.durbin.casa
-        siteMonitor: http://radarr-service
-    - Sonarr:
-        icon: sonarr
-        href: https://sonarr.durbin.casa
-        siteMonitor: http://sonarr-service
-    - Calibre:
-        icon: calibre
-        href: https://calibre.durbin.casa
-        siteMonitor: http://calibre-service
-    - File Browser:
-        icon: filebrowser
-        href: https://filebrowser.durbin.casa
-        siteMonitor: http://filebrowser-service
-    - Handbrake:
-        icon: handbrake
-        href: https://handbrake.durbin.casa
-        siteMonitor: http://handbrake-service
-    - MakeMKV:
-        icon: makemkv
-        href: https://makemkv.durbin.casa
-        siteMonitor: http://makemkv-service
-    - Zigbee2MQTT:
-        icon: zigbee2mqtt
-        href: https://zigbee2mqtt.durbin.casa
-        siteMonitor: http://zigbee2mqtt-service
     - HDHomeRun:
         icon: hdhomerun
         href: http://192.168.0.166
