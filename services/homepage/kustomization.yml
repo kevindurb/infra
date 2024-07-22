@@ -8,6 +8,7 @@ resources:
   - ./resources/homepage.yml
   - ./resources/secrets.yml
   - ./resources/ingress.yml
+  - ./resources/rbac.yml
 
 configMapGenerator:
   - name: config
@@ -16,6 +17,7 @@ configMapGenerator:
       - ./resources/config/services.yml
       - ./resources/config/bookmarks.yml
       - ./resources/config/widgets.yml
+      - ./resources/config/kubernetes.yml
 
 commonLabels:
   app.kubernetes.io/name: homepage
