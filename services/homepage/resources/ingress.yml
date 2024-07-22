@@ -10,8 +10,6 @@ metadata:
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: homepage
     gethomepage.dev/name: Homepage
-    nginx.ingress.kubernetes.io/affinity: cookie
-    nginx.ingress.kubernetes.io/affinity-mode: persistent
 spec:
   ingressClassName: nginx
   rules:
