@@ -60,6 +60,10 @@
         siteMonitor: http://music-assistant-service
 
 - Admin:
+    - Kubernetes:
+        icon: kubernetes
+        href: https://kubernetes.durbin.casa
+        siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - Radarr:
         icon: radarr
         href: https://radarr.durbin.casa
@@ -94,18 +98,6 @@
         siteMonitor: http://192.168.0.166
 
 - Infra:
-    - Gatus:
-        icon: gatus
-        href: https://status.durbin.casa
-        siteMonitor: http://gatus-service/health
-    - Prometheus:
-        icon: prometheus
-        href: https://prometheus.durbin.casa
-        siteMonitor: http://prometheus-service.monitoring/-/healthy
-    - Alertmanager:
-        icon: alertmanager
-        href: https://alertmanager.durbin.casa
-        siteMonitor: http://alertmanager-service.monitoring/-/healthy
     - TrueNAS:
         icon: truenas
         href: https://192.168.100.201
@@ -125,14 +117,28 @@
         icon: argocd
         href: https://argo.durbin.casa
         siteMonitor: https://argocd-server.argocd
-    - Kubernetes:
-        icon: kubernetes
-        href: https://kubernetes.durbin.casa
-        siteMonitor: https://kubernetes-dashboard.kubernetes-dashboard/config
     - Minio:
         icon: minio
         href: https://minio.durbin.casa
         siteMonitor: http://minio-api-service/minio/health/ready
+    - Pi-Hole:
+        icon: pi-hole
+        href: https://pihole.durbin.casa/admin
+        siteMonitor: http://pihole-service/admin
+
+- Monitoring:
+    - Gatus:
+        icon: gatus
+        href: https://status.durbin.casa
+        siteMonitor: http://gatus-service/health
+    - Alertmanager:
+        icon: alertmanager
+        href: https://alertmanager.durbin.casa
+        siteMonitor: http://alertmanager-service.monitoring/-/healthy
+    - Prometheus:
+        icon: prometheus
+        href: https://prometheus.durbin.casa
+        siteMonitor: http://prometheus-service.monitoring/-/healthy
     - Grafana:
         icon: grafana
         href: https://grafana.durbin.casa
@@ -141,7 +147,3 @@
         icon: smokeping
         href: https://smokeping.durbin.casa
         siteMonitor: http://smokeping-service
-    - Pi-Hole:
-        icon: pi-hole
-        href: https://pihole.durbin.casa/admin
-        siteMonitor: http://pihole-service/admin

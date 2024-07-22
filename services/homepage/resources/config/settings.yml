@@ -14,12 +14,16 @@ layout:
   Apps:
     icon: mdi-square-rounded-badge-outline
     style: row
-    columns: 3
+    columns: 4
   Admin:
     icon: mdi-security
     style: row
-    columns: 3
+    columns: 4
   Infra:
     icon: mdi-server
     style: row
-    columns: 3
+    columns: 2
+  Monitoring:
+    icon: mdi-alert-circle
+    style: row
+    columns: 2
