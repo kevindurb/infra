@@ -15,6 +15,7 @@ spec:
           - name: calibre
           - name: cert-manager
           - name: cloudflared
+          - name: cluster-secret-store
           - name: cnpg
           - name: common
           - name: dashboard
@@ -22,7 +23,6 @@ spec:
           - name: external-dns
           - name: external-snapshotter
           - name: external-volumes
-          - name: external-secrets-other
           - name: filebrowser
           - name: freshrss
           - name: gatus
