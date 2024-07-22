@@ -47,15 +47,15 @@
         href: https://memos.durbin.casa
         siteMonitor: http://memos-service
     - Docmost:
-        icon: docmost
+        icon: mdi-file-document-outline
         href: https://docmost.durbin.casa
         siteMonitor: http://docmost-service
     - Kanboard:
-        icon: kanboard
+        icon: kanboard.svg
         href: https://kanboard.durbin.casa
         siteMonitor: http://kanboard-service
     - Music Assistant:
-        icon: music-assistant
+        icon: mdi-speaker
         href: https://music-assistant.durbin.casa
         siteMonitor: http://music-assistant-service
 
