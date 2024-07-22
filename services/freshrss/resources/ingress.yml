@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://freshrss.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: freshrss
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: freshrss
+    gethomepage.dev/name: FreshRSS
 spec:
   ingressClassName: nginx
   rules:

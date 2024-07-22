@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://music-assistant.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: music-assistant
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: mdi-speaker
+    gethomepage.dev/name: Music Assistant
 spec:
   ingressClassName: nginx
   rules:

@@ -4,8 +4,14 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
+    gethomepage.dev/href: 'https://jellyfin.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: jellyfin
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: jellyfin
+    gethomepage.dev/name: Jellyfin
     cert-manager.io/cluster-issuer: cloudflare-issuer
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
 spec:
   ingressClassName: nginx
   tls:

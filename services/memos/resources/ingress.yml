@@ -3,6 +3,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://memos.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: memos
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: memos
+    gethomepage.dev/name: Memos
 spec:
   ingressClassName: nginx
   rules:
