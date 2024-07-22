@@ -56,6 +56,7 @@ spec:
           - name: smokeping
           - name: smtp-relay
           - name: sonarr
+          - name: speedtest-tracker
           - name: tailscale-operator
           - name: memos
           # - name: webtop
