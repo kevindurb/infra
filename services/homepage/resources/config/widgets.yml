@@ -12,11 +12,6 @@
       memory: true
       showLabel: true
 
-- datetime:
-    text_size: xl
-    format:
-      timeStyle: short
-
 - search:
     provider: duckduckgo
     showSearchSuggestions: true
@@ -28,3 +23,8 @@
     timezone: America/Denver
     units: imperial
     cache: 10
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
