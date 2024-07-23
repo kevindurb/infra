@@ -3,16 +3,19 @@
 mqtt:
   host: mosquitto-service
 
+detect:
+  enabled: false
+
 record:
   enabled: true
 
 snapshots:
   enabled: true
 
-detectors:
-  tensorrt:
-    type: tensorrt
-    device: 0
+# detectors:
+#   tensorrt:
+#     type: tensorrt
+#     device: 0
 
 cameras:
   doorbell:
