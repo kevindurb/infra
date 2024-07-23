@@ -7,17 +7,9 @@ spec:
   replicas: 1
   template:
     spec:
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-      runtimeClassName: nvidia
       containers:
         - name: frigate
-          image: ghcr.io/blakeblackshear/frigate:0.13.2-tensorrt
-          env:
-            - name: YOLO_MODELS
-              value: yolov7-tiny-416
-            - name: USE_FP1
-              value: 'false'
+          image: ghcr.io/blakeblackshear/frigate:0.13.2
           envFrom:
             - secretRef:
                 name: frigate-secret
