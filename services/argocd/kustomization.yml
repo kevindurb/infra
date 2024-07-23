@@ -5,12 +5,15 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-  - ./resources/namespace.yml
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  - https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+  - ./resources/namespace.yml
   - ./resources/ingress.yml
   - ./resources/applications.yml
-  - ./resources/applications-other.yml
-  - https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+  - ./resources/bitwarden.yml
+  - ./resources/external-secrets.yml
+  - ./resources/tailscale-operator.yml
+  - ./resources/volsync.yml
 
 patches:
   - path: ./resources/config.patch.yml
