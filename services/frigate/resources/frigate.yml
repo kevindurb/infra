@@ -29,8 +29,8 @@ spec:
               containerPort: 8555
               protocol: UDP
           volumeMounts:
-            - name: config-volume
-              mountPath: /config
+            # - name: config-volume
+            #   mountPath: /config
             - name: config-map
               mountPath: /config/config.yml
               subPath: config.yml
@@ -38,9 +38,9 @@ spec:
             - mountPath: /dev/shm
               name: shm
       volumes:
-        - name: config-map
-          configMap:
-            name: config
+        # - name: config-map
+        #   configMap:
+        #     name: config
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
