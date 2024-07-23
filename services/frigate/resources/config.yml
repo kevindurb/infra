@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://frigate.durbin.casa/api/config/schema.json
 ---
 mqtt:
   host: mosquitto-service
@@ -12,6 +11,10 @@ record:
 snapshots:
   enabled: true
 
+birdseye:
+  enabled: true
+  mode: continuous
+
 # detectors:
 #   tensorrt:
 #     type: tensorrt
@@ -23,5 +26,5 @@ cameras:
       inputs:
         - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.167:554/Preview_01_main
           roles: [record]
-        # - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.167:554/Preview_01_sub
-        #   roles: [detect]
+        - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.167:554/Preview_01_sub
+          roles: [detect]

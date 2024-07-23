@@ -37,13 +37,16 @@ spec:
               readOnly: true
             - mountPath: /dev/shm
               name: shm
+            - name: truenas-media
+              mountPath: /media/frigate
+              subPath: frigate
       volumes:
         - name: config-map
           configMap:
             name: config
-        # - name: config-volume
-        #   persistentVolumeClaim:
-        #     claimName: config-volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
         - name: shm
           emptyDir:
             sizeLimit: 0.5Gi

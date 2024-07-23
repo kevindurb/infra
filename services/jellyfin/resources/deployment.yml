@@ -22,13 +22,6 @@ spec:
       hostname: jellyfin
       securityContext:
         fsGroup: 1000
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          command: ['sh', '-c', 'chown -R 1000:1000 /config']
-          volumeMounts:
-            - mountPath: /config
-              name: config-volume
       volumes:
         - name: config-volume
           persistentVolumeClaim:
