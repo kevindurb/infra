@@ -57,7 +57,7 @@ spec:
           - name: smtp-relay
           - name: sonarr
           - name: speedtest-tracker
-          - name: tailscale-operator
+          - name: tailscale-extra
           - name: memos
           # - name: webtop
           - name: whoami
