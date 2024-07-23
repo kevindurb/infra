@@ -15,7 +15,7 @@ spec:
           image: ghcr.io/blakeblackshear/frigate:0.13.2-tensorrt
           envFrom:
             - secretRef:
-                name: eufy-rtsp-credentials
+                name: frigate-secret
           resources:
             limits:
               memory: 4G

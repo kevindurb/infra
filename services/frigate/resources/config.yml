@@ -15,18 +15,10 @@ detectors:
     device: 0
 
 cameras:
-  # cam01:
-  #   ffmpeg:
-  #     inputs:
-  #       - path: rtsp://192.168.0.40:8554/video3_unicast
-  #         roles: []
-  # eufy0:
-  #   ffmpeg:
-  #     inputs:
-  #       - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live0
-  #         roles: []
-  # eufy1:
-  #   ffmpeg:
-  #     inputs:
-  #       - path: rtsp://{FRIGATE_EUFY_RTSP_CREDENTIALS}@192.168.0.174:554/live1
-  #         roles: []
+  doorbell:
+    ffmpeg:
+      inputs:
+        - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.167:554/Preview_01_main
+          roles: [record]
+        - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.167:554/Preview_01_sub
+          roles: [record]

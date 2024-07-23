@@ -25,6 +25,7 @@ spec:
           - name: external-volumes
           - name: filebrowser
           - name: freshrss
+          - name: frigate
           - name: gatus
           - name: grafana
           - name: handbrake
