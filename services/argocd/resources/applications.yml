@@ -21,6 +21,7 @@ spec:
           - name: dashboard
           - name: docmost
           - name: external-dns
+          - name: external-secrets-other
           - name: external-snapshotter
           - name: external-volumes
           - name: filebrowser
