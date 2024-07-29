@@ -19,9 +19,15 @@ spec:
       #   - name: volume
       #     persistentVolumeClaim:
       #       claimName: volume
+      nodeSelector:
+        nvidia.com/gpu.present: 'true'
+      runtimeClassName: nvidia
       containers:
         - name: scrypted
           image: ghcr.io/koush/scrypted:v0.114.0-jammy-nvidia
+          resources:
+            limits:
+              nvidia.com/gpu: 1
           # volumeMounts:
           #   - name: volume
           #     mountPath: /var/www/app/data
