@@ -54,6 +54,7 @@ spec:
           - name: pihole
           - name: prometheus
           - name: radarr
+          - name: scrypted
           - name: smartctl-exporter
           - name: smokeping
           - name: smtp-relay

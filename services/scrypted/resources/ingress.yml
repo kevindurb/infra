@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://scrypted.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: scrypted
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: scrypted
+    gethomepage.dev/name: Scrypted
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: scrypted.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
