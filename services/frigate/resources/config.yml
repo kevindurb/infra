@@ -35,3 +35,10 @@ cameras:
           roles: [record]
         - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.167:554/Preview_01_sub
           roles: [detect]
+  garage:
+    ffmpeg:
+      inputs:
+        - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.16:554/Preview_01_main
+          roles: [record]
+        - path: rtsp://{FRIGATE_DOORBELL_CREDENTIALS}@192.168.0.16:554/Preview_01_sub
+          roles: [detect]
