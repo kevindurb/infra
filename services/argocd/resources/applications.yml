@@ -60,6 +60,7 @@ spec:
           - name: sonarr
           - name: speedtest-tracker
           - name: tailscale-extra
+          - name: time-slicing-config
           - name: memos
           # - name: webtop
           - name: whoami
