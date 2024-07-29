@@ -17,6 +17,9 @@ spec:
       containers:
         - name: webtop
           image: lscr.io/linuxserver/webtop:fedora-kde
+          resources:
+            limits:
+              nvidia.com/gpu: 1
           volumeMounts:
             - mountPath: /dev/shm
               name: dshm
