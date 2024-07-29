@@ -4,7 +4,10 @@ kind: Kustomization
 
 namePrefix: scrypted-
 
-resources: []
+resources:
+  - ./resources/deployment.yml
+  - ./resources/ingress.yml
+  - ./resources/service.yml
 
 commonLabels:
   app.kubernetes.io/name: scrypted
