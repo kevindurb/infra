@@ -18,8 +18,8 @@ spec:
           env:
             - name: TZ
               value: America/Denver
-            - name: USE_FP16
-              value: 'false'
+            # - name: USE_FP16
+            #   value: 'false'
             - name: YOLO_MODELS
               value: yolov7-320
           envFrom:
