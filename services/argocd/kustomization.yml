@@ -14,6 +14,8 @@ resources:
   - ./resources/external-secrets.yml
   - ./resources/tailscale-operator.yml
   - ./resources/volsync.yml
+  - ./resources/gpu-operator.yml
+  - ./resources/node-feature-discovery.yml
 
 patches:
   - path: ./resources/config.patch.yml

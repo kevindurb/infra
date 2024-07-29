@@ -19,6 +19,9 @@ spec:
       containers:
         - name: orcaslicer
           image: lscr.io/linuxserver/orcaslicer:2.0.0
+          resources:
+            limits:
+              nvidia.com/gpu: 1
           volumeMounts:
             - name: config-volume
               mountPath: /config
