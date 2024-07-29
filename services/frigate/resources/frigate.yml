@@ -51,6 +51,9 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-volume
         - name: shm
           emptyDir:
             sizeLimit: 0.5Gi
