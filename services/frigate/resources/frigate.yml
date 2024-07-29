@@ -9,6 +9,9 @@ spec:
     type: Recreate
   template:
     spec:
+      nodeSelector:
+        nvidia.com/gpu.present: 'true'
+      runtimeClassName: nvidia
       containers:
         - name: frigate
           image: ghcr.io/blakeblackshear/frigate:0.13.2-tensorrt
@@ -21,7 +24,7 @@ spec:
           resources:
             limits:
               memory: 4G
-              nvidia.com/gpu: 1
+              nvidia.com/gpu: 4
           ports:
             - name: web
               containerPort: 5000
