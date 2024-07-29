@@ -22,10 +22,10 @@ birdseye:
   enabled: true
   mode: continuous
 
-# detectors:
-#   tensorrt:
-#     type: tensorrt
-#     device: 0
+detectors:
+  tensorrt:
+    type: tensorrt
+    device: 0
 
 cameras:
   doorbell:

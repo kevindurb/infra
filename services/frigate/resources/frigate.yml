@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: frigate
-          image: ghcr.io/blakeblackshear/frigate:0.13.2
+          image: ghcr.io/blakeblackshear/frigate:0.13.2-tensorrt
           env:
             - name: TZ
               value: America/Denver
@@ -21,6 +21,7 @@ spec:
           resources:
             limits:
               memory: 4G
+              nvidia.com/gpu: 1
           ports:
             - name: web
               containerPort: 5000
@@ -32,8 +33,8 @@ spec:
               containerPort: 8555
               protocol: UDP
           volumeMounts:
-            # - name: config-volume
-            #   mountPath: /config
+            - name: config-volume
+              mountPath: /config
             - name: config-map
               mountPath: /config/config.yml
               subPath: config.yml
