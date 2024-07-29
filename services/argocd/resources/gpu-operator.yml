@@ -2,16 +2,32 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: node-feature-discovery
+  name: gpu-operator
 spec:
   project: default
   source:
-    repoURL: https://github.com/kubernetes-sigs/node-feature-discovery
-    targetRevision: v0.16.3
-    path: deployment/overlays/default
+    repoURL: https://helm.ngc.nvidia.com/nvidia
+    targetRevision: v24.3.0
+    chart: gpu-operator
+    helm:
+      valuesObject:
+        toolkit:
+          env:
+            - name: CONTAINERD_CONFIG
+              value: '/etc/containerd/config.toml.tmpl'
+            - name: CONTAINERD_SOCKET
+              value: '/run/k3s/containerd/containerd.sock'
+            - name: CONTAINERD_RUNTIME_CLASS
+              value: 'nvidia'
+            - name: CONTAINERD_SET_AS_DEFAULT
+              value: 'true'
+        devicePlugin:
+          config:
+            name: time-slicing-config-all
+            default: any
   destination:
     server: https://kubernetes.default.svc
-    namespace: node-feature-discovery
+    namespace: gpu-operator
   syncPolicy:
     automated:
       prune: true
