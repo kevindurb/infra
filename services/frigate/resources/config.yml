@@ -6,7 +6,7 @@ detect:
   enabled: false
 
 record:
-  enabled: false
+  enabled: true
   retain:
     days: 3
     mode: all
