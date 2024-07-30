@@ -116,11 +116,6 @@ endpoints:
     url: http://actual-budget-service
     <<: *defaults
 
-  - name: Open WebUI
-    group: Applications
-    url: http://open-webui-service
-    <<: *defaults
-
   - name: MakeMKV
     group: Applications
     url: http://makemkv-service
