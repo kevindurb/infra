@@ -17,9 +17,11 @@ includes:
     aliases: [nc]
   kubernetes:
     taskfile: .taskfiles/kubernetes
-    aliases: [k]
+    aliases: [k, k8s]
   k3sup:
     taskfile: .taskfiles/k3sup
+  gatus:
+    taskfile: .taskfiles/gatus
 
 tasks:
   default:
