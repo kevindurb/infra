@@ -38,7 +38,7 @@ spec:
           resources:
             limits:
               memory: 1G
-              nvidia.com/gpu: 1
+              nvidia.com/gpu: 4
           volumeMounts:
             - name: config-volume
               mountPath: /config

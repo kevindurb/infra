@@ -32,7 +32,6 @@ spec:
           - name: healthchecks
           - name: home-assistant
           - name: homepage
-          - name: immich
           - name: ingress-nginx
           - name: jellyfin
           - name: kanboard
