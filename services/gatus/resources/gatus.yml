@@ -9,7 +9,7 @@ spec:
     type: Recreate
   template:
     spec:
-      serviceAccountName: service-account
+      # serviceAccountName: service-account
       containers:
         - image: ghcr.io/twin/gatus:v5.11.0
           name: gatus
