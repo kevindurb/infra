@@ -7,7 +7,7 @@ namePrefix: gatus-
 resources:
   - ./resources/gatus.yml
   - ./resources/ingress.yml
-  - ./resources/rbac.yml
+  # - ./resources/rbac.yml
 
 configMapGenerator:
   - name: config
