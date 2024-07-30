@@ -9,6 +9,7 @@ spec:
     type: Recreate
   template:
     spec:
+      serviceAccountName: service-account
       containers:
         - image: ghcr.io/twin/gatus:v5.11.0
           name: gatus
@@ -18,10 +19,29 @@ spec:
           volumeMounts:
             - name: data-volume
               mountPath: /data
+            - name: config
+              mountPath: /config
             - name: config-map
-              mountPath: /config/config.yaml
-              subPath: config.yaml
+              mountPath: /config/config.yml
+              subPath: config.yml
               readOnly: true
+          env:
+            - name: GATUS_CONFIG_PATH
+              value: /config
+        - config-sync:
+            image: ghcr.io/kiwigrid/k8s-sidecar:1.24.4
+            env:
+              - name: FOLDER
+                value: /config
+              - name: LABEL
+                value: gatus.io/enabled
+              - name: NAMESPACE
+                value: ALL
+              - name: RESOURCE
+                value: both
+            volumeMounts:
+              - name: config
+                mountPath: /config
       volumes:
         - name: data-volume
           persistentVolumeClaim:
@@ -29,6 +49,8 @@ spec:
         - name: config-map
           configMap:
             name: config
+        - name: config
+          emptyDir: {}
 
 ---
 apiVersion: v1
