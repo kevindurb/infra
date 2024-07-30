@@ -4,7 +4,7 @@ kind: ServiceAccount
 metadata:
   name: service-account
 secrets:
-  - name: service-account-token
+  - name: gatus-service-account-token
 
 ---
 apiVersion: v1
