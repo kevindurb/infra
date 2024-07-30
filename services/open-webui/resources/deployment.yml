@@ -23,7 +23,7 @@ spec:
             - name: OLLAMA_BASE_URL
               value: http://ollama-service
           ports:
-            - name: http
+            - name: web
               containerPort: 8080
 
 ---
@@ -33,6 +33,6 @@ metadata:
   name: service
 spec:
   ports:
-    - name: http
+    - name: web
       port: 80
-      targetPort: http
+      targetPort: web
