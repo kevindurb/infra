@@ -46,9 +46,7 @@ spec:
           - name: music-assistant
           - name: nocodb
           - name: node-exporter
-          - name: ollama
           - name: omada
-          - name: open-webui
           - name: orcaslicer
           - name: pihole
           - name: prometheus
