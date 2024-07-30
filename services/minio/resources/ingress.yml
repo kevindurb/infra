@@ -20,6 +20,6 @@ spec:
             path: '/'
             backend:
               service:
-                name: service
+                name: console-service
                 port:
-                  name: web
+                  name: console
