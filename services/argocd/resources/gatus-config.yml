@@ -11,5 +11,7 @@ data:
       - name: Argocd
         group: Infra
         url: https://argocd-server.argocd
+        client:
+          insecure: true
         conditions:
           - '[STATUS] == 200'
