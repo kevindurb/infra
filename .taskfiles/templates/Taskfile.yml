@@ -339,3 +339,27 @@ tasks:
             secretName: bw-auth-token
             secretKey: token
         EOF
+
+  gatus:
+    requires:
+      vars: [appname]
+    dir: ./services/{{ .appname }}/resources
+    cmds:
+      - |
+        cat << EOF > gatus-config.yml
+        ---
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: gatus-config
+          labels:
+            gatus.io/enabled: 'true'
+        data:
+          {{ .appname }}.yml: |
+            endpoints:
+              - name: {{ title .appname }}
+                group: Applications
+                url: http://{{ .appname }}-service
+                conditions:
+                  - '[STATUS] == 200'
+        EOF
