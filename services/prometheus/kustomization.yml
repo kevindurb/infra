@@ -14,6 +14,7 @@ configMapGenerator:
   - name: config
     files:
       - ./resources/prometheus.yml
+      - ./resources/gatus-config.yml
       - ./resources/rules/rules.yml
       - ./resources/rules/node-exporter.rules.yml
       - ./resources/rules/gatus.rules.yml

@@ -14,11 +14,6 @@ storage:
   path: /data/data.db
 
 endpoints:
-  - name: Frigate
-    group: Applications
-    url: http://frigate-service/api/version
-    <<: *defaults
-
   - name: Google
     group: Admin
     url: https://google.com
@@ -39,21 +34,6 @@ endpoints:
     url: https://192.168.100.200/login.html
     headers:
       'Accept-Encoding': 'deflate, gzip, br, zstd'
-    <<: *defaults
-
-  - name: Mealie
-    group: Applications
-    url: http://mealie-service/api/app/about
-    <<: *defaults
-
-  - name: Prometheus
-    group: Admin
-    url: http://prometheus-service.monitoring/-/healthy
-    <<: *defaults
-
-  - name: Alertmanager
-    group: Admin
-    url: http://alertmanager-service.monitoring/-/healthy
     <<: *defaults
 
   - name: Homepage
