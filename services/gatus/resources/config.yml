@@ -15,123 +15,28 @@ storage:
 
 endpoints:
   - name: Google
-    group: Admin
+    group: External
     url: https://google.com
     <<: *defaults
 
   - name: OpenWRT
-    group: Admin
+    group: Infra
     url: https://192.168.1.1
     <<: *defaults
 
   - name: TrueNAS
-    group: Admin
+    group: Infra
     url: https://192.168.100.201/api/docs/
     <<: *defaults
 
   - name: iDRAC
-    group: Admin
+    group: Infra
     url: https://192.168.100.200/login.html
     headers:
       'Accept-Encoding': 'deflate, gzip, br, zstd'
     <<: *defaults
 
-  - name: Kavita
-    group: Applications
-    url: http://kavita-service/api/health
-    <<: *defaults
-
-  - name: ArgoCD
-    group: Admin
-    url: https://argocd-server.argocd
-    <<: *defaults
-
-  - name: Minio
-    group: Admin
-    url: http://minio-api-service/minio/health/ready
-    <<: *defaults
-
-  - name: FreshRSS
-    group: Applications
-    url: http://freshrss-service/
-    <<: *defaults
-
-  - name: Handbrake
-    group: Applications
-    url: http://handbrake-service/
-    <<: *defaults
-
-  - name: Zigbee2MQTT
-    group: Admin
-    url: http://zigbee2mqtt-service/
-    <<: *defaults
-
-  - name: Grafana
-    group: Admin
-    url: http://grafana-service/api/health
-    <<: *defaults
-
-  - name: Omada
-    group: Admin
-    url: https://omada-service/login
-    <<: *defaults
-
-  - name: Actual Budget
-    group: Applications
-    url: http://actual-budget-service
-    <<: *defaults
-
-  - name: MakeMKV
-    group: Applications
-    url: http://makemkv-service
-    <<: *defaults
-
-  - name: File Browser
-    group: Applications
-    url: http://filebrowser-service
-    <<: *defaults
-
   - name: HDHomeRun
     group: Admin
     url: http://192.168.0.166
-    <<: *defaults
-
-  - name: Memos
-    group: Applications
-    url: http://memos-service
-    <<: *defaults
-
-  - name: Calibre
-    group: Applications
-    url: http://calibre-service
-    <<: *defaults
-
-  - name: Radarr
-    group: Applications
-    url: http://radarr-service
-    <<: *defaults
-
-  - name: Sonarr
-    group: Applications
-    url: http://sonarr-service
-    <<: *defaults
-
-  - name: Docmost
-    group: Applications
-    url: http://docmost-service
-    <<: *defaults
-
-  - name: Pi-Hole
-    group: Admin
-    url: http://pihole-service/admin
-    <<: *defaults
-
-  - name: NocoDB
-    group: Applications
-    url: http://nocodb-service
-    <<: *defaults
-
-  - name: Kanboard
-    group: Applications
-    url: http://kanboard-service
     <<: *defaults

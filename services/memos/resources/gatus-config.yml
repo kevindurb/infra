@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  memos.yml: |
+    endpoints:
+      - name: Memos
+        group: Applications
+        url: http://memos-service
+        conditions:
+          - '[STATUS] == 200'

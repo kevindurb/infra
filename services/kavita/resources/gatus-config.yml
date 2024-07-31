@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  kavita.yml: |
+    endpoints:
+      - name: Kavita
+        group: Applications
+        url: http://kavita-service/api/health
+        conditions:
+          - '[STATUS] == 200'

@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  handbrake.yml: |
+    endpoints:
+      - name: Handbrake
+        group: Applications
+        url: http://handbrake-service
+        conditions:
+          - '[STATUS] == 200'

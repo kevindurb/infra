@@ -10,6 +10,7 @@ resources:
   - ./resources/data-volume.yml
   - ./resources/plugins-volume.yml
   - ./resources/service.yml
+  - ./resources/gatus-config.yml
 
 commonLabels:
   app.kubernetes.io/name: kanboard

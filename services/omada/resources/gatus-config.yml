@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  omada.yml: |
+    endpoints:
+      - name: Omada
+        group: Admin
+        url: https://omada-service/login
+        conditions:
+          - '[STATUS] == 200'

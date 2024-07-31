@@ -8,6 +8,7 @@ resources:
   - ./resources/deployment.yml
   - ./resources/secret.yml
   - ./resources/ingress.yml
+  - ./resources/gatus-config.yml
 
 commonLabels:
   app.kubernetes.io/name: pihole

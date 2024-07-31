@@ -8,6 +8,7 @@ resources:
   - ./resources/deployment.yml
   - ./resources/service.yml
   - ./resources/ingress.yml
+  - ./resources/gatus-config.yml
 
 configMapGenerator:
   - name: config

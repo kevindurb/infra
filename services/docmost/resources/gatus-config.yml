@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  docmost.yml: |
+    endpoints:
+      - name: Docmost
+        group: Applications
+        url: http://docmost-service
+        conditions:
+          - '[STATUS] == 200'

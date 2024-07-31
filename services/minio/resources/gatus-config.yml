@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  minio.yml: |
+    endpoints:
+      - name: Minio
+        group: Infra
+        url: http://minio-api-service/minio/health/ready
+        conditions:
+          - '[STATUS] == 200'

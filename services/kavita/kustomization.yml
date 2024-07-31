@@ -11,6 +11,7 @@ configMapGenerator:
 
 resources:
   - ./resources/deployment.yml
+  - ./resources/gatus-config.yml
 
 commonLabels:
   app.kubernetes.io/name: kavita

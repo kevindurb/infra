@@ -7,6 +7,7 @@ namePrefix: sonarr-
 resources:
   - ./resources/sonarr.yml
   - ./resources/ingress.yml
+  - ./resources/gatus-config.yml
 
 commonLabels:
   app.kubernetes.io/name: sonarr

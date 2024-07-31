@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  calibre.yml: |
+    endpoints:
+      - name: Calibre
+        group: Applications
+        url: http://calibre-service
+        conditions:
+          - '[STATUS] == 200'

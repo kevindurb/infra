@@ -9,6 +9,7 @@ resources:
   - ./resources/pvc.yml
   - ./resources/backup.yml
   - ./resources/ingress.yml
+  - ./resources/gatus-config.yml
 
 configMapGenerator:
   - name: config

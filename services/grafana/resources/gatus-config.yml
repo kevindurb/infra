@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  grafana.yml: |
+    endpoints:
+      - name: Grafana
+        group: Admin
+        url: http://grafana-service/api/health
+        conditions:
+          - '[STATUS] == 200'

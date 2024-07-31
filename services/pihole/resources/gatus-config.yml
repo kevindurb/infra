@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  pihole.yml: |
+    endpoints:
+      - name: Pihole
+        group: Admin
+        url: http://pihole-service/admin
+        conditions:
+          - '[STATUS] == 200'

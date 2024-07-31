@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  nocodb.yml: |
+    endpoints:
+      - name: Nocodb
+        group: Applications
+        url: http://nocodb-service
+        conditions:
+          - '[STATUS] == 200'
