@@ -36,11 +36,6 @@ endpoints:
       'Accept-Encoding': 'deflate, gzip, br, zstd'
     <<: *defaults
 
-  - name: Homepage
-    group: Applications
-    url: http://homepage-service/api/healthcheck
-    <<: *defaults
-
   - name: Kavita
     group: Applications
     url: http://kavita-service/api/health
