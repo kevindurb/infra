@@ -14,11 +14,6 @@ storage:
   path: /data/data.db
 
 endpoints:
-  - name: Jellyfin
-    group: Applications
-    url: http://jellyfin-service/health
-    <<: *defaults
-
   - name: Home Assistant
     group: Applications
     url: http://home-assistant-service/manifest.json
