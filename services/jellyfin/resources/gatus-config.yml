@@ -11,3 +11,5 @@ data:
       - name: Jellyfin
         group: Applications
         url: http://jellyfin-service/health
+        conditions:
+          - '[STATUS] == 200'
