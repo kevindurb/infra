@@ -11,6 +11,7 @@ tasks:
       - task: deploy
       - task: svc
       - task: ing
+      - task: gatus
 
   ks:
     requires:
