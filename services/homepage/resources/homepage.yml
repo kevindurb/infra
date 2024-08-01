@@ -34,9 +34,6 @@ spec:
             - name: config
               mountPath: /app/config/kubernetes.yaml
               subPath: kubernetes.yml
-          envFrom:
-            - secretRef:
-                name: homepage-secrets
           env:
             - name: LOG_LEVEL
               value: debug

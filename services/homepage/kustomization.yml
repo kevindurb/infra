@@ -6,7 +6,6 @@ namePrefix: homepage-
 
 resources:
   - ./resources/homepage.yml
-  - ./resources/secrets.yml
   - ./resources/ingress.yml
   - ./resources/rbac.yml
   - ./resources/gatus-config.yml
