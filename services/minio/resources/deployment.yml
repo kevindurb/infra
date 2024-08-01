@@ -55,22 +55,19 @@ spec:
             periodSeconds: 20
 
 ---
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
+apiVersion: k8s.bitwarden.com/v1
+kind: BitwardenSecret
 metadata:
   name: root-credentials
 spec:
-  refreshInterval: 1h
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: gitlab-secret-store
-  target:
-    name: minio-root-credentials
-    creationPolicy: Owner
-  data:
-    - secretKey: MINIO_ROOT_PASSWORD
-      remoteRef:
-        key: MINIO_ROOT_PASSWORD
+  organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
+  secretName: root-credentials
+  map:
+    - secretKeyName: MINIO_ROOT_PASSWORD
+      bwSecretId: 5620287e-bf9d-4ab1-93e0-b1a100f09223
+  authToken:
+    secretName: bw-auth-token
+    secretKey: token
 
 ---
 apiVersion: v1
