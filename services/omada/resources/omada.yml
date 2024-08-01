@@ -61,6 +61,8 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
+    nginx.ingress.kubernetes.io/proxy-redirect-from: https://$http_host:$upstream_port/login
+    nginx.ingress.kubernetes.io/proxy-redirect-to: https://$http_host/login
     gethomepage.dev/href: 'https://omada.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: omada
