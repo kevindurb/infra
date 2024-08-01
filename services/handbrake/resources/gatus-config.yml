@@ -9,6 +9,7 @@ data:
   handbrake.yml: |
     endpoints:
       - name: Handbrake
+        enabled: false
         group: Admin
         url: http://handbrake-service
         conditions:

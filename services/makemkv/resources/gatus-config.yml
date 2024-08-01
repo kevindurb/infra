@@ -9,6 +9,7 @@ data:
   makemkv.yml: |
     endpoints:
       - name: Makemkv
+        enabled: false
         group: Admin
         url: http://makemkv-service
         conditions:
