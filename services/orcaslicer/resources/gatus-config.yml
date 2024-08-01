@@ -9,6 +9,7 @@ data:
   orcaslicer.yml: |
     endpoints:
       - name: Orcaslicer
+        enabled: false
         group: Applications
         url: http://orcaslicer-service
         conditions:
