@@ -10,9 +10,6 @@ metadata:
     gethomepage.dev/group: Monitoring
     gethomepage.dev/icon: mdi-account
     gethomepage.dev/name: Whoami
-    nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: ingress-nginx/htpasswd
-    nginx.ingress.kubernetes.io/auth-realm: durbin.casa
 spec:
   ingressClassName: nginx
   rules:
