@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  smokeping.yml: |
+    endpoints:
+      - name: Smokeping
+        group: Applications
+        url: http://smokeping-service
+        conditions:
+          - '[STATUS] == 200'

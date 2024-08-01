@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  adminer.yml: |
+    endpoints:
+      - name: Adminer
+        group: Applications
+        url: http://adminer-service
+        conditions:
+          - '[STATUS] == 200'

@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dashboard-gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  dashboard.yml: |
+    endpoints:
+      - name: Dashboard
+        group: Applications
+        url: https://kubernetes-dashboard
+        client:
+          insecure: true
+        conditions:
+          - '[STATUS] == 200'

@@ -1,42 +1,56 @@
 ---
-metrics: true
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  gatus.yml: |
+    ---
+    metrics: true
 
-default-endpoint: &defaults
-  interval: 5m
-  client:
-    insecure: true
-  conditions:
-    - '[STATUS] >= 200'
-    - '[STATUS] < 300'
+    default-endpoint: &defaults
+      interval: 5m
+      client:
+        insecure: true
+      conditions:
+        - '[STATUS] >= 200'
+        - '[STATUS] < 300'
 
-storage:
-  type: sqlite
-  path: /data/data.db
+    storage:
+      type: sqlite
+      path: /data/data.db
 
-endpoints:
-  - name: Google
-    group: External
-    url: https://google.com
-    <<: *defaults
+    endpoints:
+      - name: Gatus
+        group: Monitoring
+        url: http://gatus-service
+        <<: *defaults
 
-  - name: OpenWRT
-    group: Infra
-    url: https://192.168.1.1
-    <<: *defaults
+      - name: Google
+        group: External
+        url: https://google.com
+        <<: *defaults
 
-  - name: TrueNAS
-    group: Infra
-    url: https://192.168.100.201/api/docs/
-    <<: *defaults
+      - name: OpenWRT
+        group: Infra
+        url: https://192.168.1.1
+        <<: *defaults
 
-  - name: iDRAC
-    group: Infra
-    url: https://192.168.100.200/login.html
-    headers:
-      'Accept-Encoding': 'deflate, gzip, br, zstd'
-    <<: *defaults
+      - name: TrueNAS
+        group: Infra
+        url: https://192.168.100.201/api/docs/
+        <<: *defaults
 
-  - name: HDHomeRun
-    group: Admin
-    url: http://192.168.0.166
-    <<: *defaults
+      - name: iDRAC
+        group: Infra
+        url: https://192.168.100.200/login.html
+        headers:
+          'Accept-Encoding': 'deflate, gzip, br, zstd'
+        <<: *defaults
+
+      - name: HDHomeRun
+        group: Admin
+        url: http://192.168.0.166
+        <<: *defaults

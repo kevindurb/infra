@@ -10,6 +10,7 @@ resources:
   - ./resources/pvc.yml
   - ./resources/secret.yml
   - ./resources/service.yml
+  - ./resources/gatus-config.yml
 
 commonLabels:
   app.kubernetes.io/name: speedtest-tracker

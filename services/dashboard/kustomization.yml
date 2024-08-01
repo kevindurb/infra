@@ -8,3 +8,4 @@ resources:
   - ./resources/recommended.yml
   - ./resources/admin-user.yml
   - ./resources/ingress.yml
+  - ./resources/gatus-config.yml

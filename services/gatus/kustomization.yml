@@ -6,13 +6,9 @@ namePrefix: gatus-
 
 resources:
   - ./resources/gatus.yml
+  - ./resources/config.yml
   - ./resources/ingress.yml
   - ./resources/rbac.yml
-
-configMapGenerator:
-  - name: config
-    files:
-      - ./resources/config.yml
 
 commonLabels:
   app.kubernetes.io/name: gatus

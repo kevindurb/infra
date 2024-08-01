@@ -8,6 +8,7 @@ resources:
   - ./resources/smokeping.yml
   - ./resources/backup.yml
   - ./resources/ingress.yml
+  - ./resources/gatus-config.yml
 
 commonLabels:
   app.kubernetes.io/name: smokeping

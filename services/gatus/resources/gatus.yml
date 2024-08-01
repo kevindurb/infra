@@ -48,7 +48,7 @@ spec:
             claimName: data-volume
         - name: config-map
           configMap:
-            name: config
+            name: gatus-config
         - name: config
           emptyDir: {}
 
