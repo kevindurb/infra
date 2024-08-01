@@ -39,6 +39,8 @@ spec:
               value: 23628,23971,14861,7192,63940,42403,6202,4919,48476,49464
             - name: APP_URL
               value: https://speedtest-tracker.durbin.casa
+            - name: ASSET_URL
+              value: https://speedtest-tracker.durbin.casa
           ports:
             - name: web
               containerPort: 80
