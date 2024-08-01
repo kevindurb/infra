@@ -72,6 +72,9 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-redirect-to: https://$http_host/login
     nginx.ingress.kubernetes.io/location-snippet: |
       proxy_set_header Host $http_host:8043;
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: ingress-nginx/htpasswd
+    nginx.ingress.kubernetes.io/auth-realm: durbin.casa
 spec:
   ingressClassName: nginx
   rules:

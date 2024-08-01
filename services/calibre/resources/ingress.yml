@@ -10,6 +10,9 @@ metadata:
     gethomepage.dev/group: Admin
     gethomepage.dev/icon: calibre
     gethomepage.dev/name: Calibre
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: ingress-nginx/htpasswd
+    nginx.ingress.kubernetes.io/auth-realm: durbin.casa
 spec:
   ingressClassName: nginx
   rules:

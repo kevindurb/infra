@@ -15,6 +15,9 @@ metadata:
         dashboard-metrics-scraper
       )
     nginx.ingress.kubernetes.io/backend-protocol: https
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: ingress-nginx/htpasswd
+    nginx.ingress.kubernetes.io/auth-realm: durbin.casa
 spec:
   ingressClassName: nginx
   rules:

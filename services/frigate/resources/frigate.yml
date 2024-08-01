@@ -99,6 +99,9 @@ metadata:
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: frigate
     gethomepage.dev/name: Frigate
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: ingress-nginx/htpasswd
+    nginx.ingress.kubernetes.io/auth-realm: durbin.casa
 spec:
   ingressClassName: nginx
   rules:
