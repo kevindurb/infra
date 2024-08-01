@@ -10,7 +10,6 @@ spec:
         elements:
           - name: argocd
             namespace: argocd
-          - name: actual-budget
           - name: alertmanager
           - name: calibre
           - name: cert-manager
