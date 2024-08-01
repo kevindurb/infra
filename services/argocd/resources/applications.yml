@@ -35,7 +35,6 @@ spec:
           - name: ingress-nginx
           - name: jellyfin
           - name: kanboard
-          - name: kavita
           - name: local-path-provisioner
           - name: makemkv
           - name: mealie
@@ -59,7 +58,6 @@ spec:
           - name: tailscale-extra
           - name: time-slicing-config
           - name: memos
-          # - name: webtop
           - name: whoami
           - name: zigbee2mqtt
   template:
