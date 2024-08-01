@@ -52,7 +52,7 @@ metadata:
 spec:
   ports:
     - name: https
-      port: 443
+      port: 8043
       targetPort: https
 
 ---
