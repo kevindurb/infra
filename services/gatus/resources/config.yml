@@ -10,14 +10,6 @@ data:
     ---
     metrics: true
 
-    default-endpoint: &defaults
-      interval: 5m
-      client:
-        insecure: true
-      conditions:
-        - '[STATUS] >= 200'
-        - '[STATUS] < 300'
-
     storage:
       type: sqlite
       path: /data/data.db
@@ -26,31 +18,43 @@ data:
       - name: Gatus
         group: Monitoring
         url: http://gatus-service
-        <<: *defaults
+        conditions:
+          - '[STATUS] == 200'
 
       - name: Google
         group: External
         url: https://google.com
-        <<: *defaults
+        conditions:
+          - '[STATUS] == 200'
 
       - name: OpenWRT
         group: Infra
         url: https://192.168.1.1
-        <<: *defaults
+        client:
+          insecure: true
+        conditions:
+          - '[STATUS] == 200'
 
       - name: TrueNAS
         group: Infra
         url: https://192.168.100.201/api/docs/
-        <<: *defaults
+        client:
+          insecure: true
+        conditions:
+          - '[STATUS] == 200'
 
       - name: iDRAC
         group: Infra
         url: https://192.168.100.200/login.html
+        client:
+          insecure: true
         headers:
           'Accept-Encoding': 'deflate, gzip, br, zstd'
-        <<: *defaults
+        conditions:
+          - '[STATUS] == 200'
 
       - name: HDHomeRun
         group: Admin
         url: http://192.168.0.166
-        <<: *defaults
+        conditions:
+          - '[STATUS] == 200'
