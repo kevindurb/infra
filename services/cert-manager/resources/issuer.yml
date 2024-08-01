@@ -18,20 +18,16 @@ spec:
               key: CF_API_TOKEN
 
 ---
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
+apiVersion: k8s.bitwarden.com/v1
+kind: BitwardenSecret
 metadata:
-  name: cloudflare-secret
-  namespace: cert-manager
+  name: secret
 spec:
-  refreshInterval: 1h
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: gitlab-secret-store
-  target:
-    name: cert-manager-cloudflare-secret
-    creationPolicy: Owner
-  data:
-    - secretKey: CF_API_TOKEN
-      remoteRef:
-        key: CF_API_TOKEN
+  organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
+  secretName: cert-manager-cloudflare-secret
+  map:
+    - secretKeyName: CF_API_TOKEN
+      bwSecretId: 7e8ef72f-bfe5-4978-beaa-b1a100efef2a
+  authToken:
+    secretName: bw-auth-token
+    secretKey: token

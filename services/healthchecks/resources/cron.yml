@@ -25,19 +25,16 @@ spec:
                 - curl https://hc-ping.com/$(HEALTHCHECKS_SLUG)
 
 ---
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
+apiVersion: k8s.bitwarden.com/v1
+kind: BitwardenSecret
 metadata:
   name: secret
 spec:
-  refreshInterval: 1h
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: gitlab-secret-store
-  target:
-    name: healthchecks-secret
-    creationPolicy: Owner
-  data:
-    - secretKey: HEALTHCHECKS_CLUSTER_UPTIME_SLUG
-      remoteRef:
-        key: HEALTHCHECKS_CLUSTER_UPTIME_SLUG
+  organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
+  secretName: healthchecks-secret
+  map:
+    - secretKeyName: HEALTHCHECKS_CLUSTER_UPTIME_SLUG
+      bwSecretId: 40bc9145-4f73-4ff6-8815-b1a100f06812
+  authToken:
+    secretName: bw-auth-token
+    secretKey: token
