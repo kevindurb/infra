@@ -9,7 +9,7 @@ data:
   prometheus.yml: |
     endpoints:
       - name: Prometheus
-        group: Admin
+        group: Monitoring
         url: http://prometheus-service.monitoring/-/healthy
         conditions:
           - '[STATUS] == 200'

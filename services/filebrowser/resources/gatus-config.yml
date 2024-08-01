@@ -9,7 +9,7 @@ data:
   filebrowser.yml: |
     endpoints:
       - name: Filebrowser
-        group: Applications
+        group: Admin
         url: http://filebrowser-service
         conditions:
           - '[STATUS] == 200'

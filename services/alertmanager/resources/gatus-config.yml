@@ -9,7 +9,7 @@ data:
   alertmanager.yml: |
     endpoints:
       - name: Alertmanager
-        group: Admin
+        group: Monitoring
         url: http://alertmanager-service.monitoring/-/healthy
         conditions:
           - '[STATUS] == 200'

@@ -9,7 +9,7 @@ data:
   scrypted.yml: |
     endpoints:
       - name: Scrypted
-        group: Applications
+        group: Admin
         url: http://scrypted-service
         conditions:
           - '[STATUS] == 200'

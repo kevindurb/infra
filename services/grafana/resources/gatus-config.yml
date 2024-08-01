@@ -9,7 +9,7 @@ data:
   grafana.yml: |
     endpoints:
       - name: Grafana
-        group: Admin
+        group: Monitoring
         url: http://grafana-service/api/health
         conditions:
           - '[STATUS] == 200'

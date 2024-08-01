@@ -9,7 +9,7 @@ data:
   handbrake.yml: |
     endpoints:
       - name: Handbrake
-        group: Applications
+        group: Admin
         url: http://handbrake-service
         conditions:
           - '[STATUS] == 200'

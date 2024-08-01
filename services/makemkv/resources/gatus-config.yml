@@ -9,7 +9,7 @@ data:
   makemkv.yml: |
     endpoints:
       - name: Makemkv
-        group: Applications
+        group: Admin
         url: http://makemkv-service
         conditions:
           - '[STATUS] == 200'

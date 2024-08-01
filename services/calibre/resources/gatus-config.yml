@@ -9,7 +9,7 @@ data:
   calibre.yml: |
     endpoints:
       - name: Calibre
-        group: Applications
+        group: Admin
         url: http://calibre-service
         conditions:
           - '[STATUS] == 200'

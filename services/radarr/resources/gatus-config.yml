@@ -9,7 +9,7 @@ data:
   radarr.yml: |
     endpoints:
       - name: Radarr
-        group: Applications
+        group: Admin
         url: http://radarr-service
         conditions:
           - '[STATUS] == 200'

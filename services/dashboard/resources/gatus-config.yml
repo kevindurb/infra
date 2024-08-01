@@ -9,7 +9,7 @@ data:
   dashboard.yml: |
     endpoints:
       - name: Dashboard
-        group: Applications
+        group: Infra
         url: https://kubernetes-dashboard.kubernetes-dashboard
         client:
           insecure: true
