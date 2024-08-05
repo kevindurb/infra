@@ -9,6 +9,7 @@ resources:
   - ./resources/gatus-config.yml
   - ./resources/ingress.yml
   - ./resources/service.yml
+  - ./resources/pvc.yml
 
 commonLabels:
   app.kubernetes.io/name: windows

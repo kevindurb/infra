@@ -17,7 +17,7 @@ spec:
     volumes:
       - name: storage
         persistentVolumeClaim:
-          claimName: windows-pvc
+          claimName: volume
       - name: dev-kvm
         hostPath:
           path: /dev/kvm
