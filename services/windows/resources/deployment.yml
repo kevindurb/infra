@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: vm
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: windows-pvc
+      - name: dev-kvm
+        hostPath:
+          path: /dev/kvm
+    spec:
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: windows
+          image: ghcr.io/dockur/windows:3.12
+          ports:
+            - name: vnc
+              containerPort: 8006
+              protocol: TCP
+            - name: rdp-tcp
+              containerPort: 3389
+              protocol: TCP
+            - name: rdp-udp
+              containerPort: 3389
+              protocol: UDP
+          securityContext:
+            privileged: true
+          env:
+            - name: RAM_SIZE
+              value: 4G
+            - name: CPU_CORES
+              value: '2'
+            - name: DISK_SIZE
+              value: '64G'
+          volumeMounts:
+            - mountPath: /storage
+              name: storage
+            - mountPath: /dev/kvm
+              name: dev-kvm

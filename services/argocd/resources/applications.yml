@@ -58,6 +58,7 @@ spec:
           - name: time-slicing-config
           - name: memos
           - name: whoami
+          - name: windows
           - name: zigbee2mqtt
   template:
     metadata:
