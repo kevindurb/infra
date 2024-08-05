@@ -14,14 +14,14 @@ spec:
   template:
     metadata:
       labels: *labels
-    volumes:
-      - name: storage
-        persistentVolumeClaim:
-          claimName: volume
-      - name: dev-kvm
-        hostPath:
-          path: /dev/kvm
     spec:
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: volume
+        - name: dev-kvm
+          hostPath:
+            path: /dev/kvm
       terminationGracePeriodSeconds: 120
       containers:
         - name: windows
