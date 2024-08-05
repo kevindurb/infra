@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: windows
     gethomepage.dev/group: Apps
-    gethomepage.dev/icon: windows
+    gethomepage.dev/icon: mdi-microsoft-windows
     gethomepage.dev/name: Windows
 spec:
   ingressClassName: nginx
