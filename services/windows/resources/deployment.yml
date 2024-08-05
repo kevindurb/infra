@@ -46,7 +46,7 @@ spec:
             - name: DISK_SIZE
               value: 64G
             - name: VERSION
-              value: tiny11
+              value: https://archive.org/download/tiny-11-NTDEV/tiny11%2023H2%20x64.iso
           volumeMounts:
             - mountPath: /storage
               name: storage
