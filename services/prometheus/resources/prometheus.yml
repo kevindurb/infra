@@ -64,8 +64,6 @@ scrape_configs:
         regex: default;kubernetes;https
 
   - job_name: kubernetes-service-endpoints
-    scrape_interval: 5s
-    scrape_timeout: 2s
     kubernetes_sd_configs:
       - role: endpoints
     relabel_configs:
