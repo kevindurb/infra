@@ -99,6 +99,8 @@ metadata:
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: frigate
     gethomepage.dev/name: Frigate
+    gethomepage.dev/widget.type: frigate
+    gethomepage.dev/widget.url: http://frigate-service
 spec:
   ingressClassName: nginx
   rules:
