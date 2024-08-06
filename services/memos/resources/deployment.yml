@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: memos
-          image: ghcr.io/usememos/memos:stable
+          image: ghcr.io/usememos/memos:0.22.4
           volumeMounts:
             - name: volume
               mountPath: /var/opt/memos
