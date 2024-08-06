@@ -10,6 +10,9 @@ metadata:
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: mealie
     gethomepage.dev/name: Mealie
+    gethomepage.dev/widget.type: mealie
+    gethomepage.dev/widget.url: http://mealie-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_MEALIE_KEY}}'
 spec:
   ingressClassName: nginx
   rules:
