@@ -10,6 +10,8 @@ metadata:
     gethomepage.dev/group: Monitoring
     gethomepage.dev/icon: speedtest-tracker
     gethomepage.dev/name: Speedtest Tracker
+    gethomepage.dev/widget.type: speedtest
+    gethomepage.dev/widget.url: http://speedtest-tracker-service
 spec:
   ingressClassName: nginx
   rules:
