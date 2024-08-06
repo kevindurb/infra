@@ -18,7 +18,7 @@ spec:
             claimName: dnsmasq-volume
       containers:
         - name: pihole
-          image: docker.io/pihole/pihole:latest
+          image: docker.io/pihole/pihole:2024.07.0
           env:
             - name: TZ
               value: America/Denver

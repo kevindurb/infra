@@ -24,7 +24,7 @@ spec:
             claimName: config-volume
       containers:
         - name: calibre
-          image: linuxserver/calibre:latest
+          image: linuxserver/calibre:7.16.0
           volumeMounts:
             - name: media
               subPath: eBooks
