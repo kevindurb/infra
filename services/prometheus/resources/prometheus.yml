@@ -21,26 +21,6 @@ alerting:
         - targets: [alertmanager-service]
 
 scrape_configs:
-  - job_name: prometheus
-    static_configs:
-      - targets:
-          - localhost:9090
-
-  - job_name: alertmanager
-    static_configs:
-      - targets:
-          - alertmanager-service
-
-  - job_name: gatus
-    static_configs:
-      - targets:
-          - gatus-service.default
-
-  - job_name: argocd
-    static_configs:
-      - targets:
-          - argocd-metrics.argocd:8082
-
   - job_name: ingress-nginx
     static_configs:
       - targets:
@@ -88,42 +68,45 @@ scrape_configs:
         action: keep
         regex: default;kubernetes;https
 
-  - job_name: node-exporter
+  - job_name: kubernetes-service-endpoints
+    scrape_interval: 5s
+    scrape_timeout: 2s
     kubernetes_sd_configs:
       - role: endpoints
     relabel_configs:
-      - source_labels: [__meta_kubernetes_endpoints_name]
-        regex: node-exporter-service
+      - source_labels:
+          [__meta_kubernetes_service_annotation_prometheus_io_scrape]
         action: keep
+        regex: true
 
-      - action: replace
-        source_labels: [__meta_kubernetes_pod_node_name]
-        target_label: instance
+      - source_labels:
+          [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+        action: replace
+        target_label: __scheme__
+        regex: (https?)
 
-  - job_name: smartctl-exporter
-    kubernetes_sd_configs:
-      - role: endpoints
-    relabel_configs:
-      - source_labels: [__meta_kubernetes_endpoints_name]
-        regex: smartctl-exporter-service
-        action: keep
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
 
-      - action: replace
-        source_labels: [__meta_kubernetes_pod_node_name]
-        target_label: instance
+      - source_labels:
+          [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+        action: replace
+        target_label: __address__
+        regex: (.+)(?::\d+);(\d+)
+        replacement: $1:$2
 
-  - job_name: gpu-operator
-    metrics_path: /metrics
-    scheme: http
-    kubernetes_sd_configs:
-      - role: endpoints
-        namespaces:
-          names:
-            - gpu-operator
-    relabel_configs:
-      - source_labels: [__meta_kubernetes_endpoints_name]
-        action: drop
-        regex: .*-node-feature-discovery-master
+      - action: labelmap
+        regex: __meta_kubernetes_service_label_(.+)
+
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+
+      - source_labels: [__meta_kubernetes_service_name]
+        action: replace
+        target_label: kubernetes_name
 
       - action: replace
         source_labels: [__meta_kubernetes_pod_node_name]

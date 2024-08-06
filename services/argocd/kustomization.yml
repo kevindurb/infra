@@ -20,3 +20,4 @@ resources:
 
 patches:
   - path: ./resources/config.patch.yml
+  - path: ./resources/metrics-service.patch.yml
