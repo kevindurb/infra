@@ -38,7 +38,6 @@ metadata:
   name: service
   annotations:
     prometheus.io/scrape: 'true'
-    prometheus.io/port: '9100'
 spec:
   ports:
     - name: smartctl-exporter
