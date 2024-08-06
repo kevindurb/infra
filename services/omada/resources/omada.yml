@@ -52,7 +52,7 @@ metadata:
 spec:
   ports:
     - name: https
-      port: 8043
+      port: 443
       targetPort: https
 
 ---
@@ -67,10 +67,9 @@ metadata:
     gethomepage.dev/group: Infra
     gethomepage.dev/icon: omada
     gethomepage.dev/name: Omada
-    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
     nginx.ingress.kubernetes.io/backend-protocol: https
-    nginx.ingress.kubernetes.io/proxy-redirect-from: https://$http_host:8043/login
-    nginx.ingress.kubernetes.io/proxy-redirect-to: https://$http_host/login
+    nginx.ingress.kubernetes.io/proxy-redirect-from: https://$http_host:8043/1dacac4aaa2d01a1d09c39582c424e9d/login
+    nginx.ingress.kubernetes.io/proxy-redirect-to: https://$http_host/1dacac4aaa2d01a1d09c39582c424e9d/login
     nginx.ingress.kubernetes.io/location-snippet: |
       proxy_set_header Host $http_host:8043;
 spec:
