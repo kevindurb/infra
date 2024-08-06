@@ -67,6 +67,9 @@ metadata:
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: home-assistant
     gethomepage.dev/name: Home Assistant
+    gethomepage.dev/widget.type: homeassistant
+    gethomepage.dev/widget.url: http://home-assistant-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_HOMEASSISTANT_KEY}}'
 spec:
   ingressClassName: nginx
   rules:
