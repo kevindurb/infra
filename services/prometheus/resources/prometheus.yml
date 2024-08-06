@@ -21,11 +21,6 @@ alerting:
         - targets: [alertmanager-service]
 
 scrape_configs:
-  - job_name: ingress-nginx
-    static_configs:
-      - targets:
-          - ingress-nginx-controller.ingress-nginx:10254
-
   - job_name: volsync
     scheme: https
     tls_config:

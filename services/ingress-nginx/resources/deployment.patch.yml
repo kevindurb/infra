@@ -6,10 +6,6 @@ metadata:
   namespace: ingress-nginx
 spec:
   template:
-    metadata:
-      annotations:
-        prometheus.io/scrape: 'true'
-        prometheus.io/port: '10254'
     spec:
       containers:
         - name: controller
