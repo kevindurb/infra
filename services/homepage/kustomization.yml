@@ -9,6 +9,7 @@ resources:
   - ./resources/ingress.yml
   - ./resources/rbac.yml
   - ./resources/gatus-config.yml
+  - ./resources/secret.yml
 
 configMapGenerator:
   - name: config
