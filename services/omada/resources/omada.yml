@@ -68,6 +68,8 @@ metadata:
     gethomepage.dev/icon: omada
     gethomepage.dev/name: Omada
     nginx.ingress.kubernetes.io/backend-protocol: https
+    nginx.ingress.kubernetes.io/proxy-redirect-from: https://$http_host:8043/login
+    nginx.ingress.kubernetes.io/proxy-redirect-to: https://$http_host/login
     nginx.ingress.kubernetes.io/location-snippet: |
       proxy_set_header Host $http_host:8043;
 spec:
