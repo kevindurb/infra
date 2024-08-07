@@ -12,6 +12,7 @@ metadata:
     gethomepage.dev/widget.type: hdhomerun
     gethomepage.dev/widget.url: http://hdhomerun-service
     gethomepage.dev/ping: http://hdhomerun-service
+    gethomepage.dev/pod-selector: ''
 spec:
   ingressClassName: nginx
   rules:
