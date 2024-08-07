@@ -6,12 +6,12 @@ metadata:
   annotations:
     gethomepage.dev/href: 'https://hdhomerun.durbin.casa'
     gethomepage.dev/enabled: 'true'
-    gethomepage.dev/app: hdhomerun
     gethomepage.dev/group: Admin
     gethomepage.dev/icon: hdhomerun
     gethomepage.dev/name: HDHomeRun
     gethomepage.dev/widget.type: hdhomerun
     gethomepage.dev/widget.url: http://hdhomerun-service
+    gethomepage.dev/ping: http://hdhomerun-service
 spec:
   ingressClassName: nginx
   rules:
