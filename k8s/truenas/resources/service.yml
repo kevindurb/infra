@@ -5,9 +5,9 @@ metadata:
   name: service
 spec:
   ports:
-    - name: web
-      port: 80
-      targetPort: web
+    - name: https
+      port: 443
+      targetPort: https
 
 ---
 apiVersion: discovery.k8s.io/v1
@@ -18,7 +18,7 @@ metadata:
     kubernetes.io/service-name: truenas-service
 addressType: IPv4
 ports:
-  - name: web
+  - name: https
     appProtocol: https
     protocol: TCP
     port: 443
