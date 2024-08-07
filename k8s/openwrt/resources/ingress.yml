@@ -1,0 +1,29 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'
+    gethomepage.dev/href: 'https://openwrt.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: openwrt
+    gethomepage.dev/group: Infra
+    gethomepage.dev/icon: openwrt
+    gethomepage.dev/name: Openwrt
+    gethomepage.dev/siteMonitor: https://openwrt-service
+    gethomepage.dev/external: 'true'
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: openwrt.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: https

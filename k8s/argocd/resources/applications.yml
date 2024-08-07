@@ -45,6 +45,7 @@ spec:
           - name: nocodb
           - name: node-exporter
           - name: omada
+          - name: openwrt
           - name: orcaslicer
           - name: pihole
           - name: prometheus

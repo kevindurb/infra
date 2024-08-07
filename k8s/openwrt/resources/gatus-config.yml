@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  openwrt.yml: |
+    endpoints:
+      - name: Openwrt
+        group: Infra
+        url: https://openwrt-service
+        client:
+          insecure: true
+        conditions:
+          - '[STATUS] == 200'

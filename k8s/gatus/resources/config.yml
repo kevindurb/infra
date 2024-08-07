@@ -25,14 +25,6 @@ data:
         conditions:
           - '[STATUS] == 200'
 
-      - name: OpenWRT
-        group: Infra
-        url: https://192.168.1.1
-        client:
-          insecure: true
-        conditions:
-          - '[STATUS] == 200'
-
       - name: iDRAC
         group: Infra
         url: https://192.168.100.200/login.html

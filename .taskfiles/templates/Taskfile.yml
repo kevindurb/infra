@@ -78,7 +78,7 @@ tasks:
                   #   - name: volume
                   #     mountPath: /var/www/app/data
                   ports:
-                    - name: {{ or .portname "web" }}
+                    - name: {{ or .portname "http" }}
                       containerPort: {{ or .port 8080 }}
         EOF
 
@@ -98,9 +98,9 @@ tasks:
           selector:
             app.kubernetes.io/component: {{ or .component "web" }}
           ports:
-            - name: {{ or .portname "web" }}
-              port: 80
-              targetPort: {{ or .portname "web" }}
+            - name: {{ or .portname "http" }}
+              port: {{ if eq .portname "https" }}443{{ else }}80{{ end }}
+              targetPort: {{ or .portname "http" }}
         EOF
 
   svc-ext:
@@ -117,9 +117,9 @@ tasks:
           name: service
         spec:
           ports:
-            - name: {{ or .portname "web" }}
-              port: 80
-              targetPort: {{ or .portname "web" }}
+            - name: {{ or .portname "http" }}
+              port: {{ if eq .portname "https" }}443{{ else }}80{{ end }}
+              targetPort: {{ or .portname "http" }}
 
         ---
         apiVersion: discovery.k8s.io/v1
@@ -130,10 +130,10 @@ tasks:
             kubernetes.io/service-name: {{ .appname }}-service
         addressType: IPv4
         ports:
-          - name: {{ or .portname "web" }}
+          - name: {{ or .portname "http" }}
             appProtocol: http
             protocol: TCP
-            port: 80
+            port: {{ if eq .portname "https" }}443{{ else }}80{{ end }}
         endpoints:
           - addresses:
               - {{ .ip }}
@@ -153,6 +153,9 @@ tasks:
         metadata:
           name: ingress
           annotations:
+            {{ if eq .portname "https" }}
+            nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'
+            {{ end }}
             gethomepage.dev/href: 'https://{{ or .subdomain .appname }}.durbin.casa'
             gethomepage.dev/enabled: 'true'
             gethomepage.dev/app: {{ .appname }}
@@ -160,9 +163,9 @@ tasks:
             gethomepage.dev/icon: {{ .appname }}
             gethomepage.dev/name: {{ title .appname }}
             gethomepage.dev/widget.type: {{ .appname }}
-            gethomepage.dev/widget.url: http://{{ .appname }}-service
+            gethomepage.dev/widget.url: {{ or .portname "http" }}://{{ .appname }}-service
             {{ if .external }}
-            gethomepage.dev/siteMonitor: http://{{ .appname }}-service
+            gethomepage.dev/siteMonitor: {{ or .portname "http" }}://{{ .appname }}-service
             gethomepage.dev/external: 'true'
             {{ end }}
         spec:
@@ -177,7 +180,7 @@ tasks:
                       service:
                         name: service
                         port:
-                          name: {{ or .portname "web" }}
+                          name: {{ or .portname "http" }}
         EOF
 
   pvc:
@@ -417,7 +420,11 @@ tasks:
             endpoints:
               - name: {{ title .appname }}
                 group: Applications
-                url: http://{{ .appname }}-service
+                url: {{ or .portname "http" }}://{{ .appname }}-service
+                {{ if eq .portname "https" }}
+                client:
+                  insecure: true
+                {{ end }}
                 conditions:
                   - '[STATUS] == 200'
         EOF
