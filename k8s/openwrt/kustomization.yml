@@ -4,7 +4,10 @@ kind: Kustomization
 
 namePrefix: openwrt-
 
-resources: []
+resources:
+  - ./resources/ingress.yml
+  - ./resources/service.yml
+  - ./resources/gatus-config.yml
 
 commonLabels:
   app.kubernetes.io/name: openwrt
