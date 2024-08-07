@@ -50,9 +50,3 @@ data:
           'Accept-Encoding': 'deflate, gzip, br, zstd'
         conditions:
           - '[STATUS] == 200'
-
-      - name: HDHomeRun
-        group: Admin
-        url: http://192.168.0.166
-        conditions:
-          - '[STATUS] == 200'
