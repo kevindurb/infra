@@ -12,8 +12,8 @@ metadata:
     gethomepage.dev/icon: truenas
     gethomepage.dev/name: TrueNAS
     gethomepage.dev/widget.type: truenas
-    gethomepage.dev/widget.url: http://truenas-service
-    gethomepage.dev/siteMonitor: http://truenas-service
+    gethomepage.dev/widget.url: https://truenas-service
+    gethomepage.dev/siteMonitor: https://truenas-service
     gethomepage.dev/external: 'true'
 spec:
   ingressClassName: nginx
