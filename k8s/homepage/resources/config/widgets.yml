@@ -12,10 +12,6 @@
       memory: true
       showLabel: true
 
-- search:
-    provider: duckduckgo
-    showSearchSuggestions: true
-
 - openmeteo:
     label: Colorado Springs
     latitude: 38.859055
