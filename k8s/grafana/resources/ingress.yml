@@ -11,7 +11,7 @@ metadata:
     gethomepage.dev/icon: grafana
     gethomepage.dev/name: Grafana
     gethomepage.dev/widget.type: grafana
-    gethomepage.dev/widget.url: http://grafana-service.monitoring
+    gethomepage.dev/widget.url: http://grafana-service
 spec:
   ingressClassName: nginx
   rules:
