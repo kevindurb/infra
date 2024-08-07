@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  truenas.yml: |
+    endpoints:
+      - name: Truenas
+        group: Applications
+        url: http://truenas-service
+        conditions:
+          - '[STATUS] == 200'

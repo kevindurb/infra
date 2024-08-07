@@ -57,6 +57,7 @@ spec:
           - name: speedtest-tracker
           - name: tailscale-extra
           - name: time-slicing-config
+          - name: truenas
           - name: memos
           - name: whoami
           - name: zigbee2mqtt

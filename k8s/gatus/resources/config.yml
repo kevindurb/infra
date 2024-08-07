@@ -33,14 +33,6 @@ data:
         conditions:
           - '[STATUS] == 200'
 
-      - name: TrueNAS
-        group: Infra
-        url: https://192.168.100.201/api/docs/
-        client:
-          insecure: true
-        conditions:
-          - '[STATUS] == 200'
-
       - name: iDRAC
         group: Infra
         url: https://192.168.100.200/login.html

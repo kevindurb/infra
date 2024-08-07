@@ -13,6 +13,17 @@ tasks:
       - task: ing
       - task: gatus
 
+  mk-ext:
+    requires:
+      vars: [appname, ip]
+    cmds:
+      - task: ks
+      - task: svc-ext
+      - task: ing
+        vars:
+          external: true
+      - task: gatus
+
   ks:
     requires:
       vars: [appname]
@@ -92,6 +103,43 @@ tasks:
               targetPort: {{ or .portname "web" }}
         EOF
 
+  svc-ext:
+    requires:
+      vars: [appname, ip]
+    dir: ./k8s/{{ .appname }}/resources
+    cmds:
+      - |
+        cat << EOF > service.yml
+        ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: service
+        spec:
+          ports:
+            - name: {{ or .portname "web" }}
+              port: 80
+              targetPort: {{ or .portname "web" }}
+
+        ---
+        apiVersion: discovery.k8s.io/v1
+        kind: EndpointSlice
+        metadata:
+          name: service
+          labels:
+            kubernetes.io/service-name: {{ .appname }}-service
+        addressType: IPv4
+        ports:
+          - name: {{ or .portname "web" }}
+            appProtocol: http
+            protocol: TCP
+            port: 80
+        endpoints:
+          - addresses:
+              - {{ .ip }}
+            conditions: {}
+        EOF
+
   ing:
     requires:
       vars: [appname]
@@ -111,6 +159,12 @@ tasks:
             gethomepage.dev/group: Apps
             gethomepage.dev/icon: {{ .appname }}
             gethomepage.dev/name: {{ title .appname }}
+            gethomepage.dev/widget.type: {{ .appname }}
+            gethomepage.dev/widget.url: http://{{ .appname }}-service
+            {{ if .external }}
+            gethomepage.dev/siteMonitor: http://{{ .appname }}-service
+            gethomepage.dev/external: 'true'
+            {{ end }}
         spec:
           ingressClassName: nginx
           rules:

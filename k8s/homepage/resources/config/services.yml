@@ -7,10 +7,6 @@
 - Admin: []
 
 - Infra:
-    - TrueNAS:
-        icon: truenas
-        href: https://192.168.100.201
-        siteMonitor: https://192.168.100.201/api/docs/
     - PVE01 iDRAC:
         icon: idrac
         href: https://192.168.100.200
