@@ -4,11 +4,7 @@
         icon: mainsail
         href: http://mainsailos.beaver-cloud.ts.net/
 
-- Admin:
-    - HDHomeRun:
-        icon: hdhomerun
-        href: http://192.168.0.166
-        siteMonitor: http://192.168.0.166
+- Admin: []
 
 - Infra:
     - TrueNAS:
