@@ -10,8 +10,8 @@ metadata:
     gethomepage.dev/icon: hdhomerun
     gethomepage.dev/name: HDHomeRun
     gethomepage.dev/widget.type: hdhomerun
-    gethomepage.dev/widget.url: http://hdhomerun-service
-    gethomepage.dev/siteMonitor: http://hdhomerun-service
+    gethomepage.dev/widget.url: &service http://hdhomerun-service
+    gethomepage.dev/siteMonitor: *service
     gethomepage.dev/external: 'true'
 spec:
   ingressClassName: nginx

@@ -12,10 +12,10 @@ metadata:
     gethomepage.dev/icon: truenas
     gethomepage.dev/name: TrueNAS
     gethomepage.dev/widget.type: truenas
-    gethomepage.dev/widget.url: https://truenas-service
+    gethomepage.dev/widget.url: &service https://truenas-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
     gethomepage.dev/widget.enablePools: 'true'
-    gethomepage.dev/siteMonitor: https://truenas-service
+    gethomepage.dev/siteMonitor: *service
     gethomepage.dev/external: 'true'
 spec:
   ingressClassName: nginx

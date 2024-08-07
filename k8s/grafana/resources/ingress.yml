@@ -10,6 +10,8 @@ metadata:
     gethomepage.dev/group: Monitoring
     gethomepage.dev/icon: grafana
     gethomepage.dev/name: Grafana
+    gethomepage.dev/widget.type: grafana
+    gethomepage.dev/widget.url: http://grafana-service.monitoring
 spec:
   ingressClassName: nginx
   rules:
