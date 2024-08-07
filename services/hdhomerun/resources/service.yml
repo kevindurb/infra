@@ -27,3 +27,4 @@ ports:
 endpoints:
   - addresses:
       - 192.168.0.166
+    conditions: {}
