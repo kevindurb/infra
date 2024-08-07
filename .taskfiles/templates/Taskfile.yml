@@ -16,7 +16,7 @@ tasks:
   ks:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}
+    dir: ./k8s/{{ .appname }}
     cmds:
       - |
         cat << EOF > kustomization.yml
@@ -35,7 +35,7 @@ tasks:
   deploy:
     requires:
       vars: [appname, image]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > deployment.yml
@@ -74,7 +74,7 @@ tasks:
   svc:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > service.yml
@@ -95,7 +95,7 @@ tasks:
   ing:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > ingress.yml
@@ -129,7 +129,7 @@ tasks:
   pvc:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > pvc.yml
@@ -216,7 +216,7 @@ tasks:
   pg:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > pg.yml
@@ -276,7 +276,7 @@ tasks:
   valkey:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > valkey.yml
@@ -324,7 +324,7 @@ tasks:
   secret:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > secret.yml
@@ -347,7 +347,7 @@ tasks:
   gatus:
     requires:
       vars: [appname]
-    dir: ./services/{{ .appname }}/resources
+    dir: ./k8s/{{ .appname }}/resources
     cmds:
       - |
         cat << EOF > gatus-config.yml

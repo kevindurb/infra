@@ -3,6 +3,6 @@
   "platform": "github",
   "repositories": ["kevindurb/infra"],
   "kubernetes": {
-    "fileMatch": ["services/.+\\.yaml$", "services/.+\\.yml$"]
+    "fileMatch": ["k8s/.+\\.yaml$", "k8s/.+\\.yml$"]
   }
 }

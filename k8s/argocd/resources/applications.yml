@@ -68,7 +68,7 @@ spec:
       source:
         repoURL: https://github.com/kevindurb/infra.git
         targetRevision: HEAD
-        path: services/{{ .name }}
+        path: k8s/{{ .name }}
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ or .namespace "default" }}'
