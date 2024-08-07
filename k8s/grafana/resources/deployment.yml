@@ -19,6 +19,9 @@ spec:
         - name: provisioning-dashboards
           configMap:
             name: provisioning-dashboards
+        - name: volume
+          persistentVolumeClaim:
+            name: volume
       containers:
         - name: grafana
           image: docker.io/grafana/grafana-oss:11.1.3
@@ -33,6 +36,8 @@ spec:
             - name: provisioning-dashboards
               mountPath: /etc/grafana/provisioning/dashboards
               readOnly: true
+            - name: volume
+              mountPath: /var/lib/grafana
           ports:
             - name: web
               containerPort: 3000
