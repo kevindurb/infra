@@ -6,6 +6,7 @@ metadata:
   annotations:
     gethomepage.dev/href: 'https://hdhomerun.durbin.casa'
     gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: hdhomerun
     gethomepage.dev/group: Admin
     gethomepage.dev/icon: hdhomerun
     gethomepage.dev/name: HDHomeRun
