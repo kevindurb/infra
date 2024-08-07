@@ -29,6 +29,7 @@ spec:
           - name: grafana
           - name: handbrake
           - name: healthchecks
+          - name: hdhomerun
           - name: home-assistant
           - name: homepage
           - name: ingress-nginx
