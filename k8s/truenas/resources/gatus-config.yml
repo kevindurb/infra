@@ -9,7 +9,7 @@ data:
   truenas.yml: |
     endpoints:
       - name: Truenas
-        group: Applications
+        group: Infra
         url: https://truenas-service/api/docs
         client:
           insecure: true
