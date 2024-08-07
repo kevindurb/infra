@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  idrac.yml: |
+    endpoints:
+      - name: Idrac
+        group: Infra
+        url: https://idrac-service/login.html
+        client:
+          insecure: true
+        headers:
+          'Accept-Encoding': 'deflate, gzip, br, zstd'
+        conditions:
+          - '[STATUS] == 200'
