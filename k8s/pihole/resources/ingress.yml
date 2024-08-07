@@ -10,6 +10,9 @@ metadata:
     gethomepage.dev/group: Infra
     gethomepage.dev/icon: pi-hole
     gethomepage.dev/name: Pi-Hole
+    gethomepage.dev/widget.type: pihole
+    gethomepage.dev/widget.url: http://pihole-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_PIHOLE_KEY}}'
 spec:
   ingressClassName: nginx
   rules:
