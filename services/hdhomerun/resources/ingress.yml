@@ -11,7 +11,7 @@ metadata:
     gethomepage.dev/name: HDHomeRun
     gethomepage.dev/widget.type: hdhomerun
     gethomepage.dev/widget.url: http://hdhomerun-service
-    gethomepage.dev/site-monitor: http://hdhomerun-service
+    gethomepage.dev/siteMonitor: http://hdhomerun-service
 spec:
   ingressClassName: nginx
   rules:
