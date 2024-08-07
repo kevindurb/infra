@@ -21,7 +21,7 @@ spec:
             name: provisioning-dashboards
         - name: volume
           persistentVolumeClaim:
-            name: volume
+            claimName: volume
       containers:
         - name: grafana
           image: docker.io/grafana/grafana-oss:11.1.3
