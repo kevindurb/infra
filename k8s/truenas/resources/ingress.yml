@@ -13,6 +13,7 @@ metadata:
     gethomepage.dev/name: TrueNAS
     gethomepage.dev/widget.type: truenas
     gethomepage.dev/widget.url: https://truenas-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
     gethomepage.dev/siteMonitor: https://truenas-service
     gethomepage.dev/external: 'true'
 spec:
