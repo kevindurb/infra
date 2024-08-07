@@ -10,6 +10,8 @@ data:
     endpoints:
       - name: Truenas
         group: Applications
-        url: http://truenas-service
+        url: https://truenas-service/api/docs
+        client:
+          insecure: true
         conditions:
           - '[STATUS] == 200'
