@@ -15,7 +15,7 @@ spec:
             claimName: data-volume
       containers:
         - name: actual-budget
-          image: ghcr.io/actualbudget/actual-server:24.7.0
+          image: ghcr.io/actualbudget/actual-server:24.8.0
           volumeMounts:
             - name: data-volume
               mountPath: /data
