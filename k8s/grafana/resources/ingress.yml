@@ -13,7 +13,7 @@ metadata:
     gethomepage.dev/widget.type: grafana
     gethomepage.dev/widget.url: http://grafana-service
     gethomepage.dev/widget.username: admin
-    gethomepage.dev/widget.password: '{{ HOMEPAGE_VAR_GRAFANA_PASSWORD }}'
+    gethomepage.dev/widget.password: '{{ HOMEPAGE_VAR_GRAFANA_TOKEN }}'
 spec:
   ingressClassName: nginx
   rules:
