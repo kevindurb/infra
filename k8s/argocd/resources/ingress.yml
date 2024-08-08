@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
     gethomepage.dev/href: 'https://argo.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/group: Other
@@ -23,8 +24,11 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: https
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts: [&host argo.durbin.casa]
+      secretName: durbin-casa-wildcard-cert
   rules:
-    - host: argo.durbin.casa
+    - host: *host
       http:
         paths:
           - pathType: Prefix

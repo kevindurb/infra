@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
     gethomepage.dev/href: 'https://alertmanager.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: alertmanager
@@ -12,8 +13,11 @@ metadata:
     gethomepage.dev/name: Alertmanager
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts: [&host alertmanager.durbin.casa]
+      secretName: durbin-casa-wildcard-cert
   rules:
-    - host: alertmanager.durbin.casa
+    - host: *host
       http:
         paths:
           - pathType: Prefix

@@ -10,10 +10,11 @@ metadata:
     gethomepage.dev/group: Productivity
     gethomepage.dev/icon: mdi-file-document-outline
     gethomepage.dev/name: Docmost
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: docmost.durbin.casa
+    - host: &host docmost.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -23,3 +24,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
