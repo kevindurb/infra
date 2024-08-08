@@ -6,4 +6,4 @@ metadata:
   namespace: ingress-nginx
 data:
   allow-snippet-annotations: 'true'
-
+  ssl-redirect: 'false'
