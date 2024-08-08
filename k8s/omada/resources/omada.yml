@@ -64,7 +64,7 @@ metadata:
     gethomepage.dev/href: 'https://omada.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: omada
-    gethomepage.dev/group: Infra
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: omada
     gethomepage.dev/name: Omada
     nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'

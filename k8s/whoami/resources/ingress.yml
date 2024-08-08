@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://whoami.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: whoami
-    gethomepage.dev/group: Monitoring
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: mdi-account
     gethomepage.dev/name: Whoami
 spec:

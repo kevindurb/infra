@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://grafana.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: grafana
-    gethomepage.dev/group: Monitoring
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: grafana
     gethomepage.dev/name: Grafana
     # gethomepage.dev/widget.type: grafana

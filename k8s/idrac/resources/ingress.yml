@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/href: 'https://idrac.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: idrac
-    gethomepage.dev/group: Infra
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: idrac
     gethomepage.dev/name: iDRAC
     gethomepage.dev/siteMonitor: https://idrac-service

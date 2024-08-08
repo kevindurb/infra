@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://scrypted.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: scrypted
-    gethomepage.dev/group: Admin
+    gethomepage.dev/group: Home
     gethomepage.dev/icon: scrypted
     gethomepage.dev/name: Scrypted
 spec:

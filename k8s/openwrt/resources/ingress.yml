@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/href: 'https://openwrt.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: openwrt
-    gethomepage.dev/group: Infra
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: openwrt
     gethomepage.dev/name: Openwrt
     gethomepage.dev/siteMonitor: https://openwrt-service

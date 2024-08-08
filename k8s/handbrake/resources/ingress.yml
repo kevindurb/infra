@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://handbrake.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: handbrake
-    gethomepage.dev/group: Admin
+    gethomepage.dev/group: Media
     gethomepage.dev/icon: handbrake
     gethomepage.dev/name: Handbrake
 spec:

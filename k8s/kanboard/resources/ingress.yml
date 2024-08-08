@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://kanboard.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: kanboard
-    gethomepage.dev/group: Apps
+    gethomepage.dev/group: Productivity
     gethomepage.dev/icon: kanboard.svg
     gethomepage.dev/name: Kanboard
 spec:
