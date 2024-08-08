@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: docmost
-          image: docker.io/docmost/docmost:0.2.9
+          image: docker.io/docmost/docmost:0.2.10
           env:
             - name: APP_URL
               value: https://docmost.durbin.casa
