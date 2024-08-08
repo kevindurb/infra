@@ -19,10 +19,10 @@ layout:
     icon: mdi-filmstrip
     style: column
   Home:
-    icon: mdi-home-outline
+    icon: mdi-home
     style: column
   Productivity:
-    icon: mdi-toolbox-outline
+    icon: mdi-toolbox
     style: column
   Other:
     icon: mdi-format-list-bulleted
