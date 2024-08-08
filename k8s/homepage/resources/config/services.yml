@@ -1,8 +1,6 @@
 ---
-- Apps:
-    - Mainsail:
-        icon: mainsail
-        href: http://mainsailos.beaver-cloud.ts.net/
+- Status: []
+- Apps: []
 - Admin: []
 - Infra: []
 - Monitoring: []

@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://speedtest-tracker.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: speedtest-tracker
-    gethomepage.dev/group: Monitoring
+    gethomepage.dev/group: Status
     gethomepage.dev/icon: speedtest-tracker
     gethomepage.dev/name: Speedtest Tracker
     gethomepage.dev/widget.type: speedtest
