@@ -15,7 +15,7 @@ spec:
             claimName: data-volume
       containers:
         - name: mealie
-          image: ghcr.io/mealie-recipes/mealie:v1.8.0
+          image: ghcr.io/mealie-recipes/mealie:v1.11.0
           resources:
             limits:
               memory: 400M
