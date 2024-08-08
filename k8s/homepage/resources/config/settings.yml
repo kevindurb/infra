@@ -15,15 +15,15 @@ layout:
     icon: mdi-speedometer
     style: row
     columns: 5
-  Apps:
-    icon: mdi-square-rounded-badge-outline
+  Media:
+    icon: mdi-filmstrip
     style: column
-  Admin:
-    icon: mdi-security
+  Home:
+    icon: mdi-home-outline
     style: column
-  Infra:
-    icon: mdi-server
+  Productivity:
+    icon: mdi-toolbox-outline
     style: column
-  Monitoring:
-    icon: mdi-alert-circle
+  Other:
+    icon: mdi-format-list-bulleted
     style: column
