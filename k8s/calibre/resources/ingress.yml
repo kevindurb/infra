@@ -10,6 +10,7 @@ metadata:
     gethomepage.dev/group: Media
     gethomepage.dev/icon: calibre
     gethomepage.dev/name: Calibre
+    gethomepage.dev/weight: '10'
 spec:
   ingressClassName: nginx
   rules:

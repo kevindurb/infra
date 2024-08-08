@@ -9,6 +9,7 @@ metadata:
     gethomepage.dev/group: Media
     gethomepage.dev/icon: hdhomerun
     gethomepage.dev/name: HDHomeRun
+    gethomepage.dev/weight: '30'
     gethomepage.dev/widget.type: hdhomerun
     gethomepage.dev/widget.url: &service http://hdhomerun-service
     gethomepage.dev/siteMonitor: *service
