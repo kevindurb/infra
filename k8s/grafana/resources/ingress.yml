@@ -10,10 +10,10 @@ metadata:
     gethomepage.dev/group: Monitoring
     gethomepage.dev/icon: grafana
     gethomepage.dev/name: Grafana
-    gethomepage.dev/widget.type: grafana
-    gethomepage.dev/widget.url: http://grafana-service
-    gethomepage.dev/widget.username: admin@localhost
-    gethomepage.dev/widget.password: '{{ HOMEPAGE_VAR_GRAFANA_PASSWORD }}'
+    # gethomepage.dev/widget.type: grafana
+    # gethomepage.dev/widget.url: http://grafana-service
+    # gethomepage.dev/widget.username: admin@localhost
+    # gethomepage.dev/widget.password: '{{ HOMEPAGE_VAR_GRAFANA_PASSWORD }}'
 spec:
   ingressClassName: nginx
   rules:
