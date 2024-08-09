@@ -153,9 +153,8 @@ tasks:
         metadata:
           name: ingress
           annotations:
-            {{ if eq .portname "https" }}
-            nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'
-            {{ end }}
+            cert-manager.io/cluster-issuer: cloudflare-issuer
+            {{ if eq .portname "https" }}nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'{{ end }}
             gethomepage.dev/href: 'https://{{ or .subdomain .appname }}.durbin.casa'
             gethomepage.dev/enabled: 'true'
             gethomepage.dev/app: {{ .appname }}
@@ -164,14 +163,12 @@ tasks:
             gethomepage.dev/name: {{ title .appname }}
             gethomepage.dev/widget.type: {{ .appname }}
             gethomepage.dev/widget.url: {{ or .portname "http" }}://{{ .appname }}-service
-            {{ if .external }}
-            gethomepage.dev/siteMonitor: {{ or .portname "http" }}://{{ .appname }}-service
-            gethomepage.dev/external: 'true'
-            {{ end }}
+            {{ if .external }}gethomepage.dev/siteMonitor: {{ or .portname "http" }}://{{ .appname }}-service
+            gethomepage.dev/external: 'true'{{ end }}
         spec:
           ingressClassName: nginx
           rules:
-            - host: {{ or .subdomain .appname }}.durbin.casa
+            - host: &host {{ or .subdomain .appname }}.durbin.casa
               http:
                 paths:
                   - pathType: Prefix
@@ -181,6 +178,10 @@ tasks:
                         name: service
                         port:
                           name: {{ or .portname "http" }}
+          tls:
+            - secretName: durbin-casa-wildcard-cert
+              hosts:
+                - *host
         EOF
 
   pvc:
