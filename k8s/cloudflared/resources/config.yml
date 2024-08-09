@@ -3,5 +3,7 @@ tunnel: kube
 credentials-file: /etc/cloudflared/creds/credentials.json
 metrics: 0.0.0.0:2000
 no-autoupdate: true
+originRequest:
+  noTLSVerify: true
 ingress:
   - service: https://ingress-nginx-controller.ingress-nginx:443
