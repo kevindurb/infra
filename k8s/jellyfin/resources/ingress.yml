@@ -5,6 +5,7 @@ metadata:
   name: ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
+    external-dns.alpha.kubernetes.io/hostname: jellyfin.durbin.casa
     gethomepage.dev/href: 'https://jellyfin.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: jellyfin
