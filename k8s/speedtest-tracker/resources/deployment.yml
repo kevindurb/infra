@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: speedtest-tracker
-          image: lscr.io/linuxserver/speedtest-tracker:0.21.1
+          image: lscr.io/linuxserver/speedtest-tracker:0.21.2
           volumeMounts:
             - name: volume
               mountPath: /config
