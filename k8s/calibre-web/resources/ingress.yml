@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
     gethomepage.dev/href: 'https://calibre-web.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: calibre-web
@@ -17,8 +18,11 @@ metadata:
     gethomepage.dev/weight: '10'
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts: [&host calibre-web.durbin.casa]
+      secretName: durbin-casa-wildcard-cert
   rules:
-    - host: calibre-web.durbin.casa
+    - host: *host
       http:
         paths:
           - pathType: Prefix
