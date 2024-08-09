@@ -163,8 +163,10 @@ tasks:
             gethomepage.dev/name: {{ title .appname }}
             gethomepage.dev/widget.type: {{ .appname }}
             gethomepage.dev/widget.url: {{ or .portname "http" }}://{{ .appname }}-service
-            {{ if .external }}gethomepage.dev/siteMonitor: {{ or .portname "http" }}://{{ .appname }}-service
-            gethomepage.dev/external: 'true'{{ end }}
+            {{ if .external }}
+            gethomepage.dev/siteMonitor: {{ or .portname "http" }}://{{ .appname }}-service
+            gethomepage.dev/external: 'true'
+            {{ end }}
         spec:
           ingressClassName: nginx
           rules:
