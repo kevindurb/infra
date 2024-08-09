@@ -16,6 +16,9 @@ metadata:
     gethomepage.dev/widget.username: admin
     gethomepage.dev/widget.password: '{{HOMEPAGE_VAR_CALIBRE_WEB_PASSWORD}}'
     gethomepage.dev/weight: '10'
+    nginx.ingress.kubernetes.io/proxy-body-size: '0'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '600'
 spec:
   ingressClassName: nginx
   tls:
