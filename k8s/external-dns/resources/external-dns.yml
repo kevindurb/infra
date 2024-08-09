@@ -55,10 +55,8 @@ spec:
         - name: external-dns
           image: registry.k8s.io/external-dns/external-dns:v0.14.2
           args:
-            - --publish-internal-services
             - --source=ingress
             - --registry=noop
-            - --policy=upsert-only
             - --provider=pihole
             - --pihole-server=http://pihole-service.default.svc.cluster.local
           env:
@@ -82,4 +80,3 @@ spec:
   authToken:
     secretName: bw-auth-token
     secretKey: token
-
