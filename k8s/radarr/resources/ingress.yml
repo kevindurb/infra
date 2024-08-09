@@ -4,13 +4,16 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    gethomepage.dev/href: 'https://radarr.durbin.casa'
+    gethomepage.dev/href: https://radarr.durbin.casa
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: radarr
     gethomepage.dev/group: Media
     gethomepage.dev/icon: radarr
     gethomepage.dev/name: Radarr
     gethomepage.dev/weight: '20'
+    gethomepage.dev/widget.type: radarr
+    gethomepage.dev/widget.url: http://radarr-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_RADARR_KEY}}'
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
