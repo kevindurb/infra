@@ -13,11 +13,11 @@ metadata:
     gethomepage.dev/name: Openwrt
     gethomepage.dev/siteMonitor: https://openwrt-service
     gethomepage.dev/external: 'true'
-
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: openwrt.durbin.casa
+    - host: &host openwrt.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -27,3 +27,7 @@ spec:
                 name: service
                 port:
                   name: https
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

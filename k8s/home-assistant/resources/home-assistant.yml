@@ -30,7 +30,6 @@ spec:
         - name: config-map
           configMap:
             name: config
-
 ---
 apiVersion: v1
 kind: Service
@@ -41,7 +40,6 @@ spec:
     - name: web
       port: 80
       targetPort: web
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -54,7 +52,6 @@ spec:
   resources:
     requests:
       storage: 2Gi
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -70,10 +67,11 @@ metadata:
     gethomepage.dev/widget.type: homeassistant
     gethomepage.dev/widget.url: http://home-assistant-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_HOMEASSISTANT_KEY}}'
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: home-assistant.durbin.casa
+    - host: &host home-assistant.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -83,3 +81,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

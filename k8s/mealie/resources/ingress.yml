@@ -13,10 +13,11 @@ metadata:
     gethomepage.dev/widget.type: mealie
     gethomepage.dev/widget.url: http://mealie-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_MEALIE_KEY}}'
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: mealie.durbin.casa
+    - host: &host mealie.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -26,3 +27,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

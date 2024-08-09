@@ -10,10 +10,11 @@ metadata:
     gethomepage.dev/group: Productivity
     gethomepage.dev/icon: open-webui
     gethomepage.dev/name: Open WebUI
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: chat.durbin.casa
+    - host: &host chat.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -23,3 +24,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

@@ -11,10 +11,11 @@ metadata:
     gethomepage.dev/icon: sonarr
     gethomepage.dev/name: Sonarr
     gethomepage.dev/weight: '20'
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: sonarr.durbin.casa
+    - host: &host sonarr.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -24,3 +25,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

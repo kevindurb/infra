@@ -12,10 +12,11 @@ metadata:
     gethomepage.dev/name: Prometheus
     gethomepage.dev/widget.type: prometheus
     gethomepage.dev/widget.url: http://prometheus-service.monitoring
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: prometheus.durbin.casa
+    - host: &host prometheus.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -25,3 +26,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

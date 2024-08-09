@@ -14,10 +14,11 @@ metadata:
     gethomepage.dev/widget.url: http://freshrss-service
     gethomepage.dev/widget.username: '{{HOMEPAGE_VAR_FRESHRSS_USERNAME}}'
     gethomepage.dev/widget.password: '{{HOMEPAGE_VAR_FRESHRSS_PASSWORD}}'
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: freshrss.durbin.casa
+    - host: &host freshrss.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -27,3 +28,7 @@ spec:
                 name: service
                 port:
                   name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

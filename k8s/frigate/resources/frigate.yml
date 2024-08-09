@@ -57,7 +57,6 @@ spec:
           emptyDir:
             sizeLimit: 0.5Gi
             medium: Memory
-
 ---
 apiVersion: v1
 kind: Service
@@ -78,7 +77,6 @@ spec:
     - name: web
       port: 80
       targetPort: web
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -93,10 +91,11 @@ metadata:
     gethomepage.dev/name: Frigate
     gethomepage.dev/widget.type: frigate
     gethomepage.dev/widget.url: http://frigate-service
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: frigate.durbin.casa
+    - host: &host frigate.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -106,3 +105,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

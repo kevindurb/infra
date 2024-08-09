@@ -10,10 +10,11 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: smokeping
     gethomepage.dev/name: Smokeping
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: smokeping.durbin.casa
+    - host: &host smokeping.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -23,3 +24,7 @@ spec:
                 name: service
                 port:
                   name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
