@@ -12,6 +12,7 @@ spec:
             namespace: argocd
           - name: alertmanager
           - name: calibre
+          - name: calibre-web
           - name: cert-manager
           - name: cloudflared
           - name: cluster-secret-store
