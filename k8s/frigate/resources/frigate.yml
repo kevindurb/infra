@@ -31,6 +31,8 @@ spec:
             - name: webrtc-udp
               containerPort: 8555
               protocol: UDP
+            - name: go2rtc
+              containerPort: 1984
           volumeMounts:
             - name: config-volume
               mountPath: /config
@@ -77,6 +79,9 @@ spec:
     - name: web
       port: 80
       targetPort: web
+    - name: go2rtc
+      port: 1984
+      targetPort: go2rtc
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -98,6 +103,13 @@ spec:
     - host: &host frigate.durbin.casa
       http:
         paths:
+          - pathType: Prefix
+            path: '/go2rtc'
+            backend:
+              service:
+                name: service
+                port:
+                  name: go2rtc
           - pathType: Prefix
             path: '/'
             backend:
