@@ -44,3 +44,8 @@ cameras:
           roles: [record]
         - path: rtsp://infra:{FRIGATE_REOLINK_PASSWORD}@192.168.0.16:554/Preview_01_sub
           roles: [detect]
+    onvif:
+      host: 192.168.0.16
+      port: 8000
+      user: infra
+      password: '{FRIGATE_REOLINK_PASSWORD}'
