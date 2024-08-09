@@ -22,12 +22,12 @@ birdseye:
   enabled: true
   mode: continuous
 
-# go2rtc:
-#   streams:
-#     garage:
-#       - 'ffmpeg:http://192.168.0.16/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=infra&password={FRIGATE_REOLINK_PASSWORD}#video=copy#audio=copy#audio=opus'
-#     garage_sub:
-#       - 'ffmpeg:http://192.168.0.16/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=infra&password={FRIGATE_REOLINK_PASSWORD}'
+go2rtc:
+  streams:
+    garage:
+      - ffmpeg:rtsp://infra:{FRIGATE_REOLINK_PASSWORD}@192.168.0.16:554/Preview_01_main
+    garage_sub:
+      - ffmpeg:rtsp://infra:{FRIGATE_REOLINK_PASSWORD}@192.168.0.16:554/Preview_01_sub
 
 cameras:
   # doorbell:
@@ -40,7 +40,9 @@ cameras:
   garage:
     ffmpeg:
       inputs:
-        - path: rtsp://infra:{FRIGATE_REOLINK_PASSWORD}@192.168.0.16:554/Preview_01_main
+        - path: rtsp://127.0.0.1:8554/garage
+          input_args: preset-rtsp-restream
           roles: [record]
-        - path: rtsp://infra:{FRIGATE_REOLINK_PASSWORD}@192.168.0.16:554/Preview_01_sub
+        - path: rtsp://127.0.0.1:8554/garage_sub
+          input_args: preset-rtsp-restream
           roles: [detect]
