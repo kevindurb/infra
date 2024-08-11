@@ -38,9 +38,6 @@ spec:
               protocol: UDP
           securityContext:
             privileged: true
-          resources:
-            requests:
-              memory: 8G
           env:
             - name: RAM_SIZE
               value: 8G
