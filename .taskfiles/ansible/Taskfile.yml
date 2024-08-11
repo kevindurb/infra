@@ -9,3 +9,17 @@ tasks:
     ansible-playbook
     -i ./inventory/production.yml
     ./playbooks/base_provision.yml
+
+  shutdown: >-
+    ansible
+    {{or .host "stack-nodes"}}
+    --inventory ./inventory/production.yml
+    --module-name community.general.shutdown
+    --become
+
+  reboot: >-
+    ansible
+    {{or .host "stack-nodes"}}
+    --inventory ./inventory/production.yml
+    --module-name ansible.builtin.reboot
+    --become

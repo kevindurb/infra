@@ -61,7 +61,7 @@ metadata:
   name: root-credentials
 spec:
   organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
-  secretName: root-credentials
+  secretName: minio-root-credentials
   map:
     - secretKeyName: MINIO_ROOT_PASSWORD
       bwSecretId: 5620287e-bf9d-4ab1-93e0-b1a100f09223
