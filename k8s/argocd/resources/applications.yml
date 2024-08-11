@@ -63,6 +63,7 @@ spec:
           - name: truenas
           - name: memos
           - name: whoami
+          - name: windows
           - name: zigbee2mqtt
   template:
     metadata:

@@ -38,11 +38,14 @@ spec:
               protocol: UDP
           securityContext:
             privileged: true
+          resources:
+            requests:
+              memory: 8G
           env:
             - name: RAM_SIZE
-              value: 2G
+              value: 8G
             - name: CPU_CORES
-              value: '2'
+              value: '4'
             - name: DISK_SIZE
               value: 64G
             - name: VERSION
