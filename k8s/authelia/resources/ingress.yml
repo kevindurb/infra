@@ -11,8 +11,6 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: authelia
     gethomepage.dev/name: Authelia
-    gethomepage.dev/widget.type: authelia
-    gethomepage.dev/widget.url: http://authelia-service
 spec:
   ingressClassName: nginx
   rules:
