@@ -1,0 +1,98 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      containers:
+        - name: guacamole
+          image: guacamole/guacamole
+          env:
+            - name: GUACD_HOSTNAME
+              value: guacamole-guacd-service
+            - name: POSTGRESQL_HOSTNAME
+              value: guacamole-postgres-rw
+            - name: POSTGRESQL_PORT
+              value: '5432'
+            - name: POSTGRESQL_DATABASE
+              value: guacamole
+            - name: POSTGRESQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: guacamole-postgres-app
+                  key: username
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: guacamole-postgres-app
+                  key: password
+          ports:
+            - name: http
+              containerPort: 8080
+
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+  bootstrap:
+    initdb:
+      database: guacamole
+  storage:
+    storageClass: longhorn
+    size: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app.kubernetes.io/component: web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/group: Productivity
+    gethomepage.dev/icon: guacamole
+    gethomepage.dev/app: guacamole
+    gethomepage.dev/name: Guacamole
+    gethomepage.dev/href: https://guacamole.durbin.casa
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts: [&host guacamole.durbin.casa]
+      secretName: durbin-casa-wildcard-cert
+  rules:
+    - host: *host
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http

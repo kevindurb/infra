@@ -28,6 +28,7 @@ spec:
           - name: frigate
           - name: gatus
           - name: grafana
+          - name: guacamole
           - name: handbrake
           - name: healthchecks
           - name: hdhomerun
