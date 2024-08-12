@@ -10,7 +10,7 @@ data:
     endpoints:
       - name: Authelia
         group: Applications
-        url: http://authelia-service
+        url: http://authelia-service/api/health
         
         conditions:
           - '[STATUS] == 200'
