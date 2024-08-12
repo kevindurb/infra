@@ -20,11 +20,20 @@ spec:
             - name: GUACD_HOSTNAME
               value: guacamole-guacd-service
             - name: POSTGRESQL_HOSTNAME
-              value: guacamole-postgres-rw
+              valueFrom:
+                secretKeyRef:
+                  name: guacamole-postgres-app
+                  key: host
             - name: POSTGRESQL_PORT
-              value: '5432'
+              valueFrom:
+                secretKeyRef:
+                  name: guacamole-postgres-app
+                  key: port
             - name: POSTGRESQL_DATABASE
-              value: guacamole
+              valueFrom:
+                secretKeyRef:
+                  name: guacamole-postgres-app
+                  key: dbname
             - name: POSTGRESQL_USER
               valueFrom:
                 secretKeyRef:
@@ -64,7 +73,7 @@ metadata:
     gethomepage.dev/icon: guacamole
     gethomepage.dev/app: guacamole
     gethomepage.dev/name: Guacamole
-    gethomepage.dev/href: https://guacamole.durbin.casa
+    gethomepage.dev/href: https://guacamole.durbin.casa/guacamole
 spec:
   ingressClassName: nginx
   tls:
