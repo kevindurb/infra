@@ -41,5 +41,3 @@ notifier:
   smtp:
     host: smtp-relay-service.default
     port: 25
-
-identity_providers: {}
