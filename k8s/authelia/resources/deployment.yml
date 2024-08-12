@@ -38,9 +38,6 @@ spec:
               mountPath: /config/users.yml
               subPath: users.yml
               readOnly: true
-          envFrom:
-            - secretRef:
-                name: authelia-secret
           env:
             - name: AUTHELIA_SESSION_SECRET
               valueFrom:
