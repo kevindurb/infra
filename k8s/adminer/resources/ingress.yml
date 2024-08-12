@@ -5,16 +5,12 @@ metadata:
   name: ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
-
     gethomepage.dev/href: 'https://adminer.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: adminer
     gethomepage.dev/group: Other
     gethomepage.dev/icon: adminer
     gethomepage.dev/name: Adminer
-    gethomepage.dev/widget.type: adminer
-    gethomepage.dev/widget.url: http://adminer-service
-
 spec:
   ingressClassName: nginx
   rules:
