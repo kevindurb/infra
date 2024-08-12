@@ -42,3 +42,8 @@ notifier:
     host: smtp-relay-service.default
     port: 25
     disable_require_tls: true
+
+telemetry:
+  metrics:
+    enabled: true
+    address: 'tcp://:9959/metrics'

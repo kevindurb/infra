@@ -104,3 +104,5 @@ spec:
           ports:
             - name: http
               containerPort: 9091
+            - name: prometheus
+              containerPort: 9959
