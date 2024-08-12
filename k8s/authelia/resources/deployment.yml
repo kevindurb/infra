@@ -1,0 +1,109 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      enableServiceLinks: false
+      volumes:
+        - name: config
+          configMap:
+            name: config
+        - name: users
+          secret:
+            secretName: authelia-secret
+      containers:
+        - name: authelia
+          image: ghcr.io/authelia/authelia:4.38
+          command: [authelia]
+          args:
+            - --config=/config/configuration.yml
+          volumeMounts:
+            - name: config
+              mountPath: /config/configuration.yml
+              subPath: configuration.yml
+              readOnly: true
+            - name: users
+              mountPath: /config/users.yml
+              subPath: users.yml
+              readOnly: true
+          envFrom:
+            - secretRef:
+                name: authelia-secret
+          env:
+            - name: AUTHELIA_SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-secret
+                  key: AUTHELIA_SESSION_SECRET
+            - name: AUTHELIA_STORAGE_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-secret
+                  key: AUTHELIA_STORAGE_ENCRYPTION_KEY
+            - name: X_AUTHELIA_CONFIG_FILTERS
+              value: template
+            - name: TZ
+              value: America/Denver
+            - name: AUTHELIA_NOTIFIER_SMTP_SENDER
+              value: beavercloud@fastmail.com
+            - name: AUTHELIA_STORAGE_POSTGRES_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: dbname
+            - name: AUTHELIA_STORAGE_POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: user
+            - name: AUTHELIA_STORAGE_POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: password
+            - name: AUTHELIA_STORAGE_POSTGRES_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-postgres-app
+                  key: host
+          livenessProbe:
+            httpGet: &probeHttp
+              path: /api/health
+              port: 9091
+            initialDelaySeconds: 0
+            periodSeconds: 30
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
+          readinessProbe:
+            httpGet: *probeHttp
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
+          startupProbe:
+            httpGet: *probeHttp
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          resources:
+            limits:
+              memory: 1G
+          ports:
+            - name: http
+              containerPort: 9091

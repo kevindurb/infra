@@ -1,0 +1,45 @@
+# !yamlfmt!:ignore
+---
+# yaml-language-server: $schema=https://www.authelia.com/schemas/v4.38/json-schema/configuration.json
+theme: auto
+
+log:
+  level: debug
+
+totp:
+  disable: false
+  issuer: authelia.com
+
+webauthn:
+  disable: false
+
+duo_api:
+  disable: true
+
+authentication_backend:
+  password_reset:
+    disable: true
+  file:
+    path: /config/users.yml
+
+access_control:
+  default_policy: two_factor
+
+session:
+  redis:
+    host: authelia-valkey-service
+
+  cookies:
+    - domain: durbin.casa
+      authelia_url: https://auth.durbin.casa
+
+storage:
+  postgres: {}
+
+notifier:
+  disable_startup_check: false
+  smtp:
+    host: smtp-relay-service.default
+    port: 25
+
+identity_providers: {}

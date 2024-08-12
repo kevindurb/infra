@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  authelia.yml: |
+    endpoints:
+      - name: Authelia
+        group: Applications
+        url: http://authelia-service
+        
+        conditions:
+          - '[STATUS] == 200'
