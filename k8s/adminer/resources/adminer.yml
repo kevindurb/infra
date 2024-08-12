@@ -3,9 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
-  annotations:
-    keel.sh/policy: minor
-    keel.sh/trigger: poll
 spec:
   replicas: 1
   template:
@@ -14,7 +11,7 @@ spec:
         - name: adminer
           image: docker.io/library/adminer:4.8.1
           ports:
-            - name: web
+            - name: http
               containerPort: 8080
 
 ---
@@ -24,6 +21,6 @@ metadata:
   name: service
 spec:
   ports:
-    - name: web
+    - name: http
       port: 80
-      targetPort: web
+      targetPort: http
