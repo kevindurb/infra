@@ -30,7 +30,6 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -43,7 +42,6 @@ spec:
   resources:
     requests:
       storage: 5Gi
-
 ---
 apiVersion: v1
 kind: Service
@@ -54,7 +52,6 @@ spec:
     - name: https
       port: 443
       targetPort: https
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -73,10 +70,11 @@ metadata:
     nginx.ingress.kubernetes.io/upstream-vhost: 'omada.durbin.casa:8043'
     nginx.ingress.kubernetes.io/proxy-redirect-from: '~https://(.+):8043/(.+)/login$'
     nginx.ingress.kubernetes.io/proxy-redirect-to: 'https://$1/$2/login'
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: omada.durbin.casa
+    - host: &host omada.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -86,3 +84,7 @@ spec:
                 name: service
                 port:
                   name: https
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

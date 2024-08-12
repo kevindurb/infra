@@ -13,11 +13,11 @@ metadata:
     gethomepage.dev/name: iDRAC
     gethomepage.dev/siteMonitor: https://idrac-service
     gethomepage.dev/external: 'true'
-
+    cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
   ingressClassName: nginx
   rules:
-    - host: idrac.durbin.casa
+    - host: &host idrac.durbin.casa
       http:
         paths:
           - pathType: Prefix
@@ -27,3 +27,7 @@ spec:
                 name: service
                 port:
                   name: https
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
