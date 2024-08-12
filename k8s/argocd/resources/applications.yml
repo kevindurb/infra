@@ -10,6 +10,7 @@ spec:
         elements:
           - name: argocd
             namespace: argocd
+          - name: adminer
           - name: alertmanager
           - name: calibre
           - name: calibre-web

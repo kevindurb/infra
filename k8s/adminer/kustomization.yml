@@ -6,6 +6,7 @@ namePrefix: adminer-
 
 resources:
   - ./resources/adminer.yml
+  - ./resources/ingress.yml
   - ./resources/gatus-config.yml
 
 commonLabels:
