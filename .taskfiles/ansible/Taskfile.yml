@@ -8,7 +8,12 @@ tasks:
   base-provision: >-
     ansible-playbook
     -i ./inventory/production.yml
-    ./playbooks/base_provision.yml
+    ./playbooks/base-provision.yml
+
+  update-ssh-keys: >-
+    ansible-playbook
+    -i ./inventory/production.yml
+    ./playbooks/update-ssh-keys.yml
 
   shutdown: >-
     ansible
