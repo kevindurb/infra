@@ -40,21 +40,6 @@ spec:
               containerPort: 8080
 
 ---
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
-metadata:
-  name: postgres
-spec:
-  instances: 3
-  primaryUpdateStrategy: unsupervised
-  bootstrap:
-    initdb:
-      database: guacamole
-  storage:
-    storageClass: longhorn
-    size: 1Gi
-
----
 apiVersion: v1
 kind: Service
 metadata:

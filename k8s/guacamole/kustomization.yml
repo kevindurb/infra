@@ -7,6 +7,7 @@ namePrefix: guacamole-
 resources:
   - ./resources/guacamole.yml
   - ./resources/guacd.yml
+  - ./resources/pg.yml
 
 commonLabels:
   app.kubernetes.io/name: guacamole
