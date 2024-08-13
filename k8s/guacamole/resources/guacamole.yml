@@ -47,7 +47,6 @@ spec:
           ports:
             - name: http
               containerPort: 8080
-
 ---
 apiVersion: v1
 kind: Service
@@ -60,7 +59,6 @@ spec:
     - name: http
       port: 80
       targetPort: http
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -74,6 +72,10 @@ metadata:
     gethomepage.dev/app: guacamole
     gethomepage.dev/name: Guacamole
     gethomepage.dev/href: https://guacamole.durbin.casa/guacamole
+    nginx.ingress.kubernetes.io/auth-method: GET
+    nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
+    nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
+    nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
 spec:
   ingressClassName: nginx
   tls:
