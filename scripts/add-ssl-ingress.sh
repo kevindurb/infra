@@ -1,5 +1,6 @@
 #! /bin/bash
 
+# shellcheck disable=SC2016
 yq -i '
   with(select(.kind == "Ingress");
     .metadata.annotations["cert-manager.io/cluster-issuer"] = "cloudflare-issuer"
