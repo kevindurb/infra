@@ -22,6 +22,10 @@ metadata:
         argocd-repo-server
       )
     nginx.ingress.kubernetes.io/backend-protocol: https
+    nginx.ingress.kubernetes.io/auth-method: GET
+    nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
+    nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
+    nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
 spec:
   ingressClassName: nginx
   tls:
