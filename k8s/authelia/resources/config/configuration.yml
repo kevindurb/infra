@@ -3,6 +3,11 @@
 # yaml-language-server: $schema=https://www.authelia.com/schemas/v4.38/json-schema/configuration.json
 theme: auto
 
+server:
+  buffers:
+    read: 8192
+    write: 8192
+
 log:
   level: debug
 
