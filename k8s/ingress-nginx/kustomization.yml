@@ -8,4 +8,4 @@ resources:
 
 patches:
   - path: ./resources/service.patch.yml
-  # - path: ./resources/deployment.patch.yml
+  - path: ./resources/deployment.patch.yml
