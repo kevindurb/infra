@@ -16,7 +16,7 @@ spec:
             claimName: truenas-minio
       containers:
         - name: minio
-          image: quay.io/minio/minio
+          image: quay.io/minio/minio:RELEASE.2024-08-03T04-33-23Z
           args:
             - server
             - /data
