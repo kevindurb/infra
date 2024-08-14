@@ -24,7 +24,7 @@ spec:
             claimName: volume
       containers:
         - name: grafana
-          image: docker.io/grafana/grafana-oss:11.1.3
+          image: docker.io/grafana/grafana-oss:11.1.4
           volumeMounts:
             - name: config-map
               mountPath: /etc/grafana/grafana.ini
