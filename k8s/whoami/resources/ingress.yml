@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-url: 'http://authelia-service.default.svc.cluster.local/api/authz/auth-request'
     nginx.ingress.kubernetes.io/auth-signin: 'https://auth.durbin.casa?rm=$request_method'
     nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
-    gethomepage.dev/href: 'https://whoami.admin.durbin.casa'
+    gethomepage.dev/href: 'https://whoami.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: whoami
     gethomepage.dev/group: Other
@@ -18,7 +18,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host whoami.admin.durbin.casa
+    - host: &host whoami.durbin.casa
       http:
         paths:
           - pathType: Prefix
