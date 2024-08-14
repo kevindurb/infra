@@ -1,9 +1,7 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 namePrefix: docmost-
-
 resources:
   - ./resources/deployment.yml
   - ./resources/ingress.yml
@@ -13,6 +11,8 @@ resources:
   - ./resources/secret.yml
   - ./resources/pvc.yml
   - ./resources/gatus-config.yml
-
-commonLabels:
-  app.kubernetes.io/name: docmost
+labels:
+  - pairs:
+      app.kubernetes.io/name: docmost
+    includeSelectors: true
+    includeTemplates: true
