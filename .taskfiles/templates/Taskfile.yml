@@ -39,8 +39,11 @@ tasks:
 
         resources: []
 
-        commonLabels:
-          app.kubernetes.io/name: {{ .appname }}
+        labels:
+          - pairs:
+              app.kubernetes.io/name: {{ .appname }}
+            includeTemplates: true
+            includeSelectors: true
         EOF
 
   deploy:
