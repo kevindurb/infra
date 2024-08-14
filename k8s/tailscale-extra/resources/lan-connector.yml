@@ -4,6 +4,6 @@ kind: Connector
 metadata:
   name: lan
 spec:
-  exitNode: true
+  exitNode: false
   subnetRouter:
     advertiseRoutes: ['192.168.200.0/8']
