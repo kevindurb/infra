@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: nocodb
-          image: docker.io/nocodb/nocodb:0.252.0
+          image: docker.io/nocodb/nocodb:0.255.0
           volumeMounts:
             - name: volume
               mountPath: /usr/app/data
