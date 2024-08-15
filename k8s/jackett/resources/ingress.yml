@@ -11,6 +11,7 @@ metadata:
     gethomepage.dev/group: Media
     gethomepage.dev/icon: jackett
     gethomepage.dev/name: Jackett
+    gethomepage.dev/weight: '20'
     gethomepage.dev/widget.type: jackett
     gethomepage.dev/widget.url: http://jackett-service
     nginx.ingress.kubernetes.io/auth-method: GET
