@@ -38,6 +38,7 @@ spec:
           - name: homepage
           - name: idrac
           - name: ingress-nginx
+          - name: jackett
           - name: jellyfin
           - name: kanboard
           - name: local-path-provisioner

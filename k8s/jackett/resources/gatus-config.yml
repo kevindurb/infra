@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  jackett.yml: |
+    endpoints:
+      - name: Jackett
+        group: Applications
+        url: http://jackett-service
+        
+        conditions:
+          - '[STATUS] == 200'
