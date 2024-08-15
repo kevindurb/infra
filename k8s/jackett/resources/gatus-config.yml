@@ -9,8 +9,8 @@ data:
   jackett.yml: |
     endpoints:
       - name: Jackett
-        group: Applications
-        url: http://jackett-service
+        group: Media
+        url: http://jackett-service/health
         
         conditions:
           - '[STATUS] == 200'
