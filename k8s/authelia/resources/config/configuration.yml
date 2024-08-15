@@ -34,20 +34,17 @@ access_control:
       networks:
         - 192.168.0.0/16
   rules:
-    # allow all internal traffic
-    - domain: '*.durbin.casa'
+    # allow all internal traffic to specific apps
+    - domain:
+        - gatus.durbin.casa
+        - pihole.durbin.casa
+        - jellyfin.durbin.casa
+        - calibre-web.durbin.casa
+        - home-assistant.durbin.casa
+        - mealie.durbin.casa
       policy: bypass
       networks:
         - internal
-
-    # allow admins to get to admin domains
-    - domain: '*.admin.durbin.casa'
-      subject: 'group:admins'
-      policy: two_factor
-
-    # dont allow non admins to get to admin domains
-    - domain: '*.admin.durbin.casa'
-      policy: deny
 
     # allow everyone else with two_factor
     - domain: '*.durbin.casa'
