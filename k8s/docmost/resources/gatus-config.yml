@@ -9,7 +9,6 @@ data:
   docmost.yml: |
     endpoints:
       - name: Docmost
-        group: Applications
         url: http://docmost-service
         conditions:
           - '[STATUS] == 200'

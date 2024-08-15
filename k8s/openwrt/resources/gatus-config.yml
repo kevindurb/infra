@@ -9,7 +9,6 @@ data:
   openwrt.yml: |
     endpoints:
       - name: Openwrt
-        group: Infra
         url: https://openwrt-service
         client:
           insecure: true

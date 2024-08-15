@@ -9,7 +9,6 @@ data:
   homepage.yml: |
     endpoints:
       - name: Homepage
-        group: Applications
         url: http://homepage-service/api/healthcheck
         conditions:
           - '[STATUS] == 200'

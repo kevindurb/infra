@@ -9,7 +9,6 @@ data:
   calibre-web.yml: |
     endpoints:
       - name: Calibre-Web
-        group: Applications
         url: http://calibre-web-service
         
         conditions:

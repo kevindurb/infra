@@ -9,7 +9,6 @@ data:
   argocd.yml: |
     endpoints:
       - name: Argocd
-        group: Infra
         url: https://argocd-server.argocd
         client:
           insecure: true

@@ -10,7 +10,6 @@ data:
     endpoints:
       - name: Makemkv
         enabled: false
-        group: Admin
         url: http://makemkv-service
         conditions:
           - '[STATUS] == 200'

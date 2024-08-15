@@ -9,7 +9,6 @@ data:
   windows.yml: |
     endpoints:
       - name: Windows
-        group: Applications
         url: http://windows-service
         conditions:
           - '[STATUS] == 200'

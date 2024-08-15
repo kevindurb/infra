@@ -10,7 +10,6 @@ data:
     endpoints:
       - name: Handbrake
         enabled: false
-        group: Admin
         url: http://handbrake-service
         conditions:
           - '[STATUS] == 200'

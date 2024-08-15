@@ -9,7 +9,6 @@ data:
   authelia.yml: |
     endpoints:
       - name: Authelia
-        group: Applications
         url: http://authelia-service/api/health
         
         conditions:

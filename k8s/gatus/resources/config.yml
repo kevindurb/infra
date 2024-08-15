@@ -14,13 +14,11 @@ data:
 
     endpoints:
       - name: Gatus
-        group: Monitoring
         url: http://gatus-service
         conditions:
           - '[STATUS] == 200'
 
       - name: Google
-        group: External
         url: https://google.com
         conditions:
           - '[STATUS] == 200'

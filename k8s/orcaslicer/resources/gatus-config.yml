@@ -10,7 +10,6 @@ data:
     endpoints:
       - name: Orcaslicer
         enabled: false
-        group: Applications
         url: http://orcaslicer-service
         conditions:
           - '[STATUS] == 200'

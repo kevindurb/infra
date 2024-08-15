@@ -9,7 +9,6 @@ data:
   frigate.yml: |
     endpoints:
       - name: Frigate
-        group: Applications
         url: http://frigate-service/api/version
         conditions:
           - '[STATUS] == 200'

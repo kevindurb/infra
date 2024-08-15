@@ -429,7 +429,6 @@ tasks:
           {{ .appname }}.yml: |
             endpoints:
               - name: {{ title .appname }}
-                group: Applications
                 url: {{ or .portname "http" }}://{{ .appname }}-service
                 {{ if eq .portname "https" }}
                 client:

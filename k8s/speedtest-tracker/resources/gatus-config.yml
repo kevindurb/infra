@@ -9,7 +9,6 @@ data:
   speedtest-tracker.yml: |
     endpoints:
       - name: Speedtest-Tracker
-        group: Monitoring
         url: http://speedtest-tracker-service
         conditions:
           - '[STATUS] == 200'

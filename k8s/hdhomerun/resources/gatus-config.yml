@@ -9,7 +9,6 @@ data:
   hdhomerun.yml: |
     endpoints:
       - name: Hdhomerun
-        group: Admin
         url: http://hdhomerun-service
         conditions:
           - '[STATUS] == 200'

@@ -9,7 +9,6 @@ data:
   memos.yml: |
     endpoints:
       - name: Memos
-        group: Applications
         url: http://memos-service
         conditions:
           - '[STATUS] == 200'

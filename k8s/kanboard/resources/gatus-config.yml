@@ -9,7 +9,6 @@ data:
   kanboard.yml: |
     endpoints:
       - name: Kanboard
-        group: Applications
         url: http://kanboard-service
         conditions:
           - '[STATUS] == 200'

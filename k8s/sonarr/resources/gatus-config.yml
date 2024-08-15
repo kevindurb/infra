@@ -9,7 +9,6 @@ data:
   sonarr.yml: |
     endpoints:
       - name: Sonarr
-        group: Admin
         url: http://sonarr-service
         conditions:
           - '[STATUS] == 200'

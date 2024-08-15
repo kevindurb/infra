@@ -9,7 +9,6 @@ data:
   freshrss.yml: |
     endpoints:
       - name: Freshrss
-        group: Applications
         url: http://freshrss-service
         conditions:
           - '[STATUS] == 200'

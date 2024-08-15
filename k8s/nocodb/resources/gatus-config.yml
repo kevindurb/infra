@@ -9,7 +9,6 @@ data:
   nocodb.yml: |
     endpoints:
       - name: Nocodb
-        group: Applications
         url: http://nocodb-service
         conditions:
           - '[STATUS] == 200'

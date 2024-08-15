@@ -10,7 +10,6 @@ data:
     endpoints:
       - name: Calibre
         enabled: false
-        group: Admin
         url: http://calibre-service
         conditions:
           - '[STATUS] == 200'

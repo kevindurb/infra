@@ -9,7 +9,6 @@ data:
   whoami.yml: |
     endpoints:
       - name: Whoami
-        group: Applications
         url: http://whoami-service
         conditions:
           - '[STATUS] == 200'

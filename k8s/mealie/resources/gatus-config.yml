@@ -9,7 +9,6 @@ data:
   mealie.yml: |
     endpoints:
       - name: Mealie
-        group: Applications
         url: http://mealie-service/api/app/about
         conditions:
           - '[STATUS] == 200'

@@ -9,7 +9,6 @@ data:
   omada.yml: |
     endpoints:
       - name: Omada
-        group: Admin
         url: https://omada-service/login
         client:
           insecure: true

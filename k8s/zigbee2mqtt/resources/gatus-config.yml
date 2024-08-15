@@ -9,7 +9,6 @@ data:
   zigbee2mqtt.yml: |
     endpoints:
       - name: Zigbee2mqtt
-        group: Admin
         url: http://zigbee2mqtt-service
         conditions:
           - '[STATUS] == 200'

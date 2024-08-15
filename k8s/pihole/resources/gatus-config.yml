@@ -9,7 +9,6 @@ data:
   pihole.yml: |
     endpoints:
       - name: Pihole
-        group: Infra
         url: http://pihole-service/admin
         conditions:
           - '[STATUS] == 200'

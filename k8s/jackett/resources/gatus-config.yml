@@ -9,7 +9,6 @@ data:
   jackett.yml: |
     endpoints:
       - name: Jackett
-        group: Media
         url: http://jackett-service/health
         
         conditions:

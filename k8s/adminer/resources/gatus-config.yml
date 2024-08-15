@@ -9,7 +9,6 @@ data:
   adminer.yml: |
     endpoints:
       - name: Adminer
-        group: Applications
         url: http://adminer-service
         conditions:
           - '[STATUS] == 200'

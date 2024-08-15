@@ -9,7 +9,6 @@ data:
   home-assistant.yml: |
     endpoints:
       - name: Home Assistant
-        group: Applications
         url: http://home-assistant-service/manifest.json
         conditions:
           - '[STATUS] == 200'

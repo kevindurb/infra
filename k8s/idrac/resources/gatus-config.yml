@@ -9,7 +9,6 @@ data:
   idrac.yml: |
     endpoints:
       - name: Idrac
-        group: Infra
         url: https://idrac-service/login.html
         client:
           insecure: true
