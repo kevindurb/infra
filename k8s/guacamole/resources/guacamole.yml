@@ -21,6 +21,8 @@ spec:
               value: guacamole-guacd-service
             - name: HEADER_ENABLED
               value: 'true'
+            - name: HTTP_AUTH_HEADER
+              value: 'Remote-User'
             - name: POSTGRESQL_HOSTNAME
               valueFrom:
                 secretKeyRef:
