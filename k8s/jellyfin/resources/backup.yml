@@ -59,8 +59,9 @@ metadata:
   name: config-restore
 spec:
   trigger:
-    manual: manual-once
+    manual: 2024-08-16
   restic:
     repository: jellyfin-restic-config
     destinationPVC: jellyfin-config-volume
     copyMethod: Direct
+    restoreAsOf: 2024-08-14T00:00:00-00:00
