@@ -4,7 +4,6 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    nginx.ingress.kubernetes.io/limit-rps: 5
     cert-manager.io/cluster-issuer: cloudflare-issuer
     gethomepage.dev/href: 'https://auth.durbin.casa'
     gethomepage.dev/enabled: 'true'
