@@ -2,7 +2,7 @@
 title: Homepage
 headerStyle: clean
 theme: dark
-color: gray
+# color: gray
 hideVersion: true
 statusStyle: dot
 useEqualHeights: true
