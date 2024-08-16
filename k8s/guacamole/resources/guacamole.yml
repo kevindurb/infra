@@ -19,6 +19,8 @@ spec:
           env:
             - name: GUACD_HOSTNAME
               value: guacamole-guacd-service
+            - name: HEADER_ENABLED
+              value: 'true'
             - name: POSTGRESQL_HOSTNAME
               valueFrom:
                 secretKeyRef:
