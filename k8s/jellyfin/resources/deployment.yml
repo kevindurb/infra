@@ -15,7 +15,6 @@ spec:
     metadata:
       labels: *labels
     spec:
-      hostNetwork: true
       nodeSelector:
         nvidia.com/gpu.present: 'true'
       runtimeClassName: nvidia
