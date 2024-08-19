@@ -22,6 +22,10 @@ spec:
           env:
             - name: OLLAMA_BASE_URL
               value: http://ollama-service
+            - name: WEBUI_AUTH_TRUSTED_EMAIL_HEADER
+              value: Remote-Email
+            - name: WEBUI_AUTH_TRUSTED_NAME_HEADER
+              value: Remote-Name
           ports:
             - name: web
               containerPort: 8080
