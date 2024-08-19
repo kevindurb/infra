@@ -26,6 +26,9 @@ spec:
       containers:
         - name: windows
           image: ghcr.io/dockur/windows:3.12
+          resources:
+            requests:
+              memory: 8G
           ports:
             - name: vnc
               containerPort: 8006
