@@ -49,7 +49,9 @@ spec:
           - name: mosquitto
           - name: nocodb
           - name: node-exporter
+          - name: ollama
           - name: omada
+          - name: open-webui
           - name: openwrt
           - name: orcaslicer
           - name: pihole
