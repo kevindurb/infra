@@ -27,7 +27,7 @@ spec:
             claimName: truenas-ripping-storage
       containers:
         - name: radarr
-          image: lscr.io/linuxserver/radarr:5.8.3
+          image: lscr.io/linuxserver/radarr:5.9.1
           env:
             - name: PUID
               value: '1000'
