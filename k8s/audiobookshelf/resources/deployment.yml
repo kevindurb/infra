@@ -36,10 +36,10 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /config
-              subPath: /config
+              subPath: config
             - name: volume
               mountPath: /metadata
-              subPath: /metadata
+              subPath: metadata
             - name: truenas-media
               mountPath: /media
           ports:
