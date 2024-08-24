@@ -10,6 +10,7 @@ spec:
         elements:
           - name: argocd
             namespace: argocd
+          - name: audiobookshelf
           - name: authelia
           - name: adminer
           - name: alertmanager
