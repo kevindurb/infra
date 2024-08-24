@@ -42,6 +42,7 @@ access_control:
         - calibre-web.durbin.casa
         - home-assistant.durbin.casa
         - mealie.durbin.casa
+        - audiobookshelf.durbin.casa
       policy: bypass
       networks:
         - internal
