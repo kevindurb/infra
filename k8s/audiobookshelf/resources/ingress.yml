@@ -14,6 +14,7 @@ metadata:
     gethomepage.dev/name: Audiobookshelf
     gethomepage.dev/widget.type: audiobookshelf
     gethomepage.dev/widget.url: http://audiobookshelf-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}'
 
     nginx.ingress.kubernetes.io/auth-method: GET
     nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
