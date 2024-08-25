@@ -30,7 +30,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: jellyfin
-          image: ghcr.io/jellyfin/jellyfin:10.9.9
+          image: ghcr.io/jellyfin/jellyfin:10.9.10
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
