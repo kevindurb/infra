@@ -9,9 +9,10 @@ metadata:
     gethomepage.dev/href: 'https://audiobookshelf.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: audiobookshelf
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Media
     gethomepage.dev/icon: audiobookshelf
     gethomepage.dev/name: Audiobookshelf
+    gethomepage.dev/weight: '5'
     gethomepage.dev/widget.type: audiobookshelf
     gethomepage.dev/widget.url: http://audiobookshelf-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}'
