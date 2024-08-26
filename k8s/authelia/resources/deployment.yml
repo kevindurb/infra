@@ -25,6 +25,11 @@ spec:
         - name: authelia
           image: ghcr.io/authelia/authelia:4.38.10
           command: [authelia]
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 500M
           args:
             - --config=/config/configuration.yml
           volumeMounts:
@@ -96,9 +101,6 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 6
-          resources:
-            limits:
-              memory: 1G
           ports:
             - name: http
               containerPort: 9091

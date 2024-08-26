@@ -26,6 +26,11 @@ spec:
       containers:
         - name: alertmanager
           image: docker.io/prom/alertmanager
+          resources:
+            requests:
+              memory: 50M
+            limits:
+              memory: 500M
           args:
             - --config.file=/etc/alertmanager/alertmanager.yml
             - --storage.path=/alertmanager

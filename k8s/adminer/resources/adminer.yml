@@ -10,6 +10,11 @@ spec:
       containers:
         - name: adminer
           image: docker.io/library/adminer:4.8.1
+          resources:
+            requests:
+              memory: 50M
+            limits:
+              memory: 500M
           ports:
             - name: http
               containerPort: 8080

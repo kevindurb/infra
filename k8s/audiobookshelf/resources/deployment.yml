@@ -27,12 +27,14 @@ spec:
       containers:
         - name: audiobookshelf
           image: ghcr.io/advplyr/audiobookshelf:2.12.3
+          resources:
+            requests:
+              memory: 300M
+            limits:
+              memory: 1G
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
-          resources:
-            limits:
-              memory: 1G
           volumeMounts:
             - name: volume
               mountPath: /config
