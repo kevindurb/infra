@@ -37,22 +37,22 @@ spec:
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: docmost-postgres-app
+                  name: manyfold-postgres-app
                   key: password
             - name: DATABASE_USER
               valueFrom:
                 secretKeyRef:
-                  name: docmost-postgres-app
+                  name: manyfold-postgres-app
                   key: username
             - name: DATABASE_NAME
               valueFrom:
                 secretKeyRef:
-                  name: docmost-postgres-app
+                  name: manyfold-postgres-app
                   key: dbname
             - name: DATABASE_HOST
               valueFrom:
                 secretKeyRef:
-                  name: docmost-postgres-app
+                  name: manyfold-postgres-app
                   key: host
             - name: REDIS_URL
               value: redis://manyfold-valkey-service:6379
