@@ -19,6 +19,8 @@ spec:
             - secretRef:
                 name: frigate-secret
           resources:
+            requests:
+              memory: 1G
             limits:
               memory: 4G
           ports:

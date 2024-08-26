@@ -14,6 +14,11 @@ spec:
       containers:
         - name: freshrss
           image: docker.io/freshrss/freshrss:1.24.1
+          resources:
+            requests:
+              memory: 150M
+            limits:
+              memory: 500M
           env: &env
             - name: TZ
               value: America/Denver
@@ -22,9 +27,6 @@ spec:
           volumeMounts: &volumeMounts
             - name: data-volume
               mountPath: /var/www/FreshRSS/data
-          resources:
-            limits:
-              memory: 1G
           ports:
             - name: http
               containerPort: 80

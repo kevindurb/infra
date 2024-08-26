@@ -25,6 +25,11 @@ spec:
       containers:
         - name: grafana
           image: docker.io/grafana/grafana-oss:11.1.4
+          resources:
+            requests:
+              memory: 150M
+            limits:
+              memory: 500M
           volumeMounts:
             - name: config-map
               mountPath: /etc/grafana/grafana.ini

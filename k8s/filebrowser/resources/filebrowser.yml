@@ -9,6 +9,11 @@ spec:
       containers:
         - image: filebrowser/filebrowser:v2.30.0
           name: filebrowser
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 500M
           ports:
             - name: web
               containerPort: 80

@@ -13,6 +13,11 @@ spec:
       containers:
         - image: ghcr.io/twin/gatus:v5.11.0
           name: gatus
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 500M
           ports:
             - name: web
               containerPort: 8080

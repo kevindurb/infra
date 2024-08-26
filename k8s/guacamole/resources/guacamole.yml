@@ -16,6 +16,11 @@ spec:
       containers:
         - name: guacamole
           image: guacamole/guacamole
+          resources:
+            requests:
+              memory: 300M
+            limits:
+              memory: 500M
           env:
             - name: GUACD_HOSTNAME
               value: guacamole-guacd-service

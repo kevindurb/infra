@@ -16,6 +16,11 @@ spec:
       containers:
         - name: guacamole
           image: guacamole/guacd
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 500M
           ports:
             - name: guacamole
               containerPort: 4822
