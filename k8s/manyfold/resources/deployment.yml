@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      volumes:
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
+      containers:
+        - name: manyfold
+          image: ghcr.io/manyfold3d/manyfold:0.76.1
+          env:
+            - name: DATABASE_ADAPTER
+              value: postgresql
+            - name: PUID
+              value: '1000'
+            - name: PGID
+              value: '1000'
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: manyfold-secret
+                  key: SECRET_KEY_BASE
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: docmost-postgres-app
+                  key: password
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: docmost-postgres-app
+                  key: username
+            - name: DATABASE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: docmost-postgres-app
+                  key: dbname
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: docmost-postgres-app
+                  key: host
+            - name: REDIS_URL
+              value: redis://manyfold-valkey-service:6379
+          volumeMounts:
+            - name: truenas-media
+              mountPath: /media
+          ports:
+            - name: http
+              containerPort: 3214
