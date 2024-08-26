@@ -32,3 +32,12 @@ groups:
         for: 1m
         labels:
           severity: warning
+      - alert: NginxUnusualRequestRate
+        annotations:
+          description: Unusually high request rate
+          summary: Unusually high request rate
+        expr: |
+          sum(rate(nginx_ingress_controller_requests[5m])) > 3
+        for: 1m
+        labels:
+          severity: warning
