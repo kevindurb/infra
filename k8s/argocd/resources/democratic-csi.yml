@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://democratic-csi.github.io/charts/
-    targetRevision: v0.9.20
+    targetRevision: v1.9.4
     chart: democratic-csi
     helm:
       valuesObject:
