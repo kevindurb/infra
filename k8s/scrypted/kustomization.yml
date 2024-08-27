@@ -5,7 +5,7 @@ kind: Kustomization
 namePrefix: scrypted-
 
 resources:
-  # - ./resources/deployment.yml
+  - ./resources/deployment.yml
   - ./resources/ingress.yml
   - ./resources/service.yml
   - ./resources/pvc.yml
