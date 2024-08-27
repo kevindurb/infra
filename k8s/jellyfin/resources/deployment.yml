@@ -36,8 +36,10 @@ spec:
             runAsGroup: 1000
           resources:
             limits:
+              memory: 2G
+              nvidia.com/gpu: 1
+            requests:
               memory: 1G
-              nvidia.com/gpu: 4
           volumeMounts:
             - name: config-volume
               mountPath: /config

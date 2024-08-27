@@ -18,6 +18,11 @@ spec:
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:v0.9.6
+          resources:
+            requests:
+              memory: 200M
+            limits:
+              memory: 400M
           volumeMounts:
             - name: config
               mountPath: /app/config/settings.yaml
