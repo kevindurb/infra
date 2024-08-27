@@ -5,7 +5,7 @@ metadata:
   name: volume
 spec:
   accessModes: [ReadWriteOnce]
-  storageClassName: local-storage
+  storageClassName: local-hostpath
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
@@ -65,7 +65,8 @@ spec:
       weekly: 4
       monthly: 2
       yearly: 1
-    copyMethod: Direct
+    copyMethod: Snapshot
+    volumeSnapshotClassName: local-hostpath
 
 ---
 apiVersion: volsync.backube/v1alpha1
@@ -73,9 +74,11 @@ kind: ReplicationDestination
 metadata:
   name: volume-restore
 spec:
-  trigger:
-    manual: manual-once
   restic:
     destinationPVC: memos-volume
     repository: memos-volume-repository
-    copyMethod: Direct
+    copyMethod: Snapshot
+    accessModes: [ReadWriteOnce]
+    capacity: 1G
+    storageClassName: local-hostpath
+    volumeSnapshotClassName: local-hostpath
