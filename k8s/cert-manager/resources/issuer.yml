@@ -22,6 +22,7 @@ apiVersion: k8s.bitwarden.com/v1
 kind: BitwardenSecret
 metadata:
   name: secret
+  namespace: cert-manager
 spec:
   organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
   secretName: cert-manager-cloudflare-secret
