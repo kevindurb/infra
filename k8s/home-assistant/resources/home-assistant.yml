@@ -13,6 +13,11 @@ spec:
       containers:
         - image: ghcr.io/home-assistant/home-assistant:2024.8.2
           name: home-assistant
+          resources:
+            requests:
+              memory: 4G
+            limits:
+              memory: 5G
           ports:
             - name: web
               containerPort: 8123
