@@ -30,8 +30,11 @@ spec:
             - name: SCRYPTED_DOCKER_AVAHI
               value: 'true'
           resources:
+            requests:
+              memory: 750M
             limits:
               nvidia.com/gpu: 1
+              memory: 1G
           volumeMounts:
             - name: volume
               mountPath: /server/volume

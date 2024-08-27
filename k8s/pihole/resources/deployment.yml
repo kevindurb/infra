@@ -19,6 +19,11 @@ spec:
       containers:
         - name: pihole
           image: docker.io/pihole/pihole:2024.07.0
+          resources:
+            requests:
+              memory: 130M
+            limits:
+              memory: 200M
           env:
             - name: TZ
               value: America/Denver

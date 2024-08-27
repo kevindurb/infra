@@ -24,6 +24,11 @@ spec:
       containers:
         - name: zigbee2mqtt
           image: ghcr.io/koenkk/zigbee2mqtt:1.39.1
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 200M
           env:
             - name: TZ
               value: America/Denver

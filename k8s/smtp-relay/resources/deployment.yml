@@ -22,6 +22,11 @@ spec:
       containers:
         - name: smtp-relay
           image: ghcr.io/foxcpp/maddy:0.7.1
+          resources:
+            requests:
+              memory: 50M
+            limits:
+              memory: 100M
           volumeMounts:
             - name: config-map
               mountPath: /data/maddy.conf

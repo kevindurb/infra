@@ -16,6 +16,11 @@ spec:
       containers:
         - name: whoami
           image: docker.io/traefik/whoami:v1.10.3
+          resources:
+            requests:
+              memory: 10M
+            limits:
+              memory: 20M
           ports:
             - name: web
               containerPort: 80

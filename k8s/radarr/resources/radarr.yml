@@ -28,6 +28,11 @@ spec:
       containers:
         - name: radarr
           image: lscr.io/linuxserver/radarr:5.9.1
+          resources:
+            requests:
+              memory: 200M
+            limits:
+              memory: 500M
           env:
             - name: PUID
               value: '1000'

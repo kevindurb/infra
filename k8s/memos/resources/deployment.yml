@@ -22,6 +22,11 @@ spec:
       containers:
         - name: memos
           image: ghcr.io/usememos/memos:0.22.4
+          resources:
+            requests:
+              memory: 50M
+            limits:
+              memory: 100M
           volumeMounts:
             - name: volume
               mountPath: /var/opt/memos

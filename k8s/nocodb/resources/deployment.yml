@@ -22,6 +22,11 @@ spec:
       containers:
         - name: nocodb
           image: docker.io/nocodb/nocodb:0.255.0
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 300M
           volumeMounts:
             - name: volume
               mountPath: /usr/app/data

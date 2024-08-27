@@ -41,6 +41,8 @@ spec:
           resources:
             limits:
               memory: 1G
+            requests:
+              memory: 800M
           readinessProbe:
             httpGet:
               path: /minio/health/ready

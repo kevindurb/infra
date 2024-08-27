@@ -16,6 +16,11 @@ spec:
       containers:
         - name: open-webui
           image: ghcr.io/open-webui/open-webui:0.3.15
+          resources:
+            requests:
+              memory: 500M
+            limits:
+              memory: 600M
           volumeMounts:
             - name: data-volume
               mountPath: /app/backend/data

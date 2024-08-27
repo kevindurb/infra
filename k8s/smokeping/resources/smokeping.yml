@@ -11,6 +11,11 @@ spec:
       containers:
         - image: lscr.io/linuxserver/smokeping
           name: smokeping
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 200M
           ports:
             - name: web
               containerPort: 80

@@ -25,6 +25,11 @@ spec:
       containers:
         - name: kanboard
           image: docker.io/kanboard/kanboard:v1.2.39
+          resources:
+            requests:
+              memory: 50M
+            limits:
+              memory: 100M
           volumeMounts:
             - name: volume
               mountPath: /var/www/app/data

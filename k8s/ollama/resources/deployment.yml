@@ -23,6 +23,8 @@ spec:
             limits:
               nvidia.com/gpu: 1
               memory: 4G
+            requests:
+              memory: 4G
           env:
             - name: PATH
               value: /usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

@@ -17,6 +17,8 @@ spec:
         - name: mealie
           image: ghcr.io/mealie-recipes/mealie:v1.12.0
           resources:
+            requests:
+              memory: 300M
             limits:
               memory: 400M
           env:

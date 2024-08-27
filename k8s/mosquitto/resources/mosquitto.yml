@@ -3,15 +3,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment
-  annotations:
-    keel.sh/policy: minor
-    keel.sh/trigger: poll
 spec:
   template:
     spec:
       containers:
         - image: docker.io/library/eclipse-mosquitto:2.0.18
           name: mosquitto
+          resources:
+            requests:
+              memory: 5M
+            limits:
+              memory: 10M
           ports:
             - name: mosquitto
               containerPort: 1883
