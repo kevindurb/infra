@@ -1,0 +1,90 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-secrets
+spec:
+  project: default
+  source:
+    repoURL: https://democratic-csi.github.io/charts/
+    targetRevision: v0.9.20
+    chart: democratic-csi
+    helm:
+      valuesObject:
+        csiDriver:
+          name: 'org.democratic-csi.local-hostpath'
+          attachRequired: false
+          storageCapacity: true
+          fsGroupPolicy: File
+        storageClasses:
+          - name: local-hostpath
+            defaultClass: false
+            reclaimPolicy: Delete
+            volumeBindingMode: WaitForFirstConsumer
+            allowVolumeExpansion: false
+            parameters:
+            mountOptions: []
+            secrets:
+              provisioner-secret:
+              controller-publish-secret:
+              node-stage-secret:
+              node-publish-secret:
+              controller-expand-secret:
+        volumeSnapshotClasses:
+          - name: local-hostpath
+            secrets:
+              snapshotter-secret:
+        controller:
+          enabled: true
+          strategy: node
+          externalProvisioner:
+            extraArgs:
+              - --leader-election=false
+              - --node-deployment=true
+              - --node-deployment-immediate-binding=false
+              - --feature-gates=Topology=true
+              - --strict-topology=true
+              - --enable-capacity=true
+              - --capacity-ownerref-level=1
+          externalAttacher:
+            enabled: false
+          externalResizer:
+            enabled: false
+          externalSnapshotter:
+            enabled: true
+            extraArgs:
+              - --leader-election=false
+              - --node-deployment=true
+        node:
+          driver:
+            extraVolumeMounts:
+              - name: local-storage
+                mountPath: /var/lib/csi-local-hostpath
+                mountPropagation: Bidirectional
+          extraVolumes:
+            - name: local-storage
+              hostPath:
+                path: /var/lib/csi-local-hostpath
+                type: DirectoryOrCreate
+        driver:
+          config:
+            driver: local-hostpath
+            instance_id:
+            local-hostpath:
+              shareBasePath: '/var/lib/csi-local-hostpath'
+              controllerBasePath: '/var/lib/csi-local-hostpath'
+              dirPermissionsMode: '0777'
+              dirPermissionsUser: 0
+              dirPermissionsGroup: 0
+              snapshots:
+                default_driver: filecopy
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: democratic-csi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true

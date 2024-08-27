@@ -17,6 +17,7 @@ resources:
   - ./resources/volsync.yml
   - ./resources/gpu-operator.yml
   - ./resources/node-feature-discovery.yml
+  - ./resources/democratic-csi.yml
 
 patches:
   - path: ./resources/config.patch.yml
