@@ -68,7 +68,7 @@ spec:
           - name: tailscale-extra
           - name: time-slicing-config
           - name: truenas
-          # - name: memos
+          - name: memos
           - name: whoami
           - name: windows
           - name: zigbee2mqtt
