@@ -6,4 +6,4 @@ no-autoupdate: true
 originRequest:
   noTLSVerify: true
 ingress:
-  - service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
+  - service: https://ingress-nginx-controller.ingress-nginx:443
