@@ -12,12 +12,13 @@ spec:
     helm:
       valuesObject:
         controller:
+          service:
+            annotations:
+              metallb.universe.tf/loadBalancerIPs: 192.168.50.51
+              prometheus.io/port: '10254'
+              prometheus.io/scrape: 'true'
           metrics:
             enabled: true
-          podAnnotations:
-            prometheus.io/port: '10254'
-            prometheus.io/scrape: 'true'
-          electionID: ingress-controller-leader
           ingressClass: internal
           ingressClassResource:
             name: internal
@@ -49,12 +50,13 @@ spec:
     helm:
       valuesObject:
         controller:
+          service:
+            annotations:
+              metallb.universe.tf/loadBalancerIPs: 192.168.50.52
+              prometheus.io/port: '10254'
+              prometheus.io/scrape: 'true'
           metrics:
             enabled: true
-          podAnnotations:
-            prometheus.io/port: '10254'
-            prometheus.io/scrape: 'true'
-          electionID: ingress-controller-leader
           ingressClass: external
           ingressClassResource:
             name: external
