@@ -16,7 +16,7 @@ metadata:
     gethomepage.dev/name: Whoami
     cert-manager.io/cluster-issuer: cloudflare-issuer
 spec:
-  ingressClassName: nginx
+  ingressClassName: external
   rules:
     - host: &host whoami.durbin.casa
       http:
