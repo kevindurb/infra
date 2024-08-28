@@ -5,7 +5,7 @@ kind: Kustomization
 namePrefix: memos-
 
 resources:
-  - ./resources/deployment.yml
+  # - ./resources/deployment.yml
   - ./resources/service.yml
   - ./resources/pvc.yml
   - ./resources/ingress.yml
