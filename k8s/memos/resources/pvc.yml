@@ -47,25 +47,25 @@ spec:
         key: minio-secret
         property: MINIO_SECRET_KEY
 
-# ---
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationSource
-# metadata:
-#   name: volume-backup
-# spec:
-#   sourcePVC: memos-volume
-#   trigger:
-#     schedule: '0 * * * *'
-#   restic:
-#     pruneIntervalDays: 14
-#     repository: memos-volume-repository
-#     retain:
-#       hourly: 6
-#       daily: 5
-#       weekly: 4
-#       monthly: 2
-#       yearly: 1
-#     copyMethod: Direct
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: volume-backup
+spec:
+  sourcePVC: memos-volume
+  trigger:
+    schedule: '0 * * * *'
+  restic:
+    pruneIntervalDays: 14
+    repository: memos-volume-repository
+    retain:
+      hourly: 6
+      daily: 5
+      weekly: 4
+      monthly: 2
+      yearly: 1
+    copyMethod: Direct
 
 ---
 apiVersion: volsync.backube/v1alpha1
