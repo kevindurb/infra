@@ -6,6 +6,7 @@ namePrefix: cloudflared-
 
 resources:
   - ./resources/cloudflared.yml
+  - ./resources/secret.yml
 
 configMapGenerator:
   - name: config

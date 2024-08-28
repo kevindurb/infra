@@ -28,6 +28,7 @@ spec:
               readOnly: true
             - name: creds
               mountPath: /etc/cloudflared/creds
+              subPath: credentials.json
               readOnly: true
       volumes:
         # https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel
