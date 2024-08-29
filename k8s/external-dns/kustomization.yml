@@ -6,7 +6,7 @@ namespace: external-dns
 namePrefix: external-dns-
 
 resources:
-  - https://kubernetes-sigs.github.io/external-dns/v0.14.2/contributing/crd-source/crd-manifest.yaml
+  - https://raw.githubusercontent.com/kubernetes-sigs/external-dns/v0.14.2/charts/external-dns/crds/dnsendpoint.yaml
   - ./resources/namespace.yml
   - ./resources/cloudflare.yml
   - ./resources/pihole.yml
