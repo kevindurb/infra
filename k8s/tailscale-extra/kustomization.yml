@@ -6,4 +6,4 @@ namespace: tailscale
 
 resources:
   - ./resources/secret.yml
-  # - ./resources/lan-connector.yml
+  - ./resources/lan-connector.yml
