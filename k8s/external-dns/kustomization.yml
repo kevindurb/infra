@@ -6,7 +6,10 @@ namespace: external-dns
 namePrefix: external-dns-
 
 resources:
-  - ./resources/external-dns.yml
+  - ./resources/namespace.yml
+  - ./resources/cloudflare.yml
+  - ./resources/pihole.yml
+  - ./resources/rbac.yml
 
 commonLabels:
   app.kubernetes.io/name: external-dns

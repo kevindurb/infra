@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: cloudflare
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      serviceAccountName: account
+      containers:
+        - name: external-dns
+          image: registry.k8s.io/external-dns/external-dns:v0.14.2
+          args:
+            - --registry=txt
+            - --txt-owner-id=kevindurb
+            - --source=ingress
+            - --provider=cloudflare
+            - --publish-internal-services
+            - --ingress-class=external
+          env:
+            - name: CF_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: external-dns-cloudflare-secret
+                  key: CF_API_TOKEN
+
+---
+apiVersion: k8s.bitwarden.com/v1
+kind: BitwardenSecret
+metadata:
+  name: cloudflare-secret
+spec:
+  organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
+  secretName: external-dns-cloudflare-secret
+  map:
+    - secretKeyName: CF_API_TOKEN
+      bwSecretId: 7e8ef72f-bfe5-4978-beaa-b1a100efef2a
+  authToken:
+    secretName: bw-auth-token
+    secretKey: token
