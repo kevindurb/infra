@@ -11,8 +11,9 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: authelia
     gethomepage.dev/name: Authelia
+    external-dns.alpha.kubernetes.io/target: external.durbin.casa
 spec:
-  ingressClassName: nginx
+  ingressClassName: external
   rules:
     - host: &host auth.durbin.casa
       http:

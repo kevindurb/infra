@@ -5,14 +5,12 @@ metadata:
   name: ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
-
     gethomepage.dev/href: 'https://manyfold.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: manyfold
     gethomepage.dev/group: Productivity
     gethomepage.dev/icon: manyfold
     gethomepage.dev/name: Manyfold
-
     nginx.ingress.kubernetes.io/proxy-body-size: '0'
     nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
     nginx.ingress.kubernetes.io/proxy-send-timeout: '600'
@@ -20,8 +18,9 @@ metadata:
     nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
     nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=
     nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
+    external-dns.alpha.kubernetes.io/target: external.durbin.casa
 spec:
-  ingressClassName: nginx
+  ingressClassName: external
   rules:
     - host: &host manyfold.durbin.casa
       http:
