@@ -11,7 +11,7 @@ spec:
     spec:
       serviceAccountName: service-account
       containers:
-        - image: ghcr.io/twin/gatus:v5.11.0
+        - image: ghcr.io/twin/gatus:v5.12.1
           name: gatus
           resources:
             requests:
