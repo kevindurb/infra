@@ -25,6 +25,7 @@ spec:
             - --pihole-server=http://pihole-service.default.svc.cluster.local
             - --ingress-class=internal
             - --ingress-class=nginx
+            - --policy=upsert-only
           env:
             - name: EXTERNAL_DNS_PIHOLE_PASSWORD
               valueFrom:
