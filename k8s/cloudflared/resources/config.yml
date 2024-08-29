@@ -6,13 +6,10 @@ no-autoupdate: true
 originRequest:
   noTLSVerify: true
 ingress:
-  - hostname: whoami.durbin.casa
+  - hostname: durbin.casa
     service: https://external-ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
 
-  - hostname: durbin.casa
-    service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
-
   - hostname: '*.durbin.casa'
-    service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
+    service: https://external-ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
 
   - service: http_status:404
