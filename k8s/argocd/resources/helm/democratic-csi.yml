@@ -1,0 +1,27 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: democratic-csi
+spec:
+  project: default
+  sources:
+    - repoURL: https://democratic-csi.github.io/charts/
+      targetRevision: 0.14.6
+      chart: democratic-csi
+      helm:
+        valueFiles:
+          - $values/k8s/democratic-csi/values.yml
+    - repoURL: https://github.com/kevindurb/infra.git
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: democratic-csi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
