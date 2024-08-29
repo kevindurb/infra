@@ -4,5 +4,11 @@
   "repositories": ["kevindurb/infra"],
   "kubernetes": {
     "fileMatch": ["k8s/.+\\.yaml$", "k8s/.+\\.yml$"]
+  },
+  "argocd": {
+    "fileMatch": [
+      "k8s/argocd/resources/helm/.+\\.yml$",
+      "k8s/argocd/resources/helm/.+\\.yaml$"
+    ]
   }
 }

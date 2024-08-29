@@ -11,14 +11,14 @@ resources:
   - ./resources/gatus-config.yml
   - ./resources/ingress.yml
   - ./resources/applications.yml
-  - ./resources/bitwarden.yml
-  - ./resources/external-secrets.yml
-  - ./resources/tailscale-operator.yml
-  - ./resources/volsync.yml
-  - ./resources/gpu-operator.yml
-  - ./resources/node-feature-discovery.yml
-  - ./resources/democratic-csi.yml
-  - ./resources/ingress-nginx.yml
+  - ./resources/helm/bitwarden.yml
+  - ./resources/helm/external-secrets.yml
+  - ./resources/helm/tailscale-operator.yml
+  - ./resources/helm/volsync.yml
+  - ./resources/helm/gpu-operator.yml
+  - ./resources/helm/node-feature-discovery.yml
+  - ./resources/helm/democratic-csi.yml
+  - ./resources/helm/ingress-nginx.yml
 
 patches:
   - path: ./resources/config.patch.yml
