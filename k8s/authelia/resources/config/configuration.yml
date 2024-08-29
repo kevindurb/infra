@@ -36,6 +36,7 @@ access_control:
   rules:
     # allow all internal traffic to specific apps
     - domain:
+        - calibre-web.durbin.casa
         - home-assistant.durbin.casa
         - mealie.durbin.casa
         - audiobookshelf.durbin.casa
