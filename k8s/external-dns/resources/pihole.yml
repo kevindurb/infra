@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployment
+  name: pihole-deployment
   labels: &labels
     app.kubernetes.io/component: pihole
 spec:
