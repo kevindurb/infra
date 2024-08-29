@@ -23,6 +23,8 @@ spec:
             - --registry=noop
             - --provider=pihole
             - --pihole-server=http://pihole-service.default.svc.cluster.local
+            - --ingress-class=internal
+            - --ingress-class=nginx
           env:
             - name: EXTERNAL_DNS_PIHOLE_PASSWORD
               valueFrom:
