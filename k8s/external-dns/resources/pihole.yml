@@ -20,12 +20,15 @@ spec:
           image: registry.k8s.io/external-dns/external-dns:v0.14.2
           args:
             - --source=ingress
+            - --source=crd
             - --registry=noop
             - --provider=pihole
             - --pihole-server=http://pihole-service.default.svc.cluster.local
             - --ingress-class=internal
             - --ingress-class=nginx
             - --policy=upsert-only
+            - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
+            - --crd-source-kind=DNSEndpoint
           env:
             - name: EXTERNAL_DNS_PIHOLE_PASSWORD
               valueFrom:
@@ -47,3 +50,14 @@ spec:
   authToken:
     secretName: bw-auth-token
     secretKey: token
+
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: pihole-external-endpoint
+spec:
+  endpoints:
+    - dnsName: external.durbin.casa
+      recordType: A
+      targets: [192.168.50.52]
