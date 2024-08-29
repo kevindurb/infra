@@ -31,7 +31,7 @@ spec:
             - name: FOLDER
               value: /config/config.d/
             - name: LABEL
-              value: authelia.io/enabled
+              value: authelia.com/enabled
             - name: NAMESPACE
               value: ALL
             - name: RESOURCE

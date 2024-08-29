@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authelia-config
+  labels:
+    authelia.com/enabled: 'true'
+data:
+  calibre-web.yml: |
+    access_control:
+      rules:
+        - domain: calibre-web.durbin.casa
+          policy: bypass
+          networks: [internal]
