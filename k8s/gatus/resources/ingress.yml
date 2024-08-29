@@ -13,10 +13,6 @@ metadata:
     gethomepage.dev/widget.type: gatus
     gethomepage.dev/widget.url: http://gatus-service
     cert-manager.io/cluster-issuer: cloudflare-issuer
-    nginx.ingress.kubernetes.io/auth-method: GET
-    nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
-    nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
-    nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
     external-dns.alpha.kubernetes.io/target: external.durbin.casa
 spec:
   ingressClassName: external

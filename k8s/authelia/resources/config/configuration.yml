@@ -36,9 +36,6 @@ access_control:
   rules:
     # allow all internal traffic to specific apps
     - domain:
-        - gatus.durbin.casa
-        - pihole.durbin.casa
-        - jellyfin.durbin.casa
         - calibre-web.durbin.casa
         - home-assistant.durbin.casa
         - mealie.durbin.casa
