@@ -38,7 +38,6 @@ spec:
           - name: home-assistant
           - name: homepage
           - name: idrac
-          - name: ingress-nginx
           - name: jellyfin
           - name: kanboard
           - name: local-path-provisioner
