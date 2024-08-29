@@ -6,4 +6,4 @@ metadata:
 spec:
   exitNode: true
   subnetRouter:
-    advertiseRoutes: ['192.168.0.0/8']
+    advertiseRoutes: ['192.168.0.0/16']
