@@ -6,6 +6,7 @@ namePrefix: authelia-
 
 resources:
   - ./resources/deployment.yml
+  - ./resources/rbac.yml
   - ./resources/gatus-config.yml
   - ./resources/ingress.yml
   - ./resources/pg.yml

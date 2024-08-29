@@ -13,6 +13,7 @@ spec:
     metadata:
       labels: *labels
     spec:
+      serviceAccountName: service-account
       enableServiceLinks: false
       volumes:
         - name: config
@@ -21,7 +22,23 @@ spec:
         - name: users
           secret:
             secretName: authelia-secret
+        - name: config-dir
+          emptyDir: {}
       containers:
+        - image: ghcr.io/kiwigrid/k8s-sidecar:1.27.5
+          name: config-sync
+          env:
+            - name: FOLDER
+              value: /config/config.d/
+            - name: LABEL
+              value: authelia.io/enabled
+            - name: NAMESPACE
+              value: ALL
+            - name: RESOURCE
+              value: both
+          volumeMounts:
+            - name: config-dir
+              mountPath: /config/config.d/
         - name: authelia
           image: ghcr.io/authelia/authelia:4.38.10
           command: [authelia]
@@ -31,10 +48,12 @@ spec:
             limits:
               memory: 500M
           args:
-            - --config=/config/configuration.yml
+            - --config=/config/config.d/
           volumeMounts:
+            - name: config-dir
+              mountPath: /config/config.d
             - name: config
-              mountPath: /config/configuration.yml
+              mountPath: /config/config.d/configuration.yml
               subPath: configuration.yml
               readOnly: true
             - name: users
