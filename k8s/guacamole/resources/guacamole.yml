@@ -86,7 +86,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
     nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
 spec:
-  ingressClassName: nginx
+  ingressClassName: internal
   tls:
     - hosts: [&host guacamole.durbin.casa]
       secretName: durbin-casa-wildcard-cert
