@@ -19,8 +19,11 @@ metadata:
     nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
 spec:
   ingressClassName: internal
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts: [&host prometheus.durbin.casa]
   rules:
-    - host: &host prometheus.durbin.casa
+    - host: *host
       http:
         paths:
           - pathType: Prefix
@@ -30,7 +33,3 @@ spec:
                 name: service
                 port:
                   name: web
-  tls:
-    - secretName: durbin-casa-wildcard-cert
-      hosts:
-        - *host
