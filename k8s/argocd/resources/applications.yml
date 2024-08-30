@@ -63,7 +63,7 @@ spec:
           - name: smokeping
           - name: smtp-relay
           - name: sonarr
-          - name: speedtest-tracker
+          - name: speedtest-exporter
           - name: tailscale-extra
           - name: time-slicing-config
           - name: truenas

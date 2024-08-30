@@ -85,6 +85,18 @@ scrape_configs:
         regex: (.+)
 
       - source_labels:
+          [__meta_kubernetes_service_annotation_prometheus_io_scrape_interval]
+        action: replace
+        target_label: __scrape_interval__
+        regex: (.+)
+
+      - source_labels:
+          [__meta_kubernetes_service_annotation_prometheus_io_scrape_timeout]
+        action: replace
+        target_label: __scrape_timeout__
+        regex: (.+)
+
+      - source_labels:
           [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
         action: replace
         target_label: __address__
