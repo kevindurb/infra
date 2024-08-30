@@ -9,12 +9,17 @@ metadata:
     gethomepage.dev/href: 'https://rss.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: rss
-    gethomepage.dev/group: Productivity
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: rss
     gethomepage.dev/name: RSS
 
+    nginx.ingress.kubernetes.io/auth-method: GET
+    nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
+    nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=
+    nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
+    external-dns.alpha.kubernetes.io/target: external.durbin.casa
 spec:
-  ingressClassName: internal
+  ingressClassName: external
   rules:
     - host: &host rss.durbin.casa
       http:

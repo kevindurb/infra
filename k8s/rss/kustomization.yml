@@ -7,7 +7,7 @@ namePrefix: rss-
 resources:
   - ./resources/deployment.yml
   - ./resources/gatus-config.yml
-  - ./resources/internal-ingress.yml
+  - ./resources/external-ingress.yml
   - ./resources/service.yml
 
 configMapGenerator:
