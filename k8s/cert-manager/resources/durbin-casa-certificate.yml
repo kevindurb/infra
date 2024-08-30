@@ -11,3 +11,17 @@ spec:
     name: cloudflare-issuer
   commonName: '*.durbin.casa'
   dnsNames: ['*.durbin.casa']
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: durbin-casa-wildcard-cert
+  namespace: monitoring
+spec:
+  secretName: durbin-casa-wildcard-cert
+  issuerRef:
+    kind: ClusterIssuer
+    name: cloudflare-issuer
+  commonName: '*.durbin.casa'
+  dnsNames: ['*.durbin.casa']
