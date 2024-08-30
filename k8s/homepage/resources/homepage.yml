@@ -22,8 +22,6 @@ spec:
             name: config
         - name: config
           emptyDir: {}
-        - name: next
-          emptyDir: {}
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:v0.9.6
@@ -44,8 +42,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /app/config
-            # - name: next
-            #   mountPath: /app/.next
             - name: config-map
               mountPath: /app/config/settings.yaml
               subPath: settings.yml
