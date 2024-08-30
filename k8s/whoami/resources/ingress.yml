@@ -13,7 +13,7 @@ metadata:
     gethomepage.dev/app: whoami
     gethomepage.dev/group: Other
     gethomepage.dev/icon: mdi-account
-    gethomepage.dev/name: Whoamitest
+    gethomepage.dev/name: Whoami
     cert-manager.io/cluster-issuer: cloudflare-issuer
     external-dns.alpha.kubernetes.io/target: external.durbin.casa
 spec:
