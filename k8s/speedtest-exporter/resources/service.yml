@@ -6,9 +6,6 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/component: exporter
-    prometheus.io/scrape: 'true'
-    prometheus.io/scrape_interval: 12h
-    prometheus.io/scrape_timeout: 60s
   ports:
     - name: http
       port: 80

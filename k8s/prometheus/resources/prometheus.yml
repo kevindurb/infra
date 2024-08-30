@@ -22,6 +22,12 @@ alerting:
         - targets: [alertmanager-service]
 
 scrape_configs:
+  - job_name: speedtest
+    scrape_interval: 12h
+    scrape_timeout: 5m
+    static_configs:
+      - targets: [speedtest-exporter-service.default.svc.cluster.local]
+
   - job_name: volsync
     scheme: https
     tls_config:
@@ -82,18 +88,6 @@ scrape_configs:
       - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
         action: replace
         target_label: __metrics_path__
-        regex: (.+)
-
-      - source_labels:
-          [__meta_kubernetes_service_annotation_prometheus_io_scrape_interval]
-        action: replace
-        target_label: __scrape_interval__
-        regex: (.+)
-
-      - source_labels:
-          [__meta_kubernetes_service_annotation_prometheus_io_scrape_timeout]
-        action: replace
-        target_label: __scrape_timeout__
         regex: (.+)
 
       - source_labels:
