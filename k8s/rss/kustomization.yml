@@ -1,0 +1,22 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: rss-
+
+resources:
+  - ./resources/deployment.yml
+  - ./resources/gatus-config.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/service.yml
+
+configMapGenerator:
+  - name: config
+    files:
+      - ./resources/config/feeds.txt
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: rss
+    includeTemplates: true
+    includeSelectors: true
