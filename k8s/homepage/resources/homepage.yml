@@ -44,8 +44,8 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /app/config
-            - name: next
-              mountPath: /app/.next
+            # - name: next
+            #   mountPath: /app/.next
             - name: config-map
               mountPath: /app/config/settings.yaml
               subPath: settings.yml
