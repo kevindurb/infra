@@ -5,8 +5,8 @@ kind: Kustomization
 namePrefix: speedtest-exporter-
 
 resources:
-  - ./deployment.yml
-  - ./service.yml
+  - ./resources/deployment.yml
+  - ./resources/service.yml
 
 labels:
   - pairs:
