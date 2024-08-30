@@ -27,6 +27,8 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: run
+          emptyDir: {}
       containers:
         - name: calibre-web
           image: ghcr.io/linuxserver/calibre-web:version-0.6.23
@@ -36,7 +38,7 @@ spec:
             # runAsNonRoot: true
             # runAsUser: 1000
             # runAsGroup: 1000
-            # readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
               add: [CAP_SETUID]
@@ -52,14 +54,14 @@ spec:
               value: '1000'
             - name: TZ
               value: America/Denver
-            - name: DOCKER_MODS
-              value: linuxserver/mods:universal-calibre
           volumeMounts:
             - name: volume
               mountPath: /config
             - name: media
               subPath: eBooks
               mountPath: /books
+            - name: run
+              mountPath: /run
           ports:
             - name: http
               containerPort: 8083
