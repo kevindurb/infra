@@ -36,7 +36,33 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: '/'
+            path: /
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: https
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webhook-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: https
+    external-dns.alpha.kubernetes.io/target: external.durbin.casa
+spec:
+  ingressClassName: external
+  tls:
+    - hosts: [&host argocdwebhook.durbin.casa]
+      secretName: durbin-casa-wildcard-cert
+  rules:
+    - host: *host
+      http:
+        paths:
+          - pathType: Exact
+            path: /api/webhook
             backend:
               service:
                 name: argocd-server
