@@ -15,6 +15,11 @@ spec:
       labels:
         app.kubernetes.io/component: web
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       volumes:
         - name: config-volume
           persistentVolumeClaim:
@@ -27,17 +32,22 @@ spec:
             claimName: truenas-ripping-storage
       containers:
         - name: radarr
-          image: lscr.io/linuxserver/radarr:5.9.1
+          image: ghrc.io/onedr0p/radarr:5.9.1
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
           resources:
             requests:
               memory: 200M
             limits:
               memory: 500M
           env:
-            - name: PUID
-              value: '1000'
-            - name: PGID
-              value: '1000'
             - name: TZ
               value: America/Denver
           volumeMounts:
