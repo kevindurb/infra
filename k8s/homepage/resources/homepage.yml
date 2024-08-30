@@ -20,6 +20,8 @@ spec:
         - name: config
           configMap:
             name: config
+        - name: logs
+          emptyDir: {}
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:v0.9.6
@@ -53,6 +55,8 @@ spec:
             - name: config
               mountPath: /app/config/kubernetes.yaml
               subPath: kubernetes.yml
+            - name: logs
+              mountPath: /app/config/logs
           envFrom:
             - secretRef:
                 name: homepage-secret
