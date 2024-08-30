@@ -20,19 +20,19 @@ spec:
           configMap:
             name: config
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        # runAsNonRoot: true
+        # runAsUser: 1000
+        # runAsGroup: 1000
+        # fsGroup: 1000
       containers:
         - name: rss
           image: codeberg.org/danb/rss:v1.5.2
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
+            # allowPrivilegeEscalation: false
+            # runAsNonRoot: true
+            # runAsUser: 1000
+            # runAsGroup: 1000
             # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
