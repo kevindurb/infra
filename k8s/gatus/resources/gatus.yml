@@ -49,6 +49,15 @@ spec:
               value: /config
         - image: ghcr.io/kiwigrid/k8s-sidecar:1.27.5
           name: config-sync
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
           env:
             - name: FOLDER
               value: /config
