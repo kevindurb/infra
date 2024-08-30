@@ -39,17 +39,14 @@ spec:
             # runAsUser: 1000
             # runAsGroup: 1000
             # readOnlyRootFilesystem: true
-            capabilities:
-              drop: [ALL]
-              add: [CAP_SETUID, CAP_SETGUID]
+            # capabilities:
+            #   drop: [ALL]
           resources:
             requests:
               memory: 300M
             limits:
               memory: 1G
           env:
-            - name: S6_READ_ONLY_ROOT
-              value: '1'
             - name: PUID
               value: '1000'
             - name: PGID
