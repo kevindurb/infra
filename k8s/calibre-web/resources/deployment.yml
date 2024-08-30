@@ -37,8 +37,9 @@ spec:
             # runAsUser: 1000
             # runAsGroup: 1000
             # readOnlyRootFilesystem: true
-            # capabilities:
-            #   drop: [ALL]
+            capabilities:
+              drop: [ALL]
+              add: [CAP_SETUID]
           resources:
             requests:
               memory: 300M
