@@ -11,9 +11,25 @@ spec:
         - name: data-volume
           persistentVolumeClaim:
             claimName: data-volume
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ['sh', '-c', 'chown -R 1000:1000 /data']
+          volumeMounts:
+            - mountPath: /data
+              name: data-volume
       containers:
         - name: freshrss
           image: docker.io/freshrss/freshrss:1.24.2
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
           resources:
             requests:
               memory: 150M
