@@ -15,6 +15,11 @@ spec:
     metadata:
       labels: *labels
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       volumes:
         - name: volume
           persistentVolumeClaim:
@@ -22,6 +27,15 @@ spec:
       containers:
         - name: docmost
           image: docker.io/docmost/docmost:0.2.10
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
           resources:
             requests:
               memory: 300M
