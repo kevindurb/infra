@@ -24,8 +24,6 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-        - name: dist
-          emptyDir: {}
       containers:
         - name: docmost
           image: docker.io/docmost/docmost:0.2.10
@@ -35,7 +33,7 @@ spec:
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
+            # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           resources:
@@ -69,8 +67,6 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /app/data/storage
-            - name: dist
-              mountPath: /app/apps/client/dist
           ports:
             - name: web
               containerPort: 3000
