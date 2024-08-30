@@ -36,7 +36,7 @@ spec:
             # runAsNonRoot: true
             # runAsUser: 1000
             # runAsGroup: 1000
-            readOnlyRootFilesystem: true
+            # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           resources:
@@ -45,8 +45,6 @@ spec:
             limits:
               memory: 1G
           env:
-            - name: S6_READ_ONLY_ROOT
-              value: '1'
             - name: PUID
               value: '1000'
             - name: PGID
