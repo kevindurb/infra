@@ -14,7 +14,6 @@ layout:
   Status:
     icon: mdi-speedometer
     style: row
-    columns: 5
   Media:
     icon: mdi-filmstrip
     style: column
