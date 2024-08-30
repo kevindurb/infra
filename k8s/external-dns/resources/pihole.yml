@@ -14,10 +14,24 @@ spec:
     metadata:
       labels: *labels
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       serviceAccountName: account
       containers:
         - name: external-dns
           image: registry.k8s.io/external-dns/external-dns:v0.14.2
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
           args:
             - --source=ingress
             - --source=crd
