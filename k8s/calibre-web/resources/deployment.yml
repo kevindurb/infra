@@ -45,6 +45,8 @@ spec:
             limits:
               memory: 1G
           env:
+            - name: S6_READ_ONLY_ROOT
+              value: '1'
             - name: PUID
               value: '1000'
             - name: PGID
