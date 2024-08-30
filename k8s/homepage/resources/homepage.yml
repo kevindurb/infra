@@ -17,10 +17,10 @@ spec:
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
       volumes:
-        - name: config
+        - name: config-map
           configMap:
             name: config
-        - name: logs
+        - name: config
           emptyDir: {}
       containers:
         - name: homepage
@@ -41,22 +41,22 @@ spec:
               memory: 400M
           volumeMounts:
             - name: config
+              mountPath: /app/config
+            - name: config-map
               mountPath: /app/config/settings.yaml
               subPath: settings.yml
-            - name: config
+            - name: config-map
               mountPath: /app/config/services.yaml
               subPath: services.yml
-            - name: config
+            - name: config-map
               mountPath: /app/config/bookmarks.yaml
               subPath: bookmarks.yml
-            - name: config
+            - name: config-map
               mountPath: /app/config/widgets.yaml
               subPath: widgets.yml
-            - name: config
+            - name: config-map
               mountPath: /app/config/kubernetes.yaml
               subPath: kubernetes.yml
-            - name: logs
-              mountPath: /app/config/logs
           envFrom:
             - secretRef:
                 name: homepage-secret
