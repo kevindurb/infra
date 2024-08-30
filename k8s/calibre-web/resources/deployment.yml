@@ -16,10 +16,10 @@ spec:
       labels: *labels
     spec:
       securityContext:
-        # runAsNonRoot: true
-        # runAsUser: 1000
-        # runAsGroup: 1000
-        # fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       volumes:
         - name: volume
           persistentVolumeClaim:
@@ -31,26 +31,22 @@ spec:
           emptyDir: {}
       containers:
         - name: calibre-web
-          image: ghcr.io/linuxserver/calibre-web:version-0.6.23
+          image: ghcr.io/bjw-s/calibre-web:0.6.23
           securityContext:
             privileged: false
-            # allowPrivilegeEscalation: false
-            # runAsNonRoot: true
-            # runAsUser: 1000
-            # runAsGroup: 1000
-            # readOnlyRootFilesystem: true
-            # capabilities:
-            #   drop: [ALL]
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
           resources:
             requests:
               memory: 300M
             limits:
               memory: 1G
           env:
-            - name: PUID
-              value: '1000'
-            - name: PGID
-              value: '1000'
             - name: TZ
               value: America/Denver
           volumeMounts:
