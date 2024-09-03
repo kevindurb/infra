@@ -1,4 +1,8 @@
 ---
+redash:
+  secretKey: thisreallyshouldbesecret
+  cookieSecret: thisreallyshouldbesecret
+
 externalPostgreSQLSecret:
   name: redash-postgres-app
   key: uri
