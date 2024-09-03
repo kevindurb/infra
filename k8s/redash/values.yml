@@ -1,0 +1,10 @@
+---
+externalPostgreSQLSecret:
+  name: redash-postgres-app
+  key: uri
+postgresql:
+  enabled: false
+
+externalRedis: redis://redash-valkey-service
+redis:
+  enabled: false

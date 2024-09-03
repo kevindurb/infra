@@ -5,10 +5,16 @@ metadata:
   name: redash
 spec:
   project: default
-  source:
-    repoURL: https://getredash.github.io/contrib-helm-chart
-    targetRevision: 3.0.1
-    chart: redash
+  sources:
+    - repoURL: https://getredash.github.io/contrib-helm-chart
+      targetRevision: 3.0.1
+      chart: redash
+      helm:
+        valueFiles:
+          - $values/k8s/democratic-csi/values.yml
+    - repoURL: https://github.com/kevindurb/infra.git
+      targetRevision: HEAD
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: redash
