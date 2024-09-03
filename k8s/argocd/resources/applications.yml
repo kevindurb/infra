@@ -58,7 +58,6 @@ spec:
           - name: pihole
           - name: prometheus
           - name: radarr
-          - name: rss
           - name: scrypted
           - name: smartctl-exporter
           - name: smokeping
