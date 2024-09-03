@@ -37,3 +37,8 @@ tasks:
     cmds:
       - task: build-all
       - kubeconform {{ .kubeconformArgs }} ./dist
+
+  restart-app:
+    requires:
+      vars: [appname]
+    cmd: k rollout restart deployment/{{ .appname }}-deployment
