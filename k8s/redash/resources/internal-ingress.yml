@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+
+    gethomepage.dev/href: 'https://redash.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: redash
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: redash
+    gethomepage.dev/name: Redash
+
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host redash.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: helm-redash
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

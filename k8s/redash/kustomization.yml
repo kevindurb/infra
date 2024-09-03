@@ -7,6 +7,7 @@ namespace: redash
 namePrefix: redash-
 
 resources:
+  - ./resources/internal-ingress.yml
   - ./resources/pg.yml
   - ./resources/valkey.yml
 
