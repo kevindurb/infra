@@ -11,7 +11,7 @@ spec:
       chart: redash
       helm:
         valueFiles:
-          - $values/k8s/democratic-csi/values.yml
+          - $values/k8s/redash/values.yml
     - repoURL: https://github.com/kevindurb/infra.git
       targetRevision: HEAD
       ref: values
