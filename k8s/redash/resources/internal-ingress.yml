@@ -23,7 +23,7 @@ spec:
             path: '/'
             backend:
               service:
-                name: helm-redash
+                name: redash-helm
                 port:
                   name: http
   tls:
