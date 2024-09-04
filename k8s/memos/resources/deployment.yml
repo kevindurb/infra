@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: memos
-          image: ghcr.io/usememos/memos:0.22.4
+          image: ghcr.io/usememos/memos:0.22.5
           resources:
             requests:
               memory: 50M
