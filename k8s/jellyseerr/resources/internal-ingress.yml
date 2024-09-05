@@ -13,6 +13,7 @@ metadata:
     gethomepage.dev/name: Jellyseerr
     gethomepage.dev/widget.type: jellyseerr
     gethomepage.dev/widget.url: http://jellyseerr-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_JELLYSEERR_KEY}}'
 
 spec:
   ingressClassName: internal
