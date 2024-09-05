@@ -103,7 +103,6 @@ spec:
             # runAsGroup: 1000
             # readOnlyRootFilesystem: true
             capabilities:
-              drop: [ALL]
               add: [NET_ADMIN]
           volumeMounts:
             - name: volume
