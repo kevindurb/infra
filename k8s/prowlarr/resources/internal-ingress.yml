@@ -15,6 +15,7 @@ metadata:
     gethomepage.dev/weight: 20
     gethomepage.dev/widget.type: prowlarr
     gethomepage.dev/widget.url: http://prowlarr-service
+    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_PROWLARR_KEY}}'
 
 spec:
   ingressClassName: internal
