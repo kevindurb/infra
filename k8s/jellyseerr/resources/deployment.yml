@@ -20,7 +20,7 @@ spec:
           persistentVolumeClaim:
             claimName: volume
       securityContext:
-        # runAsNonRoot: true
+        runAsNonRoot: true
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
@@ -30,12 +30,12 @@ spec:
           resources:
             requests:
               memory: 100M
-            limits:
-              memory: 200M
+            # limits:
+            #   memory: 200M
           securityContext:
             privileged: false
-            # allowPrivilegeEscalation: false
-            # runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
             # readOnlyRootFilesystem: true
