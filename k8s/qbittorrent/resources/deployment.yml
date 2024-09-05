@@ -71,23 +71,19 @@ spec:
           ports:
             - name: http
               containerPort: 80
-          probes:
-            liveness: &probes
-              enabled: false
-              custom: true
-              spec:
-                httpGet:
-                  path: /api/v2/app/version
-                initialDelaySeconds: 30
-                periodSeconds: 30
-                timeoutSeconds: 10
-                failureThreshold: 6
-            readiness: *probes
-            startup:
-              enabled: true
-              spec:
-                failureThreshold: 30
-                periodSeconds: 10
+          livenessProbe: &probes
+            httpGet:
+              path: /api/v2/app/version
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 6
+          readinessProbe: *probes
+          startupProbe:
+            httpGet:
+              path: /api/v2/app/version
+            failureThreshold: 30
+            periodSeconds: 10
         # - name: gluetun
         #   image: ghcr.io/qdm12/gluetun:v3.39.0
         #   resources:
