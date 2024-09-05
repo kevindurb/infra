@@ -39,6 +39,7 @@ spec:
           - name: homepage
           - name: idrac
           - name: jellyfin
+          - name: jellyseerr
           - name: kanboard
           - name: local-path-provisioner
           - name: makemkv
