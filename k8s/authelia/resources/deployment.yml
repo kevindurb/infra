@@ -25,7 +25,7 @@ spec:
         - name: config-dir
           emptyDir: {}
       containers:
-        - image: ghcr.io/kiwigrid/k8s-sidecar:1.27.5
+        - image: ghcr.io/kiwigrid/k8s-sidecar:1.27.6
           name: config-sync
           env:
             - name: FOLDER
