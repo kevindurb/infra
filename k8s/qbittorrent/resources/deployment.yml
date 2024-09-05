@@ -89,7 +89,7 @@ spec:
                 failureThreshold: 30
                 periodSeconds: 10
         - name: gluetun
-          image: ghcr.io/qdm/gluetun:v3.39.0
+          image: ghcr.io/qdm12/gluetun:v3.39.0
           resources:
             requests:
               memory: 100M
