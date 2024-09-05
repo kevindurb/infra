@@ -1,0 +1,163 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: qbittorrent
+          image: ghcr.io/onedr0p/qbittorrent:4.6.6
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 200M
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: volume
+              mountPath: /config
+              subPath: qbittorrent
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: QBITTORRENT__PORT
+              value: '80'
+            - name: QBITTORRENT__BT_PORT
+              value: '50413'
+            - name: QBT_Preferences__WebUI__AlternativeUIEnabled
+              value: 'false'
+            - name: QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled
+              value: 'true'
+            - name: QBT_Preferences__WebUI__AuthSubnetWhitelist
+              value: 10.42.0.0/16
+            - name: QBT_Preferences__WebUI__LocalHostAuth
+              value: 'false'
+            - name: QBT_BitTorrent__Session__Interface
+              value: wg0
+            - name: QBT_BitTorrent__Session__InterfaceAddress
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: QBT_BitTorrent__Session__InterfaceName
+              value: wg0
+          ports:
+            - name: http
+              containerPort: 80
+          probes:
+            liveness: &probes
+              enabled: false
+              custom: true
+              spec:
+                httpGet:
+                  path: /api/v2/app/version
+                initialDelaySeconds: 30
+                periodSeconds: 30
+                timeoutSeconds: 10
+                failureThreshold: 6
+            readiness: *probes
+            startup:
+              enabled: true
+              spec:
+                failureThreshold: 30
+                periodSeconds: 10
+        - name: gluetun
+          image: ghcr.io/qdm/gluetun:v3.39.0
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 200M
+          # TODO: prob cant have all this lockdown on this one
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+              add: [NET_ADMIN]
+          volumeMounts:
+            - name: volume
+              mountPath: /config
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: VPN_SERVICE_PROVIDER
+              value: custom
+            - name: VPN_TYPE
+              value: wireguard
+            - name: VPN_INTERFACE
+              value: wg0
+            - name: VPN_ENDPOINT_PORT
+              value: '51820'
+            - name: VPN_PORT_FORWARDING
+              value: 'on'
+            - name: VPN_PORT_FORWARDING_PROVIDER
+              value: protonvpn
+            - name: DOT
+              value: 'off'
+            - name: FIREWALL_INPUT_PORTS
+              value: '80'
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: 10.42.0.0/16
+          ports:
+            - name: http
+              containerPort: 80
+        - name: port-forward
+          image: ghcr.io/bjw-s/gluetun-qb-port-sync:v0.0.2
+          env:
+            - name: GLUETUN_CONTROL_SERVER_HOST
+              value: localhost
+            - name: GLUETUN_CONTROL_SERVER_PORT
+              value: '8000'
+            - name: QBITTORRENT_HOST
+              value: localhost
+            - name: QBITTORRENT_WEBUI_PORT
+              value: '80'
+            - name: CRON_ENABLED
+              value: 'true'
+            - name: CRON_SCHEDULE
+              value: '*/5 * * * *'
+            - name: LOG_TIMESTAMP
+              value: 'false'
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: volume
+              mountPath: /config
+              subPath: port-forward
