@@ -39,8 +39,8 @@ spec:
             runAsUser: 1000
             runAsGroup: 1000
             # readOnlyRootFilesystem: true
-            capabilities:
-              drop: [ALL]
+            # capabilities:
+            #   drop: [ALL]
           volumeMounts:
             - name: volume
               mountPath: /app/config
