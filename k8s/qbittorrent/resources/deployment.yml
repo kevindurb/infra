@@ -95,14 +95,13 @@ spec:
               memory: 100M
             limits:
               memory: 200M
-          # TODO: prob cant have all this lockdown on this one
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
+            # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
               add: [NET_ADMIN]
