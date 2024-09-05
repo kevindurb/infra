@@ -88,49 +88,49 @@ spec:
               spec:
                 failureThreshold: 30
                 periodSeconds: 10
-        - name: gluetun
-          image: ghcr.io/qdm12/gluetun:v3.39.0
-          resources:
-            requests:
-              memory: 100M
-            limits:
-              memory: 200M
-          securityContext:
-            privileged: false
-            allowPrivilegeEscalation: false
-            # runAsNonRoot: true
-            # runAsUser: 1000
-            # runAsGroup: 1000
-            # readOnlyRootFilesystem: true
-            capabilities:
-              add: [NET_ADMIN]
-          volumeMounts:
-            - name: volume
-              mountPath: /config
-          env:
-            - name: TZ
-              value: America/Denver
-            - name: VPN_SERVICE_PROVIDER
-              value: custom
-            - name: VPN_TYPE
-              value: wireguard
-            - name: VPN_INTERFACE
-              value: wg0
-            - name: VPN_ENDPOINT_PORT
-              value: '51820'
-            - name: VPN_PORT_FORWARDING
-              value: 'on'
-            - name: VPN_PORT_FORWARDING_PROVIDER
-              value: protonvpn
-            - name: DOT
-              value: 'off'
-            - name: FIREWALL_INPUT_PORTS
-              value: '80'
-            - name: FIREWALL_OUTBOUND_SUBNETS
-              value: 10.42.0.0/16
-          ports:
-            - name: http
-              containerPort: 80
+        # - name: gluetun
+        #   image: ghcr.io/qdm12/gluetun:v3.39.0
+        #   resources:
+        #     requests:
+        #       memory: 100M
+        #     limits:
+        #       memory: 200M
+        #   securityContext:
+        #     privileged: false
+        #     allowPrivilegeEscalation: false
+        #     # runAsNonRoot: true
+        #     # runAsUser: 1000
+        #     # runAsGroup: 1000
+        #     # readOnlyRootFilesystem: true
+        #     capabilities:
+        #       add: [NET_ADMIN]
+        #   volumeMounts:
+        #     - name: volume
+        #       mountPath: /config
+        #   env:
+        #     - name: TZ
+        #       value: America/Denver
+        #     - name: VPN_SERVICE_PROVIDER
+        #       value: custom
+        #     - name: VPN_TYPE
+        #       value: wireguard
+        #     - name: VPN_INTERFACE
+        #       value: wg0
+        #     - name: VPN_ENDPOINT_PORT
+        #       value: '51820'
+        #     - name: VPN_PORT_FORWARDING
+        #       value: 'on'
+        #     - name: VPN_PORT_FORWARDING_PROVIDER
+        #       value: protonvpn
+        #     - name: DOT
+        #       value: 'off'
+        #     - name: FIREWALL_INPUT_PORTS
+        #       value: '80'
+        #     - name: FIREWALL_OUTBOUND_SUBNETS
+        #       value: 10.42.0.0/16
+        #   ports:
+        #     - name: http
+        #       containerPort: 80
         - name: port-forward
           image: ghcr.io/bjw-s/gluetun-qb-port-sync:v0.0.2
           env:
