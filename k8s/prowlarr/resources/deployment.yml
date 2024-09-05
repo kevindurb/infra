@@ -19,6 +19,8 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: tmp
+          emptyDir: {}
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -44,6 +46,8 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /config
+            - name: tmp
+              mountPath: /tmp
           env:
             - name: TZ
               value: America/Denver
