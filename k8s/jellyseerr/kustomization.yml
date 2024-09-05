@@ -4,7 +4,12 @@ kind: Kustomization
 
 namePrefix: jellyseerr-
 
-resources: []
+resources:
+  - ./resources/deployment.yml
+  - ./resources/gatus-config.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/pvc.yml
+  - ./resources/service.yml
 
 labels:
   - pairs:
