@@ -36,7 +36,7 @@ spec:
             runAsGroup: 1000
           resources:
             limits:
-              memory: 2G
+              memory: 4G
               nvidia.com/gpu: 1
             requests:
               memory: 1G
