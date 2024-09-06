@@ -9,10 +9,9 @@ metadata:
     gethomepage.dev/href: 'https://prowlarr.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: prowlarr
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Servarr
     gethomepage.dev/icon: prowlarr
     gethomepage.dev/name: Prowlarr
-    gethomepage.dev/weight: 25
     gethomepage.dev/widget.type: prowlarr
     gethomepage.dev/widget.url: http://prowlarr-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_PROWLARR_KEY}}'

@@ -7,10 +7,9 @@ metadata:
     gethomepage.dev/href: 'https://sonarr.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: sonarr
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Servarr
     gethomepage.dev/icon: sonarr
     gethomepage.dev/name: Sonarr
-    gethomepage.dev/weight: '20'
     gethomepage.dev/widget.type: sonarr
     gethomepage.dev/widget.url: http://sonarr-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_SONARR_KEY}}'

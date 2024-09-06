@@ -9,10 +9,9 @@ metadata:
     gethomepage.dev/href: 'https://qbittorrent.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: qbittorrent
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Servarr
     gethomepage.dev/icon: qbittorrent
     gethomepage.dev/name: Qbittorrent
-    gethomepage.dev/weight: 25
     gethomepage.dev/widget.type: qbittorrent
     gethomepage.dev/widget.url: http://qbittorrent-service
     nginx.ingress.kubernetes.io/auth-method: GET

@@ -9,10 +9,9 @@ metadata:
     gethomepage.dev/href: 'https://flaresolverr.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: flaresolverr
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Servarr
     gethomepage.dev/icon: flaresolverr
     gethomepage.dev/name: Flaresolverr
-    gethomepage.dev/weight: 25
     nginx.ingress.kubernetes.io/auth-method: GET
     nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
     nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method

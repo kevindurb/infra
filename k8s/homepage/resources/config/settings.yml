@@ -28,3 +28,7 @@ layout:
   Other:
     icon: mdi-format-list-bulleted
     style: column
+  Servarr:
+    icon: mdi-download
+    style: row
+    columns: 5
