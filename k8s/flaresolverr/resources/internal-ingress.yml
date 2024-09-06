@@ -12,6 +12,11 @@ metadata:
     gethomepage.dev/group: Servarr
     gethomepage.dev/icon: flaresolverr
     gethomepage.dev/name: Flaresolverr
+    gethomepage.dev/widget.type: customapi
+    gethomepage.dev/widget.url: http://flaresolverr-service
+    gethomepage.dev/widget.mappings.0.field: msg
+    gethomepage.dev/widget.mappings.0.label: Message
+    gethomepage.dev/widget.mappings.0.format: text
     nginx.ingress.kubernetes.io/auth-method: GET
     nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
     nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
