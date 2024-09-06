@@ -19,6 +19,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
       securityContext:
         # runAsNonRoot: true
         # runAsUser: 1000
@@ -45,6 +48,8 @@ spec:
             - name: volume
               mountPath: /config
               subPath: qbittorrent
+            - name: truenas-media
+              mountPath: /media
           env:
             - name: TZ
               value: America/Denver
