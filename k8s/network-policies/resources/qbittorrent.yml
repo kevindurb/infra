@@ -19,30 +19,29 @@ spec:
             matchLabels:
               app.kubernetes.io/name: ingress-nginx
               app.kubernetes.io/instance: internal-ingress-nginx
-      ports:
-        - port: &port 80
+      ports: &ports
+        - port: 80
           protocol: TCP
     - from:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: radarr
-      ports:
-        - port: *port
-          protocol: TCP
+      ports: *ports
     - from:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: sonarr
-      ports:
-        - port: *port
-          protocol: TCP
+      ports: *ports
     - from:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: homepage
-      ports:
-        - port: *port
-          protocol: TCP
+      ports: *ports
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: gatus
+      ports: *ports
   egress:
     - to:
         - namespaceSelector:
