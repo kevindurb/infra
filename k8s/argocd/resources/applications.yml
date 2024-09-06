@@ -27,6 +27,7 @@ spec:
           - name: external-snapshotter
           - name: external-volumes
           - name: filebrowser
+          - name: flaresolverr
           - name: freshrss
           - name: frigate
           - name: gatus
