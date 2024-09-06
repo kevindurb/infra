@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: reloader
+
+resources:
+  - https://github.com/stakater/Reloader/deployments/kubernetes
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: reloader
+    includeTemplates: true
+    includeSelectors: true
