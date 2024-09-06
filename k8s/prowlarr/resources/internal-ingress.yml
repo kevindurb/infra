@@ -12,7 +12,7 @@ metadata:
     gethomepage.dev/group: Media
     gethomepage.dev/icon: prowlarr
     gethomepage.dev/name: Prowlarr
-    gethomepage.dev/weight: 20
+    gethomepage.dev/weight: 25
     gethomepage.dev/widget.type: prowlarr
     gethomepage.dev/widget.url: http://prowlarr-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_PROWLARR_KEY}}'

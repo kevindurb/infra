@@ -12,7 +12,7 @@ metadata:
     gethomepage.dev/group: Media
     gethomepage.dev/icon: qbittorrent
     gethomepage.dev/name: Qbittorrent
-    gethomepage.dev/weight: 20
+    gethomepage.dev/weight: 25
     gethomepage.dev/widget.type: qbittorrent
     gethomepage.dev/widget.url: http://qbittorrent-service
     nginx.ingress.kubernetes.io/auth-method: GET
