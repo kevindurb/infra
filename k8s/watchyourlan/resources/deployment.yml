@@ -48,6 +48,8 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: IFACES
+              value: eth0
           ports:
             - name: http
               containerPort: 8840
