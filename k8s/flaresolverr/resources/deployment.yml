@@ -15,9 +15,6 @@ spec:
     metadata:
       labels: *labels
     spec:
-      volumes:
-        - name: tmp
-          emptyDir: {}
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -30,19 +27,16 @@ spec:
             requests:
               memory: 100M
             limits:
-              memory: 200M
+              memory: 500M
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
+            # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
           env:
             - name: TZ
               value: America/Denver
