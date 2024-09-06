@@ -11,7 +11,7 @@ metadata:
     gethomepage.dev/app: watchyourlan
     gethomepage.dev/group: Other
     gethomepage.dev/icon: watchyourlan
-    gethomepage.dev/name: Watchyourlan
+    gethomepage.dev/name: WatchYourLAN
 
 spec:
   ingressClassName: internal
