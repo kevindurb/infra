@@ -16,6 +16,7 @@ metadata:
     gethomepage.dev/name: Whoami
     cert-manager.io/cluster-issuer: cloudflare-issuer
     external-dns.alpha.kubernetes.io/target: external.durbin.casa
+    gethomepage.dev/widget.type: customapi
     gethomepage.dev/widget.url: http://whoami-service/api
     gethomepage.dev/widget.mappings.0.field: hostname
     gethomepage.dev/widget.mappings.0.label: Hostname
