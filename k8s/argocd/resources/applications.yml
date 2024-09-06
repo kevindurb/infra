@@ -49,6 +49,7 @@ spec:
           - name: minecraft
           - name: minio
           - name: mosquitto
+          - name: network-policies
           - name: nocodb
           - name: node-exporter
           - name: ollama

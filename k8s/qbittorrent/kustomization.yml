@@ -10,7 +10,6 @@ resources:
   - ./resources/internal-ingress.yml
   - ./resources/pvc.yml
   - ./resources/service.yml
-  # - ./resources/network-policy.yml
 
 labels:
   - pairs:
