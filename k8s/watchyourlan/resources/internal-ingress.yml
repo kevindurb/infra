@@ -12,6 +12,9 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: watchyourlan
     gethomepage.dev/name: WatchYourLAN
+    gethomepage.dev/widget.url: http://watchyourlan-service/api/all
+    gethomepage.dev/widget.mappings.0.label: Devices
+    gethomepage.dev/widget.mappings.0.format: size
 
 spec:
   ingressClassName: internal
