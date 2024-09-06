@@ -63,7 +63,6 @@ spec:
           - name: prowlarr
           - name: qbittorrent
           - name: radarr
-          - name: redash
           - name: scrypted
           - name: smartctl-exporter
           - name: smokeping
