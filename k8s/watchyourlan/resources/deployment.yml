@@ -20,10 +20,10 @@ spec:
           persistentVolumeClaim:
             claimName: volume
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        # runAsNonRoot: true
+        # runAsUser: 1000
+        # runAsGroup: 1000
+        # fsGroup: 1000
       hostNetwork: true
       containers:
         - name: watchyourlan
@@ -35,13 +35,13 @@ spec:
               memory: 200M
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
+            # allowPrivilegeEscalation: false
+            # runAsNonRoot: true
+            # runAsUser: 1000
+            # runAsGroup: 1000
             readOnlyRootFilesystem: true
-            capabilities:
-              drop: [ALL]
+            # capabilities:
+            #   drop: [ALL]
           volumeMounts:
             - name: volume
               mountPath: /data/WatchYourLAN
@@ -50,6 +50,8 @@ spec:
               value: America/Denver
             - name: IFACES
               value: eth0
+            - name: LOG_LEVEL
+              value: debug
           ports:
             - name: http
               containerPort: 8840
