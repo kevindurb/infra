@@ -15,10 +15,9 @@ spec:
     metadata:
       labels: *labels
     spec:
-      # volumes:
-      #   - name: volume
-      #     persistentVolumeClaim:
-      #       claimName: volume
+      volumes:
+        - name: tmp
+          emptyDir: {}
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -41,9 +40,9 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # volumeMounts:
-          #   - name: volume
-          #     mountPath: /var/www/app/data
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           env:
             - name: TZ
               value: America/Denver
