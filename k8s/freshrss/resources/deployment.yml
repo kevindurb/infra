@@ -18,7 +18,7 @@ spec:
             claimName: data-volume
       containers:
         - name: freshrss
-          image: docker.io/freshrss/freshrss:1.24.2
+          image: docker.io/freshrss/freshrss:1.24.3
           securityContext:
             privileged: false
             # allowPrivilegeEscalation: false
