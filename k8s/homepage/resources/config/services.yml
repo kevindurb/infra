@@ -1,5 +1,14 @@
 ---
-- Status: []
+- Status:
+    - Speed Test:
+        icon: mdi-speedometer
+        widget:
+          type: customapi
+          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_download_bits_per_second[1d])
+          mappings:
+            - field: result
+              format: bytes
+              label: Download Speed
 - Media: []
 - Home: []
 - Productivity: []

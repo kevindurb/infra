@@ -12,7 +12,7 @@ quicklaunch:
   showSearchSuggestions: true
 layout:
   Status:
-    icon: mdi-speedometer
+    icon: mdi-list-status
     style: row
     columns: 5
   Home:
