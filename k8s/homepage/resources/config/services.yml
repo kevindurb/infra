@@ -6,7 +6,7 @@
           type: customapi
           url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_download_bits_per_second[1d])
           mappings:
-            - field: result
+            - field: data.result.0.value.1
               format: bytes
               label: Download Speed
 - Media: []
