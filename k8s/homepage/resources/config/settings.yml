@@ -14,7 +14,7 @@ layout:
   Status:
     icon: mdi-speedometer
     style: row
-    columns: 4
+    columns: 5
   Home:
     icon: mdi-home
     style: row

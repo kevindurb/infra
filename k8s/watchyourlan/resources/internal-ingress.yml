@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://watchyourlan.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: watchyourlan
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Status
     gethomepage.dev/icon: watchyourlan
     gethomepage.dev/name: WatchYourLAN
     gethomepage.dev/widget.type: customapi
