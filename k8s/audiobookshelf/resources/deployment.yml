@@ -29,7 +29,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: audiobookshelf
-          image: ghcr.io/advplyr/audiobookshelf:2.12.3
+          image: ghcr.io/advplyr/audiobookshelf:2.13.3
           resources:
             requests:
               memory: 300M
