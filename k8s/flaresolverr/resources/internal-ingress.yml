@@ -12,8 +12,6 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: flaresolverr
     gethomepage.dev/name: Flaresolverr
-    gethomepage.dev/widget.type: flaresolverr
-    gethomepage.dev/widget.url: http://flaresolverr-service
 
 spec:
   ingressClassName: internal
