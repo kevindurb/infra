@@ -73,7 +73,7 @@ spec:
           - name: time-slicing-config
           - name: truenas
           - name: memos
-          - name: watchyourlan
+          # - name: watchyourlan
           - name: whoami
           - name: windows
           - name: zigbee2mqtt
