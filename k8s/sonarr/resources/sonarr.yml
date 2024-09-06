@@ -54,6 +54,10 @@ spec:
               value: '1000'
             - name: TZ
               value: America/Denver
+            - name: SONARR__AUTH__METHOD
+              value: External
+            - name: SONARR__AUTH__REQUIRED
+              value: DisabledForLocalAddresses
           volumeMounts:
             - name: config-volume
               mountPath: /config

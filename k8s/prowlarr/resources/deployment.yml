@@ -51,6 +51,10 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: PROWLARR__AUTH__METHOD
+              value: External
+            - name: PROWLARR__AUTH__REQUIRED
+              value: DisabledForLocalAddresses
           ports:
             - name: http
               containerPort: 9696

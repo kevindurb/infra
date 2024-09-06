@@ -50,6 +50,10 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: RADARR__AUTH__METHOD
+              value: External
+            - name: RADARR__AUTH__REQUIRED
+              value: DisabledForLocalAddresses
           volumeMounts:
             - name: ripping-storage
               mountPath: /output
