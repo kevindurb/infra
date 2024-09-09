@@ -22,7 +22,6 @@ spec:
           - name: cnpg
           - name: common
           - name: dashboard
-          - name: docmost
           - name: external-dns
           - name: external-snapshotter
           - name: external-volumes
@@ -41,7 +40,6 @@ spec:
           - name: idrac
           - name: jellyfin
           - name: jellyseerr
-          - name: kanboard
           - name: local-path-provisioner
           - name: makemkv
           - name: manyfold
@@ -51,7 +49,6 @@ spec:
           - name: minio
           - name: mosquitto
           - name: network-policies
-          - name: nocodb
           - name: node-exporter
           - name: ollama
           - name: omada
