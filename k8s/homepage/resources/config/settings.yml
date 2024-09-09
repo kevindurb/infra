@@ -18,7 +18,7 @@ layout:
   Home:
     icon: mdi-home
     style: row
-    columns: 5
+    columns: 4
   Media:
     icon: mdi-filmstrip
     style: column

@@ -28,7 +28,6 @@ spec:
           - name: filebrowser
           - name: flaresolverr
           - name: freshrss
-          - name: frigate
           - name: gatus
           - name: grafana
           - name: guacamole
