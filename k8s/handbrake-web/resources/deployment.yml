@@ -16,6 +16,9 @@ spec:
       labels: *labels
     spec:
       volumes:
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
         - name: volume
           persistentVolumeClaim:
             claimName: volume
@@ -60,6 +63,8 @@ spec:
             - name: config-map
               mountPath: /data/presets/super_hq_4k_hvec.json
               subPath: super_hq_4k_hvec.json
+            - name: truenas-media
+              mountPath: /media
           env:
             - name: TZ
               value: America/Denver
@@ -83,6 +88,9 @@ spec:
       labels: *labels
     spec:
       volumes:
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
         - name: tmp
           emptyDir: {}
       # initContainers:
@@ -122,6 +130,8 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
+            - name: truenas-media
+              mountPath: /media
           env:
             - name: TZ
               value: America/Denver
