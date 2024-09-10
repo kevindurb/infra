@@ -1,18 +1,42 @@
 ---
-- Status:
-    - Speed Test:
-        icon: mdi-speedometer
+- Status: []
+- Speed Test:
+    - Download Speed:
+        icon: mdi-download
         widget:
           type: customapi
           url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_download_bits_per_second[1d])
           mappings:
-            - field:
-                data:
-                  result:
-                    0:
-                      value: 1
+            - field: { data: { result: { 0: { value: 1 } } } }
               format: bytes
               label: Download Speed
+    - Upload Speed:
+        icon: mdi-upload
+        widget:
+          type: customapi
+          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_upload_bits_per_second[1d])
+          mappings:
+            - field: { data: { result: { 0: { value: 1 } } } }
+              format: bytes
+              label: Upload Speed
+    - Ping:
+        icon: mdi-upload
+        widget:
+          type: customapi
+          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_ping_latency_milliseconds[1d])
+          mappings:
+            - field: { data: { result: { 0: { value: 1 } } } }
+              format: bytes
+              label: Ping
+    - Jitter:
+        icon: mdi-upload
+        widget:
+          type: customapi
+          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_jitter_latency_milliseconds[1d])
+          mappings:
+            - field: { data: { result: { 0: { value: 1 } } } }
+              format: bytes
+              label: Jitter
 - Media: []
 - Home: []
 - Productivity: []

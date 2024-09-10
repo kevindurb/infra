@@ -14,7 +14,11 @@ layout:
   Status:
     icon: mdi-list-status
     style: row
-    columns: 5
+    columns: 4
+  Speed Test:
+    icon: mdi-speedometer
+    style: row
+    columns: 4
   Home:
     icon: mdi-home
     style: row
