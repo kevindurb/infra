@@ -21,18 +21,18 @@ layout:
     columns: 4
   Home:
     icon: mdi-home
-    style: row
-    columns: 4
+    style: column
   Media:
     icon: mdi-filmstrip
     style: column
   Productivity:
     icon: mdi-toolbox
     style: column
-  Other:
-    icon: mdi-format-list-bulleted
-    style: column
   Servarr:
     icon: mdi-download
+    style: row
+    columns: 5
+  Other:
+    icon: mdi-format-list-bulleted
     style: row
     columns: 5
