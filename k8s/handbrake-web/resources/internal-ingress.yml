@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+
+    gethomepage.dev/href: 'https://handbrake-web.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: handbrake-web
+    gethomepage.dev/group: Media
+    gethomepage.dev/icon: handbrake
+    gethomepage.dev/name: Handbrake Web
+
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host handbrake-web.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

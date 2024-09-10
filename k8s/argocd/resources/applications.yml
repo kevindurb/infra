@@ -32,6 +32,7 @@ spec:
           - name: grafana
           - name: guacamole
           - name: handbrake
+          - name: handbrake-web
           - name: healthchecks
           - name: hdhomerun
           - name: home-assistant
