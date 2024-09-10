@@ -19,6 +19,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: config-map
+          configMap:
+            name: config-map
         - name: tmp
           emptyDir: {}
       securityContext:
@@ -48,6 +51,15 @@ spec:
               mountPath: /data
             - name: tmp
               mountPath: /tmp
+            - name: config-map
+              mountPath: /data/config.yaml
+              subPath: config.yaml
+            - name: config-map
+              mountPath: /data/presets/super_hq_1080.json
+              subPath: super_hq_1080.json
+            - name: config-map
+              mountPath: /data/presets/super_hq_4k_hvec.json
+              subPath: super_hq_4k_hvec.json
           env:
             - name: TZ
               value: America/Denver

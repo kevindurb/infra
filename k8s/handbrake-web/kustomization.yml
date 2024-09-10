@@ -11,6 +11,13 @@ resources:
   - ./resources/pvc.yml
   - ./resources/service.yml
 
+configMapGenerator:
+  - name: config-map
+    files:
+      - ./resources/config/config.yaml
+      - ./resources/config/presets/super_hq_1080.json
+      - ./resources/config/presets/super_hq_4k_hvec.json
+
 labels:
   - pairs:
       app.kubernetes.io/name: handbrake-web
