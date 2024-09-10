@@ -43,4 +43,9 @@
 - Home: []
 - Productivity: []
 - Other: []
-- Servarr: []
+- Servarr:
+    - Gluetun:
+        icon: gluetun
+        widget:
+          type: gluetun
+          url: http://gluetun-service

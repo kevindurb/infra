@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/href: 'https://jellyseerr.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: jellyseerr
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Servarr
     gethomepage.dev/icon: jellyseerr
     gethomepage.dev/name: Jellyseerr
     gethomepage.dev/widget.type: jellyseerr
