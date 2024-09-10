@@ -19,6 +19,8 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: tmp
+          emptyDir: {}
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -44,6 +46,8 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /data
+            - name: tmp
+              mountPath: /tmp
           env:
             - name: TZ
               value: America/Denver
@@ -66,18 +70,21 @@ spec:
     metadata:
       labels: *labels
     spec:
-      initContainers:
-        - name: init-check
-          image: alpine:latest
-          command: ['sleep', '10']
-          env:
-            - name: SERVICE_URL
-              value: 'http://handbrake-web-service'
-          probe:
-            httpGet:
-              path: /
-              port: 8080
-              timeoutSeconds: 1
+      volumes:
+        - name: tmp
+          emptyDir: {}
+      # initContainers:
+      #   - name: init-check
+      #     image: alpine:latest
+      #     command: ['sleep', '10']
+      #     env:
+      #       - name: SERVICE_URL
+      #         value: 'http://handbrake-web-service'
+      #     probe:
+      #       httpGet:
+      #         path: /
+      #         port: 8080
+      #         timeoutSeconds: 1
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -100,6 +107,9 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           env:
             - name: TZ
               value: America/Denver
