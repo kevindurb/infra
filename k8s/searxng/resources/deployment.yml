@@ -31,7 +31,7 @@ spec:
             requests:
               memory: 100M
             limits:
-              memory: 200M
+              memory: 1G
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
