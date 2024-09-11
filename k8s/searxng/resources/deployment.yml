@@ -50,7 +50,7 @@ spec:
             - name: BASE_URL
               value: https://searxng.durbin.casa
             - name: INSTANCE_NAME
-              value: Idx
+              value: searxng
           ports:
             - name: http
               containerPort: 8080
