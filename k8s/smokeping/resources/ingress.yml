@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://smokeping.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: smokeping
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Monitoring
     gethomepage.dev/icon: smokeping
     gethomepage.dev/name: Smokeping
     cert-manager.io/cluster-issuer: cloudflare-issuer
