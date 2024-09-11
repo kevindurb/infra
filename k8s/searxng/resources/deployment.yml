@@ -29,9 +29,9 @@ spec:
           image: docker.io/searxng/searxng:2024.9.6-153a28ccd
           resources:
             requests:
-              memory: 100M
+              memory: 300M
             limits:
-              memory: 2G
+              memory: 1G
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
