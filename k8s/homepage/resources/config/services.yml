@@ -42,7 +42,12 @@
 - Media: []
 - Home: []
 - Productivity: []
-- Other: []
+- Other:
+    - Minecraft:
+        icon: minecraft
+        widget:
+          type: minecraft
+          url: udp://minecraft-service:25565
 - Servarr:
     - Gluetun:
         icon: gluetun
