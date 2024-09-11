@@ -5,3 +5,6 @@ general:
 
 server:
   base_url: https://searxng.durbin.casa
+
+search:
+  safe_search: 1
