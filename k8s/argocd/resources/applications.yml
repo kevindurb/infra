@@ -61,6 +61,7 @@ spec:
           - name: radarr
           - name: reloader
           - name: scrypted
+          - name: searxng
           - name: smartctl-exporter
           - name: smokeping
           - name: smtp-relay
