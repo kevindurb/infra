@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://memos.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: memos
-    gethomepage.dev/group: apps
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: memos
     gethomepage.dev/name: Memos
     cert-manager.io/cluster-issuer: cloudflare-issuer
