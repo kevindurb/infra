@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://orca.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: orcaslicer
-    gethomepage.dev/group: Productivity
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: kasm
     gethomepage.dev/name: Orca Slicer
     cert-manager.io/cluster-issuer: cloudflare-issuer

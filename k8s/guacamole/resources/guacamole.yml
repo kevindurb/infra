@@ -76,7 +76,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
     gethomepage.dev/enabled: 'true'
-    gethomepage.dev/group: Productivity
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: guacamole
     gethomepage.dev/app: guacamole
     gethomepage.dev/name: Guacamole

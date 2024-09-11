@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://windows.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: windows
-    gethomepage.dev/group: Productivity
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: mdi-microsoft-windows
     gethomepage.dev/name: Windows
     cert-manager.io/cluster-issuer: cloudflare-issuer

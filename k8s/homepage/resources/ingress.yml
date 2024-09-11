@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/href: 'https://home.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: homepage
-    gethomepage.dev/group: Productivity
+    gethomepage.dev/group: Other
     gethomepage.dev/icon: homepage
     gethomepage.dev/name: Homepage
     cert-manager.io/cluster-issuer: cloudflare-issuer
