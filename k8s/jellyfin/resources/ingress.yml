@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/href: 'https://jellyfin.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: jellyfin
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: jellyfin
     gethomepage.dev/name: Jellyfin
     gethomepage.dev/widget.type: jellyfin

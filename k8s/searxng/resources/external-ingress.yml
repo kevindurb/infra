@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://searxng.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: searxng
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: searxng
     gethomepage.dev/name: SearXNG
 

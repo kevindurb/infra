@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/href: 'https://calibre-web.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: calibre-web
-    gethomepage.dev/group: Media
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: calibre-web
     gethomepage.dev/name: Calibre Web
     gethomepage.dev/widget.type: calibreweb
