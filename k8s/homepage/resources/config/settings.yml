@@ -19,15 +19,6 @@ layout:
     icon: mdi-square-rounded-badge
     style: row
     columns: 5
-  Home:
-    icon: mdi-home
-    style: column
-  Media:
-    icon: mdi-filmstrip
-    style: column
-  Productivity:
-    icon: mdi-toolbox
-    style: column
   Speed Test:
     icon: mdi-speedometer
     style: row
