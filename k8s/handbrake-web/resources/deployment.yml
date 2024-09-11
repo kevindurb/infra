@@ -93,18 +93,6 @@ spec:
             claimName: truenas-media
         - name: tmp
           emptyDir: {}
-      # initContainers:
-      #   - name: init-check
-      #     image: alpine:latest
-      #     command: ['sleep', '10']
-      #     env:
-      #       - name: SERVICE_URL
-      #         value: 'http://handbrake-web-service'
-      #     probe:
-      #       httpGet:
-      #         path: /
-      #         port: 8080
-      #         timeoutSeconds: 1
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
