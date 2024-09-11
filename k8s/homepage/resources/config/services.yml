@@ -44,7 +44,7 @@
         widget:
           type: gluetun
           url: http://gluetun-service
-- Other:
+- Monitoring:
     - Minecraft:
         icon: minecraft
         widget:
