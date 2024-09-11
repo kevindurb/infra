@@ -10,6 +10,12 @@ resources:
   - ./resources/pvc.yml
   - ./resources/service.yml
   - ./resources/external-ingress.yml
+  - ./resources/secret.yml
+
+configMapGenerator:
+  - name: config-map
+    files:
+      - ./resources/config/settings.yml
 
 labels:
   - pairs:

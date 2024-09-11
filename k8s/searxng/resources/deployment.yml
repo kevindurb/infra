@@ -17,8 +17,10 @@ spec:
     spec:
       volumes:
         - name: volume
-          persistentVolumeClaim:
-            claimName: volume
+          emptyDir: {}
+        - name: config-map
+          configMap:
+            name: config-map
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -44,13 +46,18 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /etc/searxng
+            - name: config-map
+              mountPath: /etc/searxng/settings.yml
+              subPath: settings.yml
+              readOnly: true
           env:
             - name: TZ
               value: America/Denver
-            - name: BASE_URL
-              value: https://searxng.durbin.casa
-            - name: INSTANCE_NAME
-              value: searxng
+            - name: SEARXNG_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: searxng-secret
+                  key: SEARXNG_SECRET
           ports:
             - name: http
               containerPort: 8080
