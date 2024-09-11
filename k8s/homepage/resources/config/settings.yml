@@ -11,18 +11,19 @@ quicklaunch:
   provider: duckduckgo
   showSearchSuggestions: true
 layout:
-  Status:
-    icon: mdi-list-status
-    style: row
-    columns: 4
   Apps:
     icon: mdi-square-rounded-badge
     style: row
     columns: 5
+  Status:
+    icon: mdi-list-status
+    style: column
   Speed Test:
     icon: mdi-speedometer
-    style: row
-    columns: 4
+    style: column
+  Monitoring:
+    icon: mdi-cloud-alert
+    style: column
   Servarr:
     icon: mdi-download
     style: row
