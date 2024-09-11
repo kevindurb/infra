@@ -11,7 +11,7 @@ metadata:
     gethomepage.dev/app: searxng
     gethomepage.dev/group: Other
     gethomepage.dev/icon: searxng
-    gethomepage.dev/name: Searxng
+    gethomepage.dev/name: Idx
 
     nginx.ingress.kubernetes.io/auth-method: GET
     nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
