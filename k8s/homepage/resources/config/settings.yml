@@ -15,10 +15,10 @@ layout:
     icon: mdi-list-status
     style: row
     columns: 4
-  Speed Test:
-    icon: mdi-speedometer
+  Apps:
+    icon: mdi-square-rounded-badge
     style: row
-    columns: 4
+    columns: 5
   Home:
     icon: mdi-home
     style: column
@@ -28,6 +28,10 @@ layout:
   Productivity:
     icon: mdi-toolbox
     style: column
+  Speed Test:
+    icon: mdi-speedometer
+    style: row
+    columns: 4
   Servarr:
     icon: mdi-download
     style: row

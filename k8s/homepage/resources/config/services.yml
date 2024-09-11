@@ -1,5 +1,9 @@
 ---
 - Status: []
+- Apps: []
+- Media: []
+- Home: []
+- Productivity: []
 - Speed Test:
     - Download Speed:
         icon: mdi-download
@@ -39,18 +43,15 @@
               format: float
               suffix: ms
               label: Jitter
-- Media: []
-- Home: []
-- Productivity: []
-- Other:
-    - Minecraft:
-        icon: minecraft
-        widget:
-          type: minecraft
-          url: udp://minecraft-service:25565
 - Servarr:
     - Gluetun:
         icon: gluetun
         widget:
           type: gluetun
           url: http://gluetun-service
+- Other:
+    - Minecraft:
+        icon: minecraft
+        widget:
+          type: minecraft
+          url: udp://minecraft-service:25565
