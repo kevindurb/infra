@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  ente.yml: |
+    endpoints:
+      - name: Ente
+        url: http://ente-service
+        
+        conditions:
+          - '[STATUS] == 200'
