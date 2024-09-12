@@ -41,4 +41,7 @@ tasks:
   restart-app:
     requires:
       vars: [appname]
-    cmd: k rollout restart deployment/{{ .appname }}-deployment
+    cmd: kubectl rollout restart deployment/{{ .appname }}-deployment
+
+  get-dashboard-token:
+    cmd: kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
