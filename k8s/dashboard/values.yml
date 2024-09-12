@@ -1,0 +1,28 @@
+---
+app:
+  ingress:
+    enabled: true
+    hosts: [kubernetes.durbin.casa]
+    ingressClassName: internal
+    useDefaultAnnotations: false
+    tls:
+      enabled: true
+      secretName: durbin-casa-wildcard-cert
+    labels: {}
+    annotations:
+      cert-manager.io/cluster-issuer: cloudflare-issuer
+      gethomepage.dev/href: 'https://kubernetes.durbin.casa'
+      gethomepage.dev/enabled: 'true'
+      gethomepage.dev/group: Other
+      gethomepage.dev/icon: kubernetes
+      gethomepage.dev/name: Kubernetes
+      gethomepage.dev/pod-selector: >-
+        k8s-app in (
+          kubernetes-dashboard,
+          dashboard-metrics-scraper
+        )
+      nginx.ingress.kubernetes.io/backend-protocol: https
+      nginx.ingress.kubernetes.io/auth-method: GET
+      nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
+      nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
+      nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
