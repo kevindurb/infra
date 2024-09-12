@@ -44,4 +44,4 @@ tasks:
     cmd: kubectl rollout restart deployment/{{ .appname }}-deployment
 
   get-dashboard-token:
-    cmd: kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
+    cmd: kubectl get secret dashboard-admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
