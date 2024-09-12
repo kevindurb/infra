@@ -34,7 +34,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: handbrake-web-server
-          image: ghcr.io/thenickoftime/handbrake-web-server:0.7.0
+          image: ghcr.io/thenickoftime/handbrake-web-server:0.7.1
           resources:
             requests:
               memory: 100M
