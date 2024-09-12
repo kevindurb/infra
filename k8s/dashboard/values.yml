@@ -5,12 +5,13 @@ app:
     hosts: [kubernetes.durbin.casa]
     ingressClassName: internal
     useDefaultAnnotations: false
+    issuer:
+      scope: cluster
+      name: cloudflare-issuer
     tls:
       enabled: true
-      secretName: durbin-casa-wildcard-cert
     labels: {}
     annotations:
-      cert-manager.io/cluster-issuer: cloudflare-issuer
       gethomepage.dev/href: 'https://kubernetes.durbin.casa'
       gethomepage.dev/enabled: 'true'
       gethomepage.dev/group: Other
