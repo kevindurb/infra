@@ -9,7 +9,7 @@ data:
   ente.yml: |
     endpoints:
       - name: Ente
-        url: http://ente-service
+        url: http://ente-service/ping
         
         conditions:
           - '[STATUS] == 200'
