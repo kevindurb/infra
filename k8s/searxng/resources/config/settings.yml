@@ -8,3 +8,6 @@ server:
 
 search:
   safe_search: 1
+
+redis:
+  url: redis://searxng-valkey-service:6379
