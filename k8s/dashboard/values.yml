@@ -18,10 +18,7 @@ app:
       gethomepage.dev/icon: kubernetes
       gethomepage.dev/name: Kubernetes
       gethomepage.dev/pod-selector: >-
-        k8s-app in (
-          kubernetes-dashboard,
-          dashboard-metrics-scraper
-        )
+        app.kubernetes.io/part-of=kubernetes-dashboard
       nginx.ingress.kubernetes.io/backend-protocol: https
       nginx.ingress.kubernetes.io/auth-method: GET
       nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
