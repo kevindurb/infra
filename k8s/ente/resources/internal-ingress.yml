@@ -10,10 +10,8 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: ente
     gethomepage.dev/group: Other
-    gethomepage.dev/icon: ente
+    gethomepage.dev/icon: mdi-alpha-e-box
     gethomepage.dev/name: Ente
-    gethomepage.dev/widget.type: ente
-    gethomepage.dev/widget.url: http://ente-service
 
 spec:
   ingressClassName: internal
