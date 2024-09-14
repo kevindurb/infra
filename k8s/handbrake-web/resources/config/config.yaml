@@ -3,7 +3,7 @@ config:
   auto-fix: false
 paths:
   media-path: /media
-  input-path: /media
+  input-path: /ripping-storage
   output-path: /media
 presets:
   show-default-presets: false
