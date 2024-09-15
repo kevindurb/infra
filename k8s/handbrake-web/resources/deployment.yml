@@ -101,7 +101,7 @@ spec:
             claimName: truenas-media
         - name: tmp
           emptyDir: {}
-        - name: datatmp
+        - name: data
           emptyDir: {}
       securityContext:
         runAsNonRoot: true
@@ -128,8 +128,8 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
-            - name: datatmp
-              mountPath: /data/tmp
+            - name: data
+              mountPath: /data
             - name: truenas-media
               mountPath: /media
             - name: ripping-storage
