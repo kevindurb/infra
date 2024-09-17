@@ -29,7 +29,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: qbittorrent
-          image: ghcr.io/onedr0p/qbittorrent:4.6.6
+          image: ghcr.io/onedr0p/qbittorrent:4.6.7
           resources:
             requests:
               memory: 100M
