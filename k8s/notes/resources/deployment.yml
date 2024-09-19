@@ -15,7 +15,6 @@ spec:
     metadata:
       labels: *labels
     spec:
-      imagePullPolicy: Always
       imagePullSecrets:
         - name: ghcr
       securityContext:
@@ -26,6 +25,7 @@ spec:
       containers:
         - name: notes
           image: ghcr.io/kevindurb/notes:latest
+          imagePullPolicy: Always
           resources:
             requests:
               memory: 100M
