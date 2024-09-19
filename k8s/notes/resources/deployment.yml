@@ -19,8 +19,7 @@ spec:
         - name: ghcr
       containers:
         - name: notes
-          image: ghcr.io/kevindurb/notes:latest
-          imagePullPolicy: Always
+          image: ghcr.io/kevindurb/notes:1.0.114
           resources:
             requests:
               memory: 100M
