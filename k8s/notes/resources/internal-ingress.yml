@@ -6,7 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
 
-    gethomepage.dev/href: 'https://notes.durbin.casa/Home'
+    gethomepage.dev/href: 'https://notes.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: notes
     gethomepage.dev/group: Apps
