@@ -6,14 +6,12 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
 
-    gethomepage.dev/href: 'https://notes.durbin.casa'
+    gethomepage.dev/href: 'https://notes.durbin.casa/Home'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: notes
-    gethomepage.dev/group: Other
-    gethomepage.dev/icon: notes
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: mdi-notebook
     gethomepage.dev/name: Notes
-    gethomepage.dev/widget.type: notes
-    gethomepage.dev/widget.url: http://notes-service
 
 spec:
   ingressClassName: internal
