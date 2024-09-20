@@ -15,6 +15,9 @@ spec:
     metadata:
       labels: *labels
     spec:
+      nodeSelector:
+        nvidia.com/gpu.present: 'true'
+      runtimeClassName: nvidia
       volumes:
         - name: volume
           persistentVolumeClaim:
@@ -35,13 +38,14 @@ spec:
               memory: 100M
             limits:
               memory: 500M
+              nvidia.com/gpu: 1
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
+            # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           volumeMounts:
