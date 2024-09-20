@@ -25,11 +25,6 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
         - name: prusaslicer
           image: docker.io/mikeah/prusaslicer-novnc:2024.09.13.005624
@@ -41,10 +36,10 @@ spec:
               nvidia.com/gpu: 1
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
+            # allowPrivilegeEscalation: false
+            # runAsNonRoot: true
+            # runAsUser: 1000
+            # runAsGroup: 1000
             # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
