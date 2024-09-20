@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: prusaslicer
     gethomepage.dev/group: Apps
-    gethomepage.dev/icon: prusa-research
+    gethomepage.dev/icon: prusa-research-light.png
     gethomepage.dev/name: PrusaSlicer
 
 spec:
