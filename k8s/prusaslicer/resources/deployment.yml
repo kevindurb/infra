@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: prusaslicer
+          image: docker.io/mikeah/prusaslicer-novnc:2024.09.13.005624
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 500M
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: volume
+              mountPath: /configs
+            - name: truenas-media
+              mountPath: /media
+          env:
+            - name: TZ
+              value: America/Denver
+          ports:
+            - name: http
+              containerPort: 8080
