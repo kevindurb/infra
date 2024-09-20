@@ -12,7 +12,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: cron
-              image: curlimages/curl:8.10.0
+              image: curlimages/curl:8.10.1
               env:
                 - name: HEALTHCHECKS_SLUG
                   valueFrom:
