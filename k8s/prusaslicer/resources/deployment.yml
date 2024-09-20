@@ -32,7 +32,7 @@ spec:
             requests:
               memory: 100M
             limits:
-              memory: 500M
+              memory: 1G
               nvidia.com/gpu: 1
           securityContext:
             privileged: false
