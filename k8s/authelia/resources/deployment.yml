@@ -40,7 +40,7 @@ spec:
             - name: config-dir
               mountPath: /config/config.d/
         - name: authelia
-          image: ghcr.io/authelia/authelia:4.38.10
+          image: ghcr.io/authelia/authelia:4.38.12
           command: [authelia]
           resources:
             requests:
