@@ -6,6 +6,7 @@ metadata:
   labels: &labels
     app.kubernetes.io/component: web
 spec:
+  serviceAccountName: service-account
   replicas: 1
   strategy:
     type: Recreate
@@ -23,9 +24,6 @@ spec:
           persistentVolumeClaim:
             claimName: truenas-media
       securityContext:
-        # runAsNonRoot: true
-        # runAsUser: 1000
-        # runAsGroup: 1000
         fsGroup: 1000
       containers:
         - name: qbittorrent
@@ -91,74 +89,60 @@ spec:
               port: 80
             failureThreshold: 30
             periodSeconds: 10
-        # - name: gluetun
-        #   image: ghcr.io/qdm12/gluetun:v3.39.0
-        #   resources:
-        #     requests:
-        #       memory: 100M
-        #     limits:
-        #       memory: 200M
-        #   securityContext:
-        #     privileged: false
-        #     allowPrivilegeEscalation: false
-        #     # runAsNonRoot: true
-        #     # runAsUser: 1000
-        #     # runAsGroup: 1000
-        #     # readOnlyRootFilesystem: true
-        #     capabilities:
-        #       add: [NET_ADMIN]
-        #   volumeMounts:
-        #     - name: volume
-        #       mountPath: /config
-        #   env:
-        #     - name: TZ
-        #       value: America/Denver
-        #     - name: VPN_SERVICE_PROVIDER
-        #       value: custom
-        #     - name: VPN_TYPE
-        #       value: wireguard
-        #     - name: VPN_INTERFACE
-        #       value: wg0
-        #     - name: VPN_ENDPOINT_PORT
-        #       value: '51820'
-        #     - name: VPN_PORT_FORWARDING
-        #       value: 'on'
-        #     - name: VPN_PORT_FORWARDING_PROVIDER
-        #       value: protonvpn
-        #     - name: DOT
-        #       value: 'off'
-        #     - name: FIREWALL_INPUT_PORTS
-        #       value: '80'
-        #     - name: FIREWALL_OUTBOUND_SUBNETS
-        #       value: 10.42.0.0/16
-        #   ports:
-        #     - name: http
-        #       containerPort: 80
-        - name: port-forward
-          image: ghcr.io/bjw-s/gluetun-qb-port-sync:v0.0.2
+        - name: tailscale
+          imagePullPolicy: Always
+          image: ghcr.io/tailscale/tailscale:latest
           env:
-            - name: GLUETUN_CONTROL_SERVER_HOST
-              value: localhost
-            - name: GLUETUN_CONTROL_SERVER_PORT
-              value: '8000'
-            - name: QBITTORRENT_HOST
-              value: localhost
-            - name: QBITTORRENT_WEBUI_PORT
-              value: '80'
-            - name: CRON_ENABLED
-              value: 'true'
-            - name: CRON_SCHEDULE
-              value: '*/5 * * * *'
-            - name: LOG_TIMESTAMP
+            - name: TS_KUBE_SECRET
+              value: qbittorrent-tailscale-auth
+            - name: TS_USERSPACE
               value: 'false'
+            - name: TS_DEBUG_FIREWALL_MODE
+              value: auto
+            - name: TS_API_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: qbittorrent-secret
+                  key: client_id
+            - name: TS_API_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: qbittorrent-secret
+                  key: client_secret
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            runAsNonRoot: true
-            allowPrivilegeEscalation: false
             capabilities:
-              drop: [ALL]
-          volumeMounts:
-            - name: volume
-              mountPath: /config
-              subPath: port-forward
+              add:
+                - NET_ADMIN
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: service-account
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: role-binding
+subjects:
+  - kind: ServiceAccount
+    name: service-account
+roleRef:
+  kind: Role
+  name: tailscale
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: role
+rules:
+  - apiGroups: ['']
+    resources: [secrets]
+    verbs: [create]
+  - apiGroups: ['']
+    resourceNames: [qbittorrent-tailscale-auth]
+    resources: [secrets]
+    verbs: [get, update, patch]

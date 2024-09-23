@@ -38,12 +38,6 @@
               format: float
               suffix: ms
               label: Jitter
-- Servarr:
-    - Gluetun:
-        icon: gluetun
-        widget:
-          type: gluetun
-          url: http://gluetun-service
 - Monitoring:
     - Minecraft:
         icon: minecraft
