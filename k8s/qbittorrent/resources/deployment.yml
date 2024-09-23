@@ -89,30 +89,30 @@ spec:
               port: 80
             failureThreshold: 30
             periodSeconds: 10
-        # - name: tailscale
-        #   imagePullPolicy: Always
-        #   image: ghcr.io/tailscale/tailscale:latest
-        #   env:
-        #     - name: TS_KUBE_SECRET
-        #       value: qbittorrent-tailscale-auth
-        #     - name: TS_USERSPACE
-        #       value: 'false'
-        #     - name: TS_DEBUG_FIREWALL_MODE
-        #       value: auto
-        #     - name: TS_API_CLIENT_ID
-        #       valueFrom:
-        #         secretKeyRef:
-        #           name: qbittorrent-secret
-        #           key: client_id
-        #     - name: TS_API_CLIENT_SECRET
-        #       valueFrom:
-        #         secretKeyRef:
-        #           name: qbittorrent-secret
-        #           key: client_secret
-        #   securityContext:
-        #     capabilities:
-        #       add:
-        #         - NET_ADMIN
+        - name: tailscale
+          imagePullPolicy: Always
+          image: ghcr.io/tailscale/tailscale:latest
+          env:
+            - name: TS_KUBE_SECRET
+              value: qbittorrent-tailscale-auth
+            - name: TS_USERSPACE
+              value: 'false'
+            - name: TS_DEBUG_FIREWALL_MODE
+              value: auto
+            - name: TS_API_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: qbittorrent-secret
+                  key: client_id
+            - name: TS_API_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: qbittorrent-secret
+                  key: client_secret
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
 
 ---
 apiVersion: v1
