@@ -6,7 +6,6 @@ metadata:
   labels: &labels
     app.kubernetes.io/component: web
 spec:
-  serviceAccountName: service-account
   replicas: 1
   strategy:
     type: Recreate
@@ -16,6 +15,7 @@ spec:
     metadata:
       labels: *labels
     spec:
+      serviceAccountName: service-account
       volumes:
         - name: volume
           persistentVolumeClaim:
