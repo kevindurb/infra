@@ -9,6 +9,6 @@ data:
   mainsail.yml: |
     endpoints:
       - name: Mainsail
-        url: https://mainsail-service
+        url: http://mainsail-service
         conditions:
           - '[STATUS] == 200'
