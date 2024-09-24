@@ -1,0 +1,38 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    gethomepage.dev/href: 'https://mainsail.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: mainsail
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: mainsail
+    gethomepage.dev/name: Mainsail
+    gethomepage.dev/widget.type: moonraker
+    gethomepage.dev/widget.url: &service https://mainsail-service
+    gethomepage.dev/siteMonitor: *service
+    gethomepage.dev/external: 'true'
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/auth-method: GET
+    nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
+    nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
+    nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host mainsail.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: https
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
