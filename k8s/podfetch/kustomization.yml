@@ -1,0 +1,18 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: podfetch-
+
+resources:
+  - ./resources/deployment.yml
+  - ./resources/gatus-config.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/pvc.yml
+  - ./resources/service.yml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: podfetch
+    includeTemplates: true
+    includeSelectors: true
