@@ -2,9 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: internal-ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
+
     gethomepage.dev/href: 'https://audiobookshelf.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: audiobookshelf
@@ -15,13 +16,9 @@ metadata:
     gethomepage.dev/widget.type: audiobookshelf
     gethomepage.dev/widget.url: http://audiobookshelf-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}'
-    # nginx.ingress.kubernetes.io/auth-method: GET
-    # nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
-    # nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=
-    # nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
-    external-dns.alpha.kubernetes.io/target: external.durbin.casa
+
 spec:
-  ingressClassName: external
+  ingressClassName: internal
   rules:
     - host: &host audiobookshelf.durbin.casa
       http:
