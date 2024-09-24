@@ -22,11 +22,6 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
         - name: podfetch
           image: ghcr.io/samtv12345/podfetch:v4.7.1
@@ -37,10 +32,10 @@ spec:
               memory: 200M
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
+            # allowPrivilegeEscalation: false
+            # runAsNonRoot: true
+            # runAsUser: 1000
+            # runAsGroup: 1000
             # readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
