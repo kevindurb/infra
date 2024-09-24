@@ -57,7 +57,6 @@ spec:
           - name: open-webui
           - name: openwrt
           - name: pihole
-          - name: podfetch
           - name: prometheus
           - name: prowlarr
           - name: prusaslicer
