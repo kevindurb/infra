@@ -31,7 +31,7 @@ spec:
               service:
                 name: service
                 port:
-                  name: https
+                  name: http
   tls:
     - secretName: durbin-casa-wildcard-cert
       hosts:
