@@ -9,6 +9,7 @@ data:
   nextcloud.yml: |
     endpoints:
       - name: Nextcloud
+        enabled: false
         url: http://nextcloud-service
         conditions:
           - '[STATUS] == 200'
