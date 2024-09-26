@@ -19,11 +19,6 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
         - name: nextcloud
           image: docker.io/library/nextcloud:30.0.0
@@ -34,10 +29,6 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
             capabilities:
               drop: [ALL]
           volumeMounts:
