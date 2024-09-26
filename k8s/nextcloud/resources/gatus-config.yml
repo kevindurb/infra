@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  nextcloud.yml: |
+    endpoints:
+      - name: Nextcloud
+        url: http://nextcloud-service/ocs/v2.php/apps/serverinfo/api/v1/info
+        conditions:
+          - '[STATUS] == 200'

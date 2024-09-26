@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: nextcloud-
+
+resources:
+  - ./resources/deployment.yml
+  - ./resources/gatus-config.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/pg.yml
+  - ./resources/pvc.yml
+  - ./resources/service.yml
+  - ./resources/valkey.yml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: nextcloud
+    includeTemplates: true
+    includeSelectors: true
