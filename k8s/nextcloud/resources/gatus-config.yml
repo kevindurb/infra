@@ -10,5 +10,7 @@ data:
     endpoints:
       - name: Nextcloud
         url: http://nextcloud-service/status.php
+        headers:
+          Content-Type: application/json
         conditions:
           - '[STATUS] == 200'
