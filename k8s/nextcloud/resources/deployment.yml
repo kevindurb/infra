@@ -29,8 +29,6 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
-            capabilities:
-              drop: [ALL]
           volumeMounts:
             - name: volume
               mountPath: /var/www/html
