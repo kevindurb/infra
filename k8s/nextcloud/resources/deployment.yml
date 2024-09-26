@@ -66,7 +66,7 @@ spec:
             - name: MAIL_FROM_ADDRESS
               value: beavercloud@fastmail.com
             - name: NEXTCLOUD_TRUSTED_DOMAINS
-              value: nextcloud.durbin.casa
+              value: nextcloud.durbin.casa nextcloud-service
             - name: TRUSTED_PROXIES
               value: 127.0.0.1 10.0.0.0/8
           ports:
