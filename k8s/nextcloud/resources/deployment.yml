@@ -65,6 +65,8 @@ spec:
               value: PLAIN
             - name: MAIL_FROM_ADDRESS
               value: beavercloud@fastmail.com
+            - name: NEXTCLOUD_TRUSTED_DOMAINS
+              value: nextcloud.durbin.casa
           ports:
             - name: http
               containerPort: 80
