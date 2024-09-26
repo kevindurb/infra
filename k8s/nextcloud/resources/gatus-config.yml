@@ -9,8 +9,6 @@ data:
   nextcloud.yml: |
     endpoints:
       - name: Nextcloud
-        url: http://nextcloud-service/status.php
-        headers:
-          Content-Type: application/json
+        url: http://nextcloud-service
         conditions:
           - '[STATUS] == 200'
