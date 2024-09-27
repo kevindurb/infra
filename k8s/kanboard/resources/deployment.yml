@@ -24,7 +24,7 @@ spec:
             claimName: plugins-volume
       containers:
         - name: kanboard
-          image: docker.io/kanboard/kanboard:v1.2.39
+          image: docker.io/kanboard/kanboard:v1.2.40
           resources:
             requests:
               memory: 50M
