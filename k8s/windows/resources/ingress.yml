@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: windows
     gethomepage.dev/group: Other
-    gethomepage.dev/icon: mdi-microsoft-windows
+    gethomepage.dev/icon: sh-microsoft-windows
     gethomepage.dev/name: Windows
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/auth-method: GET
