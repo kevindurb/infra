@@ -73,6 +73,12 @@ spec:
               value: nextcloud
             - name: OBJECTSTORE_S3_HOST
               value: minio-api-service
+            - name: OBJECTSTORE_S3_USEPATH_STYLE
+              value: 'true'
+            - name: OBJECTSTORE_S3_SSL
+              value: 'false'
+            - name: OBJECTSTORE_S3_AUTOCREATE
+              value: 'false'
             - name: OBJECTSTORE_S3_KEY
               valueFrom:
                 secretKeyRef:
