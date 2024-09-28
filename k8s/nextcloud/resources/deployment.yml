@@ -69,6 +69,20 @@ spec:
               value: nextcloud.durbin.casa nextcloud-service
             - name: TRUSTED_PROXIES
               value: 127.0.0.1 10.0.0.0/8
+            - name: OBJECTSTORE_S3_BUCKET
+              value: nextcloud
+            - name: OBJECTSTORE_S3_HOST
+              value: minio-api-service
+            - name: OBJECTSTORE_S3_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secret
+                  key: MINIO_ACCESS_KEY
+            - name: OBJECTSTORE_S3_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secret
+                  key: MINIO_SECRET_KEY
           ports:
             - name: http
               containerPort: 80
