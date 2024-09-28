@@ -14,7 +14,9 @@ metadata:
     gethomepage.dev/name: Nextcloud
     gethomepage.dev/widget.type: nextcloud
     gethomepage.dev/widget.url: http://nextcloud-service
-
+    nginx.ingress.kubernetes.io/proxy-body-size: '0'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '600'
     nginx.ingress.kubernetes.io/enable-cors: 'true'
     nginx.ingress.kubernetes.io/cors-allow-headers: X-Forwarded-For
     nginx.ingress.kubernetes.io/server-snippet: |-
