@@ -45,6 +45,8 @@ spec:
               value: '1000'
             - name: PGID
               value: '1000'
+            - name: TUBESYNC_RESET_DOWNLOAD_DIR
+              value: 'false'
           ports:
             - name: http
               containerPort: 4848
