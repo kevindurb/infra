@@ -36,7 +36,8 @@ spec:
             - name: volume
               mountPath: /config
             - name: truenas-media
-              mountPath: /media
+              mountPath: /downloads
+              subpath: YouTube
           env:
             - name: TZ
               value: America/Denver
