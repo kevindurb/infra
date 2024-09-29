@@ -5,16 +5,14 @@ metadata:
   name: ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
-    
+
     gethomepage.dev/href: 'https://tubesync.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: tubesync
     gethomepage.dev/group: Other
     gethomepage.dev/icon: tubesync
     gethomepage.dev/name: Tubesync
-    gethomepage.dev/widget.type: tubesync
-    gethomepage.dev/widget.url: http://tubesync-service
-    
+
 spec:
   ingressClassName: internal
   rules:
