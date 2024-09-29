@@ -22,6 +22,9 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: cookies
+          secret:
+            secretName: tubesync-secret
       containers:
         - name: tubesync
           image: ghcr.io/meeb/tubesync:v0.13.7
@@ -38,6 +41,9 @@ spec:
             - name: truenas-media
               mountPath: /downloads
               subPath: YouTube
+            - name: cookies
+              mountPath: /config/cookies.txt
+              subPath: youtube-cookies
           env:
             - name: TZ
               value: America/Denver
