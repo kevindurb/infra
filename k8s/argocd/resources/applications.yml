@@ -74,6 +74,7 @@ spec:
           - name: tailscale-extra
           - name: time-slicing-config
           - name: truenas
+          - name: tubesync
           - name: memos
           - name: watchyourlan
           - name: whoami
