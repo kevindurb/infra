@@ -23,7 +23,6 @@ spec:
           persistentVolumeClaim:
             claimName: truenas-media
       securityContext:
-        runAsNonRoot: true
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
@@ -37,13 +36,6 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            readOnlyRootFilesystem: true
-            capabilities:
-              drop: [ALL]
           volumeMounts:
             - name: volume
               mountPath: /config
@@ -52,6 +44,10 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: PUID
+              value: '1000'
+            - name: PGID
+              value: '1000'
           ports:
             - name: http
               containerPort: 4848
