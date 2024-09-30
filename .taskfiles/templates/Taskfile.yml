@@ -222,7 +222,7 @@ tasks:
         apiVersion: networking.k8s.io/v1
         kind: Ingress
         metadata:
-          name: ingress
+          name: external-ingress
           annotations:
             cert-manager.io/cluster-issuer: cloudflare-issuer
             {{ if eq .portname "https" }}nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'{{ end }}

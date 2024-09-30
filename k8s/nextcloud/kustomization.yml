@@ -7,7 +7,7 @@ namePrefix: nextcloud-
 resources:
   - ./resources/deployment.yml
   - ./resources/gatus-config.yml
-  - ./resources/internal-ingress.yml
+  - ./resources/external-ingress.yml
   - ./resources/pg.yml
   - ./resources/pvc.yml
   - ./resources/service.yml
