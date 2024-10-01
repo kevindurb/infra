@@ -9,6 +9,7 @@ data:
   prusaslicer.yml: |
     endpoints:
       - name: Prusaslicer
+        enabled: false
         url: http://prusaslicer-service
         
         conditions:
