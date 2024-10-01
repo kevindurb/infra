@@ -48,7 +48,7 @@ spec:
             - name: TUBESYNC_RESET_DOWNLOAD_DIR
               value: 'false'
             - name: TUBESYNC_WORKERS
-              value: '4'
+              value: '1'
           ports:
             - name: http
               containerPort: 4848
