@@ -28,8 +28,8 @@ spec:
           resources:
             requests:
               memory: 100M
-            limits:
-              memory: 1G
+            # limits:
+            #   memory: 1G
           securityContext:
             privileged: false
           volumeMounts:
