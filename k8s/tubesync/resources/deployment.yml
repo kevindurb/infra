@@ -6,7 +6,7 @@ metadata:
   labels: &labels
     app.kubernetes.io/component: web
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -28,8 +28,8 @@ spec:
           resources:
             requests:
               memory: 100M
-            # limits:
-            #   memory: 1G
+            limits:
+              memory: 2G
           securityContext:
             privileged: false
           volumeMounts:
