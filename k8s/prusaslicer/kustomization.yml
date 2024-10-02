@@ -5,10 +5,10 @@ kind: Kustomization
 namePrefix: prusaslicer-
 
 resources:
-  # - ./resources/deployment.yml
+  - ./resources/deployment.yml
   - ./resources/gatus-config.yml
   - ./resources/internal-ingress.yml
-  # - ./resources/pvc.yml
+  - ./resources/pvc.yml
   - ./resources/service.yml
 
 labels:
