@@ -4,8 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: volume
 spec:
-  accessModes:
-    - ReadWriteOnce
+  accessModes: [ReadWriteOnce]
   storageClassName: local-hostpath
   dataSourceRef:
     kind: ReplicationDestination
@@ -84,3 +83,4 @@ spec:
     storageClassName: local-hostpath
     capacity: 1G
     volumeSnapshotClassName: local-hostpath
+    accessModes: [ReadWriteOnce]
