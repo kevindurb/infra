@@ -277,7 +277,11 @@ tasks:
         spec:
           accessModes:
             - ReadWriteOnce
-          storageClassName: local-storage
+          storageClassName: local-hostpath
+          dataSourceRef:
+            kind: ReplicationDestination
+            apiGroup: volsync.backube
+            name: {{ .appname }}-volume-restore
           resources:
             requests:
               storage: {{ or .size "1G" }}
@@ -336,17 +340,20 @@ tasks:
             copyMethod: Direct
 
         ---
-        # apiVersion: volsync.backube/v1alpha1
-        # kind: ReplicationDestination
-        # metadata:
-        #   name: volume-restore
-        # spec:
-        #   trigger:
-        #     manual: manual-once
-        #   restic:
-        #     repository: {{ .appname }}-volume-repository
-        #     destinationPVC: {{ .appname }}-volume
-        #     copyMethod: Direct
+        apiVersion: volsync.backube/v1alpha1
+        kind: ReplicationDestination
+        metadata:
+          name: volume-restore
+        spec:
+          trigger:
+            manual: manual-once
+          restic:
+            repository: {{ .appname }}-volume-repository
+            copyMethod: Snapshot
+            storageClassName: local-hostpath
+            capacity: 1G
+            volumeSnapshotClassName: local-hostpath
+            accessModes: [ReadWriteOnce]
         EOF
 
   pg:
