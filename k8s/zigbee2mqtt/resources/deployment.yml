@@ -23,7 +23,7 @@ spec:
             path: /run/udev
       containers:
         - name: zigbee2mqtt
-          image: ghcr.io/koenkk/zigbee2mqtt:1.40.1
+          image: ghcr.io/koenkk/zigbee2mqtt:1.40.2
           resources:
             requests:
               memory: 100M
