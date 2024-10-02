@@ -7,6 +7,10 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: local-hostpath
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: dev-volume-restore
   resources:
     requests:
       storage: 1G
@@ -44,6 +48,7 @@ spec:
       remoteRef:
         key: minio-secret
         property: MINIO_SECRET_KEY
+
 ---
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
@@ -64,15 +69,18 @@ spec:
       yearly: 1
     copyMethod: Snapshot
     volumeSnapshotClassName: local-hostpath
-# ---
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: volume-restore
-# spec:
-#   trigger:
-#     manual: manual-once
-#   restic:
-#     repository: dev-volume-repository
-#     destinationPVC: dev-volume
-#     copyMethod: Direct
+
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: volume-restore
+spec:
+  trigger:
+    manual: manual-once
+  restic:
+    repository: dev-volume-repository
+    copyMethod: Snapshot
+    storageClassName: local-hostpath
+    capacity: 1G
+    volumeSnapshotClassName: local-hostpath
