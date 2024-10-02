@@ -19,11 +19,11 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-      securityContext:
-        fsGroup: 1000
       containers:
-        - name: box
-          image: ghcr.io/kevindurb/box
+        - name: dev
+          image: quay.io/fedora/fedora:40
+          command: ['/bin/bash', '-c', '--']
+          args: ['while true; do sleep 30; done;']
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
@@ -34,4 +34,4 @@ spec:
               drop: [ALL]
           volumeMounts:
             - name: volume
-              mountPath: /home/dev
+              mountPath: /volume

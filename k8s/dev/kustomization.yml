@@ -4,7 +4,9 @@ kind: Kustomization
 
 namePrefix: dev-
 
-resources: []
+resources:
+  - ./resources/deployment.yml
+  - ./resources/pvc.yml
 
 labels:
   - pairs:

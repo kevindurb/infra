@@ -21,6 +21,7 @@ spec:
           - name: cnpg
           - name: common
           - name: dashboard
+          - name: dev
           - name: ente
           - name: external-dns
           - name: external-snapshotter
