@@ -15,9 +15,9 @@ spec:
     metadata:
       labels: *labels
     spec:
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-      runtimeClassName: nvidia
+      # nodeSelector:
+      #   nvidia.com/gpu.present: 'true'
+      # runtimeClassName: nvidia
       volumes:
         - name: volume
           persistentVolumeClaim:
