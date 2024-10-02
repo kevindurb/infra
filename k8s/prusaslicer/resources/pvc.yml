@@ -6,7 +6,11 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: local-storage
+  storageClassName: local-hostpath
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: prusaslicer-volume-restore
   resources:
     requests:
       storage: 1G
@@ -65,14 +69,17 @@ spec:
     copyMethod: Direct
 
 ---
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: volume-restore
-# spec:
-#   trigger:
-#     manual: manual-once
-#   restic:
-#     repository: prusaslicer-volume-repository
-#     destinationPVC: prusaslicer-volume
-#     copyMethod: Direct
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: volume-restore
+spec:
+  trigger:
+    manual: manual-once
+  restic:
+    repository: prusaslicer-volume-repository
+    copyMethod: Snapshot
+    storageClassName: local-hostpath
+    capacity: 1G
+    volumeSnapshotClassName: local-hostpath
+    accessModes: [ReadWriteOnce]
