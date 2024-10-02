@@ -15,9 +15,6 @@ spec:
     metadata:
       labels: *labels
     spec:
-      # nodeSelector:
-      #   nvidia.com/gpu.present: 'true'
-      # runtimeClassName: nvidia
       volumes:
         - name: volume
           persistentVolumeClaim:
@@ -31,18 +28,8 @@ spec:
           resources:
             requests:
               memory: 100M
-            # limits:
-            #   memory: 2G
-            #   nvidia.com/gpu: 1
           securityContext:
             privileged: false
-            # allowPrivilegeEscalation: false
-            # runAsNonRoot: true
-            # runAsUser: 1000
-            # runAsGroup: 1000
-            # readOnlyRootFilesystem: true
-            # capabilities:
-            #   drop: [ALL]
           volumeMounts:
             - name: volume
               mountPath: /configs
