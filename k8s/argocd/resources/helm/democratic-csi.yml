@@ -35,7 +35,7 @@ spec:
   project: default
   sources:
     - repoURL: https://democratic-csi.github.io/charts/
-      targetRevision: 0.14.6
+      targetRevision: 0.2.4
       chart: snapshot-controller
       helm:
         valueFiles:
