@@ -5,10 +5,13 @@ metadata:
   name: snapscheduler
 spec:
   project: default
-  source:
-    repoURL: https://backube.github.io/helm-charts/
-    targetRevision: 3.4.0
-    chart: snapscheduler
+  sources:
+    - repoURL: https://backube.github.io/helm-charts/
+      targetRevision: 3.4.0
+      chart: snapscheduler
+    - repoURL: https://github.com/kevindurb/infra.git
+      targetRevision: HEAD
+      path: k8s/snapscheduler
   destination:
     server: https://kubernetes.default.svc
     namespace: backube-snapscheduler

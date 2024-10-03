@@ -1,0 +1,19 @@
+---
+apiVersion: snapscheduler.backube/v1
+kind: SnapshotSchedule
+metadata:
+  name: hourly
+  namespace: default
+spec:
+  claimSelector:
+    matchLabels:
+      snapscheduler/schedule: hourly
+  disabled: false
+  retention:
+    expires: 168h
+    maxCount: 10
+  schedule: 0 * * * *
+  snapshotTemplate:
+    labels:
+      snapscheduler/schedule: hourly
+    snapshotClassName: local-hostpath
