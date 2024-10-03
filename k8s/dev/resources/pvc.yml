@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: volume
   labels:
-    snapscheduler/schedule: hourly
+    snapscheduler/schedule: 15-minutes
 spec:
   accessModes: [ReadWriteOnce]
   storageClassName: local-hostpath
