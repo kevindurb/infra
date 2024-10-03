@@ -5,14 +5,17 @@ metadata:
   name: tailscale-operator
 spec:
   project: default
-  source:
-    repoURL: https://pkgs.tailscale.com/helmcharts
-    targetRevision: 1.74.1
-    chart: tailscale-operator
-    helm:
-      valuesObject:
-        apiServerProxyConfig:
-          mode: 'true'
+  sources:
+    - repoURL: https://pkgs.tailscale.com/helmcharts
+      targetRevision: 1.74.1
+      chart: tailscale-operator
+      helm:
+        valuesObject:
+          apiServerProxyConfig:
+            mode: 'true'
+    - repoURL: https://github.com/kevindurb/infra.git
+      targetRevision: HEAD
+      path: k8s/tailscale
   destination:
     server: https://kubernetes.default.svc
     namespace: tailscale
