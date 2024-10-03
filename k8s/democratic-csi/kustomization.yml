@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: democratic-csi-
+namespace: democratic-csi
+
+resources:
+  - ./resources/secret.yml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: democratic-csi
+    includeTemplates: true
+    includeSelectors: true
