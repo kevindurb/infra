@@ -4,3 +4,4 @@ kind: Kustomization
 
 resources:
   - ./resources/hourly.yml
+  - ./resources/15-minutes.yml
