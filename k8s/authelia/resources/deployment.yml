@@ -25,7 +25,7 @@ spec:
         - name: config-dir
           emptyDir: {}
       containers:
-        - image: ghcr.io/kiwigrid/k8s-sidecar:1.27.6
+        - image: ghcr.io/kiwigrid/k8s-sidecar:1.28.0
           name: config-sync
           env:
             - name: FOLDER
@@ -40,7 +40,7 @@ spec:
             - name: config-dir
               mountPath: /config/config.d/
         - name: authelia
-          image: ghcr.io/authelia/authelia:4.38.12
+          image: ghcr.io/authelia/authelia:4.38.15
           command: [authelia]
           resources:
             requests:
