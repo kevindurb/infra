@@ -12,7 +12,7 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-        - image: filebrowser/filebrowser:v2.31.1
+        - image: filebrowser/filebrowser:v2.31.2
           name: filebrowser
           securityContext:
             privileged: false
