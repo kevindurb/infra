@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - image: docker.io/library/eclipse-mosquitto:2.0.18
+        - image: docker.io/library/eclipse-mosquitto:2.0.19
           name: mosquitto
           resources:
             requests:
