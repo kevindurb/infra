@@ -20,6 +20,7 @@ resources:
   - ./resources/helm/democratic-csi.yml
   - ./resources/helm/ingress-nginx.yml
   - ./resources/helm/kubernetes-dashboard.yml
+  - ./resources/helm/snapscheduler.yml
 
 patches:
   - path: ./resources/config.patch.yml
