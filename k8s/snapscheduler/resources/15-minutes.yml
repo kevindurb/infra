@@ -1,0 +1,19 @@
+---
+apiVersion: snapscheduler.backube/v1
+kind: SnapshotSchedule
+metadata:
+  name: 15-minutes
+  namespace: default
+spec:
+  claimSelector:
+    matchLabels:
+      snapscheduler/schedule: 15-minutes
+  disabled: false
+  retention:
+    expires: 4h
+    maxCount: 16
+  schedule: '*/15 * * * *'
+  snapshotTemplate:
+    labels:
+      snapscheduler/schedule: 15-minutes
+    snapshotClassName: local-hostpath
