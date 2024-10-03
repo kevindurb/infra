@@ -1,23 +1,39 @@
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-hostpath
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: minecraft-data-volume-restore
+  resources:
+    requests:
+      storage: 1G
+---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: restic-config
+  name: data-volume-repository
 spec:
   refreshInterval: 1h
   secretStoreRef:
     kind: ClusterSecretStore
     name: kubernetes
   target:
-    name: minecraft-restic-config
+    name: minecraft-data-volume-repository
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
         RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/minecraft-data-volume
-        RESTIC_PASSWORD: '{{.RESTIC_PASSWORD}}'
-        AWS_ACCESS_KEY_ID: '{{.AWS_ACCESS_KEY_ID}}'
-        AWS_SECRET_ACCESS_KEY: '{{.AWS_SECRET_ACCESS_KEY}}'
+        RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
+        AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
+        AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
   data:
     - secretKey: RESTIC_PASSWORD
       remoteRef:
@@ -36,14 +52,14 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: backup
+  name: data-volume-backup
 spec:
   sourcePVC: minecraft-data-volume
   trigger:
     schedule: '0 * * * *'
   restic:
     pruneIntervalDays: 14
-    repository: minecraft-restic-config
+    repository: minecraft-data-volume-repository
     retain:
       hourly: 6
       daily: 5
@@ -53,14 +69,17 @@ spec:
     copyMethod: Direct
 
 ---
-# apiVersion: volsync.backube/v1alpha1
-# kind: ReplicationDestination
-# metadata:
-#   name: restore
-# spec:
-#   trigger:
-#     manual: manual-once
-#   restic:
-#     repository: minecraft-restic-config
-#     destinationPVC: minecraft-data-volume
-#     copyMethod: Direct
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: data-volume-restore
+spec:
+  trigger:
+    manual: manual-once
+  restic:
+    repository: minecraft-data-volume-repository
+    copyMethod: Snapshot
+    storageClassName: local-hostpath
+    capacity: 1G
+    volumeSnapshotClassName: local-hostpath
+    accessModes: [ReadWriteOnce]
