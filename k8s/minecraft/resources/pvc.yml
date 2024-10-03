@@ -13,7 +13,7 @@ spec:
     name: minecraft-data-volume-restore
   resources:
     requests:
-      storage: 1G
+      storage: 10G
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -80,6 +80,6 @@ spec:
     repository: minecraft-data-volume-repository
     copyMethod: Snapshot
     storageClassName: local-hostpath
-    capacity: 1G
+    capacity: 10G
     volumeSnapshotClassName: local-hostpath
     accessModes: [ReadWriteOnce]
