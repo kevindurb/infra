@@ -274,86 +274,14 @@ tasks:
         kind: PersistentVolumeClaim
         metadata:
           name: volume
+          labels:
+            snapscheduler/schedule: hourly
         spec:
-          accessModes:
-            - ReadWriteOnce
+          accessModes: [ReadWriteOnce]
           storageClassName: local-hostpath
-          dataSourceRef:
-            kind: ReplicationDestination
-            apiGroup: volsync.backube
-            name: {{ .appname }}-volume-restore
           resources:
             requests:
               storage: {{ or .size "1G" }}
-        ---
-        apiVersion: external-secrets.io/v1beta1
-        kind: ExternalSecret
-        metadata:
-          name: volume-repository
-        spec:
-          refreshInterval: 1h
-          secretStoreRef:
-            kind: ClusterSecretStore
-            name: kubernetes
-          target:
-            name: {{ .appname }}-volume-repository
-            creationPolicy: Owner
-            template:
-              engineVersion: v2
-              data:
-                RESTIC_REPOSITORY: s3:http://minio-api-service/volume-backups/{{ .appname }}-volume
-                RESTIC_PASSWORD: '{{ `{{ .RESTIC_PASSWORD }}` }}'
-                AWS_ACCESS_KEY_ID: '{{ `{{ .AWS_ACCESS_KEY_ID }}` }}'
-                AWS_SECRET_ACCESS_KEY: '{{ `{{ .AWS_SECRET_ACCESS_KEY }}` }}'
-          data:
-            - secretKey: RESTIC_PASSWORD
-              remoteRef:
-                key: minio-secret
-                property: RESTIC_PASSWORD
-            - secretKey: AWS_ACCESS_KEY_ID
-              remoteRef:
-                key: minio-secret
-                property: MINIO_ACCESS_KEY
-            - secretKey: AWS_SECRET_ACCESS_KEY
-              remoteRef:
-                key: minio-secret
-                property: MINIO_SECRET_KEY
-
-        ---
-        apiVersion: volsync.backube/v1alpha1
-        kind: ReplicationSource
-        metadata:
-          name: volume-backup
-        spec:
-          sourcePVC: {{ .appname }}-volume
-          trigger:
-            schedule: '0 * * * *'
-          restic:
-            pruneIntervalDays: 14
-            repository: {{ .appname }}-volume-repository
-            retain:
-              hourly: 6
-              daily: 5
-              weekly: 4
-              monthly: 2
-              yearly: 1
-            copyMethod: Direct
-
-        ---
-        apiVersion: volsync.backube/v1alpha1
-        kind: ReplicationDestination
-        metadata:
-          name: volume-restore
-        spec:
-          trigger:
-            manual: manual-once
-          restic:
-            repository: {{ .appname }}-volume-repository
-            copyMethod: Snapshot
-            storageClassName: local-hostpath
-            capacity: 1G
-            volumeSnapshotClassName: local-hostpath
-            accessModes: [ReadWriteOnce]
         EOF
 
   pg:
