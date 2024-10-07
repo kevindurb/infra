@@ -52,7 +52,6 @@ spec:
           - name: network-policies
           - name: nextcloud
           - name: node-exporter
-          - name: notes
           - name: ollama
           - name: omada
           - name: open-webui
