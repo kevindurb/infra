@@ -7,7 +7,7 @@ metadata:
     cert-manager.io/cluster-issuer: cloudflare-issuer
     gethomepage.dev/href: 'https://matrix.durbin.casa'
     gethomepage.dev/enabled: 'true'
-    gethomepage.dev/app: matrix
+    gethomepage.dev/app: synapse
     gethomepage.dev/group: Other
     gethomepage.dev/icon: matrix-synapse
     gethomepage.dev/name: Matrix
