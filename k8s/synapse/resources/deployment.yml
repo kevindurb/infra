@@ -34,11 +34,11 @@ spec:
         - name: log-config
           configMap:
             name: log-config
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+      # securityContext:
+      #   runAsNonRoot: true
+      #   runAsUser: 1000
+      #   runAsGroup: 1000
+      #   fsGroup: 1000
       containers:
         - name: synapse
           image: ghcr.io/element-hq/synapse:v1.116.0
@@ -47,15 +47,15 @@ spec:
               memory: 100M
             limits:
               memory: 200M
-          securityContext:
-            privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            readOnlyRootFilesystem: true
-            capabilities:
-              drop: [ALL]
+          # securityContext:
+          #   privileged: false
+          #   allowPrivilegeEscalation: false
+          #   runAsNonRoot: true
+          #   runAsUser: 1000
+          #   runAsGroup: 1000
+          #   readOnlyRootFilesystem: true
+          #   capabilities:
+          #     drop: [ALL]
           volumeMounts:
             - name: volume
               mountPath: /data
