@@ -5,6 +5,15 @@ metadata:
   name: ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
+    gethomepage.dev/href: 'https://matrix.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: matrix
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: matrix-synapse
+    gethomepage.dev/name: Matrix
+    nginx.ingress.kubernetes.io/proxy-body-size: '0'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '600'
 spec:
   ingressClassName: internal
   rules:
