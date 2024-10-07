@@ -46,7 +46,7 @@ spec:
           - name: manyfold
           - name: mealie
           - name: metallb
-          # - name: minecraft
+          - name: minecraft
           - name: minio
           - name: mosquitto
           - name: network-policies
