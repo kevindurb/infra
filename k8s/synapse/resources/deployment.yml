@@ -16,9 +16,18 @@ spec:
       labels: *labels
     spec:
       volumes:
-        - name: synapse-secret
+        - name: matrix-config
           secret:
             secretName: synapse-secret
+          items:
+            - key: matrix-config
+              path: matrix-config
+        - name: matrix-signing-key
+          secret:
+            secretName: synapse-secret
+          items:
+            - key: matrix-signing-key
+              path: matrix-signing-key
         - name: synapse-secret
           configMap:
             name: log-config
@@ -45,11 +54,11 @@ spec:
             capabilities:
               drop: [ALL]
           volumeMounts:
-            - name: synapse-secret
+            - name: matrix-config
               mountPath: /data/homeserver.yml
               subPath: matrix-config
               readOnly: true
-            - name: synapse-secret
+            - name: matrix-signing-key
               mountPath: /data/matrix.durbin.casa.signing.key.yml
               subPath: matrix-signing-key
               readOnly: true
