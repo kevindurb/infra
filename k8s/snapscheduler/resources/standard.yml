@@ -1,0 +1,71 @@
+---
+apiVersion: snapscheduler.backube/v1
+kind: SnapshotSchedule
+metadata:
+  name: standard-hourly
+  namespace: default
+spec:
+  claimSelector:
+    matchLabels: &labels
+      snapscheduler/standard: 'true'
+  disabled: false
+  retention:
+    maxCount: 24
+  schedule: 0 * * * *
+  snapshotTemplate:
+    labels: *labels
+    snapshotClassName: local-hostpath
+
+---
+apiVersion: snapscheduler.backube/v1
+kind: SnapshotSchedule
+metadata:
+  name: standard-daily
+  namespace: default
+spec:
+  claimSelector:
+    matchLabels: &labels
+      snapscheduler/standard: 'true'
+  disabled: false
+  retention:
+    maxCount: 7
+  schedule: 0 3 * * *
+  snapshotTemplate:
+    labels: *labels
+    snapshotClassName: local-hostpath
+
+---
+apiVersion: snapscheduler.backube/v1
+kind: SnapshotSchedule
+metadata:
+  name: standard-weekly
+  namespace: default
+spec:
+  claimSelector:
+    matchLabels: &labels
+      snapscheduler/standard: 'true'
+  disabled: false
+  retention:
+    maxCount: 4
+  schedule: 0 3 * * 0
+  snapshotTemplate:
+    labels: *labels
+    snapshotClassName: local-hostpath
+
+---
+apiVersion: snapscheduler.backube/v1
+kind: SnapshotSchedule
+metadata:
+  name: standard-monthly
+  namespace: default
+spec:
+  claimSelector:
+    matchLabels: &labels
+      snapscheduler/standard: 'true'
+  disabled: false
+  retention:
+    maxCount: 12
+  schedule: 0 3 1 * *
+  snapshotTemplate:
+    labels: *labels
+    snapshotClassName: local-hostpath

@@ -275,7 +275,7 @@ tasks:
         metadata:
           name: volume
           labels:
-            snapscheduler/schedule: hourly
+            snapscheduler/standard: 'true'
         spec:
           accessModes: [ReadWriteOnce]
           storageClassName: local-hostpath
