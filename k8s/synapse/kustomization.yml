@@ -4,7 +4,17 @@ kind: Kustomization
 
 namePrefix: synapse-
 
-resources: []
+configMapGenerator:
+  - name: log-config
+    files:
+      - ./resources/config/matrix.durbin.casa.log.config
+
+resources:
+  - ./resources/deployment.yml
+  - ./resources/gatus-config.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/secret.yml
+  - ./resources/service.yml
 
 labels:
   - pairs:

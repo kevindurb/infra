@@ -15,10 +15,13 @@ spec:
     metadata:
       labels: *labels
     spec:
-      # volumes:
-      #   - name: volume
-      #     persistentVolumeClaim:
-      #       claimName: volume
+      volumes:
+        - name: synapse-secret
+          secret:
+            secretName: synapse-secret
+        - name: synapse-secret
+          configMap:
+            name: log-config
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -41,12 +44,24 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # volumeMounts:
-          #   - name: volume
-          #     mountPath: /var/www/app/data
+          volumeMounts:
+            - name: synapse-secret
+              mountPath: /data/homeserver.yml
+              subPath: matrix-config
+              readOnly: true
+            - name: synapse-secret
+              mountPath: /data/matrix.durbin.casa.signing.key.yml
+              subPath: matrix-signing-key
+              readOnly: true
+            - name: log-config
+              mountPath: /data/matrix.durbin.casa.log.config
+              subPath: log-config
+              readOnly: true
           env:
             - name: TZ
               value: America/Denver
+            - name: SYNAPSE_CONFIG_PATH
+              value: /data/homeserver.yml
           ports:
             - name: http
               containerPort: 8008
