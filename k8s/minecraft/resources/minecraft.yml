@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       containers:
-        - image: itzg/minecraft-server:2024.9.0-java21
+        - image: itzg/minecraft-server:2024.10.0-java21
           name: minecraft
           resources:
             requests:
