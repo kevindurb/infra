@@ -7,10 +7,10 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: local-hostpath
-  dataSourceRef:
-    kind: ReplicationDestination
-    apiGroup: volsync.backube
-    name: minecraft-data-volume-restore
+  # dataSourceRef:
+  #   kind: ReplicationDestination
+  #   apiGroup: volsync.backube
+  #   name: minecraft-data-volume-restore
   resources:
     requests:
       storage: 10G
