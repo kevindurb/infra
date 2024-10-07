@@ -22,15 +22,15 @@ spec:
         - name: matrix-config
           secret:
             secretName: synapse-secret
-          items:
-            - key: matrix-config
-              path: matrix-config
+            items:
+              - key: matrix-config
+                path: matrix-config
         - name: matrix-signing-key
           secret:
             secretName: synapse-secret
-          items:
-            - key: matrix-signing-key
-              path: matrix-signing-key
+            items:
+              - key: matrix-signing-key
+                path: matrix-signing-key
         - name: log-config
           configMap:
             name: log-config
