@@ -69,7 +69,7 @@ spec:
               readOnly: true
             - name: log-config
               mountPath: /data/matrix.durbin.casa.log.config
-              subPath: log-config
+              subPath: matrix.durbin.casa.log.config
               readOnly: true
           env:
             - name: TZ
