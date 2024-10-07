@@ -28,7 +28,7 @@ spec:
           items:
             - key: matrix-signing-key
               path: matrix-signing-key
-        - name: synapse-secret
+        - name: log-config
           configMap:
             name: log-config
       securityContext:
