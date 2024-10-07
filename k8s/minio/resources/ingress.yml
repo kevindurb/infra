@@ -32,3 +32,31 @@ spec:
     - secretName: durbin-casa-wildcard-cert
       hosts:
         - *host
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/proxy-body-size: '0'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '600'
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host minioapi.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: api-service
+                port:
+                  name: api
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
