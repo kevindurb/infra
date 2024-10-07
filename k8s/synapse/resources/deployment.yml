@@ -59,7 +59,7 @@ spec:
               subPath: matrix-config
               readOnly: true
             - name: matrix-signing-key
-              mountPath: /data/matrix.durbin.casa.signing.key.yml
+              mountPath: /data/matrix.durbin.casa.signing.key
               subPath: matrix-signing-key
               readOnly: true
             - name: log-config
