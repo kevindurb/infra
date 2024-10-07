@@ -15,6 +15,7 @@ resources:
   - ./resources/internal-ingress.yml
   - ./resources/secret.yml
   - ./resources/service.yml
+  - ./resources/pvc.yml
 
 labels:
   - pairs:

@@ -16,6 +16,9 @@ spec:
       labels: *labels
     spec:
       volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
         - name: matrix-config
           secret:
             secretName: synapse-secret
@@ -54,6 +57,8 @@ spec:
             capabilities:
               drop: [ALL]
           volumeMounts:
+            - name: volume
+              mountPath: /data
             - name: matrix-config
               mountPath: /data/homeserver.yml
               subPath: matrix-config
