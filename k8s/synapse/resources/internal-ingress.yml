@@ -5,20 +5,10 @@ metadata:
   name: ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
-
-    gethomepage.dev/href: 'https://synapse.durbin.casa'
-    gethomepage.dev/enabled: 'true'
-    gethomepage.dev/app: synapse
-    gethomepage.dev/group: Other
-    gethomepage.dev/icon: synapse
-    gethomepage.dev/name: Synapse
-    gethomepage.dev/widget.type: synapse
-    gethomepage.dev/widget.url: http://synapse-service
-
 spec:
   ingressClassName: internal
   rules:
-    - host: &host synapse.durbin.casa
+    - host: &host matrix.durbin.casa
       http:
         paths:
           - pathType: Prefix
