@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: nocodb
-          image: docker.io/nocodb/nocodb:0.255.2
+          image: docker.io/nocodb/nocodb:0.257.0
           resources:
             requests:
               memory: 100M
