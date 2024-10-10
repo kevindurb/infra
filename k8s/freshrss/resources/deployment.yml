@@ -18,7 +18,7 @@ spec:
             claimName: data-volume
       containers:
         - name: freshrss
-          image: docker.io/freshrss/freshrss:1.24.3
+          image: docker.io/freshrss/freshrss:1.24.3@sha256:baedf173d60b63c72f93fdb8480ee002d4622cd34103aac6510f45fdff41effe
           securityContext:
             privileged: false
             # allowPrivilegeEscalation: false
@@ -45,7 +45,7 @@ spec:
             - name: http
               containerPort: 80
         - name: freshrss-cron
-          image: docker.io/freshrss/freshrss
+          image: docker.io/freshrss/freshrss@sha256:baedf173d60b63c72f93fdb8480ee002d4622cd34103aac6510f45fdff41effe
           env: *env
           volumeMounts: *volumeMounts
           args: [cron, -f]

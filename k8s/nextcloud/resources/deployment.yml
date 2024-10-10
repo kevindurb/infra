@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: nextcloud
-          image: docker.io/library/nextcloud:30.0.0
+          image: docker.io/library/nextcloud:30.0.0@sha256:6b89c15912462b5849b2ee73c2effc73afdd2a826366222b7d021d94f9bb1df5
           resources:
             requests:
               memory: 100M

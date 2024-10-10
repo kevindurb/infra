@@ -24,7 +24,7 @@ spec:
             claimName: volume
       containers:
         - name: grafana
-          image: docker.io/grafana/grafana-oss:11.2.2
+          image: docker.io/grafana/grafana-oss:11.2.2@sha256:d5133220d770aba5cb655147b619fa8770b90f41d8489a821d33b1cd34d16f89
           resources:
             requests:
               memory: 150M
