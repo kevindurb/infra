@@ -25,20 +25,6 @@ spec:
         - name: config-dir
           emptyDir: {}
       containers:
-        - image: ghcr.io/kiwigrid/k8s-sidecar:1.28.0@sha256:4166a019eeafd1f0fef4d867dc5f224f18d84ec8681dbb31f3ca258ecf07bcf2
-          name: config-sync
-          env:
-            - name: FOLDER
-              value: /config/config.d/
-            - name: LABEL
-              value: authelia.com/enabled
-            - name: NAMESPACE
-              value: ALL
-            - name: RESOURCE
-              value: both
-          volumeMounts:
-            - name: config-dir
-              mountPath: /config/config.d/
         - name: authelia
           image: ghcr.io/authelia/authelia:4.38.16@sha256:172c9b2e4d7c25196404e4620f6018650cbd2124999aceaa812cf0c100ef8b23
           command: [authelia]
