@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - image: rhasspy/wyoming-piper
+        - image: rhasspy/wyoming-piper@sha256:103222f9522bf53fcd342ced9433f8666accca17603b583abcbc939962825c11
           name: piper
           args:
             - --voice

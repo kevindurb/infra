@@ -24,7 +24,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: prusaslicer
-          image: docker.io/mikeah/prusaslicer-novnc:2024.09.13.005624
+          image: docker.io/mikeah/prusaslicer-novnc:2024.09.13.005624@sha256:9d940dcadb1ff9aa9ccee05ee26a1a8804b6d0adfbef4600e392f152a9a67350
           resources:
             requests:
               memory: 100M

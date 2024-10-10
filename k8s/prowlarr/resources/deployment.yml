@@ -28,7 +28,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: prowlarr
-          image: ghcr.io/onedr0p/prowlarr-develop:1.25.1
+          image: ghcr.io/onedr0p/prowlarr-develop:1.25.1@sha256:8b59eb7f9e5321b702bdacae3468b63d71720091ba3b0e9dfaca686a7705d2b8
           resources:
             requests:
               memory: 100M

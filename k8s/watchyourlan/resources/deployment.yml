@@ -27,7 +27,7 @@ spec:
       hostNetwork: true
       containers:
         - name: watchyourlan
-          image: ghcr.io/aceberg/watchyourlan:2.0.3
+          image: ghcr.io/aceberg/watchyourlan:2.0.3@sha256:d506d562fa04e3400cd421532ebb93800e3ac5694c168a713104287fe8b0116e
           resources:
             requests:
               memory: 100M
