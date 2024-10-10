@@ -27,7 +27,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: qbittorrent
-          image: ghcr.io/onedr0p/qbittorrent:5.0.0
+          image: ghcr.io/onedr0p/qbittorrent:5.0.0@sha256:1cc1878d06fafe6a1a1294f1547203634e729e3386324b7a63c8fde68554d705
           resources:
             requests:
               memory: 100M
@@ -91,7 +91,7 @@ spec:
             periodSeconds: 10
         - name: tailscale
           imagePullPolicy: Always
-          image: ghcr.io/tailscale/tailscale:latest
+          image: ghcr.io/tailscale/tailscale:latest@sha256:a013ce5266e5c796efe31c7cf9562deb21423f8586361d7faadaf675fa4296ac
           env:
             - name: TS_KUBE_SECRET
               value: qbittorrent-tailscale-auth

@@ -21,7 +21,7 @@ spec:
             name: config
       containers:
         - name: smtp-relay
-          image: ghcr.io/foxcpp/maddy:0.7.1
+          image: ghcr.io/foxcpp/maddy:0.7.1@sha256:6ab538e2f28baf2324f7cb418c7f9476fd9c7e9fa9b14bc3aecf51a9f6962064
           resources:
             requests:
               memory: 50M

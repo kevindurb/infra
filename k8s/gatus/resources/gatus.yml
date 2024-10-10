@@ -16,7 +16,7 @@ spec:
         fsGroup: 1000
       serviceAccountName: service-account
       containers:
-        - image: ghcr.io/twin/gatus:v5.12.1
+        - image: ghcr.io/twin/gatus:v5.12.1@sha256:3cc4e90534c05599f07fbdf15580401aa7771fac15f51d1dc8f7de265d70d12f
           name: gatus
           securityContext:
             privileged: false
@@ -47,7 +47,7 @@ spec:
           env:
             - name: GATUS_CONFIG_PATH
               value: /config
-        - image: ghcr.io/kiwigrid/k8s-sidecar:1.28.0
+        - image: ghcr.io/kiwigrid/k8s-sidecar:1.28.0@sha256:4166a019eeafd1f0fef4d867dc5f224f18d84ec8681dbb31f3ca258ecf07bcf2
           name: config-sync
           securityContext:
             privileged: false

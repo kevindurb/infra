@@ -24,7 +24,7 @@ spec:
             claimName: config-volume
       containers:
         - name: calibre
-          image: linuxserver/calibre:7.19.0
+          image: linuxserver/calibre:7.19.0@sha256:102903294d24ec3d54f9759527e72426cbb36fc4edd5b69618680f7e8fe8e713
           env:
             - name: PUID
               value: '1000'

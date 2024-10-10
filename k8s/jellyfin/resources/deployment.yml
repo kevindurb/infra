@@ -30,7 +30,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: jellyfin
-          image: ghcr.io/jellyfin/jellyfin:10.9.11
+          image: ghcr.io/jellyfin/jellyfin:10.9.11@sha256:fc1b51f4be3fba725e42dae2022d9c6a5b069acce01bef04d32fdee025dc511e
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
@@ -49,7 +49,7 @@ spec:
             - name: web
               containerPort: 8096
         - name: zap2xml
-          image: shuaiscott/zap2xml:latest
+          image: shuaiscott/zap2xml:latest@sha256:ffcb45211ac8f2eeaa7e7b323625d6261ee8e223e0169f082cd2101a9b77317f
           volumeMounts:
             - name: config-volume
               mountPath: /data

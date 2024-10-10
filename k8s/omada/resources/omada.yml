@@ -12,7 +12,7 @@ spec:
       hostNetwork: true
       containers:
         - name: omada
-          image: mbentley/omada-controller:beta-5.14.30.7
+          image: mbentley/omada-controller:beta-5.14.30.7@sha256:1ef5fa0a27fefa44a3a991553dc930a376f039a4c13c0fd5b60b0b14f241fe3b
           envFrom:
             - configMapRef:
                 name: env
