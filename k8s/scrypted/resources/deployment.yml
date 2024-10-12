@@ -25,7 +25,7 @@ spec:
       runtimeClassName: nvidia
       containers:
         - name: scrypted
-          image: ghcr.io/koush/scrypted:v0.119.1-jammy-nvidia@sha256:832e23ac7ef1d581ffdd72bb4271accfd46fa722753c8c855f58af7e3d20be4e
+          image: ghcr.io/koush/scrypted:v0.119.2-jammy-nvidia@sha256:aa89d00b4cd3430187cd937c7db58f8cf2cbea99d0aa94b2f7f5d987474ae7c1
           env:
             - name: SCRYPTED_DOCKER_AVAHI
               value: 'true'
