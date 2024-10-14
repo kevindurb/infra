@@ -25,7 +25,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: windows
-          image: ghcr.io/dockur/windows:3.21@sha256:1ca15e6bc5b7cee9e64c26c689e2b4e570a1773f0bd1a87148fee0af8dadcd24
+          image: ghcr.io/dockur/windows:3.23@sha256:e65cb9413437bc40aa3f7ef39b8e42b4fa80135feef5f7e1d5c20da12754b6c5
           resources:
             requests:
               memory: 8G
