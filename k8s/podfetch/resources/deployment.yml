@@ -24,7 +24,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: podfetch
-          image: ghcr.io/samtv12345/podfetch:v4.7.1@sha256:0eb48aad2fb7c57e000039055548b75773000ac15391ab1a03c1ef869bc54867
+          image: ghcr.io/samtv12345/podfetch:v4.7.1@sha256:c3263c7966195f30155e7111269c364ebff2a85a5b74d2befd649a17f0099a80
           resources:
             requests:
               memory: 100M
