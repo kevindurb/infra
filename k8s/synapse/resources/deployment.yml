@@ -84,7 +84,7 @@ spec:
             - name: TZ
               value: America/Denver
             - name: SYNAPSE_CONFIG_PATH
-              value: /data/homeserver.yml
+              value: /data/homeserver-postgres.yml
           ports:
             - name: http
               containerPort: 8008
