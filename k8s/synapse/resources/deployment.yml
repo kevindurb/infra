@@ -19,6 +19,12 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: matrix-postgres-config
+          secret:
+            secretName: synapse-secret
+            items:
+              - key: matrix-postgres-config
+                path: matrix-postgres-config
         - name: matrix-config
           secret:
             secretName: synapse-secret
@@ -61,6 +67,10 @@ spec:
             - name: matrix-config
               mountPath: /data/homeserver.yml
               subPath: matrix-config
+              readOnly: true
+            - name: matrix-postgres-config
+              mountPath: /data/homeserver-postgres.yml
+              subPath: matrix-postgres-config
               readOnly: true
             - name: matrix-signing-key
               mountPath: /data/matrix.durbin.casa.signing.key
