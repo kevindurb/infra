@@ -12,10 +12,11 @@ configMapGenerator:
 resources:
   - ./resources/deployment.yml
   - ./resources/gatus-config.yml
-  - ./resources/external-ingress.yml
+  # - ./resources/external-ingress.yml
   - ./resources/secret.yml
   - ./resources/service.yml
   - ./resources/pvc.yml
+  - ./resources/pg.yml
 
 labels:
   - pairs:
