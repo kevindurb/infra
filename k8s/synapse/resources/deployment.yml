@@ -89,4 +89,4 @@ spec:
             - name: http
               containerPort: 8008
             - name: prometheus
-              containerPort: 9092
+              containerPort: 9000
