@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: guacamole
-          image: guacamole/guacamole@sha256:0cf9262d618bcaa480ed1c9a4a3a660f1d13f6e0103dba1074793134d910dd9f
+          image: guacamole/guacamole@sha256:3cf72e4cc6b9845b466d4d878cd0db93ab7566cdc84dc0ffe94145563eb9d43f
           resources:
             requests:
               memory: 300M
