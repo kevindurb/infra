@@ -91,7 +91,7 @@ spec:
             periodSeconds: 10
         - name: tailscale
           imagePullPolicy: Always
-          image: ghcr.io/tailscale/tailscale:latest@sha256:a013ce5266e5c796efe31c7cf9562deb21423f8586361d7faadaf675fa4296ac
+          image: ghcr.io/tailscale/tailscale:latest@sha256:51d9f5f8543670ecd6b15363977876a876ac591ea45cc6adfc0bb2d07e487810
           env:
             - name: TS_KUBE_SECRET
               value: qbittorrent-tailscale-auth
