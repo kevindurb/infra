@@ -44,6 +44,7 @@ spec:
           - name: mainsail
           - name: makemkv
           - name: manyfold
+          - name: mastodon
           - name: mealie
           - name: metallb
           - name: minecraft
@@ -70,7 +71,6 @@ spec:
           - name: smtp-relay
           - name: sonarr
           - name: speedtest-exporter
-          # - name: synapse
           - name: time-slicing-config
           - name: truenas
           - name: memos
