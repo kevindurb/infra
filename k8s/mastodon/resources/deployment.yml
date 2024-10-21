@@ -68,6 +68,26 @@ spec:
                 secretKeyRef:
                   name: mastodon-postgres-app
                   key: uri
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: mastodon-secret
+                  key: SECRET_KEY_BASE
+            - name: OTP_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mastodon-secret
+                  key: OTP_SECRET
+            - name: VAPID_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mastodon-secret
+                  key: VAPID_PRIVATE_KEY
+            - name: VAPID_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mastodon-secret
+                  key: VAPID_PUBLIC_KEY
           ports:
             - name: web
               containerPort: 3000
