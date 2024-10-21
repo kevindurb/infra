@@ -24,7 +24,6 @@ configMapGenerator:
       - ./resources/rules/volsync.rules.yml
       - ./resources/rules/argocd.rules.yml
       - ./resources/rules/nginx-ingress.rules.yml
-      - ./resources/rules/synapse.rules.yml
   - name: consoles
     files:
       - ./resources/consoles/synapse.html
