@@ -6,28 +6,35 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
 
-    gethomepage.dev/href: 'https://mastodon.durbin.casa'
+    gethomepage.dev/href: 'https://social.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: mastodon
     gethomepage.dev/group: Other
     gethomepage.dev/icon: mastodon
     gethomepage.dev/name: Mastodon
     gethomepage.dev/widget.type: mastodon
-    gethomepage.dev/widget.url: http://mastodon-service
+    gethomepage.dev/widget.url: http://mastodon-service:3000
 
 spec:
   ingressClassName: internal
   rules:
-    - host: &host mastodon.durbin.casa
+    - host: &host social.durbin.casa
       http:
         paths:
+          - pathType: Prefix
+            path: '/api/v1/streaming'
+            backend:
+              service:
+                name: service
+                port:
+                  name: streaming
           - pathType: Prefix
             path: '/'
             backend:
               service:
                 name: service
                 port:
-                  name: http
+                  name: web
   tls:
     - secretName: durbin-casa-wildcard-cert
       hosts:

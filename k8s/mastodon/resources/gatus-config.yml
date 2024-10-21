@@ -9,7 +9,6 @@ data:
   mastodon.yml: |
     endpoints:
       - name: Mastodon
-        url: http://mastodon-service
-        
+        url: http://mastodon-service:3000
         conditions:
           - '[STATUS] == 200'

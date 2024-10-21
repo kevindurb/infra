@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+vars:
+  projectId: 9ea721a1-3736-499a-84ef-b1a100f005e8
+
+tasks:
+  secret-create:
+    requires:
+      vars: [key, value]
+    cmd: >
+      podman run --rm -it -e BWS_ACCESS_TOKEN bitwarden/bws
+      secret create {{.key}} {{.value}} {{.projectId}}

@@ -15,18 +15,24 @@ spec:
     metadata:
       labels: *labels
     spec:
-      # volumes:
-      #   - name: volume
-      #     persistentVolumeClaim:
-      #       claimName: volume
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
-        - name: mastodon
+        - name: mastodon-web
           image: ghcr.io/mastodon/mastodon:v4.3.0
+          command: [bundle, exec, puma, -C, config/puma.rb]
+          livenessProbe:
+            tcpSocket:
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 15
+            failureThreshold: 30
+            periodSeconds: 5
           resources:
             requests:
               memory: 100M
@@ -41,12 +47,80 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # volumeMounts:
-          #   - name: volume
-          #     mountPath: /var/www/app/data
-          env:
+          # TODO: add env vars for pg and redis
+          env: &env
             - name: TZ
               value: America/Denver
+            - name: LOCAL_DOMAIN
+              value: social.durbin.casa
+            - name: DEFAULT_LOCALE
+              value: en
+            - name: RAILS_ENV
+              value: production
+            - name: NODE_ENV
+              value: production
+            - name: REDIS_HOST
+              value: mastodon-valkey-service
+            - name: REDIS_PORT
+              value: '6379'
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mastodon-postgres-app
+                  key: uri
           ports:
-            - name: http
+            - name: web
               containerPort: 3000
+
+        - name: mastodon-streaming
+          image: ghcr.io/mastodon/mastodon:v4.3.0
+          command: [node, ./streaming]
+          livenessProbe: &probe
+            httpGet:
+              path: /api/v1/streaming/health
+              port: streaming
+          readinessProbe: *probe
+          startupProbe:
+            <<: *probe
+            initialDelaySeconds: 5
+            failureThreshold: 15
+            periodSeconds: 5
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 200M
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          # TODO: add env vars for pg and redis
+          env: *env
+          ports:
+            - name: streaming
+              containerPort: 4000
+
+        - name: mastodon-sidekiq
+          image: ghcr.io/mastodon/mastodon:v4.3.0
+          command: [bundle, exec, sidekiq]
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 200M
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          # TODO: add env vars for pg and redis
+          env: *env
