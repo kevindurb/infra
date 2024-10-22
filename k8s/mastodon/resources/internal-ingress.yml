@@ -12,8 +12,6 @@ metadata:
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: mastodon
     gethomepage.dev/name: Mastodon
-    gethomepage.dev/widget.type: mastodon
-    gethomepage.dev/widget.url: http://mastodon-web-service
 
 spec:
   ingressClassName: internal
