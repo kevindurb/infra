@@ -19,20 +19,20 @@ spec:
         - name: mastodon-web
           image: ghcr.io/mastodon/mastodon:v4.3.0
           command: [bundle, exec, puma, -C, config/puma.rb]
-          livenessProbe:
-            tcpSocket:
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: http
-          startupProbe:
-            httpGet:
-              path: /health
-              port: http
-            initialDelaySeconds: 15
-            failureThreshold: 30
-            periodSeconds: 5
+          # livenessProbe:
+          #   tcpSocket:
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: http
+          # startupProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: http
+          #   initialDelaySeconds: 15
+          #   failureThreshold: 30
+          #   periodSeconds: 5
           resources:
             requests:
               memory: 100M
@@ -77,16 +77,16 @@ spec:
         - name: mastodon-streaming
           image: ghcr.io/mastodon/mastodon-streaming:v4.3.0
           command: [node, ./streaming]
-          livenessProbe: &probe
-            httpGet:
-              path: /api/v1/streaming/health
-              port: streaming
-          readinessProbe: *probe
-          startupProbe:
-            <<: *probe
-            initialDelaySeconds: 5
-            failureThreshold: 15
-            periodSeconds: 5
+          # livenessProbe: &probe
+          #   httpGet:
+          #     path: /api/v1/streaming/health
+          #     port: streaming
+          # readinessProbe: *probe
+          # startupProbe:
+          #   <<: *probe
+          #   initialDelaySeconds: 5
+          #   failureThreshold: 15
+          #   periodSeconds: 5
           resources:
             requests:
               memory: 100M
