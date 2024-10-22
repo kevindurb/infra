@@ -39,3 +39,42 @@ spec:
                 secretKeyRef:
                   name: mastodon-postgres-app
                   key: uri
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: mastodon-db-migrate
+          image: ghcr.io/mastodon/mastodon:v4.3.0
+          command: [bundle, exec, rake, db:migrate]
+          envFrom:
+            - secretRef:
+                name: mastodon-secret
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: LOCAL_DOMAIN
+              value: social.durbin.casa
+            - name: DEFAULT_LOCALE
+              value: en
+            - name: RAILS_ENV
+              value: production
+            - name: NODE_ENV
+              value: production
+            - name: REDIS_HOST
+              value: mastodon-valkey-service
+            - name: REDIS_PORT
+              value: '6379'
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mastodon-postgres-app
+                  key: uri
