@@ -6,7 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
 
-    gethomepage.dev/href: 'https://searxng.durbin.casa'
+    gethomepage.dev/href: 'https://search.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: searxng
     gethomepage.dev/group: Apps
@@ -21,7 +21,7 @@ metadata:
 spec:
   ingressClassName: external
   rules:
-    - host: &host searxng.durbin.casa
+    - host: &host search.durbin.casa
       http:
         paths:
           - pathType: Prefix
