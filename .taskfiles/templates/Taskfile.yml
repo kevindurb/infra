@@ -53,6 +53,8 @@ tasks:
     requires:
       vars: [APP, IMAGE, PORT]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: './resources/{{or .COMP "web"}}-deployment.yml'
     env:
       APP: '{{.APP}}'
       COMP: '{{or .COMP "web"}}'
@@ -63,13 +65,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/deployment.yml.j2
-        > ./resources/{{or .COMP "web"}}-deployment.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   service:
     aliases: [svc]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: './resources/{{or .COMP "web"}}-service.yml'
     env:
       APP: '{{.APP}}'
       COMP: '{{or .COMP "web"}}'
@@ -80,13 +85,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/service.yml.j2
-        > ./resources/{{or .COMP "web"}}-service.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   external-endpoint:
     aliases: [ext]
     requires:
       vars: [APP, IP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: './resources/external-endpoint.yml'
     env:
       APP: '{{.APP}}'
       SUBDOMAIN: '{{or .subdomain .APP}}'
@@ -98,13 +106,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/external-endpoint.yml.j2
-        > ./resources/external-endpoint.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   internal-ingress:
     aliases: [int-ing]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: './resources/internal-ingress.yml'
     env:
       APP: '{{.APP}}'
       SUBDOMAIN: '{{or .subdomain .APP}}'
@@ -115,13 +126,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/internal-ingress.yml.j2
-        > ./resources/internal-ingress.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   external-ingress:
     aliases: [ext-ing]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: ./resources/external-ingress.yml
     env:
       APP: '{{.APP}}'
       SUBDOMAIN: '{{or .subdomain .APP}}'
@@ -132,13 +146,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/external-ingress.yml.j2
-        > ./resources/external-ingress.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   persistent-volume-claim:
     aliases: [pvc]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: ./resources/pvc.yml
     env:
       APP: '{{.APP}}'
       SIZE: '{{or .size "1G"}}'
@@ -147,13 +164,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/pvc.yml.j2
-        > ./resources/pvc.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   postgres:
     aliases: [pg, db]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: ./resources/postgres.yml
     env:
       APP: '{{.APP}}'
     cmds:
@@ -161,13 +181,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/postgres.yml.j2
-        > ./resources/postgres.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   valkey:
     aliases: [redis]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: ./resources/valkey.yml
     env:
       APP: '{{.APP}}'
     cmds:
@@ -175,13 +198,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/valkey.yml.j2
-        > ./resources/valkey.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   bitwarden-secret:
     aliases: [secret]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: ./resources/bitwarden-secret.yml
     env:
       APP: '{{.APP}}'
     cmds:
@@ -189,13 +215,16 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/bitwarden-secret.yml.j2
-        > ./resources/bitwarden-secret.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   gatus-config:
     aliases: [gatus]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: ./resources/gatus-config.yml
     env:
       APP: '{{.APP}}'
       PROTO: '{{or .PROTO "http"}}'
@@ -204,4 +233,5 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/gatus-config.yml.j2
-        > ./resources/gatus-config.yml
+        > {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
