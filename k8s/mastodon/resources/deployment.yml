@@ -16,8 +16,8 @@ spec:
       labels: *labels
     spec:
       volumes:
-        name: opt-mastodon-tmp
-        emptyDir: {}
+        - name: opt-mastodon-tmp
+          emptyDir: {}
       containers:
         - name: mastodon-web
           image: ghcr.io/mastodon/mastodon:v4.3.0
