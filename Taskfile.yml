@@ -2,6 +2,8 @@
 ---
 version: '3'
 
+dotenv: [.env]
+
 includes:
   templates:
     taskfile: .taskfiles/templates
