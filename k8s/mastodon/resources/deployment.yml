@@ -16,7 +16,7 @@ spec:
       labels: *labels
     spec:
       volumes:
-        - name: opt-mastodon-tmp
+        - name: opt-mastodon
           emptyDir: {}
         - name: tmp
           emptyDir: {}
@@ -85,9 +85,11 @@ spec:
                 secretKeyRef:
                   name: mastodon-postgres-app
                   key: uri
-          volumeMounts:
+          volumeMounts: &volumeMounts
             - name: tmp
               mountPath: /tmp
+            - name: opt-mastodon
+              mountPath: /opt/mastodon
           ports:
             - name: web
               containerPort: 3000
@@ -123,6 +125,7 @@ spec:
             - secretRef:
                 name: mastodon-secret
           env: *env
+          volumeMounts: *volumeMounts
           ports:
             - name: streaming
               containerPort: 4000
@@ -130,9 +133,6 @@ spec:
         - name: mastodon-sidekiq
           image: ghcr.io/mastodon/mastodon:v4.3.0
           command: [bundle, exec, sidekiq]
-          volumeMounts:
-            - name: opt-mastodon-tmp
-              mountPath: /opt/mastodon/tmp
           resources:
             requests:
               memory: 100M
@@ -151,3 +151,4 @@ spec:
             - secretRef:
                 name: mastodon-secret
           env: *env
+          volumeMounts: *volumeMounts
