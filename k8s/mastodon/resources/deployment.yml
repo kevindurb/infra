@@ -47,7 +47,9 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # TODO: add env vars for pg and redis
+          envFrom:
+            - secretRef:
+                name: mastodon-secret
           env: &env
             - name: TZ
               value: America/Denver
@@ -68,26 +70,6 @@ spec:
                 secretKeyRef:
                   name: mastodon-postgres-app
                   key: uri
-            - name: SECRET_KEY_BASE
-              valueFrom:
-                secretKeyRef:
-                  name: mastodon-secret
-                  key: SECRET_KEY_BASE
-            - name: OTP_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: mastodon-secret
-                  key: OTP_SECRET
-            - name: VAPID_PRIVATE_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: mastodon-secret
-                  key: VAPID_PRIVATE_KEY
-            - name: VAPID_PUBLIC_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: mastodon-secret
-                  key: VAPID_PUBLIC_KEY
           ports:
             - name: web
               containerPort: 3000
@@ -119,7 +101,9 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # TODO: add env vars for pg and redis
+          envFrom:
+            - secretRef:
+                name: mastodon-secret
           env: *env
           ports:
             - name: streaming
@@ -142,5 +126,7 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # TODO: add env vars for pg and redis
+          envFrom:
+            - secretRef:
+                name: mastodon-secret
           env: *env
