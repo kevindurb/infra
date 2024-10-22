@@ -72,6 +72,12 @@ spec:
               value: mastodon-valkey-service
             - name: REDIS_PORT
               value: '6379'
+            - name: SMTP_SERVER
+              value: smtp-relay-service.default
+            - name: SMTP_PORT
+              value: '25'
+            - name: SMTP_FROM_ADDRESS
+              value: beavercloud@fastmail.com
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
