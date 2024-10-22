@@ -1,4 +1,3 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -13,9 +12,10 @@ resources:
   - ./resources/service.yml
   - ./resources/valkey.yml
   - ./resources/jobs.yml
+  - ./resources/external-ingress.yml
 
 labels:
-  - pairs:
-      app.kubernetes.io/name: mastodon
+  - includeSelectors: true
     includeTemplates: true
-    includeSelectors: true
+    pairs:
+      app.kubernetes.io/name: mastodon

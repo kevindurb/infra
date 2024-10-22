@@ -2,11 +2,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: external-ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://social.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: mastodon
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: mastodon
+    gethomepage.dev/name: Mastodon
+    external-dns.alpha.kubernetes.io/target: external.durbin.casa
 spec:
-  ingressClassName: internal
+  ingressClassName: external
   rules:
     - host: &host social.durbin.casa
       http:
