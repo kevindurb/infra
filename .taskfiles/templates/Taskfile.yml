@@ -12,8 +12,6 @@ env:
   IP: '{{.IP}}'
   SIZE: '{{or .size "1G"}}'
 
-# TODO: can i refactor out the minijinja command?
-
 vars:
   TEMPLATES_DIR: '{{.ROOT_DIR}}/.taskfiles/templates/resources'
   MINIJINJA_ARGS: >-
