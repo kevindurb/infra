@@ -9,6 +9,6 @@ data:
   mastodon.yml: |
     endpoints:
       - name: Mastodon
-        url: http://mastodon-service:3000
+        url: http://mastodon-web-service/health
         conditions:
           - '[STATUS] == 200'

@@ -25,16 +25,16 @@ spec:
             path: '/api/v1/streaming'
             backend:
               service:
-                name: service
+                name: streaming-service
                 port:
-                  name: streaming
+                  name: http
           - pathType: Prefix
             path: '/'
             backend:
               service:
-                name: service
+                name: web-service
                 port:
-                  name: web
+                  name: http
   tls:
     - secretName: durbin-casa-wildcard-cert
       hosts:
