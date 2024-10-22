@@ -52,7 +52,7 @@ tasks:
     aliases: [deploy]
     requires:
       vars: [APP, IMAGE, PORT]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
       COMP: '{{or .COMP "web"}}'
@@ -63,13 +63,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/deployment.yml.j2
-        > {{or .COMP "web"}}-deployment.yml
+        > ./resources/{{or .COMP "web"}}-deployment.yml
 
   service:
     aliases: [svc]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
       COMP: '{{or .COMP "web"}}'
@@ -80,13 +80,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/service.yml.j2
-        > {{or .COMP "web"}}-service.yml
+        > ./resources/{{or .COMP "web"}}-service.yml
 
   external-endpoint:
     aliases: [ext]
     requires:
       vars: [APP, IP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
       SUBDOMAIN: '{{or .subdomain .APP}}'
@@ -98,13 +98,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/external-endpoint.yml.j2
-        > external-endpoint.yml
+        > ./resources/external-endpoint.yml
 
   internal-ingress:
     aliases: [int-ing]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
       SUBDOMAIN: '{{or .subdomain .APP}}'
@@ -115,13 +115,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/internal-ingress.yml.j2
-        > internal-ingress.yml
+        > ./resources/internal-ingress.yml
 
   external-ingress:
     aliases: [ext-ing]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
       SUBDOMAIN: '{{or .subdomain .APP}}'
@@ -132,13 +132,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/external-ingress.yml.j2
-        > external-ingress.yml
+        > ./resources/external-ingress.yml
 
   persistent-volume-claim:
     aliases: [pvc]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
       SIZE: '{{or .size "1G"}}'
@@ -147,13 +147,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/pvc.yml.j2
-        > pvc.yml
+        > ./resources/pvc.yml
 
   postgres:
     aliases: [pg, db]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
     cmds:
@@ -161,13 +161,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/postgres.yml.j2
-        > postgres.yml
+        > ./resources/postgres.yml
 
   valkey:
     aliases: [redis]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
     cmds:
@@ -175,13 +175,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/valkey.yml.j2
-        > valkey.yml
+        > ./resources/valkey.yml
 
   bitwarden-secret:
     aliases: [secret]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
     cmds:
@@ -189,13 +189,13 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/bitwarden-secret.yml.j2
-        > bitwarden-secret.yml
+        > ./resources/bitwarden-secret.yml
 
   gatus-config:
     aliases: [gatus]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}/resources
+    dir: ./k8s/{{.APP}}
     env:
       APP: '{{.APP}}'
       PROTO: '{{or .PROTO "http"}}'
@@ -204,4 +204,4 @@ tasks:
         minijinja-cli
         {{.MINIJINJA_ARGS}}
         {{.TEMPLATES_DIR}}/gatus-config.yml.j2
-        > gatus-config.yml
+        > ./resources/gatus-config.yml
