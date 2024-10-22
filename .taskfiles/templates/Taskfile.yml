@@ -2,7 +2,16 @@
 ---
 version: '3'
 
-# TODO: can i have global envs from vars?
+env:
+  APP: '{{.APP}}'
+  COMP: '{{or .COMP "web"}}'
+  IMG: '{{.IMAGE}}'
+  PORT: '{{.PORT}}'
+  PROTO: '{{or .PROTO "http"}}'
+  SUBDOMAIN: '{{or .subdomain .APP}}'
+  IP: '{{.IP}}'
+  SIZE: '{{or .size "1G"}}'
+
 # TODO: can i refactor out the minijinja command?
 
 vars:
@@ -39,8 +48,6 @@ tasks:
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
-    env:
-      APP: '{{.APP}}'
     cmds:
       - >
         minijinja-cli
@@ -55,11 +62,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: './resources/{{or .COMP "web"}}-deployment.yml'
-    env:
-      APP: '{{.APP}}'
-      COMP: '{{or .COMP "web"}}'
-      IMG: '{{.IMAGE}}'
-      PORT: '{{.PORT}}'
     cmds:
       - >
         minijinja-cli
@@ -75,11 +77,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: './resources/{{or .COMP "web"}}-service.yml'
-    env:
-      APP: '{{.APP}}'
-      COMP: '{{or .COMP "web"}}'
-      PORT: '{{.PORT}}'
-      PROTO: '{{or .PROTO "http"}}'
     cmds:
       - >
         minijinja-cli
@@ -95,12 +92,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: './resources/external-endpoint.yml'
-    env:
-      APP: '{{.APP}}'
-      SUBDOMAIN: '{{or .subdomain .APP}}'
-      IP: '{{.IP}}'
-      PORT: '{{or .PORT "80"}}'
-      PROTO: '{{or .PROTO "http"}}'
     cmds:
       - >
         minijinja-cli
@@ -116,11 +107,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: './resources/internal-ingress.yml'
-    env:
-      APP: '{{.APP}}'
-      SUBDOMAIN: '{{or .subdomain .APP}}'
-      PORT: '{{or .PORT "80"}}'
-      PROTO: '{{or .PROTO "http"}}'
     cmds:
       - >
         minijinja-cli
@@ -136,11 +122,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: ./resources/external-ingress.yml
-    env:
-      APP: '{{.APP}}'
-      SUBDOMAIN: '{{or .subdomain .APP}}'
-      PORT: '{{or .PORT "80"}}'
-      PROTO: '{{or .PROTO "http"}}'
     cmds:
       - >
         minijinja-cli
@@ -156,9 +137,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: ./resources/pvc.yml
-    env:
-      APP: '{{.APP}}'
-      SIZE: '{{or .size "1G"}}'
     cmds:
       - >
         minijinja-cli
@@ -174,8 +152,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: ./resources/postgres.yml
-    env:
-      APP: '{{.APP}}'
     cmds:
       - >
         minijinja-cli
@@ -191,8 +167,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: ./resources/valkey.yml
-    env:
-      APP: '{{.APP}}'
     cmds:
       - >
         minijinja-cli
@@ -208,8 +182,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: ./resources/bitwarden-secret.yml
-    env:
-      APP: '{{.APP}}'
     cmds:
       - >
         minijinja-cli
@@ -225,9 +197,6 @@ tasks:
     dir: ./k8s/{{.APP}}
     vars:
       OUT_FILE: ./resources/gatus-config.yml
-    env:
-      APP: '{{.APP}}'
-      PROTO: '{{or .PROTO "http"}}'
     cmds:
       - >
         minijinja-cli
