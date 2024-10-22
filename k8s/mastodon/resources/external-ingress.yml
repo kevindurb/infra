@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://social.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: mastodon
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: mastodon
     gethomepage.dev/name: Mastodon
     external-dns.alpha.kubernetes.io/target: external.durbin.casa
