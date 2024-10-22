@@ -58,6 +58,8 @@ spec:
               value: America/Denver
             - name: LOCAL_DOMAIN
               value: social.durbin.casa
+            - name: ALTERNATE_DOMAINS
+              value: mastodon-web-service
             - name: DEFAULT_LOCALE
               value: en
             - name: RAILS_ENV
