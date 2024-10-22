@@ -44,11 +44,13 @@ tasks:
     dir: ./k8s/{{.APP}}
     requires:
       vars: [OUT_FILE, TEMPLATE]
-    cmd: >
-      minijinja-cli
-      {{.MINIJINJA_ARGS}}
-      {{.TEMPLATES_DIR}}/{{.TEMPLATE}}.yml.j2
-      > {{.OUT_FILE}}
+    cmds:
+      - mkdir -p {{dir .OUT_FILE}}
+      - >
+        minijinja-cli
+        {{.MINIJINJA_ARGS}}
+        {{.TEMPLATES_DIR}}/{{.TEMPLATE}}.yml.j2
+        > {{.OUT_FILE}}
 
   kustomization:
     aliases: [ks]
@@ -57,8 +59,8 @@ tasks:
     cmds:
       - task: minijinja
         vars:
-          OUT_FILE: ./kustomization.yml
           TEMPLATE: kustomization
+          OUT_FILE: ./kustomization.yml
 
   deployment:
     aliases: [deploy]
@@ -68,11 +70,10 @@ tasks:
     vars:
       OUT_FILE: './resources/{{or .COMP "web"}}-deployment.yml'
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/deployment.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: deployment
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   service:
@@ -83,11 +84,10 @@ tasks:
     vars:
       OUT_FILE: './resources/{{or .COMP "web"}}-service.yml'
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/service.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: service
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   external-endpoint:
@@ -98,11 +98,10 @@ tasks:
     vars:
       OUT_FILE: './resources/external-endpoint.yml'
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/external-endpoint.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: external-endpoint
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   internal-ingress:
@@ -113,11 +112,10 @@ tasks:
     vars:
       OUT_FILE: './resources/internal-ingress.yml'
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/internal-ingress.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: internal-ingress
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   external-ingress:
@@ -128,11 +126,10 @@ tasks:
     vars:
       OUT_FILE: ./resources/external-ingress.yml
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/external-ingress.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: external-ingress
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   persistent-volume-claim:
@@ -143,11 +140,10 @@ tasks:
     vars:
       OUT_FILE: ./resources/pvc.yml
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/pvc.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: pvc
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   postgres:
@@ -158,11 +154,10 @@ tasks:
     vars:
       OUT_FILE: ./resources/postgres.yml
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/postgres.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: postgres
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   valkey:
@@ -173,11 +168,10 @@ tasks:
     vars:
       OUT_FILE: ./resources/valkey.yml
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/valkey.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: valkey
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   bitwarden-secret:
@@ -188,11 +182,10 @@ tasks:
     vars:
       OUT_FILE: ./resources/bitwarden-secret.yml
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/bitwarden-secret.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: bitwarden-secret
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   gatus-config:
@@ -203,9 +196,8 @@ tasks:
     vars:
       OUT_FILE: ./resources/gatus-config.yml
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/gatus-config.yml.j2
-        > {{.OUT_FILE}}
+      - task: minijinja
+        vars:
+          TEMPLATE: gatus-config
+          OUT_FILE: '{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
