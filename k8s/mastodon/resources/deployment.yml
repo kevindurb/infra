@@ -15,11 +15,6 @@ spec:
     metadata:
       labels: *labels
     spec:
-      volumes:
-        - name: opt-mastodon-tmp
-          emptyDir: {}
-        - name: tmp
-          emptyDir: {}
       securityContext:
         fsGroup: 1000
       containers:
@@ -51,7 +46,6 @@ spec:
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           envFrom:
@@ -87,11 +81,6 @@ spec:
                 secretKeyRef:
                   name: mastodon-postgres-app
                   key: uri
-          volumeMounts: &volumeMounts
-            - name: tmp
-              mountPath: /tmp
-            - name: opt-mastodon-tmp
-              mountPath: /opt/mastodon/tmp
           ports:
             - name: web
               containerPort: 3000
@@ -120,14 +109,12 @@ spec:
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           envFrom:
             - secretRef:
                 name: mastodon-secret
           env: *env
-          volumeMounts: *volumeMounts
           ports:
             - name: streaming
               containerPort: 4000
@@ -146,11 +133,9 @@ spec:
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           envFrom:
             - secretRef:
                 name: mastodon-secret
           env: *env
-          volumeMounts: *volumeMounts
