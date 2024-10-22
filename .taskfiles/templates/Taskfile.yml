@@ -41,6 +41,7 @@ tasks:
 
   minijinja:
     internal: true
+    dir: ./k8s/{{.APP}}
     requires:
       vars: [OUT_FILE, TEMPLATE]
     cmd: >
@@ -53,12 +54,11 @@ tasks:
     aliases: [ks]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
-    vars:
-      OUT_FILE: ./kustomization.yml
-      TEMPLATE: kustomization
     cmds:
       - task: minijinja
+        vars:
+          OUT_FILE: ./kustomization.yml
+          TEMPLATE: kustomization
 
   deployment:
     aliases: [deploy]
