@@ -12,6 +12,7 @@ resources:
   - ./resources/secret.yml
   - ./resources/service.yml
   - ./resources/valkey.yml
+  - ./resources/jobs.yml
 
 labels:
   - pairs:
