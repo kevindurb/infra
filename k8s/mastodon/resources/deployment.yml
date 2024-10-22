@@ -15,6 +15,9 @@ spec:
     metadata:
       labels: *labels
     spec:
+      volumes:
+        - name: opt-mastodon-tmp
+          emptyDir: {}
       securityContext:
         fsGroup: 1000
       containers:
@@ -81,6 +84,9 @@ spec:
                 secretKeyRef:
                   name: mastodon-postgres-app
                   key: uri
+          volumeMounts: &volumeMounts
+            - name: opt-mastodon-tmp
+              mountPath: /opt/mastodon/tmp
           ports:
             - name: web
               containerPort: 3000
@@ -115,6 +121,7 @@ spec:
             - secretRef:
                 name: mastodon-secret
           env: *env
+          volumeMounts: *volumeMounts
           ports:
             - name: streaming
               containerPort: 4000
@@ -139,3 +146,4 @@ spec:
             - secretRef:
                 name: mastodon-secret
           env: *env
+          volumeMounts: *volumeMounts
