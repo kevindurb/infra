@@ -9,6 +9,7 @@ metadata:
 spec:
   template:
     spec:
+      restartPolicy: Never
       containers:
         - name: mastodon-assets-precompile
           image: ghcr.io/mastodon/mastodon:v4.3.0
@@ -51,6 +52,7 @@ metadata:
 spec:
   template:
     spec:
+      restartPolicy: Never
       containers:
         - name: mastodon-db-migrate
           image: ghcr.io/mastodon/mastodon:v4.3.0
