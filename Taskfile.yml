@@ -20,8 +20,12 @@ includes:
     aliases: [k, k8s]
   k3sup:
     taskfile: .taskfiles/k3sup
-  bws:
+  bitwarden:
     taskfile: .taskfiles/bitwarden
+    aliases: [bws]
+  mastodon:
+    taskfile: .taskfiles/mastodon
+    aliases: [mast]
 
 tasks:
   default:
