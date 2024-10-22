@@ -39,17 +39,26 @@ tasks:
       - task: external-endpoint
       - task: gatus
 
+  minijinja:
+    internal: true
+    requires:
+      vars: [OUT_FILE, TEMPLATE]
+    cmd: >
+      minijinja-cli
+      {{.MINIJINJA_ARGS}}
+      {{.TEMPLATES_DIR}}/{{.TEMPLATE}}.yml.j2
+      > {{.OUT_FILE}}
+
   kustomization:
     aliases: [ks]
     requires:
       vars: [APP]
     dir: ./k8s/{{.APP}}
+    vars:
+      OUT_FILE: ./kustomization.yml
+      TEMPLATE: kustomization
     cmds:
-      - >
-        minijinja-cli
-        {{.MINIJINJA_ARGS}}
-        {{.TEMPLATES_DIR}}/kustomization.yml.j2
-        > kustomization.yml
+      - task: minijinja
 
   deployment:
     aliases: [deploy]
