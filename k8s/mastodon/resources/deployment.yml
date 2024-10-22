@@ -15,6 +15,9 @@ spec:
     metadata:
       labels: *labels
     spec:
+      volumes:
+        name: opt-mastodon-tmp
+        emptyDir:
       containers:
         - name: mastodon-web
           image: ghcr.io/mastodon/mastodon:v4.3.0
@@ -112,6 +115,9 @@ spec:
         - name: mastodon-sidekiq
           image: ghcr.io/mastodon/mastodon:v4.3.0
           command: [bundle, exec, sidekiq]
+          volumeMounts:
+            - name: opt-mastodon-tmp
+              mountPath: /opt/mastodon/tmp
           resources:
             requests:
               memory: 100M
