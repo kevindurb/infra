@@ -16,7 +16,7 @@ spec:
       labels: *labels
     spec:
       volumes:
-        - name: opt-mastodon
+        - name: opt-mastodon-tmp
           emptyDir: {}
         - name: tmp
           emptyDir: {}
@@ -88,8 +88,8 @@ spec:
           volumeMounts: &volumeMounts
             - name: tmp
               mountPath: /tmp
-            - name: opt-mastodon
-              mountPath: /opt/mastodon
+            - name: opt-mastodon-tmp
+              mountPath: /opt/mastodon/tmp
           ports:
             - name: web
               containerPort: 3000
