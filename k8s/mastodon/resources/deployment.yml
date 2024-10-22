@@ -18,6 +18,8 @@ spec:
       volumes:
         - name: opt-mastodon-tmp
           emptyDir: {}
+        - name: tmp
+          emptyDir: {}
       containers:
         - name: mastodon-web
           image: ghcr.io/mastodon/mastodon:v4.3.0
@@ -83,6 +85,9 @@ spec:
                 secretKeyRef:
                   name: mastodon-postgres-app
                   key: uri
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
           ports:
             - name: web
               containerPort: 3000
