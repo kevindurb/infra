@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  exec:
+    cmd: 'kubectl exec -it deploy/mastodon-deployment -- {{.cmd}}'
+    requires:
+      vars: [cmd]
+  tootctl:
+    cmd:
+      task: exec
+      vars:
+        cmd: 'bin/tootctl {{.tootcmd}}'
+    requires:
+      vars: [tootcmd]
+  accounts-create:
+    cmd:
+      task: tootctl
+      vars:
+        tootcmd: 'accounts create {{.user}} --email {{.email}} --confirmed'
+    requires:
+      vars: [user, email]
+  accounts-approve:
+    cmd:
+      task: tootctl
+      vars:
+        tootcmd: 'accounts approve {{.user}}'
+    requires:
+      vars: [user]
+  make-owner:
+    cmd:
+      task: tootctl
+      vars:
+        tootcmd: 'accounts modify {{.user}} --role Owner'
+    requires:
+      vars: [user]
