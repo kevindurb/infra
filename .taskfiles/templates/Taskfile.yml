@@ -2,6 +2,9 @@
 ---
 version: '3'
 
+# TODO: can i have global envs from vars?
+# TODO: can i refactor out the minijinja command?
+
 vars:
   TEMPLATES_DIR: '{{.ROOT_DIR}}/.taskfiles/templates/resources'
   MINIJINJA_ARGS: >-
@@ -11,28 +14,28 @@ vars:
     --autoescape=none
 
 tasks:
-  mk:
+  app:
+    aliases: [mk]
     requires:
       vars: [appname, image]
     cmds:
-      - task: ks
-      - task: deploy
-      - task: svc
-      - task: int-ing
+      - task: kustomization
+      - task: deployment
+      - task: service
+      - task: internal-ingress
       - task: gatus
 
-  mk-ext:
+  external-app:
+    aliases: [mk-ext]
     requires:
       vars: [appname, ip]
     cmds:
-      - task: ks
-      - task: svc-ext
-      - task: int-ing
-        vars:
-          external: true
+      - task: kustomization
+      - task: external-endpoint
       - task: gatus
 
-  ks:
+  kustomization:
+    aliases: [ks]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}
@@ -45,7 +48,8 @@ tasks:
         {{.TEMPLATES_DIR}}/kustomization.yml.j2
         > kustomization.yml
 
-  deploy:
+  deployment:
+    aliases: [deploy]
     requires:
       vars: [appname, image, port]
     dir: ./k8s/{{ .appname }}/resources
@@ -61,7 +65,8 @@ tasks:
         {{.TEMPLATES_DIR}}/deployment.yml.j2
         > {{or .component "web"}}-deployment.yml
 
-  svc:
+  service:
+    aliases: [svc]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}/resources
@@ -78,6 +83,7 @@ tasks:
         > {{or .component "web"}}-service.yml
 
   external-endpoint:
+    aliases: [ext]
     requires:
       vars: [appname, ip]
     dir: ./k8s/{{ .appname }}/resources
@@ -95,7 +101,8 @@ tasks:
         {{.TEMPLATES_DIR}}/external-endpoint.yml.j2
         > external-endpoint.yml
 
-  int-ing:
+  internal-ingress:
+    aliases: [int-ing]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}/resources
@@ -111,7 +118,8 @@ tasks:
         {{.TEMPLATES_DIR}}/internal-ingress.yml.j2
         > internal-ingress.yml
 
-  ext-ing:
+  external-ingress:
+    aliases: [ext-ing]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}/resources
@@ -127,7 +135,8 @@ tasks:
         {{.TEMPLATES_DIR}}/external-ingress.yml.j2
         > external-ingress.yml
 
-  pvc:
+  persistent-volume-claim:
+    aliases: [pvc]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}/resources
@@ -141,7 +150,8 @@ tasks:
         {{.TEMPLATES_DIR}}/pvc.yml.j2
         > pvc.yml
 
-  pg:
+  postgres:
+    aliases: [pg, db]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}/resources
@@ -202,6 +212,7 @@ tasks:
         EOF
 
   valkey:
+    aliases: [redis]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}/resources
@@ -249,7 +260,8 @@ tasks:
               targetPort: valkey
         EOF
 
-  secret:
+  bitwarden-secret:
+    aliases: [secret]
     requires:
       vars: [appname]
     dir: ./k8s/{{ .appname }}/resources
