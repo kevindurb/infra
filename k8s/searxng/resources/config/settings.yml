@@ -4,7 +4,7 @@ general:
   instance_name: SearXNG
 
 server:
-  base_url: https://searxng.durbin.casa
+  base_url: https://search.durbin.casa
 
 search:
   safe_search: 1
