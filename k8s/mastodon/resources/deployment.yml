@@ -17,7 +17,7 @@ spec:
     spec:
       volumes:
         name: opt-mastodon-tmp
-        emptyDir:
+        emptyDir: {}
       containers:
         - name: mastodon-web
           image: ghcr.io/mastodon/mastodon:v4.3.0
