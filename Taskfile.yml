@@ -28,9 +28,6 @@ includes:
     aliases: [mast]
 
 tasks:
-  default:
-    cmds:
-      - task: ansible:setup
-      - npm install
+  default: task --list-all
 
   lint: npx prettier -w .
