@@ -18,6 +18,8 @@ spec:
       volumes:
         - name: opt-mastodon-tmp
           emptyDir: {}
+        - name: opt-mastodon-public-system
+          emptyDir: {}
       securityContext:
         fsGroup: 1000
       containers:
@@ -87,6 +89,8 @@ spec:
           volumeMounts: &volumeMounts
             - name: opt-mastodon-tmp
               mountPath: /opt/mastodon/tmp
+            - name: opt-mastodon-public-system
+              mountPath: /opt/mastodon/public/system
           ports:
             - name: web
               containerPort: 3000
