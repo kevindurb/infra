@@ -43,11 +43,11 @@ spec:
           - name: local-path-provisioner
           - name: mainsail
           - name: makemkv
-          - name: manyfold
+          # - name: manyfold
           # - name: mastodon
           - name: mealie
           - name: metallb
-          - name: minecraft
+          # - name: minecraft
           - name: minio
           - name: mosquitto
           - name: network-policies
