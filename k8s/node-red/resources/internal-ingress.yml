@@ -16,7 +16,6 @@ metadata:
     gethomepage.dev/widget.url: http://node-red-web-service.default/flows
     gethomepage.dev/widget.mappings.0.label: Flows
     gethomepage.dev/widget.mappings.0.format: size
-    gethomepage.dev/widget.mappings.0.field: flows
 spec:
   ingressClassName: internal
   rules:
