@@ -5,6 +5,7 @@ metadata:
   name: postgres
 spec:
   instances: 3
+  enableSuperuserAccess: true
   storage:
     storageClass: local-storage
     size: 5Gi
