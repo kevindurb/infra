@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ ENV.COMP }}-deployment
+  name: web-deployment
   annotations:
     reloader.stakater.com/auto: 'true'
   labels: &labels
-    app.kubernetes.io/component: {{ ENV.COMP }}
+    app.kubernetes.io/component: web
 spec:
   replicas: 1
   strategy:
@@ -22,8 +22,8 @@ spec:
       #     persistentVolumeClaim:
       #       claimName: volume
       containers:
-        - name: {{ ENV.APP }}
-          image: {{ ENV.IMG }}
+        - name: node-red
+          image: docker.io/nodered/node-red:4.0.5-22
           resources:
             requests:
               memory: 100M
@@ -46,4 +46,4 @@ spec:
               value: America/Denver
           ports:
             - name: http
-              containerPort: {{ ENV.PORT }}
+              containerPort: 1880

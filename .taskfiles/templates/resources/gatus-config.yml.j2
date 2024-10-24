@@ -9,7 +9,7 @@ data:
   {{ ENV.APP }}.yml: |
     endpoints:
       - name: {{ ENV.APP }}
-        url: {{ ENV.PROTO }}://{{ ENV.APP }}-service
+        url: {{ ENV.PROTO }}://{{ ENV.APP }}-{{ ENV.COMP }}-service
         conditions:
           - '[STATUS] == 200'
 {% if ENV.PROTO == 'https' %}

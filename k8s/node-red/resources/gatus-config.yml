@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  node-red.yml: |
+    endpoints:
+      - name: node-red
+        url: http://node-red-web-service
+        conditions:
+          - '[STATUS] == 200'
