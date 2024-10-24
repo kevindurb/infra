@@ -14,5 +14,5 @@ spec:
               image: curlimages/curl:latest # Use the curl image
               args:
                 - '-s' # Silent mode to reduce logs
-                - 'http://nextcloud-service/cron.php' # Replace with your actual Nextcloud URL
+                - 'https://nextcloud.durbin.casa/cron.php' # Replace with your actual Nextcloud URL
           restartPolicy: OnFailure
