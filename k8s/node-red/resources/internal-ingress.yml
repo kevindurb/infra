@@ -11,7 +11,7 @@ metadata:
     gethomepage.dev/app: node-red
     gethomepage.dev/group: Other
     gethomepage.dev/icon: node-red
-    gethomepage.dev/name: Node-Red
+    gethomepage.dev/name: Node-RED
     gethomepage.dev/widget.type: customapi
     gethomepage.dev/widget.url: http://node-red-web-service.default/flows
     gethomepage.dev/widget.mappings.0.label: Flows
