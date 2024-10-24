@@ -8,6 +8,7 @@ resources:
   - ./resources/web-service.yml
   - ./resources/internal-ingress.yml
   - ./resources/gatus-config.yml
+  - ./resources/pvc.yml
 
 labels:
   - includeSelectors: true
