@@ -12,6 +12,7 @@ resources:
   - ./resources/pvc.yml
   - ./resources/service.yml
   - ./resources/valkey.yml
+  - ./resources/cron.yml
 
 labels:
   - pairs:
