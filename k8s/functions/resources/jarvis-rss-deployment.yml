@@ -10,7 +10,7 @@ metadata:
 spec:
   replicas: 3
   strategy:
-    type: Recreate
+    type: RollingUpdate
   selector:
     matchLabels: *labels
   template:
