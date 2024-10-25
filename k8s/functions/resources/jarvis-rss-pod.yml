@@ -9,7 +9,7 @@ spec:
   containers:
     - name: functions
       image: ghcr.io/kevindurb/functions:v1.0.6
-      command: ['@functions/jarvis-rss']
+      command: [npx, '@functions/jarvis-rss']
       resources:
         requests:
           memory: 100M
