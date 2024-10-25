@@ -44,7 +44,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: functions-secret
-                  value: groq-key
+                  key: groq-key
           ports:
             - name: http
               containerPort: &port 1337
