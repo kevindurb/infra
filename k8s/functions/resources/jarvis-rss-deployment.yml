@@ -40,6 +40,11 @@ spec:
               value: America/Denver
             - name: PORT
               value: '1337'
+            - name: GROQ_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: functions-secret
+                  value: groq-key
           ports:
             - name: http
               containerPort: &port 1337
