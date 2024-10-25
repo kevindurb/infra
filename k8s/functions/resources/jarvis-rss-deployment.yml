@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: jarvis-rss
-          image: ghcr.io/kevindurb/functions:v1.0.9
+          image: ghcr.io/kevindurb/functions:v1.0.10
           command: [npx, '@functions/jarvis-rss']
           resources:
             requests:
@@ -42,4 +42,14 @@ spec:
               value: '1337'
           ports:
             - name: http
-              containerPort: 1337
+              containerPort: &port 1337
+          livenessProbe: &probe
+            httpGet:
+              path: /health
+              port: *port
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 5
+          readinessProbe: *probe
