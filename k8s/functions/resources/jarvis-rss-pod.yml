@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: functions
-      image: ghcr.io/kevindurb/functions:v1.0.5
+      image: ghcr.io/kevindurb/functions:v1.0.6
       command: ['@functions/jarvis-rss']
       resources:
         requests:
