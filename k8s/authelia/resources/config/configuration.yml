@@ -33,6 +33,7 @@ access_control:
     - name: internal
       networks:
         - 192.168.0.0/16
+        - 100.0.0.0/8
   rules:
     # allow all internal traffic to specific apps
     - domain:
