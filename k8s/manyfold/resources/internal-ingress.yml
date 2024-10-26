@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://manyfold.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: manyfold
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: manyfold
     gethomepage.dev/name: Manyfold
 spec:
