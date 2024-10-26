@@ -1,4 +1,3 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -7,14 +6,14 @@ namePrefix: manyfold-
 resources:
   - ./resources/deployment.yml
   - ./resources/gatus-config.yml
-  - ./resources/ingress.yml
   - ./resources/pg.yml
   - ./resources/service.yml
   - ./resources/valkey.yml
   - ./resources/secret.yml
+  - ./resources/internal-ingress.yml
 
 labels:
-  - pairs:
-      app.kubernetes.io/name: manyfold
+  - includeSelectors: true
     includeTemplates: true
-    includeSelectors: true
+    pairs:
+      app.kubernetes.io/name: manyfold
