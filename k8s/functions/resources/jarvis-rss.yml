@@ -76,7 +76,7 @@ spec:
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: cronjob
+  name: jarvis-rss-cronjob
 spec:
   schedule: '0 10 * * *'
   jobTemplate:
@@ -84,7 +84,7 @@ spec:
       template:
         spec:
           containers:
-            - name: nextcloud-cron
+            - name: jarvis-rss-curl
               image: curlimages/curl:latest
               args:
                 - '-X POST'
