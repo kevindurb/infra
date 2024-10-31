@@ -86,8 +86,5 @@ spec:
           containers:
             - name: jarvis-rss-curl
               image: curlimages/curl:latest
-              args:
-                - '-X POST'
-                - '-v'
-                - 'http://jarvis-rss-service.functions'
+              args: [-X, POST, -v, http://jarvis-rss-service.functions]
           restartPolicy: OnFailure
