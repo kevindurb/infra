@@ -4,8 +4,7 @@ kind: Kustomization
 namespace: functions
 
 resources:
-  - ./resources/jarvis-rss-deployment.yml
-  - ./resources/jarvis-rss-service.yml
+  - ./resources/jarvis-rss.yml
   - ./resources/bitwarden-secret.yml
 
 labels:

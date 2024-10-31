@@ -58,3 +58,36 @@ spec:
             successThreshold: 1
             failureThreshold: 5
           readinessProbe: *probe
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jarvis-rss-service
+spec:
+  selector:
+    app.kubernetes.io/component: jarvis-rss
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob
+spec:
+  schedule: '0 10 * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: nextcloud-cron
+              image: curlimages/curl:latest
+              args:
+                - '-X POST'
+                - '-v'
+                - 'http://jarvis-rss-service.functions'
+          restartPolicy: OnFailure
