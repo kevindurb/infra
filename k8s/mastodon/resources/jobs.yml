@@ -55,7 +55,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: mastodon-db-migrate
-          image: ghcr.io/mastodon/mastodon:v4.3.0
+          image: ghcr.io/mastodon/mastodon:v4.3.0@sha256:c0a8db60738add0682ddb9f7fcccceb05cc8bedbeb2d43fccdb8af6619922a7e
           command: [bundle, exec, rake, db:migrate]
           envFrom:
             - secretRef:
