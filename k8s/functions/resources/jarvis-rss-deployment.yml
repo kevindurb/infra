@@ -19,8 +19,7 @@ spec:
     spec:
       containers:
         - name: jarvis-rss
-          imagePullPolicy: Always
-          image: ghcr.io/kevindurb/functions:latest
+          image: ghcr.io/kevindurb/functions:v1.0.27
           command: [npx, '@functions/jarvis-rss']
           resources:
             requests:
