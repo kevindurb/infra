@@ -78,7 +78,7 @@ kind: CronJob
 metadata:
   name: jarvis-rss-cronjob
 spec:
-  schedule: '0 10 * * *'
+  schedule: '0 5 * * *'
   jobTemplate:
     spec:
       template:
