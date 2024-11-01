@@ -24,7 +24,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: mastodon-web
-          image: ghcr.io/mastodon/mastodon:v4.3.0
+          image: ghcr.io/mastodon/mastodon:v4.3.0@sha256:c0a8db60738add0682ddb9f7fcccceb05cc8bedbeb2d43fccdb8af6619922a7e
           command: [bundle, exec, puma, -C, config/puma.rb]
           # livenessProbe:
           #   tcpSocket:
@@ -96,7 +96,7 @@ spec:
               containerPort: 3000
 
         - name: mastodon-streaming
-          image: ghcr.io/mastodon/mastodon-streaming:v4.3.0
+          image: ghcr.io/mastodon/mastodon-streaming:v4.3.0@sha256:b5f8775468885ad1663d3310085c7ae2cd8218954236c8398996f97e38427b8b
           command: [node, ./streaming]
           # livenessProbe: &probe
           #   httpGet:
@@ -131,7 +131,7 @@ spec:
               containerPort: 4000
 
         - name: mastodon-sidekiq
-          image: ghcr.io/mastodon/mastodon:v4.3.0
+          image: ghcr.io/mastodon/mastodon:v4.3.0@sha256:c0a8db60738add0682ddb9f7fcccceb05cc8bedbeb2d43fccdb8af6619922a7e
           command: [bundle, exec, sidekiq]
           resources:
             requests:

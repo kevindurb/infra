@@ -23,7 +23,7 @@ spec:
             claimName: volume
       containers:
         - name: node-red
-          image: docker.io/nodered/node-red:4.0.5-22
+          image: docker.io/nodered/node-red:4.0.5-22@sha256:4b0f2bb3f7df8566763db89c735dd0c3db3e7ae96b1c51561fa312ad21f410b4
           resources:
             requests:
               memory: 100M

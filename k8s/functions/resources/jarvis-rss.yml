@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: jarvis-rss
-          image: ghcr.io/kevindurb/functions:v1.0.33
+          image: ghcr.io/kevindurb/functions:v1.0.33@sha256:3e175392d712922c5ed093cc3565a96dd8ea91261335518fcb5c87f192c35fe9
           command: [npx, '@functions/jarvis-rss']
           resources:
             requests:
@@ -85,6 +85,6 @@ spec:
         spec:
           containers:
             - name: jarvis-rss-curl
-              image: curlimages/curl:latest
+              image: curlimages/curl:latest@sha256:d9b4541e214bcd85196d6e92e2753ac6d0ea699f0af5741f8c6cccbfcf00ef4b
               args: [-X, POST, -v, http://jarvis-rss-service.functions]
           restartPolicy: OnFailure
