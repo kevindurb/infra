@@ -1,6 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "docker:pinDigests", ":automergePatch"],
+  "extends": [
+    "config:recommended",
+    "docker:pinDigests",
+    ":automergePatch",
+    ":automergePr"
+  ],
   "platform": "github",
   "repositories": ["kevindurb/infra"],
   "kubernetes": {
