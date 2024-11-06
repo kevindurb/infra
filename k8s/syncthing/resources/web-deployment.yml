@@ -17,13 +17,17 @@ spec:
     metadata:
       labels: *labels
     spec:
-      # volumes:
-      #   - name: volume
-      #     persistentVolumeClaim:
-      #       claimName: volume
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
       containers:
         - name: syncthing
           image: docker.io/syncthing/syncthing:1.28.0
+          command: [/bin/syncthing]
           resources:
             requests:
               memory: 100M
@@ -38,12 +42,24 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # volumeMounts:
-          #   - name: volume
-          #     mountPath: /var/www/app/data
+          volumeMounts:
+            - name: volume
+              mountPath: /config
+            - name: truenas-media
+              mountPath: /var/syncthing
           env:
             - name: TZ
               value: America/Denver
+            - name: STHOMEDIR
+              value: /config
           ports:
             - name: http
               containerPort: 8384
+            - name: listen-tcp
+              containerPort: 22000
+            - name: listen-udp
+              containerPort: 22000
+              protocol: UDP
+            - name: discovery
+              containerPort: 22027
+              protocol: UDP

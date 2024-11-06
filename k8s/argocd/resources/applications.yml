@@ -73,6 +73,7 @@ spec:
           - name: smtp-relay
           - name: sonarr
           - name: speedtest-exporter
+          - name: syncthing
           - name: time-slicing-config
           - name: truenas
           - name: memos

@@ -12,8 +12,6 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: syncthing
     gethomepage.dev/name: Syncthing
-    gethomepage.dev/widget.type: syncthing
-    gethomepage.dev/widget.url: http://syncthing-web-service
 spec:
   ingressClassName: internal
   rules:

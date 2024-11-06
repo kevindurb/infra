@@ -4,13 +4,15 @@ kind: Kustomization
 namePrefix: syncthing-
 
 resources:
-- ./resources/web-deployment.yml
-- ./resources/web-service.yml
-- ./resources/internal-ingress.yml
-- ./resources/gatus-config.yml
+  - ./resources/web-deployment.yml
+  - ./resources/web-service.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/gatus-config.yml
+  - ./resources/lan-service.yml
+  - ./resources/pvc.yml
 
 labels:
-- includeSelectors: true
-  includeTemplates: true
-  pairs:
-    app.kubernetes.io/name: syncthing
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      app.kubernetes.io/name: syncthing
