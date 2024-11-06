@@ -17,6 +17,7 @@ spec:
     metadata:
       labels: *labels
     spec:
+      hostname: syncthing
       volumes:
         - name: volume
           persistentVolumeClaim:
