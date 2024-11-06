@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://syncthing.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: syncthing
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: syncthing
+    gethomepage.dev/name: Syncthing
+    gethomepage.dev/widget.type: syncthing
+    gethomepage.dev/widget.url: http://syncthing-web-service
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host syncthing.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

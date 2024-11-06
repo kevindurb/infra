@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  syncthing.yml: |
+    endpoints:
+      - name: syncthing
+        url: http://syncthing-web-service
+        conditions:
+          - '[STATUS] == 200'
+
