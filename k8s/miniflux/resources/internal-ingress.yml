@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://miniflux.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: miniflux
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: miniflux
     gethomepage.dev/name: Miniflux
     gethomepage.dev/widget.type: miniflux
