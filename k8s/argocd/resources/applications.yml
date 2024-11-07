@@ -47,6 +47,7 @@ spec:
           - name: mealie
           - name: metallb
           - name: minecraft
+          - name: miniflux
           - name: minio
           - name: mosquitto
           - name: network-policies
