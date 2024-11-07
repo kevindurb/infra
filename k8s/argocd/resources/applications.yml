@@ -62,7 +62,7 @@ spec:
           - name: pihole
           - name: prometheus
           - name: prowlarr
-          # - name: prusaslicer
+          - name: prusaslicer
           - name: qbittorrent
           - name: radarr
           - name: reloader

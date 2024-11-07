@@ -11,3 +11,7 @@ spec:
   resources:
     requests:
       storage: 1G
+  dataSource:
+    name: prusaslicer-volume-standard-daily-202410230300
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
