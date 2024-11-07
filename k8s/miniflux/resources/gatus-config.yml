@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  miniflux.yml: |
+    endpoints:
+      - name: miniflux
+        url: http://miniflux-web-service
+        conditions:
+          - '[STATUS] == 200'

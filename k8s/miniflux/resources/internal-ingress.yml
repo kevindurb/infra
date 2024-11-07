@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://miniflux.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: miniflux
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: miniflux
+    gethomepage.dev/name: Miniflux
+    gethomepage.dev/widget.type: miniflux
+    gethomepage.dev/widget.url: http://miniflux-web-service
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host miniflux.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

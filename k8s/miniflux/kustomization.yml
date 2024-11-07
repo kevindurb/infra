@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: miniflux-
+
+resources:
+  - ./resources/web-deployment.yml
+  - ./resources/web-service.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/gatus-config.yml
+  - ./resources/postgres.yml
+
+labels:
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      app.kubernetes.io/name: miniflux

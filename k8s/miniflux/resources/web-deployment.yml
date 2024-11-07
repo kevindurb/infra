@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  annotations:
+    reloader.stakater.com/auto: 'true'
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      # volumes:
+      #   - name: volume
+      #     persistentVolumeClaim:
+      #       claimName: volume
+      containers:
+        - name: miniflux
+          image: ghcr.io/miniflux/miniflux:2.2.2
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 1G
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          # volumeMounts:
+          #   - name: volume
+          #     mountPath: /var/www/app/data
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: miniflux-postgres-app
+                  key: uri
+
+            - name: RUN_MIGRATIONS
+              value: '1'
+            - name: CREATE_ADMIN
+              value: '1'
+            - name: ADMIN_USERNAME
+              value: admin
+            - name: ADMIN_PASSWORD
+              value: password
+          ports:
+            - name: http
+              containerPort: 8080
