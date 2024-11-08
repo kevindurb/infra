@@ -20,7 +20,7 @@ spec:
       volumes:
         - name: mariadb-volume
           persistentVolumeClaim:
-            claimName: volume
+            claimName: mariadb-volume
       containers:
         - name: romm-mariadb
           image: docker.io/library/mariadb:11.5
