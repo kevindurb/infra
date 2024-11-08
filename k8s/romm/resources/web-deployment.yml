@@ -36,7 +36,6 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
-            readOnlyRootFilesystem: true
           volumeMounts:
             - name: config
               mountPath: /romm/config/config.yml
@@ -48,6 +47,8 @@ spec:
               mountPath: /romm
               subPath: romm
           env:
+            - name: ROMM_BASE_PATH
+              value: /romm
             - name: TZ
               value: America/Denver
             - name: REDIS_HOST
