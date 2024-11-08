@@ -1,13 +1,12 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 namePrefix: romm-
 
 configMapGenerator:
-  - name: config
-    files:
+  - files:
       - ./resources/config/config.yml
+    name: config
 
 resources:
   - ./resources/web-deployment.yml
@@ -16,6 +15,7 @@ resources:
   - ./resources/gatus-config.yml
   - ./resources/mariadb.yml
   - ./resources/bitwarden-secret.yml
+  - ./resources/valkey.yml
 
 labels:
   - includeSelectors: true

@@ -20,17 +20,13 @@ spec:
       volumes:
         - name: tmp
           emptyDir: {}
+        - name: romm-resources
+          emptyDir: {}
         - name: config
           configMap:
             name: config
-      # - romm_resources:/romm/resources # Resources fetched from IGDB (covers, screenshots, etc.)
-      # - romm_redis_data:/redis-data # Cached data for background tasks
       # - /path/to/library:/romm/library # Your game library
       # - /path/to/assets:/romm/assets # Uploaded saves, states, etc.
-      # - /path/to/config:/romm/config # Path where config.yml is stored
-      #   - name: volume
-      #     persistentVolumeClaim:
-      #       claimName: volume
       containers:
         - name: romm
           image: ghcr.io/rommapp/romm:3.5.1
@@ -55,9 +51,13 @@ spec:
               readOnly: true
             - name: tmp
               mountPath: /tmp
+            - name: romm-resources
+              mountPath: /romm/resources
           env:
             - name: TZ
               value: America/Denver
+            - name: REDIS_HOST
+              value: romm-valkey-service
             - name: DB_HOST
               value: romm-mariadb-service
             - name: DB_NAME
