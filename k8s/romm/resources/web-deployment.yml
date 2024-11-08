@@ -32,6 +32,19 @@ spec:
         - name: resources-volume
           persistentVolumeClaim:
             claimName: resources-volume
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ['sh', '-c', 'chown -R 1000:1000 /data']
+          volumeMounts:
+            - mountPath: /data
+              name: assets-volume
+        - name: fix-permissions-2
+          image: busybox
+          command: ['sh', '-c', 'chown -R 1000:1000 /data']
+          volumeMounts:
+            - mountPath: /data
+              name: resources-volume
       containers:
         - name: romm
           image: ghcr.io/rommapp/romm:3.5.1
