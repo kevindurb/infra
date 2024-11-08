@@ -1,0 +1,102 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  annotations:
+    reloader.stakater.com/auto: 'true'
+  labels: &labels
+    app.kubernetes.io/component: mariadb
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      volumes:
+        - name: mariadb-volume
+          persistentVolumeClaim:
+            claimName: volume
+      containers:
+        - name: romm-mariadb
+          image: docker.io/library/mariadb:11.5
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 1G
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: mariadb-volume
+              mountPath: /var/lib/mysql
+          env:
+            - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
+              value: 'true'
+            - name: MARIADB_DATABASE
+              value: app
+            - name: MARIADB_USER
+              value: app
+            - name: MARIADB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: romm-mariadb-app
+                  key: password
+          ports:
+            - name: mysql
+              containerPort: 3306
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-service
+spec:
+  selector:
+    app.kubernetes.io/component: mariadb
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: mysql
+
+---
+apiVersion: k8s.bitwarden.com/v1
+kind: BitwardenSecret
+metadata:
+  name: mariadb-app
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+spec:
+  organizationId: 575f69b2-49f4-456d-bd6f-b14101103188
+  secretName: romm-mariadb-app
+  map:
+    - secretKeyName: password
+      bwSecretId: 88513575-6017-492e-9958-b222012935f3
+  authToken:
+    secretName: bw-auth-token
+    secretKey: token
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-volume
+  labels:
+    snapscheduler/standard: 'true'
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: local-hostpath
+  resources:
+    requests:
+      storage: 1G
