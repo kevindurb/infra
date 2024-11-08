@@ -26,6 +26,12 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: assets-volume
+          persistentVolumeClaim:
+            claimName: assets-volume
+        - name: resources-volume
+          persistentVolumeClaim:
+            claimName: resources-volume
       containers:
         - name: romm
           image: ghcr.io/rommapp/romm:3.5.1
@@ -44,15 +50,14 @@ spec:
             - name: tmp
               mountPath: /tmp
 
-            # - name: truenas-media-assets
-            #   mountPath: /romm/assets
-            #   subPath: romm/assets
+            - name: assets-volume
+              mountPath: /romm/assets
+            - name: resources-volume
+              mountPath: /romm/resources
+
             - name: truenas-media
               mountPath: /romm/library/roms
               subPath: romm/library/roms
-            # - name: truenas-media-resources
-            #   mountPath: /romm/resources
-            #   subPath: romm/resources
           env:
             - name: ROMM_BASE_PATH
               value: /romm

@@ -16,6 +16,7 @@ resources:
   - ./resources/mariadb.yml
   - ./resources/bitwarden-secret.yml
   - ./resources/valkey.yml
+  - ./resources/pvc.yml
 
 labels:
   - includeSelectors: true
