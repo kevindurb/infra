@@ -16,3 +16,6 @@ metadata:
 spec:
   mariaDbRef:
     name: romm-mariadb
+  passwordSecretKeyRef:
+    name: romm-mariadb-app
+    key: password
