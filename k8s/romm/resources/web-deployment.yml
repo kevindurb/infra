@@ -74,10 +74,13 @@ spec:
                 secretKeyRef:
                   name: romm-secret
                   key: APP_SECRET
-            # - name: IGDB_CLIENT_ID
-            #   value: # Generate an ID and SECRET in IGDB
-            # - name: IGDB_CLIENT_SECRET
-            #   value: # https://api-docs.igdb.com/#account-creation
+            - name: IGDB_CLIENT_ID
+              value: wah8vs972r4lwu2yrhzfvrhncn5cep
+            - name: IGDB_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: romm-secret
+                  key: IGDB_CLIENT_SECRET
             # - name: MOBYGAMES_API_KEY
             #   value: # https://www.mobygames.com/info/api/
             # - name: STEAMGRIDDB_API_KEY
