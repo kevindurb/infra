@@ -63,7 +63,7 @@ spec:
           - name: qbittorrent
           - name: radarr
           - name: reloader
-          - name: romm
+          # - name: romm
           - name: scrypted
           - name: searxng
           - name: smartctl-exporter
