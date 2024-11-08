@@ -20,6 +20,7 @@ spec:
       containers:
         - name: wallabag
           image: ghcr.io/wallabag/docker:2.6.10
+          command: [wallabag]
           resources:
             requests:
               memory: 100M
@@ -27,6 +28,12 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop: [ALL]
           env:
             - name: TZ
               value: America/Denver
@@ -66,16 +73,6 @@ spec:
                   name: wallabag-postgres-app
                   key: username
             - name: SYMFONY__ENV__DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: wallabag-postgres-app
-                  key: password
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: wallabag-postgres-app
-                  key: username
-            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: wallabag-postgres-app
