@@ -4,18 +4,7 @@ kind: MariaDB
 metadata:
   name: mariadb
 spec:
+  username: romm-app
   storage:
     size: 1Gi
     storageClassName: local-storage
-
----
-apiVersion: k8s.mariadb.com/v1alpha1
-kind: User
-metadata:
-  name: app
-spec:
-  mariaDbRef:
-    name: romm-mariadb
-  passwordSecretKeyRef:
-    name: romm-mariadb-app
-    key: password
