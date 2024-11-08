@@ -1,0 +1,24 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mariadb-operator
+spec:
+  project: default
+  sources:
+    - repoURL: https://helm.mariadb.com/mariadb-operator
+      targetRevision: 0.36.0
+      chart: mariadb-operator-crds
+    - repoURL: https://helm.mariadb.com/mariadb-operator
+      targetRevision: 0.36.0
+      chart: mariadb-operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mariadb-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true

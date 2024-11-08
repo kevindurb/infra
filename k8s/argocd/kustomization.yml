@@ -21,6 +21,7 @@ resources:
   - ./resources/helm/ingress-nginx.yml
   - ./resources/helm/kubernetes-dashboard.yml
   - ./resources/helm/snapscheduler.yml
+  - ./resources/helm/mariadb-operator.yml
 
 patches:
   - path: ./resources/config.patch.yml
