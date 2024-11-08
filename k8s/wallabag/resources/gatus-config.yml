@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  wallabag.yml: |
+    endpoints:
+      - name: wallabag
+        url: http://wallabag-web-service
+        conditions:
+          - '[STATUS] == 200'

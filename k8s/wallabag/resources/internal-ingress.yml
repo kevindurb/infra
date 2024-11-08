@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://wallabag.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: wallabag
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: wallabag
+    gethomepage.dev/name: Wallabag
+    gethomepage.dev/widget.type: wallabag
+    gethomepage.dev/widget.url: http://wallabag-web-service
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host wallabag.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
