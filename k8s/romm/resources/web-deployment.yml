@@ -18,6 +18,8 @@ spec:
       labels: *labels
     spec:
       volumes:
+        - name: tmp
+          emptyDir: {}
         - name: config
           configMap:
             name: config
@@ -51,6 +53,8 @@ spec:
               mountPath: /romm/config/config.yml
               subPath: config.yml
               readOnly: true
+            - name: tmp
+              mountPath: /tmp
           env:
             - name: TZ
               value: America/Denver
