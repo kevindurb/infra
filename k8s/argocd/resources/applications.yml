@@ -50,7 +50,6 @@ spec:
           - name: minio
           - name: mosquitto
           - name: network-policies
-          - name: nextcloud
           - name: node-exporter
           - name: node-red
           - name: ollama
