@@ -21,6 +21,8 @@ spec:
         - name: mariadb-volume
           persistentVolumeClaim:
             claimName: mariadb-volume
+        - name: tmp
+          emptyDir: {}
       containers:
         - name: romm-mariadb
           image: docker.io/library/mariadb:11.5
@@ -41,6 +43,8 @@ spec:
           volumeMounts:
             - name: mariadb-volume
               mountPath: /var/lib/mysql
+            - name: tmp
+              mountPath: /tmp
           env:
             - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
               value: 'true'
