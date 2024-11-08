@@ -23,6 +23,8 @@ spec:
             claimName: mariadb-volume
         - name: tmp
           emptyDir: {}
+        - name: run-mysqld
+          emptyDir: {}
       containers:
         - name: romm-mariadb
           image: docker.io/library/mariadb:11.5
@@ -45,6 +47,8 @@ spec:
               mountPath: /var/lib/mysql
             - name: tmp
               mountPath: /tmp
+            - name: run-mysqld
+              mountPath: /run/mysqld
           env:
             - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
               value: 'true'
