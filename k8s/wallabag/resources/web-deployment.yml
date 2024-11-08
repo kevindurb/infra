@@ -20,7 +20,7 @@ spec:
       containers:
         - name: wallabag
           image: ghcr.io/wallabag/docker:2.6.10
-          command: [/var/www/wallabag/wallabag]
+          command: [/var/www/wallabag/bin/wallabag]
           resources:
             requests:
               memory: 100M
