@@ -20,13 +20,12 @@ spec:
       volumes:
         - name: tmp
           emptyDir: {}
-        - name: romm-resources
-          emptyDir: {}
         - name: config
           configMap:
             name: config
-      # - /path/to/library:/romm/library # Your game library
-      # - /path/to/assets:/romm/assets # Uploaded saves, states, etc.
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
       containers:
         - name: romm
           image: ghcr.io/rommapp/romm:3.5.1
@@ -51,8 +50,9 @@ spec:
               readOnly: true
             - name: tmp
               mountPath: /tmp
-            - name: romm-resources
-              mountPath: /romm/resources
+            - name: truenas-media
+              mountPath: /romm
+              subPath: romm
           env:
             - name: TZ
               value: America/Denver
