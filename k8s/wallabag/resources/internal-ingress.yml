@@ -9,11 +9,9 @@ metadata:
     gethomepage.dev/href: 'https://wallabag.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: wallabag
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: wallabag
     gethomepage.dev/name: Wallabag
-    gethomepage.dev/widget.type: wallabag
-    gethomepage.dev/widget.url: http://wallabag-web-service
 spec:
   ingressClassName: internal
   rules:
