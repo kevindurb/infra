@@ -20,7 +20,6 @@ spec:
       containers:
         - name: wallabag
           image: ghcr.io/wallabag/docker:2.6.10
-          command: [/var/www/wallabag/bin/wallabag]
           resources:
             requests:
               memory: 100M
@@ -28,12 +27,6 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
-            capabilities:
-              drop: [ALL]
           env:
             - name: TZ
               value: America/Denver
