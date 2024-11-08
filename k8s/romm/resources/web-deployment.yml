@@ -23,13 +23,7 @@ spec:
         - name: config
           configMap:
             name: config
-        - name: truenas-media-assets
-          persistentVolumeClaim:
-            claimName: truenas-media
-        - name: truenas-media-library
-          persistentVolumeClaim:
-            claimName: truenas-media
-        - name: truenas-media-resources
+        - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
       containers:
@@ -50,15 +44,15 @@ spec:
             - name: tmp
               mountPath: /tmp
 
-            - name: truenas-media-assets
-              mountPath: /romm/assets
-              subPath: romm/assets
-            - name: truenas-media-library
-              mountPath: /romm/library
-              subPath: romm/library
-            - name: truenas-media-resources
-              mountPath: /romm/resources
-              subPath: romm/resources
+            # - name: truenas-media-assets
+            #   mountPath: /romm/assets
+            #   subPath: romm/assets
+            - name: truenas-media
+              mountPath: /romm/library/roms
+              subPath: romm/library/roms
+            # - name: truenas-media-resources
+            #   mountPath: /romm/resources
+            #   subPath: romm/resources
           env:
             - name: ROMM_BASE_PATH
               value: /romm
