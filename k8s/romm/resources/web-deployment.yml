@@ -49,6 +49,8 @@ spec:
           env:
             - name: ROMM_BASE_PATH
               value: /romm
+            - name: ENABLE_RESCAN_ON_FILESYSTEM_CHANGE
+              value: 'false'
             - name: TZ
               value: America/Denver
             - name: REDIS_HOST
