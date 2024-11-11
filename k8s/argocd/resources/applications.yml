@@ -29,7 +29,6 @@ spec:
           - name: flaresolverr
           - name: functions
           - name: gatus
-          - name: grafana
           - name: guacamole
           - name: handbrake-web
           - name: healthchecks
