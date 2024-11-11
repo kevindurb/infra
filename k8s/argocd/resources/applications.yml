@@ -74,7 +74,6 @@ spec:
           - name: time-slicing-config
           - name: truenas
           - name: wallabag
-          - name: memos
           - name: watchyourlan
           - name: whoami
           - name: windows
