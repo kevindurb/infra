@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://prusaslicer.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: prusaslicer
-    gethomepage.dev/group: Apps
+    gethomepage.dev/group: 3D Printing
     gethomepage.dev/icon: prusa-research-light.png
     gethomepage.dev/name: PrusaSlicer
 

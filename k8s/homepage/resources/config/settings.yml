@@ -15,6 +15,10 @@ layout:
     icon: mdi-square-rounded-badge
     style: row
     columns: 5
+  3D Printing:
+    icon: mdi-printer-3d-nozzle
+    style: row
+    columns: 3
   Status:
     icon: mdi-list-status
     style: column
