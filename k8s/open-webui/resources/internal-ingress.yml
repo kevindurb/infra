@@ -1,0 +1,31 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://open-webui.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: open-webui
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: open-webui
+    gethomepage.dev/name: Open-Webui
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host open-webui.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: web
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
