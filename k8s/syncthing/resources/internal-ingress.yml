@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://syncthing.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: syncthing
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Apps
     gethomepage.dev/icon: syncthing
     gethomepage.dev/name: Syncthing
 spec:
