@@ -51,7 +51,6 @@ spec:
           - name: mosquitto
           - name: network-policies
           - name: node-exporter
-          - name: node-red
           - name: ollama
           - name: omada
           - name: open-webui
