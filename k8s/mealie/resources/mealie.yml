@@ -38,7 +38,7 @@ spec:
             - name: data-volume
               mountPath: /app/data
           ports:
-            - name: web
+            - name: http
               containerPort: 9000
 
 ---
@@ -61,6 +61,6 @@ metadata:
   name: service
 spec:
   ports:
-    - name: web
+    - name: http
       port: 80
-      targetPort: web
+      targetPort: http
