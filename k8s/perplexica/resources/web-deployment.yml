@@ -57,7 +57,7 @@ spec:
               value: http://searxng-service
           ports:
             - name: api
-              containerPort: 3000
+              containerPort: 3001
 
         - name: perplexica-frontend
           image: docker.io/itzcrazykns1337/perplexica-frontend:v1.9.2
@@ -86,4 +86,4 @@ spec:
               mountPath: /tmp
           ports:
             - name: ui
-              containerPort: 3001
+              containerPort: 3000
