@@ -9,11 +9,9 @@ metadata:
     gethomepage.dev/href: 'https://perplexica.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: perplexica
-    gethomepage.dev/group: Other
-    gethomepage.dev/icon: perplexica
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: mdi-brain
     gethomepage.dev/name: Perplexica
-    gethomepage.dev/widget.type: perplexica
-    gethomepage.dev/widget.url: http://perplexica-web-service
 spec:
   ingressClassName: internal
   rules:
