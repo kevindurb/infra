@@ -18,20 +18,20 @@ spec:
     - host: &host perplexica.durbin.casa
       http:
         paths:
-          # - pathType: Prefix
-          #   path: '/api'
-          #   backend:
-          #     service:
-          #       name: web-service
-          #       port:
-          #         name: api
-          # - pathType: Prefix
-          #   path: '/ws'
-          #   backend:
-          #     service:
-          #       name: web-service
-          #       port:
-          #         name: api
+          - pathType: Prefix
+            path: '/api'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: api
+          - pathType: Prefix
+            path: '/ws'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: api
           - pathType: Prefix
             path: '/'
             backend:

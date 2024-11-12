@@ -11,5 +11,5 @@ spec:
       port: 80
       targetPort: api
     - name: ui
-      port: 3000
+      port: 8080
       targetPort: ui
