@@ -4,6 +4,11 @@ kind: Kustomization
 
 namePrefix: perplexica-
 
+configMapGenerator:
+  - name: config
+    files:
+      - ./resources/config/config.toml
+
 resources:
   - ./resources/web-deployment.yml
   - ./resources/web-service.yml

@@ -21,6 +21,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: config
+          configMap:
+            name: config
         - name: tmp
           emptyDir: {}
       containers:
@@ -42,6 +45,9 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /home/perplexica/data
+            - name: config
+              mountPath: /home/perplexica/config.toml
+              subPath: config.toml
             - name: tmp
               mountPath: /tmp
           env:

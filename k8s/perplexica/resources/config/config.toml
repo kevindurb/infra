@@ -1,0 +1,13 @@
+[GENERAL]
+PORT = 3001
+SIMILARITY_MEASURE = "cosine"
+
+[API_KEYS]
+OPENAI = ""
+GROQ = ""
+ANTHROPIC = ""
+
+[API_ENDPOINTS]
+SEARXNG = "http://searxng-service.default"
+OLLAMA = "http://ollama-service.default"
+
