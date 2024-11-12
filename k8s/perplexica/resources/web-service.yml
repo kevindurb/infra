@@ -8,8 +8,8 @@ spec:
     app.kubernetes.io/component: web
   ports:
     - name: api
-      port: 80
+      port: 3000
       targetPort: api
     - name: ui
-      port: 8080
+      port: 3001
       targetPort: ui
