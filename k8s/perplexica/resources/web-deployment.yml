@@ -41,7 +41,7 @@ spec:
               drop: [ALL]
           volumeMounts:
             - name: volume
-              mountPath: /home/perpexica/data
+              mountPath: /home/perplexica/data
             - name: tmp
               mountPath: /tmp
           env:
