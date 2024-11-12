@@ -44,7 +44,8 @@ spec:
           env:
             - name: TZ
               value: America/Denver
-            - name: SEARXNG_API_URL=http://searxng-service
+            - name: SEARXNG_API_URL
+              value: http://searxng-service
           ports:
             - name: api
               containerPort: 3000
