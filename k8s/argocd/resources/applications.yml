@@ -29,7 +29,6 @@ spec:
           - name: flaresolverr
           - name: functions
           - name: gatus
-          - name: guacamole
           - name: handbrake-web
           - name: healthchecks
           - name: hdhomerun
@@ -75,7 +74,6 @@ spec:
           - name: wallabag
           - name: watchyourlan
           - name: whoami
-          - name: windows
           - name: zigbee2mqtt
   template:
     metadata:
