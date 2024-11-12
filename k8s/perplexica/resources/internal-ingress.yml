@@ -1,0 +1,47 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://perplexica.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: perplexica
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: perplexica
+    gethomepage.dev/name: Perplexica
+    gethomepage.dev/widget.type: perplexica
+    gethomepage.dev/widget.url: http://perplexica-web-service
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host perplexica.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/api'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: api
+          - pathType: Prefix
+            path: '/ws'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: api
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: ui
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
