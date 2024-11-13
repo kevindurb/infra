@@ -6,9 +6,8 @@ namePrefix: open-webui-
 
 resources:
   - ./resources/deployment.yml
-  - ./resources/backup.yml
-  - ./resources/pvc.yml
   - ./resources/internal-ingress.yml
+  - ./resources/postgres.yml
 
 commonLabels:
   app.kubernetes.io/name: open-webui
