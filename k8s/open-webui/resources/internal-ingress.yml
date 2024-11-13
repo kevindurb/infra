@@ -6,7 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
-    gethomepage.dev/href: 'https://open-webui.durbin.casa'
+    gethomepage.dev/href: 'https://chat.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: open-webui
     gethomepage.dev/group: Apps
@@ -15,7 +15,7 @@ metadata:
 spec:
   ingressClassName: internal
   rules:
-    - host: &host open-webui.durbin.casa
+    - host: &host chat.durbin.casa
       http:
         paths:
           - pathType: Prefix
