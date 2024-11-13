@@ -53,7 +53,6 @@ spec:
           - name: omada
           - name: open-webui
           - name: openwrt
-          - name: perplexica
           - name: pihole
           - name: prometheus
           - name: prowlarr
