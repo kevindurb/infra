@@ -34,20 +34,20 @@ spec:
             claimName: resources-volume
       initContainers:
         - name: fix-permissions
-          image: busybox
+          image: busybox@sha256:768e5c6f5cb6db0794eec98dc7a967f40631746c32232b78a3105fb946f3ab83
           command: ['sh', '-c', 'chown -R 1000:1000 /data']
           volumeMounts:
             - mountPath: /data
               name: assets-volume
         - name: fix-permissions-2
-          image: busybox
+          image: busybox@sha256:768e5c6f5cb6db0794eec98dc7a967f40631746c32232b78a3105fb946f3ab83
           command: ['sh', '-c', 'chown -R 1000:1000 /data']
           volumeMounts:
             - mountPath: /data
               name: resources-volume
       containers:
         - name: romm
-          image: ghcr.io/rommapp/romm:3.5.1
+          image: ghcr.io/rommapp/romm:3.5.1@sha256:d3a0cd1d84a3f85f56d4995a2a29f3efd664e2d040bb09fa00be1aded4349ac4
           resources:
             requests:
               memory: 100M
