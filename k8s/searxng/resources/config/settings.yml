@@ -8,6 +8,9 @@ server:
 
 search:
   safe_search: 1
+  autocomplete: brave
+  languages: [en-US]
+  formats: [html, csv, json, rss]
 
 redis:
   url: redis://searxng-valkey-service:6379
