@@ -42,7 +42,7 @@ spec:
               drop: [ALL]
           volumeMounts:
             - name: frontend-next
-              value: /home/perplexica/.next
+              mountPath: /home/perplexica/.next
             - name: tmp
               mountPath: /tmp
           env:
@@ -111,7 +111,7 @@ spec:
             - name: tmp
               mountPath: /tmp
             - name: frontend-next
-              value: /home/perplexica/.next
+              mountPath: /home/perplexica/.next
           ports:
             - name: ui
               containerPort: 3000
