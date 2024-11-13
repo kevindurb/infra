@@ -28,7 +28,7 @@ spec:
           emptyDir: {}
       containers:
         - name: perplexica-backend
-          image: docker.io/itzcrazykns1337/perplexica-backend:v1.9.2
+          image: docker.io/itzcrazykns1337/perplexica-backend:v1.9.0
           resources:
             requests:
               memory: 100M
@@ -60,7 +60,7 @@ spec:
               containerPort: 3001
 
         - name: perplexica-frontend
-          image: docker.io/itzcrazykns1337/perplexica-frontend:v1.9.2
+          image: docker.io/itzcrazykns1337/perplexica-frontend:v1.9.0
           resources:
             requests:
               memory: 100M
