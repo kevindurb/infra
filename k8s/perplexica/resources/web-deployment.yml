@@ -26,6 +26,32 @@ spec:
             name: config
         - name: tmp
           emptyDir: {}
+        - name: frontend-next
+          emptyDir: {}
+      initContainers:
+        - name: perplexica-frontend-build
+          image: docker.io/itzcrazykns1337/perplexica-frontend:main
+          command: [yarn, build]
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: frontend-next
+              value: /home/perplexica/.next
+            - name: tmp
+              mountPath: /tmp
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: NEXT_PUBLIC_API_URL
+              value: https://perplexica.durbin.casa/api
+            - name: NEXT_PUBLIC_WS_URL
+              value: https://perplexica.durbin.casa/ws
       containers:
         - name: perplexica-backend
           image: docker.io/itzcrazykns1337/perplexica-backend:main
@@ -84,6 +110,8 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
+            - name: frontend-next
+              value: /home/perplexica/.next
           ports:
             - name: ui
               containerPort: 3000
