@@ -51,7 +51,7 @@ spec:
           - name: node-exporter
           - name: ollama
           - name: omada
-          - name: open-webui
+          # - name: open-webui
           - name: openwrt
           - name: perplexica
           - name: pihole
