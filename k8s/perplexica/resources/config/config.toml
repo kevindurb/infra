@@ -9,4 +9,4 @@ ANTHROPIC = ""
 
 [API_ENDPOINTS]
 SEARXNG = "http://searxng-service.default"
-OLLAMA = "http://100.72.213.27:11434"
+OLLAMA = "http://ollama-service.default"
