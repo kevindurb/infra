@@ -20,7 +20,7 @@ spec:
             requests:
               memory: 500M
             limits:
-              memory: 600M
+              memory: 2G
           volumeMounts:
             - name: data-volume
               mountPath: /app/backend/data
