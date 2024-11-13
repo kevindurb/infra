@@ -27,8 +27,6 @@ spec:
           env:
             - name: OLLAMA_BASE_URL
               value: http://ollama-service
-            - name: WEBUI_AUTH
-              value: 'false'
             - name: WEBUI_URL
               value: https://open-webui.durbin.casa
           ports:
