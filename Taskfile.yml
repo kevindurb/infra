@@ -28,6 +28,8 @@ includes:
   mastodon:
     taskfile: .taskfiles/mastodon
     aliases: [mast]
+  restic:
+    taskfile: .taskfiles/restic
 
 tasks:
   default: task --list-all
