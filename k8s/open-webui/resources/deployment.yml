@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: open-webui
-          image: ghcr.io/open-webui/open-webui:0.3.32@sha256:1b35f2489f9dfc289288694922d77e92719706b3bb4dbdbceb59c0c96eb75dcf
+          image: ghcr.io/open-webui/open-webui:0.3.35@sha256:89fffc09527cebeb4d4cf268a6435a4f3ee8c07f72618b607a0fa3eef0ffc1c8
           resources:
             requests:
               memory: 500M
