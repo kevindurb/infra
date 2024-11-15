@@ -3,6 +3,7 @@
 version: '3'
 
 env:
+  NS: '{{.NS}}'
   APP: '{{.APP}}'
   COMP: '{{or .COMP "web"}}'
   IMG: '{{.IMG}}'
@@ -11,8 +12,10 @@ env:
   SUBDOMAIN: '{{or .SUBDOMAIN .APP}}'
   IP: '{{.IP}}'
   SIZE: '{{or .size "1G"}}'
+  APP_DIR: '{{.APP_DIR}}'
 
 vars:
+  APP_DIR: '{{list "k9s" .NS .APP | join "/" | clean}}'
   TEMPLATES_DIR: '{{.ROOT_DIR}}/.taskfiles/templates/resources'
   MINIJINJA_ARGS: >-
     --env
@@ -39,7 +42,7 @@ tasks:
 
   minijinja:
     internal: true
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     requires:
       vars: [OUT_FILE, TEMPLATE]
     cmds:
@@ -64,7 +67,7 @@ tasks:
     aliases: [deploy]
     requires:
       vars: [APP, IMG, PORT]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: './resources/{{or .COMP "web"}}-deployment.yml'
     cmds:
@@ -78,7 +81,7 @@ tasks:
     aliases: [svc]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: './resources/{{or .COMP "web"}}-service.yml'
     cmds:
@@ -92,7 +95,7 @@ tasks:
     aliases: [ext]
     requires:
       vars: [APP, IP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: './resources/external-endpoint.yml'
     cmds:
@@ -106,7 +109,7 @@ tasks:
     aliases: [int-ing]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: './resources/internal-ingress.yml'
     cmds:
@@ -120,7 +123,7 @@ tasks:
     aliases: [ext-ing]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: ./resources/external-ingress.yml
     cmds:
@@ -134,7 +137,7 @@ tasks:
     aliases: [pvc]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: ./resources/pvc.yml
     cmds:
@@ -148,7 +151,7 @@ tasks:
     aliases: [pg, db]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: ./resources/postgres.yml
     cmds:
@@ -162,7 +165,7 @@ tasks:
     aliases: [redis]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: ./resources/valkey.yml
     cmds:
@@ -176,7 +179,7 @@ tasks:
     aliases: [secret]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: ./resources/bitwarden-secret.yml
     cmds:
@@ -190,7 +193,7 @@ tasks:
     aliases: [gatus]
     requires:
       vars: [APP]
-    dir: ./k8s/{{.APP}}
+    dir: '{{.APP_DIR}}'
     vars:
       OUT_FILE: ./resources/gatus-config.yml
     cmds:
