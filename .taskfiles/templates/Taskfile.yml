@@ -15,7 +15,7 @@ env:
   APP_DIR: '{{.APP_DIR}}'
 
 vars:
-  APP_DIR: '{{list "k9s" .NS .APP | join "/" | clean}}'
+  APP_DIR: '{{list "k8s" .NS .APP | join "/" | clean}}'
   TEMPLATES_DIR: '{{.ROOT_DIR}}/.taskfiles/templates/resources'
   MINIJINJA_ARGS: >-
     --env
