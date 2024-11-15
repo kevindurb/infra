@@ -63,6 +63,16 @@ tasks:
           TEMPLATE: kustomization
           OUT_FILE: ./kustomization.yml
 
+  namespace:
+    aliases: [ns]
+    requires:
+      vars: [NS]
+    cmds:
+      - task: minijinja
+        vars:
+          TEMPLATE: ns-kustomization
+          OUT_FILE: ./kustomization.yml
+
   deployment:
     aliases: [deploy]
     requires:
