@@ -44,7 +44,6 @@ spec:
           - name: manyfold
           - name: mealie
           - name: metallb
-          - name: minecraft
           - name: miniflux
           - name: minio
           - name: mosquitto

@@ -43,4 +43,4 @@
         icon: minecraft
         widget:
           type: minecraft
-          url: udp://minecraft-service:25565
+          url: udp://minecraft-service.gaming:25565

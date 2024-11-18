@@ -72,7 +72,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: app
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: './k8s/{{.NS}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   namespaces:
