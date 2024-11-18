@@ -74,7 +74,6 @@ spec:
           - name: truenas
           - name: wallabag
           - name: watchyourlan
-          - name: whoami
           - name: zigbee2mqtt
   template:
     metadata:
