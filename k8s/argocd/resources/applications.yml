@@ -12,7 +12,6 @@ spec:
             namespace: argocd
           - name: authelia
           - name: adminer
-          - name: alertmanager
           - name: calibre
           - name: calibre-web
           - name: cert-manager

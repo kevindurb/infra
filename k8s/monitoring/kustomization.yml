@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - ./namespace.yml
   - ./prometheus/app.yml
+  - ./alertmanager/app.yml
