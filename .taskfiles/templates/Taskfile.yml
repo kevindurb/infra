@@ -24,8 +24,7 @@ vars:
     --autoescape=none
 
 tasks:
-  app:
-    aliases: [mk]
+  mk:
     cmds:
       - task: kustomization
       - task: deployment
@@ -42,7 +41,6 @@ tasks:
 
   minijinja:
     internal: true
-    dir: '{{.APP_DIR}}'
     requires:
       vars: [OUT_FILE, TEMPLATE]
     cmds:
@@ -57,21 +55,41 @@ tasks:
     aliases: [ks]
     requires:
       vars: [APP]
+    dir: '{{.APP_DIR}}'
     cmds:
       - task: minijinja
         vars:
           TEMPLATE: kustomization
           OUT_FILE: ./kustomization.yml
 
-  namespace:
+  app:
+    requires:
+      vars: [APP, NS]
+    dir: './k8s/{{.NS}}'
+    vars:
+      OUT_FILE: './{{.APP}}/app.yml'
+    cmds:
+      - task: minijinja
+        vars:
+          TEMPLATE: app
+          OUT_FILE: '{{.OUT_FILE}}'
+      - kustomize edit add resource {{.OUT_FILE}}
+
+  namespaces:
     aliases: [ns]
     requires:
       vars: [NS]
+    dir: './k8s'
     cmds:
       - task: minijinja
         vars:
           TEMPLATE: ns-kustomization
-          OUT_FILE: ./kustomization.yml
+          OUT_FILE: './k8s/{{.NS}}/kustomization.yml'
+      - task: minijinja
+        vars:
+          TEMPLATE: namespace
+          OUT_FILE: './k8s/{{.NS}}/namespace.yml'
+      - kustomize edit add resource ./{{.NS}}
 
   deployment:
     aliases: [deploy]
@@ -84,7 +102,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: deployment
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   service:
@@ -98,7 +116,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: service
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   external-endpoint:
@@ -112,7 +130,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: external-endpoint
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   internal-ingress:
@@ -126,7 +144,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: internal-ingress
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   external-ingress:
@@ -140,7 +158,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: external-ingress
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   persistent-volume-claim:
@@ -154,7 +172,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: pvc
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   postgres:
@@ -168,7 +186,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: postgres
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   valkey:
@@ -182,7 +200,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: valkey
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   bitwarden-secret:
@@ -196,7 +214,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: bitwarden-secret
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   gatus-config:
@@ -210,5 +228,5 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: gatus-config
-          OUT_FILE: '{{.OUT_FILE}}'
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
