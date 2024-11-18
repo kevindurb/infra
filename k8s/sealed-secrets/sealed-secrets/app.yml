@@ -10,6 +10,9 @@ spec:
     repoURL: https://bitnami-labs.github.io/sealed-secrets
     targetRevision: 2.16.2
     chart: sealed-secrets
+    helm:
+      valuesObject:
+        fullnameOverride: sealed-secrets-controller
   destination:
     server: https://kubernetes.default.svc
     namespace: sealed-secrets
