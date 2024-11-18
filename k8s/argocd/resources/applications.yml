@@ -4,8 +4,9 @@ kind: ApplicationSet
 metadata:
   name: applications
 spec:
-  preserveResourcesOnDeletion: true
-  applicationsSync: create-update
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+    applicationsSync: create-update
   goTemplate: true
   generators:
     - list:
