@@ -54,7 +54,6 @@ spec:
           - name: open-webui
           - name: openwrt
           - name: pihole
-          - name: prometheus
           - name: prowlarr
           - name: prusaslicer
           - name: qbittorrent
