@@ -15,7 +15,7 @@ spec:
         fullnameOverride: sealed-secrets-controller
   destination:
     server: https://kubernetes.default.svc
-    namespace: sealed-secrets
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true
