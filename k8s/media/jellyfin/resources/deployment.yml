@@ -56,7 +56,7 @@ spec:
               mountPath: /data
           envFrom:
             - secretRef:
-                name: jellyfin-env-secret
+                name: zap2xml-secret
           env:
             - name: XMLTV_FILENAME
               value: xmltv.xml
