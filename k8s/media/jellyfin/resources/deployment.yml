@@ -25,7 +25,7 @@ spec:
       volumes:
         - name: config-volume
           persistentVolumeClaim:
-            claimName: config-volume
+            claimName: jellyfin-config-volume
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
