@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: media-truenas-media
+  name: truenas-media
   namespace: media
 spec:
   resources:
