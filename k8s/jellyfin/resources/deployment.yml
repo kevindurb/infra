@@ -6,7 +6,7 @@ metadata:
   labels: &labels
     app.kubernetes.io/component: web
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate
   selector:
@@ -17,6 +17,7 @@ spec:
     spec:
       nodeSelector:
         nvidia.com/gpu.present: 'true'
+        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
       runtimeClassName: nvidia
       hostname: jellyfin
       securityContext:
