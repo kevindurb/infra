@@ -4,4 +4,4 @@ kind: Kustomization
 
 resources:
   - ./namespace.yml
-# - ./jellyfin/app.yml
+  - ./jellyfin/app.yml
