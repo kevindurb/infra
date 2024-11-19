@@ -9,6 +9,6 @@ data:
   jellyfin.yml: |
     endpoints:
       - name: Jellyfin
-        url: http://jellyfin-service/health
+        url: http://jellyfin-service.media/health
         conditions:
           - '[STATUS] == 200'
