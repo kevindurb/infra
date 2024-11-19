@@ -4,4 +4,6 @@ kind: Kustomization
 
 resources:
   - ./namespace.yml
+  - ./durbin-casa-certificate.yml
+  - ./media-pvc.yml
   - ./jellyfin/app.yml
