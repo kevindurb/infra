@@ -23,7 +23,7 @@ spec:
           resources:
             limits:
               nvidia.com/gpu: 1
-              memory: 4G
+              memory: 6G
             requests:
               memory: 4G
           env:
