@@ -16,10 +16,10 @@ spec:
             requests:
               memory: 500M
             limits:
-              memory: 2G
+              memory: 1G
           env:
             - name: DEFAULT_MODELS
-              value: llama3.2
+              value: llama3.1:8b
             - name: ENABLE_OLLAMA_API
               value: 'true'
             - name: OLLAMA_BASE_URL
