@@ -19,7 +19,7 @@ spec:
             claimName: volume
       containers:
         - name: ollama
-          image: docker.io/ollama/ollama:0.4.1@sha256:e7ef02e7135734e999a32a3cf88d69e0c249966d167678999589957581d2d72d
+          image: docker.io/ollama/ollama:0.4.4@sha256:80942282f94bf8147a3f1badea3c21d8bd8b98ee7ec835cf7b292efa75f1ead4
           resources:
             limits:
               nvidia.com/gpu: 1
