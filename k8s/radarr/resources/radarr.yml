@@ -32,7 +32,7 @@ spec:
             claimName: truenas-ripping-storage
       containers:
         - name: radarr
-          image: ghcr.io/onedr0p/radarr:5.12.2@sha256:d7ab75d9280e9067c9c7b4e3fc6366c030a5090dc842785d098f5967417cbac9
+          image: ghcr.io/onedr0p/radarr:5.15.1@sha256:d097137c8190f13ff8e2e92f7fb748083d377c7f8f9a90e1460fd3b6460c0488
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
