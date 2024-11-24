@@ -110,7 +110,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: handbrake-web-worker
-          image: ghcr.io/thenickoftime/handbrake-web-worker:0.7.1@sha256:5365e9617b8ca943f768d3f06978d68d37b67901f2a11cd17be99f64082fb208
+          image: ghcr.io/thenickoftime/handbrake-web-worker:0.7.2@sha256:e12a789c9bd8dbf1792fec8beddd59e87bef07e19027dc2e511997801cc27282
           resources:
             requests:
               memory: 1G
