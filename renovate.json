@@ -16,8 +16,5 @@
       "k8s/argocd/resources/helm/.+\\.yml$",
       "k8s/argocd/resources/helm/.+\\.yaml$"
     ]
-  },
-  "pr": {
-    "maxConcurrentPRs": null
   }
 }
