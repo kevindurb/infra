@@ -15,6 +15,7 @@ metadata:
     gethomepage.dev/widget.type: mealie
     gethomepage.dev/widget.url: http://mealie-service
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_MEALIE_KEY}}'
+    gethomepage.dev/widget.version: '2'
 spec:
   ingressClassName: internal
   rules:
