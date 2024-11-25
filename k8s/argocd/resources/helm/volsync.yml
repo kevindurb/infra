@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://backube.github.io/helm-charts/
-    targetRevision: 0.10.0
+    targetRevision: 0.11.0
     chart: volsync
   destination:
     server: https://kubernetes.default.svc

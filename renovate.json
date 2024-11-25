@@ -4,7 +4,8 @@
     "config:recommended",
     "docker:pinDigests",
     ":automergePatch",
-    ":automergePr"
+    ":automergePr",
+    ":disableRateLimiting"
   ],
   "platform": "github",
   "repositories": ["kevindurb/infra"],
@@ -16,8 +17,5 @@
       "k8s/argocd/resources/helm/.+\\.yml$",
       "k8s/argocd/resources/helm/.+\\.yaml$"
     ]
-  },
-  "pr": {
-    "maxConcurrentPRs": null
   }
 }
