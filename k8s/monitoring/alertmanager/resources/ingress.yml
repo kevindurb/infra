@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/href: 'https://alertmanager.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: alertmanager
-    gethomepage.dev/group: Monitoring
+    gethomepage.dev/group: Status
     gethomepage.dev/icon: alertmanager
     gethomepage.dev/name: Alertmanager
     gethomepage.dev/widget.type: customapi

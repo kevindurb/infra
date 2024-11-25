@@ -25,13 +25,8 @@ layout:
     columns: 3
   Status:
     icon: mdi-list-status
-    style: column
-  Speed Test:
-    icon: mdi-speedometer
-    style: column
-  Monitoring:
-    icon: mdi-cloud-alert
-    style: column
+    style: row
+    columns: 3
   Servarr:
     icon: mdi-download
     style: row

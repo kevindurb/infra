@@ -1,43 +1,26 @@
 ---
-- Speed Test:
-    - Download Speed:
-        icon: mdi-download
+- Status:
+    - Speed Test:
         widget:
-          type: customapi
-          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_download_bits_per_second[1d])
-          mappings:
-            - field: { data: { result: { 0: { value: 1 } } } }
-              format: bitrate
-              label: Download Speed
-    - Upload Speed:
-        icon: mdi-upload
-        widget:
-          type: customapi
-          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_upload_bits_per_second[1d])
-          mappings:
-            - field: { data: { result: { 0: { value: 1 } } } }
-              format: bitrate
-              label: Upload Speed
-    - Ping:
-        icon: mdi-chart-timeline-variant
-        widget:
-          type: customapi
-          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_ping_latency_milliseconds[1d])
-          mappings:
-            - field: { data: { result: { 0: { value: 1 } } } }
-              format: float
-              suffix: ms
-              label: Ping
-    - Jitter:
-        icon: mdi-chart-scatter-plot
-        widget:
-          type: customapi
-          url: http://prometheus-service.monitoring/api/v1/query?query=avg_over_time(speedtest_jitter_latency_milliseconds[1d])
-          mappings:
-            - field: { data: { result: { 0: { value: 1 } } } }
-              format: float
-              suffix: ms
-              label: Jitter
+          type: prometheusmetric
+          url: http://prometheus-service.monitoring
+          metrics:
+            - label: Download Speed
+              query: avg_over_time(speedtest_download_bits_per_second[1d])
+              format:
+                type: bitrate
+            - label: Upload Speed
+              query: avg_over_time(speedtest_upload_bits_per_second[1d])
+              format:
+                type: bitrate
+            - label: Ping
+              query: avg_over_time(speedtest_ping_latency_milliseconds[1d])
+              format:
+                type: duration
+            - label: Jitter
+              query: avg_over_time(speedtest_jitter_latency_milliseconds[1d])
+              format:
+                type: duration
 - Gaming:
     - Minecraft:
         icon: minecraft
