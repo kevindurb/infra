@@ -18,10 +18,12 @@
               query: avg_over_time(speedtest_ping_latency_milliseconds[1d])
               format:
                 type: duration
+                scale: 0.001
             - label: Jitter
               query: avg_over_time(speedtest_jitter_latency_milliseconds[1d])
               format:
                 type: duration
+                scale: 0.001
 - Gaming:
     - Minecraft:
         icon: minecraft
