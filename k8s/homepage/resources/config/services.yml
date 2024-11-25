@@ -17,12 +17,12 @@
             - label: Ping
               query: avg_over_time(speedtest_ping_latency_milliseconds[1d])
               format:
-                type: float
+                type: number
                 suffix: ms
             - label: Jitter
               query: avg_over_time(speedtest_jitter_latency_milliseconds[1d])
               format:
-                type: float
+                type: number
                 suffix: ms
 - Gaming:
     - Minecraft:
