@@ -26,7 +26,7 @@ layout:
   Status:
     icon: mdi-list-status
     style: row
-    columns: 3
+    columns: 4
   Servarr:
     icon: mdi-download
     style: row

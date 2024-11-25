@@ -2,6 +2,7 @@
 - Status:
     - Speed Test:
         widget:
+          icon: mdi-speedometer
           type: prometheusmetric
           url: http://prometheus-service.monitoring
           metrics:
