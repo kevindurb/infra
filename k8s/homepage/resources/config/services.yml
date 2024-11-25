@@ -1,8 +1,8 @@
 ---
 - Status:
     - Speed Test:
+        icon: mdi-speedometer
         widget:
-          icon: mdi-speedometer
           type: prometheusmetric
           url: http://prometheus-service.monitoring
           metrics:
@@ -17,13 +17,13 @@
             - label: Ping
               query: avg_over_time(speedtest_ping_latency_milliseconds[1d])
               format:
-                type: duration
-                scale: 0.001
+                type: float
+                suffix: ms
             - label: Jitter
               query: avg_over_time(speedtest_jitter_latency_milliseconds[1d])
               format:
-                type: duration
-                scale: 0.001
+                type: float
+                suffix: ms
 - Gaming:
     - Minecraft:
         icon: minecraft
