@@ -60,7 +60,7 @@ tasks:
       - task: minijinja
         vars:
           TEMPLATE: kustomization
-          OUT_FILE: ./kustomization.yml
+          OUT_FILE: '{{.APP_DIR}}/kustomization.yml'
 
   app:
     requires:

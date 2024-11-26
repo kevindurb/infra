@@ -1,0 +1,31 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://budget.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: actual-budget
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: actual-budget
+    gethomepage.dev/name: Actual-Budget
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host budget.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

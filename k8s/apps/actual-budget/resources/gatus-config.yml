@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  actual-budget.yml: |
+    endpoints:
+      - name: actual-budget
+        url: http://actual-budget-web-service
+        conditions:
+          - '[STATUS] == 200'
