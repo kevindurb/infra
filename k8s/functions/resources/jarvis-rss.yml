@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: jarvis-rss
-          image: ghcr.io/kevindurb/functions:v1.0.59@sha256:a4f220b29019b785fbe1d37cdf8fb44cb6be6bb1d15dbb19e595910116e062e3
+          image: ghcr.io/kevindurb/functions:v1.0.60@sha256:e1c8737f1ed6e31badc55dd2bb15bbed4e087a4ef2845ef8c87599e658ea8942
           command: [npx, '@functions/jarvis-rss']
           resources:
             requests:
