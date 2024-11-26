@@ -9,9 +9,9 @@ metadata:
     gethomepage.dev/href: 'https://budget.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: actual-budget
-    gethomepage.dev/group: Other
-    gethomepage.dev/icon: actual-budget
-    gethomepage.dev/name: Actual-Budget
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: actual
+    gethomepage.dev/name: Actual Budget
 spec:
   ingressClassName: internal
   rules:
