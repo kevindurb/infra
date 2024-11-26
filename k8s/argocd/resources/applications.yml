@@ -66,6 +66,7 @@ spec:
           - name: sonarr
           - name: speedtest-exporter
           - name: syncthing
+          - name: system-upgrade
           - name: time-slicing-config
           - name: truenas
           - name: wallabag
