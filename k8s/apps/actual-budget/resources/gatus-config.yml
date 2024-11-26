@@ -9,6 +9,6 @@ data:
   actual-budget.yml: |
     endpoints:
       - name: actual-budget
-        url: http://actual-budget-web-service
+        url: http://actual-budget-web-service.apps
         conditions:
           - '[STATUS] == 200'
