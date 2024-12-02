@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: miniflux
-          image: ghcr.io/miniflux/miniflux:nightly-distroless@sha256:b873c395edb4262c34a55a3195ae6ee1ccd68e17ac84d0048c3f000780189b14
+          image: ghcr.io/miniflux/miniflux:nightly-distroless@sha256:a23a54c5c3832b254a8d044a53c37bc4b6a197a3f1ed77c06f5f251e231a07c1
           resources:
             requests:
               memory: 100M
