@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://pass.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: pocket-id
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: pocket-id
+    gethomepage.dev/name: Pocket-Id
+    gethomepage.dev/widget.type: pocket-id
+    gethomepage.dev/widget.url: http://pocket-id-web-service
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host pass.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

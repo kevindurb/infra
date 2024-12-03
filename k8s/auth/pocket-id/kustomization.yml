@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: auth
+namePrefix: pocket-id-
+
+resources:
+  - ./resources/web-deployment.yml
+  - ./resources/web-service.yml
+  - ./resources/internal-ingress.yml
+  - ./resources/gatus-config.yml
+  - ./resources/pvc.yml
+
+labels:
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      app.kubernetes.io/name: pocket-id

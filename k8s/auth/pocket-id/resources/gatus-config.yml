@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  pocket-id.yml: |
+    endpoints:
+      - name: pocket-id
+        url: http://pocket-id-web-service
+        conditions:
+          - '[STATUS] == 200'
