@@ -8,12 +8,10 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
     gethomepage.dev/href: 'https://pass.durbin.casa'
     gethomepage.dev/enabled: 'true'
-    gethomepage.dev/app: pocket-id
-    gethomepage.dev/group: Other
-    gethomepage.dev/icon: pocket-id
-    gethomepage.dev/name: Pocket-Id
-    gethomepage.dev/widget.type: pocket-id
-    gethomepage.dev/widget.url: http://pocket-id-web-service
+    gethomepage.dev/app: web-pocket-id
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: sh-pocket-id
+    gethomepage.dev/name: Pocket ID
 spec:
   ingressClassName: internal
   rules:
