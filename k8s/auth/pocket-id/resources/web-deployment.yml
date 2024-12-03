@@ -21,6 +21,10 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: dot-config
+          emptyDir: {}
+        - name: dot-local
+          emptyDir: {}
       containers:
         - name: pocket-id
           image: docker.io/stonith404/pocket-id:v0.19.0
@@ -40,6 +44,10 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /app/backend/data
+            - name: dot-config
+              mountPath: /.config
+            - name: dot-local
+              mountPath: /.local
           env:
             - name: TZ
               value: America/Denver
