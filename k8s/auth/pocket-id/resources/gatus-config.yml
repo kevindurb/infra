@@ -9,6 +9,6 @@ data:
   pocket-id.yml: |
     endpoints:
       - name: pocket-id
-        url: http://pocket-id-web-service
+        url: http://pocket-id-web-service.auth
         conditions:
           - '[STATUS] == 200'
