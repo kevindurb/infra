@@ -4,7 +4,6 @@
     "config:recommended",
     "docker:pinDigests",
     ":automergePatch",
-    ":automergePr",
     ":disableRateLimiting"
   ],
   "platform": "github",
