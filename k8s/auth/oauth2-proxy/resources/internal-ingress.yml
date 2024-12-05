@@ -10,8 +10,8 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: oauth2-proxy
     gethomepage.dev/group: Other
-    gethomepage.dev/icon: oauth2-proxy
-    gethomepage.dev/name: Oauth2-Proxy
+    gethomepage.dev/icon: mdi-key
+    gethomepage.dev/name: OAuth2 Proxy
 spec:
   ingressClassName: internal
   rules:
