@@ -9,6 +9,6 @@ data:
   oauth2-proxy.yml: |
     endpoints:
       - name: oauth2-proxy
-        url: http://oauth2-proxy-web-service.auth
+        url: http://oauth2-proxy-web-service.auth/ready
         conditions:
           - '[STATUS] == 200'
