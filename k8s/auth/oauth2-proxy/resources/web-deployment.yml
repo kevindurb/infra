@@ -54,6 +54,8 @@ spec:
               value: 'true'
             - name: OAUTH2_PROXY_HTTP_ADDRESS
               value: 0.0.0.0:4180
+            - name: INSECURE_OIDC_ALLOW_UNVERIFIED_EMAIL
+              value: 'true'
           ports:
             - name: http
               containerPort: 4180
