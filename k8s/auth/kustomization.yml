@@ -5,3 +5,4 @@ resources:
   - ./namespace.yml
   - ./pocket-id/app.yml
   - ./durbin-casa-certificate.yml
+  - ./oauth2-proxy/app.yml

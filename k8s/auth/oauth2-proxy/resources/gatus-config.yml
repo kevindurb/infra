@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  oauth2-proxy.yml: |
+    endpoints:
+      - name: oauth2-proxy
+        url: http://oauth2-proxy-web-service.auth
+        conditions:
+          - '[STATUS] == 200'
