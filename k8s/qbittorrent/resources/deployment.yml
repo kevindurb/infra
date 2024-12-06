@@ -18,9 +18,9 @@ spec:
       hostname: qbittorrent
       serviceAccountName: service-account
       volumes:
-        - name: volume
-          persistentVolumeClaim:
-            claimName: volume
+        # - name: volume
+        #   persistentVolumeClaim:
+        #     claimName: volume
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
@@ -44,9 +44,9 @@ spec:
             capabilities:
               drop: [ALL]
           volumeMounts:
-            - name: volume
-              mountPath: /config
-              subPath: qbittorrent
+            # - name: volume
+            #   mountPath: /config
+            #   subPath: qbittorrent
             - name: truenas-media
               mountPath: /media
           env:
