@@ -21,6 +21,8 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       volumes:
+        - name: tmp
+          emptyDir: {}
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
@@ -55,6 +57,8 @@ spec:
             - name: RADARR__AUTH__REQUIRED
               value: DisabledForLocalAddresses
           volumeMounts:
+            - name: tmp
+              mountPath: /tmp
             - name: ripping-storage
               mountPath: /output
             - name: config-volume

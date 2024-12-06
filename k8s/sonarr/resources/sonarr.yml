@@ -21,6 +21,8 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       volumes:
+        - name: tmp
+          emptyDir: {}
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
@@ -59,6 +61,8 @@ spec:
             - name: SONARR__AUTH__REQUIRED
               value: DisabledForLocalAddresses
           volumeMounts:
+            - name: tmp
+              mountPath: /tmp
             - name: config-volume
               mountPath: /config
             - name: truenas-media
