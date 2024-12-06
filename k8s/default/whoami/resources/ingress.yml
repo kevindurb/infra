@@ -5,7 +5,7 @@ metadata:
   name: ingress
   annotations:
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
-    nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start
+    nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start?rd=
     nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-User,X-Auth-Request-Email
     gethomepage.dev/href: 'https://whoami.durbin.casa'
     gethomepage.dev/enabled: 'true'
