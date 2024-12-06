@@ -4,10 +4,9 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    nginx.ingress.kubernetes.io/auth-method: 'GET'
-    nginx.ingress.kubernetes.io/auth-url: 'http://authelia-service.default.svc.cluster.local/api/authz/auth-request'
-    nginx.ingress.kubernetes.io/auth-signin: 'https://auth.durbin.casa?rm=$request_method'
-    nginx.ingress.kubernetes.io/auth-response-headers: 'Remote-User,Remote-Name,Remote-Groups,Remote-Email'
+    nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
+    nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start?rd=$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-response-headers: Authorization
     gethomepage.dev/href: 'https://whoami.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: whoami
