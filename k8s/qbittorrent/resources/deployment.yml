@@ -75,21 +75,21 @@ spec:
           ports:
             - name: http
               containerPort: 80
-          livenessProbe: &probe
-            httpGet:
-              path: /api/v2/app/version
-              port: 80
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 10
-            failureThreshold: 6
-          readinessProbe: *probe
-          startupProbe:
-            httpGet:
-              path: /api/v2/app/version
-              port: 80
-            failureThreshold: 30
-            periodSeconds: 10
+          # livenessProbe: &probe
+          #   httpGet:
+          #     path: /api/v2/app/version
+          #     port: 80
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 30
+          #   timeoutSeconds: 10
+          #   failureThreshold: 6
+          # readinessProbe: *probe
+          # startupProbe:
+          #   httpGet:
+          #     path: /api/v2/app/version
+          #     port: 80
+          #   failureThreshold: 30
+          #   periodSeconds: 10
         - name: tailscale
           imagePullPolicy: Always
           image: ghcr.io/tailscale/tailscale:latest@sha256:da35f0fbeb3037754049e3b079cb30c58c140576a50b54be107c0ff6ad0ec0e9
@@ -101,7 +101,7 @@ spec:
             - name: TS_DEBUG_FIREWALL_MODE
               value: auto
             - name: TS_EXTRA_ARGS
-              value: --advertise-tags=tag:qbittorrent --exit-node=100.117.167.110
+              value: --advertise-tags=tag:qbittorrent --exit-node=100.117.167.110 --exit-node-allow-lan-access=false
             - name: TS_AUTHKEY
               valueFrom:
                 secretKeyRef:
@@ -111,6 +111,7 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
+                - SYS_MODULE
 
 ---
 apiVersion: v1
