@@ -61,7 +61,7 @@ spec:
             - name: QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled
               value: 'true'
             - name: QBT_Preferences__WebUI__AuthSubnetWhitelist
-              value: 10.42.0.0/16
+              value: 10.0.0.0/8
             - name: QBT_Preferences__WebUI__LocalHostAuth
               value: 'false'
             - name: QBT_BitTorrent__Session__Interface
@@ -101,7 +101,7 @@ spec:
             - name: TS_DEBUG_FIREWALL_MODE
               value: auto
             - name: TS_EXTRA_ARGS
-              value: --advertise-tags=tag:qbittorrent --exit-node=100.117.167.110 --exit-node-allow-lan-access=false
+              value: --advertise-tags=tag:qbittorrent --exit-node=100.117.167.110 --exit-node-allow-lan-access=true
             - name: TS_AUTHKEY
               valueFrom:
                 secretKeyRef:
