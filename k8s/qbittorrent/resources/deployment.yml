@@ -101,7 +101,7 @@ spec:
             - name: TS_DEBUG_FIREWALL_MODE
               value: auto
             - name: TS_EXTRA_ARGS
-              value: --advertise-tags=tag:qbittorrent
+              value: --advertise-tags=tag:qbittorrent --exit-node=us-chi-wg-301.mullvad.ts.net
             - name: TS_AUTHKEY
               valueFrom:
                 secretKeyRef:
