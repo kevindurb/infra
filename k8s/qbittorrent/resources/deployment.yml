@@ -15,6 +15,7 @@ spec:
     metadata:
       labels: *labels
     spec:
+      hostname: qbittorrent
       serviceAccountName: service-account
       volumes:
         - name: volume
