@@ -4,12 +4,11 @@ kind: ConfigMap
 metadata:
   name: gatus-config
   labels:
-    gatus.io/enabled: 'true'
+    gatus.io/enabled: 'false'
 data:
   qbittorrent.yml: |
     endpoints:
       - name: Qbittorrent
         url: http://qbittorrent-service/api/v2/app/version
-        
         conditions:
           - '[STATUS] == 200'
