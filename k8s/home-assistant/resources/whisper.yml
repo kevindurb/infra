@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - image: rhasspy/wyoming-whisper@sha256:792754e682e086ca4fb3ff8586a8b1d4800a67a94505e54a1c80c3dda4ad798d
+        - image: rhasspy/wyoming-whisper:2.4.0@sha256:2687f79715734606f856fc4478351ce91a76bdaf6899086bcb837eb9ac7cddb8
           name: whisper
           args:
             - --model
