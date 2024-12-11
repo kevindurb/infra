@@ -24,6 +24,9 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: dev-net-tun
+          hostPath:
+            path: /dev/net/tun
       securityContext:
         fsGroup: 1000
       containers:
@@ -107,7 +110,11 @@ spec:
                 secretKeyRef:
                   name: qbittorrent-secret
                   key: client_secret
+          volumeMounts:
+            - name: dev-net-tun
+              mountPath: /dev/net/tun
           securityContext:
+            privileged: true
             capabilities:
               add:
                 - NET_ADMIN
