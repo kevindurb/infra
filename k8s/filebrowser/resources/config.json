@@ -7,6 +7,6 @@
   "root": "/srv",
   "auth": {
     "method": "proxy",
-    "header": "X-Auth-Request-Email"
+    "header": "X-Auth-Request-Preferred-Username"
   }
 }
