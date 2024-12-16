@@ -46,11 +46,11 @@ spec:
             - name: RUN_MIGRATIONS
               value: '1'
             - name: CREATE_ADMIN
+              value: '0'
+            - name: AUTH_PROXY_HEADER
+              value: X-Auth-Request-Email
+            - name: AUTH_PROXY_USER_CREATION
               value: '1'
-            - name: ADMIN_USERNAME
-              value: admin
-            - name: ADMIN_PASSWORD
-              value: password
           ports:
             - name: http
               containerPort: 8080
