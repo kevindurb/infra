@@ -34,6 +34,8 @@ spec:
               value: searxng
             - name: SEARXNG_QUERY_URL
               value: http://searxng-service.default/search?q=<query>
+            - name: WEBUI_AUTH_TRUSTED_EMAIL_HEADER
+              value: X-Auth-Request-Email
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
