@@ -27,7 +27,7 @@ spec:
           emptyDir: {}
       containers:
         - name: pocket-id
-          image: docker.io/stonith404/pocket-id:v0.20.1@sha256:011faf8127ffd53400fa54a4adb1c2de42f2102045b9cee560bfcf45de9648cd
+          image: docker.io/stonith404/pocket-id:v0.21.0@sha256:e4b68c1625733af0faba88d939fb5c61d63b09c59c207b1752535cda1ffdbac0
           resources:
             requests:
               memory: 100M
