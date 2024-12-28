@@ -22,7 +22,6 @@ spec:
           - name: cluster-secret-store
           - name: cnpg
           - name: dashboard
-          - name: ente
           - name: external-dns
           - name: external-snapshotter
           - name: external-volumes
