@@ -4,11 +4,11 @@ kind: Kustomization
 namePrefix: miniflux-
 
 resources:
-  - ./resources/web-deployment.yml
+  # - ./resources/web-deployment.yml
   - ./resources/web-service.yml
   - ./resources/internal-ingress.yml
   - ./resources/gatus-config.yml
-  - ./resources/postgres.yml
+  # - ./resources/postgres.yml
 
 labels:
   - includeSelectors: true
