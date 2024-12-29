@@ -1,0 +1,32 @@
+---
+csiDriver:
+  name: "org.democratic-csi.zfs-iscsi"
+  attachRequired: false
+  storageCapacity: true
+  fsGroupPolicy: File
+
+storageClasses:
+  - name: zfs-iscsi
+    defaultClass: false
+    reclaimPolicy: Delete
+    volumeBindingMode: WaitForFirstConsumer
+    allowVolumeExpansion: true
+    parameters:
+      fsType: xfs
+    mountOptions: []
+    secrets:
+      provisioner-secret:
+      controller-publish-secret:
+      node-stage-secret:
+      node-publish-secret:
+      controller-expand-secret:
+
+volumeSnapshotClasses:
+  - name: zfs-iscsi
+    secrets:
+      snapshotter-secret:
+
+driver:
+  existingConfigSecret: democratic-csi-zfs-iscsi-driver-config-secret
+  config:
+    driver: zfs-generic-iscsi
