@@ -73,9 +73,26 @@
           - nvidia-driver
           - nvidia-smi
           - nvidia-container-runtime
+          - open-iscsi 
+          - lsscsi 
+          - sg3-utils 
+          - multipath-tools 
+          - scsitools
 
     - name: Create symlink for nvidia container runtime
       ansible.builtin.file:
         src: /sbin/ldconfig
         dest: /sbin/ldconfig.real
         state: link
+
+    - name: Start open-iscsi
+      ansible.builtin.systemd_service:
+        state: started
+        enabled: true
+        name: open-iscsi
+
+    - name: Start multipath-tools
+      ansible.builtin.systemd_service:
+        state: started
+        enabled: true
+        name: multipath-tools
