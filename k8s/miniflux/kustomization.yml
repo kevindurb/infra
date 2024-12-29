@@ -8,7 +8,7 @@ resources:
   - ./resources/web-service.yml
   - ./resources/internal-ingress.yml
   - ./resources/gatus-config.yml
-  # - ./resources/postgres.yml
+  - ./resources/postgres.yml
 
 labels:
   - includeSelectors: true
