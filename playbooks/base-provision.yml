@@ -73,11 +73,12 @@
           - nvidia-driver
           - nvidia-smi
           - nvidia-container-runtime
-          - open-iscsi 
-          - lsscsi 
-          - sg3-utils 
-          - multipath-tools 
+          - open-iscsi
+          - lsscsi
+          - sg3-utils
+          - multipath-tools
           - scsitools
+          - xfsprogs
 
     - name: Create symlink for nvidia container runtime
       ansible.builtin.file:
