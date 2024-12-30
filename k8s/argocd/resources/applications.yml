@@ -13,7 +13,6 @@ spec:
         elements:
           - name: argocd
             namespace: argocd
-          - name: authelia
           - name: calibre
           - name: calibre-web
           - name: cert-manager
