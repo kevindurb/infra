@@ -6,3 +6,4 @@ resources:
   - ./durbin-casa-cert.yml
   - ./actual-budget/app.yml
   - ./adminer/app.yml
+  - ./miniflux/app.yml
