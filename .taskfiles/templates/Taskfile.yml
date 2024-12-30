@@ -77,7 +77,7 @@ tasks:
           OUT_FILE: './k8s/{{.NS}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
-  namespaces:
+  namespace:
     aliases: [ns]
     requires:
       vars: [NS]
@@ -92,6 +92,11 @@ tasks:
           TEMPLATE: namespace
           OUT_FILE: './k8s/{{.NS}}/namespace.yml'
       - kustomize edit add resource ./{{.NS}}
+      - task: minijinja
+        vars:
+          TEMPLATE: wildcard-cert
+          OUT_FILE: './k8s/{{.NS}}/wildcard-cert.yml'
+      - kustomize edit add resource ./wildcard-cert
 
   deployment:
     aliases: [deploy]
