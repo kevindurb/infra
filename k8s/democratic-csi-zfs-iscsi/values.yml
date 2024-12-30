@@ -1,6 +1,6 @@
 ---
 csiDriver:
-  name: "org.democratic-csi.zfs-iscsi"
+  name: 'org.democratic-csi.zfs-iscsi'
   attachRequired: false
   storageCapacity: true
   fsGroupPolicy: File
@@ -9,7 +9,7 @@ storageClasses:
   - name: zfs-iscsi
     defaultClass: false
     reclaimPolicy: Delete
-    volumeBindingMode: WaitForFirstConsumer
+    volumeBindingMode: Immediate
     allowVolumeExpansion: true
     parameters:
       fsType: xfs
