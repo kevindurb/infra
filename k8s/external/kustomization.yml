@@ -5,3 +5,4 @@ resources:
   - ./namespace.yml
   - ./wildcard-cert.yml
   - ./truenas/app.yml
+  - ./nas01/app.yml

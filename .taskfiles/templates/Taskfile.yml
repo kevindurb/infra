@@ -39,6 +39,7 @@ tasks:
       - task: app
       - task: kustomization
       - task: external-endpoint
+      - task: internal-ingress
       - task: gatus
 
   minijinja:

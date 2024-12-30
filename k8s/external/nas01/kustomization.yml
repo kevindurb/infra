@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: external
+namePrefix: nas01-
+
+resources:
+  - ./resources/external-endpoint.yml
+  - ./resources/gatus-config.yml
+
+labels:
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      app.kubernetes.io/name: nas01

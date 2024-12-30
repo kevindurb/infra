@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  nas01.yml: |
+    endpoints:
+      - name: nas01
+        url: http://nas01-web-service.external
+        conditions:
+          - '[STATUS] == 200'

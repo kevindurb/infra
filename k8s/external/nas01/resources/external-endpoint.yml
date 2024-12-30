@@ -1,0 +1,61 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - name: https
+      port: 443
+      targetPort: https
+
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: service
+  labels:
+    kubernetes.io/service-name: nas01-service
+addressType: IPv4
+ports:
+  - name: https
+    appProtocol: https
+    protocol: TCP
+    port: 443
+endpoints:
+  - addresses: [192.168.200.10]
+    conditions: {}
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS'
+    gethomepage.dev/href: 'https://nas01.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: nas01
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: nas01
+    gethomepage.dev/name: Nas01
+    gethomepage.dev/siteMonitor: http://nas01-service.external
+    gethomepage.dev/external: 'true'
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host nas01.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: service
+                port:
+                  name: https
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

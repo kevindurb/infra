@@ -41,8 +41,8 @@ metadata:
     gethomepage.dev/icon: {{ ENV.APP }}
     gethomepage.dev/name: {{ ENV.APP | title }}
     gethomepage.dev/widget.type: {{ ENV.APP }}
-    gethomepage.dev/widget.url: {{ ENV.PROTO }}://{{ ENV.APP }}-service
-    gethomepage.dev/siteMonitor: {{ ENV.PROTO }}://{{ ENV.APP }}-service
+    gethomepage.dev/widget.url: {{ ENV.PROTO }}://{{ ENV.APP }}-service.{{ ENV.NS }}
+    gethomepage.dev/siteMonitor: {{ ENV.PROTO }}://{{ ENV.APP }}-service.{{ ENV.NS }}
     gethomepage.dev/external: 'true'
 spec:
   ingressClassName: internal
