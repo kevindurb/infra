@@ -83,6 +83,6 @@ spec:
         namespace: '{{ or .namespace "default" }}'
       syncPolicy:
         automated:
-          prune: false
+          prune: true
           selfHeal: true
           allowEmpty: false
