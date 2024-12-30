@@ -6,7 +6,7 @@ metadata:
 spec:
   ports:
     - name: https
-      port: 443
+      port: 9090
       targetPort: https
 
 ---
@@ -21,7 +21,7 @@ ports:
   - name: https
     appProtocol: https
     protocol: TCP
-    port: 443
+    port: 9090
 endpoints:
   - addresses: [192.168.200.10]
     conditions: {}
@@ -38,9 +38,9 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: nas01
     gethomepage.dev/group: Other
-    gethomepage.dev/icon: nas01
-    gethomepage.dev/name: Nas01
-    gethomepage.dev/siteMonitor: http://nas01-service.external
+    gethomepage.dev/icon: fedora
+    gethomepage.dev/name: nas01
+    gethomepage.dev/siteMonitor: https://nas01-service.external
     gethomepage.dev/external: 'true'
 spec:
   ingressClassName: internal
