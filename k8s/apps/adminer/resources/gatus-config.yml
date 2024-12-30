@@ -8,7 +8,7 @@ metadata:
 data:
   adminer.yml: |
     endpoints:
-      - name: Adminer
-        url: http://adminer-service
+      - name: adminer
+        url: http://adminer-service.apps
         conditions:
           - '[STATUS] == 200'
