@@ -39,7 +39,6 @@ spec:
           - name: manyfold
           - name: mealie
           - name: metallb
-          - name: miniflux
           - name: minio
           - name: mosquitto
           - name: network-policies
