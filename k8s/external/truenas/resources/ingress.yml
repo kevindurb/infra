@@ -12,7 +12,7 @@ metadata:
     gethomepage.dev/icon: truenas
     gethomepage.dev/name: TrueNAS
     gethomepage.dev/widget.type: truenas
-    gethomepage.dev/widget.url: &service https://truenas-service
+    gethomepage.dev/widget.url: &service https://truenas-service.external
     gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
     gethomepage.dev/widget.enablePools: 'true'
     gethomepage.dev/siteMonitor: *service

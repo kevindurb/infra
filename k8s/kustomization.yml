@@ -9,3 +9,4 @@ resources:
   - ./media
   - ./apps
   - ./auth
+  - ./external

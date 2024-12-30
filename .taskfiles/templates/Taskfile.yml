@@ -26,6 +26,7 @@ vars:
 tasks:
   mk:
     cmds:
+      - task: app
       - task: kustomization
       - task: deployment
       - task: service
@@ -35,6 +36,7 @@ tasks:
   external-app:
     aliases: [mk-ext]
     cmds:
+      - task: app
       - task: kustomization
       - task: external-endpoint
       - task: gatus

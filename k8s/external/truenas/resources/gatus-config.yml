@@ -8,8 +8,8 @@ metadata:
 data:
   truenas.yml: |
     endpoints:
-      - name: Truenas
-        url: https://truenas-service/api/docs
+      - name: truenas
+        url: https://truenas-service.external/api/docs
         client:
           insecure: true
         conditions:
