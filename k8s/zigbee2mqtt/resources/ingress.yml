@@ -11,10 +11,9 @@ metadata:
     gethomepage.dev/icon: zigbee2mqtt
     gethomepage.dev/name: Zigbee2MQTT
     cert-manager.io/cluster-issuer: cloudflare-issuer
-    nginx.ingress.kubernetes.io/auth-method: GET
-    nginx.ingress.kubernetes.io/auth-url: http://authelia-service.default.svc.cluster.local/api/authz/auth-request
-    nginx.ingress.kubernetes.io/auth-signin: https://auth.durbin.casa?rm=$request_method
-    nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
+    nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
+    nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start
+    nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-User,X-Auth-Request-Email,X-Auth-Request-Preferred-Username
 spec:
   ingressClassName: internal
   rules:
