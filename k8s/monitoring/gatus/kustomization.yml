@@ -2,6 +2,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+namespace: monitoring
 namePrefix: gatus-
 
 resources:
@@ -10,5 +11,8 @@ resources:
   - ./resources/ingress.yml
   - ./resources/rbac.yml
 
-commonLabels:
-  app.kubernetes.io/name: gatus
+labels:
+  - pairs:
+      app.kubernetes.io/name: gatus
+    includeTemplates: true
+    includeSelectors: true
