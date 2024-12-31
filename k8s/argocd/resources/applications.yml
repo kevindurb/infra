@@ -25,7 +25,6 @@ spec:
           - name: external-volumes
           - name: filebrowser
           - name: flaresolverr
-          - name: gatus
           - name: handbrake-web
           - name: healthchecks
           - name: hdhomerun
