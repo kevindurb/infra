@@ -9,6 +9,8 @@ data:
   nas01.yml: |
     endpoints:
       - name: nas01
-        url: http://nas01-web-service.external
+        url: https://nas01-web-service.external
+        client:
+          insecure: true
         conditions:
           - '[STATUS] == 200'
