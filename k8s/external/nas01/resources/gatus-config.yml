@@ -9,7 +9,7 @@ data:
   nas01.yml: |
     endpoints:
       - name: nas01
-        url: https://nas01-web-service.external
+        url: https://nas01-web-service.external:9090
         client:
           insecure: true
         conditions:
