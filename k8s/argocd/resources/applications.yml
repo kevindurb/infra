@@ -5,7 +5,7 @@ metadata:
   name: applications
 spec:
   syncPolicy:
-    preserveResourcesOnDeletion: true
+    preserveResourcesOnDeletion: false
     applicationsSync: create-update
   goTemplate: true
   generators:
