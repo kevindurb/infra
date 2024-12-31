@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service
+  name: web-service
 spec:
   ports:
     - name: https
@@ -13,9 +13,9 @@ spec:
 apiVersion: discovery.k8s.io/v1
 kind: EndpointSlice
 metadata:
-  name: service
+  name: web-service
   labels:
-    kubernetes.io/service-name: nas01-service
+    kubernetes.io/service-name: nas01-web-service
 addressType: IPv4
 ports:
   - name: https
@@ -40,7 +40,7 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: fedora
     gethomepage.dev/name: nas01
-    gethomepage.dev/siteMonitor: https://nas01-service.external
+    gethomepage.dev/siteMonitor: https://nas01-web-service.external
     gethomepage.dev/external: 'true'
 spec:
   ingressClassName: internal
@@ -52,7 +52,7 @@ spec:
             path: '/'
             backend:
               service:
-                name: service
+                name: web-service
                 port:
                   name: https
   tls:
