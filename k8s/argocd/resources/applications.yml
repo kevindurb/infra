@@ -55,7 +55,6 @@ spec:
           - name: scrypted
           - name: searxng
           - name: smartctl-exporter
-          - name: smokeping
           - name: smtp-relay
           - name: sonarr
           - name: speedtest-exporter
