@@ -63,6 +63,8 @@ spec:
               value: /config
             - name: LABEL
               value: gatus.io/enabled
+            - name: LABEL_VALUE
+              value: 'true'
             - name: NAMESPACE
               value: ALL
             - name: RESOURCE
