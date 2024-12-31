@@ -40,7 +40,7 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: fedora
     gethomepage.dev/name: nas01
-    gethomepage.dev/siteMonitor: https://nas01-web-service.external
+    gethomepage.dev/siteMonitor: https://nas01-web-service.external:9090
     gethomepage.dev/external: 'true'
 spec:
   ingressClassName: internal
