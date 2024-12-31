@@ -9,7 +9,6 @@ data:
   syncthing.yml: |
     endpoints:
       - name: syncthing
-        url: http://syncthing-web-service
+        url: http://syncthing-web-service.default
         conditions:
           - '[STATUS] == 200'
-

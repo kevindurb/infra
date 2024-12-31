@@ -8,7 +8,7 @@ metadata:
 data:
   argocd.yml: |
     endpoints:
-      - name: Argocd
+      - name: argocd
         url: https://argocd-server.argocd
         client:
           insecure: true

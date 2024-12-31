@@ -8,8 +8,8 @@ metadata:
 data:
   flaresolverr.yml: |
     endpoints:
-      - name: Flaresolverr
-        url: http://flaresolverr-service
+      - name: flaresolverr
+        url: http://flaresolverr-service.default
         
         conditions:
           - '[STATUS] == 200'

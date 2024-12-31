@@ -8,8 +8,8 @@ metadata:
 data:
   prowlarr.yml: |
     endpoints:
-      - name: Prowlarr
-        url: http://prowlarr-service
+      - name: prowlarr
+        url: http://prowlarr-service.default
         
         conditions:
           - '[STATUS] == 200'

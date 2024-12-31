@@ -8,8 +8,8 @@ metadata:
 data:
   authelia.yml: |
     endpoints:
-      - name: Authelia
-        url: http://authelia-service/api/health
+      - name: authelia
+        url: http://authelia-service.default/api/health
         
         conditions:
           - '[STATUS] == 200'

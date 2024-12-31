@@ -8,7 +8,7 @@ metadata:
 data:
   pihole.yml: |
     endpoints:
-      - name: Pihole
-        url: http://pihole-service/admin
+      - name: pihole
+        url: http://pihole-service.default/admin
         conditions:
           - '[STATUS] == 200'

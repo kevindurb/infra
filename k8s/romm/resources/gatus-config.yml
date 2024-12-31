@@ -9,6 +9,6 @@ data:
   romm.yml: |
     endpoints:
       - name: romm
-        url: http://romm-web-service
+        url: http://romm-web-service.default
         conditions:
           - '[STATUS] == 200'

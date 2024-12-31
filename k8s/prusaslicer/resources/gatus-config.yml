@@ -8,9 +8,9 @@ metadata:
 data:
   prusaslicer.yml: |
     endpoints:
-      - name: Prusaslicer
+      - name: prusaslicer
         enabled: false
-        url: http://prusaslicer-service
+        url: http://prusaslicer-service.default
         
         conditions:
           - '[STATUS] == 200'

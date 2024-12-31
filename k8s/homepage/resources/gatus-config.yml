@@ -8,7 +8,7 @@ metadata:
 data:
   homepage.yml: |
     endpoints:
-      - name: Homepage
-        url: http://homepage-service/api/healthcheck
+      - name: homepage
+        url: http://homepage-service.default/api/healthcheck
         conditions:
           - '[STATUS] == 200'

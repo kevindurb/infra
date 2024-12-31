@@ -8,8 +8,8 @@ metadata:
 data:
   omada.yml: |
     endpoints:
-      - name: Omada
-        url: https://omada-service/login
+      - name: omada
+        url: https://omada-service.default/login
         client:
           insecure: true
         conditions:

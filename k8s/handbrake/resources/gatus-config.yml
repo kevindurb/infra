@@ -8,8 +8,8 @@ metadata:
 data:
   handbrake.yml: |
     endpoints:
-      - name: Handbrake
+      - name: handbrake
         enabled: false
-        url: http://handbrake-service
+        url: http://handbrake-service.default
         conditions:
           - '[STATUS] == 200'

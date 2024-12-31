@@ -8,8 +8,8 @@ metadata:
 data:
   makemkv.yml: |
     endpoints:
-      - name: Makemkv
+      - name: makemkv
         enabled: false
-        url: http://makemkv-service
+        url: http://makemkv-service.default
         conditions:
           - '[STATUS] == 200'

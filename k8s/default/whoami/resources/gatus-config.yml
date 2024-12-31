@@ -8,7 +8,7 @@ metadata:
 data:
   whoami.yml: |
     endpoints:
-      - name: Whoami
-        url: http://whoami-service
+      - name: whoami
+        url: http://whoami-service.default
         conditions:
           - '[STATUS] == 200'

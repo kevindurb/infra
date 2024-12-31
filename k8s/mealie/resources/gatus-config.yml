@@ -8,7 +8,7 @@ metadata:
 data:
   mealie.yml: |
     endpoints:
-      - name: Mealie
-        url: http://mealie-service/api/app/about
+      - name: mealie
+        url: http://mealie-service.default/api/app/about
         conditions:
           - '[STATUS] == 200'

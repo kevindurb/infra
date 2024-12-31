@@ -8,7 +8,7 @@ metadata:
 data:
   scrypted.yml: |
     endpoints:
-      - name: Scrypted
-        url: http://scrypted-service
+      - name: scrypted
+        url: http://scrypted-service.default
         conditions:
           - '[STATUS] == 200'

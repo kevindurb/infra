@@ -8,8 +8,8 @@ metadata:
 data:
   idrac.yml: |
     endpoints:
-      - name: Idrac
-        url: https://idrac-service/login.html
+      - name: idrac
+        url: https://idrac-service.default/login.html
         client:
           insecure: true
         headers:

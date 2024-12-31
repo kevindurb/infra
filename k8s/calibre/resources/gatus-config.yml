@@ -8,8 +8,8 @@ metadata:
 data:
   calibre.yml: |
     endpoints:
-      - name: Calibre
+      - name: calibre
         enabled: false
-        url: http://calibre-service
+        url: http://calibre-service.default
         conditions:
           - '[STATUS] == 200'

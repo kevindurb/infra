@@ -8,7 +8,7 @@ metadata:
 data:
   home-assistant.yml: |
     endpoints:
-      - name: Home Assistant
-        url: http://home-assistant-service/manifest.json
+      - name: home-assistant
+        url: http://home-assistant-service.default/manifest.json
         conditions:
           - '[STATUS] == 200'

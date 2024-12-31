@@ -8,7 +8,7 @@ metadata:
 data:
   zigbee2mqtt.yml: |
     endpoints:
-      - name: Zigbee2mqtt
-        url: http://zigbee2mqtt-service
+      - name: zigbee2mqtt
+        url: http://zigbee2mqtt-service.default
         conditions:
           - '[STATUS] == 200'

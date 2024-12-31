@@ -8,7 +8,7 @@ metadata:
 data:
   prometheus.yml: |
     endpoints:
-      - name: Prometheus
+      - name: prometheus
         url: http://prometheus-service.monitoring/-/healthy
         conditions:
           - '[STATUS] == 200'

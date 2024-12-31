@@ -9,6 +9,6 @@ data:
   wallabag.yml: |
     endpoints:
       - name: wallabag
-        url: http://wallabag-web-service
+        url: http://wallabag-web-service.default
         conditions:
           - '[STATUS] == 200'

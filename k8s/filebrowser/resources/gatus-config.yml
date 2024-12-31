@@ -8,7 +8,7 @@ metadata:
 data:
   filebrowser.yml: |
     endpoints:
-      - name: Filebrowser
-        url: http://filebrowser-service
+      - name: filebrowser
+        url: http://filebrowser-service.default
         conditions:
           - '[STATUS] == 200'

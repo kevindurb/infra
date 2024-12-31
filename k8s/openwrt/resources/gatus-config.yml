@@ -8,8 +8,8 @@ metadata:
 data:
   openwrt.yml: |
     endpoints:
-      - name: Openwrt
-        url: https://openwrt-service
+      - name: openwrt
+        url: https://openwrt-service.default
         client:
           insecure: true
         conditions:

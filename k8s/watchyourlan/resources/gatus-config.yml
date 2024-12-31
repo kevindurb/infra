@@ -8,8 +8,8 @@ metadata:
 data:
   watchyourlan.yml: |
     endpoints:
-      - name: Watchyourlan
-        url: http://watchyourlan-service
+      - name: watchyourlan
+        url: http://watchyourlan-service.default
         
         conditions:
           - '[STATUS] == 200'

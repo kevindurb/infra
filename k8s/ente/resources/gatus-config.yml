@@ -8,8 +8,8 @@ metadata:
 data:
   ente.yml: |
     endpoints:
-      - name: Ente
-        url: http://ente-service/ping
+      - name: ente
+        url: http://ente-service.default/ping
         
         conditions:
           - '[STATUS] == 200'

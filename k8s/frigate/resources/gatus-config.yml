@@ -8,7 +8,7 @@ metadata:
 data:
   frigate.yml: |
     endpoints:
-      - name: Frigate
-        url: http://frigate-service/api/version
+      - name: frigate
+        url: http://frigate-service.default/api/version
         conditions:
           - '[STATUS] == 200'

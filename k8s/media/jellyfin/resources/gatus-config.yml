@@ -8,7 +8,7 @@ metadata:
 data:
   jellyfin.yml: |
     endpoints:
-      - name: Jellyfin
+      - name: jellyfin
         url: http://jellyfin-service.media/health
         conditions:
           - '[STATUS] == 200'

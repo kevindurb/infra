@@ -8,7 +8,7 @@ metadata:
 data:
   hdhomerun.yml: |
     endpoints:
-      - name: Hdhomerun
-        url: http://hdhomerun-service
+      - name: hdhomerun
+        url: http://hdhomerun-service.default
         conditions:
           - '[STATUS] == 200'

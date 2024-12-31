@@ -8,7 +8,7 @@ metadata:
 data:
   mainsail.yml: |
     endpoints:
-      - name: Mainsail
-        url: http://mainsail-service
+      - name: mainsail
+        url: http://mainsail-service.default
         conditions:
           - '[STATUS] == 200'

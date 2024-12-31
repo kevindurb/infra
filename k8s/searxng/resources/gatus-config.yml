@@ -8,8 +8,8 @@ metadata:
 data:
   searxng.yml: |
     endpoints:
-      - name: Searxng
-        url: http://searxng-service
+      - name: searxng
+        url: http://searxng-service.default
         
         conditions:
           - '[STATUS] == 200'

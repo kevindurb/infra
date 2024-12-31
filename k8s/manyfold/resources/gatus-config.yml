@@ -8,8 +8,8 @@ metadata:
 data:
   manyfold.yml: |
     endpoints:
-      - name: Manyfold
-        url: http://manyfold-service/health
+      - name: manyfold
+        url: http://manyfold-service.default/health
         
         conditions:
           - '[STATUS] == 200'

@@ -8,8 +8,8 @@ metadata:
 data:
   qbittorrent.yml: |
     endpoints:
-      - name: Qbittorrent
+      - name: qbittorrent
         enabled: false
-        url: http://qbittorrent-service/api/v2/app/version
+        url: http://qbittorrent-service.default/api/v2/app/version
         conditions:
           - '[STATUS] == 200'

@@ -8,8 +8,8 @@ metadata:
 data:
   jellyseerr.yml: |
     endpoints:
-      - name: Jellyseerr
-        url: http://jellyseerr-service
+      - name: jellyseerr
+        url: http://jellyseerr-service.default
         
         conditions:
           - '[STATUS] == 200'

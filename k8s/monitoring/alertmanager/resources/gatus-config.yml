@@ -8,7 +8,7 @@ metadata:
 data:
   alertmanager.yml: |
     endpoints:
-      - name: Alertmanager
+      - name: alertmanager
         url: http://alertmanager-service.monitoring/-/healthy
         conditions:
           - '[STATUS] == 200'

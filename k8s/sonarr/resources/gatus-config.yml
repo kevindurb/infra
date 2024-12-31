@@ -8,7 +8,7 @@ metadata:
 data:
   sonarr.yml: |
     endpoints:
-      - name: Sonarr
-        url: http://sonarr-service
+      - name: sonarr
+        url: http://sonarr-service.default
         conditions:
           - '[STATUS] == 200'

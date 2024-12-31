@@ -8,7 +8,7 @@ metadata:
 data:
   smokeping.yml: |
     endpoints:
-      - name: Smokeping
+      - name: smokeping
         url: http://smokeping-service.monitoring
         conditions:
           - '[STATUS] == 200'

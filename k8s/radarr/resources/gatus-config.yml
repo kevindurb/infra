@@ -8,7 +8,7 @@ metadata:
 data:
   radarr.yml: |
     endpoints:
-      - name: Radarr
-        url: http://radarr-service
+      - name: radarr
+        url: http://radarr-service.default
         conditions:
           - '[STATUS] == 200'
