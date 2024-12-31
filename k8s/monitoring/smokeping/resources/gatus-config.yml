@@ -9,6 +9,6 @@ data:
   smokeping.yml: |
     endpoints:
       - name: Smokeping
-        url: http://smokeping-service
+        url: http://smokeping-service.monitoring
         conditions:
           - '[STATUS] == 200'
