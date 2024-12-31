@@ -4,12 +4,11 @@ kind: ConfigMap
 metadata:
   name: gatus-config
   labels:
-    gatus.io/enabled: 'true'
+    gatus.io/enabled: 'false'
 data:
   handbrake.yml: |
     endpoints:
       - name: handbrake
-        enabled: false
         url: http://handbrake-service.default
         conditions:
           - '[STATUS] == 200'

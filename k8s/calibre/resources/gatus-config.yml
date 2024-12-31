@@ -4,12 +4,11 @@ kind: ConfigMap
 metadata:
   name: gatus-config
   labels:
-    gatus.io/enabled: 'true'
+    gatus.io/enabled: 'false'
 data:
   calibre.yml: |
     endpoints:
       - name: calibre
-        enabled: false
         url: http://calibre-service.default
         conditions:
           - '[STATUS] == 200'
