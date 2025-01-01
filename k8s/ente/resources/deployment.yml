@@ -22,7 +22,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: ente
-          image: ghcr.io/ente-io/server:latest@sha256:d44049492bb62a3c0c64126ade1b2c0294683422e5a1b7d656d128186919b5e9
+          image: ghcr.io/ente-io/server:latest@sha256:1860aab9bcc1e6a6c5b67140d9a6ac9b9b1d4ee1c2b366d0b4210eb922587204
           resources:
             requests:
               memory: 100M
