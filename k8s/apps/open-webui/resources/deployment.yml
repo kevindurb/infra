@@ -30,7 +30,7 @@ spec:
             - name: ENABLE_OLLAMA_API
               value: 'true'
             - name: OLLAMA_BASE_URL
-              value: http://ollama-service.apps
+              value: http://ollama-service.ai
             - name: WEBUI_URL
               value: https://chat.durbin.casa
             - name: ENABLE_RAG_WEB_SEARCH
