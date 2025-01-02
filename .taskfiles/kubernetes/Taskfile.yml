@@ -18,7 +18,7 @@ tasks:
       - mkdir ./dist
       - for:
           var: apps
-        cmd: kustomize build {{ joinPath "./k8s" .ITEM }} > ./dist/{{ .ITEM }}.yml
+        cmd: kubectl kustomize build {{ joinPath "./k8s" .ITEM }} > ./dist/{{ .ITEM }}.yml
     sources:
       - k8s/**/*.{yml,yaml}
     generates:
