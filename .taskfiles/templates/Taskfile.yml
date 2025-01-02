@@ -76,7 +76,7 @@ tasks:
         vars:
           TEMPLATE: app
           OUT_FILE: './k8s/{{.NS}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   namespace:
     aliases: [ns]
@@ -92,12 +92,12 @@ tasks:
         vars:
           TEMPLATE: namespace
           OUT_FILE: './k8s/{{.NS}}/namespace.yml'
-      - kubectl kustomize edit add resource ./{{.NS}}
+      - kustomize edit add resource ./{{.NS}}
       - task: minijinja
         vars:
           TEMPLATE: wildcard-cert
           OUT_FILE: './k8s/{{.NS}}/wildcard-cert.yml'
-      - cd ./{{.NS}} && kubectl kustomize edit add resource ./wildcard-cert.yml
+      - cd ./{{.NS}} && kustomize edit add resource ./wildcard-cert.yml
 
   deployment:
     aliases: [deploy]
@@ -111,7 +111,7 @@ tasks:
         vars:
           TEMPLATE: deployment
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   service:
     aliases: [svc]
@@ -125,7 +125,7 @@ tasks:
         vars:
           TEMPLATE: service
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   external-endpoint:
     aliases: [ext]
@@ -139,7 +139,7 @@ tasks:
         vars:
           TEMPLATE: external-endpoint
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   internal-ingress:
     aliases: [int-ing]
@@ -153,7 +153,7 @@ tasks:
         vars:
           TEMPLATE: internal-ingress
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   external-ingress:
     aliases: [ext-ing]
@@ -167,7 +167,7 @@ tasks:
         vars:
           TEMPLATE: external-ingress
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   persistent-volume-claim:
     aliases: [pvc]
@@ -181,7 +181,7 @@ tasks:
         vars:
           TEMPLATE: pvc
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   postgres:
     aliases: [pg, db]
@@ -195,7 +195,7 @@ tasks:
         vars:
           TEMPLATE: postgres
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   valkey:
     aliases: [redis]
@@ -209,7 +209,7 @@ tasks:
         vars:
           TEMPLATE: valkey
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   bitwarden-secret:
     aliases: [secret]
@@ -223,7 +223,7 @@ tasks:
         vars:
           TEMPLATE: bitwarden-secret
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}
 
   gatus-config:
     aliases: [gatus]
@@ -237,4 +237,4 @@ tasks:
         vars:
           TEMPLATE: gatus-config
           OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
-      - kubectl kustomize edit add resource {{.OUT_FILE}}
+      - kustomize edit add resource {{.OUT_FILE}}

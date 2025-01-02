@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  faster-whisper.yml: |
+    endpoints:
+      - name: faster-whisper
+        url: http://faster-whisper-web-service.ai/health
+        conditions:
+          - '[STATUS] == 200'
