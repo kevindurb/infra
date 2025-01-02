@@ -8,7 +8,6 @@ namePrefix: faster-whisper-
 resources:
   - ./resources/web-deployment.yml
   - ./resources/web-service.yml
-  - ./resources/internal-ingress.yml
   - ./resources/gatus-config.yml
   - ./resources/pvc.yml
 
