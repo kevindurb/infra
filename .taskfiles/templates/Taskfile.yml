@@ -97,7 +97,7 @@ tasks:
         vars:
           TEMPLATE: wildcard-cert
           OUT_FILE: './k8s/{{.NS}}/wildcard-cert.yml'
-      - kustomize edit add resource ./wildcard-cert
+      - cd ./{{.NS}} && kustomize edit add resource ./wildcard-cert.yml
 
   deployment:
     aliases: [deploy]
