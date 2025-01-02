@@ -8,4 +8,3 @@ resources:
   - ./adminer/app.yml
   - ./miniflux/app.yml
   - ./open-webui/app.yml
-  - ./ollama/app.yml

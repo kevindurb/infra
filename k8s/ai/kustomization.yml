@@ -2,5 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- ./namespace.yml
-- ./wildcard-cert.yml
+  - ./namespace.yml
+  - ./wildcard-cert.yml
+  - ./ollama/app.yml
