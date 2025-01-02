@@ -32,7 +32,7 @@ spec:
               nvidia.com/gpu: 1
               memory: 6G
             requests:
-              memory: 4G
+              memory: 1G
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
