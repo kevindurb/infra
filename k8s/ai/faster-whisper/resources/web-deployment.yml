@@ -19,6 +19,7 @@ spec:
     spec:
       nodeSelector:
         nvidia.com/gpu.present: 'true'
+        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
       runtimeClassName: nvidia
       volumes:
         - name: volume
