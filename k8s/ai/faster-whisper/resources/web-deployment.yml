@@ -17,10 +17,10 @@ spec:
     metadata:
       labels: *labels
     spec:
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
-      runtimeClassName: nvidia
+      # nodeSelector:
+      #   nvidia.com/gpu.present: 'true'
+      #   nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
+      # runtimeClassName: nvidia
       volumes:
         - name: volume
           persistentVolumeClaim:
@@ -29,10 +29,10 @@ spec:
         - name: faster-whisper
           image: fedirz/faster-whisper-server:0.5.0-cuda
           resources:
-            limits:
-              nvidia.com/gpu: 1
+            # limits:
+            #   nvidia.com/gpu: 1
             requests:
-              memory: 1G
+              memory: 2G
           securityContext:
             privileged: false
             # allowPrivilegeEscalation: false
@@ -46,16 +46,12 @@ spec:
             - name: volume
               mountPath: /root/.cache/huggingface
           env:
-            - name: PATH
-              value: /usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-            - name: LD_LIBRARY_PATH
-              value: /usr/local/nvidia/lib:/usr/local/nvidia/lib64
             - name: TZ
               value: America/Denver
-            # - name: WHISPER__COMPUTE_TYPE
-            #   value: int8
+            - name: WHISPER__COMPUTE_TYPE
+              value: int8
             - name: WHISPER__INFERENCE_DEVICE
-              value: cuda
+              value: cpu
           ports:
             - name: http
               containerPort: 8000
