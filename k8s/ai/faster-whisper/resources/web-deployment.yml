@@ -48,6 +48,10 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: WHISPER__COMPUTE_TYPE
+              value: int8
+            - name: WHISPER__INFERENCE_DEVICE
+              value: cuda
           ports:
             - name: http
               containerPort: 8000
