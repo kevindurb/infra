@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       containers:
-        - image: itzg/minecraft-server:2024.12.0-java21@sha256:d0e4d20a661c2d1153547effb47efd2a6f655c8903655121abf46632c7b107bc
+        - image: itzg/minecraft-server:2025.1.0-java21@sha256:9a6e89f544eb44675a97bda7285f13a72794624e0b448a93b6b6058d0713323a
           name: minecraft
           resources:
             requests:
