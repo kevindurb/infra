@@ -27,7 +27,7 @@ spec:
             claimName: volume
       containers:
         - name: faster-whisper
-          image: fedirz/faster-whisper-server:0.5.0-cpu
+          image: fedirz/faster-whisper-server:0.5.0-cpu@sha256:760e5e43d427dc6cfbbc4731934b908b7de9c7e6d5309c6a1f0c8c923a5b6030
           resources:
             # limits:
             #   nvidia.com/gpu: 1
