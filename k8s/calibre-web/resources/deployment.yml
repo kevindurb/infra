@@ -24,7 +24,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: calibre-web
-          image: ghcr.io/linuxserver/calibre-web:0.6.24@sha256:b3b973ba48121b6a1e0f4b68170abeb4907551ccca48df253293d9c6231281c8
+          image: ghcr.io/linuxserver/calibre-web:0.6.24@sha256:9ada6e542d23e4a8ae533ec5598bb44d9824007b0d4f2fd9fc4e45921fc70e02
           securityContext:
             privileged: false
           resources:
