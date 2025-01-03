@@ -43,6 +43,14 @@ spec:
               value: http://searxng-service.default/search?q=<query>
             - name: WEBUI_AUTH_TRUSTED_EMAIL_HEADER
               value: X-Auth-Request-Email
+            - name: AUDIO_STT_ENGINE
+              value: openai
+            - name: AUDIO_STT_MODEL
+              value: Systran/faster-whisper-large-v3
+            - name: AUDIO_STT_OPENAI_API_BASE_URL
+              value: http://faster-whisper-web-service.ai/v1
+            - name: AUDIO_STT_OPENAI_API_KEY
+              value: secretsecretsecretsecret
           ports:
             - name: web
               containerPort: 8080
