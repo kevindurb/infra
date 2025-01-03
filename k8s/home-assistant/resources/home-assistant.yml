@@ -11,7 +11,7 @@ spec:
     spec:
       hostNetwork: true
       containers:
-        - image: ghcr.io/home-assistant/home-assistant:2024.12.3@sha256:e20ca1d7b578cd98d6868aefa80ac2b4ade9826f14e10e3ea206975b8c6aeb8f
+        - image: ghcr.io/home-assistant/home-assistant:2025.1.0@sha256:7db850eff6b858b6d01860cd76a10d993861f9bff140de85734ce01d153a62ca
           name: home-assistant
           resources:
             requests:
