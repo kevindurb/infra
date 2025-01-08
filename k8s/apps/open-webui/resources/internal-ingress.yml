@@ -11,7 +11,7 @@ metadata:
     gethomepage.dev/app: open-webui
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: open-webui
-    gethomepage.dev/name: Open-Webui
+    gethomepage.dev/name: Open WebUI
     nginx.ingress.kubernetes.io/proxy-body-size: '0'
     nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
     nginx.ingress.kubernetes.io/proxy-send-timeout: '600'

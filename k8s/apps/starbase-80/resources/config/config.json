@@ -26,6 +26,12 @@
         "uri": "https://home-assistant.durbin.casa",
         "description": "Home automation",
         "icon": "home-assistant"
+      },
+      {
+        "name": "Open WebUI",
+        "uri": "https://chat.durbin.casa",
+        "description": "Self Hosted AI Chat",
+        "icon": "open-webui"
       }
     ]
   }
