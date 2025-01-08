@@ -14,6 +14,18 @@
         "uri": "https://actual.durbin.casa",
         "description": "Budgeting",
         "icon": "actual-budget"
+      },
+      {
+        "name": "Jellyfin",
+        "uri": "https://jellyfin.durbin.casa",
+        "description": "Self hosted media",
+        "icon": "jellyfin"
+      },
+      {
+        "name": "Home Assistant",
+        "uri": "https://home-assistant.durbin.casa",
+        "description": "Home automation",
+        "icon": "home-assistant"
       }
     ]
   }
