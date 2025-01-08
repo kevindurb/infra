@@ -1,0 +1,19 @@
+[
+  {
+    "category": "Apps",
+    "services": [
+      {
+        "name": "Mealie",
+        "uri": "https://mealie.durbin.casa",
+        "description": "Recipe management",
+        "icon": "mealie"
+      },
+      {
+        "name": "Actual Budget",
+        "uri": "https://actual.durbin.casa",
+        "description": "Budgeting",
+        "icon": "actual-budget"
+      }
+    ]
+  }
+]

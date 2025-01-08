@@ -17,10 +17,10 @@ spec:
     metadata:
       labels: *labels
     spec:
-      # volumes:
-      #   - name: volume
-      #     persistentVolumeClaim:
-      #       claimName: volume
+      volumes:
+        - name: config
+          configMap:
+            name: config
       containers:
         - name: starbase-80
           image: ghcr.io/notclickable-jordan/starbase-80:1.5.4
@@ -31,10 +31,14 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
-          # volumeMounts:
-          #   - name: volume
-          #     mountPath: /var/www/app/data
+          volumeMounts:
+            - name: config
+              mountPath: /app/src/config/config.json
+              subPath: config.json
+              readOnly: true
           env:
+            - name: TITLE
+              value: durbin.casa
             - name: TZ
               value: America/Denver
           ports:
