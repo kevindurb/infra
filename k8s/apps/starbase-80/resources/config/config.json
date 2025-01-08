@@ -1,6 +1,7 @@
 [
   {
     "category": "Apps",
+    "bubble": true,
     "services": [
       {
         "name": "Mealie",
