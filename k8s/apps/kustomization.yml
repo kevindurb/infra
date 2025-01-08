@@ -8,3 +8,4 @@ resources:
   - ./adminer/app.yml
   - ./miniflux/app.yml
   - ./open-webui/app.yml
+  - ./starbase-80/app.yml

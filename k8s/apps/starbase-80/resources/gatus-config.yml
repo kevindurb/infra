@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  starbase-80.yml: |
+    endpoints:
+      - name: starbase-80
+        url: http://starbase-80-web-service.apps
+        conditions:
+          - '[STATUS] == 200'
