@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: starbase-80
     gethomepage.dev/group: Other
-    gethomepage.dev/icon: starbase-80
+    gethomepage.dev/icon: sh-starbase-80
     gethomepage.dev/name: Starbase 80
 spec:
   ingressClassName: internal
