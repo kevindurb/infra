@@ -35,6 +35,8 @@ spec:
               subPath: config.json
               readOnly: true
           env:
+            - name: ICON
+              value: mdi-home
             - name: TITLE
               value: durbin.casa
             - name: TZ
