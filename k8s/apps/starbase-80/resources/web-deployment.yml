@@ -21,8 +21,6 @@ spec:
       #   - name: volume
       #     persistentVolumeClaim:
       #       claimName: volume
-      securityContext:
-        fsGroup: 1000
       containers:
         - name: starbase-80
           image: ghcr.io/notclickable-jordan/starbase-80:1.5.4
@@ -33,10 +31,6 @@ spec:
               memory: 1G
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
             capabilities:
               drop: [ALL]
           # volumeMounts:
