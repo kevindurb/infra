@@ -11,7 +11,7 @@
       },
       {
         "name": "Actual Budget",
-        "uri": "https://actual.durbin.casa",
+        "uri": "https://budget.durbin.casa",
         "description": "Budgeting",
         "icon": "actual-budget"
       },
