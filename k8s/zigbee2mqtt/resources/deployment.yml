@@ -10,7 +10,7 @@ spec:
   template:
     spec:
       nodeSelector:
-        feature.node.kubernetes.io/usb-ff_10c4_ea60.present: 'true'
+        feature.node.kubernetes.io/usb-ff_10c4_ea60.present: "true"
       volumes:
         - name: data-volume
           persistentVolumeClaim:
@@ -33,13 +33,15 @@ spec:
             - name: TZ
               value: America/Denver
             - name: ZIGBEE2MQTT_CONFIG_PERMIT_JOIN
-              value: 'true'
+              value: "true"
             - name: ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC
               value: zigbee2mqtt
             - name: ZIGBEE2MQTT_CONFIG_MQTT_SERVER
               value: mqtt://mosquitto-service
             - name: ZIGBEE2MQTT_CONFIG_SERIAL_PORT
               value: /dev/ttyACM0
+            - name: ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER
+              value: ember
           securityContext:
             privileged: true
           volumeMounts:
