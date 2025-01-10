@@ -41,7 +41,7 @@ spec:
             - name: ZIGBEE2MQTT_CONFIG_SERIAL_PORT
               value: /dev/ttyACM0
             - name: ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER
-              value: ember
+              value: zstack
           securityContext:
             privileged: true
           volumeMounts:
