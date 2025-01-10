@@ -34,7 +34,7 @@ spec:
             claimName: truenas-ripping-storage
       containers:
         - name: sonarr
-          image: ghcr.io/onedr0p/sonarr:4.0.11@sha256:09584fb37b5e9ecbf8548962be9b1e928b4abfc0cd773c638463e4ba78e4ebfc
+          image: ghcr.io/onedr0p/sonarr:4.0.12@sha256:f453b589cd553e09244b2fb48d74ae4047e6fab1fa837e008755be1200a62407
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
