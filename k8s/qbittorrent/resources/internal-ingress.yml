@@ -17,13 +17,6 @@ metadata:
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
     nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start
     nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-User,X-Auth-Request-Email,X-Auth-Request-Preferred-Username
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      proxy_set_header Accept-Encoding "";
-      sub_filter
-      '</head>'
-      '<link rel="stylesheet" type="text/css" href="https://gilbn.github.io/theme.park/CSS/themes/qbittorrent/dark.css">
-      </head>';
-      sub_filter_once on;
 
 spec:
   ingressClassName: internal
