@@ -1,0 +1,36 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+    gethomepage.dev/href: 'https://lidarr.durbin.casa'
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: lidarr
+    gethomepage.dev/group: Servarr
+    gethomepage.dev/icon: lidarr
+    gethomepage.dev/name: Lidarr
+    gethomepage.dev/widget.type: lidarr
+    gethomepage.dev/widget.url: http://lidarr-web-service.media
+    nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
+    nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start
+    nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-User,X-Auth-Request-Email,X-Auth-Request-Preferred-Username
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host lidarr.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host

@@ -1,0 +1,62 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  annotations:
+    reloader.stakater.com/auto: 'true'
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
+      containers:
+        - name: lidarr
+          image: ghcr.io/onedr0p/lidarr:2.4.3
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 1G
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          env:
+            - name: TZ
+              value: America/Denver
+            - name: LIDARR__AUTH__METHOD
+              value: External
+            - name: LIDARR__AUTH__REQUIRED
+              value: DisabledForLocalAddresses
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: volume
+              mountPath: /config
+            - name: truenas-media
+              mountPath: /media
+          ports:
+            - name: http
+              containerPort: 8686

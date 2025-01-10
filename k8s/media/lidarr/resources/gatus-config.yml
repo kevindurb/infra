@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  lidarr.yml: |
+    endpoints:
+      - name: lidarr
+        url: http://lidarr-web-service.media
+        conditions:
+          - '[STATUS] == 200'
