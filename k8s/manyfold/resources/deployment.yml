@@ -21,7 +21,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: manyfold
-          image: ghcr.io/manyfold3d/manyfold:0.93.0@sha256:7f37c937030cf537507314b9414253f968243d4732b4a26fb3ad24f9a609752e
+          image: ghcr.io/manyfold3d/manyfold:0.94.0@sha256:ff2875de17c4a6d87416eb688f89d5065ac171e38e6803a04ee83b4af2359733
           env:
             - name: DATABASE_ADAPTER
               value: postgresql
