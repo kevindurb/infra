@@ -14,7 +14,6 @@ resources:
   - ./resources/helm/bitwarden.yml
   - ./resources/helm/external-secrets.yml
   - ./resources/helm/tailscale-operator.yml
-  - ./resources/helm/volsync.yml
   - ./resources/helm/gpu-operator.yml
   - ./resources/helm/node-feature-discovery.yml
   - ./resources/helm/democratic-csi.yml
