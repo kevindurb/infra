@@ -10,9 +10,6 @@ metadata:
     gethomepage.dev/group: Servarr
     gethomepage.dev/icon: sonarr
     gethomepage.dev/name: Sonarr
-    gethomepage.dev/widget.type: sonarr
-    gethomepage.dev/widget.url: http://sonarr-service
-    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_SONARR_KEY}}'
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
     nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start

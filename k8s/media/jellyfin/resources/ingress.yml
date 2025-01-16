@@ -11,9 +11,6 @@ metadata:
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: jellyfin
     gethomepage.dev/name: Jellyfin
-    gethomepage.dev/widget.type: jellyfin
-    gethomepage.dev/widget.url: http://jellyfin-service.media
-    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_JELLYFIN_KEY}}'
 spec:
   ingressClassName: internal
   tls:

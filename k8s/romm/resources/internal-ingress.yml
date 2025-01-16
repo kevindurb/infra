@@ -12,8 +12,6 @@ metadata:
     gethomepage.dev/group: Gaming
     gethomepage.dev/icon: romm
     gethomepage.dev/name: RomM
-    gethomepage.dev/widget.type: romm
-    gethomepage.dev/widget.url: http://romm-web-service
     nginx.ingress.kubernetes.io/proxy-body-size: '0'
     nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
     nginx.ingress.kubernetes.io/proxy-send-timeout: '600'

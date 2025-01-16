@@ -10,8 +10,6 @@ metadata:
     gethomepage.dev/group: Status
     gethomepage.dev/icon: prometheus
     gethomepage.dev/name: Prometheus
-    gethomepage.dev/widget.type: prometheus
-    gethomepage.dev/widget.url: http://prometheus-service.monitoring
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
     nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start

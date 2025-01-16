@@ -11,11 +11,7 @@ metadata:
     gethomepage.dev/group: Status
     gethomepage.dev/icon: truenas
     gethomepage.dev/name: TrueNAS
-    gethomepage.dev/widget.type: truenas
-    gethomepage.dev/widget.url: &service https://truenas-service.external
-    gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_TRUENAS_KEY}}'
-    gethomepage.dev/widget.enablePools: 'true'
-    gethomepage.dev/siteMonitor: *service
+    gethomepage.dev/siteMonitor: https://truenas-service.external
     gethomepage.dev/external: 'true'
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth

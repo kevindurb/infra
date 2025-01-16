@@ -12,8 +12,6 @@ metadata:
     gethomepage.dev/group: Servarr
     gethomepage.dev/icon: lidarr
     gethomepage.dev/name: Lidarr
-    gethomepage.dev/widget.type: lidarr
-    gethomepage.dev/widget.url: http://lidarr-web-service.media
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
     nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.durbin.casa/oauth2/start
     nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-User,X-Auth-Request-Email,X-Auth-Request-Preferred-Username

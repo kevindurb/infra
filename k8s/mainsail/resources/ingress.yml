@@ -10,9 +10,7 @@ metadata:
     gethomepage.dev/group: 3D Printing
     gethomepage.dev/icon: mainsail
     gethomepage.dev/name: Mainsail
-    gethomepage.dev/widget.type: moonraker
-    gethomepage.dev/widget.url: &service http://mainsail-service
-    gethomepage.dev/siteMonitor: *service
+    gethomepage.dev/siteMonitor: http://mainsail-service
     gethomepage.dev/external: 'true'
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
