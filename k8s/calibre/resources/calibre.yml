@@ -44,19 +44,6 @@ spec:
 
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: config-volume
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: local-storage
-  resources:
-    requests:
-      storage: 1Gi
-
----
-apiVersion: v1
 kind: Service
 metadata:
   name: service
