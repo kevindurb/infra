@@ -7,3 +7,4 @@ resources:
   - ./media-pvc.yml
   - ./jellyfin/app.yml
   - ./lidarr/app.yml
+  - ./calibre/app.yml

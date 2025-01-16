@@ -9,6 +9,6 @@ data:
   calibre.yml: |
     endpoints:
       - name: calibre
-        url: http://calibre-service.default
+        url: http://calibre-service.media
         conditions:
           - '[STATUS] == 200'
