@@ -10,3 +10,17 @@ spec:
   resources:
     requests:
       storage: 1G
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: zfs-iscsi
+  resources:
+    requests:
+      storage: 1G
