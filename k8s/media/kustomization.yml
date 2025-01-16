@@ -8,3 +8,4 @@ resources:
   - ./jellyfin/app.yml
   - ./lidarr/app.yml
   - ./calibre/app.yml
+  - ./calibre-web/app.yml
