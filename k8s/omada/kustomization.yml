@@ -6,7 +6,6 @@ namePrefix: omada-
 
 resources:
   - ./resources/omada.yml
-  - ./resources/backup.yml
   - ./resources/gatus-config.yml
 
 configMapGenerator:

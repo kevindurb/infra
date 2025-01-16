@@ -6,7 +6,6 @@ namePrefix: mealie-
 
 resources:
   - ./resources/mealie.yml
-  - ./resources/backup.yml
   - ./resources/gatus-config.yml
   - ./resources/internal-ingress.yml
 

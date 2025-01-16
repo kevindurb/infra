@@ -6,7 +6,6 @@ namePrefix: home-assistant-
 
 resources:
   - ./resources/home-assistant.yml
-  - ./resources/backup.yml
   - ./resources/gatus-config.yml
 
 configMapGenerator:
