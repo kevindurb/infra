@@ -26,7 +26,6 @@ spec:
           - name: healthchecks
           - name: hdhomerun
           - name: home-assistant
-          - name: homepage
           - name: idrac
           - name: local-path-provisioner
           - name: mainsail

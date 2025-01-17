@@ -9,6 +9,6 @@ data:
   homepage.yml: |
     endpoints:
       - name: homepage
-        url: http://homepage-service.default/api/healthcheck
+        url: http://homepage-service.apps/api/healthcheck
         conditions:
           - '[STATUS] == 200'
