@@ -49,7 +49,6 @@ spec:
           - name: syncthing
           - name: system-upgrade
           - name: time-slicing-config
-          - name: wallabag
           - name: watchyourlan
           - name: zigbee2mqtt
   template:
