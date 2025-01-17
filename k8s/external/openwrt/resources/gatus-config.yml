@@ -9,7 +9,7 @@ data:
   openwrt.yml: |
     endpoints:
       - name: openwrt
-        url: https://openwrt-service.default
+        url: https://openwrt-service.external
         client:
           insecure: true
         conditions:
