@@ -24,11 +24,8 @@ spec:
           - name: filebrowser
           - name: handbrake-web
           - name: healthchecks
-          - name: hdhomerun
           - name: home-assistant
-          - name: idrac
           - name: local-path-provisioner
-          - name: mainsail
           - name: makemkv
           - name: manyfold
           - name: mealie
@@ -38,7 +35,6 @@ spec:
           - name: network-policies
           - name: node-exporter
           - name: omada
-          - name: openwrt
           - name: pihole
           - name: prusaslicer
           - name: radarr

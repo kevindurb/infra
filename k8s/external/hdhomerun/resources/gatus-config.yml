@@ -9,6 +9,6 @@ data:
   hdhomerun.yml: |
     endpoints:
       - name: hdhomerun
-        url: http://hdhomerun-service.default
+        url: http://hdhomerun-service.external
         conditions:
           - '[STATUS] == 200'

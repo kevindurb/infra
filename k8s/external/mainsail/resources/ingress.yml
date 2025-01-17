@@ -4,13 +4,13 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    gethomepage.dev/href: 'https://hdhomerun.durbin.casa'
+    gethomepage.dev/href: 'https://mainsail.durbin.casa'
     gethomepage.dev/enabled: 'true'
-    gethomepage.dev/group: Other
-    gethomepage.dev/icon: hdhomerun
-    gethomepage.dev/name: HDHomeRun
-    gethomepage.dev/weight: '30'
-    gethomepage.dev/siteMonitor: http://hdhomerun-service
+    gethomepage.dev/app: mainsail
+    gethomepage.dev/group: 3D Printing
+    gethomepage.dev/icon: mainsail
+    gethomepage.dev/name: Mainsail
+    gethomepage.dev/siteMonitor: http://mainsail-service.external
     gethomepage.dev/external: 'true'
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
@@ -19,7 +19,7 @@ metadata:
 spec:
   ingressClassName: internal
   rules:
-    - host: &host hdhomerun.durbin.casa
+    - host: &host mainsail.durbin.casa
       http:
         paths:
           - pathType: Prefix
