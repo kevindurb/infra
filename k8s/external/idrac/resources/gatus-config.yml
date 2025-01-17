@@ -9,7 +9,7 @@ data:
   idrac.yml: |
     endpoints:
       - name: idrac
-        url: https://idrac-service.default/login.html
+        url: https://idrac-service.external/login.html
         client:
           insecure: true
         headers:
