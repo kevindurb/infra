@@ -10,4 +10,3 @@ resources:
   - ./idrac/app.yml
   - ./mainsail/app.yml
   - ./openwrt/app.yml
-  - ./omada/app.yml
