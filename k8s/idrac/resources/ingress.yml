@@ -11,7 +11,6 @@ metadata:
     gethomepage.dev/group: Other
     gethomepage.dev/icon: idrac
     gethomepage.dev/name: iDRAC
-    gethomepage.dev/siteMonitor: https://idrac-service
     gethomepage.dev/external: 'true'
     cert-manager.io/cluster-issuer: cloudflare-issuer
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth
