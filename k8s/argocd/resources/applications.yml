@@ -13,7 +13,6 @@ spec:
         elements:
           - name: argocd
             namespace: argocd
-          - name: cloudflared
           - name: cluster-secret-store
           - name: cnpg
           - name: dashboard
