@@ -11,3 +11,4 @@ resources:
 - ./auth
 - ./external
 - ./ai
+- ./cert-manager

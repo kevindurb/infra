@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ./namespace.yml
+  - ./wildcard-cert.yml
   - ./prometheus/app.yml
   - ./alertmanager/app.yml
   - ./smokeping/app.yml

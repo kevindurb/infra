@@ -1,8 +1,7 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - https://github.com/cert-manager/cert-manager/releases/download/v1.14.4/cert-manager.yaml
-  - ./resources/issuer.yml
-  - ./resources/durbin-casa-certificate.yml
+- ./namespace.yml
+- ./wildcard-cert.yml
+- ./cert-manager/app.yml
