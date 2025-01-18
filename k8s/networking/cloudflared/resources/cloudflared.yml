@@ -48,7 +48,7 @@ spec:
         # https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel
         - name: creds
           secret:
-            secretName: tunnel-credentials
+            secretName: cloudflared-secret
         - name: config
           configMap:
             name: config
