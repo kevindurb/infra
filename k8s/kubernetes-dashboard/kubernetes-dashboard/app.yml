@@ -3,6 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kubernetes-dashboard
+  namespace: argocd
 spec:
   project: default
   sources:
@@ -11,10 +12,13 @@ spec:
       chart: kubernetes-dashboard
       helm:
         valueFiles:
-          - $values/k8s/dashboard/values.yml
+          - $values/k8s/kubernetes-dashboard/kubernetes-dashboard/values.yml
     - repoURL: https://github.com/kevindurb/infra.git
       targetRevision: HEAD
       ref: values
+    - repoURL: https://github.com/kevindurb/infra.git
+      targetRevision: HEAD
+      path: k8s/kubernetes-dashboard/kubernetes-dashboard
   destination:
     server: https://kubernetes.default.svc
     namespace: kubernetes-dashboard
@@ -23,5 +27,3 @@ spec:
       prune: true
       selfHeal: true
       allowEmpty: false
-    syncOptions:
-      - CreateNamespace=true

@@ -18,7 +18,6 @@ resources:
   - ./resources/helm/node-feature-discovery.yml
   - ./resources/helm/democratic-csi.yml
   - ./resources/helm/ingress-nginx.yml
-  - ./resources/helm/kubernetes-dashboard.yml
   - ./resources/helm/snapscheduler.yml
   - ./resources/helm/mariadb-operator.yml
 

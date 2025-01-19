@@ -15,7 +15,6 @@ spec:
             namespace: argocd
           - name: cluster-secret-store
           - name: cnpg
-          - name: dashboard
           - name: external-dns
           - name: external-snapshotter
           - name: external-volumes

@@ -13,3 +13,4 @@ resources:
 - ./ai
 - ./cert-manager
 - ./networking
+- ./kubernetes-dashboard
