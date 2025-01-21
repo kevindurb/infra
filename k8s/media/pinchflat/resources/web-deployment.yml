@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ ENV.COMP }}-deployment
+  name: web-deployment
   annotations:
     reloader.stakater.com/auto: 'true'
   labels: &labels
-    app.kubernetes.io/component: {{ ENV.COMP }}
+    app.kubernetes.io/component: web
 spec:
   replicas: 1
   strategy:
@@ -19,13 +19,16 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
-      # volumes:
-      #   - name: volume
-      #     persistentVolumeClaim:
-      #       claimName: volume
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
       containers:
-        - name: {{ ENV.APP }}
-          image: {{ ENV.IMG }}
+        - name: pinchflat
+          image: ghcr.io/kieraneglin/pinchflat:v2025.1.17
           resources:
             requests:
               memory: 100M
@@ -40,12 +43,14 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-          # volumeMounts:
-          #   - name: volume
-          #     mountPath: /var/www/app/data
+          volumeMounts:
+            - name: volume
+              mountPath: /config
+            - name: truenas-media
+              mountPath: /media
           env:
             - name: TZ
               value: America/Denver
           ports:
             - name: http
-              containerPort: {{ ENV.PORT }}
+              containerPort: 8945

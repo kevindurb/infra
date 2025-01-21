@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  pinchflat.yml: |
+    endpoints:
+      - name: pinchflat
+        url: http://pinchflat-web-service.media
+        conditions:
+          - '[STATUS] == 200'
