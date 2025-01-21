@@ -38,7 +38,7 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: nas01
     gethomepage.dev/group: Other
-    gethomepage.dev/icon: fedora
+    gethomepage.dev/icon: fedora-alt
     gethomepage.dev/name: nas01
     gethomepage.dev/siteMonitor: https://nas01-web-service.external:9090
     gethomepage.dev/external: 'true'
