@@ -20,6 +20,8 @@ spec:
       securityContext:
         fsGroup: 1000
       volumes:
+        - name: tmp
+          emptyDir: {}
         - name: volume
           persistentVolumeClaim:
             claimName: volume
@@ -44,6 +46,8 @@ spec:
             capabilities:
               drop: [ALL]
           volumeMounts:
+            - name: tmp
+              mountPath: /tmp
             - name: volume
               mountPath: /config
             - name: truenas-media
