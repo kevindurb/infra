@@ -22,6 +22,8 @@ spec:
       volumes:
         - name: tmp
           emptyDir: {}
+        - name: etc-yt-dlp
+          emptyDir: {}
         - name: volume
           persistentVolumeClaim:
             claimName: volume
@@ -48,6 +50,8 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
+            - name: etc-yt-dlp
+              mountPath: /etc/yt-dlp
             - name: volume
               mountPath: /config
             - name: truenas-media
