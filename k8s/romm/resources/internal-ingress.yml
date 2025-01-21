@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: romm
     gethomepage.dev/group: Gaming
-    gethomepage.dev/icon: romm
+    gethomepage.dev/icon: sh-romm
     gethomepage.dev/name: RomM
     nginx.ingress.kubernetes.io/proxy-body-size: '0'
     nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
