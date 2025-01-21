@@ -10,7 +10,7 @@ metadata:
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: manyfold
     gethomepage.dev/group: 3D Printing
-    gethomepage.dev/icon: manyfold
+    gethomepage.dev/icon: sh-manyfold
     gethomepage.dev/name: Manyfold
     nginx.ingress.kubernetes.io/proxy-body-size: '0'
     nginx.ingress.kubernetes.io/proxy-read-timeout: '600'
