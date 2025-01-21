@@ -51,12 +51,11 @@ spec:
             - name: volume
               mountPath: /config
             - name: truenas-media
-              mountPath: /media
+              mountPath: /downloads
+              subPath: YouTube
           env:
             - name: TZ
               value: America/Denver
-            - name: MEDIA_PATH
-              value: /media/YouTube
           ports:
             - name: http
               containerPort: 8945
