@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/href: 'https://lidarr.durbin.casa'
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: lidarr
-    gethomepage.dev/group: Servarr
+    gethomepage.dev/group: Media
     gethomepage.dev/icon: lidarr
     gethomepage.dev/name: Lidarr
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy-web-service.auth.svc.cluster.local/oauth2/auth

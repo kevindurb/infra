@@ -15,6 +15,10 @@ layout:
     icon: mdi-square-rounded-badge
     style: row
     columns: 5
+  Media:
+    icon: mdi-filmstrip
+    style: row
+    columns: 5
   3D Printing:
     icon: mdi-printer-3d-nozzle
     style: row
@@ -27,10 +31,6 @@ layout:
     icon: mdi-list-status
     style: row
     columns: 4
-  Servarr:
-    icon: mdi-download
-    style: row
-    columns: 5
   Other:
     icon: mdi-format-list-bulleted
     style: row
