@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yml
   - ./wildcard-cert.yml
+  - ./frigate/app.yml

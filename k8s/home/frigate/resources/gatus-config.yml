@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  frigate.yml: |
+    endpoints:
+      - name: frigate
+        url: http://frigate-web-service.home
+        conditions:
+          - '[STATUS] == 200'

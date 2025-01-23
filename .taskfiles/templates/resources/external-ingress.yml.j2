@@ -5,8 +5,8 @@ metadata:
   name: external-ingress
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-issuer
-    nginx.ingress.kubernetes.io/backend-protocol: '{{ ENV.PROTO | upper }}'
-    gethomepage.dev/href: 'https://{{ ENV.SUBDOMAIN }}.durbin.casa'
+    nginx.ingress.kubernetes.io/backend-protocol: {{ ENV.PROTO | upper }}
+    gethomepage.dev/href: https://{{ ENV.SUBDOMAIN }}.durbin.casa
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: {{ ENV.APP }}
     gethomepage.dev/group: Other
