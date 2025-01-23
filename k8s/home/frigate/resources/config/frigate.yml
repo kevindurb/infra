@@ -15,9 +15,12 @@ model:
   width: 320
   height: 320
 
+auth:
+  enabled: false
+
 cameras:
   dummy_camera:
-    enabled: False
+    enabled: false
     ffmpeg:
       inputs:
         - path: rtsp://127.0.0.1:554/rtsp
