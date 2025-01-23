@@ -55,6 +55,8 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: YOLO_MODELS
+              value: yolov7-320
           ports:
             - name: http
               containerPort: 8871
