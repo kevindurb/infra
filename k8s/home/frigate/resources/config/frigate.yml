@@ -3,6 +3,26 @@ mqtt:
   enabled: true
   host: mosquitto-service.default
 
+detect:
+  enabled: false
+
+record:
+  enabled: true
+  retain:
+    days: 3
+    mode: all
+  events:
+    retain:
+      default: 30
+      mode: motion
+
+snapshots:
+  enabled: true
+
+birdseye:
+  enabled: true
+  mode: continuous
+
 detectors:
   tensorrt:
     type: tensorrt
