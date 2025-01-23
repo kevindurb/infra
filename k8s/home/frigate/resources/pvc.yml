@@ -10,7 +10,7 @@ spec:
   storageClassName: zfs-iscsi
   resources:
     requests:
-      storage: 10G
+      storage: 1G
 
 ---
 apiVersion: v1
@@ -24,4 +24,4 @@ spec:
   storageClassName: zfs-iscsi
   resources:
     requests:
-      storage: 10G
+      storage: 1G
