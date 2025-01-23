@@ -27,4 +27,4 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: ''
-  volumeName: media-truenas-media
+  volumeName: home-truenas-media
