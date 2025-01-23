@@ -10,6 +10,11 @@ resources:
   - ./resources/internal-ingress.yml
   - ./resources/gatus-config.yml
 
+configMapGenerator:
+  - name: config
+    files:
+      - ./resources/config/frigate.yml
+
 labels:
   - includeSelectors: true
     includeTemplates: true
