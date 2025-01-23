@@ -28,6 +28,9 @@ spec:
         - name: config-map
           configMap:
             name: config
+        - name: dev-shm
+          emptyDir:
+            medium: Memory
       containers:
         - name: frigate
           image: ghcr.io/blakeblackshear/frigate:0.14.1-tensorrt
@@ -53,6 +56,8 @@ spec:
               mountPath: /config/frigate.yml
               subPath: frigate.yml
               readOnly: true
+            - mountPath: /dev/shm
+              name: dev-shm
           env:
             - name: TZ
               value: America/Denver
