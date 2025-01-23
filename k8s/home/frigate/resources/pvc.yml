@@ -11,3 +11,17 @@ spec:
   resources:
     requests:
       storage: 10G
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config
+#  labels:
+#    snapscheduler/standard: 'true'
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: zfs-iscsi
+  resources:
+    requests:
+      storage: 10G
