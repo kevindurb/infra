@@ -47,7 +47,7 @@ spec:
             - name: model-cache
               mountPath: /config/model_cache
             - name: config-map
-              mountPath: /config/frigate.yml
+              mountPath: /config/config.yaml
               subPath: frigate.yml
               readOnly: true
             - mountPath: /dev/shm
