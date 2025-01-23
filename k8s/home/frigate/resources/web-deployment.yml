@@ -35,6 +35,9 @@ spec:
           emptyDir:
             medium: Memory
             sizeLimit: 256M
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
       containers:
         - name: frigate
           image: ghcr.io/blakeblackshear/frigate:0.14.1-tensorrt
@@ -57,6 +60,8 @@ spec:
               readOnly: true
             - mountPath: /dev/shm
               name: dev-shm
+            - name: truenas-media
+              mountPath: /media
           env:
             - name: TZ
               value: America/Denver

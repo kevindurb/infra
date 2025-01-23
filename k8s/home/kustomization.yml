@@ -3,5 +3,6 @@ kind: Kustomization
 
 resources:
   - ./namespace.yml
+  - ./media-pvc.yml
   - ./wildcard-cert.yml
   - ./frigate/app.yml
