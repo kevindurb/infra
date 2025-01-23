@@ -9,11 +9,12 @@ resources:
   - ./resources/web-service.yml
   - ./resources/internal-ingress.yml
   - ./resources/gatus-config.yml
+  - ./resources/pvc.yml
 
 configMapGenerator:
-  - name: config
-    files:
+  - files:
       - ./resources/config/frigate.yml
+    name: config
 
 labels:
   - includeSelectors: true

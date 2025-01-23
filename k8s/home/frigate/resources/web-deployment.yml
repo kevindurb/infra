@@ -22,9 +22,9 @@ spec:
         nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
       runtimeClassName: nvidia
       volumes:
-        #   - name: volume
-        #     persistentVolumeClaim:
-        #       claimName: volume
+        - name: model-cache
+          persistentVolumeClaim:
+            claimName: model-cache
         - name: config-map
           configMap:
             name: config
@@ -39,13 +39,13 @@ spec:
             requests:
               memory: 100M
             limits:
-              memory: 1G
+              memory: 4G
               nvidia.com/gpu: 1
           securityContext:
             privileged: false
           volumeMounts:
-            #   - name: volume
-            #     mountPath: /var/www/app/data
+            - name: model-cache
+              mountPath: /config/model_cache
             - name: config-map
               mountPath: /config/frigate.yml
               subPath: frigate.yml
