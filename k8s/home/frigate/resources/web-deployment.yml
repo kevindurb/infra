@@ -66,5 +66,5 @@ spec:
             - name: webrtc
               containerPort: 8555
             - name: webrtc-udp
-              protocol: udp
+              protocol: UDP
               containerPort: 8555

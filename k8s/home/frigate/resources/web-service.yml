@@ -18,5 +18,5 @@ spec:
       targetPort: webrtc
     - name: webrtc-udp
       port: 8555
-      protocol: udp
+      protocol: UDP
       targetPort: webrtc-udp
