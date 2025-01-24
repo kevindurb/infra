@@ -28,10 +28,7 @@ tasks:
     cmds:
       - task: app
       - task: kustomization
-      - task: deployment
-      - task: service
-      - task: internal-ingress
-      - task: gatus
+      - task: app-resources
 
   external-app:
     aliases: [mk-ext]
@@ -76,6 +73,19 @@ tasks:
         vars:
           TEMPLATE: app
           OUT_FILE: './k8s/{{.NS}}/{{.OUT_FILE}}'
+      - kustomize edit add resource {{.OUT_FILE}}
+
+  app-resources:
+    requires:
+      vars: [APP, IMG, PORT]
+    dir: '{{.APP_DIR}}'
+    vars:
+      OUT_FILE: './resources/resources.yml'
+    cmds:
+      - task: minijinja
+        vars:
+          TEMPLATE: resources
+          OUT_FILE: '{{.APP_DIR}}/{{.OUT_FILE}}'
       - kustomize edit add resource {{.OUT_FILE}}
 
   namespace:
