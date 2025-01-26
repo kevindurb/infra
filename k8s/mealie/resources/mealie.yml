@@ -20,7 +20,7 @@ spec:
             requests:
               memory: 300M
             limits:
-              memory: 400M
+              memory: 1G
           env:
             - name: PUID
               value: '1000'
