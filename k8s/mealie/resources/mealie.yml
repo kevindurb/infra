@@ -34,6 +34,27 @@ spec:
               value: '1'
             - name: BASE_URL
               value: https://mealie.durbin.casa
+            - name: OIDC_AUTH_ENABLED
+              value: '1'
+            - name: OIDC_SIGNUP_ENABLED
+              value: '1'
+            - name: OIDC_CONFIGURATION_URL
+              value: http://pocket-id-web-service.auth/.well-known/openid-configuration
+            - name: OIDC_CLIENT_ID
+              value: 335701f1-f1e8-4bb1-bdb6-cfbcc872f7ae
+            - name: OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-oidc-client-secret
+                  key: OIDC_CLIENT_SECRET
+            - name: OIDC_USER_GROUP
+              value: member
+            - name: OIDC_ADMIN_GROUP
+              value: admin
+            - name: OIDC_AUTO_REDIRECT
+              value: '1'
+            - name: OIDC_PROVIDER_NAME
+              value: Pocket ID
           volumeMounts:
             - name: data-volume
               mountPath: /app/data

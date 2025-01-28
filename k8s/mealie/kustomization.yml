@@ -8,6 +8,7 @@ resources:
   - ./resources/mealie.yml
   - ./resources/gatus-config.yml
   - ./resources/internal-ingress.yml
+  - ./resources/oidc-client-secret.yml
 
 commonLabels:
   app.kubernetes.io/name: mealie
