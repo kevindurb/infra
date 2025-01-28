@@ -55,6 +55,14 @@ spec:
               value: '1'
             - name: OIDC_PROVIDER_NAME
               value: Pocket ID
+            - name: OPENAI_BASE_URL
+              value: http://ollama-service.ai/v1
+            - name: OPENAI_API_KEY
+              value: fakefakefakefake
+            - name: OPENAI_MODEL
+              value: llama3.1:latest
+            - name: OPENAI_ENABLE_IMAGE_SERVICES
+              value: 'false'
           volumeMounts:
             - name: data-volume
               mountPath: /app/data
