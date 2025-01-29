@@ -16,7 +16,7 @@ kind: CronJob
 metadata:
   name: backup-cert
 spec:
-  schedule: '* * * * *'
+  schedule: '0 0 * * *'
   jobTemplate:
     spec:
       template:
