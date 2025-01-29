@@ -29,7 +29,7 @@ spec:
           serviceAccountName: backup-service-account
           containers:
             - name: backup-cert
-              image: docker.io/rancher/kubectl:v1.29.13
+              image: docker.io/bitnami/kubectl:1.32.1
               command:
                 - /bin/sh
                 - -c
