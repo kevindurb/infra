@@ -26,6 +26,8 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: logs
+          emptyDir: {}
       containers:
         - name: tdarr
           image: ghcr.io/haveagitgat/tdarr:2.29.01
@@ -36,21 +38,27 @@ spec:
               memory: 4G
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 1000
-            runAsGroup: 1000
+            # allowPrivilegeEscalation: false
+            # runAsNonRoot: true
+            # runAsUser: 1000
+            # runAsGroup: 1000
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
           volumeMounts:
             - name: volume
               mountPath: /app/configs
+            - name: logs
+              mountPath: /app/logs
             - name: truenas-media
               mountPath: /media
           env:
             - name: TZ
               value: America/Denver
+            - name: PUID
+              value: 1000
+            - name: PGID
+              value: 1000
           ports:
             - name: http
               containerPort: 8265
