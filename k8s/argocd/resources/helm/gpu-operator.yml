@@ -11,6 +11,8 @@ spec:
     chart: gpu-operator
     helm:
       valuesObject:
+        nfd:
+          enabled: false
         toolkit:
           env:
             - name: CONTAINERD_CONFIG
@@ -35,14 +37,3 @@ spec:
       allowEmpty: false
     syncOptions:
       - CreateNamespace=true
-  ignoreDifferences:
-    - group: apiextensions.k8s.io/v1
-      kind: CustomResourceDefinition
-      name: nodefeaturegroups.nfd.k8s-sigs.io
-      jsonPointers:
-        - /metadata/annotations/controller-gen.kubebuilder.io/version
-    - group: apiextensions.k8s.io/v1
-      kind: CustomResourceDefinition
-      name: nodefeaturerules.nfd.k8s-sigs.io
-      jsonPointers:
-        - /metadata/annotations/controller-gen.kubebuilder.io/version
