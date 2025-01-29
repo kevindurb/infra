@@ -20,11 +20,11 @@ spec:
   jobTemplate:
     spec:
       template:
-        volumes:
-          - name: backup-cert
-            persistentVolumeClaim:
-              claimName: backup-cert
         spec:
+          volumes:
+            - name: backup-cert
+              persistentVolumeClaim:
+                claimName: backup-cert
           restartPolicy: OnFailure
           serviceAccountName: backup-service-account
           containers:
