@@ -17,7 +17,7 @@ spec:
     spec:
       nodeSelector:
         nvidia.com/gpu.present: 'true'
-        # nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
+        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
       runtimeClassName: nvidia
       hostname: jellyfin
       securityContext:
@@ -25,7 +25,7 @@ spec:
       volumes:
         - name: config-volume
           persistentVolumeClaim:
-            claimName: jellyfin-config-volume
+            claimName: jellyfin-volume
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
