@@ -6,13 +6,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://bitnami-labs.github.io/sealed-secrets
-    targetRevision: 2.16.2
-    chart: sealed-secrets
-    helm:
-      valuesObject:
-        fullnameOverride: sealed-secrets-controller
+  sources:
+    - repoURL: https://bitnami-labs.github.io/sealed-secrets
+      targetRevision: 2.16.2
+      chart: sealed-secrets
+      helm:
+        valuesObject:
+          fullnameOverride: sealed-secrets-controller
+    - repoURL: https://github.com/kevindurb/infra.git
+      targetRevision: HEAD
+      path: k8s/kube-system/sealed-secrets
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system

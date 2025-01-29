@@ -1,0 +1,80 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-cert
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: zfs-iscsi
+  resources:
+    requests:
+      storage: 1G
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-cert
+spec:
+  schedule: '0 * * * *'
+  jobTemplate:
+    spec:
+      template:
+        volumes:
+          - name: backup-cert
+            persistentVolumeClaim:
+              claimName: backup-cert
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: backup-service-account
+          containers:
+            - name: backup-cert
+              image: docker.io/rancher/kubectl:v1.29.13
+              command:
+                - /bin/sh
+                - -c
+                - >
+                  kubectl get secret
+                  -n kube-system
+                  -l sealedsecrets.bitnami.com/sealed-secrets-key
+                  -o yaml > /data/sealed-secrets-crts.yml
+              volumeMounts:
+                - name: backup-cert
+                  mountPath: /data
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backup-service-account
+
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: service-account-token
+  annotations:
+    kubernetes.io/service-account.name: sealed-secrets-backup-service-account
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: backup-role
+rules:
+  - apiGroups: ['']
+    resources: [secrets]
+    verbs: [get, list]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: backup-role-binding
+roleRef:
+  kind: Role
+  name: backup-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: backup-service-account
