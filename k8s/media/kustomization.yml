@@ -10,4 +10,3 @@ resources:
   - ./calibre/app.yml
   - ./calibre-web/app.yml
   - ./pinchflat/app.yml
-  - ./tdarr/app.yml
