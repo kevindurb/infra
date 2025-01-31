@@ -14,3 +14,4 @@ receivers:
     pushover_configs:
       - user_key_file: /run/secrets/pushover/user_key
         token_file: /run/secrets/pushover/application_key
+        priority: 0
