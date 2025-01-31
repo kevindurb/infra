@@ -31,7 +31,7 @@ spec:
             fsGroup: 1000
           containers:
             - name: backup-cert
-              image: docker.io/bitnami/kubectl:1.32.1
+              image: docker.io/bitnami/kubectl:1.32.1@sha256:7cf387225938570b66edeca167a11a24c24351e3bc559518a731cb57136cfebb
               command:
                 - /bin/sh
                 - -c
