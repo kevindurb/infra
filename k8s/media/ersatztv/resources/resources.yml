@@ -101,7 +101,7 @@ metadata:
     gethomepage.dev/href: https://tv.durbin.casa
     gethomepage.dev/enabled: 'true'
     gethomepage.dev/app: ersatztv
-    gethomepage.dev/group: Other
+    gethomepage.dev/group: Media
     gethomepage.dev/icon: ersatztv
     gethomepage.dev/name: Ersatztv
 spec:
