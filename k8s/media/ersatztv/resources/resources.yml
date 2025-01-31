@@ -41,18 +41,20 @@ spec:
               nvidia.com/gpu: 1
           securityContext:
             privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop: [ALL]
           volumeMounts:
             - name: volume
-              mountPath: /root/.local/share/ersatztv
+              mountPath: /config
             - name: truenas-media
               mountPath: /media
           env:
             - name: TZ
               value: America/Denver
-            - name: PUID
-              value: '1000'
-            - name: PGID
-              value: '1000'
           ports:
             - name: http
               containerPort: 8409
