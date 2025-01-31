@@ -30,6 +30,8 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
+        - name: transcode
+          emptyDir: {}
       containers:
         - name: ersatztv
           image: docker.io/jasongdove/ersatztv:v25.1.0-nvidia
@@ -52,6 +54,8 @@ spec:
               mountPath: /config
             - name: truenas-media
               mountPath: /media
+            - name: transcode
+              mountPath: /transcode
           env:
             - name: TZ
               value: America/Denver
