@@ -59,6 +59,10 @@ spec:
           env:
             - name: TZ
               value: America/Denver
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: all
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: compute,utility,video
           ports:
             - name: http
               containerPort: 8409
