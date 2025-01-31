@@ -11,3 +11,4 @@ resources:
   - ./calibre-web/app.yml
   - ./pinchflat/app.yml
   - ./bazarr/app.yml
+  - ./ersatztv/app.yml

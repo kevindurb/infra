@@ -1,0 +1,135 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  annotations:
+    reloader.stakater.com/auto: 'true'
+  labels: &labels
+    app.kubernetes.io/component: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+    spec:
+      nodeSelector:
+        nvidia.com/gpu.present: 'true'
+        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
+      runtimeClassName: nvidia
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: volume
+        - name: truenas-media
+          persistentVolumeClaim:
+            claimName: truenas-media
+      containers:
+        - name: ersatztv
+          image: docker.io/jasongdove/ersatztv:v25.1.0-nvidia
+          resources:
+            requests:
+              memory: 100M
+            limits:
+              memory: 1G
+              nvidia.com/gpu: 1
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: volume
+              mountPath: /root/.local/share/ersatztv
+            - name: truenas-media
+              mountPath: /media
+          env:
+            - name: TZ
+              value: America/Denver
+          ports:
+            - name: http
+              containerPort: 8409
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume
+#  labels:
+#    snapscheduler/standard: 'true'
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: zfs-iscsi
+  resources:
+    requests:
+      storage: 1G
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app.kubernetes.io/component: web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: internal-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    gethomepage.dev/href: https://tv.durbin.casa
+    gethomepage.dev/enabled: 'true'
+    gethomepage.dev/app: ersatztv
+    gethomepage.dev/group: Other
+    gethomepage.dev/icon: ersatztv
+    gethomepage.dev/name: Ersatztv
+spec:
+  ingressClassName: internal
+  rules:
+    - host: &host tv.durbin.casa
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: web-service
+                port:
+                  name: http
+  tls:
+    - secretName: durbin-casa-wildcard-cert
+      hosts:
+        - *host
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-config
+  labels:
+    gatus.io/enabled: 'true'
+data:
+  ersatztv.yml: |
+    endpoints:
+      - name: ersatztv
+        url: http://ersatztv-web-service.media
+        conditions:
+          - '[STATUS] == 200'
