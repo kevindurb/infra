@@ -21,7 +21,7 @@ spec:
             name: config
       containers:
         - name: starbase-80
-          image: ghcr.io/notclickable-jordan/starbase-80:1.6.0@sha256:b15cc5d3dcaf38ec9efd134f225545eb84f59951823756dc5fe77eaff9764852
+          image: ghcr.io/notclickable-jordan/starbase-80:1.6.1@sha256:49037822dca3a1fafd213ed95b54e3962bbed52fd922036b290ab02bbcff72fc
           resources:
             requests:
               memory: 100M
