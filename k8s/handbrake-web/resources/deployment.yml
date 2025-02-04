@@ -42,7 +42,7 @@ spec:
             requests:
               memory: 100M
             limits:
-              memory: 200M
+              memory: 1G
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
@@ -79,7 +79,7 @@ spec:
 
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: worker-deployment
   labels: &labels
