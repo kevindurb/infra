@@ -19,7 +19,7 @@ spec:
     spec:
       nodeSelector:
         nvidia.com/gpu.present: 'true'
-        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
+        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
       runtimeClassName: nvidia
       volumes:
         - name: model-cache
