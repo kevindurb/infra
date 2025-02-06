@@ -22,6 +22,7 @@ spec:
       hostNetwork: true
       nodeSelector:
         nvidia.com/gpu.present: 'true'
+        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
       runtimeClassName: nvidia
       containers:
         - name: scrypted
