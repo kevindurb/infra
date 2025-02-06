@@ -20,6 +20,7 @@ tasks:
     {{or .host "stack-nodes"}}
     --inventory ./inventory/production.yml
     --module-name community.general.shutdown
+    --user kevindurb
     --become
 
   reboot: >-
@@ -27,4 +28,13 @@ tasks:
     {{or .host "stack-nodes"}}
     --inventory ./inventory/production.yml
     --module-name ansible.builtin.reboot
+    --user kevindurb
+    --become
+
+  ping: >-
+    ansible
+    {{or .host "stack-nodes"}}
+    --inventory ./inventory/production.yml
+    --module-name ansible.builtin.ping
+    --user kevindurb
     --become
