@@ -8,7 +8,7 @@ metadata:
   labels: &labels
     app.kubernetes.io/component: web
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate
   selector:
@@ -132,7 +132,7 @@ kind: ConfigMap
 metadata:
   name: gatus-config
   labels:
-    gatus.io/enabled: 'true'
+    gatus.io/enabled: 'false'
 data:
   ersatztv.yml: |
     endpoints:
