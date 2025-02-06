@@ -6,4 +6,4 @@ namespace: system-upgrade
 
 resources:
   - https://github.com/rancher/system-upgrade-controller/releases/latest/download/system-upgrade-controller.yaml
-  - ./resources/upgrade-plans.yml
+  # - ./resources/upgrade-plans.yml
