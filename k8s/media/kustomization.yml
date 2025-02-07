@@ -5,7 +5,7 @@ resources:
   - ./namespace.yml
   - ./durbin-casa-certificate.yml
   - ./media-pvc.yml
-  - ./jellyfin/app.yml
+  # - ./jellyfin/app.yml
   # - ./lidarr/app.yml
   # - ./calibre/app.yml
   # - ./calibre-web/app.yml
