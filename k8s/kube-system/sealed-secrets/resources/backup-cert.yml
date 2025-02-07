@@ -5,7 +5,7 @@ metadata:
   name: backup-cert
 spec:
   accessModes: [ReadWriteOnce]
-  storageClassName: zfs-iscsi
+  storageClassName: local-storage
   resources:
     requests:
       storage: 1G

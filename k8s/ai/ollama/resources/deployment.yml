@@ -54,7 +54,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: zfs-iscsi
+  storageClassName: local-storage
   resources:
     requests:
       storage: 20Gi
