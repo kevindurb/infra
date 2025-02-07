@@ -1,0 +1,107 @@
+---
+clusterName: kube
+talosVersion: v1.7.1
+kubernetesVersion: v1.27.0
+endpoint: https://192.168.42.1:6443
+domain: cluster.local
+allowSchedulingOnMasters: true
+additionalMachineCertSans: []
+additionalApiServerCertSans: []
+
+nodes:
+  - &controlPlane
+    hostname: kube-master-01
+    ipAddress: 192.168.42.1
+    controlPlane: true
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.42.1/16
+        routes: &routes
+          - network: 0.0.0.0/0
+            gateway: 192.168.1.1
+
+  - &worker
+    hostname: kube-worker-01
+    ipAddress: 192.168.42.11
+    controlPlane: false
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.42.11/16
+        routes: *routes
+
+  - <<: *worker
+    hostname: kube-worker-02
+    ipAddress: 192.168.42.12
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.42.12/16
+        routes: *routes
+
+  - <<: *worker
+    hostname: kube-worker-03
+    ipAddress: 192.168.42.13
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.42.13/16
+        routes: *routes
+
+  - <<: *worker
+    hostname: kube-storage-01
+    ipAddress: 192.168.42.21
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.42.21/16
+        routes: *routes
+    nodeLabels: &storageLabels
+      storage-node: 'true'
+
+  - <<: *worker
+    hostname: kube-storage-02
+    ipAddress: 192.168.42.22
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.42.22/16
+        routes: *routes
+    nodeLabels: *storageLabels
+
+  - <<: *worker
+    hostname: kube-storage-03
+    ipAddress: 192.168.42.23
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.42.23/16
+        routes: *routes
+    nodeLabels: *storageLabels
+
+controlPlane:
+  machineSpec: &amd64Machine
+    mode: metal
+    arch: amd64
+    useUKI: true
+    secureboot: true
+  schematic: &defaultSchematic
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+  nameservers: &nameservers
+    - 1.1.1.1
+    - 8.8.8.8
+worker:
+  machineSpec: *amd64Machine
+  schematic: *defaultSchematic
+  nameservers: *nameservers
