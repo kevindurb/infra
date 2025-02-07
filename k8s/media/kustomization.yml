@@ -6,9 +6,9 @@ resources:
   - ./durbin-casa-certificate.yml
   - ./media-pvc.yml
   - ./jellyfin/app.yml
-  - ./lidarr/app.yml
-  - ./calibre/app.yml
-  - ./calibre-web/app.yml
+  # - ./lidarr/app.yml
+  # - ./calibre/app.yml
+  # - ./calibre-web/app.yml
   - ./pinchflat/app.yml
-  - ./bazarr/app.yml
-  - ./ersatztv/app.yml
+  # - ./bazarr/app.yml
+  # - ./ersatztv/app.yml

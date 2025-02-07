@@ -6,5 +6,5 @@ resources:
   - ./wildcard-cert.yml
   - ./prometheus/app.yml
   - ./alertmanager/app.yml
-  - ./smokeping/app.yml
-  - ./gatus/app.yml
+  # - ./smokeping/app.yml
+  # - ./gatus/app.yml
