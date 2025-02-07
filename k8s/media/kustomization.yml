@@ -9,6 +9,6 @@ resources:
   # - ./lidarr/app.yml
   # - ./calibre/app.yml
   # - ./calibre-web/app.yml
-  - ./pinchflat/app.yml
+  # - ./pinchflat/app.yml
   # - ./bazarr/app.yml
   # - ./ersatztv/app.yml
