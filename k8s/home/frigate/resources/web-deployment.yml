@@ -40,7 +40,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: frigate
-          image: ghcr.io/blakeblackshear/frigate:0.14.1-tensorrt
+          image: ghcr.io/blakeblackshear/frigate:0.15.0-tensorrt@sha256:c254c4114ebd46543c4d691cb07e8c0dfeba7ee04d2274f5d9f05b0652a07fe2
           resources:
             requests:
               memory: 100M
