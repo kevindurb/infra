@@ -30,6 +30,9 @@ includes:
     aliases: [mast]
   restic:
     taskfile: .taskfiles/restic
+  talos:
+    taskfile: .taskfiles/talos
+    aliases: [tal]
 
 tasks:
   default: task --list-all

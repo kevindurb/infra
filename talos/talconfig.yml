@@ -9,7 +9,7 @@ additionalMachineCertSans: []
 additionalApiServerCertSans: []
 
 nodes:
-  - &controlPlane
+  - &pi-control-plane
     hostname: kube-master-01
     ipAddress: 192.168.42.1
     controlPlane: true
@@ -17,12 +17,20 @@ nodes:
     networkInterfaces:
       - interface: eth0
         addresses:
-          - 192.168.42.1/16
-        routes: &routes
+          - 192.168.42.0/16
+        routes:
           - network: 0.0.0.0/0
             gateway: 192.168.1.1
 
-  - &worker
+  - <<: *pi-control-plane
+    hostname: kube-master-02
+    ipAddress: 192.168.42.2
+
+  - <<: *pi-control-plane
+    hostname: kube-master-03
+    ipAddress: 192.168.42.3
+
+  - &mac-mini-worker
     hostname: kube-worker-01
     ipAddress: 192.168.42.11
     controlPlane: false
@@ -30,78 +38,41 @@ nodes:
     networkInterfaces:
       - interface: eth0
         addresses:
-          - 192.168.42.11/16
-        routes: *routes
+          - 192.168.42.0/16
+        routes:
+          - network: 0.0.0.0/0
+            gateway: 192.168.1.1
 
-  - <<: *worker
+  - <<: *mac-mini-worker
     hostname: kube-worker-02
     ipAddress: 192.168.42.12
-    installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        addresses:
-          - 192.168.42.12/16
-        routes: *routes
 
-  - <<: *worker
+  - <<: *mac-mini-worker
     hostname: kube-worker-03
     ipAddress: 192.168.42.13
-    installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        addresses:
-          - 192.168.42.13/16
-        routes: *routes
 
-  - <<: *worker
-    hostname: kube-storage-01
-    ipAddress: 192.168.42.21
-    installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        addresses:
-          - 192.168.42.21/16
-        routes: *routes
-    nodeLabels: &storageLabels
-      storage-node: 'true'
-
-  - <<: *worker
-    hostname: kube-storage-02
-    ipAddress: 192.168.42.22
-    installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        addresses:
-          - 192.168.42.22/16
-        routes: *routes
-    nodeLabels: *storageLabels
-
-  - <<: *worker
-    hostname: kube-storage-03
-    ipAddress: 192.168.42.23
-    installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        addresses:
-          - 192.168.42.23/16
-        routes: *routes
-    nodeLabels: *storageLabels
+  - <<: *mac-mini-worker
+    hostname: kube-worker-04
+    ipAddress: 192.168.42.14
 
 controlPlane:
-  machineSpec: &amd64Machine
+  machineSpec:
     mode: metal
-    arch: amd64
-    useUKI: true
-    secureboot: true
-  schematic: &defaultSchematic
-    customization:
-      systemExtensions:
-        officialExtensions:
-          - siderolabs/intel-ucode
+    arch: arm64
+    bootMethod: disk-image
   nameservers: &nameservers
     - 1.1.1.1
     - 8.8.8.8
 worker:
-  machineSpec: *amd64Machine
-  schematic: *defaultSchematic
+  machineSpec:
+    mode: metal
+    arch: amd64
+    useUKI: true
+    secureboot: true
+    bootMethod: iso
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
   nameservers: *nameservers
