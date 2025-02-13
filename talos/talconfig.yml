@@ -2,7 +2,7 @@
 clusterName: kube
 talosVersion: v1.7.1
 kubernetesVersion: v1.27.0
-endpoint: https://192.168.42.1:6443
+endpoint: https://192.168.42.100:6443
 domain: cluster.local
 allowSchedulingOnMasters: true
 additionalMachineCertSans: []
@@ -15,20 +15,34 @@ nodes:
     controlPlane: true
     installDisk: /dev/sda
     networkInterfaces:
-      - interface: eth0
-        addresses:
-          - 192.168.42.0/16
-        routes:
+      - interface: end0
+        dhcp: false
+        addresses: [192.168.42.1/16]
+        routes: &networkRoutes
           - network: 0.0.0.0/0
             gateway: 192.168.1.1
+        vip: &vip
+          ip: 192.168.42.100
 
   - <<: *pi-control-plane
     hostname: kube-master-02
     ipAddress: 192.168.42.2
+    networkInterfaces:
+      - interface: end0
+        dhcp: false
+        addresses: [192.168.42.2/16]
+        routes: *networkRoutes
+        vip: *vip
 
   - <<: *pi-control-plane
     hostname: kube-master-03
     ipAddress: 192.168.42.3
+    networkInterfaces:
+      - interface: end0
+        dhcp: false
+        addresses: [192.168.42.3/16]
+        routes: *networkRoutes
+        vip: *vip
 
   - &mac-mini-worker
     hostname: kube-worker-01
@@ -36,24 +50,37 @@ nodes:
     controlPlane: false
     installDisk: /dev/sda
     networkInterfaces:
-      - interface: eth0
-        addresses:
-          - 192.168.42.0/16
-        routes:
-          - network: 0.0.0.0/0
-            gateway: 192.168.1.1
+      - interface: end0
+        dhcp: false
+        addresses: [192.168.42.11/16]
+        routes: *networkRoutes
 
   - <<: *mac-mini-worker
     hostname: kube-worker-02
     ipAddress: 192.168.42.12
+    networkInterfaces:
+      - interface: end0
+        dhcp: false
+        addresses: [192.168.42.12/16]
+        routes: *networkRoutes
 
   - <<: *mac-mini-worker
     hostname: kube-worker-03
     ipAddress: 192.168.42.13
+    networkInterfaces:
+      - interface: end0
+        dhcp: false
+        addresses: [192.168.42.13/16]
+        routes: *networkRoutes
 
   - <<: *mac-mini-worker
     hostname: kube-worker-04
     ipAddress: 192.168.42.14
+    networkInterfaces:
+      - interface: end0
+        dhcp: false
+        addresses: [192.168.42.14/16]
+        routes: *networkRoutes
 
 controlPlane:
   machineSpec:
