@@ -27,14 +27,15 @@ spec:
             - name: web
               containerPort: 5800
           volumeMounts:
-            - name: ripping-storage
+            - name: media
               mountPath: /output
+              subPath: /media/Downloads
             - name: sr0
               mountPath: /dev/sr0
       volumes:
-        - name: ripping-storage
+        - name: media
           persistentVolumeClaim:
-            claimName: truenas-ripping-storage
+            claimName: truenas-media
         - name: sr0
           hostPath:
             path: /dev/sr0
