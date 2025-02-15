@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - name: media
               mountPath: /output
-              subPath: /media/Downloads
+              subPath: Downloads
             - name: sr0
               mountPath: /dev/sr0
       volumes:
