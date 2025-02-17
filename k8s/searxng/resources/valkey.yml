@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: valkey
-          image: docker.io/valkey/valkey:8.0@sha256:e6a5b8e3e537cff12844c9be87d5f5e3c27e55c86833e92447e0bf33ce735ead
+          image: docker.io/valkey/valkey:8.1@sha256:b6fcb22adda4b48160311e3af30880f5dbea7d519980f08e57086fcfd8ea46d1
           resources:
             limits:
               memory: 1G
