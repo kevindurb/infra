@@ -18,7 +18,7 @@ spec:
             claimName: dnsmasq-volume
       containers:
         - name: pihole
-          image: docker.io/pihole/pihole:2024.07.0@sha256:0def896a596e8d45780b6359dbf82fc8c75ef05b97e095452e67a0a4ccc95377
+          image: docker.io/pihole/pihole:2025.02.0@sha256:02111b373f09e92fbfba00b66df9077a0177b506819461f0b3077be227765efc
           resources:
             requests:
               memory: 130M
