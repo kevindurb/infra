@@ -30,7 +30,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: bazarr
-          image: ghcr.io/onedr0p/bazarr:1.5.1
+          image: ghcr.io/onedr0p/bazarr:1.5.1@sha256:e1058dabc45dfa0c3eea397e8a320e1b25d7c24cf1ef78eaf550b842a43da87c
           resources:
             requests:
               memory: 100M
