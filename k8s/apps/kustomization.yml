@@ -6,7 +6,7 @@ resources:
   - ./durbin-casa-cert.yml
   - ./actual-budget/app.yml
   - ./adminer/app.yml
-  # - ./miniflux/app.yml
-  # - ./open-webui/app.yml
+  - ./miniflux/app.yml
+  - ./open-webui/app.yml
   - ./starbase-80/app.yml
   - ./homepage/app.yml
