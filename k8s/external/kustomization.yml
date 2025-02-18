@@ -8,5 +8,5 @@ resources:
   - ./nas01/app.yml
   - ./hdhomerun/app.yml
   - ./idrac/app.yml
-  - ./mainsail/app.yml
+  # - ./mainsail/app.yml
   - ./openwrt/app.yml
