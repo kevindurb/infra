@@ -69,7 +69,7 @@ spec:
     service:
       name: service
       port:
-        name: minecraft
+        number: 25565
   tls:
     - hosts:
         - minecraft
