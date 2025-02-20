@@ -19,6 +19,8 @@ spec:
           env:
             - name: EULA
               value: 'true'
+            - name: TYPE
+              value: 'PAPER'
           ports:
             - name: minecraft
               containerPort: 25565
@@ -49,10 +51,8 @@ kind: Service
 metadata:
   name: service
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.50.100
+    tailscale.com/funnel: 'true'
 spec:
-  type: LoadBalancer
-  loadBalancerClass: tailscale
   ports:
     - name: minecraft
       port: 25565
