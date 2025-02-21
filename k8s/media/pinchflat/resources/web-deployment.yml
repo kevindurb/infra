@@ -32,7 +32,7 @@ spec:
             claimName: truenas-media
       containers:
         - name: pinchflat
-          image: ghcr.io/kieraneglin/pinchflat:v2025.1.17@sha256:40de806237be4414725cb2dfda5d73f69617aaa9479b11643d055e0e7362f082
+          image: ghcr.io/kieraneglin/pinchflat:v2025.2.20@sha256:2b7696c5a588ff979b4c18140101bc624932eb8a908cf99ae76228c039e3dc75
           resources:
             requests:
               memory: 100M
