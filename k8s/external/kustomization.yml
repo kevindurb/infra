@@ -5,7 +5,5 @@ resources:
   - ./namespace.yml
   - ./wildcard-cert.yml
   - ./truenas/app.yml
-  - ./nas01/app.yml
   - ./idrac/app.yml
-  - ./mainsail/app.yml
   - ./openwrt/app.yml
