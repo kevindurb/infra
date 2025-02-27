@@ -6,7 +6,6 @@ resources:
   - ./wildcard-cert.yml
   - ./truenas/app.yml
   - ./nas01/app.yml
-  - ./hdhomerun/app.yml
   - ./idrac/app.yml
   - ./mainsail/app.yml
   - ./openwrt/app.yml
