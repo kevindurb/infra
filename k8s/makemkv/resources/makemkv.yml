@@ -12,7 +12,7 @@ spec:
       nodeSelector:
         optical-drives: 'true'
       containers:
-        - image: jlesage/makemkv:v24.12.1@sha256:9c55c3bda98f00b352903dcc85cda0c6a7d0724cea81af784ec9a8d06de3cd25
+        - image: jlesage/makemkv:v25.02.3@sha256:7952ff1ce7e6f7a4e2ce6bca6dd5141e8235be064613c7cc243b3de462a7972f
           name: makemkv
           env:
             - name: USER_ID
