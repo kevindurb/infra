@@ -15,7 +15,7 @@ spec:
             claimName: data-volume
       containers:
         - name: mealie
-          image: ghcr.io/mealie-recipes/mealie:v2.5.0@sha256:0a9839f19e74d5c4a818161a5850b16d9608b240381691c317d3c23cd62e0c0f
+          image: ghcr.io/mealie-recipes/mealie:v2.7.1@sha256:708e9ffb843bafdcebf46ee35bb45d1b003518e8c204483a1da039b4076ef980
           resources:
             requests:
               memory: 300M
