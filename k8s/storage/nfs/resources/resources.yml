@@ -35,7 +35,7 @@ spec:
             limits:
               memory: 1G
           securityContext:
-            privileged: false
+            privileged: true
             capabilities:
               add: [SYS_ADMIN]
           volumeMounts:
