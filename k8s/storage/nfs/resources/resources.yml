@@ -28,7 +28,7 @@ spec:
             claimName: tank-media
       containers:
         - name: nfs
-          image: docker.io/itsthenetwork/nfs-server-alpine:latest
+          image: docker.io/itsthenetwork/nfs-server-alpine:latest@sha256:7fa99ae65c23c5af87dd4300e543a86b119ed15ba61422444207efc7abd0ba20
           resources:
             requests:
               memory: 100M
