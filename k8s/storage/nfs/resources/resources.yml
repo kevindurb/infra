@@ -92,7 +92,7 @@ kind: Service
 metadata:
   name: media-service
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.42.100
+    metallb.universe.tf/loadBalancerIPs: 192.168.50.10
 spec:
   type: LoadBalancer
   selector:
