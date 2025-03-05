@@ -25,7 +25,7 @@ spec:
             name: exports
         - name: tank-media
           persistentVolumeClaim:
-            name: tank-media
+            claimName: tank-media
       containers:
         - name: nfs
           image: docker.io/erichough/nfs-server
