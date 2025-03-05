@@ -8,11 +8,6 @@ namePrefix: nfs-
 resources:
   - ./resources/resources.yml
 
-configMapGenerator:
-  - name: exports
-    files:
-      - ./resources/exports.txt
-
 labels:
   - includeSelectors: true
     includeTemplates: true
