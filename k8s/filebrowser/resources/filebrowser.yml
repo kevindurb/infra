@@ -44,7 +44,7 @@ spec:
       volumes:
         - name: media
           persistentVolumeClaim:
-            claimName: nfs-media
+            claimName: truenas-media
         - name: ripping-storage
           persistentVolumeClaim:
             claimName: truenas-ripping-storage
