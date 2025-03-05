@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-service.storage
+    server: 10.43.143.160
     path: /media
 
 ---
