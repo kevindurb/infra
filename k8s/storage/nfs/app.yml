@@ -1,0 +1,20 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kevindurb/infra.git
+    targetRevision: HEAD
+    path: k8s/storage/nfs
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: storage
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false

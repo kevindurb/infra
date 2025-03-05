@@ -15,3 +15,4 @@ resources:
   - ./networking
   - ./kubernetes-dashboard
   - ./home
+  - ./storage
