@@ -11,6 +11,8 @@ spec:
   nfs:
     server: 192.168.42.100
     path: /media
+  mountOptions:
+    - nolock
 
 ---
 apiVersion: v1
