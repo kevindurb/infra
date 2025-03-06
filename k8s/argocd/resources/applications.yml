@@ -61,7 +61,6 @@ spec:
         server: https://kubernetes.default.svc
         namespace: '{{ or .namespace "default" }}'
       syncPolicy:
-        preserveResourcesOnDeletion: false
         automated:
           prune: true
           selfHeal: true
