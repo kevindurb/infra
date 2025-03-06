@@ -34,8 +34,6 @@ spec:
           volumeMounts:
             - name: media
               mountPath: /srv/media
-            - name: ripping-storage
-              mountPath: /srv/ripping-storage
             - name: config-volume
               mountPath: /config
             - name: config-map
@@ -45,9 +43,6 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: nfs-media
-        - name: ripping-storage
-          persistentVolumeClaim:
-            claimName: truenas-ripping-storage
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume

@@ -29,9 +29,6 @@ spec:
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
-        - name: ripping-storage
-          persistentVolumeClaim:
-            claimName: truenas-ripping-storage
       containers:
         - name: radarr
           image: ghcr.io/onedr0p/radarr:5.17.2@sha256:32d0e8d46f5619069d88445936670ffbca5a3aab7ed2e94e77a834ed85df81bb
@@ -59,8 +56,6 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
-            - name: ripping-storage
-              mountPath: /output
             - name: config-volume
               mountPath: /config
             - name: truenas-media

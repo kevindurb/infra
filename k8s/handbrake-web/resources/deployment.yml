@@ -16,9 +16,6 @@ spec:
       labels: *labels
     spec:
       volumes:
-        - name: ripping-storage
-          persistentVolumeClaim:
-            claimName: truenas-ripping-storage
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
@@ -68,8 +65,6 @@ spec:
               subPath: super_hq_4k_hvec.json
             - name: truenas-media
               mountPath: /media
-            - name: ripping-storage
-              mountPath: /ripping-storage
           env:
             - name: TZ
               value: America/Denver
@@ -93,9 +88,6 @@ spec:
       labels: *labels
     spec:
       volumes:
-        - name: ripping-storage
-          persistentVolumeClaim:
-            claimName: truenas-ripping-storage
         - name: truenas-media
           persistentVolumeClaim:
             claimName: truenas-media
@@ -132,8 +124,6 @@ spec:
               mountPath: /data
             - name: truenas-media
               mountPath: /media
-            - name: ripping-storage
-              mountPath: /ripping-storage
           env:
             - name: TZ
               value: America/Denver
