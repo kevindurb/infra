@@ -42,10 +42,7 @@ controller:
   externalResizer:
     enabled: false
   externalSnapshotter:
-    enabled: true
-    extraArgs:
-      - --leader-election=false
-      - --node-deployment=true
+    enabled: false
 
 node:
   driver:
