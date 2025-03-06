@@ -50,7 +50,7 @@ spec:
             - name: NFS_LOG_LEVEL
               value: DEBUG
             - name: NFS_EXPORT_0
-              value: /media *(fsid=0,rw,sync,no_subtree_check,nohide,insecure)
+              value: /media *(fsid=0,rw,sync,no_subtree_check,nohide,insecure,no_root_squash)
           ports:
             - name: nfs
               containerPort: 2049
@@ -63,18 +63,6 @@ spec:
             - name: rpcbind-udp
               containerPort: 111
               protocol: UDP
-
-            # - name: statd
-            #   containerPort: 32765
-            # - name: statd-udp
-            #   containerPort: 32765
-            #   protocol: UDP
-            #
-            # - name: mountd
-            #   containerPort: 32767
-            # - name: mountd-udp
-            #   containerPort: 32767
-            #   protocol: UDP
 
 ---
 apiVersion: v1
@@ -136,15 +124,3 @@ spec:
     - name: rpcbind-udp
       port: 111
       protocol: UDP
-
-    # - name: statd
-    #   port: 32765
-    # - name: statd-udp
-    #   port: 32765
-    #   protocol: UDP
-    #
-    # - name: mountd
-    #   port: 32767
-    # - name: mountd-udp
-    #   port: 32767
-    #   protocol: UDP
