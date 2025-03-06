@@ -23,6 +23,9 @@ spec:
         - name: tank-media
           persistentVolumeClaim:
             claimName: tank-media
+        - name: modules
+          hostPath:
+            path: /lib/modules
       containers:
         - name: nfs
           image: docker.io/erichough/nfs-server:2.2.1
@@ -33,12 +36,19 @@ spec:
               memory: 1G
           securityContext:
             privileged: true
+            capabilities:
+              add: [SYS_ADMIN, SYS_MODULE]
           volumeMounts:
             - name: tank-media
               mountPath: /media
+            - name: modules
+              mountPath: /lib/modules
+              readOnly: true
           env:
             - name: TZ
               value: America/Denver
+            - name: NFS_LOG_LEVEL
+              value: DEBUG
             - name: NFS_EXPORT_0
               value: /media *(rw,fsid=0,no_subtree_check,no_auth_nlm,insecure,no_root_squash)
           ports:
@@ -52,11 +62,15 @@ spec:
             - name: rpcbind-udp
               containerPort: 111
               protocol: UDP
-            - containerPort: 32765
-            - containerPort: 32765
+            - name: statd
+              containerPort: 32765
+            - name: statd-udp
+              containerPort: 32765
               protocol: UDP
-            - containerPort: 32767
-            - containerPort: 32767
+            - name: mountd
+              containerPort: 32767
+            - name: mountd-udp
+              containerPort: 32767
               protocol: UDP
 
 ---
@@ -118,9 +132,13 @@ spec:
     - name: rpcbind-udp
       port: 111
       protocol: UDP
-    - port: 32765
-    - port: 32765
+    - name: statd
+      port: 32765
+    - name: statd-udp
+      port: 32765
       protocol: UDP
-    - port: 32767
-    - port: 32767
+    - name: mountd
+      port: 32767
+    - name: mountd-udp
+      port: 32767
       protocol: UDP
