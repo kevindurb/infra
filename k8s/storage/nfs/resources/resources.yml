@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: media-deployment
+  name: media
   annotations:
     reloader.stakater.com/auto: 'true'
   labels: &labels
@@ -20,34 +20,32 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: stack-agent-02
       volumes:
-        - name: exports
-          configMap:
-            name: exports
         - name: tank-media
           persistentVolumeClaim:
             claimName: tank-media
       containers:
         - name: nfs
-          image: docker.io/itsthenetwork/nfs-server-alpine:latest
+          image: registry.k8s.io/volume-nfs:0.8
           resources:
             requests:
               memory: 100M
             limits:
               memory: 1G
           securityContext:
-            capabilities:
-              add: [SYS_ADMIN, SETPCAP]
+            privileged: true
           volumeMounts:
             - name: tank-media
-              mountPath: /media
+              mountPath: /exports
           env:
             - name: TZ
               value: America/Denver
-            - name: SHARED_DIRECTORY
-              value: /media
           ports:
             - name: nfs
               containerPort: 2049
+            - name: mountd
+              containerPort: 20048
+            - name: rpcbind
+              containerPort: 111
 
 ---
 apiVersion: v1
@@ -90,14 +88,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: media-service
-  annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.50.10
+  name: media
 spec:
-  type: LoadBalancer
   selector:
     app.kubernetes.io/component: media
   ports:
     - name: nfs
       port: 2049
-      targetPort: nfs
+    - name: mountd
+      port: 20048
+    - name: rpcbind
+      port: 111
