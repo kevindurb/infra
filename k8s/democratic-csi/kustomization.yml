@@ -5,8 +5,7 @@ kind: Kustomization
 namePrefix: democratic-csi-
 namespace: democratic-csi
 
-resources:
-  - ./resources/secret.yml
+resources: []
 
 labels:
   - pairs:
