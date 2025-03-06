@@ -4,6 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yml
   - ./wildcard-cert.yml
-  - ./truenas/app.yml
-  - ./idrac/app.yml
   - ./openwrt/app.yml
