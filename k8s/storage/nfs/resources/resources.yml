@@ -50,7 +50,7 @@ spec:
             - name: NFS_LOG_LEVEL
               value: DEBUG
             - name: NFS_EXPORT_0
-              value: /media *(fsid=0,rw,sync,no_subtree_check)
+              value: /media *(fsid=0,rw,sync,no_subtree_check,nohide,insecure)
           ports:
             - name: nfs
               containerPort: 2049
