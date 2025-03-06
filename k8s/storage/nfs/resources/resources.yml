@@ -52,6 +52,12 @@ spec:
             - name: rpcbind-udp
               containerPort: 111
               protocol: UDP
+            - containerPort: 32765
+            - containerPort: 32765
+              protocol: UDP
+            - containerPort: 32767
+            - containerPort: 32767
+              protocol: UDP
 
 ---
 apiVersion: v1
@@ -111,4 +117,10 @@ spec:
       port: 111
     - name: rpcbind-udp
       port: 111
+      protocol: UDP
+    - port: 32765
+    - port: 32765
+      protocol: UDP
+    - port: 32767
+    - port: 32767
       protocol: UDP
