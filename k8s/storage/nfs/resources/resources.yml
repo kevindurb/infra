@@ -40,7 +40,7 @@ spec:
             - name: TZ
               value: America/Denver
             - name: NFS_EXPORT_0
-              value: /media *(rw,no_subtree_check,no_auth_nlm,insecure,no_root_squash)
+              value: /media *(rw,fsid=0,no_subtree_check,no_auth_nlm,insecure,no_root_squash)
           ports:
             - name: nfs
               containerPort: 2049
