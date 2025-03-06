@@ -5,4 +5,3 @@ kind: Kustomization
 resources:
   - ./resources/truenas-media.yml
   - ./resources/nfs-media.yml
-  - ./resources/truenas-minio.yml
