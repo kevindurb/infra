@@ -96,6 +96,7 @@ kind: Service
 metadata:
   name: media
 spec:
+  clusterIP: 10.43.0.42
   selector:
     app.kubernetes.io/component: media
   ports:

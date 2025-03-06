@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: nfs-media.storage.svc.cluster.local
+    server: 10.43.0.42
     path: /media
   mountOptions: [nfsvers=4.2]
 
