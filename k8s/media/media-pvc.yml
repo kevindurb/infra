@@ -2,29 +2,28 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: media-truenas-media
+  name: media-nfs-media
 spec:
   capacity:
-    storage: 2Ti
+    storage: 12Ti
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 192.168.100.201
-    path: /mnt/tank/media
-  mountOptions:
-    - nolock
+    server: 10.43.0.42
+    path: /
+  mountOptions: [nfsvers=4.2]
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: truenas-media
+  name: nfs-media
   namespace: media
 spec:
   resources:
     requests:
-      storage: 2Ti
+      storage: 12Ti
   accessModes:
     - ReadWriteMany
   storageClassName: ''
-  volumeName: media-truenas-media
+  volumeName: media-nfs-media

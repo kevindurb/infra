@@ -27,9 +27,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
         - name: transcode
           emptyDir: {}
       containers:
@@ -52,7 +52,7 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /config
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /media
             - name: transcode
               mountPath: /transcode

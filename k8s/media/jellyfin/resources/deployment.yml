@@ -26,9 +26,9 @@ spec:
         - name: config-volume
           persistentVolumeClaim:
             claimName: jellyfin-volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: jellyfin
           image: ghcr.io/jellyfin/jellyfin:10.10.4@sha256:ea8f8bb0151dcdf6f1aa3669f457a463c68cc13f3e55bb2a2f16be55e86550e7
@@ -44,7 +44,7 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /config
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /media
           ports:
             - name: web

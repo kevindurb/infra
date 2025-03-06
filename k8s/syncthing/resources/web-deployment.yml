@@ -17,6 +17,8 @@ spec:
     metadata:
       labels: *labels
     spec:
+      securityContext:
+        fsGroup: 1000
       hostname: syncthing
       volumes:
         - name: volume

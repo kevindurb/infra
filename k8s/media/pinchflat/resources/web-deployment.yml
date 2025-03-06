@@ -27,9 +27,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: pinchflat
           image: ghcr.io/kieraneglin/pinchflat:v2025.1.17@sha256:40de806237be4414725cb2dfda5d73f69617aaa9479b11643d055e0e7362f082
@@ -54,7 +54,7 @@ spec:
               mountPath: /etc/yt-dlp
             - name: volume
               mountPath: /config
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /downloads
               subPath: YouTube
           env:

@@ -25,9 +25,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: bazarr
           image: ghcr.io/onedr0p/bazarr:1.5.1
@@ -50,7 +50,7 @@ spec:
               mountPath: /tmp
             - name: volume
               mountPath: /config
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /media
           env:
             - name: TZ
