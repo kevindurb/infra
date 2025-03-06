@@ -23,9 +23,9 @@ spec:
         - name: config
           configMap:
             name: config
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
         - name: assets-volume
           persistentVolumeClaim:
             claimName: assets-volume
@@ -60,7 +60,7 @@ spec:
             - name: resources-volume
               mountPath: /romm/resources
 
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /romm/library
               subPath: romm/library
           env:

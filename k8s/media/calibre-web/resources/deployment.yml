@@ -23,7 +23,7 @@ spec:
             claimName: volume
         - name: media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: calibre-web
           image: ghcr.io/linuxserver/calibre-web:0.6.24@sha256:8b2561c1db5c1513db21d1d864ce06da85a5ef368c632957371d24c9807d4361

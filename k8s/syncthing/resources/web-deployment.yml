@@ -22,9 +22,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: syncthing
           image: docker.io/syncthing/syncthing:1.29.2@sha256:3f5c9776aac65e92a1c7d49f3443c35e4da92ae0d8e40308af6b7fae6e9b301a
@@ -46,7 +46,7 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /config
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /var/syncthing
           env:
             - name: TZ

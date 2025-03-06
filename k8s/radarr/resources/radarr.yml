@@ -26,9 +26,9 @@ spec:
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: radarr
           image: ghcr.io/onedr0p/radarr:5.17.2@sha256:32d0e8d46f5619069d88445936670ffbca5a3aab7ed2e94e77a834ed85df81bb
@@ -58,7 +58,7 @@ spec:
               mountPath: /tmp
             - name: config-volume
               mountPath: /config
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /media
           ports:
             - name: web

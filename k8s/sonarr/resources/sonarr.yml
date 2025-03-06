@@ -26,9 +26,9 @@ spec:
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: sonarr
           image: ghcr.io/onedr0p/sonarr:4.0.12@sha256:f453b589cd553e09244b2fb48d74ae4047e6fab1fa837e008755be1200a62407
@@ -62,7 +62,7 @@ spec:
               mountPath: /tmp
             - name: config-volume
               mountPath: /config
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /media
           ports:
             - name: web

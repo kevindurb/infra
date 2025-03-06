@@ -23,9 +23,9 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: prusaslicer
           image: docker.io/mikeah/prusaslicer-novnc:2024.09.13.005624@sha256:9d940dcadb1ff9aa9ccee05ee26a1a8804b6d0adfbef4600e392f152a9a67350
@@ -39,7 +39,7 @@ spec:
           volumeMounts:
             - name: volume
               mountPath: /configs
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /media
           env:
             - name: TZ

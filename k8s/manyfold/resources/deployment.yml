@@ -16,9 +16,9 @@ spec:
       labels: *labels
     spec:
       volumes:
-        - name: truenas-media
+        - name: nfs-media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
       containers:
         - name: manyfold
           image: ghcr.io/manyfold3d/manyfold:0.98.0@sha256:883300dbaeddb882fe555fd7d0e6dcd72c2f5a17891338d56214cdd8737dd937
@@ -57,7 +57,7 @@ spec:
             - name: REDIS_URL
               value: redis://manyfold-valkey-service:6379
           volumeMounts:
-            - name: truenas-media
+            - name: nfs-media
               mountPath: /media
           ports:
             - name: http

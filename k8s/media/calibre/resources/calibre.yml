@@ -20,7 +20,7 @@ spec:
       volumes:
         - name: media
           persistentVolumeClaim:
-            claimName: truenas-media
+            claimName: nfs-media
         - name: config
           persistentVolumeClaim:
             claimName: config-volume
