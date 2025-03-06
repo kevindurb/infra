@@ -49,10 +49,6 @@ spec:
               value: America/Denver
             - name: NFS_LOG_LEVEL
               value: DEBUG
-            - name: NFS_VERSION
-              value: '4'
-            - name: NFS_DISABLE_VERSION_3
-              value: '1'
             - name: NFS_EXPORT_0
               value: /media *(rw,sync,no_subtree_check)
           ports:
