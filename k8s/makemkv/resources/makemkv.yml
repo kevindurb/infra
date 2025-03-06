@@ -9,6 +9,8 @@ spec:
     type: Recreate
   template:
     spec:
+      securityContext:
+        fsGroup: 1000
       nodeSelector:
         optical-drives: 'true'
       containers:
