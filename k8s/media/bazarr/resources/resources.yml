@@ -30,7 +30,7 @@ spec:
             claimName: nfs-media
       containers:
         - name: bazarr
-          image: ghcr.io/onedr0p/bazarr:1.5.1
+          image: ghcr.io/onedr0p/bazarr:1.5.1@sha256:b8fa3c3c2a5b7fe045e8f8eb95feac3c50b37837478ecc11d49db8fa8ddff683
           resources:
             requests:
               memory: 100M
