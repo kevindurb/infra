@@ -17,10 +17,10 @@ spec:
     metadata:
       labels: *labels
     spec:
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
-      runtimeClassName: nvidia
+      # nodeSelector:
+      #   nvidia.com/gpu.present: 'true'
+      #   nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
+      # runtimeClassName: nvidia
       securityContext:
         fsGroup: 1000
       volumes:
@@ -32,6 +32,9 @@ spec:
             claimName: nfs-media
         - name: transcode
           emptyDir: {}
+        - name: dri
+          hostPath:
+            path: /dev/dri
       containers:
         - name: ersatztv
           image: docker.io/jasongdove/ersatztv:v25.1.0-nvidia
@@ -40,7 +43,7 @@ spec:
               memory: 100M
             limits:
               memory: 4G
-              nvidia.com/gpu: 1
+              # nvidia.com/gpu: 1
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
@@ -56,6 +59,8 @@ spec:
               mountPath: /media
             - name: transcode
               mountPath: /transcode
+            - name: dri
+              mountPath: /dev/dri
           env:
             - name: TZ
               value: America/Denver

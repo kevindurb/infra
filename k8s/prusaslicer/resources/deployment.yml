@@ -17,10 +17,10 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
-      runtimeClassName: nvidia
+      # nodeSelector:
+      #   nvidia.com/gpu.present: 'true'
+      #   nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
+      # runtimeClassName: nvidia
       volumes:
         - name: volume
           persistentVolumeClaim:
@@ -28,12 +28,15 @@ spec:
         - name: nfs-media
           persistentVolumeClaim:
             claimName: nfs-media
+        - name: dri
+          hostPath:
+            path: /dev/dri
       containers:
         - name: prusaslicer
           image: docker.io/mikeah/prusaslicer-novnc:2024.09.13.005624@sha256:9d940dcadb1ff9aa9ccee05ee26a1a8804b6d0adfbef4600e392f152a9a67350
           resources:
-            limits:
-              nvidia.com/gpu: 1
+            # limits:
+            #   nvidia.com/gpu: 1
             requests:
               memory: 100M
           securityContext:
@@ -43,13 +46,15 @@ spec:
               mountPath: /configs
             - name: nfs-media
               mountPath: /media
+            - name: dri
+              mountPath: /dev/dri
           env:
             - name: TZ
               value: America/Denver
-            - name: NVIDIA_DRIVER_CAPABILITIES
-              value: all
-            - name: NVIDIA_VISIBLE_DEVICES
-              value: all
+            # - name: NVIDIA_DRIVER_CAPABILITIES
+            #   value: all
+            # - name: NVIDIA_VISIBLE_DEVICES
+            #   value: all
             - name: ENABLEHWGPU
               value: 'true'
           ports:

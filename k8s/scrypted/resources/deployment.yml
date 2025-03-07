@@ -19,11 +19,14 @@ spec:
         - name: volume
           persistentVolumeClaim:
             claimName: volume
+        - name: dri
+          hostPath:
+            path: /dev/dri
       hostNetwork: true
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
-      runtimeClassName: nvidia
+      # nodeSelector:
+      #   nvidia.com/gpu.present: 'true'
+      #   nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
+      # runtimeClassName: nvidia
       containers:
         - name: scrypted
           image: ghcr.io/koush/scrypted:v0.123.58-jammy-nvidia@sha256:47a9b733493bd1aab5dcfbfb10c5cf379168c1f5545652946fad657df77ab309
@@ -34,11 +37,13 @@ spec:
             requests:
               memory: 750M
             limits:
-              nvidia.com/gpu: 1
+              # nvidia.com/gpu: 1
               memory: 1G
           volumeMounts:
             - name: volume
               mountPath: /server/volume
+            - name: dri
+              mountPath: /dev/dri
           ports:
             - name: web
               containerPort: 11080

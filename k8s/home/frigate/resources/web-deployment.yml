@@ -19,10 +19,10 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
-      nodeSelector:
-        nvidia.com/gpu.present: 'true'
-        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
-      runtimeClassName: nvidia
+      # nodeSelector:
+      #   nvidia.com/gpu.present: 'true'
+      #   nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
+      # runtimeClassName: nvidia
       volumes:
         - name: model-cache
           persistentVolumeClaim:
@@ -40,6 +40,9 @@ spec:
         - name: nfs-media
           persistentVolumeClaim:
             claimName: nfs-media
+        - name: dri
+          hostPath:
+            path: /dev/dri
       containers:
         - name: frigate
           image: ghcr.io/blakeblackshear/frigate:0.14.1-tensorrt
@@ -48,7 +51,7 @@ spec:
               memory: 100M
             limits:
               memory: 4G
-              nvidia.com/gpu: 1
+              # nvidia.com/gpu: 1
           securityContext:
             privileged: false
           volumeMounts:
@@ -64,6 +67,8 @@ spec:
               name: dev-shm
             - name: nfs-media
               mountPath: /media
+            - name: dri
+              mountPath: /dev/dri
           env:
             - name: TZ
               value: America/Denver
