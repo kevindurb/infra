@@ -15,15 +15,13 @@ spec:
     metadata:
       labels: *labels
     spec:
-      # nodeSelector:
-      #   nvidia.com/gpu.present: 'true'
-      #   nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
-      # runtimeClassName: nvidia
+      nodeSelector:
+        nvidia.com/gpu.present: 'true'
+        nvidia.com/gpu.product: NVIDIA-GeForce-GTX-1060-6GB-SHARED
+      runtimeClassName: nvidia
       hostname: jellyfin
       securityContext:
         fsGroup: 1000
-        supplementalGroups:
-          - 105
       volumes:
         - name: config-volume
           persistentVolumeClaim:
@@ -31,20 +29,16 @@ spec:
         - name: nfs-media
           persistentVolumeClaim:
             claimName: nfs-media
-        - name: dri
-          hostPath:
-            path: /dev/dri
       containers:
         - name: jellyfin
           image: ghcr.io/jellyfin/jellyfin:10.10.4@sha256:ea8f8bb0151dcdf6f1aa3669f457a463c68cc13f3e55bb2a2f16be55e86550e7
           securityContext:
-            privileged: true
             runAsUser: 1000
             runAsGroup: 1000
           resources:
             limits:
               memory: 4G
-              # nvidia.com/gpu: 1
+              nvidia.com/gpu: 1
             requests:
               memory: 1G
           volumeMounts:
@@ -52,8 +46,6 @@ spec:
               mountPath: /config
             - name: nfs-media
               mountPath: /media
-            - name: dri
-              mountPath: /dev/dri
           ports:
             - name: web
               containerPort: 8096
