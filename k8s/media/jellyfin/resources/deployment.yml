@@ -22,6 +22,8 @@ spec:
       hostname: jellyfin
       securityContext:
         fsGroup: 1000
+        supplementalGroups:
+          - 105
       volumes:
         - name: config-volume
           persistentVolumeClaim:
