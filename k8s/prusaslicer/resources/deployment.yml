@@ -17,6 +17,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000
+        supplimentalGroups: [105]
       # nodeSelector:
       #   nvidia.com/gpu.present: 'true'
       #   nvidia.com/gpu.product: NVIDIA-GeForce-GTX-750-Ti-SHARED
