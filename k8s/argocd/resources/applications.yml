@@ -45,7 +45,7 @@ spec:
           # - name: syncthing
           - name: system-upgrade
           - name: time-slicing-config
-          - name: watchyourlan
+          # - name: watchyourlan
           - name: zigbee2mqtt
   template:
     metadata:
