@@ -5,4 +5,4 @@ resources:
   - ./namespace.yml
   - ./wildcard-cert.yml
   - ./ollama/app.yml
-  - ./faster-whisper/app.yml
+  # - ./faster-whisper/app.yml
