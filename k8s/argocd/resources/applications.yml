@@ -19,12 +19,12 @@ spec:
           - name: external-snapshotter
           - name: external-volumes
           - name: filebrowser
-          - name: handbrake-web
+          # - name: handbrake-web
           - name: healthchecks
           - name: home-assistant
           - name: local-path-provisioner
           - name: makemkv
-          - name: manyfold
+          # - name: manyfold
           - name: mealie
           - name: metallb
           - name: mosquitto
@@ -32,17 +32,17 @@ spec:
           - name: node-exporter
           - name: omada
           - name: pihole
-          - name: prusaslicer
+          # - name: prusaslicer
           - name: radarr
           - name: reloader
-          - name: romm
-          - name: scrypted
-          - name: searxng
+          # - name: romm
+          # - name: scrypted
+          # - name: searxng
           - name: smartctl-exporter
           - name: smtp-relay
           - name: sonarr
           - name: speedtest-exporter
-          - name: syncthing
+          # - name: syncthing
           - name: system-upgrade
           - name: time-slicing-config
           - name: watchyourlan
