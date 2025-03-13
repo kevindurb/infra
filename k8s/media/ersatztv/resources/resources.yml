@@ -37,7 +37,7 @@ spec:
             path: /dev/dri
       containers:
         - name: ersatztv
-          image: docker.io/jasongdove/ersatztv:v25.1.0-nvidia
+          image: docker.io/jasongdove/ersatztv:v25.1.0-nvidia@sha256:686c3b18dada18f73aa2c1fcca90e46f317abfe364d165e6886396ac2cfd115b
           resources:
             requests:
               memory: 100M
