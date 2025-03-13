@@ -26,7 +26,7 @@ spec:
           volumes:
             - name: backup-cert
               persistentVolumeClaim:
-                claimName: backup-cert
+                claimName: backup-cert-new
           restartPolicy: OnFailure
           serviceAccountName: backup-service-account
           securityContext:
