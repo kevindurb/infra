@@ -63,11 +63,11 @@ spec:
   selector:
     matchLabels: *labels
   template:
-    nodeSelector:
-      kubernetes.io/hostname: stack-agent-02
     metadata:
       labels: *labels
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: stack-agent-02
       volumes:
         - name: new-volume
           persistentVolumeClaim:
