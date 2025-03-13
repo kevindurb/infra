@@ -22,7 +22,7 @@ spec:
       volumes:
         - name: volume
           persistentVolumeClaim:
-            claimName: volume
+            claimName: new-volume
       containers:
         - name: actual-budget
           image: ghcr.io/actualbudget/actual-server:25.3.1@sha256:58fecd9088b73ffe402450f51eff488036cdc8ca570650be38ad2bbabbfe193b
