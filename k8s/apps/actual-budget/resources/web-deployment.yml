@@ -57,7 +57,7 @@ metadata:
   labels: &labels
     app.kubernetes.io/component: test
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate
   selector:
