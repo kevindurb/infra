@@ -21,22 +21,3 @@ spec:
   resources:
     requests:
       storage: 1G
-
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: my-pod
-spec:
-  nodeName: stack-agent-02
-  volumes:
-    - name: new-volume
-      persistentVolumeClaim:
-        claimName: new-volume
-  containers:
-    - name: my-container
-      image: busybox
-      command: ['sleep', '3600']
-      volumeMounts:
-        - name: new-volume
-          mountPath: /mnt/new-volume
