@@ -42,6 +42,8 @@ spec:
               value: America/Denver
             - name: OAUTH2_PROXY_OIDC_ISSUER_URL
               value: http://pocket-id-web-service.auth
+            - name: OAUTH2_PROXY_INSECURE_OIDC_SKIP_ISSUER_VERIFICATION
+              value: 'true'
             - name: OAUTH2_PROXY_PROVIDER
               value: oidc
             - name: OAUTH2_PROXY_SCOPE
