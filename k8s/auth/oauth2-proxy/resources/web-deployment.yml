@@ -41,7 +41,7 @@ spec:
             - name: TZ
               value: America/Denver
             - name: OAUTH2_PROXY_OIDC_ISSUER_URL
-              value: https://pass.durbin.casa
+              value: http://pocket-id-web-service.auth
             - name: OAUTH2_PROXY_PROVIDER
               value: oidc
             - name: OAUTH2_PROXY_SCOPE
