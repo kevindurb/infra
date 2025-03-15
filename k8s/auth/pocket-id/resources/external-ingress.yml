@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: external
   rules:
-    - host: &host pocket-id.durbin.casa
+    - host: &host pass.durbin.casa
       http:
         paths:
           - pathType: Prefix
