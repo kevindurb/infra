@@ -31,7 +31,7 @@ spec:
             claimName: nfs-media
       containers:
         - name: jellyfin
-          image: ghcr.io/jellyfin/jellyfin:10.10.4@sha256:ea8f8bb0151dcdf6f1aa3669f457a463c68cc13f3e55bb2a2f16be55e86550e7
+          image: ghcr.io/jellyfin/jellyfin:10.10.6@sha256:2aa67ae3eff5384ade5a5675a61ca487e9e1a510312289ac80076837ebeda8c8
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
