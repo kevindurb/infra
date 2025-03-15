@@ -17,6 +17,10 @@ spec:
     metadata:
       labels: *labels
     spec:
+      dnsPolicy: None
+      dnsConfig:
+        nameservers:
+          - 192.168.50.100
       containers:
         - name: oauth2-proxy
           image: quay.io/oauth2-proxy/oauth2-proxy:v7.8.1@sha256:d62e2d81c6f5048f652f67c302083be1272c181b971fad80e5a30ebe2b8b75d8
@@ -42,6 +46,8 @@ spec:
               value: America/Denver
             - name: OAUTH2_PROXY_OIDC_ISSUER_URL
               value: https://pass.durbin.casa
+            - name: OAUTH2_PROXY_INSECURE_OIDC_SKIP_ISSUER_VERIFICATION
+              value: 'true'
             - name: OAUTH2_PROXY_PROVIDER
               value: oidc
             - name: OAUTH2_PROXY_SCOPE

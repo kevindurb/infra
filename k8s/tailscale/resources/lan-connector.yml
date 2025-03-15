@@ -7,21 +7,3 @@ spec:
   exitNode: true
   subnetRouter:
     advertiseRoutes: ['192.168.0.0/16']
-
----
-apiVersion: tailscale.com/v1alpha1
-kind: Connector
-metadata:
-  name: k8s-services
-spec:
-  subnetRouter:
-    advertiseRoutes: ['10.43.0.0/16']
-
----
-apiVersion: tailscale.com/v1alpha1
-kind: Connector
-metadata:
-  name: k8s-pods
-spec:
-  subnetRouter:
-    advertiseRoutes: ['10.42.0.0/16']
