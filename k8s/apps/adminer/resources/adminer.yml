@@ -14,7 +14,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: adminer
-          image: docker.io/library/adminer:4.8.1@sha256:34d37131366c5aa84e1693dbed48593ed6f95fb450b576c1a7a59d3a9c9e8802
+          image: docker.io/library/adminer:5.0.6@sha256:82b68b3aad528d09d66ea4cb6930dbc5c8f44317a6bd9d952dcfb99ab00ae601
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
