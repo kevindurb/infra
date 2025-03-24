@@ -23,7 +23,7 @@ spec:
           - name: healthchecks
           - name: home-assistant
           - name: local-path-provisioner
-          - name: makemkv
+          # - name: makemkv
           # - name: manyfold
           - name: mealie
           - name: metallb
@@ -46,7 +46,7 @@ spec:
           - name: system-upgrade
           - name: time-slicing-config
           # - name: watchyourlan
-          - name: zigbee2mqtt
+          # - name: zigbee2mqtt
   template:
     metadata:
       name: '{{ .name }}'
