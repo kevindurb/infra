@@ -28,6 +28,7 @@ spec:
             default: false
             controllerValue: k8s.io/internal-ingress-nginx
           admissionWebhooks:
+            enabled: false
             objectSelector:
               matchExpressions:
                 - key: ingress-class
@@ -73,6 +74,7 @@ spec:
             default: false
             controllerValue: k8s.io/external-ingress-nginx
           admissionWebhooks:
+            enabled: false
             objectSelector:
               matchExpressions:
                 - key: ingress-class
