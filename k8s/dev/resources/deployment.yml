@@ -21,7 +21,7 @@ spec:
             claimName: volume
       containers:
         - name: dev
-          image: quay.io/fedora/fedora:42@sha256:da2248995eec93fd18fc4bf13e637c1a8ada4d1c569cd5811da87d4a12a8989b
+          image: quay.io/fedora/fedora:43@sha256:ec3c28a9a46c9ea7a812b5ac2b25198b8550a1ca09c2f4411079bd8dc30662e9
           command: ['/bin/bash', '-c', '--']
           args: ['while true; do sleep 30; done;']
           securityContext:
