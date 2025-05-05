@@ -27,7 +27,7 @@ spec:
           emptyDir: {}
       containers:
         - name: romm-mariadb
-          image: docker.io/library/mariadb:11.6@sha256:a9547599cd87d7242435aea6fda22a9d83e2c06d16c658ef70d2868b3d3f6a80
+          image: docker.io/library/mariadb:11.7@sha256:11706a6fd276c2eada52d0d69b1a2aa1f1484cbe78137678e02cca8f7a0ae502
           resources:
             requests:
               memory: 100M
