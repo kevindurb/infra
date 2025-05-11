@@ -26,7 +26,7 @@ spec:
             claimName: nfs-media
       containers:
         - name: calibre-web
-          image: ghcr.io/linuxserver/calibre-web:0.6.24@sha256:8b2561c1db5c1513db21d1d864ce06da85a5ef368c632957371d24c9807d4361
+          image: ghcr.io/linuxserver/calibre-web:0.6.24@sha256:f77e9bab2266b6e1ce95a31388435c9eb961b45465065f625a692ace589e680f
           securityContext:
             privileged: false
           resources:
