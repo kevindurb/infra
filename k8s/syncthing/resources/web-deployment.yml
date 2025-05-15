@@ -29,7 +29,7 @@ spec:
             claimName: nfs-media
       containers:
         - name: syncthing
-          image: docker.io/syncthing/syncthing:1.29.2@sha256:3f5c9776aac65e92a1c7d49f3443c35e4da92ae0d8e40308af6b7fae6e9b301a
+          image: docker.io/syncthing/syncthing:1.29.6@sha256:82e1abb0307008263b8287813a4367efee9db4f877759f8d41f0485ce2658e90
           command: [/bin/syncthing]
           resources:
             requests:
