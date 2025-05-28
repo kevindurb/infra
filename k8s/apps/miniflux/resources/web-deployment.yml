@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: miniflux
-          image: ghcr.io/miniflux/miniflux:2.2.5-distroless@sha256:2d566eddfe492cab757d1e9d8c92d083b3cab76c000e52addc707a48c96b993c
+          image: ghcr.io/miniflux/miniflux:2.2.9-distroless@sha256:d385f4678376ad1e20971b8e4018153423926423128cc66b3268b71901948a7b
           livenessProbe:
             httpGet:
               path: /healthcheck
