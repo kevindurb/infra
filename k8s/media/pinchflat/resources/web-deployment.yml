@@ -32,7 +32,7 @@ spec:
             claimName: nfs-media
       containers:
         - name: pinchflat
-          image: ghcr.io/kieraneglin/pinchflat:v2025.1.17@sha256:40de806237be4414725cb2dfda5d73f69617aaa9479b11643d055e0e7362f082
+          image: ghcr.io/kieraneglin/pinchflat:v2025.1.27@sha256:ae9680df862b62b816b3f2c97c6691e3ed57d8b9a7eeb2e2a91126bfd4df8ca4
           resources:
             requests:
               memory: 100M
