@@ -124,3 +124,27 @@ spec:
     - name: rpcbind-udp
       port: 111
       protocol: UDP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: media-lb
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.50.43
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/component: media
+  ports:
+    - name: nfs
+      port: 2049
+    - name: nfs-udp
+      port: 2049
+      protocol: UDP
+
+    - name: rpcbind
+      port: 111
+    - name: rpcbind-udp
+      port: 111
+      protocol: UDP
