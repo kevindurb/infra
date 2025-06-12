@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://helm.ngc.nvidia.com/nvidia
-    targetRevision: v24.9.1
+    targetRevision: v25.3.1
     chart: gpu-operator
     helm:
       valuesObject:
