@@ -15,7 +15,7 @@ spec:
             claimName: volume
       containers:
         - name: open-webui
-          image: ghcr.io/open-webui/open-webui:v0.5.18@sha256:e774a5e695890b990ec2aa2f83ff52ff41d1f3fa33df11207d2418a2bc89ac63
+          image: ghcr.io/open-webui/open-webui:v0.6.15@sha256:fda936056184035a71a9ad5ff3721530ff061f16bc3907efb33a3201ba87ccfe
           resources:
             requests:
               memory: 500M
