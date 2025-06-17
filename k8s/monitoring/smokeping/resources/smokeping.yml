@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       containers:
-        - image: lscr.io/linuxserver/smokeping@sha256:c09a9babd02a26301dc12561dcba6d5ec5243afc3e8b91564c56c2b01c39c5a6
+        - image: lscr.io/linuxserver/smokeping@sha256:a4fb81b607a5085d0cfc80ea040543b022fcdaf14ee6ba05d0cbdb7009980231
           name: smokeping
           resources:
             requests:
