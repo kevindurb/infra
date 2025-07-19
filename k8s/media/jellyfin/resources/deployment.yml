@@ -50,7 +50,7 @@ spec:
             - name: web
               containerPort: 8096
         - name: zap2xml
-          image: shuaiscott/zap2xml:latest@sha256:ffcb45211ac8f2eeaa7e7b323625d6261ee8e223e0169f082cd2101a9b77317f
+          image: shuaiscott/zap2xml:latest@sha256:b0376c35ec9c98382c3541b86bfc6602507d9aad257b6b96d2c0debc57685b1b
           volumeMounts:
             - name: config-volume
               mountPath: /data
