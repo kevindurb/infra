@@ -25,7 +25,7 @@ spec:
             claimName: new-volume
       containers:
         - name: actual-budget
-          image: ghcr.io/actualbudget/actual-server:25.3.1@sha256:58fecd9088b73ffe402450f51eff488036cdc8ca570650be38ad2bbabbfe193b
+          image: ghcr.io/actualbudget/actual-server:25.11.0@sha256:8f72d73e68958566850325c1f9fe780a4477340979969bd6979649dc519723ab
           resources:
             requests:
               memory: 100M
