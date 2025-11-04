@@ -25,7 +25,7 @@ spec:
             secretName: alertmanager-pushover-credentials
       containers:
         - name: alertmanager
-          image: docker.io/prom/alertmanager@sha256:d5155cfac40a6d9250ffc97c19db2c5e190c7bc57c6b67125c94903358f8c7d8
+          image: docker.io/prom/alertmanager@sha256:88743b63b3e09ea6e31e140ced5bf45f4a8e82c617c2a963f78841f4995ad1d7
           resources:
             requests:
               memory: 50M
