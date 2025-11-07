@@ -14,7 +14,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:2025.1.0@sha256:3247f3ef49eda23244b8aa5583f82b7c3880b0d057e1172d0e818f5e678d9f27
+          image: cloudflare/cloudflared:2025.11.1@sha256:89ee50efb1e9cb2ae30281a8a404fed95eb8f02f0a972617526f8c5b417acae2
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
