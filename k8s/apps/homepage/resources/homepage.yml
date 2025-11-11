@@ -26,7 +26,7 @@ spec:
           emptyDir: {}
       containers:
         - name: homepage
-          image: ghcr.io/gethomepage/homepage:v0.10.9@sha256:b6d732817572f9af99ec168b10641b8f7820f30cfa5a5cc5c68f1e291804bec8
+          image: ghcr.io/gethomepage/homepage:v1.7.0@sha256:b6ac42c31845ea7c862d71451c16413a6284430d8ff08e16ad791f42718a7c71
           securityContext:
             privileged: false
             allowPrivilegeEscalation: false
