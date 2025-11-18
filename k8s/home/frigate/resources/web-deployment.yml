@@ -45,7 +45,7 @@ spec:
             path: /dev/dri
       containers:
         - name: frigate
-          image: ghcr.io/blakeblackshear/frigate:0.14.1-tensorrt
+          image: ghcr.io/blakeblackshear/frigate:0.14.1-tensorrt@sha256:e50d58f53a3e78d7551a73ca9ee5858ece714fe568bbf5fd06a8560494da9048
           resources:
             requests:
               memory: 100M
