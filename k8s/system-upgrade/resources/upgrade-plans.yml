@@ -15,7 +15,7 @@ spec:
           - 'true'
   serviceAccountName: system-upgrade
   upgrade:
-    image: rancher/k3s-upgrade:v1.32.0-k3s1@sha256:7b8ea59ba830d3dd38ad89161c3c0f51c2bd2cd98a52e573bca53be59519100c
+    image: rancher/k3s-upgrade:v1.32.10-k3s1@sha256:7664c3a69e8bd58b2bd9d0a8f14880e2ee6d332a10a37856f4790b0838023762
   channel: https://update.k3s.io/v1-release/channels/stable
 
 ---
@@ -35,8 +35,8 @@ spec:
     args:
       - prepare
       - server-plan
-    image: rancher/k3s-upgrade:v1.32.0-k3s1@sha256:7b8ea59ba830d3dd38ad89161c3c0f51c2bd2cd98a52e573bca53be59519100c
+    image: rancher/k3s-upgrade:v1.32.10-k3s1@sha256:7664c3a69e8bd58b2bd9d0a8f14880e2ee6d332a10a37856f4790b0838023762
   serviceAccountName: system-upgrade
   upgrade:
-    image: rancher/k3s-upgrade:v1.32.0-k3s1@sha256:7b8ea59ba830d3dd38ad89161c3c0f51c2bd2cd98a52e573bca53be59519100c
+    image: rancher/k3s-upgrade:v1.32.10-k3s1@sha256:7664c3a69e8bd58b2bd9d0a8f14880e2ee6d332a10a37856f4790b0838023762
   channel: https://update.k3s.io/v1-release/channels/stable
