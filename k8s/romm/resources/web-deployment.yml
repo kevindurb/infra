@@ -36,7 +36,7 @@ spec:
             claimName: resources-volume
       containers:
         - name: romm
-          image: ghcr.io/rommapp/romm:3.7.2@sha256:b3d593308f2d79a47c63219c20fdad1d6f17de2dee97cbad2aa748ef1d279484
+          image: ghcr.io/rommapp/romm:3.10.3@sha256:f28660570b57a7032bc752724bebbc86828916211356b1d6110e03b139b807cf
           resources:
             requests:
               memory: 100M
