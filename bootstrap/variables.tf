@@ -12,7 +12,7 @@ variable "state_bucket_name" {
 
 variable "github_oidc_subject" {
   description = <<-EOT
-    Exact token.actions.githubusercontent.com:sub allowed to assume the CI roles.
+    Exact token.actions.githubusercontent.com:sub for a push to main.
 
     Repositories created after 2026-07-15 always use GitHub's immutable subject
     format, which embeds the owner and repository IDs:
@@ -41,6 +41,23 @@ variable "github_oidc_pull_request_subject" {
 
   validation {
     condition     = !can(regex("[*?]", var.github_oidc_pull_request_subject))
+    error_message = "The OIDC subject must be an exact match; wildcards are not allowed in this public repository."
+  }
+}
+
+variable "github_oidc_environment_subject" {
+  description = <<-EOT
+    Exact token.actions.githubusercontent.com:sub for the apply job, which declares
+    `environment: production`. Jobs that target an environment get an
+    environment-qualified subject instead of a ref-qualified one, so this is the value
+    tf_apply actually presents. Branch restriction comes from the environment's
+    deployment branch policy (main only) plus its required reviewers.
+  EOT
+  type        = string
+  default     = "repo:kevindurb@2565006/infra@1446549993:environment:production"
+
+  validation {
+    condition     = !can(regex("[*?]", var.github_oidc_environment_subject))
     error_message = "The OIDC subject must be an exact match; wildcards are not allowed in this public repository."
   }
 }

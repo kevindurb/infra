@@ -36,9 +36,14 @@ public.
 
 `tf_plan` also accepts the exact same-repo PR subject
 (`repo:kevindurb@2565006/infra@1446549993:pull_request`) because the plan job runs on
-pull requests; fork PRs are skipped by the workflow. `tf_apply` accepts only pushes to
-`main`. Both are behind the `production` environment with required reviewers; that and
-the trust policies are the controls, not a per-resource IAM policy.
+pull requests; fork PRs are skipped by the workflow.
+
+`tf_apply` is different: jobs that declare a GitHub environment receive an
+**environment-qualified** subject, so the role trusts exactly
+`repo:kevindurb@2565006/infra@1446549993:environment:production`. The main-only
+restriction for apply comes from the `production` environment's deployment branch policy,
+together with its required reviewers — not from the `sub` claim. Both are exact matches;
+no wildcard appears anywhere.
 
 `tf_plan` can `GetObject` and `ListBucket`, so plans run with `-lock=false`; `tf_apply`
 can `GetObject`, `PutObject` and `DeleteObject` on the state prefix, the last for the

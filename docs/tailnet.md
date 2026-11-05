@@ -50,13 +50,15 @@ Local state, then `terraform init -migrate-state` into the bucket it creates. No
 - `aws_iam_role.tf_apply` — read/write on the state prefix, including `DeleteObject`
   for `*.tflock`.
 
-Both roles pin `sub` to the exact immutable subject for `main`
-(`repo:kevindurb@2565006/infra@1446549993:ref:refs/heads/main`), never the wildcard,
-because the repo is public. GitHub embeds the owner and repository IDs for repositories
-created after 2026-07-15, so the name-only form never matches and there is no opt-out.
-`tf_plan` also accepts the exact same-repo `pull_request` subject, since plan jobs run on
-PRs; `tf_apply` accepts only pushes to `main`. The apply role also sits behind the
-`production` environment with required reviewers.
+Both roles pin `sub` with `StringEquals`, never the wildcard, because the repo is public.
+GitHub embeds the owner and repository IDs for repositories created after 2026-07-15, so
+the name-only form never matches and there is no opt-out. `tf_plan` trusts the exact
+subjects for a push to `main` and for same-repo pull requests, since plan jobs run on both.
+`tf_apply` runs under the `production` environment, and GitHub issues an
+environment-qualified subject to such jobs, so it trusts exactly
+`repo:kevindurb@2565006/infra@1446549993:environment:production`. The main-only restriction
+for apply is enforced by the environment's deployment branch policy and its required
+reviewers, not by the `sub` claim.
 
 ## `tailnet/`
 

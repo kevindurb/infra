@@ -12,11 +12,12 @@ resource "aws_iam_openid_connect_provider" "github" {
 }
 
 locals {
-  # tf_plan also accepts same-repo pull requests because the plan job runs on
-  # them; tf_apply is branch-push only.
+  # tf_plan accepts pushes to main and same-repo pull requests, because the plan
+  # job runs on both. tf_apply runs under the `production` environment, so its
+  # token carries an environment-qualified subject instead of a ref.
   github_oidc_subjects = {
     plan  = [var.github_oidc_subject, var.github_oidc_pull_request_subject]
-    apply = [var.github_oidc_subject]
+    apply = [var.github_oidc_environment_subject]
   }
 }
 
