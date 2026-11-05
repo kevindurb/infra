@@ -1,7 +1,8 @@
 # Moving the tailnet config into `infra`
 
-Status: **scaffolded**. The repo structure exists; `bootstrap/` and `tailnet/` are empty
-apart from `versions.tf`. This document is the design record and the rollout order.
+Status: **implemented for the policy file**. `bootstrap/` is applied and `tailnet/`
+imports the existing `policy.hujson`. Settings, DNS, and Services are deferred. This
+document is the design record and the rollout order.
 
 ## Why this repo
 
@@ -10,8 +11,10 @@ whole tailnet — the routers, the travel lab, the workstation, the CI runners �
 than the cluster. It was applied by its own workflow and had no Argo CD involvement, so
 nothing tied it to the cluster repo except history.
 
-Terraform also covers the parts of the tailnet that existed only in the admin console
-(settings, DNS, Services) and gives us a `plan` that detects console drift.
+Terraform can later cover the parts of the tailnet that exist only in the admin console
+(settings, DNS, Services) and give us a `plan` that detects console drift. The first
+change is deliberately limited to the policy file, which is the artifact that had two
+writers.
 
 ## Decisions
 
@@ -19,9 +22,10 @@ Terraform also covers the parts of the tailnet that existed only in the admin co
 | --- | --- |
 | Repo | `kevindurb/infra`, public. The old repo lives on as `kevindurb/old-k8s-infra`. |
 | Layout | Root modules at the top level, `modules/` reserved. No `stacks/` — Terraform Stacks is a distinct HCP Terraform feature. No `envs/prod/` — there is one environment. |
-| Tool | Terraform (the whole tailnet, not just the ACL), replacing `gitops-acl-action`. |
+| Tool | Terraform for `policy.hujson`, replacing `gitops-acl-action`. Settings, DNS and Services are deferred. |
+| Initial scope | `policy.hujson` only. Settings, DNS and Services stay in the admin console until the policy import is clean. |
 | State | AWS S3 `kevindurb-tfstate`, `use_lockfile = true`, versioning on. |
-| Auth | GitHub OIDC → AWS role for state; Tailscale **federated identity** for the provider. No stored secrets. |
+| Auth | GitHub OIDC → AWS role for state; Tailscale **federated identities** for the provider (read-only plan, write apply). No stored secrets. |
 | Device tags | **Manual.** Out of scope. |
 | Tag-vocabulary drift check in `k8s` | **Deferred.** |
 
@@ -74,23 +78,30 @@ backend "s3" {
 
 Managed:
 
-- `tailscale_acl` — `policy.hujson`, moved verbatim from `k8s`.
-- `tailscale_tailnet_settings` — `acls_externally_managed_on`, `acls_external_link`,
-  `https_enabled`, `devices_key_duration_days`, `devices_auto_updates_on`,
-  `devices_approval_on`.
-- `tailscale_dns_configuration` — `magic_dns = false`, split DNS for
-  `*.beaver-cloud.ts.net` → `100.100.100.100` (matching what the router's dnsmasq already
-  forwards), `override_local_dns = false`, search paths.
-- `tailscale_service` — the hand-created Services only: `svc:travel-tv`,
-  `svc:travel-moonlight`, `svc:travel-jellyfin`. The operator publishes its own
-  Services (`svc:argocd` and friends) through VIPService CRs; leave those alone.
+- `tailscale_acl` — `policy.hujson`, moved verbatim from `k8s`. This is the only
+  resource in the root for now.
+
+Deferred until the policy import is clean:
+
+- `tailscale_tailnet_settings` — HTTPS certificates, device key lifetime, and the
+  external ACL management flag.
+- `tailscale_dns_configuration` — MagicDNS, NextDNS, and the live split-DNS routes.
+- `tailscale_service` — the hand-created Services (`svc:travel-tv`,
+  `svc:travel-moonlight`, `svc:travel-jellyfin`). The operator publishes its own
+  Services (`svc:argocd` and friends) through VIPService CRs; those stay out of scope.
+
+The plan identity needs `policy_file:read`; the apply identity needs `policy_file`. The
+apply identity's OIDC subject is pinned to the `production` environment; the plan
+identity is read-only and may trust the repository's subjects directly.
 
 ## Rollout order
 
 1. `bootstrap/` locally; migrate its state into the bucket; create the Tailscale
-   federated identity; set `AWS_*` repository variables and the `production` environment.
-2. Add `tailnet/` with everything **imported**: settings → DNS → services → ACL, running
-   `plan` until it is empty. Do not arm apply-on-main before this is clean.
+   federated identities; set `AWS_*` and `TAILSCALE_*` repository variables and the
+   `production` environment.
+2. Add `tailnet/` with the **policy imported** (this change). The import block in
+   `imports.tf` adopts the existing ACL. Do not merge until the plan shows no resource
+   changes; settings, DNS and Services come later.
 3. Same change window, in `kevindurb/k8s`: delete `tailscale/policy.hujson` and
    `.github/workflows/tailscale.yml`, and repoint `AGENTS.md:85`,
    `docs/pr-agent.md:11,24`, `docs/tsidp-to-pocket-id.md:70`. Two writers on one policy
@@ -98,9 +109,11 @@ Managed:
 4. Split `docs/tailscale-acl-hardening.md` in `k8s`: the living target model (groups,
    tags, grants, appendix) belongs here; the dated findings and rollout history stay in
    `k8s`.
-5. Arm apply-on-main.
-6. **Last**, set `acls_externally_managed_on = true`, so the console editor remains
-   break-glass until everything has applied cleanly.
+5. After the plan is clean, merge. The `production` environment's required reviewers
+   gate the apply.
+6. After the import applies cleanly, set `acls_externally_managed_on` in the admin
+   console (it is not managed here yet), so the console editor remains break-glass
+   until then.
 
 ## Verification
 
