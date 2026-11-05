@@ -1,0 +1,107 @@
+---
+name: Terraform
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: terraform-infra
+  cancel-in-progress: false
+
+env:
+  TF_IN_AUTOMATION: "true"
+  TF_INPUT: "false"
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_wrapper: false
+
+      - name: Format
+        run: terraform fmt -check -recursive
+
+      - name: Validate
+        run: |
+          set -euo pipefail
+          for root in bootstrap tailnet; do
+            ( cd "$root" && terraform init -backend=false -input=false >/dev/null && terraform validate )
+          done
+
+  plan:
+    name: Plan (${{ matrix.root }})
+    needs: check
+    # Fork PRs get no variables and no OIDC token, so they cannot authenticate.
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        root: [tailnet]
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_PLAN_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_wrapper: false
+
+      - name: Init
+        working-directory: ${{ matrix.root }}
+        run: terraform init -input=false
+
+      # The plan role cannot write the .tflock object, so plans run unlocked.
+      - name: Plan
+        working-directory: ${{ matrix.root }}
+        run: terraform plan -input=false -lock=false
+
+  apply:
+    name: Apply (${{ matrix.root }})
+    needs: plan
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        root: [tailnet]
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_APPLY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_wrapper: false
+
+      - name: Apply
+        working-directory: ${{ matrix.root }}
+        run: |
+          terraform init -input=false
+          terraform apply -input=false -auto-approve
