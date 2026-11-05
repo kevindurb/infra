@@ -10,6 +10,42 @@ variable "state_bucket_name" {
   default     = "kevindurb-tfstate"
 }
 
+variable "k8s_backups_bucket_name" {
+  description = <<-EOT
+    S3 bucket managed by the k8s-backups root. Must match var.bucket_name in
+    k8s-backups/.
+  EOT
+  type        = string
+  default     = "kevindurb-k8s-backups"
+}
+
+variable "k8s_backups_restic_user_name" {
+  description = <<-EOT
+    IAM user managed by the k8s-backups root. Must match var.restic_user_name
+    in k8s-backups/.
+  EOT
+  type        = string
+  default     = "k8s-backups-restic"
+}
+
+variable "k8s_backups_restic_boundary_name" {
+  description = <<-EOT
+    Permissions boundary for the restic user. Created here so the CI role
+    cannot change the ceiling on the user's permissions.
+  EOT
+  type        = string
+  default     = "k8s-backups-restic-boundary"
+}
+
+variable "k8s_backups_ssm_parameter_name" {
+  description = <<-EOT
+    SSM SecureString written by the k8s-backups key script. Must match
+    var.restic_ssm_parameter_name in k8s-backups/.
+  EOT
+  type        = string
+  default     = "/k8s-backups/volsync/restic/s3-access-key"
+}
+
 variable "github_oidc_subject" {
   description = <<-EOT
     Exact token.actions.githubusercontent.com:sub for a push to main.

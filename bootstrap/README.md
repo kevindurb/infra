@@ -3,8 +3,8 @@
 The layer that makes every other root possible: the state bucket, the GitHub OIDC
 provider, and the roles CI assumes.
 
-Run by hand, locally, exactly once. It is deliberately **not** in CI — it creates the
-credentials CI would need to run it.
+Run by hand, locally, when the credential fabric changes. It is deliberately **not** in
+CI — it creates the credentials CI would need to run it.
 
 ## What it contains
 
@@ -15,6 +15,8 @@ credentials CI would need to run it.
 | `aws_iam_role.tf_plan` | `tf_plan` |
 | `aws_iam_role.tf_apply` | `tf_apply` |
 | `aws_iam_role_policy.tf_plan` / `.tf_apply` | `tf_plan` / `tf_apply` (inline) |
+| `aws_iam_policy.k8s_backups_restic_boundary` | `k8s-backups-restic-boundary` |
+| `aws_iam_role_policy.tf_plan_k8s_backups` / `.tf_apply_k8s_backups` | inline additions on `tf_plan` / `tf_apply` |
 
 The bucket has versioning on (it is how you recover from a truncated state), SSE-S3,
 public access blocked, and a TLS-only bucket policy. `prevent_destroy` plus
@@ -64,6 +66,23 @@ terraform import \
 `thumbprint_list` is intentionally not set: GitHub's chain uses a root CA AWS trusts, so
 no thumbprint is required, and omitting it keeps an imported provider from diffing
 forever.
+
+## Kubernetes backups
+
+The `k8s-backups/` root owns the S3 bucket, the `k8s-backups-restic` IAM user, its
+inline S3 policy, and the `terraform_data` that creates the access key. This root owns
+the two pieces the CI role must not be able to change:
+
+- `aws_iam_policy.k8s_backups_restic_boundary` caps the restic user at the
+  `volsync/` prefix of `kevindurb-k8s-backups`.
+- The additional inline policies on `tf_plan` / `tf_apply` give CI only the bucket,
+  user and SSM permissions needed to manage that root.
+
+Apply this root before `k8s-backups/`: the boundary must exist before the user is
+created, and the CI role must have the new permissions before CI can plan the bucket.
+The access key is created by `k8s-backups/scripts/ensure-restic-key.sh` and written
+directly to SSM, so it never enters Terraform state. The plan role deliberately has no
+SSM access.
 
 ## State
 

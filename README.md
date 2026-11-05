@@ -12,6 +12,7 @@ The cluster itself is reconciled by Argo CD from
 | --- | --- | --- | --- |
 | `bootstrap/` | state bucket, GitHub OIDC provider, CI roles | `bootstrap/terraform.tfstate`, in the bucket it creates | by hand, locally |
 | `tailnet/` | Tailscale policy file, tailnet settings, DNS, Services | `tailnet/terraform.tfstate` | GitHub Actions |
+| `k8s-backups/` | S3 bucket, IAM user and access key for restic/VolSync PVC backups | `k8s-backups/terraform.tfstate` | GitHub Actions |
 
 Root modules sit at the top level and are **never nested** — state is per-directory, so a
 root inside a root means `apply` from the parent silently does nothing. `modules/` is
@@ -40,8 +41,9 @@ credentials as usual and either `TAILSCALE_API_KEY`, or both
 `TAILSCALE_OAUTH_CLIENT_ID` + `TAILSCALE_AUDIENCE` with a
 `TAILSCALE_IDENTITY_TOKEN` that the provider can exchange.
 
-`bootstrap/` is run by hand exactly once and deliberately is not in CI: it creates the
-bucket that holds every other root's state, and the roles CI assumes.
+`bootstrap/` is run by hand when the credential fabric changes and deliberately is not
+in CI: it creates the bucket that holds every other root's state, the roles CI assumes,
+and the boundary that caps the backup identity.
 
 ## Repository variables
 
@@ -69,3 +71,5 @@ still console-managed.
 
 - [`docs/tailnet.md`](docs/tailnet.md) — why the tailnet config lives here, what moved,
   and the rollout order.
+- [`k8s-backups/README.md`](k8s-backups/README.md) — the restic/VolSync bucket, key
+  storage, rotation, and restore notes.

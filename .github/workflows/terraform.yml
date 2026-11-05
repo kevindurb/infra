@@ -35,7 +35,7 @@ jobs:
       - name: Validate
         run: |
           set -euo pipefail
-          for root in bootstrap tailnet; do
+          for root in bootstrap tailnet k8s-backups; do
             ( cd "$root" && terraform init -backend=false -input=false >/dev/null && terraform validate )
           done
 
@@ -59,7 +59,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        root: [tailnet]
+        root: [tailnet, k8s-backups]
     steps:
       - uses: actions/checkout@v6
 
@@ -153,7 +153,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        root: [tailnet]
+        root: [tailnet, k8s-backups]
     steps:
       - uses: actions/checkout@v6
 
