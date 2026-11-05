@@ -49,30 +49,8 @@ forever.
 
 ## State
 
-There is no `backend` block here on purpose: the bucket cannot hold the state of the run
-that creates it. `backend.tf` records where the block goes. The one-time sequence:
-
-```sh
-cd bootstrap
-
-# 1. Local state. This creates the bucket, the OIDC provider and the roles.
-terraform init
-terraform plan
-terraform apply
-
-# 2. Add the backend block below to backend.tf (replace the commented one).
-
-# 3. Move the local state into the bucket that now exists.
-terraform init -migrate-state      # answer yes
-
-# 4. Confirm the remote state works and the plan is empty.
-terraform plan
-
-# 5. Only after step 4 passes, remove the pre-migration backup if present.
-rm -f terraform.tfstate.backup
-```
-
-The block for step 2:
+State lives in `s3://kevindurb-tfstate/bootstrap/terraform.tfstate`, configured in
+`backend.tf`:
 
 ```hcl
 backend "s3" {
@@ -84,9 +62,37 @@ backend "s3" {
 }
 ```
 
-After step 5, bootstrap's state lives in the bucket it manages and every later change to
-this root is a normal `terraform plan` / `terraform apply` from `bootstrap/`, using
-credentials that can read and write that bucket.
+`use_lockfile` needs Terraform >= 1.11; there is no DynamoDB table. The bucket is
+versioned, so the previous state is recoverable from S3 object versions.
+
+The backend block could not exist for the first apply: the bucket cannot hold the state
+of the run that creates it. That one-time migration has already been done. If the
+account or bucket is ever rebuilt from scratch, the sequence is:
+
+```sh
+cd bootstrap
+
+# 1. With no backend block: local state. Creates the bucket, the OIDC provider
+#    and the roles.
+terraform init
+terraform plan
+terraform apply
+
+# 2. Add the block above to backend.tf.
+
+# 3. Move the local state into the bucket that now exists.
+terraform init -migrate-state      # answer yes
+
+# 4. Confirm the remote state works and the plan is empty.
+terraform plan
+
+# 5. Only after step 4 passes, remove the pre-migration backup if present.
+rm -f terraform.tfstate.backup
+```
+
+After the migration, every change to this root is a normal `terraform plan` /
+`terraform apply` from `bootstrap/`, using credentials that can read and write the
+bucket.
 
 ## Outputs
 
