@@ -1,9 +1,3 @@
-locals {
-  # Exact-match subject: a wildcard here would let any branch, tag or pull
-  # request in this public repo assume the roles.
-  github_subject = "repo:${var.github_repository}:ref:refs/heads/${var.github_branch}"
-}
-
 resource "aws_iam_openid_connect_provider" "github" {
   url            = "https://token.actions.githubusercontent.com"
   client_id_list = ["sts.amazonaws.com"]
@@ -35,9 +29,12 @@ data "aws_iam_policy_document" "github_trust" {
     }
 
     condition {
+      # Exact match, never a wildcard: the repository is public. GitHub includes
+      # the immutable owner and repository IDs for repos created after
+      # 2026-07-15; see var.github_oidc_subject.
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = [local.github_subject]
+      values   = [var.github_oidc_subject]
     }
   }
 }
