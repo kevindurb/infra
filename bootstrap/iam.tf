@@ -11,7 +11,18 @@ resource "aws_iam_openid_connect_provider" "github" {
   }
 }
 
+locals {
+  # tf_plan also accepts same-repo pull requests because the plan job runs on
+  # them; tf_apply is branch-push only.
+  github_oidc_subjects = {
+    plan  = [var.github_oidc_subject, var.github_oidc_pull_request_subject]
+    apply = [var.github_oidc_subject]
+  }
+}
+
 data "aws_iam_policy_document" "github_trust" {
+  for_each = local.github_oidc_subjects
+
   statement {
     sid     = "GitHubActionsOIDC"
     effect  = "Allow"
@@ -29,12 +40,12 @@ data "aws_iam_policy_document" "github_trust" {
     }
 
     condition {
-      # Exact match, never a wildcard: the repository is public. GitHub includes
-      # the immutable owner and repository IDs for repos created after
-      # 2026-07-15; see var.github_oidc_subject.
+      # Exact matches, never a wildcard: the repository is public. GitHub
+      # includes the immutable owner and repository IDs for repos created
+      # after 2026-07-15; see var.github_oidc_subject.
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = [var.github_oidc_subject]
+      values   = each.value
     }
   }
 }
@@ -42,7 +53,7 @@ data "aws_iam_policy_document" "github_trust" {
 resource "aws_iam_role" "tf_plan" {
   name                 = "tf_plan"
   description          = "Read-only on the Terraform state bucket; assumed by plan jobs via GitHub OIDC."
-  assume_role_policy   = data.aws_iam_policy_document.github_trust.json
+  assume_role_policy   = data.aws_iam_policy_document.github_trust["plan"].json
   max_session_duration = 3600
 }
 
@@ -71,7 +82,7 @@ resource "aws_iam_role_policy" "tf_plan" {
 resource "aws_iam_role" "tf_apply" {
   name                 = "tf_apply"
   description          = "Read/write on the Terraform state bucket; assumed by apply jobs via GitHub OIDC."
-  assume_role_policy   = data.aws_iam_policy_document.github_trust.json
+  assume_role_policy   = data.aws_iam_policy_document.github_trust["apply"].json
   max_session_duration = 3600
 }
 

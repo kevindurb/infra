@@ -29,3 +29,18 @@ variable "github_oidc_subject" {
     error_message = "The OIDC subject must be an exact match; wildcards are not allowed in this public repository."
   }
 }
+
+variable "github_oidc_pull_request_subject" {
+  description = <<-EOT
+    Exact token.actions.githubusercontent.com:sub for pull requests opened from a
+    branch in this repository. The workflow skips fork PRs, so they never request
+    a token. Only the read-only tf_plan role trusts this subject.
+  EOT
+  type        = string
+  default     = "repo:kevindurb@2565006/infra@1446549993:pull_request"
+
+  validation {
+    condition     = !can(regex("[*?]", var.github_oidc_pull_request_subject))
+    error_message = "The OIDC subject must be an exact match; wildcards are not allowed in this public repository."
+  }
+}

@@ -31,9 +31,14 @@ repo:kevindurb@2565006/infra@1446549993:ref:refs/heads/main
 GitHub adds the owner and repository IDs for every repository created after
 2026-07-15 and there is no opt-out, so the name-only form
 (`repo:kevindurb/infra:...`) never matches. The IDs are public and immutable, which is
-stronger than names; the variable rejects `*` and `?`. Never use a wildcard — this repo is
-public. The apply role sits behind the `production` environment with required reviewers;
-that and the trust policy are the controls, not a per-resource IAM policy.
+stronger than names; the variables reject `*` and `?`. Never use a wildcard — this repo is
+public.
+
+`tf_plan` also accepts the exact same-repo PR subject
+(`repo:kevindurb@2565006/infra@1446549993:pull_request`) because the plan job runs on
+pull requests; fork PRs are skipped by the workflow. `tf_apply` accepts only pushes to
+`main`. Both are behind the `production` environment with required reviewers; that and
+the trust policies are the controls, not a per-resource IAM policy.
 
 `tf_plan` can `GetObject` and `ListBucket`, so plans run with `-lock=false`; `tf_apply`
 can `GetObject`, `PutObject` and `DeleteObject` on the state prefix, the last for the
