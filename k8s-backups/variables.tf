@@ -10,10 +10,10 @@ variable "bucket_name" {
     the volsync/ prefix so other backup types can share the bucket later.
 
     Must start with the terraform_s3_bucket_prefix used in bootstrap/ (default
-    kevindurb-), so the shared CI role can manage it.
+    kevindurb-infra-), so the shared CI role can manage it.
   EOT
   type        = string
-  default     = "kevindurb-k8s-backups"
+  default     = "kevindurb-infra-k8s-backups"
 }
 
 variable "terraform_path" {
@@ -22,7 +22,7 @@ variable "terraform_path" {
     in bootstrap/ so the CI role can manage this user and its policy.
   EOT
   type        = string
-  default     = "/terraform/"
+  default     = "/infra/"
 
   validation {
     condition     = can(regex("^/.+/$", var.terraform_path))
@@ -32,7 +32,7 @@ variable "terraform_path" {
 
 variable "restic_user_name" {
   description = <<-EOT
-    IAM user used by the VolSync restic movers. It lives under the /terraform/
+    IAM user used by the VolSync restic movers. It lives under the /infra/
     path so the shared CI roles can manage it.
   EOT
   type        = string
@@ -42,7 +42,7 @@ variable "restic_user_name" {
 variable "restic_boundary_name" {
   description = <<-EOT
     Permissions boundary attached to the restic user. It lives in this root
-    under the /terraform/ policy path, together with the rest of the identity.
+    under the /infra/ policy path, together with the rest of the identity.
   EOT
   type        = string
   default     = "k8s-backups-restic-boundary"
@@ -55,7 +55,7 @@ variable "restic_ssm_parameter_name" {
     never enters state.
   EOT
   type        = string
-  default     = "/terraform/k8s-backups/volsync/restic/s3-access-key"
+  default     = "/infra/k8s-backups/volsync/restic/s3-access-key"
 }
 
 variable "restic_key_version" {

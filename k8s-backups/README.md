@@ -4,11 +4,11 @@ Owns the S3 bucket and IAM identity used by VolSync's restic mover to back up
 Kubernetes PVCs. The bucket is intentionally generic: restic/VolSync data lives under
 `volsync/`, leaving room for other backup types later without another bucket.
 
-The restic user is `k8s-backups-restic`, under the `/terraform/` IAM path. It can read
-and write only `s3://kevindurb-k8s-backups/volsync/*`, and its effective permissions are
-capped by `k8s-backups-restic-boundary`, which lives in this root under the `/terraform/`
+The restic user is `k8s-backups-restic`, under the `/infra/` IAM path. It can read
+and write only `s3://kevindurb-infra-k8s-backups/volsync/*`, and its effective permissions are
+capped by `k8s-backups-restic-boundary`, which lives in this root under the `/infra/`
 policy path. The whole identity — user, inline policy, boundary, and key — is owned here;
-bootstrap only grants generic `/terraform/` capabilities.
+bootstrap only grants generic `/infra/` capabilities.
 
 ## State
 
@@ -24,14 +24,14 @@ Each PVC gets its own restic repository, because VolSync does not support shared
 repositories. The per-PVC path is:
 
 ```
-s3:s3.us-east-1.amazonaws.com/kevindurb-k8s-backups/volsync/<namespace>/<pvc>
+s3:s3.us-east-1.amazonaws.com/kevindurb-infra-k8s-backups/volsync/<namespace>/<pvc>
 ```
 
 The `restic_repository_prefix` output gives the part before `/<namespace>/<pvc>`.
 
-S3 bucket names are globally unique. If `kevindurb-k8s-backups` is unavailable, change
+S3 bucket names are globally unique. If `kevindurb-infra-k8s-backups` is unavailable, change
 `bucket_name` here. If the new name no longer starts with the
-`terraform_s3_bucket_prefix` used in `../bootstrap/` (default `kevindurb-`), update that
+`terraform_s3_bucket_prefix` used in `../bootstrap/` (default `kevindurb-infra-`), update that
 prefix too.
 
 ## Access key
@@ -39,7 +39,7 @@ prefix too.
 The canonical copy is the SSM SecureString:
 
 ```
-/terraform/k8s-backups/volsync/restic/s3-access-key
+/infra/k8s-backups/volsync/restic/s3-access-key
 ```
 
 Its value is JSON:
@@ -56,7 +56,7 @@ Read it with admin credentials:
 
 ```sh
 aws ssm get-parameter \
-  --name /terraform/k8s-backups/volsync/restic/s3-access-key \
+  --name /infra/k8s-backups/volsync/restic/s3-access-key \
   --with-decryption \
   --query Parameter.Value \
   --output text | jq .
@@ -92,7 +92,7 @@ with the same environment variables:
 
 ```sh
 IAM_USER=k8s-backups-restic \
-SSM_PARAM=/terraform/k8s-backups/volsync/restic/s3-access-key \
+SSM_PARAM=/infra/k8s-backups/volsync/restic/s3-access-key \
 REGION=us-east-1 \
 KEY_VER=1 \
 ./scripts/ensure-restic-key.sh
@@ -123,10 +123,10 @@ terraform apply -replace=terraform_data.restic_key
 The existing `tf_plan` / `tf_apply` roles get root-agnostic inline policies in
 `../bootstrap/terraform_workers.tf`:
 
-- Plan reads S3 bucket settings, IAM users under `/terraform/`, and IAM policies under
-  `/terraform/`. It has no SSM access.
-- Apply manages S3 buckets named `kevindurb-*`, IAM users and policies under
-  `/terraform/`, and SSM parameters under `/terraform/`. It has no object-level S3
+- Plan reads S3 bucket settings, IAM users under `/infra/`, and IAM policies under
+  `/infra/`. It has no SSM access.
+- Apply manages S3 buckets named `kevindurb-infra-*`, IAM users and policies under
+  `/infra/`, and SSM parameters under `/infra/`. It has no object-level S3
   permissions, so the CI role cannot delete backup data.
 - Apply can also change this root's permissions boundary, because the boundary now lives
   here rather than in bootstrap. The `production` environment and its required reviewers

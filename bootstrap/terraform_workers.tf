@@ -12,9 +12,8 @@ locals {
 }
 
 # These policies are deliberately root-agnostic. Roots keep their identities
-# under /terraform/, their buckets under the account prefix, and their
-# parameters under /terraform/, so bootstrap does not need a new policy for
-# every root.
+# under /infra/, their buckets under the account prefix, and their parameters
+# under /infra/, so bootstrap does not need a new policy for every root.
 
 data "aws_iam_policy_document" "tf_plan_terraform_workers" {
   statement {

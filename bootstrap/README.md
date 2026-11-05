@@ -72,16 +72,16 @@ The `tf_plan` / `tf_apply` roles include root-agnostic policies in
 `terraform_workers.tf`, so a new identity root does not need a bootstrap change:
 
 - Plan reads S3 bucket settings for buckets named with `terraform_s3_bucket_prefix`
-  (default `kevindurb-`), IAM users under `terraform_iam_user_path` (default
-  `/terraform/`), and IAM policies under `terraform_iam_policy_path` (default
-  `/terraform/`). It has no SSM access.
+  (default `kevindurb-infra-`), IAM users under `terraform_iam_user_path` (default
+  `/infra/`), and IAM policies under `terraform_iam_policy_path` (default
+  `/infra/`). It has no SSM access.
 - Apply can manage bucket settings for those S3 buckets, IAM users and policies under
   those paths, and SSM parameters under `terraform_ssm_parameter_path` (default
-  `/terraform/`). It has no object-level S3 permissions.
+  `/infra/`). It has no object-level S3 permissions.
 
 The `k8s-backups/` root follows these conventions: its restic user and boundary live
-under `/terraform/`, and its access-key parameter is
-`/terraform/k8s-backups/volsync/restic/s3-access-key`. The key is created by
+under `/infra/`, and its access-key parameter is
+`/infra/k8s-backups/volsync/restic/s3-access-key`. The key is created by
 `k8s-backups/scripts/ensure-restic-key.sh` and written directly to SSM, so it never
 enters Terraform state.
 

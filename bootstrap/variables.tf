@@ -17,7 +17,7 @@ variable "terraform_iam_user_path" {
     roots. Must start and end with /.
   EOT
   type        = string
-  default     = "/terraform/"
+  default     = "/infra/"
 
   validation {
     condition     = can(regex("^/.+/$", var.terraform_iam_user_path))
@@ -30,7 +30,7 @@ variable "terraform_iam_policy_path" {
     IAM path for policies managed by Terraform roots. Must start and end with /.
   EOT
   type        = string
-  default     = "/terraform/"
+  default     = "/infra/"
 
   validation {
     condition     = can(regex("^/.+/$", var.terraform_iam_policy_path))
@@ -44,7 +44,7 @@ variable "terraform_s3_bucket_prefix" {
     manage bucket settings for these buckets but has no object-level access.
   EOT
   type        = string
-  default     = "kevindurb-"
+  default     = "kevindurb-infra-"
 }
 
 variable "terraform_ssm_parameter_path" {
@@ -52,7 +52,7 @@ variable "terraform_ssm_parameter_path" {
     SSM parameter path for values managed by Terraform roots. Must start with /.
   EOT
   type        = string
-  default     = "/terraform/"
+  default     = "/infra/"
 
   validation {
     condition     = can(regex("^/.*$", var.terraform_ssm_parameter_path))
