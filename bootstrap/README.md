@@ -15,8 +15,7 @@ CI — it creates the credentials CI would need to run it.
 | `aws_iam_role.tf_plan` | `tf_plan` |
 | `aws_iam_role.tf_apply` | `tf_apply` |
 | `aws_iam_role_policy.tf_plan` / `.tf_apply` | `tf_plan` / `tf_apply` (inline) |
-| `aws_iam_policy.k8s_backups_restic_boundary` | `k8s-backups-restic-boundary` |
-| `aws_iam_role_policy.tf_plan_k8s_backups` / `.tf_apply_k8s_backups` | inline additions on `tf_plan` / `tf_apply` |
+| `aws_iam_role_policy.tf_plan_terraform_workers` / `.tf_apply_terraform_workers` | inline additions on `tf_plan` / `tf_apply` |
 
 The bucket has versioning on (it is how you recover from a truncated state), SSE-S3,
 public access blocked, and a TLS-only bucket policy. `prevent_destroy` plus
@@ -67,22 +66,28 @@ terraform import \
 no thumbprint is required, and omitting it keeps an imported provider from diffing
 forever.
 
-## Kubernetes backups
+## Terraform-managed worker identities
 
-The `k8s-backups/` root owns the S3 bucket, the `k8s-backups-restic` IAM user, its
-inline S3 policy, and the `terraform_data` that creates the access key. This root owns
-the two pieces the CI role must not be able to change:
+The `tf_plan` / `tf_apply` roles include root-agnostic policies in
+`terraform_workers.tf`, so a new identity root does not need a bootstrap change:
 
-- `aws_iam_policy.k8s_backups_restic_boundary` caps the restic user at the
-  `volsync/` prefix of `kevindurb-k8s-backups`.
-- The additional inline policies on `tf_plan` / `tf_apply` give CI only the bucket,
-  user and SSM permissions needed to manage that root.
+- Plan reads S3 bucket settings for buckets named with `terraform_s3_bucket_prefix`
+  (default `kevindurb-`), IAM users under `terraform_iam_user_path` (default
+  `/terraform/`), and IAM policies under `terraform_iam_policy_path` (default
+  `/terraform/`). It has no SSM access.
+- Apply can manage bucket settings for those S3 buckets, IAM users and policies under
+  those paths, and SSM parameters under `terraform_ssm_parameter_path` (default
+  `/terraform/`). It has no object-level S3 permissions.
 
-Apply this root before `k8s-backups/`: the boundary must exist before the user is
-created, and the CI role must have the new permissions before CI can plan the bucket.
-The access key is created by `k8s-backups/scripts/ensure-restic-key.sh` and written
-directly to SSM, so it never enters Terraform state. The plan role deliberately has no
-SSM access.
+The `k8s-backups/` root follows these conventions: its restic user and boundary live
+under `/terraform/`, and its access-key parameter is
+`/terraform/k8s-backups/volsync/restic/s3-access-key`. The key is created by
+`k8s-backups/scripts/ensure-restic-key.sh` and written directly to SSM, so it never
+enters Terraform state.
+
+Apply this root locally before the first apply of a new worker root so the generic
+permissions exist. The plan can still work while the resources do not exist, but the
+apply needs them.
 
 ## State
 

@@ -10,40 +10,54 @@ variable "state_bucket_name" {
   default     = "kevindurb-tfstate"
 }
 
-variable "k8s_backups_bucket_name" {
+variable "terraform_iam_user_path" {
   description = <<-EOT
-    S3 bucket managed by the k8s-backups root. Must match var.bucket_name in
-    k8s-backups/.
+    IAM path for users managed by Terraform roots. The plan/apply roles are
+    scoped to this path so bootstrap does not need to know about individual
+    roots. Must start and end with /.
   EOT
   type        = string
-  default     = "kevindurb-k8s-backups"
+  default     = "/terraform/"
+
+  validation {
+    condition     = can(regex("^/.+/$", var.terraform_iam_user_path))
+    error_message = "terraform_iam_user_path must start and end with /."
+  }
 }
 
-variable "k8s_backups_restic_user_name" {
+variable "terraform_iam_policy_path" {
   description = <<-EOT
-    IAM user managed by the k8s-backups root. Must match var.restic_user_name
-    in k8s-backups/.
+    IAM path for policies managed by Terraform roots. Must start and end with /.
   EOT
   type        = string
-  default     = "k8s-backups-restic"
+  default     = "/terraform/"
+
+  validation {
+    condition     = can(regex("^/.+/$", var.terraform_iam_policy_path))
+    error_message = "terraform_iam_policy_path must start and end with /."
+  }
 }
 
-variable "k8s_backups_restic_boundary_name" {
+variable "terraform_s3_bucket_prefix" {
   description = <<-EOT
-    Permissions boundary for the restic user. Created here so the CI role
-    cannot change the ceiling on the user's permissions.
+    Name prefix for S3 buckets managed by Terraform roots. The apply role can
+    manage bucket settings for these buckets but has no object-level access.
   EOT
   type        = string
-  default     = "k8s-backups-restic-boundary"
+  default     = "kevindurb-"
 }
 
-variable "k8s_backups_ssm_parameter_name" {
+variable "terraform_ssm_parameter_path" {
   description = <<-EOT
-    SSM SecureString written by the k8s-backups key script. Must match
-    var.restic_ssm_parameter_name in k8s-backups/.
+    SSM parameter path for values managed by Terraform roots. Must start with /.
   EOT
   type        = string
-  default     = "/k8s-backups/volsync/restic/s3-access-key"
+  default     = "/terraform/"
+
+  validation {
+    condition     = can(regex("^/.*$", var.terraform_ssm_parameter_path))
+    error_message = "terraform_ssm_parameter_path must start with /."
+  }
 }
 
 variable "github_oidc_subject" {

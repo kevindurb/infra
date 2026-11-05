@@ -9,17 +9,31 @@ variable "bucket_name" {
     S3 bucket that holds Kubernetes backups. Restic/VolSync data lives under
     the volsync/ prefix so other backup types can share the bucket later.
 
-    Must match var.k8s_backups_bucket_name in bootstrap/, where the restic
-    permissions boundary and the CI bucket policy are defined.
+    Must start with the terraform_s3_bucket_prefix used in bootstrap/ (default
+    kevindurb-), so the shared CI role can manage it.
   EOT
   type        = string
   default     = "kevindurb-k8s-backups"
 }
 
+variable "terraform_path" {
+  description = <<-EOT
+    IAM path shared by Terraform-managed identities. Must match the convention
+    in bootstrap/ so the CI role can manage this user and its policy.
+  EOT
+  type        = string
+  default     = "/terraform/"
+
+  validation {
+    condition     = can(regex("^/.+/$", var.terraform_path))
+    error_message = "terraform_path must start and end with /."
+  }
+}
+
 variable "restic_user_name" {
   description = <<-EOT
-    IAM user used by the VolSync restic movers. Must match
-    var.k8s_backups_restic_user_name in bootstrap/.
+    IAM user used by the VolSync restic movers. It lives under the /terraform/
+    path so the shared CI roles can manage it.
   EOT
   type        = string
   default     = "k8s-backups-restic"
@@ -27,8 +41,8 @@ variable "restic_user_name" {
 
 variable "restic_boundary_name" {
   description = <<-EOT
-    Permissions boundary attached to the restic user. The policy is created in
-    bootstrap/ as a security control the CI role cannot change.
+    Permissions boundary attached to the restic user. It lives in this root
+    under the /terraform/ policy path, together with the rest of the identity.
   EOT
   type        = string
   default     = "k8s-backups-restic-boundary"
@@ -41,7 +55,7 @@ variable "restic_ssm_parameter_name" {
     never enters state.
   EOT
   type        = string
-  default     = "/k8s-backups/volsync/restic/s3-access-key"
+  default     = "/terraform/k8s-backups/volsync/restic/s3-access-key"
 }
 
 variable "restic_key_version" {

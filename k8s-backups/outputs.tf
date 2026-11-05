@@ -27,9 +27,14 @@ output "restic_user_name" {
   value       = aws_iam_user.restic.name
 }
 
+output "restic_user_arn" {
+  description = "ARN of the IAM user used by the VolSync restic movers."
+  value       = aws_iam_user.restic.arn
+}
+
 output "restic_boundary_arn" {
   description = "Permissions boundary attached to the restic user."
-  value       = local.restic_boundary_arn
+  value       = aws_iam_policy.restic_boundary.arn
 }
 
 output "restic_ssm_parameter_name" {

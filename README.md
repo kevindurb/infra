@@ -43,7 +43,8 @@ credentials as usual and either `TAILSCALE_API_KEY`, or both
 
 `bootstrap/` is run by hand when the credential fabric changes and deliberately is not
 in CI: it creates the bucket that holds every other root's state, the roles CI assumes,
-and the boundary that caps the backup identity.
+and the generic IAM/S3/SSM permissions those roles use to manage Terraform-created
+identities.
 
 ## Repository variables
 
