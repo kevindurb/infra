@@ -30,10 +30,15 @@ would touch all of it.
 
 ```sh
 just check          # fmt + validate every root, no credentials needed
-just plan tailnet   # needs AWS credentials + the Tailscale federated identity
+just plan tailnet   # needs AWS credentials + Tailscale credentials
 just apply tailnet
 just fmt
 ```
+
+CI obtains both sets of credentials through GitHub OIDC. For a local plan, use AWS
+credentials as usual and either `TAILSCALE_API_KEY`, or both
+`TAILSCALE_OAUTH_CLIENT_ID` + `TAILSCALE_AUDIENCE` with a
+`TAILSCALE_IDENTITY_TOKEN` that the provider can exchange.
 
 `bootstrap/` is run by hand exactly once and deliberately is not in CI: it creates the
 bucket that holds every other root's state, and the roles CI assumes.
@@ -48,9 +53,17 @@ secret):
 | `AWS_REGION` | all |
 | `AWS_PLAN_ROLE_ARN` | plan job (read-only on the state prefix) |
 | `AWS_APPLY_ROLE_ARN` | apply job |
+| `TAILSCALE_PLAN_OAUTH_CLIENT_ID` | plan job (read-only federated identity) |
+| `TAILSCALE_PLAN_AUDIENCE` | plan job |
+| `TAILSCALE_APPLY_OAUTH_CLIENT_ID` | apply job (write federated identity) |
+| `TAILSCALE_APPLY_AUDIENCE` | apply job |
 
 The apply job also targets a GitHub **environment** called `production`; add required
 reviewers there so a merge alone is not enough to apply.
+
+The current root manages only the policy file, so the Tailscale identities need only
+`policy_file:read` for plan and `policy_file` for apply. Settings, DNS and Services are
+still console-managed.
 
 ## Docs
 

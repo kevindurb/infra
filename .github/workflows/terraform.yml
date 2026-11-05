@@ -50,6 +50,11 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    env:
+      # Read-only federated identity. The provider ignores `scopes` in
+      # federated mode; the credential's scopes are fixed in the console.
+      TAILSCALE_OAUTH_CLIENT_ID: ${{ vars.TAILSCALE_PLAN_OAUTH_CLIENT_ID }}
+      TAILSCALE_AUDIENCE: ${{ vars.TAILSCALE_PLAN_AUDIENCE }}
     strategy:
       fail-fast: false
       matrix:
@@ -84,6 +89,10 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    env:
+      # Write identity, reachable only through the production environment.
+      TAILSCALE_OAUTH_CLIENT_ID: ${{ vars.TAILSCALE_APPLY_OAUTH_CLIENT_ID }}
+      TAILSCALE_AUDIENCE: ${{ vars.TAILSCALE_APPLY_AUDIENCE }}
     strategy:
       fail-fast: false
       matrix:
