@@ -1,8 +1,8 @@
 default:
   @just --list
 
-# Root modules. bootstrap is run by hand, once.
-roots := "bootstrap tailnet"
+# Root modules. bootstrap is run by hand when the credential fabric changes.
+roots := "bootstrap tailnet k8s-backups"
 
 # Format and validate every root. No credentials needed.
 check:

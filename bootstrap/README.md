@@ -3,8 +3,8 @@
 The layer that makes every other root possible: the state bucket, the GitHub OIDC
 provider, and the roles CI assumes.
 
-Run by hand, locally, exactly once. It is deliberately **not** in CI — it creates the
-credentials CI would need to run it.
+Run by hand, locally, when the credential fabric changes. It is deliberately **not** in
+CI — it creates the credentials CI would need to run it.
 
 ## What it contains
 
@@ -15,6 +15,7 @@ credentials CI would need to run it.
 | `aws_iam_role.tf_plan` | `tf_plan` |
 | `aws_iam_role.tf_apply` | `tf_apply` |
 | `aws_iam_role_policy.tf_plan` / `.tf_apply` | `tf_plan` / `tf_apply` (inline) |
+| `aws_iam_role_policy.tf_plan_terraform_workers` / `.tf_apply_terraform_workers` | inline additions on `tf_plan` / `tf_apply` |
 
 The bucket has versioning on (it is how you recover from a truncated state), SSE-S3,
 public access blocked, and a TLS-only bucket policy. `prevent_destroy` plus
@@ -64,6 +65,29 @@ terraform import \
 `thumbprint_list` is intentionally not set: GitHub's chain uses a root CA AWS trusts, so
 no thumbprint is required, and omitting it keeps an imported provider from diffing
 forever.
+
+## Terraform-managed worker identities
+
+The `tf_plan` / `tf_apply` roles include root-agnostic policies in
+`terraform_workers.tf`, so a new identity root does not need a bootstrap change:
+
+- Plan reads S3 bucket settings for buckets named with `terraform_s3_bucket_prefix`
+  (default `kevindurb-infra-`), IAM users under `terraform_iam_user_path` (default
+  `/infra/`), and IAM policies under `terraform_iam_policy_path` (default
+  `/infra/`). It has no SSM access.
+- Apply can manage bucket settings for those S3 buckets, IAM users and policies under
+  those paths, and SSM parameters under `terraform_ssm_parameter_path` (default
+  `/infra/`). It has no object-level S3 permissions.
+
+The `k8s-backups/` root follows these conventions: its restic user and boundary live
+under `/infra/`, and its access-key parameter is
+`/infra/k8s-backups/volsync/restic/s3-access-key`. The key is created by
+`k8s-backups/scripts/ensure-restic-key.sh` and written directly to SSM, so it never
+enters Terraform state.
+
+Apply this root locally before the first apply of a new worker root so the generic
+permissions exist. The plan can still work while the resources do not exist, but the
+apply needs them.
 
 ## State
 

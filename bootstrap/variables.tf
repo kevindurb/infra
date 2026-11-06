@@ -10,6 +10,56 @@ variable "state_bucket_name" {
   default     = "kevindurb-tfstate"
 }
 
+variable "terraform_iam_user_path" {
+  description = <<-EOT
+    IAM path for users managed by Terraform roots. The plan/apply roles are
+    scoped to this path so bootstrap does not need to know about individual
+    roots. Must start and end with /.
+  EOT
+  type        = string
+  default     = "/infra/"
+
+  validation {
+    condition     = can(regex("^/.+/$", var.terraform_iam_user_path))
+    error_message = "terraform_iam_user_path must start and end with /."
+  }
+}
+
+variable "terraform_iam_policy_path" {
+  description = <<-EOT
+    IAM path for policies managed by Terraform roots. Must start and end with /.
+  EOT
+  type        = string
+  default     = "/infra/"
+
+  validation {
+    condition     = can(regex("^/.+/$", var.terraform_iam_policy_path))
+    error_message = "terraform_iam_policy_path must start and end with /."
+  }
+}
+
+variable "terraform_s3_bucket_prefix" {
+  description = <<-EOT
+    Name prefix for S3 buckets managed by Terraform roots. The apply role can
+    manage bucket settings for these buckets but has no object-level access.
+  EOT
+  type        = string
+  default     = "kevindurb-infra-"
+}
+
+variable "terraform_ssm_parameter_path" {
+  description = <<-EOT
+    SSM parameter path for values managed by Terraform roots. Must start with /.
+  EOT
+  type        = string
+  default     = "/infra/"
+
+  validation {
+    condition     = can(regex("^/.*$", var.terraform_ssm_parameter_path))
+    error_message = "terraform_ssm_parameter_path must start with /."
+  }
+}
+
 variable "github_oidc_subject" {
   description = <<-EOT
     Exact token.actions.githubusercontent.com:sub for a push to main.
