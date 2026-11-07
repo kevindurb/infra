@@ -42,6 +42,7 @@
 		"tag:ai":              ["group:admins"],
 		"tag:dev":             ["group:admins"],
 		"tag:pr-agent":        ["group:admins"],
+		"tag:tsgit":           ["group:admins"],
 	},
 
 	"nodeAttrs": [
@@ -161,6 +162,31 @@
 		// GitHub Actions -> Argo CD webhook
 		{"src": ["tag:ci"], "dst": ["svc:argocd"], "ip": ["tcp:443"]},
 
+		// tsgit authorizes from the caller's tailnet identity; cap/repo carries the
+		// read/write level. Both ip and app are required in practice: app capabilities
+		// only apply to traffic the device can already reach. tag:dev is the tagged
+		// workstation, which no longer matches group:admins.
+		{
+			"src": ["group:admins", "tag:dev"],
+			"dst": ["tag:tsgit"],
+			"ip":  ["tcp:443"],
+			"app": {
+				"github.com/kevindurb/tsgit/cap/repo": [
+					{"repos": ["*/*"], "access": "write"},
+				],
+			},
+		},
+		{
+			"src": ["tag:ci"],
+			"dst": ["tag:tsgit"],
+			"ip":  ["tcp:443"],
+			"app": {
+				"github.com/kevindurb/tsgit/cap/repo": [
+					{"repos": ["*/*"], "access": "read"},
+				],
+			},
+		},
+
 		// Aperture (ai): network and application access. Roles and models live here
 		// rather than in the gateway config so they are reviewable in git; Aperture
 		// combines both sources, so the gateway's stock "*" grants are removed.
@@ -272,7 +298,7 @@
 			"src":    "kevindurb@github",
 			"accept": ["tag:apps:443", "tag:media:443", "tag:home:443", "tag:bridges:443", "tag:infra:443",
 			           "tag:monitoring:443", "tag:k8s:443", "tag:idp:443", "tag:games:25565",
-			           "tag:travel-lab:443", "tag:ai:443"],
+			           "tag:travel-lab:443", "tag:ai:443", "tag:tsgit:443"],
 		},
 		{
 			"src":    "tag:k8s-oidc",
@@ -290,8 +316,14 @@
 			"deny": ["tag:apps:443", "tag:bridges:443", "tag:idp:443", "tag:monitoring:443", "tag:k8s:443"],
 		},
 		{
-			"src":  "tag:ci",
-			"deny": ["tag:apps:443", "tag:monitoring:443", "tag:idp:443", "tag:ai:443"],
+			"src":    "tag:ci",
+			"accept": ["tag:tsgit:443"],
+			"deny":   ["tag:apps:443", "tag:monitoring:443", "tag:idp:443", "tag:ai:443"],
+		},
+		{
+			// the forge is a destination; it never reaches into the tailnet
+			"src":  "tag:tsgit",
+			"deny": ["tag:apps:443", "tag:infra:443", "tag:monitoring:443", "tag:idp:443", "tag:k8s:443"],
 		},
 		{
 			// the PR review bot reaches Aperture and nothing else
@@ -334,7 +366,7 @@
 			// the workstation keeps the admin reach it had as a user device
 			"src":    "tag:dev",
 			"accept": ["tag:k8s:443", "tag:infra:443", "tag:apps:443", "tag:idp:443", "tag:ai:443",
-			           "tag:k8s-node:22", "tag:router:22", "tag:bastion:22"],
+			           "tag:k8s-node:22", "tag:router:22", "tag:bastion:22", "tag:tsgit:443"],
 		},
 		{
 			"src":    "tag:bastion",
