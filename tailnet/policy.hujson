@@ -47,6 +47,17 @@
 
 	"nodeAttrs": [
 		{"target": ["tag:funnel"],     "attr": ["funnel"]},
+		// tsgit serves its public repos over Funnel; the capability scopes which
+		// repos the device is allowed to expose.
+		{
+			"target": ["tag:tsgit"],
+			"attr":   ["funnel"],
+			"app": {
+				"github.com/kevindurb/tsgit/cap/funnel": [
+					{"repos": ["public/*"]},
+				],
+			},
+		},
 		{"target": ["group:admins"],   "attr": ["drive:share", "drive:access", "mullvad"]},
 		{"target": ["tag:travel-lab"], "attr": ["drive:share"]},
 		{"target": ["*"],              "attr": ["cache-network-maps"]},
