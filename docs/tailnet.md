@@ -132,11 +132,11 @@ editor stays usable until step 6. `old-k8s-infra` keeps the pre-move history.
 ## Deferred
 
 - **Device tags.** `dev` (`tag:dev`), `ai`, `bastion`, `router`, `travel-router`,
-  `travel-lab`, `golink`, `work`, `personal`, `border0-managed` are all tagged out of band
-  (console, or `--advertise-tags` at join). `tailscale_device_tags` would need the
-  `devices:core` scope, which also permits deleting and authorizing machines, and it
-  addresses devices by node ID, so a re-registered device churns the plan. Left manual;
-  revisit only if a tag actually goes missing.
+  `travel-lab`, `golink`, `work`, `personal`, `border0-managed` and `tsgit` are all
+  tagged out of band (console, or `--advertise-tags` at join). `tailscale_device_tags`
+  would need the `devices:core` scope, which also permits deleting and authorizing
+  machines, and it addresses devices by node ID, so a re-registered device churns the
+  plan. Left manual; revisit only if a tag actually goes missing.
 - **Tag-vocabulary drift check in `k8s`.** 34 manifests carry `tailscale.com/tags`
   annotations and the policy references `svc:` names; a tag missing from `tagOwners` or
   `autoApprovers.services` fails as a 400 and the Ingress silently never serves. The

@@ -26,9 +26,9 @@ Settings, DNS, and the hand-created Services can move here in later changes.
   the Services it publishes (`svc:argocd` and friends) are owned by Argo CD from
   `kevindurb/k8s`, under `infrastructure/tailscale`. Terraform must not manage them.
 - **Device tags.** `dev`, `ai`, `bastion`, `router`, `travel-router`, `travel-lab`,
-  `golink`, `work`, `personal` and `border0-managed` are tagged out of band. Bringing
-  them under Terraform needs `devices:core`, which also grants delete/authorize on
-  machines. Manual for now — see `../docs/tailnet.md`.
+  `golink`, `work`, `personal`, `border0-managed` and `tsgit` are tagged out of band.
+  Bringing them under Terraform needs `devices:core`, which also grants delete/authorize
+  on machines. Manual for now — see `../docs/tailnet.md`.
 
 ## Provider
 
