@@ -249,6 +249,9 @@
 			},
 		},
 
+		// Aperture (tag:ai) reaches the in-cluster apps over HTTPS
+		{"src": ["tag:ai"], "dst": ["tag:apps"], "ip": ["tcp:443"]},
+
 		// Pocket ID needs plain reachability only (no WhoIs caps): the browser login is
 		// handled by Pocket ID itself. Both routers are here because their LAN clients are
 		// SNAT'd to them; tagged sources can complete a login now, unlike tsidp.
@@ -381,8 +384,8 @@
 		},
 		{
 			"src":    "tag:ai",
-			"accept": ["tag:dev:22"],
-			"deny":   ["tag:dev:443", "tag:apps:443", "tag:idp:443", "tag:k8s:443"],
+			"accept": ["tag:dev:22", "tag:apps:443"],
+			"deny":   ["tag:dev:443", "tag:idp:443", "tag:k8s:443"],
 		},
 		{
 			// the workstation keeps the admin reach it had as a user device
