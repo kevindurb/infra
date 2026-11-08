@@ -197,6 +197,17 @@
 				],
 			},
 		},
+		// the router masquerades LAN clients; they may browse every repo read-only
+		{
+			"src": ["tag:router"],
+			"dst": ["tag:tsgit"],
+			"ip":  ["tcp:443"],
+			"app": {
+				"github.com/kevindurb/tsgit/cap/repo": [
+					{"repos": ["*/*"], "access": "read"},
+				],
+			},
+		},
 
 		// Aperture (ai): network and application access. Roles and models live here
 		// rather than in the gateway config so they are reviewable in git; Aperture
@@ -347,7 +358,7 @@
 		{
 			"src":    "tag:router",
 			"accept": ["tag:apps:443", "tag:media:443", "tag:home:443", "tag:games:25565",
-			           "tag:idp:443", "tag:dev:443"],
+			           "tag:idp:443", "tag:dev:443", "tag:tsgit:443"],
 			"deny":   ["tag:infra:443", "tag:monitoring:443", "tag:bridges:443",
 			           "tag:travel-lab:443", "tag:k8s:443", "tag:dev:22"],
 		},
