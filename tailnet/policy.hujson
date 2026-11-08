@@ -183,7 +183,7 @@
 			"ip":  ["tcp:443"],
 			"app": {
 				"github.com/kevindurb/tsgit/cap/repo": [
-					{"repos": ["*/*"], "access": "write"},
+					{"repos": ["*/*"], "access": "admin"},
 				],
 			},
 		},
