@@ -249,8 +249,8 @@
 			},
 		},
 
-		// Aperture (tag:ai) reaches the in-cluster apps over HTTPS
-		{"src": ["tag:ai"], "dst": ["tag:apps"], "ip": ["tcp:443"]},
+		// Aperture (tag:ai) reaches the in-cluster apps and media over HTTPS
+		{"src": ["tag:ai"], "dst": ["tag:apps", "tag:media"], "ip": ["tcp:443"]},
 
 		// Pocket ID needs plain reachability only (no WhoIs caps): the browser login is
 		// handled by Pocket ID itself. Both routers are here because their LAN clients are
@@ -384,7 +384,7 @@
 		},
 		{
 			"src":    "tag:ai",
-			"accept": ["tag:dev:22", "tag:apps:443"],
+			"accept": ["tag:dev:22", "tag:apps:443", "tag:media:443"],
 			"deny":   ["tag:dev:443", "tag:idp:443", "tag:k8s:443"],
 		},
 		{
