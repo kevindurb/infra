@@ -42,6 +42,7 @@
 		"tag:ai":              ["group:admins"],
 		"tag:dev":             ["group:admins"],
 		"tag:pr-agent":        ["group:admins"],
+		"tag:tsci":            ["group:admins"],
 		"tag:tsgit":           ["group:admins"],
 	},
 
