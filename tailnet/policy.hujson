@@ -142,8 +142,9 @@
 		// own user, and the ssh section cannot name a host alias or IP.
 		{"src": ["group:dev-users", "tag:ai"], "dst": ["tag:dev"], "ip": ["tcp:22"]},
 		// the masquerading routers' LAN clients reach the tailnet-only `tailscale serve`;
-		// tcp:22 is deliberately not granted - the workstation is not a jump host for a LAN
-		{"src": ["group:dev-users", "tag:router", "tag:travel-router"], "dst": ["tag:dev"], "ip": ["tcp:443"]},
+		// tcp:22 is deliberately not granted - the workstation is not a jump host for a LAN.
+		// tcp:8443 is the second tailscale serve listener: the herdr web terminal (ttyd) on /.
+		{"src": ["group:dev-users", "tag:router", "tag:travel-router"], "dst": ["tag:dev"], "ip": ["tcp:443", "tcp:8443"]},
 
 		// all of the workstation's own traffic now leaves as tag:dev instead of
 		// kevindurb@github, so it keeps the reach its admin user device had:
@@ -362,14 +363,14 @@
 		{
 			"src":    "tag:router",
 			"accept": ["tag:apps:443", "tag:media:443", "tag:home:443", "tag:games:25565",
-			           "tag:idp:443", "tag:dev:443", "tag:tsgit:443"],
+			           "tag:idp:443", "tag:dev:443", "tag:dev:8443", "tag:tsgit:443"],
 			"deny":   ["tag:infra:443", "tag:monitoring:443", "tag:bridges:443",
 			           "tag:travel-lab:443", "tag:k8s:443", "tag:dev:22"],
 		},
 		{
 			"src":    "tag:travel-router",
 			"accept": ["tag:apps:443", "tag:media:443", "tag:home:443", "tag:games:25565",
-			           "tag:travel-lab:443", "tag:idp:443", "tag:dev:443"],
+			           "tag:travel-lab:443", "tag:idp:443", "tag:dev:443", "tag:dev:8443"],
 			"deny":   ["tag:infra:443", "tag:monitoring:443", "tag:bridges:443", "tag:k8s:443",
 			           "tag:dev:22"],
 		},
@@ -381,12 +382,12 @@
 		{
 			// dev is tagged now, so it is a normal tag destination
 			"src":    "group:dev-users",
-			"accept": ["tag:dev:22", "tag:dev:443"],
+			"accept": ["tag:dev:22", "tag:dev:443", "tag:dev:8443"],
 		},
 		{
 			"src":    "tag:ai",
 			"accept": ["tag:dev:22", "tag:apps:443", "tag:media:443"],
-			"deny":   ["tag:dev:443", "tag:idp:443", "tag:k8s:443"],
+			"deny":   ["tag:dev:443", "tag:dev:8443", "tag:idp:443", "tag:k8s:443"],
 		},
 		{
 			// the workstation keeps the admin reach it had as a user device
