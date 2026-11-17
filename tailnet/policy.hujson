@@ -175,8 +175,19 @@
 		// GitHub Actions -> Argo CD webhook
 		{"src": ["tag:ci"], "dst": ["svc:argocd"], "ip": ["tcp:443"]},
 
-		// GitHub Actions -> Aperture gateway
-		{"src": ["tag:ci"], "dst": ["tag:ai"], "ip": ["tcp:443"]},
+		// GitHub Actions -> Aperture gateway. tag:ci is tag-only, so Aperture needs an
+		// explicit base role; the quota bucket must exist in the gateway config.
+		{
+			"src": ["tag:ci"],
+			"dst": ["tag:ai"],
+			"ip":  ["tcp:443"],
+			"app": {
+				"tailscale.com/cap/aperture": [
+					{"role": "user", "enable_portal": false},
+					{"models": "*/deepseek-v4.1-flash", "quotas": [{"bucket": "ci-agents"}]},
+				],
+			},
+		},
 
 		// tsgit authorizes from the caller's tailnet identity; cap/repo carries the
 		// read/write level. Both ip and app are required in practice: app capabilities
