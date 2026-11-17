@@ -168,6 +168,7 @@
 				"tailscale.com/cap/aperture": [
 					{"role": "user", "enable_portal": false},
 					{"models": "**"},
+					{"connectors": ["**"]},
 				],
 			},
 		},
@@ -185,7 +186,6 @@
 				"tailscale.com/cap/aperture": [
 					{"role": "user", "enable_portal": false},
 					{"models": "*/deepseek-v4.1-flash", "quotas": [{"bucket": "ci-agents"}]},
-					{"connectors": ["**"]},
 				],
 			},
 		},
