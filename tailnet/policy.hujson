@@ -175,6 +175,9 @@
 		// GitHub Actions -> Argo CD webhook
 		{"src": ["tag:ci"], "dst": ["svc:argocd"], "ip": ["tcp:443"]},
 
+		// GitHub Actions -> Aperture gateway
+		{"src": ["tag:ci"], "dst": ["tag:ai"], "ip": ["tcp:443"]},
+
 		// tsgit authorizes from the caller's tailnet identity; cap/repo carries the
 		// read/write level. Both ip and app are required in practice: app capabilities
 		// only apply to traffic the device can already reach. tag:dev is the tagged
@@ -344,8 +347,8 @@
 		},
 		{
 			"src":    "tag:ci",
-			"accept": ["tag:tsgit:443"],
-			"deny":   ["tag:apps:443", "tag:monitoring:443", "tag:idp:443", "tag:ai:443"],
+			"accept": ["tag:ai:443", "tag:tsgit:443"],
+			"deny":   ["tag:apps:443", "tag:monitoring:443", "tag:idp:443"],
 		},
 		{
 			// the forge is a destination; it never reaches into the tailnet
