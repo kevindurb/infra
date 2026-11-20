@@ -41,6 +41,7 @@
 		"tag:funnel":          ["group:admins", "tag:k8s-operator"],
 		"tag:ai":              ["group:admins"],
 		"tag:dev":             ["group:admins"],
+		"tag:htpc":            ["group:admins"],
 		"tag:pr-agent":        ["group:admins"],
 		"tag:tsci":            ["group:admins"],
 		"tag:tsgit":           ["group:admins"],
@@ -132,6 +133,11 @@
 		{"src": ["group:media-users",  "tag:router", "tag:travel-router"], "dst": ["tag:media"], "ip": ["tcp:443"]},
 		{"src": ["group:home-users",   "tag:router", "tag:travel-router"], "dst": ["tag:home"],  "ip": ["tcp:443"]},
 		{"src": ["group:game-players", "tag:router", "tag:travel-router"], "dst": ["tag:games"], "ip": ["tcp:25565", "udp:19132"]},
+
+		// the living-room HTPC browses the app, media and home ingresses on its own tag
+		{"src": ["tag:htpc"], "dst": ["tag:apps"],  "ip": ["tcp:443"]},
+		{"src": ["tag:htpc"], "dst": ["tag:media"], "ip": ["tcp:443"]},
+		{"src": ["tag:htpc"], "dst": ["tag:home"],  "ip": ["tcp:443"]},
 
 		// travel-lab devices and the services they host may reach each other
 		{"src": ["tag:travel-lab"], "dst": ["tag:travel-lab"], "ip": ["tcp:443"]},
@@ -256,9 +262,10 @@
 
 		// Pocket ID needs plain reachability only (no WhoIs caps): the browser login is
 		// handled by Pocket ID itself. Both routers are here because their LAN clients are
-		// SNAT'd to them; tagged sources can complete a login now, unlike tsidp.
+		// SNAT'd to them, and the HTPC signs in from its own device tag; tagged sources can
+		// complete a login now, unlike tsidp.
 		{
-			"src": ["group:app-users", "group:media-users", "group:home-users", "tag:router", "tag:travel-router"],
+			"src": ["group:app-users", "group:media-users", "group:home-users", "tag:router", "tag:travel-router", "tag:htpc"],
 			"dst": ["tag:idp"],
 			"ip":  ["tcp:443"],
 		},
@@ -373,6 +380,13 @@
 			           "tag:travel-lab:443", "tag:idp:443", "tag:dev:443", "tag:dev:8443"],
 			"deny":   ["tag:infra:443", "tag:monitoring:443", "tag:bridges:443", "tag:k8s:443",
 			           "tag:dev:22"],
+		},
+		{
+			// the HTPC is a browsing device: the three user-facing ingresses plus a login
+			"src":    "tag:htpc",
+			"accept": ["tag:apps:443", "tag:media:443", "tag:home:443", "tag:idp:443"],
+			"deny":   ["tag:infra:443", "tag:monitoring:443", "tag:bridges:443", "tag:games:25565",
+			           "tag:k8s:443", "tag:k8s-node:22", "tag:dev:22", "tag:tsgit:443"],
 		},
 		{
 			"src":    "tag:travel-lab",

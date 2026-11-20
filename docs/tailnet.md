@@ -132,7 +132,7 @@ editor stays usable until step 6. `old-k8s-infra` keeps the pre-move history.
 ## Deferred
 
 - **Device tags.** `dev` (`tag:dev`), `ai`, `bastion`, `router`, `travel-router`,
-  `travel-lab`, `golink`, `work`, `personal`, `border0-managed` and `tsgit` are all
+  `travel-lab`, `htpc`, `golink`, `work`, `personal`, `border0-managed` and `tsgit` are all
   tagged out of band (console, or `--advertise-tags` at join). `tailscale_device_tags`
   would need the `devices:core` scope, which also permits deleting and authorizing
   machines, and it addresses devices by node ID, so a re-registered device churns the
