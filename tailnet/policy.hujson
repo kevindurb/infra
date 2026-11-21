@@ -104,6 +104,14 @@
 			"users":  ["root", "autogroup:nonroot"],
 		},
 		{
+			// the workstation can also reach the living-room HTPC, which is otherwise
+			// only a browsing device
+			"action": "accept",
+			"src":    ["tag:dev"],
+			"dst":    ["tag:htpc"],
+			"users":  ["root", "autogroup:nonroot"],
+		},
+		{
 			// bastion: check mode (default 12h; a custom checkPeriod is a premium feature)
 			"action": "check",
 			"src":    ["group:admins"],
@@ -422,7 +430,8 @@
 			// the workstation keeps the admin reach it had as a user device
 			"src":    "tag:dev",
 			"accept": ["tag:k8s:443", "tag:infra:443", "tag:apps:443", "tag:idp:443", "tag:ai:443",
-			           "tag:k8s-node:22", "tag:router:22", "tag:bastion:22", "tag:tsgit:443"],
+			           "tag:k8s-node:22", "tag:router:22", "tag:bastion:22", "tag:htpc:22",
+			           "tag:tsgit:443"],
 		},
 		{
 			"src":    "tag:bastion",
@@ -444,6 +453,11 @@
 		{
 			"src":    "tag:ai",
 			"dst":    ["tag:dev"],
+			"accept": ["kevindurb", "root"],
+		},
+		{
+			"src":    "tag:dev",
+			"dst":    ["tag:htpc"],
 			"accept": ["kevindurb", "root"],
 		},
 	],
