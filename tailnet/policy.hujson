@@ -458,7 +458,7 @@
 		{
 			"src":    "tag:dev",
 			"dst":    ["tag:htpc"],
-			"accept": ["kevindurb", "root"],
+			"accept": ["htpc", "root"],
 		},
 	],
 }
