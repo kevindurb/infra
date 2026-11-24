@@ -47,6 +47,9 @@
 		"tag:qbittorrent":     ["group:admins", "tag:k8s-operator"],
 		"tag:tsci":            ["group:admins"],
 		"tag:tsgit":           ["group:admins"],
+		// the ingress proxy pod serving the Tekton EventListener for tsgit
+		// push webhooks; the only tailnet destination tag:tsgit may reach
+		"tag:tekton-hooks":     ["group:admins", "tag:k8s-operator"],
 	},
 
 	"nodeAttrs": [
@@ -59,6 +62,17 @@
 			"app": {
 				"github.com/kevindurb/tsgit/cap/funnel": [
 					{"repos": ["public/*"]},
+				],
+			},
+		},
+		// Push webhooks: which tailnet endpoint the forge calls on push.
+		// Read by the node itself; the URL is not sensitive. Unsigned deliveries,
+		// which is why the only allowed destination is tag:tekton-hooks below.
+		{
+			"target": ["tag:tsgit"],
+			"app": {
+				"github.com/kevindurb/tsgit/cap/hooks": [
+					{"repos": ["kevindurb/dotfiles"], "url": "https://tekton-hooks.beaver-cloud.ts.net/"},
 				],
 			},
 		},
@@ -203,6 +217,14 @@
 					{"repos": ["kevindurb/*"], "access": "read"},
 				],
 			},
+		},
+		// tsgit pushes to the Tekton webhook receiver and nothing else it does
+		// not already have: the forge may call the EventListener ingress and no
+		// other tailnet service.
+		{
+			"src": ["tag:tsgit"],
+			"dst": ["tag:tekton-hooks"],
+			"ip":  ["tcp:443"],
 		},
 		// GitHub Actions -> Argo CD webhook
 		{"src": ["tag:ci"], "dst": ["svc:argocd"], "ip": ["tcp:443"]},
@@ -361,6 +383,7 @@
 			"tag:monitoring":      ["tag:k8s"],
 			"tag:games":           ["tag:k8s"],
 			"tag:funnel":          ["tag:k8s"],
+			"tag:tekton-hooks":     ["tag:k8s"],
 			"tag:idp":             ["tag:k8s"],
 			"tag:travel-lab":      ["tag:travel-lab"],
 			"tag:border0-managed": ["tag:border0-managed"],
@@ -401,9 +424,10 @@
 			"deny":   ["tag:apps:443", "tag:monitoring:443", "tag:idp:443"],
 		},
 		{
-			// the forge is a destination; it never reaches into the tailnet
-			"src":  "tag:tsgit",
-			"deny": ["tag:apps:443", "tag:infra:443", "tag:monitoring:443", "tag:idp:443", "tag:k8s:443"],
+			// the forge may reach only its webhook receiver; nothing else in the tailnet
+			"src":    "tag:tsgit",
+			"accept": ["tag:tekton-hooks:443"],
+			"deny":   ["tag:apps:443", "tag:infra:443", "tag:monitoring:443", "tag:idp:443", "tag:k8s:443"],
 		},
 		{
 			// the PR review bot reaches Aperture and nothing else
