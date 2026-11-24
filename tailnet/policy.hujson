@@ -31,6 +31,7 @@
 		"tag:k8s":             ["tag:k8s-operator"],
 		"tag:k8s-oidc":        ["group:admins", "tag:k8s-operator"],
 		"tag:k8s-ai":          ["group:admins", "tag:k8s-operator"],
+		"tag:tekton":          ["group:admins", "tag:k8s-operator"],
 		"tag:apps":            ["group:admins", "tag:k8s-operator"],
 		"tag:media":           ["group:admins", "tag:k8s-operator"],
 		"tag:home":            ["group:admins", "tag:k8s-operator"],
@@ -187,6 +188,18 @@
 			},
 		},
 
+		// In-cluster Tekton CI egress (tsgit-egress ProxyGroup): read-only on
+		// kevindurb/* repos; the cap authorizes per repo path.
+		{
+			"src": ["tag:tekton"],
+			"dst": ["tag:tsgit"],
+			"ip":  ["tcp:443"],
+			"app": {
+				"github.com/kevindurb/tsgit/cap/repo": [
+					{"repos": ["kevindurb/*"], "access": "read"},
+				],
+			},
+		},
 		// GitHub Actions -> Argo CD webhook
 		{"src": ["tag:ci"], "dst": ["svc:argocd"], "ip": ["tcp:443"]},
 
@@ -361,6 +374,12 @@
 			"src":    "tag:k8s-oidc",
 			"accept": ["tag:idp:443"],
 			"deny":   ["tag:apps:443", "tag:media:443", "tag:bridges:443", "tag:infra:443", "tag:k8s:443"],
+		},
+		{
+			// the Tekton egress proxy reads tsgit and nothing else
+			"src":    "tag:tekton",
+			"accept": ["tag:tsgit:443"],
+			"deny":   ["tag:ai:443", "tag:apps:443", "tag:idp:443", "tag:infra:443", "tag:k8s:443", "tag:monitoring:443"],
 		},
 		{
 			// the Aperture egress proxies reach the gateway and nothing else
