@@ -44,6 +44,7 @@
 		"tag:dev":             ["group:admins"],
 		"tag:htpc":            ["group:admins"],
 		"tag:pr-agent":        ["group:admins"],
+		"tag:qbittorrent":     ["group:admins", "tag:k8s-operator"],
 		"tag:tsci":            ["group:admins"],
 		"tag:tsgit":           ["group:admins"],
 	},
@@ -62,6 +63,9 @@
 			},
 		},
 		{"target": ["group:admins"],   "attr": ["drive:share", "drive:access", "mullvad"]},
+		// the qBittorrent sidecar egresses torrent traffic exclusively through a Mullvad
+		// exit node; it is the only tagged device allowed to use one
+		{"target": ["tag:qbittorrent"], "attr": ["mullvad"]},
 		{"target": ["tag:travel-lab"], "attr": ["drive:share"]},
 		{"target": ["*"],              "attr": ["cache-network-maps"]},
 		// Aperture resolves group: grant sources from this device's view of the tailnet
@@ -460,6 +464,15 @@
 		{
 			"src":  "tag:work",
 			"deny": ["tag:apps:443", "tag:infra:443"],
+		},
+		{
+			// the qBittorrent sidecar egresses via Mullvad only; it initiates no tailnet
+			// connections at all (the Mullvad nodeAttr is not testable here — verify
+			// with `tailscale exit-node list` from the tagged device after apply)
+			"src":  "tag:qbittorrent",
+			"deny": ["tag:apps:443", "tag:media:443", "tag:home:443", "tag:infra:443",
+			           "tag:monitoring:443", "tag:idp:443", "tag:k8s:443", "tag:k8s-node:22",
+			           "tag:tsgit:443", "tag:ai:443"],
 		},
 	],
 
