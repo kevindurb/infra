@@ -116,6 +116,13 @@
 			"users":  ["root", "autogroup:nonroot"],
 		},
 		{
+			// tag:ci is tag-only, so it needs its own router hop; root only
+			"action": "accept",
+			"src":    ["tag:ci"],
+			"dst":    ["tag:router"],
+			"users":  ["root"],
+		},
+		{
 			// dev: tagged, because a user-owned destination only matches the source user's
 			// own devices - a group or the tagged Aperture box could never SSH into it
 			"action": "accept",
@@ -240,6 +247,8 @@
 		// GitHub Actions and the Forgejo CI runner VM -> in-cluster apps (forgejo itself is
 		// behind tag:apps). The runner rides this grant instead of the router hairpin.
 		{"src": ["tag:ci"], "dst": ["tag:apps"], "ip": ["tcp:443"]},
+		// CI -> router over Tailscale SSH (root only; see ssh section)
+		{"src": ["tag:ci"], "dst": ["tag:router"], "ip": ["tcp:22"]},
 
 		// GitHub Actions -> Aperture gateway. tag:ci is tag-only, so Aperture needs an
 		// explicit base role; the quota bucket must exist in the gateway config.
@@ -432,8 +441,8 @@
 		},
 		{
 			"src":    "tag:ci",
-			"accept": ["tag:apps:443", "tag:ai:443", "tag:tsgit:443"],
-			"deny":   ["tag:monitoring:443", "tag:idp:443"],
+			"accept": ["tag:apps:443", "tag:ai:443", "tag:tsgit:443", "tag:router:22"],
+			"deny":   ["tag:monitoring:443", "tag:idp:443", "tag:router:443"],
 		},
 		{
 			// the forge may reach only its webhook receiver; nothing else in the tailnet
@@ -539,6 +548,11 @@
 			"src":    "tag:dev",
 			"dst":    ["tag:ci"],
 			"accept": ["kevindurb", "root"],
+		},
+		{
+			"src":    "tag:ci",
+			"dst":    ["tag:router"],
+			"accept": ["root"],
 		},
 	],
 }
