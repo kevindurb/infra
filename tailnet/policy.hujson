@@ -107,9 +107,11 @@
 			"users":  ["root", "autogroup:nonroot"],
 		},
 		{
-			// the Forgejo CI runner VM is a tagged tailnet device; admins SSH in to debug it
+			// the Forgejo CI runner VM is a tagged tailnet device; admins SSH in to debug it.
+			// tag:dev is the workstation, which is tagged, so it cannot match group:admins
+			// (same pattern as the tag:dev rule for the k8s nodes)
 			"action": "accept",
-			"src":    ["group:admins"],
+			"src":    ["group:admins", "tag:dev"],
 			"dst":    ["tag:ci"],
 			"users":  ["root", "autogroup:nonroot"],
 		},
@@ -530,6 +532,11 @@
 		// opaque "unknown error occurred"; the individual admin login works.
 		{
 			"src":    "kevindurb@github",
+			"dst":    ["tag:ci"],
+			"accept": ["kevindurb", "root"],
+		},
+		{
+			"src":    "tag:dev",
 			"dst":    ["tag:ci"],
 			"accept": ["kevindurb", "root"],
 		},
